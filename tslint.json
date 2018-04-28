@@ -7,6 +7,7 @@
         "jsx-no-multiline-js": false,
         "jsx-boolean-value": false,
         "ter-indent": [true, 4],
+        "max-line-length": [true, 120],
         
         // This rule is here for now because of https://github.com/palantir/tslint-react/issues/120
         "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case"]
