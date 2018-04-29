@@ -16,10 +16,10 @@ export interface TotalLineProps {
 
 export const TotalLine = ({ score, wickets, ballsFaced }: TotalLineProps) => (
     <div className="row" style={totalLineStyle}>
-        <div className="col-md-3">Total</div>
-        <div className="col-md-4">
+        <div className="col-4 col-md-3">Total</div>
+        <div className="col-6 col-md-4">
             {`(${wickets} wickets) (${oversDescription(ballsFaced)} overs)`}    
         </div>
-        <div className="col-md-1" style={styles.runsCell}>{score}</div>
+        <div className="col-2 col-md-1" style={styles.runsCell}>{score}</div>
     </div>
 );

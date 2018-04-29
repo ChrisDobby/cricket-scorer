@@ -18,15 +18,16 @@ const howOut = (innings?: BattingInnings): string => {
 
 interface InningsItemProps { innings?: BattingInnings; }
 const Howout = (props: InningsItemProps) => (
-    <div className="col-md-4">{howOut(props.innings)}</div>
+    <div className="col-6 col-md-4">{howOut(props.innings)}</div>
 );
 
 interface CellItemProps {
     property: string;
     style: React.CSSProperties;
+    extraClass?: string;
 }
-const CellItem = ({ property, style }: CellItemProps) => (
-    <div className="col-md-1" style={style}>{property}</div>
+const CellItem = ({ property, style, extraClass }: CellItemProps) => (
+    <div className={`col-2 col-md-1${extraClass || ''}`} style={style}>{property}</div>
 );
 
 export interface BattingProps {
@@ -40,30 +41,37 @@ export const Batting = ({ batting, score, wickets, ballsFaced }: BattingProps) =
     <div className="col-xl-8 col-lg-12">
         <div style={battingContainer}>
             <div className="row" style={styles.headingRow}>
-                <div className="col-md-7"><h6>Batsman</h6></div>
-                <div className="col-md-1" style={styles.numberCell}><h6>Runs</h6></div>
-                <div className="col-md-1" style={styles.numberCell}><h6>Balls</h6></div>
-                <div className="col-md-1" style={styles.numberCell}><h6>Mins</h6></div>
-                <div className="col-md-1" style={styles.numberCell}><h6>4s</h6></div>
-                <div className="col-md-1" style={styles.numberCell}><h6>6s</h6></div>
+                <div className="col-10 col-md-7"><h6>Batsman</h6></div>
+                <div className="col-2 col-md-1" style={styles.numberCell}><h6>Runs</h6></div>
+                <div className="col-1 d-none d-md-block" style={styles.numberCell}><h6>Balls</h6></div>
+                <div className="col-1 d-none d-md-block" style={styles.numberCell}><h6>Mins</h6></div>
+                <div className="col-1 d-none d-md-block" style={styles.numberCell}><h6>4s</h6></div>
+                <div className="col-1 d-none d-md-block" style={styles.numberCell}><h6>6s</h6></div>
             </div>    
             {batting.batters.map(batter =>
                 <div className="row" style={styles.itemRow} key={batter.position}>
-                    <div className="col-md-3">{batter.name}</div>
+                    <div className="col-4 col-md-3">{batter.name}</div>
                     <Howout innings={batter.innings} />
                     <CellItem property={batter.innings ? batter.innings.runs.toString() : ''} style={styles.runsCell} />
                     <CellItem
                         property={batter.innings ? batter.innings.ballsFaced.toString() : ''}
                         style={styles.numberCell}
+                        extraClass=" d-none d-md-block"
                     />
-                    <CellItem property={batter.innings ? '0' : ''} style={styles.numberCell} />
+                    <CellItem
+                        property={batter.innings ? '0' : ''}
+                        style={styles.numberCell}
+                        extraClass=" d-none d-md-block"
+                    />
                     <CellItem
                         property={batter.innings ? batter.innings.fours.toString() : ''}
                         style={styles.numberCell}
+                        extraClass=" d-none d-md-block"
                     />
                     <CellItem
                         property={batter.innings ? batter.innings.sixes.toString() : ''}
                         style={styles.numberCell}
+                        extraClass=" d-none d-md-block"
                     />
                 </div>)}
             <Extras extras={batting.extras} />
