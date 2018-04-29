@@ -128,4 +128,18 @@ describe('domain', () => {
             expect(description).toBe('hit wkt A bowler');
         });
     });
+
+    describe('oversDescription', () => {
+        it('should return no decimal for full overs', () => {
+            const description = domain.oversDescription(36);
+
+            expect(description).toBe('6');
+        });
+
+        it('should include decimal for not full overs', () => {
+            const description = domain.oversDescription(39);
+
+            expect(description).toBe('6.3');
+        });
+    });
 });

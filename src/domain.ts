@@ -127,3 +127,9 @@ export const howOutDescription = (wicket?: Wicket): string => {
         ? description(wicket)
         : 'not out';
 };
+
+export const oversDescription = (balls: number): string => {
+    return (balls % 6) === 0
+        ? (balls / 6).toString()
+        : `${Math.floor(balls / 6)}.${balls % 6}`;
+};

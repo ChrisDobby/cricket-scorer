@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Extras } from './Extras';
+import { TotalLine } from './TotalLine';
 import { Batting as InningsBatting, BattingInnings, howOutDescription } from '../../domain';
 import * as styles from './styles';
 
@@ -28,9 +29,14 @@ const CellItem = ({ property, style }: CellItemProps) => (
     <div className="col-md-1" style={style}>{property}</div>
 );
 
-export interface BattingProps { batting: InningsBatting; }
+export interface BattingProps {
+    batting: InningsBatting;
+    score: number;
+    wickets: number;
+    ballsFaced: number;
+}
 
-export const Batting = ({ batting }: BattingProps) => (
+export const Batting = ({ batting, score, wickets, ballsFaced }: BattingProps) => (
     <div className="col-xl-8 col-lg-12">
         <div style={battingContainer}>
             <div className="row" style={styles.headingRow}>
@@ -61,6 +67,7 @@ export const Batting = ({ batting }: BattingProps) => (
                     />
                 </div>)}
             <Extras extras={batting.extras} />
+            <TotalLine score={score} wickets={wickets} ballsFaced={ballsFaced} />
         </div>
     </div>
 );

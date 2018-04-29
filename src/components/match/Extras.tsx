@@ -13,7 +13,7 @@ export const Extras = ({ extras }: ExtrasProps) => (
         <div className="col-md-4">{extrasLine(extras)}</div>
         <div
             className="col-md-1"
-            style={styles.numberCell}
+            style={styles.runsCell}
         >{extras.byes + extras.legByes + extras.wides + extras.noBalls}
         </div>
     </div>
