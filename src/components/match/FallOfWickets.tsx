@@ -16,7 +16,7 @@ export const FallOfWickets = ({ fallOfWickets }: FallOfWicketsProps) => (
                 <h6>Fall of wickets</h6>
             </div>
             {fallOfWickets.map(fow => (
-                <div className="row" style={styles.itemRow}>
+                <div key={fow.wicket} className="row" style={styles.itemRow}>
                     <div className="col-1">{fow.wicket}</div>    
                     <div className="col-6">{fow.batter}</div>
                     <div className="col-2" style={styles.numberCell}>{fow.score}</div>
