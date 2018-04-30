@@ -1,0 +1,25 @@
+{
+    // Use IntelliSense to find out which attributes exist for C# debugging
+    // Use hover for the description of the existing attributes
+    // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+    "version": "0.2.0",
+    "configurations": [
+         {
+             "name": "Client",
+             "type": "chrome",
+             "request": "launch",
+             "webRoot": "${workspaceRoot}/wwwroot/",
+             "url": "http://localhost:3000",
+             "userDataDir": "${workspaceRoot}/.vscode/chrome",
+             "sourceMaps": true,
+             "smartStep": true,
+             "internalConsoleOptions": "openOnSessionStart",
+             "skipFiles": [
+                 "node_modules/**"
+             ],
+             "sourceMapPathOverrides": {
+                 "/dist/*": "${webRoot}/*"
+             }
+         }
+     ]
+ }
