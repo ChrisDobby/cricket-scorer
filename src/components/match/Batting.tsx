@@ -10,6 +10,15 @@ const battingContainer: React.CSSProperties = {
     marginBottom: '20px',
 };
 
+const smallExtraDetailStyle: React.CSSProperties = {
+    fontSize: '10px',
+};
+
+const smallExtraDetailText = (innings?: BattingInnings): string =>
+    innings
+        ? `${innings.ballsFaced} balls, ${innings.fours} 4s, ${innings.sixes} 6s`
+        : '';    
+
 const howOut = (innings?: BattingInnings): string => {
     if (!innings) { return ''; }
 
@@ -47,7 +56,7 @@ export const Batting = ({ batting, score, wickets, ballsFaced }: BattingProps) =
                 <div className="col-1 d-none d-md-block" style={styles.numberCell}><h6>Mins</h6></div>
                 <div className="col-1 d-none d-md-block" style={styles.numberCell}><h6>4s</h6></div>
                 <div className="col-1 d-none d-md-block" style={styles.numberCell}><h6>6s</h6></div>
-            </div>    
+            </div>
             {batting.batters.map(batter =>
                 <div className="row" style={styles.itemRow} key={batter.position}>
                     <div className="col-4 col-md-3">{batter.name}</div>
@@ -73,6 +82,10 @@ export const Batting = ({ batting, score, wickets, ballsFaced }: BattingProps) =
                         style={styles.numberCell}
                         extraClass=" d-none d-md-block"
                     />
+                    <div className="d-block d-md-none col-4" />
+                    <div className="d-block d-md-none col-8" style={smallExtraDetailStyle}>
+                        {smallExtraDetailText(batter.innings)}
+                    </div>
                 </div>)}
             <Extras extras={batting.extras} />
             <TotalLine score={score} wickets={wickets} ballsFaced={ballsFaced} />
