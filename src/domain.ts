@@ -81,6 +81,13 @@ export interface Batting {
     extras: Extras;
 }
 
+export interface FallOfWicket {
+    wicket: number;
+    batter: string;
+    score: number;
+    partnership: number;
+}
+
 export interface Innings {
     battingTeam: string;
     bowlingTeam: string;
@@ -90,6 +97,7 @@ export interface Innings {
     balls: number;
     batting: Batting;
     bowlers: Bowler[];
+    fallOfWickets: FallOfWicket[];
     complete: boolean;
 }
 

@@ -19,3 +19,9 @@ export const runsCell: React.CSSProperties = {
     ...numberCell,
     fontWeight: 'bold',
 };
+
+export const sectionContainer: React.CSSProperties = {
+    width: '100%',
+    padding: '20px',
+    marginBottom: '20px',
+};
