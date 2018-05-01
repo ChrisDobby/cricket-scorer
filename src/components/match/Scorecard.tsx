@@ -33,7 +33,7 @@ const inningsNumberDescription = (innings: number): string => {
         default:
             return `${innings}th`;
         }
-    };    
+    };
 
     return `${numberDescription()} innings`;
 };
@@ -44,7 +44,7 @@ export class Scorecard extends React.Component<ScorecardProps, {}> {
     state = {
         selectedInningsIndex: this.props.cricketMatch && this.props.cricketMatch.innings.length > 0
             ? this.props.cricketMatch.innings.length - 1
-            : -1,    
+            : -1,
     };
 
     inningsSelected(index: number) {
@@ -71,7 +71,7 @@ export class Scorecard extends React.Component<ScorecardProps, {}> {
                 <div style={inningsRowStyle}>
                     {this.props.cricketMatch.innings.map((_, index) => (
                         <button
-                            style={inningButtonStyle}    
+                            style={inningButtonStyle}
                             key={index}
                             disabled={index === this.state.selectedInningsIndex}
                             className="btn btn-primary"
@@ -80,11 +80,11 @@ export class Scorecard extends React.Component<ScorecardProps, {}> {
                         </button>
                     ))}
                 </div>
-                <div style={globalStyles.flexFillStyle}>              
+                <div style={globalStyles.flexFillStyle}>
                     {this.state.selectedInningsIndex >= 0 &&
                         <Innings innings={this.props.cricketMatch.innings[this.state.selectedInningsIndex]} />}
                 </div>
-            </div>            
+            </div>
         );
     }
 }

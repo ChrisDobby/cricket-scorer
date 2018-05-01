@@ -1,3 +1,7 @@
 {
-    "tslint.enable": true
+    "tslint.enable": true,
+    "files.eol": "\r\n",
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+    "editor.detectIndentation": true,
 }

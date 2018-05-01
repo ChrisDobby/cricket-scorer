@@ -11,7 +11,7 @@ const smallExtraDetailStyle: React.CSSProperties = {
 const smallExtraDetailText = (innings?: BattingInnings): string =>
     innings
         ? `${innings.ballsFaced} balls, ${innings.fours} 4s, ${innings.sixes} 6s`
-        : '';    
+        : '';
 
 const howOut = (innings?: BattingInnings): string => {
     if (!innings) { return ''; }

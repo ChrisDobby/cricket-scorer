@@ -4,7 +4,7 @@ import * as styles from './styles';
 
 const extrasLine = ({ noBalls, wides, byes, legByes }: InningsExtras) =>
     `${noBalls}nb ${wides}wd ${byes}b ${legByes}lb`;
-    
+
 export interface ExtrasProps { extras: InningsExtras; }
 
 export const Extras = ({ extras }: ExtrasProps) => (
