@@ -3,17 +3,11 @@ import { Match as MatchEntity } from '../../domain';
 import { Innings } from './Innings';
 import { MatchHeading } from './MatchHeading';
 import * as styles from './styles';
+import * as globalStyles from '../styles';
 
 const flexContainerStyle: React.CSSProperties = {
-    display: 'flex',
-    flexDirection: 'column',
+    ...globalStyles.flexContainerStyle,
     height: '100%',
-};
-
-const flexFillStyle: React.CSSProperties = {
-    flex: '1',
-    overflowY: 'auto',
-    overflowX: 'hidden',
 };
 
 const inningsRowStyle: React.CSSProperties = {
@@ -86,7 +80,7 @@ export class Scorecard extends React.Component<ScorecardProps, {}> {
                         </button>
                     ))}
                 </div>
-                <div style={flexFillStyle}>              
+                <div style={globalStyles.flexFillStyle}>              
                     {this.state.selectedInningsIndex >= 0 &&
                         <Innings innings={this.props.cricketMatch.innings[this.state.selectedInningsIndex]} />}
                 </div>

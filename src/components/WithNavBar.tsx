@@ -1,15 +1,13 @@
 import * as React from 'react';
+import * as styles from './styles';
 
 const containerStyle: React.CSSProperties = {
-    display: 'flex',
-    flexDirection: 'column',
+    ...styles.flexContainerStyle,
     height: '100vh',
 };
 
 const componentStyle: React.CSSProperties = {
-    flex: '1',
-    overflowY: 'auto',
-    overflowX: 'hidden',
+    ...styles.flexFillStyle,
     marginTop: '8px',
 };
 
