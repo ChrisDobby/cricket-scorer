@@ -106,6 +106,15 @@ export interface Innings {
     complete: boolean;
 }
 
+export interface Match {
+    homeTeam: string;
+    awayTeam: string;
+    date: string;
+    complete: boolean;
+    status: string;
+    innings: Innings[];
+}
+
 export const howOutDescription = (wicket?: Wicket): string => {
     const description = (wkt: Wicket): string => {
         switch (wkt.howOut) {

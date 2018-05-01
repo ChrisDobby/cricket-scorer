@@ -29,3 +29,11 @@ export const sectionContainer: React.CSSProperties = {
     padding: '20px',
     marginBottom: '10px',
 };
+
+export const textCentre: React.CSSProperties = {
+    textAlign: 'center',
+};
+
+export const spinnerStyle = {
+    fontSize: '24px',
+};
