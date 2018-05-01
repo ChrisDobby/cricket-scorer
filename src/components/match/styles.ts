@@ -15,6 +15,10 @@ export const numberCell: React.CSSProperties = {
     textAlign: 'right',
 };
 
+export const centreCell: React.CSSProperties = {
+    textAlign: 'center',
+};
+
 export const runsCell: React.CSSProperties = {
     ...numberCell,
     fontWeight: 'bold',
@@ -23,5 +27,5 @@ export const runsCell: React.CSSProperties = {
 export const sectionContainer: React.CSSProperties = {
     width: '100%',
     padding: '20px',
-    marginBottom: '20px',
+    marginBottom: '10px',
 };

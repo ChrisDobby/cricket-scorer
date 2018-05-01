@@ -60,12 +60,17 @@ export interface Batter {
 export interface Over {
     overNumber: number;
     deliveries: Delivery[];
+    maiden: boolean;
 }
 
 export interface Bowler {
     position: number;
     name: string;
     overs: Over[];
+    balls: number;
+    maidenOvers: number;
+    runs: number;
+    wickets: number;
 }
 
 export interface Extras {
