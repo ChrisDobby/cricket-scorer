@@ -3,7 +3,7 @@ module.exports = {
     transform: {
         '^.+\\.(ts|tsx)$': 'ts-jest',
     },
-    testMatch: ['**/__tests__/*.+(ts|tsx|js)'],
+    testMatch: ['**/__tests__/**/*.tests.+(ts|tsx|js)'],
     testPathIgnorePatterns: [
         '<rootDir>/node_modules/',
         '<rootDir>/src/__tests__/setup.ts',
