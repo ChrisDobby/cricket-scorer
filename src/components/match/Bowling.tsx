@@ -15,10 +15,10 @@ export const Bowling = ({ team, bowlers }: BowlingProps) => (
             </div>
             <div className="row" style={styles.headingRow}>
                 <div className="col-6 col-md-5" />
-                <div className="col-2" style={styles.centreCell}><h6>overs</h6></div>
-                <div className="col-2 d-none d-md-block" style={styles.centreCell}><h6>maidens</h6></div>
-                <div className="col-2" style={styles.centreCell}><h6>runs</h6></div>
-                <div className="col-2 col-md-1" style={styles.centreCell}><h6>wkts</h6></div>
+                <div className="col-2" style={styles.centreCell}><h6>Overs</h6></div>
+                <div className="col-2 d-none d-md-block" style={styles.centreCell}><h6>Maidens</h6></div>
+                <div className="col-2" style={styles.centreCell}><h6>Runs</h6></div>
+                <div className="col-2 col-md-1" style={styles.centreCell}><h6>Wkts</h6></div>
             </div>
             {bowlers.map(bowler => (
                 <div key={bowler.position} className="row">
