@@ -106,9 +106,14 @@ export interface Innings {
     complete: boolean;
 }
 
+export interface Team {
+    name: string;
+    players: string[];
+}
+
 export interface Match {
-    homeTeam: string;
-    awayTeam: string;
+    homeTeam: Team;
+    awayTeam: Team;
     date: string;
     complete: boolean;
     status: string;

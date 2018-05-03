@@ -557,8 +557,14 @@ const testInnings2: domain.Innings = {
 };
 
 export const match: domain.Match = {
-    homeTeam: 'Cleckheaton',
-    awayTeam: 'Baildon',
+    homeTeam: {
+        name: 'Cleckheaton',
+        players: [],
+    },
+    awayTeam: {
+        name: 'Baildon',
+        players: [],
+    },
     date: '28-Apr-2018',
     complete: true,
     status: 'Baildon won by 8 runs',

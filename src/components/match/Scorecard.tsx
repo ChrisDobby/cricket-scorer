@@ -62,8 +62,8 @@ export class Scorecard extends React.Component<ScorecardProps, {}> {
             <div style={flexContainerStyle}>
                 <div>
                     <MatchHeading
-                        homeTeam={this.props.cricketMatch.homeTeam}
-                        awayTeam={this.props.cricketMatch.awayTeam}
+                        homeTeam={this.props.cricketMatch.homeTeam.name}
+                        awayTeam={this.props.cricketMatch.awayTeam.name}
                         date={this.props.cricketMatch.date}
                         matchStatus={this.props.cricketMatch.status}
                     />
