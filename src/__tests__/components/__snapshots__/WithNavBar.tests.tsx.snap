@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WithNavBar should render correctly 1`] = `
+<div
+  style={
+    Object {
+      "display": "flex",
+      "flexDirection": "column",
+      "height": "100vh",
+    }
+  }
+>
+  <nav
+    className="navbar navbar-dark bg-primary"
+  >
+    <a
+      className="navbar-brand"
+      href="#"
+    >
+      Cricket scorer
+    </a>
+  </nav>
+  <div
+    style={
+      Object {
+        "flex": "1",
+        "marginTop": "8px",
+        "overflowX": "hidden",
+        "overflowY": "auto",
+      }
+    }
+  >
+    <div />
+  </div>
+</div>
+`;
