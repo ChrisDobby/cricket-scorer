@@ -120,6 +120,8 @@ export interface Match {
     innings: Innings[];
 }
 
+export interface State { match: Match; }
+
 export const howOutDescription = (wicket?: Wicket): string => {
     const description = (wkt: Wicket): string => {
         switch (wkt.howOut) {
