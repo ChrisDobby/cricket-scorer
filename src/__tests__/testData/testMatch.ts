@@ -493,7 +493,7 @@ const testInnings2: domain.Innings = {
     ],
     fallOfWickets: [
         {
-            wicket: 3,
+            wicket: 1,
             batter: 'C Dobson',
             score: 9,
             partnership: 9,

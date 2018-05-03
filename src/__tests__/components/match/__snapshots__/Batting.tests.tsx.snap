@@ -1,0 +1,247 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Batting should render correctly when batter has no innings 1`] = `
+<div
+  className="col-xl-8 col-lg-12"
+>
+  <div
+    style={
+      Object {
+        "marginBottom": "10px",
+        "padding": "20px",
+        "width": "100%",
+      }
+    }
+  >
+    <div
+      className="row"
+      style={
+        Object {
+          "backgroundColor": "rgb(233, 236, 239)",
+          "paddingTop": "4px",
+        }
+      }
+    >
+      <div
+        className="col-10 col-md-7"
+      >
+        <h6>
+          Batsman
+        </h6>
+      </div>
+      <div
+        className="col-2 col-md-1"
+        style={
+          Object {
+            "textAlign": "right",
+          }
+        }
+      >
+        <h6>
+          Runs
+        </h6>
+      </div>
+      <div
+        className="col-1 d-none d-md-block"
+        style={
+          Object {
+            "textAlign": "right",
+          }
+        }
+      >
+        <h6>
+          Balls
+        </h6>
+      </div>
+      <div
+        className="col-1 d-none d-md-block"
+        style={
+          Object {
+            "textAlign": "right",
+          }
+        }
+      >
+        <h6>
+          Mins
+        </h6>
+      </div>
+      <div
+        className="col-1 d-none d-md-block"
+        style={
+          Object {
+            "textAlign": "right",
+          }
+        }
+      >
+        <h6>
+          4s
+        </h6>
+      </div>
+      <div
+        className="col-1 d-none d-md-block"
+        style={
+          Object {
+            "textAlign": "right",
+          }
+        }
+      >
+        <h6>
+          6s
+        </h6>
+      </div>
+    </div>
+    <div
+      className="row"
+      style={
+        Object {
+          "borderBottom": "1px solid rgb(233, 236, 239)",
+          "fontSize": "14px",
+          "marginTop": "8px",
+          "paddingBottom": "4px",
+        }
+      }
+    >
+      <div
+        className="col-4 col-md-3"
+      >
+        A Player
+      </div>
+      <div
+        className="col-6 col-md-4"
+      >
+        
+      </div>
+      <div
+        className="col-2 col-md-1"
+        style={
+          Object {
+            "fontWeight": "bold",
+            "textAlign": "right",
+          }
+        }
+      >
+        
+      </div>
+      <div
+        className="col-2 col-md-1 d-none d-md-block"
+        style={
+          Object {
+            "textAlign": "right",
+          }
+        }
+      >
+        
+      </div>
+      <div
+        className="col-2 col-md-1 d-none d-md-block"
+        style={
+          Object {
+            "textAlign": "right",
+          }
+        }
+      >
+        
+      </div>
+      <div
+        className="col-2 col-md-1 d-none d-md-block"
+        style={
+          Object {
+            "textAlign": "right",
+          }
+        }
+      >
+        
+      </div>
+      <div
+        className="col-2 col-md-1 d-none d-md-block"
+        style={
+          Object {
+            "textAlign": "right",
+          }
+        }
+      >
+        
+      </div>
+      <div
+        className="d-block d-md-none col-4"
+      />
+      <div
+        className="d-block d-md-none col-8"
+        style={
+          Object {
+            "fontSize": "10px",
+          }
+        }
+      >
+        
+      </div>
+    </div>
+    <div
+      className="row"
+      style={
+        Object {
+          "borderBottom": "1px solid rgb(233, 236, 239)",
+          "fontSize": "14px",
+          "marginTop": "8px",
+          "paddingBottom": "4px",
+        }
+      }
+    >
+      <div
+        className="col-4 col-md-3"
+      >
+        Extras
+      </div>
+      <div
+        className="col-6 col-md-4"
+      >
+        0nb 0wd 0b 0lb
+      </div>
+      <div
+        className="col-2 col-md-1"
+        style={
+          Object {
+            "fontWeight": "bold",
+            "textAlign": "right",
+          }
+        }
+      >
+        0
+      </div>
+    </div>
+    <div
+      className="row"
+      style={
+        Object {
+          "backgroundColor": "rgb(233, 236, 239)",
+          "fontSize": "14px",
+          "paddingBottom": "4px",
+          "paddingTop": "4px",
+        }
+      }
+    >
+      <div
+        className="col-4 col-md-3"
+      >
+        Total
+      </div>
+      <div
+        className="col-6 col-md-4"
+      >
+        (1 wickets) (20 overs)
+      </div>
+      <div
+        className="col-2 col-md-1"
+        style={
+          Object {
+            "fontWeight": "bold",
+            "textAlign": "right",
+          }
+        }
+      >
+        100
+      </div>
+    </div>
+  </div>
+</div>
+`;
