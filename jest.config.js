@@ -3,11 +3,11 @@ module.exports = {
     transform: {
         '^.+\\.(ts|tsx)$': 'ts-jest',
     },
-    testMatch: ['**/__tests__/**/*.tests.+(ts|tsx|js)'],
+    testMatch: [ '**/__tests__/**/*.ts?(x)', '**/?(*.)(spec|test).ts?(x)' ],
     testPathIgnorePatterns: [
         '<rootDir>/node_modules/',
         '<rootDir>/src/__tests__/setup.ts',
-        '<rootDir>/src/__tests__/fileTransformer.js',
+        '<rootDir>/src/__tests__/testData',
     ],
     setupFiles: [
         '<rootDir>/src/__tests__/setup.ts',
