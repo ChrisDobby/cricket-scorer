@@ -1,4 +1,5 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import { State } from './domain';
 import { match } from './reducers/matchReducer';
 
@@ -47,5 +48,11 @@ export const configure = () => {
     return createStore(
         match,
         initialState,
+        compose(
+            applyMiddleware(
+                reduxImmutableStateInvariant(),
+            ),
+            window['devToolsExtension'] ? window['devToolsExtension']() : (f: any) => f,
+        ),
     );
 };

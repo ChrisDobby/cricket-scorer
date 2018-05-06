@@ -15,6 +15,8 @@ export const match = (state: State, action: InningsAction): State => {
                 action.batter2Index,
             ),
         };
+    default:
+        return state;
     }
 };
 
