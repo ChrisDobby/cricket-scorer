@@ -9,3 +9,10 @@ export interface StartInnings {
 }
 
 export type InningsAction = StartInnings;
+
+export const startInnings = (battingTeam: Team, batter1Index: number, batter2Index: number) => ({
+    battingTeam,
+    batter1Index,
+    batter2Index,
+    type: types.START_INNINGS,
+});
