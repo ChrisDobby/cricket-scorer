@@ -1,0 +1,460 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StartInnings should render correctly when no team selected 1`] = `
+<div>
+  <div
+    className="row"
+  >
+    <div
+      className="d-none d-md-block d-lg-block col-2 col-lg-3"
+    />
+    <div
+      className="col-12 col-md-8 col-lg-6"
+    >
+      <div
+        style={
+          Object {
+            "marginBottom": "10px",
+            "padding": "20px",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          className="row"
+          style={
+            Object {
+              "backgroundColor": "rgb(233, 236, 239)",
+              "paddingTop": "4px",
+            }
+          }
+        >
+          <h4>
+            Select batting team
+          </h4>
+        </div>
+        <div
+          className="form-check"
+        >
+          <input
+            checked={false}
+            className="form-check-input"
+            id="teamRadio0"
+            onChange={[Function]}
+            type="radio"
+            value={0}
+          />
+          <label
+            className="form-check-label"
+            htmlFor="teamRadio0"
+          >
+            Cleckheaton
+          </label>
+        </div>
+        <div
+          className="form-check"
+        >
+          <input
+            checked={false}
+            className="form-check-input"
+            id="teamRadio1"
+            onChange={[Function]}
+            type="radio"
+            value={1}
+          />
+          <label
+            className="form-check-label"
+            htmlFor="teamRadio1"
+          >
+            Baildon
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button
+    className="btn btn-success"
+    disabled={true}
+    onClick={[Function]}
+    style={
+      Object {
+        "borderRadius": "25px",
+        "bottom": "10px",
+        "boxShadow": "0 4px 6px 0 rgba(0,0,0,.14), 0 4px 5px rgba(0,0,0,-1)",
+        "fontSize": "18px",
+        "height": "50px",
+        "lineHeight": "1.33",
+        "padding": "10px 16px",
+        "position": "fixed",
+        "right": "10px",
+        "width": "50px",
+        "zIndex": 1049,
+      }
+    }
+    type="button"
+  >
+    <i
+      className="fa fa-check"
+    />
+  </button>
+</div>
+`;
+
+exports[`StartInnings should render correctly when team selected 1`] = `
+<div>
+  <div
+    className="row"
+  >
+    <div
+      className="d-none d-md-block d-lg-block col-2 col-lg-3"
+    />
+    <div
+      className="col-12 col-md-8 col-lg-6"
+    >
+      <div
+        style={
+          Object {
+            "marginBottom": "10px",
+            "padding": "20px",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          className="row"
+          style={
+            Object {
+              "backgroundColor": "rgb(233, 236, 239)",
+              "paddingTop": "4px",
+            }
+          }
+        >
+          <h4>
+            Select batting team
+          </h4>
+        </div>
+        <div
+          className="form-check"
+        >
+          <input
+            checked={true}
+            className="form-check-input"
+            id="teamRadio0"
+            onChange={[Function]}
+            type="radio"
+            value={0}
+          />
+          <label
+            className="form-check-label"
+            htmlFor="teamRadio0"
+          >
+            Cleckheaton
+          </label>
+        </div>
+        <div
+          className="form-check"
+        >
+          <input
+            checked={false}
+            className="form-check-input"
+            id="teamRadio1"
+            onChange={[Function]}
+            type="radio"
+            value={1}
+          />
+          <label
+            className="form-check-label"
+            htmlFor="teamRadio1"
+          >
+            Baildon
+          </label>
+        </div>
+        <div>
+          <div
+            className="row"
+            style={
+              Object {
+                "backgroundColor": "rgb(233, 236, 239)",
+                "paddingTop": "4px",
+              }
+            }
+          >
+            <h4>
+              Select openers
+            </h4>
+          </div>
+          <div>
+            <div
+              className="row"
+              onClick={[Function]}
+              style={
+                Object {
+                  "cursor": "pointer",
+                }
+              }
+            >
+              <div
+                style={
+                  Object {
+                    "float": "left",
+                    "textAlign": "center",
+                    "width": "30px",
+                  }
+                }
+              />
+              <h6>
+                Player 1
+              </h6>
+            </div>
+            <div
+              className="row"
+              onClick={[Function]}
+              style={
+                Object {
+                  "cursor": "pointer",
+                }
+              }
+            >
+              <div
+                style={
+                  Object {
+                    "float": "left",
+                    "textAlign": "center",
+                    "width": "30px",
+                  }
+                }
+              />
+              <h6>
+                Player 2
+              </h6>
+            </div>
+            <div
+              className="row"
+              onClick={[Function]}
+              style={
+                Object {
+                  "cursor": "pointer",
+                }
+              }
+            >
+              <div
+                style={
+                  Object {
+                    "float": "left",
+                    "textAlign": "center",
+                    "width": "30px",
+                  }
+                }
+              />
+              <h6>
+                Player 3
+              </h6>
+            </div>
+            <div
+              className="row"
+              onClick={[Function]}
+              style={
+                Object {
+                  "cursor": "pointer",
+                }
+              }
+            >
+              <div
+                style={
+                  Object {
+                    "float": "left",
+                    "textAlign": "center",
+                    "width": "30px",
+                  }
+                }
+              />
+              <h6>
+                Player 4
+              </h6>
+            </div>
+            <div
+              className="row"
+              onClick={[Function]}
+              style={
+                Object {
+                  "cursor": "pointer",
+                }
+              }
+            >
+              <div
+                style={
+                  Object {
+                    "float": "left",
+                    "textAlign": "center",
+                    "width": "30px",
+                  }
+                }
+              />
+              <h6>
+                Player 5
+              </h6>
+            </div>
+            <div
+              className="row"
+              onClick={[Function]}
+              style={
+                Object {
+                  "cursor": "pointer",
+                }
+              }
+            >
+              <div
+                style={
+                  Object {
+                    "float": "left",
+                    "textAlign": "center",
+                    "width": "30px",
+                  }
+                }
+              />
+              <h6>
+                Player 6
+              </h6>
+            </div>
+            <div
+              className="row"
+              onClick={[Function]}
+              style={
+                Object {
+                  "cursor": "pointer",
+                }
+              }
+            >
+              <div
+                style={
+                  Object {
+                    "float": "left",
+                    "textAlign": "center",
+                    "width": "30px",
+                  }
+                }
+              />
+              <h6>
+                Player 7
+              </h6>
+            </div>
+            <div
+              className="row"
+              onClick={[Function]}
+              style={
+                Object {
+                  "cursor": "pointer",
+                }
+              }
+            >
+              <div
+                style={
+                  Object {
+                    "float": "left",
+                    "textAlign": "center",
+                    "width": "30px",
+                  }
+                }
+              />
+              <h6>
+                Player 8
+              </h6>
+            </div>
+            <div
+              className="row"
+              onClick={[Function]}
+              style={
+                Object {
+                  "cursor": "pointer",
+                }
+              }
+            >
+              <div
+                style={
+                  Object {
+                    "float": "left",
+                    "textAlign": "center",
+                    "width": "30px",
+                  }
+                }
+              />
+              <h6>
+                Player 9
+              </h6>
+            </div>
+            <div
+              className="row"
+              onClick={[Function]}
+              style={
+                Object {
+                  "cursor": "pointer",
+                }
+              }
+            >
+              <div
+                style={
+                  Object {
+                    "float": "left",
+                    "textAlign": "center",
+                    "width": "30px",
+                  }
+                }
+              />
+              <h6>
+                Player 10
+              </h6>
+            </div>
+            <div
+              className="row"
+              onClick={[Function]}
+              style={
+                Object {
+                  "cursor": "pointer",
+                }
+              }
+            >
+              <div
+                style={
+                  Object {
+                    "float": "left",
+                    "textAlign": "center",
+                    "width": "30px",
+                  }
+                }
+              />
+              <h6>
+                Player 11
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button
+    className="btn btn-success"
+    disabled={true}
+    onClick={[Function]}
+    style={
+      Object {
+        "borderRadius": "25px",
+        "bottom": "10px",
+        "boxShadow": "0 4px 6px 0 rgba(0,0,0,.14), 0 4px 5px rgba(0,0,0,-1)",
+        "fontSize": "18px",
+        "height": "50px",
+        "lineHeight": "1.33",
+        "padding": "10px 16px",
+        "position": "fixed",
+        "right": "10px",
+        "width": "50px",
+        "zIndex": 1049,
+      }
+    }
+    type="button"
+  >
+    <i
+      className="fa fa-check"
+    />
+  </button>
+</div>
+`;
