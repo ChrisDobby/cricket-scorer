@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BatterSelector should render correctly when all positions filled 1`] = `
+<div>
+  <div
+    className="row"
+    onClick={[Function]}
+    style={
+      Object {
+        "cursor": "pointer",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "float": "left",
+          "textAlign": "center",
+          "width": "30px",
+        }
+      }
+    >
+      <span
+        className="badge badge-primary"
+      >
+        1
+      </span>
+    </div>
+    <h6>
+      Player 1
+    </h6>
+  </div>
+  <div
+    className="row"
+    onClick={[Function]}
+    style={
+      Object {
+        "cursor": "pointer",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "float": "left",
+          "textAlign": "center",
+          "width": "30px",
+        }
+      }
+    >
+      <span
+        className="badge badge-primary"
+      >
+        2
+      </span>
+    </div>
+    <h6>
+      Player 2
+    </h6>
+  </div>
+  <div
+    className="row"
+    onClick={[Function]}
+    style={
+      Object {
+        "cursor": "pointer",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "float": "left",
+          "textAlign": "center",
+          "width": "30px",
+        }
+      }
+    />
+    <h6>
+      Player 3
+    </h6>
+  </div>
+</div>
+`;
+
+exports[`BatterSelector should render correctly when no positions filled 1`] = `
+<div>
+  <div
+    className="row"
+    onClick={[Function]}
+    style={
+      Object {
+        "cursor": "pointer",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "float": "left",
+          "textAlign": "center",
+          "width": "30px",
+        }
+      }
+    />
+    <h6>
+      Player 1
+    </h6>
+  </div>
+  <div
+    className="row"
+    onClick={[Function]}
+    style={
+      Object {
+        "cursor": "pointer",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "float": "left",
+          "textAlign": "center",
+          "width": "30px",
+        }
+      }
+    />
+    <h6>
+      Player 2
+    </h6>
+  </div>
+  <div
+    className="row"
+    onClick={[Function]}
+    style={
+      Object {
+        "cursor": "pointer",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "float": "left",
+          "textAlign": "center",
+          "width": "30px",
+        }
+      }
+    />
+    <h6>
+      Player 3
+    </h6>
+  </div>
+</div>
+`;
