@@ -1,8 +1,8 @@
 import { Match, Team, Innings } from '../domain';
 
 const newInnings = (match: Match, battingTeam: Team, batsman1Index: number, batsman2Index: number): Innings => ({
-    battingTeam: battingTeam.name,
-    bowlingTeam: battingTeam.name === match.homeTeam.name ? match.awayTeam.name : match.homeTeam.name,
+    battingTeam,
+    bowlingTeam: battingTeam.name === match.homeTeam.name ? match.awayTeam : match.homeTeam,
     score: 0,
     wickets: 0,
     balls: 0,
@@ -36,7 +36,11 @@ const newInnings = (match: Match, battingTeam: Team, batsman1Index: number, bats
     complete: false,
 });
 
-export const startInnings = (match: Match, battingTeam: Team, batsman1Index: number, batsman2Index: number) => ({
-    ...match,
-    innings: [...match.innings, newInnings(match, battingTeam, batsman1Index, batsman2Index)],
-});
+export const startInnings = (match: Match, battingTeam: Team, batsman1Index: number, batsman2Index: number) => {
+    const innings = newInnings(match, battingTeam, batsman1Index, batsman2Index);
+    return {
+        ...match,
+        innings: [...match.innings, innings],
+        currentInnings: innings,
+    };
+};

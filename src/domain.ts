@@ -94,8 +94,8 @@ export interface FallOfWicket {
 }
 
 export interface Innings {
-    battingTeam: string;
-    bowlingTeam: string;
+    battingTeam: Team;
+    bowlingTeam: Team;
     score: number;
     wickets: number;
     allOut: boolean;
@@ -118,6 +118,7 @@ export interface Match {
     complete: boolean;
     status: string;
     innings: Innings[];
+    currentInnings?: Innings;
 }
 
 export interface State { match: Match; }

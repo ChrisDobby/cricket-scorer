@@ -20,7 +20,7 @@ export const Innings = ({ innings }: InningsProps) => (
                 ballsFaced={innings.balls}
             />
             <FallOfWickets fallOfWickets={innings.fallOfWickets} />
-            <Bowling team={innings.bowlingTeam} bowlers={innings.bowlers} />
+            <Bowling team={innings.bowlingTeam.name} bowlers={innings.bowlers} />
         </div>
     </div>
 );

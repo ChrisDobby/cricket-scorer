@@ -46,8 +46,8 @@ describe('innings', () => {
         it('should add a new innings to the array', () => {
             expect(updatedMatch.innings).toHaveLength(1);
             const innings = updatedMatch.innings[0];
-            expect(innings.battingTeam).toBe(blankMatch.homeTeam.name);
-            expect(innings.bowlingTeam).toBe(blankMatch.awayTeam.name);
+            expect(innings.battingTeam).toBe(blankMatch.homeTeam);
+            expect(innings.bowlingTeam).toBe(blankMatch.awayTeam);
             expect(innings.score).toBe(0);
             expect(innings.wickets).toBe(0);
             expect(innings.balls).toBe(0);
@@ -121,8 +121,8 @@ describe('innings', () => {
                 1,
             );
             const innings = awayTeamBattingMatch.innings[0];
-            expect(innings.battingTeam).toBe(blankMatch.awayTeam.name);
-            expect(innings.bowlingTeam).toBe(blankMatch.homeTeam.name);
+            expect(innings.battingTeam).toBe(blankMatch.awayTeam);
+            expect(innings.bowlingTeam).toBe(blankMatch.homeTeam);
 
             const batters = innings.batting.batters;
             expect(batters[0].position).toBe(1);
@@ -147,6 +147,10 @@ describe('innings', () => {
             expect(batters[9].name).toBe(blankMatch.awayTeam.players[9]);
             expect(batters[10].position).toBe(11);
             expect(batters[10].name).toBe(blankMatch.awayTeam.players[10]);
+        });
+
+        it('should set currentInnings to the started innings', () => {
+            expect(updatedMatch.currentInnings).toBe(updatedMatch.innings[0]);
         });
     });
 });

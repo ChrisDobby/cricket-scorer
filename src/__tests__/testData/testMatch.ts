@@ -1,8 +1,18 @@
 import * as domain from '../../domain';
 
+export const homeTeam = {
+    name: 'Cleckheaton',
+    players: [],
+};
+
+export const awayTeam = {
+    name: 'Baildon',
+    players: [],
+};
+
 const testInnings1: domain.Innings = {
-    battingTeam: 'Baildon',
-    bowlingTeam: 'Cleckheaton',
+    battingTeam: awayTeam,
+    bowlingTeam: homeTeam,
     score: 130,
     wickets: 6,
     allOut: false,
@@ -249,8 +259,8 @@ const testInnings1: domain.Innings = {
 };
 
 const testInnings2: domain.Innings = {
-    battingTeam: 'Cleckheaton',
-    bowlingTeam: 'Baildon',
+    battingTeam: homeTeam,
+    bowlingTeam: awayTeam,
     score: 122,
     wickets: 10,
     allOut: true,

@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import * as ReactTestRenderer from 'react-test-renderer';
 import { Scorecard } from '../../../components/match/Scorecard';
 import { Innings } from '../../../domain';
-import { match } from '../../testData/testMatch';
+import { match, homeTeam, awayTeam } from '../../testData/testMatch';
 
 describe('Scorecard', () => {
     it('should change selected innings when button clicked', () => {
@@ -27,8 +27,8 @@ describe('Scorecard', () => {
 
     it('should render correctly when match has four innings', () => {
         const thirdInnings: Innings = {
-            battingTeam: 'Cleckheaton',
-            bowlingTeam: 'Baildon',
+            battingTeam: homeTeam,
+            bowlingTeam: awayTeam,
             score: 0,
             wickets: 0,
             balls: 0,
@@ -48,8 +48,8 @@ describe('Scorecard', () => {
             fallOfWickets: [],
         };
         const fourthInnings: Innings = {
-            battingTeam: 'Baildon',
-            bowlingTeam: 'Cleckheaton',
+            battingTeam: awayTeam,
+            bowlingTeam: homeTeam,
             score: 0,
             wickets: 0,
             balls: 0,
