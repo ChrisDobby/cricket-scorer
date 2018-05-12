@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as styles from './styles';
 
 export interface PlayerPosition {
     position: number;
@@ -18,6 +17,10 @@ const indicatorStyle: React.CSSProperties = {
     float: 'left',
     width: '30px',
     textAlign: 'center',
+};
+
+const selectablePlayerStyle: React.CSSProperties = {
+    cursor: 'pointer',
 };
 
 interface PositionIndicatorProps {
@@ -65,7 +68,7 @@ export const BatterSelector = ({
                     <div
                         key={player}
                         className="row"
-                        style={styles.selectablePlayerStyle}
+                        style={selectablePlayerStyle}
                         onClick={() => positionSelected(
                             index,
                             availablePositions,

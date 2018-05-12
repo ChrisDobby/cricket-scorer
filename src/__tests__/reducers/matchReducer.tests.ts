@@ -1,14 +1,11 @@
 import { match } from '../../reducers/matchReducer';
 import * as domain from '../../domain';
-import { START_INNINGS, NEW_BOWLER } from '../../actions/types';
+import { START_INNINGS } from '../../actions/types';
 import * as inningsMock from '../../match/innings';
 
 jest.mock('../../match/innings', () => {
     return {
         startInnings: jest.fn(),
-        currentInnings: jest.fn(),
-        newBowler: jest.fn(),
-        currentBowler: jest.fn(),
     };
 });
 
@@ -73,48 +70,5 @@ describe('match', () => {
             0,
             1,
         );
-    });
-
-    it('should call currentInnings when starting innings', () => {
-        const state = match(
-            startedMatchState,
-            {
-                type: START_INNINGS,
-                battingTeam: startedMatchState.match.homeTeam,
-                batter1Index: 0,
-                batter2Index: 1,
-            },
-        );
-
-        expect(inningsMock.currentInnings).toHaveBeenCalledWith(
-            state.match,
-        );
-    });
-
-    it('should call innings.newBowler when new bowler action received', () => {
-        match(
-            startedMatchState,
-            {
-                type: NEW_BOWLER,
-                bowlerIndex: 10,
-            },
-        );
-
-        expect(inningsMock.newBowler).toHaveBeenCalledWith(
-            startedMatchState.match,
-            10,
-        );
-    });
-
-    it('should call currentBowler when setting new bowler', () => {
-        match(
-            startedMatchState,
-            {
-                type: NEW_BOWLER,
-                bowlerIndex: 10,
-            },
-        );
-
-        expect(inningsMock.currentBowler).toHaveBeenCalled();
     });
 });

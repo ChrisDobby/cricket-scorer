@@ -37,7 +37,3 @@ export const textCentre: React.CSSProperties = {
 export const spinnerStyle = {
     fontSize: '24px',
 };
-
-export const selectablePlayerStyle: React.CSSProperties = {
-    cursor: 'pointer',
-};

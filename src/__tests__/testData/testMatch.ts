@@ -174,7 +174,7 @@ const testInnings1: domain.Innings = {
         {
             position: 1,
             name: 'A Rehman',
-            playerIndex: 9,
+            overs: [],
             balls: 84,
             maidenOvers: 3,
             runs: 53,
@@ -183,7 +183,7 @@ const testInnings1: domain.Innings = {
         {
             position: 2,
             name: 'A Midgley',
-            playerIndex: 8,
+            overs: [],
             balls: 54,
             maidenOvers: 2,
             runs: 33,
@@ -192,7 +192,7 @@ const testInnings1: domain.Innings = {
         {
             position: 3,
             name: 'S Bailey',
-            playerIndex: 10,
+            overs: [],
             balls: 48,
             maidenOvers: 3,
             runs: 9,
@@ -201,7 +201,7 @@ const testInnings1: domain.Innings = {
         {
             position: 4,
             name: 'E Hallas',
-            playerIndex: 5,
+            overs: [],
             balls: 66,
             maidenOvers: 3,
             runs: 25,
@@ -210,7 +210,7 @@ const testInnings1: domain.Innings = {
         {
             position: 5,
             name: 'S Rehman',
-            playerIndex: 3,
+            overs: [],
             balls: 18,
             maidenOvers: 1,
             runs: 8,
@@ -467,7 +467,7 @@ const testInnings2: domain.Innings = {
         {
             position: 1,
             name: 'D Hunt',
-            playerIndex: 9,
+            overs: [],
             balls: 62,
             maidenOvers: 1,
             runs: 46,
@@ -476,7 +476,7 @@ const testInnings2: domain.Innings = {
         {
             position: 2,
             name: 'D Metcalfe',
-            playerIndex: 8,
+            overs: [],
             balls: 36,
             maidenOvers: 3,
             runs: 17,
@@ -485,7 +485,7 @@ const testInnings2: domain.Innings = {
         {
             position: 3,
             name: 'J Abbott',
-            playerIndex: 10,
+            overs: [],
             balls: 66,
             maidenOvers: 3,
             runs: 16,
@@ -494,7 +494,7 @@ const testInnings2: domain.Innings = {
         {
             position: 4,
             name: 'A Sayed',
-            playerIndex: 7,
+            overs: [],
             balls: 42,
             maidenOvers: 0,
             runs: 38,

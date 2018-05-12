@@ -13,13 +13,4 @@ describe('index', () => {
             expect(actionResult.batter2Index).toBe(4);
         });
     });
-
-    describe('newBowler', () => {
-        it('should return a new bowler type', () => {
-            const actionResult = actions.newBowler(10);
-
-            expect(actionResult.type).toBe(types.NEW_BOWLER);
-            expect(actionResult.bowlerIndex).toBe(10);
-        });
-    });
 });

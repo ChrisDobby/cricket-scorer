@@ -40,33 +40,6 @@ const blankMatch: Match = {
     innings: [],
 };
 
-const startedInnings = {
-    battingTeam: blankMatch.homeTeam,
-    bowlingTeam: blankMatch.awayTeam,
-    score: 0,
-    wickets: 0,
-    allOut: false,
-    balls: 0,
-    batting: {
-        batters: [],
-        extras: {
-            byes: 0,
-            legByes: 0,
-            wides: 0,
-            noBalls: 0,
-            penaltyRuns: 0,
-        },
-    },
-    bowlers: [],
-    fallOfWickets: [],
-    complete: false,
-};
-
-const matchWithStartedInnings: Match = {
-    ...blankMatch,
-    innings: [startedInnings],
-};
-
 describe('innings', () => {
     describe('startInnings', () => {
         const updatedMatch = Innings.startInnings(blankMatch, blankMatch.homeTeam, 0, 1);
@@ -175,106 +148,9 @@ describe('innings', () => {
             expect(batters[10].position).toBe(11);
             expect(batters[10].name).toBe(blankMatch.awayTeam.players[10]);
         });
-    });
 
-    describe('currentInnings', () => {
-        it('should return falsy if no innings current', () => {
-            const innings = Innings.currentInnings(blankMatch);
-
-            expect(innings).toBeFalsy();
-        });
-
-        it('should return the first non complete innings in the match', () => {
-            const innings = Innings.currentInnings(matchWithStartedInnings);
-
-            expect(innings).toBe(matchWithStartedInnings.innings[0]);
-        });
-    });
-
-    describe('currentBowler', () => {
-        it('should return falsy if no innings current', () => {
-            const bowler = Innings.currentBowler(blankMatch);
-
-            expect(bowler).toBeFalsy();
-        });
-
-        it('should return falsy if no bowler current', () => {
-            const bowler = Innings.currentBowler(matchWithStartedInnings);
-
-            expect(bowler).toBeFalsy();
-        });
-
-        it('should return the bowler at the current bowler index if available', () => {
-            const currentBowler = {
-                position: 1,
-                playerIndex: 10,
-                name: 'A Bowler',
-                balls: 6,
-                maidenOvers: 1,
-                runs: 0,
-                wickets: 0,
-            };
-
-            const matchWithCurrentBowler = {
-                ...matchWithStartedInnings,
-                innings: [{
-                    ...matchWithStartedInnings.innings[0],
-                    currentBowlerIndex: 0,
-                    bowlers: [currentBowler],
-                }],
-            };
-
-            const bowler = Innings.currentBowler(matchWithCurrentBowler);
-
-            expect(bowler).toBe(currentBowler);
-        });
-    });
-
-    describe('newBowler', () => {
-        it('should return the match if no current innings', () => {
-            const updatedMatch = Innings.newBowler(blankMatch, 10);
-
-            expect(updatedMatch).toBe(blankMatch);
-        });
-
-        it('should add bowler to the bowlers list and set current bowler index', () => {
-            const updatedMatch = Innings.newBowler(matchWithStartedInnings, 10);
-
-            const innings = updatedMatch.innings[0];
-            expect(innings.bowlers).toHaveLength(1);
-            expect(innings.currentBowlerIndex).toBe(0);
-
-            const bowler = innings.bowlers[0];
-            expect(bowler.position).toBe(1);
-            expect(bowler.playerIndex).toBe(10);
-            expect(bowler.name).toBe(matchWithStartedInnings.awayTeam.players[10]);
-            expect(bowler.balls).toBe(0);
-            expect(bowler.maidenOvers).toBe(0);
-            expect(bowler.runs).toBe(0);
-            expect(bowler.wickets).toBe(0);
-        });
-
-        it('should just set current bowler index if the new bowler has already bowled', () => {
-            const matchWithBowlers = {
-                ...matchWithStartedInnings,
-                innings: [{
-                    ...matchWithStartedInnings.innings[0],
-                    bowlers: [{
-                        position: 1,
-                        playerIndex: 10,
-                        name: matchWithStartedInnings.awayTeam.players[10],
-                        balls: 60,
-                        maidenOvers: 1,
-                        runs: 34,
-                        wickets: 2,
-                    }],
-                }],
-            };
-
-            const updatedMatch = Innings.newBowler(matchWithBowlers, 10);
-            const innings = updatedMatch.innings[0];
-            expect(innings.bowlers).toHaveLength(1);
-            expect(innings.currentBowlerIndex).toBe(0);
+        it('should set currentInnings to the started innings', () => {
+            expect(updatedMatch.currentInnings).toBe(updatedMatch.innings[0]);
         });
     });
 });
