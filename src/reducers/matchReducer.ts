@@ -5,16 +5,30 @@ import * as innings from '../match/innings';
 
 export const match = (state: State, action: InningsAction): State => {
     switch (action.type) {
-    case types.START_INNINGS:
+    case types.START_INNINGS: {
+        const updatedMatch = innings.startInnings(
+            state.match,
+            action.battingTeam,
+            action.batter1Index,
+            action.batter2Index,
+        );
+
         return {
             ...state,
-            match: innings.startInnings(
-                state.match,
-                action.battingTeam,
-                action.batter1Index,
-                action.batter2Index,
-            ),
+            match: updatedMatch,
+            currentInnings: innings.currentInnings(updatedMatch),
         };
+    }
+
+    case types.NEW_BOWLER: {
+        const updatedMatch = innings.newBowler(state.match, action.bowlerIndex);
+        return {
+            ...state,
+            match: updatedMatch,
+            currentBowler: innings.currentBowler(updatedMatch),
+        };
+    }
+
     default:
         return state;
     }

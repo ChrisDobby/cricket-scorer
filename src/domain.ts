@@ -57,16 +57,10 @@ export interface Batter {
     innings?: BattingInnings;
 }
 
-export interface Over {
-    overNumber: number;
-    deliveries: Delivery[];
-    maiden: boolean;
-}
-
 export interface Bowler {
     position: number;
+    playerIndex: number;
     name: string;
-    overs: Over[];
     balls: number;
     maidenOvers: number;
     runs: number;
@@ -104,6 +98,7 @@ export interface Innings {
     bowlers: Bowler[];
     fallOfWickets: FallOfWicket[];
     complete: boolean;
+    currentBowlerIndex?: number;
 }
 
 export interface Team {
@@ -118,10 +113,13 @@ export interface Match {
     complete: boolean;
     status: string;
     innings: Innings[];
-    currentInnings?: Innings;
 }
 
-export interface State { match: Match; }
+export interface State {
+    match: Match;
+    currentInnings?: Innings;
+    currentBowler?: Bowler;
+}
 
 export const howOutDescription = (wicket?: Wicket): string => {
     const description = (wkt: Wicket): string => {
