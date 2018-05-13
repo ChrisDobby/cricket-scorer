@@ -66,7 +66,7 @@ export class StartInnings extends React.Component<StartInningsProps, {}> {
                     <div className="d-none d-md-block d-lg-block col-2 col-lg-3" />
                     <div className="col-12 col-md-8 col-lg-6">
                         <div style={globalStyles.sectionContainer}>
-                            <div className="row" style={globalStyles.headingRow}>
+                            <div className="row" style={globalStyles.singleHeadingRow}>
                                 <h4>Select batting team</h4>
                             </div>
                             {this.props.teams.map((team, index) => (
@@ -86,7 +86,7 @@ export class StartInnings extends React.Component<StartInningsProps, {}> {
                             ))}
                             {this.state.players.length > 0 && (
                                 <div>
-                                    <div className="row" style={globalStyles.headingRow}>
+                                    <div className="row" style={globalStyles.singleHeadingRow}>
                                         <h4>Select openers</h4>
                                     </div>
                                     <BatterSelector

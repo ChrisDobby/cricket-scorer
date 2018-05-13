@@ -25,6 +25,7 @@ exports[`SelectBowler should render correctly when a player is selected 1`] = `
           style={
             Object {
               "backgroundColor": "rgb(233, 236, 239)",
+              "paddingLeft": "15px",
               "paddingTop": "4px",
             }
           }
@@ -335,6 +336,7 @@ exports[`SelectBowler should render correctly when no player selected 1`] = `
           style={
             Object {
               "backgroundColor": "rgb(233, 236, 239)",
+              "paddingLeft": "15px",
               "paddingTop": "4px",
             }
           }

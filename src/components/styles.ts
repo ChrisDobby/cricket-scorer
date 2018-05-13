@@ -14,6 +14,11 @@ export const headingRow: React.CSSProperties = {
     paddingTop: '4px',
 };
 
+export const singleHeadingRow: React.CSSProperties = {
+    ...headingRow,
+    paddingLeft: '15px',
+};
+
 export const spinnerStyle = {
     fontSize: '24px',
 };

@@ -4,6 +4,7 @@ import { Match, Innings, Team, Batter, Bowler, State } from '../../domain';
 import WithNavBar from '../WithNavBar';
 import { StartInnings } from './StartInnings';
 import { SelectBowler } from './SelectBowler';
+import { BallEntry } from './BallEntry';
 import * as actions from '../../actions/index';
 
 interface InProgressProps {
@@ -32,6 +33,16 @@ class InProgress extends React.Component<InProgressProps, {}> {
                     bowlingTeam={this.props.currentInnings.bowlingTeam}
                     selectBowler={this.props.newBowler}
                 />);
+        }
+
+        if (this.props.currentInnings && this.props.currentBatter && this.props.currentBowler) {
+            return (
+                <BallEntry
+                    innings={this.props.currentInnings}
+                    batter={this.props.currentBatter}
+                    bowler={this.props.currentBowler}
+                />
+            );
         }
 
         return <div />;

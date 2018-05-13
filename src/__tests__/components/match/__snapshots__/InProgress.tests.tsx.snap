@@ -54,6 +54,7 @@ exports[`InProgress should render correctly for match that hasn not started 1`] 
               style={
                 Object {
                   "backgroundColor": "rgb(233, 236, 239)",
+                  "paddingLeft": "15px",
                   "paddingTop": "4px",
                 }
               }
@@ -185,6 +186,7 @@ exports[`InProgress should render correctly for match with started innings 1`] =
               style={
                 Object {
                   "backgroundColor": "rgb(233, 236, 239)",
+                  "paddingLeft": "15px",
                   "paddingTop": "4px",
                 }
               }

@@ -25,6 +25,7 @@ exports[`StartInnings should render correctly when no team selected 1`] = `
           style={
             Object {
               "backgroundColor": "rgb(233, 236, 239)",
+              "paddingLeft": "15px",
               "paddingTop": "4px",
             }
           }
@@ -125,6 +126,7 @@ exports[`StartInnings should render correctly when team selected 1`] = `
           style={
             Object {
               "backgroundColor": "rgb(233, 236, 239)",
+              "paddingLeft": "15px",
               "paddingTop": "4px",
             }
           }
@@ -175,6 +177,7 @@ exports[`StartInnings should render correctly when team selected 1`] = `
             style={
               Object {
                 "backgroundColor": "rgb(233, 236, 239)",
+                "paddingLeft": "15px",
                 "paddingTop": "4px",
               }
             }
