@@ -51,8 +51,8 @@ export const Batting = ({ batting, score, wickets, ballsFaced }: BattingProps) =
                 <div className="col-1 d-none d-md-block" style={styles.numberCell}><h6>4s</h6></div>
                 <div className="col-1 d-none d-md-block" style={styles.numberCell}><h6>6s</h6></div>
             </div>
-            {batting.batters.map(batter =>
-                <div className="row" style={styles.itemRow} key={batter.position}>
+            {batting.batters.map((batter, idx) =>
+                <div className="row" style={styles.itemRow} key={idx}>
                     <div className="col-4 col-md-3">{batter.name}</div>
                     <Howout innings={batter.innings} />
                     <CellItem property={batter.innings ? batter.innings.runs.toString() : ''} style={styles.runsCell} />

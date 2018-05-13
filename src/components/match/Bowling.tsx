@@ -20,8 +20,8 @@ export const Bowling = ({ team, bowlers }: BowlingProps) => (
                 <div className="col-2" style={styles.centreCell}><h6>Runs</h6></div>
                 <div className="col-2 col-md-1" style={styles.centreCell}><h6>Wkts</h6></div>
             </div>
-            {bowlers.map(bowler => (
-                <div key={bowler.position} className="row">
+            {bowlers.map((bowler, idx) => (
+                <div key={idx} className="row">
                     <div className="col-6 col-md-5">{bowler.name}</div>
                     <div className="col-2" style={styles.centreCell}>{oversDescription(bowler.balls)}</div>
                     <div className="col-2 d-none d-md-block" style={styles.centreCell}>{bowler.maidenOvers}</div>

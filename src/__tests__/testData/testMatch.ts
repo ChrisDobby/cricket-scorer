@@ -27,7 +27,6 @@ const testInnings1: domain.Innings = {
         },
         batters: [
             {
-                position: 1,
                 name: 'T Hopwood',
                 innings: {
                     runs: 0,
@@ -45,7 +44,6 @@ const testInnings1: domain.Innings = {
                 },
             },
             {
-                position: 2,
                 name: 'D Wilson',
                 innings: {
                     runs: 58,
@@ -57,7 +55,6 @@ const testInnings1: domain.Innings = {
                 },
             },
             {
-                position: 3,
                 name: 'K Dalladay',
                 innings: {
                     runs: 10,
@@ -75,7 +72,6 @@ const testInnings1: domain.Innings = {
                 },
             },
             {
-                position: 4,
                 name: 'R Todd',
                 innings: {
                     runs: 0,
@@ -92,7 +88,6 @@ const testInnings1: domain.Innings = {
                 },
             },
             {
-                position: 5,
                 name: 'S Bhatti',
                 innings: {
                     runs: 1,
@@ -109,7 +104,6 @@ const testInnings1: domain.Innings = {
                 },
             },
             {
-                position: 6,
                 name: 'J Butterfield',
                 innings: {
                     runs: 6,
@@ -127,7 +121,6 @@ const testInnings1: domain.Innings = {
                 },
             },
             {
-                position: 7,
                 name: 'S Khan',
                 innings: {
                     runs: 47,
@@ -145,7 +138,6 @@ const testInnings1: domain.Innings = {
                 },
             },
             {
-                position: 8,
                 name: 'A Sayed',
                 innings: {
                     runs: 0,
@@ -157,22 +149,18 @@ const testInnings1: domain.Innings = {
                 },
             },
             {
-                position: 9,
                 name: 'D Metcalfe',
             },
             {
-                position: 10,
                 name: 'D Hunt',
             },
             {
-                position: 11,
                 name: 'J Abbott',
             },
         ],
     },
     bowlers: [
         {
-            position: 1,
             name: 'A Rehman',
             playerIndex: 9,
             balls: 84,
@@ -181,7 +169,6 @@ const testInnings1: domain.Innings = {
             wickets: 3,
         },
         {
-            position: 2,
             name: 'A Midgley',
             playerIndex: 8,
             balls: 54,
@@ -190,7 +177,6 @@ const testInnings1: domain.Innings = {
             wickets: 0,
         },
         {
-            position: 3,
             name: 'S Bailey',
             playerIndex: 10,
             balls: 48,
@@ -199,7 +185,6 @@ const testInnings1: domain.Innings = {
             wickets: 0,
         },
         {
-            position: 4,
             name: 'E Hallas',
             playerIndex: 5,
             balls: 66,
@@ -208,7 +193,6 @@ const testInnings1: domain.Innings = {
             wickets: 1,
         },
         {
-            position: 5,
             name: 'S Rehman',
             playerIndex: 3,
             balls: 18,
@@ -275,7 +259,6 @@ const testInnings2: domain.Innings = {
         },
         batters: [
             {
-                position: 1,
                 name: 'Chris Dobson',
                 innings: {
                     runs: 3,
@@ -292,7 +275,6 @@ const testInnings2: domain.Innings = {
                 },
             },
             {
-                position: 2,
                 name: 'Richard Noble',
                 innings: {
                     runs: 40,
@@ -310,7 +292,6 @@ const testInnings2: domain.Innings = {
                 },
             },
             {
-                position: 3,
                 name: 'Ethan Lee',
                 innings: {
                     runs: 2,
@@ -328,7 +309,6 @@ const testInnings2: domain.Innings = {
                 },
             },
             {
-                position: 4,
                 name: 'Shahid Rehman',
                 innings: {
                     runs: 1,
@@ -345,7 +325,6 @@ const testInnings2: domain.Innings = {
                 },
             },
             {
-                position: 5,
                 name: 'Zahir Shah',
                 innings: {
                     runs: 0,
@@ -362,7 +341,6 @@ const testInnings2: domain.Innings = {
                 },
             },
             {
-                position: 6,
                 name: 'Elliott Hallas',
                 innings: {
                     runs: 35,
@@ -379,7 +357,6 @@ const testInnings2: domain.Innings = {
                 },
             },
             {
-                position: 7,
                 name: 'Craig Blackburn',
                 innings: {
                     runs: 19,
@@ -397,7 +374,6 @@ const testInnings2: domain.Innings = {
                 },
             },
             {
-                position: 8,
                 name: 'Bilal Butt',
                 innings: {
                     runs: 4,
@@ -415,7 +391,6 @@ const testInnings2: domain.Innings = {
                 },
             },
             {
-                position: 9,
                 name: 'Alex Midgley',
                 innings: {
                     runs: 4,
@@ -427,7 +402,6 @@ const testInnings2: domain.Innings = {
                 },
             },
             {
-                position: 10,
                 name: 'Atta Rehman',
                 innings: {
                     runs: 0,
@@ -444,7 +418,6 @@ const testInnings2: domain.Innings = {
                 },
             },
             {
-                position: 11,
                 name: 'Sam Bailey',
                 innings: {
                     runs: 4,
@@ -465,7 +438,6 @@ const testInnings2: domain.Innings = {
     },
     bowlers: [
         {
-            position: 1,
             name: 'D Hunt',
             playerIndex: 9,
             balls: 62,
@@ -474,7 +446,6 @@ const testInnings2: domain.Innings = {
             wickets: 3,
         },
         {
-            position: 2,
             name: 'D Metcalfe',
             playerIndex: 8,
             balls: 36,
@@ -483,7 +454,6 @@ const testInnings2: domain.Innings = {
             wickets: 1,
         },
         {
-            position: 3,
             name: 'J Abbott',
             playerIndex: 10,
             balls: 66,
@@ -492,7 +462,6 @@ const testInnings2: domain.Innings = {
             wickets: 2,
         },
         {
-            position: 4,
             name: 'A Sayed',
             playerIndex: 7,
             balls: 42,

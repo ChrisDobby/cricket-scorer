@@ -92,27 +92,16 @@ describe('innings', () => {
         it('should include all players from the batting team', () => {
             const batters = updatedMatch.innings[0].batting.batters;
             expect(batters).toHaveLength(11);
-            expect(batters[0].position).toBe(1);
             expect(batters[0].name).toBe(blankMatch.homeTeam.players[0]);
-            expect(batters[1].position).toBe(2);
             expect(batters[1].name).toBe(blankMatch.homeTeam.players[1]);
-            expect(batters[2].position).toBe(3);
             expect(batters[2].name).toBe(blankMatch.homeTeam.players[2]);
-            expect(batters[3].position).toBe(4);
             expect(batters[3].name).toBe(blankMatch.homeTeam.players[3]);
-            expect(batters[4].position).toBe(5);
             expect(batters[4].name).toBe(blankMatch.homeTeam.players[4]);
-            expect(batters[5].position).toBe(6);
             expect(batters[5].name).toBe(blankMatch.homeTeam.players[5]);
-            expect(batters[6].position).toBe(7);
             expect(batters[6].name).toBe(blankMatch.homeTeam.players[6]);
-            expect(batters[7].position).toBe(8);
             expect(batters[7].name).toBe(blankMatch.homeTeam.players[7]);
-            expect(batters[8].position).toBe(9);
             expect(batters[8].name).toBe(blankMatch.homeTeam.players[8]);
-            expect(batters[9].position).toBe(10);
             expect(batters[9].name).toBe(blankMatch.homeTeam.players[9]);
-            expect(batters[10].position).toBe(11);
             expect(batters[10].name).toBe(blankMatch.homeTeam.players[10]);
         });
 
@@ -140,6 +129,23 @@ describe('innings', () => {
             }
         });
 
+        it('should update the batting positions', () => {
+            const inningsStartedMatch = Innings.startInnings(blankMatch, blankMatch.homeTeam, 5, 3);
+            const batters = inningsStartedMatch.innings[0].batting.batters;
+
+            expect(batters[0].name).toBe(blankMatch.homeTeam.players[5]);
+            expect(batters[1].name).toBe(blankMatch.homeTeam.players[3]);
+            expect(batters[2].name).toBe(blankMatch.homeTeam.players[0]);
+            expect(batters[3].name).toBe(blankMatch.homeTeam.players[1]);
+            expect(batters[4].name).toBe(blankMatch.homeTeam.players[2]);
+            expect(batters[5].name).toBe(blankMatch.homeTeam.players[4]);
+            expect(batters[6].name).toBe(blankMatch.homeTeam.players[6]);
+            expect(batters[7].name).toBe(blankMatch.homeTeam.players[7]);
+            expect(batters[8].name).toBe(blankMatch.homeTeam.players[8]);
+            expect(batters[9].name).toBe(blankMatch.homeTeam.players[9]);
+            expect(batters[10].name).toBe(blankMatch.homeTeam.players[10]);
+        });
+
         it('should create  a new innings for the away team if specified', () => {
             const awayTeamBattingMatch = Innings.startInnings(
                 blankMatch,
@@ -152,27 +158,16 @@ describe('innings', () => {
             expect(innings.bowlingTeam).toBe(blankMatch.homeTeam);
 
             const batters = innings.batting.batters;
-            expect(batters[0].position).toBe(1);
             expect(batters[0].name).toBe(blankMatch.awayTeam.players[0]);
-            expect(batters[1].position).toBe(2);
             expect(batters[1].name).toBe(blankMatch.awayTeam.players[1]);
-            expect(batters[2].position).toBe(3);
             expect(batters[2].name).toBe(blankMatch.awayTeam.players[2]);
-            expect(batters[3].position).toBe(4);
             expect(batters[3].name).toBe(blankMatch.awayTeam.players[3]);
-            expect(batters[4].position).toBe(5);
             expect(batters[4].name).toBe(blankMatch.awayTeam.players[4]);
-            expect(batters[5].position).toBe(6);
             expect(batters[5].name).toBe(blankMatch.awayTeam.players[5]);
-            expect(batters[6].position).toBe(7);
             expect(batters[6].name).toBe(blankMatch.awayTeam.players[6]);
-            expect(batters[7].position).toBe(8);
             expect(batters[7].name).toBe(blankMatch.awayTeam.players[7]);
-            expect(batters[8].position).toBe(9);
             expect(batters[8].name).toBe(blankMatch.awayTeam.players[8]);
-            expect(batters[9].position).toBe(10);
             expect(batters[9].name).toBe(blankMatch.awayTeam.players[9]);
-            expect(batters[10].position).toBe(11);
             expect(batters[10].name).toBe(blankMatch.awayTeam.players[10]);
         });
 
@@ -212,7 +207,6 @@ describe('innings', () => {
 
         it('should return the batter at the current batter index if available', () => {
             const currentBatter = {
-                position: 1,
                 name: 'A Batter',
             };
 
@@ -255,7 +249,6 @@ describe('innings', () => {
 
         it('should return the bowler at the current bowler index if available', () => {
             const currentBowler = {
-                position: 1,
                 playerIndex: 10,
                 name: 'A Bowler',
                 balls: 6,
@@ -294,7 +287,6 @@ describe('innings', () => {
             expect(innings.currentBowlerIndex).toBe(0);
 
             const bowler = innings.bowlers[0];
-            expect(bowler.position).toBe(1);
             expect(bowler.playerIndex).toBe(10);
             expect(bowler.name).toBe(matchWithStartedInnings.awayTeam.players[10]);
             expect(bowler.balls).toBe(0);
@@ -309,7 +301,6 @@ describe('innings', () => {
                 innings: [{
                     ...matchWithStartedInnings.innings[0],
                     bowlers: [{
-                        position: 1,
                         playerIndex: 10,
                         name: matchWithStartedInnings.awayTeam.players[10],
                         balls: 60,

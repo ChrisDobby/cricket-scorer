@@ -1,5 +1,11 @@
 import { Match, Team, Innings, Batter, Bowler } from '../domain';
 
+const battingInOrder = (players: string[], batsman1Index: number, batsman2Index: number): string[] =>
+    [
+        players[batsman1Index],
+        players[batsman2Index],
+        ...players.filter((_, idx) => idx !== batsman1Index && idx !== batsman2Index)];
+
 const newInnings = (match: Match, battingTeam: Team, batsman1Index: number, batsman2Index: number): Innings => ({
     battingTeam,
     bowlingTeam: battingTeam.name === match.homeTeam.name ? match.awayTeam : match.homeTeam,
@@ -14,7 +20,11 @@ const newInnings = (match: Match, battingTeam: Team, batsman1Index: number, bats
             noBalls: 0,
             penaltyRuns: 0,
         },
-        batters: (battingTeam.name === match.homeTeam.name ? match.homeTeam.players : match.awayTeam.players)
+        batters: battingInOrder(
+            battingTeam.name === match.homeTeam.name ? match.homeTeam.players : match.awayTeam.players,
+            batsman1Index,
+            batsman2Index,
+        )
             .map((player, idx) => ({
                 position: idx + 1,
                 name: player,

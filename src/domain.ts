@@ -52,13 +52,11 @@ export interface BattingInnings {
 }
 
 export interface Batter {
-    position: number;
     name: string;
     innings?: BattingInnings;
 }
 
 export interface Bowler {
-    position: number;
     playerIndex: number;
     name: string;
     balls: number;
