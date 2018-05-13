@@ -36,15 +36,15 @@ export interface Outcome {
 
 export interface Delivery {
     time: Date;
-    bowler: string;
-    batsman: string;
+    bowlerIndex: number;
+    batsmanIndex: number;
+    overNumber: number;
     outcome: Outcome;
 }
 
 export interface BattingInnings {
     runs: number;
     timeIn: Date;
-    deliveries: Delivery[];
     ballsFaced: number;
     fours: number;
     sixes: number;
@@ -92,6 +92,7 @@ export interface Innings {
     wickets: number;
     allOut: boolean;
     balls: number;
+    deliveries: Delivery[];
     batting: Batting;
     bowlers: Bowler[];
     fallOfWickets: FallOfWicket[];

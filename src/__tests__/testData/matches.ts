@@ -46,6 +46,7 @@ const startedInnings = {
     wickets: 0,
     allOut: false,
     balls: 0,
+    deliveries: [],
     batting: {
         batters: [],
         extras: {

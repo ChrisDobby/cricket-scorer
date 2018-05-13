@@ -32,6 +32,7 @@ describe('Scorecard', () => {
             score: 0,
             wickets: 0,
             balls: 0,
+            deliveries: [],
             allOut: false,
             complete: false,
             batting: {
@@ -53,6 +54,7 @@ describe('Scorecard', () => {
             score: 0,
             wickets: 0,
             balls: 0,
+            deliveries: [],
             allOut: false,
             complete: false,
             batting: {

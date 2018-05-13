@@ -12,6 +12,7 @@ const newInnings = (match: Match, battingTeam: Team, batsman1Index: number, bats
     score: 0,
     wickets: 0,
     balls: 0,
+    deliveries: [],
     batting: {
         extras: {
             byes: 0,
@@ -34,7 +35,6 @@ const newInnings = (match: Match, battingTeam: Team, batsman1Index: number, bats
                         ballsFaced: 0,
                         fours: 0,
                         sixes: 0,
-                        deliveries: [],
                         timeIn: new Date(),
                     }
                     : undefined,

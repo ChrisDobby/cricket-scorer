@@ -46,7 +46,6 @@ describe('innings', () => {
                 expect(innings.ballsFaced).toBe(0);
                 expect(innings.fours).toBe(0);
                 expect(innings.sixes).toBe(0);
-                expect(innings.deliveries).toHaveLength(0);
                 expect(innings.wicket).toBeFalsy();
             };
 

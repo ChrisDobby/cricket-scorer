@@ -17,6 +17,7 @@ const testInnings1: domain.Innings = {
     wickets: 6,
     allOut: false,
     balls: 270,
+    deliveries: [],
     batting: {
         extras: {
             byes: 0,
@@ -31,7 +32,6 @@ const testInnings1: domain.Innings = {
                 innings: {
                     runs: 0,
                     timeIn: new Date(),
-                    deliveries: [],
                     ballsFaced: 4,
                     fours: 0,
                     sixes: 0,
@@ -48,7 +48,6 @@ const testInnings1: domain.Innings = {
                 innings: {
                     runs: 58,
                     timeIn: new Date(),
-                    deliveries: [],
                     ballsFaced: 134,
                     fours: 4,
                     sixes: 0,
@@ -59,7 +58,6 @@ const testInnings1: domain.Innings = {
                 innings: {
                     runs: 10,
                     timeIn: new Date(),
-                    deliveries: [],
                     ballsFaced: 32,
                     fours: 1,
                     sixes: 0,
@@ -76,7 +74,6 @@ const testInnings1: domain.Innings = {
                 innings: {
                     runs: 0,
                     timeIn: new Date(),
-                    deliveries: [],
                     ballsFaced: 1,
                     fours: 0,
                     sixes: 0,
@@ -92,7 +89,6 @@ const testInnings1: domain.Innings = {
                 innings: {
                     runs: 1,
                     timeIn: new Date(),
-                    deliveries: [],
                     ballsFaced: 8,
                     fours: 0,
                     sixes: 0,
@@ -108,7 +104,6 @@ const testInnings1: domain.Innings = {
                 innings: {
                     runs: 6,
                     timeIn: new Date(),
-                    deliveries: [],
                     ballsFaced: 39,
                     fours: 0,
                     sixes: 0,
@@ -125,7 +120,6 @@ const testInnings1: domain.Innings = {
                 innings: {
                     runs: 47,
                     timeIn: new Date(),
-                    deliveries: [],
                     ballsFaced: 4,
                     fours: 0,
                     sixes: 0,
@@ -142,7 +136,6 @@ const testInnings1: domain.Innings = {
                 innings: {
                     runs: 0,
                     timeIn: new Date(),
-                    deliveries: [],
                     ballsFaced: 0,
                     fours: 0,
                     sixes: 0,
@@ -249,6 +242,7 @@ const testInnings2: domain.Innings = {
     wickets: 10,
     allOut: true,
     balls: 206,
+    deliveries: [],
     batting: {
         extras: {
             byes: 3,
@@ -263,7 +257,6 @@ const testInnings2: domain.Innings = {
                 innings: {
                     runs: 3,
                     timeIn: new Date(),
-                    deliveries: [],
                     ballsFaced: 11,
                     fours: 0,
                     sixes: 0,
@@ -282,7 +275,6 @@ const testInnings2: domain.Innings = {
                     fours: 6,
                     sixes: 0,
                     timeIn: new Date(),
-                    deliveries: [],
                     wicket: {
                         time: new Date(),
                         bowler: 'A Sayed',
@@ -299,7 +291,6 @@ const testInnings2: domain.Innings = {
                     fours: 0,
                     sixes: 0,
                     timeIn: new Date(),
-                    deliveries: [],
                     wicket: {
                         time: new Date(),
                         bowler: 'D Hunt',
@@ -316,7 +307,6 @@ const testInnings2: domain.Innings = {
                     fours: 0,
                     sixes: 0,
                     timeIn: new Date(),
-                    deliveries: [],
                     wicket: {
                         time: new Date(),
                         bowler: 'D Hunt',
@@ -332,7 +322,6 @@ const testInnings2: domain.Innings = {
                     fours: 0,
                     sixes: 0,
                     timeIn: new Date(),
-                    deliveries: [],
                     wicket: {
                         time: new Date(),
                         bowler: 'D Hunt',
@@ -348,7 +337,6 @@ const testInnings2: domain.Innings = {
                     fours: 2,
                     sixes: 3,
                     timeIn: new Date(),
-                    deliveries: [],
                     wicket: {
                         time: new Date(),
                         bowler: 'A Sayed',
@@ -364,7 +352,6 @@ const testInnings2: domain.Innings = {
                     fours: 1,
                     sixes: 0,
                     timeIn: new Date(),
-                    deliveries: [],
                     wicket: {
                         time: new Date(),
                         bowler: 'J Abbott',
@@ -381,7 +368,6 @@ const testInnings2: domain.Innings = {
                     fours: 0,
                     sixes: 0,
                     timeIn: new Date(),
-                    deliveries: [],
                     wicket: {
                         time: new Date(),
                         bowler: 'D Hunt',
@@ -398,7 +384,6 @@ const testInnings2: domain.Innings = {
                     fours: 0,
                     sixes: 0,
                     timeIn: new Date(),
-                    deliveries: [],
                 },
             },
             {
@@ -409,7 +394,6 @@ const testInnings2: domain.Innings = {
                     fours: 0,
                     sixes: 0,
                     timeIn: new Date(),
-                    deliveries: [],
                     wicket: {
                         time: new Date(),
                         bowler: 'J Abbott',
@@ -425,7 +409,6 @@ const testInnings2: domain.Innings = {
                     fours: 0,
                     sixes: 0,
                     timeIn: new Date(),
-                    deliveries: [],
                     wicket: {
                         time: new Date(),
                         bowler: 'D Hunt',
