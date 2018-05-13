@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Bowler, oversDescription } from '../../domain';
 import * as styles from './styles';
+import * as globalStyles from '../styles';
 
 export interface BowlingProps {
     team: string;
@@ -9,11 +10,11 @@ export interface BowlingProps {
 
 export const Bowling = ({ team, bowlers }: BowlingProps) => (
     <div className="col-xl-8 col-lg-12">
-        <div style={styles.sectionContainer}>
+        <div style={globalStyles.sectionContainer}>
             <div className="row">
                 <h6>{team} bowling</h6>
             </div>
-            <div className="row" style={styles.headingRow}>
+            <div className="row" style={globalStyles.headingRow}>
                 <div className="col-6 col-md-5" />
                 <div className="col-2" style={styles.centreCell}><h6>Overs</h6></div>
                 <div className="col-2 d-none d-md-block" style={styles.centreCell}><h6>Maidens</h6></div>

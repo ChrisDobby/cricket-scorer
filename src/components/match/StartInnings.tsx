@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Team } from '../../domain';
-import * as styles from './styles';
+import * as globalStyles from '../styles';
 import { BatterSelector, PlayerPosition } from './BatterSelector';
 import { SaveButton } from './SaveButton';
 
@@ -65,8 +65,8 @@ export class StartInnings extends React.Component<StartInningsProps, {}> {
                 <div className="row">
                     <div className="d-none d-md-block d-lg-block col-2 col-lg-3" />
                     <div className="col-12 col-md-8 col-lg-6">
-                        <div style={styles.sectionContainer}>
-                            <div className="row" style={styles.headingRow}>
+                        <div style={globalStyles.sectionContainer}>
+                            <div className="row" style={globalStyles.headingRow}>
                                 <h4>Select batting team</h4>
                             </div>
                             {this.props.teams.map((team, index) => (
@@ -86,7 +86,7 @@ export class StartInnings extends React.Component<StartInningsProps, {}> {
                             ))}
                             {this.state.players.length > 0 && (
                                 <div>
-                                    <div className="row" style={styles.headingRow}>
+                                    <div className="row" style={globalStyles.headingRow}>
                                         <h4>Select openers</h4>
                                     </div>
                                     <BatterSelector

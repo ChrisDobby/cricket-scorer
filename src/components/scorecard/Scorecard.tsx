@@ -55,7 +55,7 @@ export class Scorecard extends React.Component<ScorecardProps, {}> {
         if (!this.props.cricketMatch) {
             return (
                 <div className="col-12" style={styles.textCentre}>
-                    <div><i className="fa fa-spinner fa-spin" style={styles.spinnerStyle} /></div>
+                    <div><i className="fa fa-spinner fa-spin" style={globalStyles.spinnerStyle} /></div>
                 </div>);
         }
         return (

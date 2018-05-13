@@ -1,8 +1,9 @@
 import * as React from 'react';
 import * as styles from './styles';
+import * as globalStyles from '../styles';
 
 const matchHeadingRow: React.CSSProperties = {
-    ...styles.headingRow,
+    ...globalStyles.headingRow,
     ...styles.textCentre,
 };
 

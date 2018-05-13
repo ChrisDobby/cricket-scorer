@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactTestRenderer from 'react-test-renderer';
-import { Batting } from '../../../components/match/Batting';
+import { Batting } from '../../../components/scorecard/Batting';
 
 describe('Batting', () => {
     const batting = {

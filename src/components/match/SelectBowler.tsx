@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Team } from '../../domain';
 import * as styles from './styles';
+import * as globalStyles from '../styles';
 import { SaveButton } from './SaveButton';
 
 const indicatorStyle: React.CSSProperties = {
@@ -53,8 +54,8 @@ export class SelectBowler extends React.Component<SelectBowlerProps, {}> {
                 <div className="row">
                     <div className="d-none d-md-block d-lg-block col-2 col-lg-3" />
                     <div className="col-12 col-md-8 col-lg-6">
-                        <div style={styles.sectionContainer}>
-                            <div className="row" style={styles.headingRow}>
+                        <div style={globalStyles.sectionContainer}>
+                            <div className="row" style={globalStyles.headingRow}>
                                 <h4>Select bowler</h4>
                             </div>
                             {this.props.bowlingTeam.players.map((player, index) => (

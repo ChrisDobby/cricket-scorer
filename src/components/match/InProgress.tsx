@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect, Dispatch } from 'react-redux';
-import { Match, Innings, Team, Bowler, State } from '../../domain';
+import { Match, Innings, Team, Batter, Bowler, State } from '../../domain';
 import WithNavBar from '../WithNavBar';
 import { StartInnings } from './StartInnings';
 import { SelectBowler } from './SelectBowler';
@@ -9,6 +9,7 @@ import * as actions from '../../actions/index';
 interface InProgressProps {
     match: Match;
     currentInnings?: Innings;
+    currentBatter?: Batter;
     currentBowler?: Bowler;
     startInnings?: (t: Team, b1: number, b2: number) => void;
     newBowler?: (b: number) => void;
@@ -40,6 +41,7 @@ class InProgress extends React.Component<InProgressProps, {}> {
 const mapStateToProps = (state: State): InProgressProps => ({
     match: state.match,
     currentInnings: state.currentInnings,
+    currentBatter: state.currentBatter,
     currentBowler: state.currentBowler,
 });
 

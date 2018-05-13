@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Route } from 'react-router-dom';
 import WithNavBar from './components/WithNavBar';
-import { Scorecard } from './components/match/Scorecard';
+import { Scorecard } from './components/scorecard/Scorecard';
 import InProgress from './components/match/InProgress';
 import { match } from './__tests__/testData/testMatch';
 

@@ -1,9 +1,10 @@
 import * as React from 'react';
 import * as styles from './styles';
+import * as globalStyles from '../styles';
 import { oversDescription } from '../../domain';
 
 const totalLineStyle: React.CSSProperties = {
-    ...styles.headingRow,
+    ...globalStyles.headingRow,
     fontSize: '14px',
     paddingBottom: '4px',
 };

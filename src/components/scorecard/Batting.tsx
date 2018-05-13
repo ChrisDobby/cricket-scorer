@@ -3,6 +3,7 @@ import { Extras } from './Extras';
 import { TotalLine } from './TotalLine';
 import { Batting as InningsBatting, BattingInnings, howOutDescription } from '../../domain';
 import * as styles from './styles';
+import * as globalStyles from '../styles';
 
 const smallExtraDetailStyle: React.CSSProperties = {
     fontSize: '10px',
@@ -42,8 +43,8 @@ export interface BattingProps {
 
 export const Batting = ({ batting, score, wickets, ballsFaced }: BattingProps) => (
     <div className="col-xl-8 col-lg-12">
-        <div style={styles.sectionContainer}>
-            <div className="row" style={styles.headingRow}>
+        <div style={globalStyles.sectionContainer}>
+            <div className="row" style={globalStyles.headingRow}>
                 <div className="col-10 col-md-7"><h6>Batsman</h6></div>
                 <div className="col-2 col-md-1" style={styles.numberCell}><h6>Runs</h6></div>
                 <div className="col-1 d-none d-md-block" style={styles.numberCell}><h6>Balls</h6></div>

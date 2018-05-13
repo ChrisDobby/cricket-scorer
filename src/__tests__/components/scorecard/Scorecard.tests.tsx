@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
 import * as ReactTestRenderer from 'react-test-renderer';
-import { Scorecard } from '../../../components/match/Scorecard';
+import { Scorecard } from '../../../components/scorecard/Scorecard';
 import { Innings } from '../../../domain';
 import { match, homeTeam, awayTeam } from '../../testData/testMatch';
 
