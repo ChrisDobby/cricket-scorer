@@ -98,6 +98,7 @@ export interface Innings {
     bowlers: Bowler[];
     fallOfWickets: FallOfWicket[];
     complete: boolean;
+    currentBatterIndex?: number;
     currentBowlerIndex?: number;
 }
 
@@ -118,6 +119,7 @@ export interface Match {
 export interface State {
     match: Match;
     currentInnings?: Innings;
+    currentBatter?: Batter;
     currentBowler?: Bowler;
 }
 

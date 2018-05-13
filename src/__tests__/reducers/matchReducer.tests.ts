@@ -9,6 +9,7 @@ jest.mock('../../match/innings', () => {
         currentInnings: jest.fn(),
         newBowler: jest.fn(),
         currentBowler: jest.fn(),
+        currentBatter: jest.fn(),
     };
 });
 
@@ -87,6 +88,22 @@ describe('match', () => {
         );
 
         expect(inningsMock.currentInnings).toHaveBeenCalledWith(
+            state.match,
+        );
+    });
+
+    it('should call currentBatter when starting innings', () => {
+        const state = match(
+            startedMatchState,
+            {
+                type: START_INNINGS,
+                battingTeam: startedMatchState.match.homeTeam,
+                batter1Index: 0,
+                batter2Index: 1,
+            },
+        );
+
+        expect(inningsMock.currentBatter).toHaveBeenCalledWith(
             state.match,
         );
     });

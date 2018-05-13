@@ -175,6 +175,12 @@ describe('innings', () => {
             expect(batters[10].position).toBe(11);
             expect(batters[10].name).toBe(blankMatch.awayTeam.players[10]);
         });
+
+        describe('it should set current batter to 0', () => {
+            const innings = updatedMatch.innings[0];
+
+            expect(innings.currentBatterIndex).toBe(0);
+        });
     });
 
     describe('currentInnings', () => {
@@ -188,6 +194,49 @@ describe('innings', () => {
             const innings = Innings.currentInnings(matchWithStartedInnings);
 
             expect(innings).toBe(matchWithStartedInnings.innings[0]);
+        });
+    });
+
+    describe('currentBatter', () => {
+        it('should return falsy if no innings current', () => {
+            const batter = Innings.currentBatter(blankMatch);
+
+            expect(batter).toBeFalsy();
+        });
+
+        it('should return falsy if no batter current', () => {
+            const batter = Innings.currentBatter(matchWithStartedInnings);
+
+            expect(batter).toBeFalsy();
+        });
+
+        it('should return the batter at the current batter index if available', () => {
+            const currentBatter = {
+                position: 1,
+                name: 'A Batter',
+            };
+
+            const matchWithCurrentBatter = {
+                ...matchWithStartedInnings,
+                innings: [{
+                    ...matchWithStartedInnings.innings[0],
+                    currentBatterIndex: 0,
+                    batting: {
+                        extras: {
+                            byes: 0,
+                            legByes: 0,
+                            wides: 0,
+                            noBalls: 0,
+                            penaltyRuns: 0,
+                        },
+                        batters: [currentBatter],
+                    },
+                }],
+            };
+
+            const batter = Innings.currentBatter(matchWithCurrentBatter);
+
+            expect(batter).toBe(currentBatter);
         });
     });
 
