@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactTestRenderer from 'react-test-renderer';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore } from 'redux';
 import InProgress from '../../../components/match/InProgress';
 import { match as matchReducer } from '../../../reducers/matchReducer';
 import { blankMatch, matchWithStartedInnings } from '../../testData/matches';
