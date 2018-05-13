@@ -57,81 +57,85 @@ describe('match', () => {
         },
     };
 
-    it('should call innings.startInnings when start innings action received', () => {
-        match(
-            startedMatchState,
-            {
-                type: START_INNINGS,
-                battingTeam: startedMatchState.match.homeTeam,
-                batter1Index: 0,
-                batter2Index: 1,
-            },
-        );
+    describe('start innings', () => {
+        it('should call innings.startInnings when start innings action received', () => {
+            match(
+                startedMatchState,
+                {
+                    type: START_INNINGS,
+                    battingTeam: startedMatchState.match.homeTeam,
+                    batter1Index: 0,
+                    batter2Index: 1,
+                },
+            );
 
-        expect(inningsMock.startInnings).toHaveBeenCalledWith(
-            startedMatchState.match,
-            startedMatchState.match.homeTeam,
-            0,
-            1,
-        );
+            expect(inningsMock.startInnings).toHaveBeenCalledWith(
+                startedMatchState.match,
+                startedMatchState.match.homeTeam,
+                0,
+                1,
+            );
+        });
+
+        it('should call currentInnings when starting innings', () => {
+            const state = match(
+                startedMatchState,
+                {
+                    type: START_INNINGS,
+                    battingTeam: startedMatchState.match.homeTeam,
+                    batter1Index: 0,
+                    batter2Index: 1,
+                },
+            );
+
+            expect(inningsMock.currentInnings).toHaveBeenCalledWith(
+                state.match,
+            );
+        });
+
+        it('should call currentBatter when starting innings', () => {
+            const state = match(
+                startedMatchState,
+                {
+                    type: START_INNINGS,
+                    battingTeam: startedMatchState.match.homeTeam,
+                    batter1Index: 0,
+                    batter2Index: 1,
+                },
+            );
+
+            expect(inningsMock.currentBatter).toHaveBeenCalledWith(
+                state.match,
+            );
+        });
     });
 
-    it('should call currentInnings when starting innings', () => {
-        const state = match(
-            startedMatchState,
-            {
-                type: START_INNINGS,
-                battingTeam: startedMatchState.match.homeTeam,
-                batter1Index: 0,
-                batter2Index: 1,
-            },
-        );
+    describe('new bowler', () => {
+        it('should call innings.newBowler when new bowler action received', () => {
+            match(
+                startedMatchState,
+                {
+                    type: NEW_BOWLER,
+                    bowlerIndex: 10,
+                },
+            );
 
-        expect(inningsMock.currentInnings).toHaveBeenCalledWith(
-            state.match,
-        );
-    });
+            expect(inningsMock.newBowler).toHaveBeenCalledWith(
+                startedMatchState.match,
+                10,
+            );
+        });
 
-    it('should call currentBatter when starting innings', () => {
-        const state = match(
-            startedMatchState,
-            {
-                type: START_INNINGS,
-                battingTeam: startedMatchState.match.homeTeam,
-                batter1Index: 0,
-                batter2Index: 1,
-            },
-        );
+        it('should call currentBowler when setting new bowler', () => {
+            match(
+                startedMatchState,
+                {
+                    type: NEW_BOWLER,
+                    bowlerIndex: 10,
+                },
+            );
 
-        expect(inningsMock.currentBatter).toHaveBeenCalledWith(
-            state.match,
-        );
-    });
-
-    it('should call innings.newBowler when new bowler action received', () => {
-        match(
-            startedMatchState,
-            {
-                type: NEW_BOWLER,
-                bowlerIndex: 10,
-            },
-        );
-
-        expect(inningsMock.newBowler).toHaveBeenCalledWith(
-            startedMatchState.match,
-            10,
-        );
-    });
-
-    it('should call currentBowler when setting new bowler', () => {
-        match(
-            startedMatchState,
-            {
-                type: NEW_BOWLER,
-                bowlerIndex: 10,
-            },
-        );
-
-        expect(inningsMock.currentBowler).toHaveBeenCalled();
+            expect(inningsMock.currentBowler).toHaveBeenCalled();
+        });
     });
 });
