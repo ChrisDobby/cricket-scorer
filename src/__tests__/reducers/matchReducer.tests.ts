@@ -1,6 +1,6 @@
 import { match } from '../../reducers/matchReducer';
 import * as domain from '../../domain';
-import { START_INNINGS, NEW_BOWLER } from '../../actions/types';
+import { START_INNINGS, NEW_BOWLER, DOT_BALL } from '../../actions/types';
 import * as inningsMock from '../../match/innings';
 
 jest.mock('../../match/innings', () => {
@@ -10,6 +10,7 @@ jest.mock('../../match/innings', () => {
         newBowler: jest.fn(),
         currentBowler: jest.fn(),
         currentBatter: jest.fn(),
+        dotBall: jest.fn(),
     };
 });
 
@@ -136,6 +137,17 @@ describe('match', () => {
             );
 
             expect(inningsMock.currentBowler).toHaveBeenCalled();
+        });
+    });
+
+    describe('dot ball', () => {
+        it('should call innings.dotBall when dot ball action received', () => {
+            match(
+                startedMatchState,
+                { type: DOT_BALL },
+            );
+
+            expect(inningsMock.dotBall).toHaveBeenCalled();
         });
     });
 });

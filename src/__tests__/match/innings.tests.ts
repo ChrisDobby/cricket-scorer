@@ -1,6 +1,6 @@
-import { BattingInnings } from '../../domain';
+import { BattingInnings, DeliveryOutcome } from '../../domain';
 import * as Innings from '../../match/innings';
-import { blankMatch, matchWithStartedInnings } from '../testData/matches';
+import { blankMatch, matchWithStartedInnings, matchWithStartedOver } from '../testData/matches';
 
 describe('innings', () => {
     describe('startInnings', () => {
@@ -249,6 +249,24 @@ describe('innings', () => {
             const innings = updatedMatch.innings[0];
             expect(innings.bowlers).toHaveLength(1);
             expect(innings.currentBowlerIndex).toBe(0);
+        });
+    });
+
+    describe('dotBall', () => {
+        const updatedMatch = Innings.dotBall(matchWithStartedOver);
+        it('should add a delivery with outcome of dot to the innings', () => {
+            const innings = updatedMatch.innings[0];
+
+            expect(innings.deliveries).toHaveLength(1);
+
+            const delivery = innings.deliveries[0];
+            expect(delivery.overNumber).toBe(1);
+            expect(delivery.outcome).toEqual({
+                deliveryOutcome: DeliveryOutcome.Dot,
+                score: 0,
+            });
+            expect(delivery.batsmanIndex).toBe(0);
+            expect(delivery.bowlerIndex).toBe(0);
         });
     });
 });

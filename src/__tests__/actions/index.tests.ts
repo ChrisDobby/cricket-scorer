@@ -22,4 +22,12 @@ describe('index', () => {
             expect(actionResult.bowlerIndex).toBe(10);
         });
     });
+
+    describe('dotBall', () => {
+        it('should return a dot ball type', () => {
+            const actionResult = actions.dotBall();
+
+            expect(actionResult.type).toBe(types.DOT_BALL);
+        });
+    });
 });

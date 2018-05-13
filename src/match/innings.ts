@@ -1,4 +1,4 @@
-import { Match, Team, Innings, Batter, Bowler } from '../domain';
+import { Match, Team, Innings, Batter, Bowler, DeliveryOutcome } from '../domain';
 
 const battingInOrder = (players: string[], batsman1Index: number, batsman2Index: number): string[] =>
     [
@@ -12,6 +12,7 @@ const newInnings = (match: Match, battingTeam: Team, batsman1Index: number, bats
     score: 0,
     wickets: 0,
     balls: 0,
+    completedOvers: 0,
     deliveries: [],
     batting: {
         extras: {
@@ -114,6 +115,33 @@ export const newBowler = (match: Match, bowlerIndex: number) => {
         innings: [
             ...match.innings.filter(inn => inn !== innings),
             updatedInnings(innings),
+        ],
+    };
+};
+
+export const dotBall = (match: Match): Match => {
+    const innings = currentInnings(match);
+
+    return {
+        ...match,
+        innings: [
+            ...match.innings.filter(inn => inn !== innings),
+            {
+                ...innings,
+                deliveries: [
+                    ...innings.deliveries,
+                    {
+                        time: new Date(),
+                        outcome: {
+                            deliveryOutcome: DeliveryOutcome.Dot,
+                            score: 0,
+                        },
+                        overNumber: innings.completedOvers + 1,
+                        batsmanIndex: innings.currentBatterIndex as number,
+                        bowlerIndex: innings.currentBowlerIndex as number,
+                    },
+                ],
+            },
         ],
     };
 };

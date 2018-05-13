@@ -13,7 +13,11 @@ export interface NewBowler {
     bowlerIndex: number;
 }
 
-export type InningsAction = StartInnings | NewBowler;
+export interface DotBall {
+    type: types.DOT_BALL;
+}
+
+export type InningsAction = StartInnings | NewBowler | DotBall;
 
 export const startInnings = (battingTeam: Team, batter1Index: number, batter2Index: number) => ({
     battingTeam,
@@ -26,3 +30,5 @@ export const newBowler = (bowlerIndex: number) => ({
     bowlerIndex,
     type: types.NEW_BOWLER,
 });
+
+export const dotBall = () => ({ type: types.DOT_BALL });

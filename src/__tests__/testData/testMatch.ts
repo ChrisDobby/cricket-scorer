@@ -17,6 +17,7 @@ const testInnings1: domain.Innings = {
     wickets: 6,
     allOut: false,
     balls: 270,
+    completedOvers: 45,
     deliveries: [],
     batting: {
         extras: {
@@ -242,6 +243,7 @@ const testInnings2: domain.Innings = {
     wickets: 10,
     allOut: true,
     balls: 206,
+    completedOvers: 34,
     deliveries: [],
     batting: {
         extras: {

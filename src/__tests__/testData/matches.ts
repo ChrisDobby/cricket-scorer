@@ -46,6 +46,7 @@ const startedInnings = {
     wickets: 0,
     allOut: false,
     balls: 0,
+    completedOvers: 0,
     deliveries: [],
     batting: {
         batters: [],
@@ -62,7 +63,37 @@ const startedInnings = {
     complete: false,
 };
 
+const inningsWithStartedOver = {
+    ...startedInnings,
+    batting: {
+        ...startedInnings.batting,
+        batters: [
+            {
+                name: blankMatch.homeTeam.players[0],
+            },
+            {
+                name: blankMatch.homeTeam.players[1],
+            },
+        ],
+    },
+    bowlers: [{
+        playerIndex: 10,
+        name: blankMatch.awayTeam.players[10],
+        balls: 0,
+        maidenOvers: 0,
+        runs: 0,
+        wickets: 0,
+    }],
+    currentBatterIndex: 0,
+    currentBowlerIndex: 0,
+};
+
 export const matchWithStartedInnings: Match = {
     ...blankMatch,
     innings: [startedInnings],
+};
+
+export const matchWithStartedOver: Match = {
+    ...blankMatch,
+    innings: [inningsWithStartedOver],
 };

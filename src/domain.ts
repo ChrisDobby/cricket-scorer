@@ -92,6 +92,7 @@ export interface Innings {
     wickets: number;
     allOut: boolean;
     balls: number;
+    completedOvers: number;
     deliveries: Delivery[];
     batting: Batting;
     bowlers: Bowler[];

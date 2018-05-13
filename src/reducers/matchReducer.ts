@@ -30,6 +30,12 @@ export const match = (state: State, action: InningsAction): State => {
         };
     }
 
+    case types.DOT_BALL:
+        return {
+            ...state,
+            match: innings.dotBall(state.match),
+        };
+
     default:
         return state;
     }
