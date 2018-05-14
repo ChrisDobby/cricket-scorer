@@ -149,5 +149,16 @@ describe('match', () => {
 
             expect(inningsMock.dotBall).toHaveBeenCalled();
         });
+
+        it('should call currentInnings after dot ball', () => {
+            const state = match(
+                startedMatchState,
+                { type: DOT_BALL },
+            );
+
+            expect(inningsMock.currentInnings).toHaveBeenCalledWith(
+                state.match,
+            );
+        });
     });
 });
