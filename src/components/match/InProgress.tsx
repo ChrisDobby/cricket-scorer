@@ -6,6 +6,7 @@ import { StartInnings } from './StartInnings';
 import { SelectBowler } from './SelectBowler';
 import { BallEntry } from './BallEntry';
 import * as actions from '../../actions/index';
+import { BallFunctions } from './EntryPanel';
 
 interface InProgressProps {
     match: Match;
@@ -14,6 +15,7 @@ interface InProgressProps {
     currentBowler?: Bowler;
     startInnings?: (t: Team, b1: number, b2: number) => void;
     newBowler?: (b: number) => void;
+    ballFunctions?: BallFunctions;
 }
 
 class InProgress extends React.Component<InProgressProps, {}> {
@@ -35,12 +37,16 @@ class InProgress extends React.Component<InProgressProps, {}> {
                 />);
         }
 
-        if (this.props.currentInnings && this.props.currentBatter && this.props.currentBowler) {
+        if (this.props.currentInnings &&
+            this.props.currentBatter &&
+            this.props.currentBowler &&
+            this.props.ballFunctions) {
             return (
                 <BallEntry
                     innings={this.props.currentInnings}
                     batter={this.props.currentBatter}
                     bowler={this.props.currentBowler}
+                    ballFunctions={this.props.ballFunctions}
                 />
             );
         }
@@ -49,7 +55,7 @@ class InProgress extends React.Component<InProgressProps, {}> {
     }
 }
 
-const mapStateToProps = (state: State): InProgressProps => ({
+const mapStateToProps = (state: State) => ({
     match: state.match,
     currentInnings: state.currentInnings,
     currentBatter: state.currentBatter,
@@ -60,6 +66,9 @@ const mapDispatchToProps = (dispatch: Dispatch<actions.InningsAction>) => ({
     startInnings: (team: Team, batter1Index: number, batter2Index: number) =>
         dispatch(actions.startInnings(team, batter1Index, batter2Index)),
     newBowler: (bowlerIndex: number) => dispatch(actions.newBowler(bowlerIndex)),
+    ballFunctions: {
+        dotBalll: () => dispatch(actions.dotBall()),
+    },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(WithNavBar(InProgress));
