@@ -36,6 +36,7 @@ export const match = (state: State, action: InningsAction): State => {
             ...state,
             match: updatedMatch,
             currentInnings: innings.currentInnings(updatedMatch),
+            currentBatter: innings.currentBatter(updatedMatch),
         };
     }
 

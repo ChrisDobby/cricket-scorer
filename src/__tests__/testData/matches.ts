@@ -70,9 +70,23 @@ const inningsWithStartedOver = {
         batters: [
             {
                 name: blankMatch.homeTeam.players[0],
+                innings: {
+                    runs: 0,
+                    timeIn: new Date(),
+                    ballsFaced: 0,
+                    fours: 0,
+                    sixes: 0,
+                },
             },
             {
                 name: blankMatch.homeTeam.players[1],
+                innings: {
+                    runs: 0,
+                    timeIn: new Date(),
+                    ballsFaced: 0,
+                    fours: 0,
+                    sixes: 0,
+                },
             },
         ],
     },

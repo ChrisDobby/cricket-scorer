@@ -267,5 +267,12 @@ describe('innings', () => {
             expect(delivery.batsmanIndex).toBe(0);
             expect(delivery.bowlerIndex).toBe(0);
         });
+
+        it('should add a ball to the balls faced for the current batter', () => {
+            const innings = updatedMatch.innings[0];
+            const batter = innings.batting.batters[innings.currentBatterIndex as number];
+
+            expect((batter.innings as BattingInnings).ballsFaced).toBe(1);
+        });
     });
 });

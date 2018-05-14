@@ -67,7 +67,7 @@ const mapDispatchToProps = (dispatch: Dispatch<actions.InningsAction>) => ({
         dispatch(actions.startInnings(team, batter1Index, batter2Index)),
     newBowler: (bowlerIndex: number) => dispatch(actions.newBowler(bowlerIndex)),
     ballFunctions: {
-        dotBalll: () => dispatch(actions.dotBall()),
+        dotBall: () => dispatch(actions.dotBall()),
     },
 });
 
