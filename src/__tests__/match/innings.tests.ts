@@ -12,7 +12,6 @@ describe('innings', () => {
             expect(innings.bowlingTeam).toBe(blankMatch.awayTeam);
             expect(innings.score).toBe(0);
             expect(innings.wickets).toBe(0);
-            expect(innings.balls).toBe(0);
             expect(innings.batting.extras.byes).toBe(0);
             expect(innings.batting.extras.legByes).toBe(0);
             expect(innings.batting.extras.noBalls).toBe(0);
@@ -185,7 +184,7 @@ describe('innings', () => {
             const currentBowler = {
                 playerIndex: 10,
                 name: 'A Bowler',
-                balls: 6,
+                completedOvers: 1,
                 maidenOvers: 1,
                 runs: 0,
                 wickets: 0,
@@ -223,7 +222,7 @@ describe('innings', () => {
             const bowler = innings.bowlers[0];
             expect(bowler.playerIndex).toBe(10);
             expect(bowler.name).toBe(matchWithStartedInnings.awayTeam.players[10]);
-            expect(bowler.balls).toBe(0);
+            expect(bowler.completedOvers).toBe(0);
             expect(bowler.maidenOvers).toBe(0);
             expect(bowler.runs).toBe(0);
             expect(bowler.wickets).toBe(0);
@@ -237,7 +236,7 @@ describe('innings', () => {
                     bowlers: [{
                         playerIndex: 10,
                         name: matchWithStartedInnings.awayTeam.players[10],
-                        balls: 60,
+                        completedOvers: 10,
                         maidenOvers: 1,
                         runs: 34,
                         wickets: 2,

@@ -12,14 +12,14 @@ const totalLineStyle: React.CSSProperties = {
 export interface TotalLineProps {
     score: number;
     wickets: number;
-    ballsFaced: number;
+    completedOvers: number;
 }
 
-export const TotalLine = ({ score, wickets, ballsFaced }: TotalLineProps) => (
+export const TotalLine = ({ score, wickets, completedOvers }: TotalLineProps) => (
     <div className="row" style={totalLineStyle}>
         <div className="col-4 col-md-3">Total</div>
         <div className="col-6 col-md-4">
-            {`(${wickets} wickets) (${oversDescription(ballsFaced)} overs)`}
+            {`(${wickets} wickets) (${oversDescription(completedOvers, [])} overs)`}
         </div>
         <div className="col-2 col-md-1" style={styles.runsCell}>{score}</div>
     </div>

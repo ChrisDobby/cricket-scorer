@@ -35,7 +35,7 @@ export const BallEntry = ({ innings, batter, bowler, ballFunctions }: BallEntryP
                         <h5>Overs</h5>
                     </div>
                     <div className="col-6">
-                        <h5>{oversDescription(innings.balls)}</h5>
+                        <h5>{oversDescription(innings.completedOvers, [])}</h5>
                     </div>
                 </div>
                 {innings.batting.batters.filter(batter => batter.innings && !batter.innings.wicket)
@@ -63,7 +63,8 @@ export const BallEntry = ({ innings, batter, bowler, ballFunctions }: BallEntryP
                     </div>
                     <div className="col-6">
                         <h5>
-                            {`${oversDescription(bowler.balls)}-${bowler.maidenOvers}-${bowler.runs}-${bowler.wickets}`}
+                            {`${oversDescription(bowler.completedOvers, [])}-` +
+                                `${bowler.maidenOvers}-${bowler.runs}-${bowler.wickets}`}
                         </h5>
                     </div>
                 </div>

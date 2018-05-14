@@ -11,7 +11,6 @@ const newInnings = (match: Match, battingTeam: Team, batsman1Index: number, bats
     bowlingTeam: battingTeam.name === match.homeTeam.name ? match.awayTeam : match.homeTeam,
     score: 0,
     wickets: 0,
-    balls: 0,
     completedOvers: 0,
     deliveries: [],
     batting: {
@@ -76,11 +75,10 @@ export const currentBowler = (match: Match): Bowler | undefined => {
     return innings.bowlers[Number(innings.currentBowlerIndex)];
 };
 
-const createBowler = (team: Team, bowlers: Bowler[], bowlerIndex: number) => ({
-    position: bowlers.length + 1,
+const createBowler = (team: Team, bowlers: Bowler[], bowlerIndex: number): Bowler => ({
     playerIndex: bowlerIndex,
     name: team.players[bowlerIndex],
-    balls: 0,
+    completedOvers: 0,
     maidenOvers: 0,
     runs: 0,
     wickets: 0,

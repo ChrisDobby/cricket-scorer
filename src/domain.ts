@@ -59,7 +59,7 @@ export interface Batter {
 export interface Bowler {
     playerIndex: number;
     name: string;
-    balls: number;
+    completedOvers: number;
     maidenOvers: number;
     runs: number;
     wickets: number;
@@ -91,7 +91,6 @@ export interface Innings {
     score: number;
     wickets: number;
     allOut: boolean;
-    balls: number;
     completedOvers: number;
     deliveries: Delivery[];
     batting: Batting;
@@ -158,8 +157,10 @@ export const howOutDescription = (wicket?: Wicket): string => {
         : 'not out';
 };
 
-export const oversDescription = (balls: number): string => {
-    return (balls % 6) === 0
-        ? (balls / 6).toString()
-        : `${Math.floor(balls / 6)}.${balls % 6}`;
+export const oversDescription = (completedOvers: number, currentOver: Delivery[]): string => {
+    const validCurrentOver = currentOver
+        .filter(delivery => delivery.outcome.deliveryOutcome !== DeliveryOutcome.Noball &&
+            delivery.outcome.deliveryOutcome !== DeliveryOutcome.Wide);
+    const remainder = validCurrentOver.length > 0 ? `.${validCurrentOver.length}` : '';
+    return `${completedOvers}${remainder}`;
 };

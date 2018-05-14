@@ -79,7 +79,7 @@ const inningsWithStartedOver = {
     bowlers: [{
         playerIndex: 10,
         name: blankMatch.awayTeam.players[10],
-        balls: 0,
+        completedOvers: 0,
         maidenOvers: 0,
         runs: 0,
         wickets: 0,

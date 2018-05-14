@@ -131,15 +131,93 @@ describe('domain', () => {
 
     describe('oversDescription', () => {
         it('should return no decimal for full overs', () => {
-            const description = domain.oversDescription(36);
+            const description = domain.oversDescription(6, []);
 
             expect(description).toBe('6');
         });
 
         it('should include decimal for not full overs', () => {
-            const description = domain.oversDescription(39);
+            const description = domain.oversDescription(6, [
+                {
+                    time: new Date(),
+                    bowlerIndex: 0,
+                    batsmanIndex: 0,
+                    overNumber: 7,
+                    outcome: { score: 0, deliveryOutcome: domain.DeliveryOutcome.Dot },
+                },
+                {
+                    time: new Date(),
+                    bowlerIndex: 0,
+                    batsmanIndex: 0,
+                    overNumber: 7,
+                    outcome: { score: 0, deliveryOutcome: domain.DeliveryOutcome.Dot },
+                },
+                {
+                    time: new Date(),
+                    bowlerIndex: 0,
+                    batsmanIndex: 0,
+                    overNumber: 7,
+                    outcome: { score: 0, deliveryOutcome: domain.DeliveryOutcome.Dot },
+                },
+            ]);
 
             expect(description).toBe('6.3');
+        });
+
+        it('should not include no balls when calculating', () => {
+            const description = domain.oversDescription(6, [
+                {
+                    time: new Date(),
+                    bowlerIndex: 0,
+                    batsmanIndex: 0,
+                    overNumber: 7,
+                    outcome: { score: 0, deliveryOutcome: domain.DeliveryOutcome.Dot },
+                },
+                {
+                    time: new Date(),
+                    bowlerIndex: 0,
+                    batsmanIndex: 0,
+                    overNumber: 7,
+                    outcome: { score: 1, deliveryOutcome: domain.DeliveryOutcome.Noball },
+                },
+                {
+                    time: new Date(),
+                    bowlerIndex: 0,
+                    batsmanIndex: 0,
+                    overNumber: 7,
+                    outcome: { score: 0, deliveryOutcome: domain.DeliveryOutcome.Dot },
+                },
+            ]);
+
+            expect(description).toBe('6.2');
+        });
+
+        it('should not include no wides when calculating', () => {
+            const description = domain.oversDescription(6, [
+                {
+                    time: new Date(),
+                    bowlerIndex: 0,
+                    batsmanIndex: 0,
+                    overNumber: 7,
+                    outcome: { score: 0, deliveryOutcome: domain.DeliveryOutcome.Dot },
+                },
+                {
+                    time: new Date(),
+                    bowlerIndex: 0,
+                    batsmanIndex: 0,
+                    overNumber: 7,
+                    outcome: { score: 1, deliveryOutcome: domain.DeliveryOutcome.Wide },
+                },
+                {
+                    time: new Date(),
+                    bowlerIndex: 0,
+                    batsmanIndex: 0,
+                    overNumber: 7,
+                    outcome: { score: 0, deliveryOutcome: domain.DeliveryOutcome.Dot },
+                },
+            ]);
+
+            expect(description).toBe('6.2');
         });
     });
 });

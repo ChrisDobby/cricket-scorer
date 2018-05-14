@@ -16,7 +16,6 @@ const testInnings1: domain.Innings = {
     score: 130,
     wickets: 6,
     allOut: false,
-    balls: 270,
     completedOvers: 45,
     deliveries: [],
     batting: {
@@ -157,7 +156,7 @@ const testInnings1: domain.Innings = {
         {
             name: 'A Rehman',
             playerIndex: 9,
-            balls: 84,
+            completedOvers: 14,
             maidenOvers: 3,
             runs: 53,
             wickets: 3,
@@ -165,7 +164,7 @@ const testInnings1: domain.Innings = {
         {
             name: 'A Midgley',
             playerIndex: 8,
-            balls: 54,
+            completedOvers: 9,
             maidenOvers: 2,
             runs: 33,
             wickets: 0,
@@ -173,7 +172,7 @@ const testInnings1: domain.Innings = {
         {
             name: 'S Bailey',
             playerIndex: 10,
-            balls: 48,
+            completedOvers: 8,
             maidenOvers: 3,
             runs: 9,
             wickets: 0,
@@ -181,7 +180,7 @@ const testInnings1: domain.Innings = {
         {
             name: 'E Hallas',
             playerIndex: 5,
-            balls: 66,
+            completedOvers: 11,
             maidenOvers: 3,
             runs: 25,
             wickets: 1,
@@ -189,7 +188,7 @@ const testInnings1: domain.Innings = {
         {
             name: 'S Rehman',
             playerIndex: 3,
-            balls: 18,
+            completedOvers: 3,
             maidenOvers: 1,
             runs: 8,
             wickets: 0,
@@ -242,7 +241,6 @@ const testInnings2: domain.Innings = {
     score: 122,
     wickets: 10,
     allOut: true,
-    balls: 206,
     completedOvers: 34,
     deliveries: [],
     batting: {
@@ -425,7 +423,7 @@ const testInnings2: domain.Innings = {
         {
             name: 'D Hunt',
             playerIndex: 9,
-            balls: 62,
+            completedOvers: 10,
             maidenOvers: 1,
             runs: 46,
             wickets: 3,
@@ -433,7 +431,7 @@ const testInnings2: domain.Innings = {
         {
             name: 'D Metcalfe',
             playerIndex: 8,
-            balls: 36,
+            completedOvers: 6,
             maidenOvers: 3,
             runs: 17,
             wickets: 1,
@@ -441,7 +439,7 @@ const testInnings2: domain.Innings = {
         {
             name: 'J Abbott',
             playerIndex: 10,
-            balls: 66,
+            completedOvers: 11,
             maidenOvers: 3,
             runs: 16,
             wickets: 2,
@@ -449,7 +447,7 @@ const testInnings2: domain.Innings = {
         {
             name: 'A Sayed',
             playerIndex: 7,
-            balls: 42,
+            completedOvers: 7,
             maidenOvers: 0,
             runs: 38,
             wickets: 2,
