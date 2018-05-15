@@ -37,7 +37,7 @@ const newInnings = (
                 .map((player, idx) => ({
                     position: idx + 1,
                     name: player,
-                    innings: batsman1Index === idx || batsman2Index === idx
+                    innings: idx === 0 || idx === 1
                         ? {
                             runs: 0,
                             ballsFaced: 0,

@@ -66,6 +66,18 @@ describe('innings', () => {
             }
         });
 
+        it('should use the correct batters when selecting 1 and 3', () => {
+            const inningsStartedMatch = Innings.startInnings(blankMatch, blankMatch.homeTeam, 0, 2);
+            const batters = inningsStartedMatch.innings[0].batting.batters;
+
+            expect(batters[0].name).toBe(blankMatch.homeTeam.players[0]);
+            expect(batters[1].name).toBe(blankMatch.homeTeam.players[2]);
+
+            expect(batters[0].innings).toBeTruthy();
+            expect(batters[1].innings).toBeTruthy();
+            expect(batters[2].innings).toBeFalsy();
+        });
+
         it('should update the batting positions', () => {
             const inningsStartedMatch = Innings.startInnings(blankMatch, blankMatch.homeTeam, 5, 3);
             const batters = inningsStartedMatch.innings[0].batting.batters;
