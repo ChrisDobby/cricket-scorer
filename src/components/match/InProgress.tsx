@@ -43,7 +43,6 @@ class InProgress extends React.Component<InProgressProps, {}> {
             this.props.currentBowler &&
             this.props.currentOver &&
             this.props.ballFunctions) {
-            console.log(this.props.currentOver);
             return (
                 <BallEntry
                     innings={this.props.currentInnings}
