@@ -1,15 +1,15 @@
 import { BattingInnings, DeliveryOutcome } from '../../domain';
 import * as Innings from '../../match/innings';
-import { blankMatch, matchWithStartedInnings, matchWithStartedOver } from '../testData/matches';
+import * as matches from '../testData/matches';
 
 describe('innings', () => {
     describe('startInnings', () => {
-        const updatedMatch = Innings.startInnings(blankMatch, blankMatch.homeTeam, 0, 1);
+        const updatedMatch = Innings.startInnings(matches.blankMatch, matches.blankMatch.homeTeam, 0, 1);
         it('should add a new innings to the array', () => {
             expect(updatedMatch.innings).toHaveLength(1);
             const innings = updatedMatch.innings[0];
-            expect(innings.battingTeam).toBe(blankMatch.homeTeam);
-            expect(innings.bowlingTeam).toBe(blankMatch.awayTeam);
+            expect(innings.battingTeam).toBe(matches.blankMatch.homeTeam);
+            expect(innings.bowlingTeam).toBe(matches.blankMatch.awayTeam);
             expect(innings.score).toBe(0);
             expect(innings.wickets).toBe(0);
             expect(innings.batting.extras.byes).toBe(0);
@@ -30,17 +30,17 @@ describe('innings', () => {
         it('should include all players from the batting team', () => {
             const batters = updatedMatch.innings[0].batting.batters;
             expect(batters).toHaveLength(11);
-            expect(batters[0].name).toBe(blankMatch.homeTeam.players[0]);
-            expect(batters[1].name).toBe(blankMatch.homeTeam.players[1]);
-            expect(batters[2].name).toBe(blankMatch.homeTeam.players[2]);
-            expect(batters[3].name).toBe(blankMatch.homeTeam.players[3]);
-            expect(batters[4].name).toBe(blankMatch.homeTeam.players[4]);
-            expect(batters[5].name).toBe(blankMatch.homeTeam.players[5]);
-            expect(batters[6].name).toBe(blankMatch.homeTeam.players[6]);
-            expect(batters[7].name).toBe(blankMatch.homeTeam.players[7]);
-            expect(batters[8].name).toBe(blankMatch.homeTeam.players[8]);
-            expect(batters[9].name).toBe(blankMatch.homeTeam.players[9]);
-            expect(batters[10].name).toBe(blankMatch.homeTeam.players[10]);
+            expect(batters[0].name).toBe(matches.blankMatch.homeTeam.players[0]);
+            expect(batters[1].name).toBe(matches.blankMatch.homeTeam.players[1]);
+            expect(batters[2].name).toBe(matches.blankMatch.homeTeam.players[2]);
+            expect(batters[3].name).toBe(matches.blankMatch.homeTeam.players[3]);
+            expect(batters[4].name).toBe(matches.blankMatch.homeTeam.players[4]);
+            expect(batters[5].name).toBe(matches.blankMatch.homeTeam.players[5]);
+            expect(batters[6].name).toBe(matches.blankMatch.homeTeam.players[6]);
+            expect(batters[7].name).toBe(matches.blankMatch.homeTeam.players[7]);
+            expect(batters[8].name).toBe(matches.blankMatch.homeTeam.players[8]);
+            expect(batters[9].name).toBe(matches.blankMatch.homeTeam.players[9]);
+            expect(batters[10].name).toBe(matches.blankMatch.homeTeam.players[10]);
         });
 
         it('should start a batting innings for the two specified batters', () => {
@@ -67,11 +67,11 @@ describe('innings', () => {
         });
 
         it('should use the correct batters when selecting 1 and 3', () => {
-            const inningsStartedMatch = Innings.startInnings(blankMatch, blankMatch.homeTeam, 0, 2);
+            const inningsStartedMatch = Innings.startInnings(matches.blankMatch, matches.blankMatch.homeTeam, 0, 2);
             const batters = inningsStartedMatch.innings[0].batting.batters;
 
-            expect(batters[0].name).toBe(blankMatch.homeTeam.players[0]);
-            expect(batters[1].name).toBe(blankMatch.homeTeam.players[2]);
+            expect(batters[0].name).toBe(matches.blankMatch.homeTeam.players[0]);
+            expect(batters[1].name).toBe(matches.blankMatch.homeTeam.players[2]);
 
             expect(batters[0].innings).toBeTruthy();
             expect(batters[1].innings).toBeTruthy();
@@ -79,45 +79,45 @@ describe('innings', () => {
         });
 
         it('should update the batting positions', () => {
-            const inningsStartedMatch = Innings.startInnings(blankMatch, blankMatch.homeTeam, 5, 3);
+            const inningsStartedMatch = Innings.startInnings(matches.blankMatch, matches.blankMatch.homeTeam, 5, 3);
             const batters = inningsStartedMatch.innings[0].batting.batters;
 
-            expect(batters[0].name).toBe(blankMatch.homeTeam.players[5]);
-            expect(batters[1].name).toBe(blankMatch.homeTeam.players[3]);
-            expect(batters[2].name).toBe(blankMatch.homeTeam.players[0]);
-            expect(batters[3].name).toBe(blankMatch.homeTeam.players[1]);
-            expect(batters[4].name).toBe(blankMatch.homeTeam.players[2]);
-            expect(batters[5].name).toBe(blankMatch.homeTeam.players[4]);
-            expect(batters[6].name).toBe(blankMatch.homeTeam.players[6]);
-            expect(batters[7].name).toBe(blankMatch.homeTeam.players[7]);
-            expect(batters[8].name).toBe(blankMatch.homeTeam.players[8]);
-            expect(batters[9].name).toBe(blankMatch.homeTeam.players[9]);
-            expect(batters[10].name).toBe(blankMatch.homeTeam.players[10]);
+            expect(batters[0].name).toBe(matches.blankMatch.homeTeam.players[5]);
+            expect(batters[1].name).toBe(matches.blankMatch.homeTeam.players[3]);
+            expect(batters[2].name).toBe(matches.blankMatch.homeTeam.players[0]);
+            expect(batters[3].name).toBe(matches.blankMatch.homeTeam.players[1]);
+            expect(batters[4].name).toBe(matches.blankMatch.homeTeam.players[2]);
+            expect(batters[5].name).toBe(matches.blankMatch.homeTeam.players[4]);
+            expect(batters[6].name).toBe(matches.blankMatch.homeTeam.players[6]);
+            expect(batters[7].name).toBe(matches.blankMatch.homeTeam.players[7]);
+            expect(batters[8].name).toBe(matches.blankMatch.homeTeam.players[8]);
+            expect(batters[9].name).toBe(matches.blankMatch.homeTeam.players[9]);
+            expect(batters[10].name).toBe(matches.blankMatch.homeTeam.players[10]);
         });
 
         it('should create  a new innings for the away team if specified', () => {
             const awayTeamBattingMatch = Innings.startInnings(
-                blankMatch,
-                blankMatch.awayTeam,
+                matches.blankMatch,
+                matches.blankMatch.awayTeam,
                 0,
                 1,
             );
             const innings = awayTeamBattingMatch.innings[0];
-            expect(innings.battingTeam).toBe(blankMatch.awayTeam);
-            expect(innings.bowlingTeam).toBe(blankMatch.homeTeam);
+            expect(innings.battingTeam).toBe(matches.blankMatch.awayTeam);
+            expect(innings.bowlingTeam).toBe(matches.blankMatch.homeTeam);
 
             const batters = innings.batting.batters;
-            expect(batters[0].name).toBe(blankMatch.awayTeam.players[0]);
-            expect(batters[1].name).toBe(blankMatch.awayTeam.players[1]);
-            expect(batters[2].name).toBe(blankMatch.awayTeam.players[2]);
-            expect(batters[3].name).toBe(blankMatch.awayTeam.players[3]);
-            expect(batters[4].name).toBe(blankMatch.awayTeam.players[4]);
-            expect(batters[5].name).toBe(blankMatch.awayTeam.players[5]);
-            expect(batters[6].name).toBe(blankMatch.awayTeam.players[6]);
-            expect(batters[7].name).toBe(blankMatch.awayTeam.players[7]);
-            expect(batters[8].name).toBe(blankMatch.awayTeam.players[8]);
-            expect(batters[9].name).toBe(blankMatch.awayTeam.players[9]);
-            expect(batters[10].name).toBe(blankMatch.awayTeam.players[10]);
+            expect(batters[0].name).toBe(matches.blankMatch.awayTeam.players[0]);
+            expect(batters[1].name).toBe(matches.blankMatch.awayTeam.players[1]);
+            expect(batters[2].name).toBe(matches.blankMatch.awayTeam.players[2]);
+            expect(batters[3].name).toBe(matches.blankMatch.awayTeam.players[3]);
+            expect(batters[4].name).toBe(matches.blankMatch.awayTeam.players[4]);
+            expect(batters[5].name).toBe(matches.blankMatch.awayTeam.players[5]);
+            expect(batters[6].name).toBe(matches.blankMatch.awayTeam.players[6]);
+            expect(batters[7].name).toBe(matches.blankMatch.awayTeam.players[7]);
+            expect(batters[8].name).toBe(matches.blankMatch.awayTeam.players[8]);
+            expect(batters[9].name).toBe(matches.blankMatch.awayTeam.players[9]);
+            expect(batters[10].name).toBe(matches.blankMatch.awayTeam.players[10]);
         });
 
         describe('it should set current batter to 0', () => {
@@ -129,27 +129,27 @@ describe('innings', () => {
 
     describe('currentInnings', () => {
         it('should return falsy if no innings current', () => {
-            const innings = Innings.currentInnings(blankMatch);
+            const innings = Innings.currentInnings(matches.blankMatch);
 
             expect(innings).toBeFalsy();
         });
 
         it('should return the first non complete innings in the match', () => {
-            const innings = Innings.currentInnings(matchWithStartedInnings);
+            const innings = Innings.currentInnings(matches.matchWithStartedInnings);
 
-            expect(innings).toBe(matchWithStartedInnings.innings[0]);
+            expect(innings).toBe(matches.matchWithStartedInnings.innings[0]);
         });
     });
 
     describe('currentBatter', () => {
         it('should return falsy if no innings current', () => {
-            const batter = Innings.currentBatter(blankMatch);
+            const batter = Innings.currentBatter(matches.blankMatch);
 
             expect(batter).toBeFalsy();
         });
 
         it('should return falsy if no batter current', () => {
-            const batter = Innings.currentBatter(matchWithStartedInnings);
+            const batter = Innings.currentBatter(matches.matchWithStartedInnings);
 
             expect(batter).toBeFalsy();
         });
@@ -160,9 +160,9 @@ describe('innings', () => {
             };
 
             const matchWithCurrentBatter = {
-                ...matchWithStartedInnings,
+                ...matches.matchWithStartedInnings,
                 innings: [{
-                    ...matchWithStartedInnings.innings[0],
+                    ...matches.matchWithStartedInnings.innings[0],
                     currentBatterIndex: 0,
                     batting: {
                         extras: {
@@ -185,13 +185,13 @@ describe('innings', () => {
 
     describe('currentBowler', () => {
         it('should return falsy if no innings current', () => {
-            const bowler = Innings.currentBowler(blankMatch);
+            const bowler = Innings.currentBowler(matches.blankMatch);
 
             expect(bowler).toBeFalsy();
         });
 
         it('should return falsy if no bowler current', () => {
-            const bowler = Innings.currentBowler(matchWithStartedInnings);
+            const bowler = Innings.currentBowler(matches.matchWithStartedInnings);
 
             expect(bowler).toBeFalsy();
         });
@@ -208,9 +208,9 @@ describe('innings', () => {
             };
 
             const matchWithCurrentBowler = {
-                ...matchWithStartedInnings,
+                ...matches.matchWithStartedInnings,
                 innings: [{
-                    ...matchWithStartedInnings.innings[0],
+                    ...matches.matchWithStartedInnings.innings[0],
                     currentBowlerIndex: 0,
                     bowlers: [currentBowler],
                 }],
@@ -224,13 +224,13 @@ describe('innings', () => {
 
     describe('newBowler', () => {
         it('should return the match if no current innings', () => {
-            const updatedMatch = Innings.newBowler(blankMatch, 10);
+            const updatedMatch = Innings.newBowler(matches.blankMatch, 10);
 
-            expect(updatedMatch).toBe(blankMatch);
+            expect(updatedMatch).toBe(matches.blankMatch);
         });
 
         it('should add bowler to the bowlers list and set current bowler index', () => {
-            const updatedMatch = Innings.newBowler(matchWithStartedInnings, 10);
+            const updatedMatch = Innings.newBowler(matches.matchWithStartedInnings, 10);
 
             const innings = updatedMatch.innings[0];
             expect(innings.bowlers).toHaveLength(1);
@@ -238,7 +238,7 @@ describe('innings', () => {
 
             const bowler = innings.bowlers[0];
             expect(bowler.playerIndex).toBe(10);
-            expect(bowler.name).toBe(matchWithStartedInnings.awayTeam.players[10]);
+            expect(bowler.name).toBe(matches.matchWithStartedInnings.awayTeam.players[10]);
             expect(bowler.totalOvers).toBe('0');
             expect(bowler.maidenOvers).toBe(0);
             expect(bowler.runs).toBe(0);
@@ -247,12 +247,12 @@ describe('innings', () => {
 
         it('should just set current bowler index if the new bowler has already bowled', () => {
             const matchWithBowlers = {
-                ...matchWithStartedInnings,
+                ...matches.matchWithStartedInnings,
                 innings: [{
-                    ...matchWithStartedInnings.innings[0],
+                    ...matches.matchWithStartedInnings.innings[0],
                     bowlers: [{
                         playerIndex: 10,
-                        name: matchWithStartedInnings.awayTeam.players[10],
+                        name: matches.matchWithStartedInnings.awayTeam.players[10],
                         completedOvers: 10,
                         totalOvers: '10',
                         maidenOvers: 1,
@@ -270,7 +270,7 @@ describe('innings', () => {
     });
 
     describe('dotBall', () => {
-        const updatedMatch = Innings.dotBall(matchWithStartedOver);
+        const updatedMatch = Innings.dotBall(matches.matchWithStartedOver);
         it('should add a delivery with outcome of dot to the innings', () => {
             const innings = updatedMatch.innings[0];
 
@@ -310,6 +310,24 @@ describe('innings', () => {
             const bowler = innings.bowlers[innings.currentBowlerIndex as number];
 
             expect(bowler.totalOvers).toBe('0.1');
+        });
+    });
+
+    describe('completeOver', () => {
+        const updatedMatch = Innings.completeOver(matches.matchWithOverReadyToComplete);
+        const innings = updatedMatch.innings[0];
+
+        it('should update the completed overs count and clear the deliveries array', () => {
+            expect(innings.completedOvers).toBe(1);
+            expect(innings.deliveries).toHaveLength(0);
+        });
+
+        it('should set the current batter to the other one currently in', () => {
+            expect(innings.currentBatterIndex).toBe(1);
+        });
+
+        it('should clear the current bowler', () => {
+            expect(innings.currentBowlerIndex).toBeUndefined();
         });
     });
 });

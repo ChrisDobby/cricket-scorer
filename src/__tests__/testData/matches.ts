@@ -1,4 +1,4 @@
-import { Match } from '../../domain';
+import { Match, DeliveryOutcome } from '../../domain';
 
 export const blankMatch: Match = {
     homeTeam: {
@@ -105,6 +105,54 @@ const inningsWithStartedOver = {
     currentBowlerIndex: 0,
 };
 
+const inningsWithOverReadyToComplete = {
+    ...inningsWithStartedOver,
+    deliveries: [
+        {
+            time: new Date(),
+            bowlerIndex: 0,
+            batsmanIndex: 0,
+            overNumber: 1,
+            outcome: { score: 0, deliveryOutcome: DeliveryOutcome.Dot },
+        },
+        {
+            time: new Date(),
+            bowlerIndex: 0,
+            batsmanIndex: 0,
+            overNumber: 1,
+            outcome: { score: 0, deliveryOutcome: DeliveryOutcome.Dot },
+        },
+        {
+            time: new Date(),
+            bowlerIndex: 0,
+            batsmanIndex: 0,
+            overNumber: 1,
+            outcome: { score: 0, deliveryOutcome: DeliveryOutcome.Dot },
+        },
+        {
+            time: new Date(),
+            bowlerIndex: 0,
+            batsmanIndex: 0,
+            overNumber: 1,
+            outcome: { score: 0, deliveryOutcome: DeliveryOutcome.Dot },
+        },
+        {
+            time: new Date(),
+            bowlerIndex: 0,
+            batsmanIndex: 0,
+            overNumber: 1,
+            outcome: { score: 0, deliveryOutcome: DeliveryOutcome.Dot },
+        },
+        {
+            time: new Date(),
+            bowlerIndex: 0,
+            batsmanIndex: 0,
+            overNumber: 1,
+            outcome: { score: 0, deliveryOutcome: DeliveryOutcome.Dot },
+        },
+    ],
+};
+
 export const matchWithStartedInnings: Match = {
     ...blankMatch,
     innings: [startedInnings],
@@ -113,4 +161,9 @@ export const matchWithStartedInnings: Match = {
 export const matchWithStartedOver: Match = {
     ...blankMatch,
     innings: [inningsWithStartedOver],
+};
+
+export const matchWithOverReadyToComplete: Match = {
+    ...blankMatch,
+    innings: [inningsWithOverReadyToComplete],
 };

@@ -1,7 +1,8 @@
 import { match } from '../../reducers/matchReducer';
 import * as domain from '../../domain';
-import { START_INNINGS, NEW_BOWLER, DOT_BALL } from '../../actions/types';
+import { START_INNINGS, NEW_BOWLER, DOT_BALL, COMPLETE_OVER } from '../../actions/types';
 import * as inningsMock from '../../match/innings';
+import { StaticRouter } from 'react-router';
 
 jest.mock('../../match/innings', () => {
     return {
@@ -11,6 +12,7 @@ jest.mock('../../match/innings', () => {
         currentBowler: jest.fn(),
         currentBatter: jest.fn(),
         dotBall: jest.fn(),
+        completeOver: jest.fn(),
     };
 });
 
@@ -182,5 +184,16 @@ describe('match', () => {
                 state.match,
             );
         });
+    });
+
+    describe('completeOver', () => {
+        match(
+            startedMatchState,
+            { type: COMPLETE_OVER },
+        );
+
+        expect(inningsMock.completeOver).toHaveBeenCalledWith(
+            startedMatchState.match,
+        );
     });
 });

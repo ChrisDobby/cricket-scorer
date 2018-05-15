@@ -30,4 +30,12 @@ describe('index', () => {
             expect(actionResult.type).toBe(types.DOT_BALL);
         });
     });
+
+    describe('completeOver', () => {
+        it('should return a complete over type', () => {
+            const actionResult = actions.completeOver();
+
+            expect(actionResult.type).toBe(types.COMPLETE_OVER);
+        });
+    });
 });

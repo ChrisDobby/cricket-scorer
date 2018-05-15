@@ -123,6 +123,7 @@ export interface State {
     currentInnings?: Innings;
     currentBatter?: Batter;
     currentBowler?: Bowler;
+    currentOverComplete?: boolean;
 }
 
 export const howOutDescription = (wicket?: Wicket): string => {

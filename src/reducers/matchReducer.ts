@@ -41,6 +41,15 @@ export const match = (state: State, action: InningsAction): State => {
         };
     }
 
+    case types.COMPLETE_OVER: {
+        const updatedMatch = innings.completeOver(state.match);
+
+        return {
+            ...state,
+            match: updatedMatch,
+        };
+    }
+
     default:
         return state;
     }

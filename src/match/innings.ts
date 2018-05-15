@@ -193,3 +193,27 @@ export const dotBall = (match: domain.Match): domain.Match => {
         ],
     };
 };
+
+export const completeOver = (match: domain.Match): domain.Match => {
+    const innings = currentInnings(match);
+    const [nextBatterIndex] = innings.batting.batters
+        .map((batter, index) => ({ batter, index }))
+        .filter(indexedBatter => indexedBatter.batter.innings && indexedBatter.index !== innings.currentBatterIndex)
+        .map(indexedBatter => indexedBatter.index);
+
+    const updatedInnings = {
+        ...innings,
+        completedOvers: innings.completedOvers + 1,
+        deliveries: [],
+        currentBatterIndex: nextBatterIndex,
+        currentBowlerIndex: undefined,
+    };
+
+    return {
+        ...match,
+        innings: [
+            ...match.innings.filter(inn => inn !== innings),
+            updatedInnings,
+        ],
+    };
+};

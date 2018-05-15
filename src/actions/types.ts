@@ -6,3 +6,6 @@ export type NEW_BOWLER = typeof NEW_BOWLER;
 
 export const DOT_BALL = 'DOT_BALL';
 export type DOT_BALL = typeof DOT_BALL;
+
+export const COMPLETE_OVER = 'COMPLETE_OVER';
+export type COMPLETE_OVER = typeof COMPLETE_OVER;

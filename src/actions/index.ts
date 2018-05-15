@@ -17,7 +17,11 @@ export interface DotBall {
     type: types.DOT_BALL;
 }
 
-export type InningsAction = StartInnings | NewBowler | DotBall;
+export interface CompleteOver {
+    type: types.COMPLETE_OVER;
+}
+
+export type InningsAction = StartInnings | NewBowler | DotBall | CompleteOver;
 
 export const startInnings = (battingTeam: Team, batter1Index: number, batter2Index: number) => ({
     battingTeam,
@@ -32,3 +36,5 @@ export const newBowler = (bowlerIndex: number) => ({
 });
 
 export const dotBall = () => ({ type: types.DOT_BALL });
+
+export const completeOver = () => ({ type: types.COMPLETE_OVER });
