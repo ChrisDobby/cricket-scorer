@@ -28,3 +28,7 @@ export const sectionContainer: React.CSSProperties = {
     padding: '20px',
     marginBottom: '10px',
 };
+
+export const primaryColour: React.CSSProperties = {
+    color: '#007bff',
+};

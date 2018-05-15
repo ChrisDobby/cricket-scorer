@@ -5,6 +5,7 @@ import * as globalStyles from '../styles';
 import { SaveButton } from './SaveButton';
 
 const indicatorStyle: React.CSSProperties = {
+    ...globalStyles.primaryColour,
     float: 'left',
     width: '30px',
     textAlign: 'center',

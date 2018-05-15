@@ -53,7 +53,8 @@ export const BallEntry = ({ innings, batter, bowler, ballFunctions }: BallEntryP
                                 <span>
                                     <h5 style={battingScoreStyle}>{`${currentBatter.innings.runs}` +
                                         `(${currentBatter.innings.ballsFaced})`}</h5>
-                                    {currentBatter.name === batter.name && <i className="fa fa-circle" />}
+                                    {currentBatter.name === batter.name &&
+                                        <i style={globalStyles.primaryColour} className="fa fa-certificate" />}
                                 </span>
                             </div>
                         </div>

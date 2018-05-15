@@ -207,6 +207,7 @@ exports[`InProgress should render correctly for match with started innings 1`] =
               <div
                 style={
                   Object {
+                    "color": "#007bff",
                     "float": "left",
                     "textAlign": "center",
                     "width": "30px",
@@ -229,6 +230,7 @@ exports[`InProgress should render correctly for match with started innings 1`] =
               <div
                 style={
                   Object {
+                    "color": "#007bff",
                     "float": "left",
                     "textAlign": "center",
                     "width": "30px",
@@ -251,6 +253,7 @@ exports[`InProgress should render correctly for match with started innings 1`] =
               <div
                 style={
                   Object {
+                    "color": "#007bff",
                     "float": "left",
                     "textAlign": "center",
                     "width": "30px",
@@ -273,6 +276,7 @@ exports[`InProgress should render correctly for match with started innings 1`] =
               <div
                 style={
                   Object {
+                    "color": "#007bff",
                     "float": "left",
                     "textAlign": "center",
                     "width": "30px",
@@ -295,6 +299,7 @@ exports[`InProgress should render correctly for match with started innings 1`] =
               <div
                 style={
                   Object {
+                    "color": "#007bff",
                     "float": "left",
                     "textAlign": "center",
                     "width": "30px",
@@ -317,6 +322,7 @@ exports[`InProgress should render correctly for match with started innings 1`] =
               <div
                 style={
                   Object {
+                    "color": "#007bff",
                     "float": "left",
                     "textAlign": "center",
                     "width": "30px",
@@ -339,6 +345,7 @@ exports[`InProgress should render correctly for match with started innings 1`] =
               <div
                 style={
                   Object {
+                    "color": "#007bff",
                     "float": "left",
                     "textAlign": "center",
                     "width": "30px",
@@ -361,6 +368,7 @@ exports[`InProgress should render correctly for match with started innings 1`] =
               <div
                 style={
                   Object {
+                    "color": "#007bff",
                     "float": "left",
                     "textAlign": "center",
                     "width": "30px",
@@ -383,6 +391,7 @@ exports[`InProgress should render correctly for match with started innings 1`] =
               <div
                 style={
                   Object {
+                    "color": "#007bff",
                     "float": "left",
                     "textAlign": "center",
                     "width": "30px",
@@ -405,6 +414,7 @@ exports[`InProgress should render correctly for match with started innings 1`] =
               <div
                 style={
                   Object {
+                    "color": "#007bff",
                     "float": "left",
                     "textAlign": "center",
                     "width": "30px",
@@ -427,6 +437,7 @@ exports[`InProgress should render correctly for match with started innings 1`] =
               <div
                 style={
                   Object {
+                    "color": "#007bff",
                     "float": "left",
                     "textAlign": "center",
                     "width": "30px",
