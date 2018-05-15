@@ -21,6 +21,9 @@ describe('innings', () => {
             expect(innings.fallOfWickets).toHaveLength(0);
             expect(innings.allOut).toBeFalsy();
             expect(innings.complete).toBeFalsy();
+            expect(innings.deliveries).toHaveLength(0);
+            expect(innings.completedOvers).toBe(0);
+            expect(innings.totalOvers).toBe('0');
         });
 
         it('should include all players from the batting team', () => {
@@ -331,6 +334,12 @@ describe('innings', () => {
             const batter = innings.batting.batters[innings.currentBatterIndex as number];
 
             expect((batter.innings as BattingInnings).ballsFaced).toBe(1);
+        });
+
+        it('should update the total overs for the innings', () => {
+            const innings = updatedMatch.innings[0];
+
+            expect(innings.totalOvers).toBe('0.1');
         });
     });
 });

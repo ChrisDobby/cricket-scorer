@@ -47,6 +47,7 @@ const startedInnings = {
     allOut: false,
     balls: 0,
     completedOvers: 0,
+    totalOvers: '0',
     deliveries: [],
     batting: {
         batters: [],

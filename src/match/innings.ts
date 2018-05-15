@@ -1,4 +1,4 @@
-import { Match, Team, Innings, Batter, Bowler, DeliveryOutcome, BattingInnings, Delivery } from '../domain';
+import * as domain from '../domain';
 
 const battingInOrder = (players: string[], batsman1Index: number, batsman2Index: number): string[] =>
     [
@@ -6,12 +6,18 @@ const battingInOrder = (players: string[], batsman1Index: number, batsman2Index:
         players[batsman2Index],
         ...players.filter((_, idx) => idx !== batsman1Index && idx !== batsman2Index)];
 
-const newInnings = (match: Match, battingTeam: Team, batsman1Index: number, batsman2Index: number): Innings => ({
+const newInnings = (
+    match: domain.Match,
+    battingTeam: domain.Team,
+    batsman1Index: number,
+    batsman2Index: number,
+): domain.Innings => ({
     battingTeam,
     bowlingTeam: battingTeam.name === match.homeTeam.name ? match.awayTeam : match.homeTeam,
     score: 0,
     wickets: 0,
     completedOvers: 0,
+    totalOvers: '0',
     deliveries: [],
     batting: {
         extras: {
@@ -47,7 +53,12 @@ const newInnings = (match: Match, battingTeam: Team, batsman1Index: number, bats
     currentBatterIndex: 0,
 });
 
-export const startInnings = (match: Match, battingTeam: Team, batsman1Index: number, batsman2Index: number) => {
+export const startInnings = (
+    match: domain.Match,
+    battingTeam: domain.Team,
+    batsman1Index: number,
+    batsman2Index: number,
+) => {
     const innings = newInnings(match, battingTeam, batsman1Index, batsman2Index);
     return {
         ...match,
@@ -55,34 +66,34 @@ export const startInnings = (match: Match, battingTeam: Team, batsman1Index: num
     };
 };
 
-export const currentInnings = (match: Match): Innings => {
+export const currentInnings = (match: domain.Match): domain.Innings => {
     const [innings] = match.innings.filter(inn => !inn.complete);
 
     return innings;
 };
 
-export const currentBatter = (match: Match): Batter | undefined => {
+export const currentBatter = (match: domain.Match): domain.Batter | undefined => {
     const innings = currentInnings(match);
     if (!innings || Number(innings.currentBatterIndex) === Number.NaN) { return undefined; }
 
     return innings.batting.batters[Number(innings.currentBatterIndex)];
 };
 
-export const currentBowler = (match: Match): Bowler | undefined => {
+export const currentBowler = (match: domain.Match): domain.Bowler | undefined => {
     const innings = currentInnings(match);
     if (!innings || Number(innings.currentBowlerIndex) === Number.NaN) { return undefined; }
 
     return innings.bowlers[Number(innings.currentBowlerIndex)];
 };
 
-export const currentOver = (match: Match): Delivery[] => {
+export const currentOver = (match: domain.Match): domain.Delivery[] => {
     const innings = currentInnings(match);
     if (!innings) { return []; }
 
     return innings.deliveries.filter(delivery => delivery.overNumber > innings.completedOvers);
 };
 
-const createBowler = (team: Team, bowlers: Bowler[], bowlerIndex: number): Bowler => ({
+const createBowler = (team: domain.Team, bowlers: domain.Bowler[], bowlerIndex: number): domain.Bowler => ({
     playerIndex: bowlerIndex,
     name: team.players[bowlerIndex],
     completedOvers: 0,
@@ -91,8 +102,8 @@ const createBowler = (team: Team, bowlers: Bowler[], bowlerIndex: number): Bowle
     wickets: 0,
 });
 
-export const newBowler = (match: Match, bowlerIndex: number) => {
-    const updatedInnings = (innings: Innings) => {
+export const newBowler = (match: domain.Match, bowlerIndex: number) => {
+    const updatedInnings = (innings: domain.Innings) => {
         const [existingBowler] = innings.bowlers.filter(b => b.playerIndex === bowlerIndex);
         if (existingBowler) {
             return {
@@ -124,9 +135,22 @@ export const newBowler = (match: Match, bowlerIndex: number) => {
     };
 };
 
-export const dotBall = (match: Match): Match => {
+export const dotBall = (match: domain.Match): domain.Match => {
     const innings = currentInnings(match);
     const currentBatter = innings.batting.batters[innings.currentBatterIndex as number];
+    const updatedDeliveries = [
+        ...innings.deliveries,
+        {
+            time: new Date(),
+            outcome: {
+                deliveryOutcome: domain.DeliveryOutcome.Dot,
+                score: 0,
+            },
+            overNumber: innings.completedOvers + 1,
+            batsmanIndex: innings.currentBatterIndex as number,
+            bowlerIndex: innings.currentBowlerIndex as number,
+        },
+    ];
 
     return {
         ...match,
@@ -143,27 +167,16 @@ export const dotBall = (match: Match): Match => {
                                     ...currentBatter,
                                     innings: {
                                         ...currentBatter
-                                            .innings as BattingInnings,
+                                            .innings as domain.BattingInnings,
                                         ballsFaced:
-                                            (currentBatter.innings as BattingInnings).ballsFaced + 1,
+                                            (currentBatter.innings as domain.BattingInnings).ballsFaced + 1,
                                     },
                                 }
                                 : batter),
                     ],
                 },
-                deliveries: [
-                    ...innings.deliveries,
-                    {
-                        time: new Date(),
-                        outcome: {
-                            deliveryOutcome: DeliveryOutcome.Dot,
-                            score: 0,
-                        },
-                        overNumber: innings.completedOvers + 1,
-                        batsmanIndex: innings.currentBatterIndex as number,
-                        bowlerIndex: innings.currentBowlerIndex as number,
-                    },
-                ],
+                deliveries: updatedDeliveries,
+                totalOvers: domain.oversDescription(innings.completedOvers, updatedDeliveries),
             },
         ],
     };

@@ -38,10 +38,10 @@ export interface BattingProps {
     batting: InningsBatting;
     score: number;
     wickets: number;
-    completedOvers: number;
+    totalOvers: string;
 }
 
-export const Batting = ({ batting, score, wickets, completedOvers }: BattingProps) => (
+export const Batting = ({ batting, score, wickets, totalOvers }: BattingProps) => (
     <div className="col-xl-8 col-lg-12">
         <div style={globalStyles.sectionContainer}>
             <div className="row" style={globalStyles.headingRow}>
@@ -83,7 +83,7 @@ export const Batting = ({ batting, score, wickets, completedOvers }: BattingProp
                     </div>
                 </div>)}
             <Extras extras={batting.extras} />
-            <TotalLine score={score} wickets={wickets} completedOvers={completedOvers} />
+            <TotalLine score={score} wickets={wickets} totalOvers={totalOvers} />
         </div>
     </div>
 );

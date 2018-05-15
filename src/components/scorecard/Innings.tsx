@@ -17,7 +17,7 @@ export const Innings = ({ innings }: InningsProps) => (
                 batting={innings.batting}
                 score={innings.score}
                 wickets={innings.wickets}
-                completedOvers={innings.completedOvers}
+                totalOvers={innings.totalOvers}
             />
             <FallOfWickets fallOfWickets={innings.fallOfWickets} />
             <Bowling team={innings.bowlingTeam.name} bowlers={innings.bowlers} />

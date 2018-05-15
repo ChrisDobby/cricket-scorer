@@ -1200,7 +1200,7 @@ exports[`Scorecard should render correctly when match available 1`] = `
               <div
                 className="col-6 col-md-4"
               >
-                (10 wickets) (34 overs)
+                (10 wickets) (34.2 overs)
               </div>
               <div
                 className="col-2 col-md-1"

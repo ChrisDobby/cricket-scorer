@@ -25,7 +25,7 @@ describe('Batting', () => {
         };
 
         const battingView = ReactTestRenderer
-            .create(<Batting batting={battingWithNoInnings} score={100} wickets={1} completedOvers={20} />);
+            .create(<Batting batting={battingWithNoInnings} score={100} wickets={1} totalOvers={'20'} />);
 
         expect(battingView.toJSON()).toMatchSnapshot();
     });

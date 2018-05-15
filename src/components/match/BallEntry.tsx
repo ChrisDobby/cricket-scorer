@@ -36,7 +36,7 @@ export const BallEntry = ({ innings, batter, bowler, over, ballFunctions }: Ball
                         <h5>Overs</h5>
                     </div>
                     <div className="col-6">
-                        <h5>{oversDescription(innings.completedOvers, over)}</h5>
+                        <h5>{innings.totalOvers}</h5>
                     </div>
                 </div>
                 {innings.batting.batters.filter(batter => batter.innings && !batter.innings.wicket)
