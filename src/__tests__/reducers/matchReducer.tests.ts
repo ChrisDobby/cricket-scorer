@@ -10,7 +10,6 @@ jest.mock('../../match/innings', () => {
         newBowler: jest.fn(),
         currentBowler: jest.fn(),
         currentBatter: jest.fn(),
-        currentOver: jest.fn(),
         dotBall: jest.fn(),
     };
 });
@@ -110,22 +109,6 @@ describe('match', () => {
                 state.match,
             );
         });
-
-        it('should call currentOver when starting innings', () => {
-            const state = match(
-                startedMatchState,
-                {
-                    type: START_INNINGS,
-                    battingTeam: startedMatchState.match.homeTeam,
-                    batter1Index: 0,
-                    batter2Index: 1,
-                },
-            );
-
-            expect(inningsMock.currentOver).toHaveBeenCalledWith(
-                state.match,
-            );
-        });
     });
 
     describe('new bowler', () => {
@@ -189,13 +172,13 @@ describe('match', () => {
             );
         });
 
-        it('should call currentOver after dot ball', () => {
+        it('should call currentBowler after dot ball', () => {
             const state = match(
                 startedMatchState,
                 { type: DOT_BALL },
             );
 
-            expect(inningsMock.currentOver).toHaveBeenCalledWith(
+            expect(inningsMock.currentBowler).toHaveBeenCalledWith(
                 state.match,
             );
         });

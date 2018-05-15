@@ -24,6 +24,7 @@ describe('innings', () => {
             expect(innings.deliveries).toHaveLength(0);
             expect(innings.completedOvers).toBe(0);
             expect(innings.totalOvers).toBe('0');
+            expect(innings.currentOver).toHaveLength(0);
         });
 
         it('should include all players from the batting team', () => {
@@ -188,6 +189,7 @@ describe('innings', () => {
                 playerIndex: 10,
                 name: 'A Bowler',
                 completedOvers: 1,
+                totalOvers: '1',
                 maidenOvers: 1,
                 runs: 0,
                 wickets: 0,
@@ -208,64 +210,6 @@ describe('innings', () => {
         });
     });
 
-    describe('currentOver', () => {
-        it('should return empty if no innings current', () => {
-            const over = Innings.currentOver(blankMatch);
-
-            expect(over).toHaveLength(0);
-        });
-
-        it('should return every delivery after the last completed over', () => {
-            const over6Delivery1 = {
-                time: new Date(),
-                bowlerIndex: 0,
-                batsmanIndex: 0,
-                overNumber: 6,
-                outcome: { score: 1, deliveryOutcome: DeliveryOutcome.Runs },
-            };
-
-            const over6Delivery2 = {
-                time: new Date(),
-                bowlerIndex: 0,
-                batsmanIndex: 0,
-                overNumber: 6,
-                outcome: { score: 2, deliveryOutcome: DeliveryOutcome.Runs },
-            };
-
-            const matchWithOvers = {
-                ...matchWithStartedInnings,
-                innings: [{
-                    ...matchWithStartedInnings.innings[0],
-                    completedOvers: 5,
-                    deliveries: [
-                        {
-                            time: new Date(),
-                            bowlerIndex: 0,
-                            batsmanIndex: 0,
-                            overNumber: 4,
-                            outcome: { score: 0, deliveryOutcome: DeliveryOutcome.Dot },
-                        },
-                        {
-                            time: new Date(),
-                            bowlerIndex: 0,
-                            batsmanIndex: 0,
-                            overNumber: 5,
-                            outcome: { score: 0, deliveryOutcome: DeliveryOutcome.Dot },
-                        },
-                        over6Delivery1,
-                        over6Delivery2,
-                    ],
-                }],
-            };
-
-            const over = Innings.currentOver(matchWithOvers);
-
-            expect(over).toHaveLength(2);
-            expect(over[0]).toBe(over6Delivery1);
-            expect(over[1]).toBe(over6Delivery2);
-        });
-    });
-
     describe('newBowler', () => {
         it('should return the match if no current innings', () => {
             const updatedMatch = Innings.newBowler(blankMatch, 10);
@@ -283,7 +227,7 @@ describe('innings', () => {
             const bowler = innings.bowlers[0];
             expect(bowler.playerIndex).toBe(10);
             expect(bowler.name).toBe(matchWithStartedInnings.awayTeam.players[10]);
-            expect(bowler.completedOvers).toBe(0);
+            expect(bowler.totalOvers).toBe('0');
             expect(bowler.maidenOvers).toBe(0);
             expect(bowler.runs).toBe(0);
             expect(bowler.wickets).toBe(0);
@@ -298,6 +242,7 @@ describe('innings', () => {
                         playerIndex: 10,
                         name: matchWithStartedInnings.awayTeam.players[10],
                         completedOvers: 10,
+                        totalOvers: '10',
                         maidenOvers: 1,
                         runs: 34,
                         wickets: 2,
@@ -340,6 +285,19 @@ describe('innings', () => {
             const innings = updatedMatch.innings[0];
 
             expect(innings.totalOvers).toBe('0.1');
+        });
+
+        it('should update the current over for the innings', () => {
+            const innings = updatedMatch.innings[0];
+
+            expect(innings.currentOver).toHaveLength(1);
+        });
+
+        it('should update the bowlers figures', () => {
+            const innings = updatedMatch.innings[0];
+            const bowler = innings.bowlers[innings.currentBowlerIndex as number];
+
+            expect(bowler.totalOvers).toBe('0.1');
         });
     });
 });

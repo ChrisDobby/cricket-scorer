@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as globalStyles from '../styles';
-import { Innings, Batter, Bowler, oversDescription, BattingInnings, Delivery } from '../../domain';
+import { Innings, Batter, Bowler, BattingInnings } from '../../domain';
 import { EntryPanel, BallFunctions } from './EntryPanel';
 
 const battingScoreStyle: React.CSSProperties = {
@@ -12,11 +12,10 @@ export interface BallEntryProps {
     innings: Innings;
     batter: Batter;
     bowler: Bowler;
-    over: Delivery[];
     ballFunctions: BallFunctions;
 }
 
-export const BallEntry = ({ innings, batter, bowler, over, ballFunctions }: BallEntryProps) => (
+export const BallEntry = ({ innings, batter, bowler, ballFunctions }: BallEntryProps) => (
     <div style={globalStyles.sectionContainer}>
         <div className="row" style={globalStyles.singleHeadingRow}>
             <h4>{`${bowler.name} to ${batter.name}`}</h4>
@@ -65,7 +64,7 @@ export const BallEntry = ({ innings, batter, bowler, over, ballFunctions }: Ball
                     </div>
                     <div className="col-6">
                         <h5>
-                            {`${oversDescription(bowler.completedOvers, [])}-` +
+                            {`${bowler.totalOvers}-` +
                                 `${bowler.maidenOvers}-${bowler.runs}-${bowler.wickets}`}
                         </h5>
                     </div>

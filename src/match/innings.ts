@@ -11,47 +11,49 @@ const newInnings = (
     battingTeam: domain.Team,
     batsman1Index: number,
     batsman2Index: number,
-): domain.Innings => ({
-    battingTeam,
-    bowlingTeam: battingTeam.name === match.homeTeam.name ? match.awayTeam : match.homeTeam,
-    score: 0,
-    wickets: 0,
-    completedOvers: 0,
-    totalOvers: '0',
-    deliveries: [],
-    batting: {
-        extras: {
-            byes: 0,
-            legByes: 0,
-            wides: 0,
-            noBalls: 0,
-            penaltyRuns: 0,
+): domain.Innings =>
+    ({
+        battingTeam,
+        bowlingTeam: battingTeam.name === match.homeTeam.name ? match.awayTeam : match.homeTeam,
+        score: 0,
+        wickets: 0,
+        completedOvers: 0,
+        currentOver: [],
+        totalOvers: '0',
+        deliveries: [],
+        batting: {
+            extras: {
+                byes: 0,
+                legByes: 0,
+                wides: 0,
+                noBalls: 0,
+                penaltyRuns: 0,
+            },
+            batters: battingInOrder(
+                battingTeam.name === match.homeTeam.name ? match.homeTeam.players : match.awayTeam.players,
+                batsman1Index,
+                batsman2Index,
+            )
+                .map((player, idx) => ({
+                    position: idx + 1,
+                    name: player,
+                    innings: batsman1Index === idx || batsman2Index === idx
+                        ? {
+                            runs: 0,
+                            ballsFaced: 0,
+                            fours: 0,
+                            sixes: 0,
+                            timeIn: new Date(),
+                        }
+                        : undefined,
+                })),
         },
-        batters: battingInOrder(
-            battingTeam.name === match.homeTeam.name ? match.homeTeam.players : match.awayTeam.players,
-            batsman1Index,
-            batsman2Index,
-        )
-            .map((player, idx) => ({
-                position: idx + 1,
-                name: player,
-                innings: batsman1Index === idx || batsman2Index === idx
-                    ? {
-                        runs: 0,
-                        ballsFaced: 0,
-                        fours: 0,
-                        sixes: 0,
-                        timeIn: new Date(),
-                    }
-                    : undefined,
-            })),
-    },
-    bowlers: [],
-    fallOfWickets: [],
-    allOut: false,
-    complete: false,
-    currentBatterIndex: 0,
-});
+        bowlers: [],
+        fallOfWickets: [],
+        allOut: false,
+        complete: false,
+        currentBatterIndex: 0,
+    });
 
 export const startInnings = (
     match: domain.Match,
@@ -86,17 +88,15 @@ export const currentBowler = (match: domain.Match): domain.Bowler | undefined =>
     return innings.bowlers[Number(innings.currentBowlerIndex)];
 };
 
-export const currentOver = (match: domain.Match): domain.Delivery[] => {
-    const innings = currentInnings(match);
-    if (!innings) { return []; }
-
-    return innings.deliveries.filter(delivery => delivery.overNumber > innings.completedOvers);
+const currentOver = (completedOvers: number, deliveries: domain.Delivery[]): domain.Delivery[] => {
+    return deliveries.filter(delivery => delivery.overNumber > completedOvers);
 };
 
 const createBowler = (team: domain.Team, bowlers: domain.Bowler[], bowlerIndex: number): domain.Bowler => ({
     playerIndex: bowlerIndex,
     name: team.players[bowlerIndex],
     completedOvers: 0,
+    totalOvers: '0',
     maidenOvers: 0,
     runs: 0,
     wickets: 0,
@@ -152,6 +152,8 @@ export const dotBall = (match: domain.Match): domain.Match => {
         },
     ];
 
+    const over = currentOver(innings.completedOvers, updatedDeliveries);
+
     return {
         ...match,
         innings: [
@@ -175,8 +177,18 @@ export const dotBall = (match: domain.Match): domain.Match => {
                                 : batter),
                     ],
                 },
+                bowlers: [
+                    ...innings.bowlers.map((bowler, index) =>
+                        index === innings.currentBowlerIndex
+                            ? {
+                                ...bowler,
+                                totalOvers: domain.oversDescription(bowler.completedOvers, over),
+                            }
+                            : bowler),
+                ],
                 deliveries: updatedDeliveries,
                 totalOvers: domain.oversDescription(innings.completedOvers, updatedDeliveries),
+                currentOver: over,
             },
         ],
     };

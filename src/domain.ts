@@ -60,6 +60,7 @@ export interface Bowler {
     playerIndex: number;
     name: string;
     completedOvers: number;
+    totalOvers: string;
     maidenOvers: number;
     runs: number;
     wickets: number;
@@ -93,6 +94,7 @@ export interface Innings {
     allOut: boolean;
     completedOvers: number;
     totalOvers: string;
+    currentOver: Delivery[];
     deliveries: Delivery[];
     batting: Batting;
     bowlers: Bowler[];
@@ -121,7 +123,6 @@ export interface State {
     currentInnings?: Innings;
     currentBatter?: Batter;
     currentBowler?: Bowler;
-    currentOver?: Delivery[];
 }
 
 export const howOutDescription = (wicket?: Wicket): string => {

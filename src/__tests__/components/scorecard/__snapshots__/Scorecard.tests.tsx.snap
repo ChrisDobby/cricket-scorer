@@ -1761,7 +1761,7 @@ exports[`Scorecard should render correctly when match available 1`] = `
                   }
                 }
               >
-                10
+                10.2
               </div>
               <div
                 className="col-2 d-none d-md-block"

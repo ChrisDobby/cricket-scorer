@@ -48,6 +48,7 @@ const startedInnings = {
     balls: 0,
     completedOvers: 0,
     totalOvers: '0',
+    currentOver: [],
     deliveries: [],
     batting: {
         batters: [],
@@ -95,6 +96,7 @@ const inningsWithStartedOver = {
         playerIndex: 10,
         name: blankMatch.awayTeam.players[10],
         completedOvers: 0,
+        totalOvers: '0',
         maidenOvers: 0,
         runs: 0,
         wickets: 0,
