@@ -18,6 +18,7 @@ export const match = (state: State, action: InningsAction): State => {
             match: updatedMatch,
             currentInnings: innings.currentInnings(updatedMatch),
             currentBatter: innings.currentBatter(updatedMatch),
+            currentOver: innings.currentOver(updatedMatch),
         };
     }
 
@@ -37,6 +38,7 @@ export const match = (state: State, action: InningsAction): State => {
             match: updatedMatch,
             currentInnings: innings.currentInnings(updatedMatch),
             currentBatter: innings.currentBatter(updatedMatch),
+            currentOver: innings.currentOver(updatedMatch),
         };
     }
 

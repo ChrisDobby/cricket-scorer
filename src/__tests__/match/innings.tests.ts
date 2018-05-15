@@ -205,6 +205,64 @@ describe('innings', () => {
         });
     });
 
+    describe('currentOver', () => {
+        it('should return empty if no innings current', () => {
+            const over = Innings.currentOver(blankMatch);
+
+            expect(over).toHaveLength(0);
+        });
+
+        it('should return every delivery after the last completed over', () => {
+            const over6Delivery1 = {
+                time: new Date(),
+                bowlerIndex: 0,
+                batsmanIndex: 0,
+                overNumber: 6,
+                outcome: { score: 1, deliveryOutcome: DeliveryOutcome.Runs },
+            };
+
+            const over6Delivery2 = {
+                time: new Date(),
+                bowlerIndex: 0,
+                batsmanIndex: 0,
+                overNumber: 6,
+                outcome: { score: 2, deliveryOutcome: DeliveryOutcome.Runs },
+            };
+
+            const matchWithOvers = {
+                ...matchWithStartedInnings,
+                innings: [{
+                    ...matchWithStartedInnings.innings[0],
+                    completedOvers: 5,
+                    deliveries: [
+                        {
+                            time: new Date(),
+                            bowlerIndex: 0,
+                            batsmanIndex: 0,
+                            overNumber: 4,
+                            outcome: { score: 0, deliveryOutcome: DeliveryOutcome.Dot },
+                        },
+                        {
+                            time: new Date(),
+                            bowlerIndex: 0,
+                            batsmanIndex: 0,
+                            overNumber: 5,
+                            outcome: { score: 0, deliveryOutcome: DeliveryOutcome.Dot },
+                        },
+                        over6Delivery1,
+                        over6Delivery2,
+                    ],
+                }],
+            };
+
+            const over = Innings.currentOver(matchWithOvers);
+
+            expect(over).toHaveLength(2);
+            expect(over[0]).toBe(over6Delivery1);
+            expect(over[1]).toBe(over6Delivery2);
+        });
+    });
+
     describe('newBowler', () => {
         it('should return the match if no current innings', () => {
             const updatedMatch = Innings.newBowler(blankMatch, 10);

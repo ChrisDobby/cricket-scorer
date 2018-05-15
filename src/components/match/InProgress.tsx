@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect, Dispatch } from 'react-redux';
-import { Match, Innings, Team, Batter, Bowler, State } from '../../domain';
+import { Match, Innings, Team, Batter, Bowler, Delivery, State } from '../../domain';
 import WithNavBar from '../WithNavBar';
 import { StartInnings } from './StartInnings';
 import { SelectBowler } from './SelectBowler';
@@ -13,6 +13,7 @@ interface InProgressProps {
     currentInnings?: Innings;
     currentBatter?: Batter;
     currentBowler?: Bowler;
+    currentOver?: Delivery[];
     startInnings?: (t: Team, b1: number, b2: number) => void;
     newBowler?: (b: number) => void;
     ballFunctions?: BallFunctions;
@@ -40,12 +41,15 @@ class InProgress extends React.Component<InProgressProps, {}> {
         if (this.props.currentInnings &&
             this.props.currentBatter &&
             this.props.currentBowler &&
+            this.props.currentOver &&
             this.props.ballFunctions) {
+            console.log(this.props.currentOver);
             return (
                 <BallEntry
                     innings={this.props.currentInnings}
                     batter={this.props.currentBatter}
                     bowler={this.props.currentBowler}
+                    over={this.props.currentOver}
                     ballFunctions={this.props.ballFunctions}
                 />
             );
@@ -60,6 +64,7 @@ const mapStateToProps = (state: State) => ({
     currentInnings: state.currentInnings,
     currentBatter: state.currentBatter,
     currentBowler: state.currentBowler,
+    currentOver: state.currentOver,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<actions.InningsAction>) => ({

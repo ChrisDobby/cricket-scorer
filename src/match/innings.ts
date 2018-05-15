@@ -1,4 +1,4 @@
-import { Match, Team, Innings, Batter, Bowler, DeliveryOutcome, BattingInnings } from '../domain';
+import { Match, Team, Innings, Batter, Bowler, DeliveryOutcome, BattingInnings, Delivery } from '../domain';
 
 const battingInOrder = (players: string[], batsman1Index: number, batsman2Index: number): string[] =>
     [
@@ -73,6 +73,13 @@ export const currentBowler = (match: Match): Bowler | undefined => {
     if (!innings || Number(innings.currentBowlerIndex) === Number.NaN) { return undefined; }
 
     return innings.bowlers[Number(innings.currentBowlerIndex)];
+};
+
+export const currentOver = (match: Match): Delivery[] => {
+    const innings = currentInnings(match);
+    if (!innings) { return []; }
+
+    return innings.deliveries.filter(delivery => delivery.overNumber > innings.completedOvers);
 };
 
 const createBowler = (team: Team, bowlers: Bowler[], bowlerIndex: number): Bowler => ({

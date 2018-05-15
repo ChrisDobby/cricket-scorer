@@ -120,6 +120,7 @@ export interface State {
     currentInnings?: Innings;
     currentBatter?: Batter;
     currentBowler?: Bowler;
+    currentOver?: Delivery[];
 }
 
 export const howOutDescription = (wicket?: Wicket): string => {
