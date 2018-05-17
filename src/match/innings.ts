@@ -199,6 +199,7 @@ export const dotBall = (match: domain.InProgressMatch) => {
         currentInnings: updatedInnings,
         currentBowler: currentBowler(updatedInnings, match.currentBowlerIndex),
         currentBatter: currentBatter(updatedInnings, match.currentBatterIndex),
+        currentOverComplete: updatedDeliveries.filter(domain.validDelivery).length >= 6,
     };
 };
 
@@ -242,5 +243,6 @@ export const completeOver = (match: domain.InProgressMatch) => {
         currentBowlerIndex: undefined,
         currentBatter: currentBatter(updatedInnings, nextBatterIndex),
         currentBowler: undefined,
+        currentOverComplete: false,
     };
 };

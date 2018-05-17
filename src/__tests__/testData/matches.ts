@@ -170,4 +170,5 @@ export const matchWithOverReadyToComplete: InProgressMatch = {
     currentBatterIndex: 0,
     currentBatter: inningsWithOverReadyToComplete.batting.batters[0],
     currentBowler: inningsWithOverReadyToComplete.bowlers[0],
+    currentOverComplete: true,
 };

@@ -240,6 +240,15 @@ describe('innings', () => {
             expect(updatedMatch.currentBatter)
                 .toBe(innings.batting.batters[(updatedMatch.currentBatterIndex as number)]);
         });
+
+        it('should update the currentOverComplete flag to true if >= 6 valid deliveries', () => {
+            const match = Innings.dotBall({
+                ...matches.matchWithOverReadyToComplete,
+                currentOverComplete: false,
+            });
+
+            expect(match.currentOverComplete).toBeTruthy();
+        });
     });
 
     describe('completeOver', () => {
@@ -281,6 +290,10 @@ describe('innings', () => {
             expect(bowler.completedOvers).toBe(1);
             expect(bowler.totalOvers).toBe('1');
             expect(bowler.maidenOvers).toBe(0);
+        });
+
+        it('should reset the currentOverComplete flag', () => {
+            expect(updatedMatch.currentOverComplete).toBeFalsy();
         });
     });
 });

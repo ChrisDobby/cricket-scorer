@@ -164,10 +164,12 @@ export const howOutDescription = (wicket?: Wicket): string => {
         : 'not out';
 };
 
+export const validDelivery = (delivery: Delivery) =>
+    delivery.outcome.deliveryOutcome !== DeliveryOutcome.Noball &&
+    delivery.outcome.deliveryOutcome !== DeliveryOutcome.Wide;
+
 export const oversDescription = (completedOvers: number, currentOver: Delivery[]): string => {
-    const validCurrentOver = currentOver
-        .filter(delivery => delivery.outcome.deliveryOutcome !== DeliveryOutcome.Noball &&
-            delivery.outcome.deliveryOutcome !== DeliveryOutcome.Wide);
+    const validCurrentOver = currentOver.filter(validDelivery);
     const remainder = validCurrentOver.length > 0 ? `.${validCurrentOver.length}` : '';
     return `${completedOvers}${remainder}`;
 };

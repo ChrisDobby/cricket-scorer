@@ -8,14 +8,19 @@ const battingScoreStyle: React.CSSProperties = {
     marginRight: '10px',
 };
 
+const overAlertStyle: React.CSSProperties = {
+    textAlign: 'center',
+};
+
 export interface BallEntryProps {
     innings: Innings;
     batter: Batter;
     bowler: Bowler;
+    overComplete: boolean;
     ballFunctions: BallFunctions;
 }
 
-export const BallEntry = ({ innings, batter, bowler, ballFunctions }: BallEntryProps) => (
+export const BallEntry = ({ innings, batter, bowler, overComplete, ballFunctions }: BallEntryProps) => (
     <div style={globalStyles.sectionContainer}>
         <div className="row" style={globalStyles.singleHeadingRow}>
             <h4>{`${bowler.name} to ${batter.name}`}</h4>
@@ -70,11 +75,25 @@ export const BallEntry = ({ innings, batter, bowler, ballFunctions }: BallEntryP
                         </h5>
                     </div>
                 </div>
+                {overComplete &&
+                    <div className="row">
+                    <div className="col-12" style={overAlertStyle}>
+                            <div className="alert alert-danger" role="alert">
+                                The current over should now be complete.
+                            <div>
+                                <button
+                                    className="btn btn-danger"
+                                    onClick={ballFunctions.completeOver}
+                                >Complete it now
+                                </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>}
             </div>
             <div className="col-12 col-lg-6">
                 <EntryPanel ballFunctions={ballFunctions} />
             </div>
         </div>
     </div>
-
 );

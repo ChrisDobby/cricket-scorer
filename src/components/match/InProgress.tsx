@@ -43,6 +43,7 @@ class InProgress extends React.Component<InProgressProps, {}> {
                     innings={this.props.match.currentInnings}
                     batter={this.props.match.currentBatter}
                     bowler={this.props.match.currentBowler}
+                    overComplete={!!this.props.match.currentOverComplete}
                     ballFunctions={this.props.ballFunctions}
                 />
             );
