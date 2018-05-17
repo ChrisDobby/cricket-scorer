@@ -257,7 +257,7 @@ describe('innings', () => {
 
         it('should update the current innings', () => {
             expect(updatedMatch.currentInnings).toBe(innings);
-        })
+        });
 
         it('should set the current batter to the other one currently in', () => {
             expect(updatedMatch.currentBatterIndex).toBe(1);
