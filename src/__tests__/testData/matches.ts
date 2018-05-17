@@ -1,4 +1,4 @@
-import { Match, DeliveryOutcome } from '../../domain';
+import { Match, DeliveryOutcome, InProgressMatch } from '../../domain';
 
 export const blankMatch: Match = {
     homeTeam: {
@@ -101,8 +101,6 @@ const inningsWithStartedOver = {
         runs: 0,
         wickets: 0,
     }],
-    currentBatterIndex: 0,
-    currentBowlerIndex: 0,
 };
 
 const inningsWithOverReadyToComplete = {
@@ -158,12 +156,16 @@ export const matchWithStartedInnings: Match = {
     innings: [startedInnings],
 };
 
-export const matchWithStartedOver: Match = {
+export const matchWithStartedOver: InProgressMatch = {
     ...blankMatch,
     innings: [inningsWithStartedOver],
+    currentBatterIndex: 0,
+    currentBowlerIndex: 0,
 };
 
-export const matchWithOverReadyToComplete: Match = {
+export const matchWithOverReadyToComplete: InProgressMatch = {
     ...blankMatch,
     innings: [inningsWithOverReadyToComplete],
+    currentBowlerIndex: 0,
+    currentBatterIndex: 0,
 };

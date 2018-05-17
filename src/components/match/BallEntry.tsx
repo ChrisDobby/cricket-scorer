@@ -76,4 +76,5 @@ export const BallEntry = ({ innings, batter, bowler, ballFunctions }: BallEntryP
             </div>
         </div>
     </div>
+
 );

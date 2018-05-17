@@ -18,7 +18,6 @@ const testInnings1: domain.Innings = {
     allOut: false,
     completedOvers: 45,
     totalOvers: '45',
-    currentOver: [],
     deliveries: [],
     batting: {
         extras: {
@@ -249,7 +248,6 @@ const testInnings2: domain.Innings = {
     wickets: 10,
     allOut: true,
     completedOvers: 34,
-    currentOver: [],
     totalOvers: '34.2',
     deliveries: [],
     batting: {

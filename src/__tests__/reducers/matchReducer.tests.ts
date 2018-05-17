@@ -2,15 +2,11 @@ import { match } from '../../reducers/matchReducer';
 import * as domain from '../../domain';
 import { START_INNINGS, NEW_BOWLER, DOT_BALL, COMPLETE_OVER } from '../../actions/types';
 import * as inningsMock from '../../match/innings';
-import { StaticRouter } from 'react-router';
 
 jest.mock('../../match/innings', () => {
     return {
         startInnings: jest.fn(),
-        currentInnings: jest.fn(),
         newBowler: jest.fn(),
-        currentBowler: jest.fn(),
-        currentBatter: jest.fn(),
         dotBall: jest.fn(),
         completeOver: jest.fn(),
     };
@@ -79,38 +75,6 @@ describe('match', () => {
                 1,
             );
         });
-
-        it('should call currentInnings when starting innings', () => {
-            const state = match(
-                startedMatchState,
-                {
-                    type: START_INNINGS,
-                    battingTeam: startedMatchState.match.homeTeam,
-                    batter1Index: 0,
-                    batter2Index: 1,
-                },
-            );
-
-            expect(inningsMock.currentInnings).toHaveBeenCalledWith(
-                state.match,
-            );
-        });
-
-        it('should call currentBatter when starting innings', () => {
-            const state = match(
-                startedMatchState,
-                {
-                    type: START_INNINGS,
-                    battingTeam: startedMatchState.match.homeTeam,
-                    batter1Index: 0,
-                    batter2Index: 1,
-                },
-            );
-
-            expect(inningsMock.currentBatter).toHaveBeenCalledWith(
-                state.match,
-            );
-        });
     });
 
     describe('new bowler', () => {
@@ -128,18 +92,6 @@ describe('match', () => {
                 10,
             );
         });
-
-        it('should call currentBowler when setting new bowler', () => {
-            match(
-                startedMatchState,
-                {
-                    type: NEW_BOWLER,
-                    bowlerIndex: 10,
-                },
-            );
-
-            expect(inningsMock.currentBowler).toHaveBeenCalled();
-        });
     });
 
     describe('dot ball', () => {
@@ -151,49 +103,18 @@ describe('match', () => {
 
             expect(inningsMock.dotBall).toHaveBeenCalled();
         });
-
-        it('should call currentInnings after dot ball', () => {
-            const state = match(
-                startedMatchState,
-                { type: DOT_BALL },
-            );
-
-            expect(inningsMock.currentInnings).toHaveBeenCalledWith(
-                state.match,
-            );
-        });
-
-        it('should call currentBatter after dot ball', () => {
-            const state = match(
-                startedMatchState,
-                { type: DOT_BALL },
-            );
-
-            expect(inningsMock.currentBatter).toHaveBeenCalledWith(
-                state.match,
-            );
-        });
-
-        it('should call currentBowler after dot ball', () => {
-            const state = match(
-                startedMatchState,
-                { type: DOT_BALL },
-            );
-
-            expect(inningsMock.currentBowler).toHaveBeenCalledWith(
-                state.match,
-            );
-        });
     });
 
     describe('completeOver', () => {
-        match(
-            startedMatchState,
-            { type: COMPLETE_OVER },
-        );
+        it('should call innings,completeOver when complete over action received', () => {
+            match(
+                startedMatchState,
+                { type: COMPLETE_OVER },
+            );
 
-        expect(inningsMock.completeOver).toHaveBeenCalledWith(
-            startedMatchState.match,
-        );
+            expect(inningsMock.completeOver).toHaveBeenCalledWith(
+                startedMatchState.match,
+            );
+        });
     });
 });

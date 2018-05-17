@@ -15,9 +15,14 @@ describe('InProgress', () => {
     });
 
     it('should render correctly for match with started innings', () => {
+        const inProgressMatchWithStartedInnings = {
+            ...matchWithStartedInnings,
+            currentInnings: matchWithStartedInnings.innings[0],
+        };
+
         const store = createStore(
             matchReducer,
-            { match: matchWithStartedInnings, currentInnings: matchWithStartedInnings.innings[0] },
+            { match: inProgressMatchWithStartedInnings },
         );
         const inProgress = ReactTestRenderer.create(<Provider store={store}><InProgress /></Provider>);
 

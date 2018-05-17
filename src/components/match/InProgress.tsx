@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect, Dispatch } from 'react-redux';
-import { Match, Innings, Team, Batter, Bowler, State } from '../../domain';
+import { InProgressMatch, Team, State } from '../../domain';
 import WithNavBar from '../WithNavBar';
 import { StartInnings } from './StartInnings';
 import { SelectBowler } from './SelectBowler';
@@ -9,10 +9,7 @@ import * as actions from '../../actions/index';
 import { BallFunctions } from './EntryPanel';
 
 interface InProgressProps {
-    match: Match;
-    currentInnings?: Innings;
-    currentBatter?: Batter;
-    currentBowler?: Bowler;
+    match: InProgressMatch;
     startInnings?: (t: Team, b1: number, b2: number) => void;
     newBowler?: (b: number) => void;
     ballFunctions?: BallFunctions;
@@ -20,7 +17,7 @@ interface InProgressProps {
 
 class InProgress extends React.Component<InProgressProps, {}> {
     render() {
-        if (!this.props.currentInnings && this.props.startInnings) {
+        if (!this.props.match.currentInnings && this.props.startInnings) {
             return (
                 <StartInnings
                     teams={[this.props.match.homeTeam, this.props.match.awayTeam]}
@@ -29,23 +26,23 @@ class InProgress extends React.Component<InProgressProps, {}> {
             );
         }
 
-        if (this.props.currentInnings && !this.props.currentBowler && this.props.newBowler) {
+        if (this.props.match.currentInnings && !this.props.match.currentBowler && this.props.newBowler) {
             return (
                 <SelectBowler
-                    bowlingTeam={this.props.currentInnings.bowlingTeam}
+                    bowlingTeam={this.props.match.currentInnings.bowlingTeam}
                     selectBowler={this.props.newBowler}
                 />);
         }
 
-        if (this.props.currentInnings &&
-            this.props.currentBatter &&
-            this.props.currentBowler &&
+        if (this.props.match.currentInnings &&
+            this.props.match.currentBatter &&
+            this.props.match.currentBowler &&
             this.props.ballFunctions) {
             return (
                 <BallEntry
-                    innings={this.props.currentInnings}
-                    batter={this.props.currentBatter}
-                    bowler={this.props.currentBowler}
+                    innings={this.props.match.currentInnings}
+                    batter={this.props.match.currentBatter}
+                    bowler={this.props.match.currentBowler}
                     ballFunctions={this.props.ballFunctions}
                 />
             );
@@ -57,9 +54,6 @@ class InProgress extends React.Component<InProgressProps, {}> {
 
 const mapStateToProps = (state: State) => ({
     match: state.match,
-    currentInnings: state.currentInnings,
-    currentBatter: state.currentBatter,
-    currentBowler: state.currentBowler,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<actions.InningsAction>) => ({

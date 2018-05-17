@@ -94,14 +94,11 @@ export interface Innings {
     allOut: boolean;
     completedOvers: number;
     totalOvers: string;
-    currentOver: Delivery[];
     deliveries: Delivery[];
     batting: Batting;
     bowlers: Bowler[];
     fallOfWickets: FallOfWicket[];
     complete: boolean;
-    currentBatterIndex?: number;
-    currentBowlerIndex?: number;
 }
 
 export interface Team {
@@ -118,12 +115,18 @@ export interface Match {
     innings: Innings[];
 }
 
-export interface State {
-    match: Match;
+export interface InProgressMatch extends Match {
+    currentBatterIndex?: number;
+    currentBowlerIndex?: number;
     currentInnings?: Innings;
     currentBatter?: Batter;
     currentBowler?: Bowler;
     currentOverComplete?: boolean;
+    currentOver?: Delivery[];
+}
+
+export interface State {
+    match: InProgressMatch;
 }
 
 export const howOutDescription = (wicket?: Wicket): string => {
