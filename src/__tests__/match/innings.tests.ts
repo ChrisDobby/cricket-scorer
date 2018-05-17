@@ -251,18 +251,36 @@ describe('innings', () => {
             expect(innings.deliveries).toHaveLength(0);
         });
 
+        it('should update the total overs for the innings', () => {
+            expect(innings.totalOvers).toBe('1');
+        });
+
+        it('should update the current innings', () => {
+            expect(updatedMatch.currentInnings).toBe(innings);
+        })
+
         it('should set the current batter to the other one currently in', () => {
             expect(updatedMatch.currentBatterIndex).toBe(1);
+            expect(updatedMatch.currentBatter).toBe(innings.batting.batters[1]);
         });
 
         it('should clear the current bowler', () => {
             expect(updatedMatch.currentBowlerIndex).toBeUndefined();
+            expect(updatedMatch.currentBowler).toBeUndefined();
         });
 
         it('should return the match if no current innings', () => {
             const match = Innings.completeOver(blankInProgressMatch);
 
             expect(match).toBe(blankInProgressMatch);
+        });
+
+        it('should update the bowlers figures', () => {
+            const bowler = innings.bowlers[0];
+
+            expect(bowler.completedOvers).toBe(1);
+            expect(bowler.totalOvers).toBe('1');
+            expect(bowler.maidenOvers).toBe(0);
         });
     });
 });

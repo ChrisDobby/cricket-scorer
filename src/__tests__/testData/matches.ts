@@ -111,7 +111,7 @@ const inningsWithOverReadyToComplete = {
             bowlerIndex: 0,
             batsmanIndex: 0,
             overNumber: 1,
-            outcome: { score: 0, deliveryOutcome: DeliveryOutcome.Dot },
+            outcome: { score: 2, deliveryOutcome: DeliveryOutcome.Runs },
         },
         {
             time: new Date(),
@@ -168,4 +168,6 @@ export const matchWithOverReadyToComplete: InProgressMatch = {
     innings: [inningsWithOverReadyToComplete],
     currentBowlerIndex: 0,
     currentBatterIndex: 0,
+    currentBatter: inningsWithOverReadyToComplete.batting.batters[0],
+    currentBowler: inningsWithOverReadyToComplete.bowlers[0],
 };

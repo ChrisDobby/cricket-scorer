@@ -204,9 +204,17 @@ export const dotBall = (match: domain.InProgressMatch) => {
 
 export const completeOver = (match: domain.InProgressMatch) => {
     const innings = currentInnings(match);
-    if (typeof innings === 'undefined') {
+    if (typeof innings === 'undefined' ||
+        typeof match.currentBowlerIndex === 'undefined') {
         return match;
     }
+
+    const bowler = currentBowler(innings, match.currentBowlerIndex);
+    const updatedBowler = {
+        ...bowler,
+        completedOvers: bowler.completedOvers + 1,
+        totalOvers: domain.oversDescription(bowler.completedOvers + 1, []),
+    };
 
     const [nextBatterIndex] = innings.batting.batters
         .map((batter, index) => ({ batter, index }))
@@ -215,7 +223,11 @@ export const completeOver = (match: domain.InProgressMatch) => {
 
     const updatedInnings = {
         ...innings,
+        bowlers: [...innings.bowlers.map(b => b.playerIndex === bowler.playerIndex
+            ? updatedBowler
+            : b)],
         completedOvers: innings.completedOvers + 1,
+        totalOvers: domain.oversDescription(innings.completedOvers + 1, []),
         deliveries: [],
     };
 
@@ -225,7 +237,10 @@ export const completeOver = (match: domain.InProgressMatch) => {
             ...match.innings.filter(inn => inn !== innings),
             updatedInnings,
         ],
+        currentInnings: updatedInnings,
         currentBatterIndex: nextBatterIndex,
         currentBowlerIndex: undefined,
+        currentBatter: currentBatter(updatedInnings, nextBatterIndex),
+        currentBowler: undefined,
     };
 };
