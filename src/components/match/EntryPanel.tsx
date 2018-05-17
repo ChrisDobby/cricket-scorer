@@ -6,6 +6,7 @@ const buttonStyle: React.CSSProperties = {
 
 export interface BallFunctions {
     dotBall: () => void;
+    completeOver: () => void;
 }
 
 export interface EntryPanelProps {

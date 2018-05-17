@@ -53,10 +53,8 @@ const newInnings = (
         complete: false,
     });
 
-const currentInnings = (match: domain.InProgressMatch): domain.Innings => {
-    const [innings] = match.innings.filter(inn => !inn.complete);
-
-    return innings;
+const currentInnings = (match: domain.InProgressMatch): domain.Innings | undefined => {
+    return match.innings.find(inn => !inn.complete);
 };
 
 const currentBatter = (innings: domain.Innings, currentBatterIndex: number): domain.Batter => {
@@ -100,7 +98,7 @@ const createBowler = (team: domain.Team, bowlers: domain.Bowler[], bowlerIndex: 
 
 export const newBowler = (match: domain.InProgressMatch, bowlerIndex: number) => {
     const updatedInningsAndBowlerIndex = (innings: domain.Innings): [domain.Innings, number] => {
-        const [existingBowler] = innings.bowlers.filter(b => b.playerIndex === bowlerIndex);
+        const existingBowler = innings.bowlers.find(b => b.playerIndex === bowlerIndex);
         if (existingBowler) {
             return [{
                 ...innings,
@@ -206,6 +204,10 @@ export const dotBall = (match: domain.InProgressMatch) => {
 
 export const completeOver = (match: domain.InProgressMatch) => {
     const innings = currentInnings(match);
+    if (typeof innings === 'undefined') {
+        return match;
+    }
+
     const [nextBatterIndex] = innings.batting.batters
         .map((batter, index) => ({ batter, index }))
         .filter(indexedBatter => indexedBatter.batter.innings && indexedBatter.index !== match.currentBatterIndex)

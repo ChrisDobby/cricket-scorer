@@ -258,5 +258,11 @@ describe('innings', () => {
         it('should clear the current bowler', () => {
             expect(updatedMatch.currentBowlerIndex).toBeUndefined();
         });
+
+        it('should return the match if no current innings', () => {
+            const match = Innings.completeOver(blankInProgressMatch);
+
+            expect(match).toBe(blankInProgressMatch);
+        });
     });
 });

@@ -5,6 +5,7 @@ import { EntryPanel } from '../../../components/match/EntryPanel';
 describe('EntryPanel', () => {
     const ballFunctions = {
         dotBall: jest.fn(),
+        completeOver: jest.fn(),
     };
 
     beforeEach(() => jest.resetAllMocks());

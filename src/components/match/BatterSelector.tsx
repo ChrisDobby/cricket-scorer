@@ -26,7 +26,7 @@ interface PositionIndicatorProps {
 }
 
 const PositionIndicator = ({ playerIndex, playerPositions }: PositionIndicatorProps) => {
-    const [playerWithPosition] = playerPositions.filter(pp => pp.playerIndex === playerIndex);
+    const playerWithPosition = playerPositions.find(pp => pp.playerIndex === playerIndex);
     return (
         <div style={indicatorStyle}>
             {playerWithPosition &&
@@ -41,7 +41,7 @@ const positionSelected = (
     playerPositions: PlayerPosition[],
     playerSelected: (index: number, position: number) => void,
     playerRemoved: (position: number) => void): void => {
-    const [playerPosition] = playerPositions.filter(playerPos => playerPos.playerIndex === index);
+    const playerPosition = playerPositions.find(playerPos => playerPos.playerIndex === index);
     if (playerPosition) {
         playerRemoved(playerPosition.position);
         return;

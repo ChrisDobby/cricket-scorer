@@ -62,6 +62,7 @@ const mapDispatchToProps = (dispatch: Dispatch<actions.InningsAction>) => ({
     newBowler: (bowlerIndex: number) => dispatch(actions.newBowler(bowlerIndex)),
     ballFunctions: {
         dotBall: () => dispatch(actions.dotBall()),
+        completeOver: () => dispatch(actions.completeOver()),
     },
 });
 

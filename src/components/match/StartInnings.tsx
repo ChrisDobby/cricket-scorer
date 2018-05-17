@@ -42,10 +42,11 @@ export class StartInnings extends React.Component<StartInningsProps, {}> {
     }
 
     save = () => {
-        const [batter1Index] = this.state.playerPositions
-            .filter(playerPos => playerPos.position === 1).map(playerPos => playerPos.playerIndex);
-        const [batter2Index] = this.state.playerPositions
-            .filter(playerPos => playerPos.position === 2).map(playerPos => playerPos.playerIndex);
+        const getPlayerIndex = (player: any) => player.playerIndex;
+        const batter1Index = getPlayerIndex(this.state.playerPositions
+            .find(playerPos => playerPos.position === 1));
+        const batter2Index = getPlayerIndex(this.state.playerPositions
+            .find(playerPos => playerPos.position === 2));
 
         this.props.startInnings(
             this.props.teams[this.state.selectedTeamIndex],
