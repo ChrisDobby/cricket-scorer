@@ -1,4 +1,4 @@
-import { Match, DeliveryOutcome, InProgressMatch } from '../../domain';
+import { Match, DeliveryOutcome } from '../../domain';
 
 export const blankMatch: Match = {
     homeTeam: {
@@ -39,7 +39,7 @@ export const blankMatch: Match = {
     innings: [],
 };
 
-const startedInnings = {
+export const startedInnings = {
     battingTeam: blankMatch.homeTeam,
     bowlingTeam: blankMatch.awayTeam,
     score: 0,
@@ -65,7 +65,12 @@ const startedInnings = {
     complete: false,
 };
 
-const inningsWithStartedOver = {
+const completedInnings = {
+    ...startedInnings,
+    complete: true,
+};
+
+export const inningsWithStartedOver = {
     ...startedInnings,
     batting: {
         ...startedInnings.batting,
@@ -103,7 +108,7 @@ const inningsWithStartedOver = {
     }],
 };
 
-const inningsWithOverReadyToComplete = {
+export const inningsWithOverReadyToComplete = {
     ...inningsWithStartedOver,
     deliveries: [
         {
@@ -151,24 +156,42 @@ const inningsWithOverReadyToComplete = {
     ],
 };
 
+const inningsWithAllDeliveriesInCompletedOver = {
+    ...inningsWithOverReadyToComplete,
+    completedOvers: 1,
+};
+
+const inningsWithOverNotReadyToComplete = {
+    ...inningsWithOverReadyToComplete,
+    deliveries: [...inningsWithOverReadyToComplete.deliveries.slice(0, 3)],
+};
+
 export const matchWithStartedInnings: Match = {
     ...blankMatch,
     innings: [startedInnings],
 };
 
-export const matchWithStartedOver: InProgressMatch = {
+export const matchWithOnlyCompletedInnings: Match = {
     ...blankMatch,
-    innings: [inningsWithStartedOver],
-    currentBatterIndex: 0,
-    currentBowlerIndex: 0,
+    innings: [completedInnings, completedInnings],
 };
 
-export const matchWithOverReadyToComplete: InProgressMatch = {
+export const matchWithStartedOver: Match = {
+    ...blankMatch,
+    innings: [inningsWithStartedOver],
+};
+
+export const matchWithOverReadyToComplete: Match = {
     ...blankMatch,
     innings: [inningsWithOverReadyToComplete],
-    currentBowlerIndex: 0,
-    currentBatterIndex: 0,
-    currentBatter: inningsWithOverReadyToComplete.batting.batters[0],
-    currentBowler: inningsWithOverReadyToComplete.bowlers[0],
-    currentOverComplete: true,
+};
+
+export const matchWithAllDeliveriesInCompletedOver = {
+    ...blankMatch,
+    innings: [inningsWithAllDeliveriesInCompletedOver],
+};
+
+export const matchWithOverNotReadyToComplete = {
+    ...blankMatch,
+    innings: [inningsWithOverNotReadyToComplete],
 };

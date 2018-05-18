@@ -5,10 +5,13 @@ import { createStore } from 'redux';
 import InProgress from '../../../components/match/InProgress';
 import { match as matchReducer } from '../../../reducers/matchReducer';
 import { blankMatch, matchWithStartedInnings } from '../../testData/matches';
+import inProgressMatchStore from '../../../stores/inProgressMatchStore';
+
 
 describe('InProgress', () => {
     it('should render correctly for match that hasn not started', () => {
-        const store = createStore(matchReducer, { match: blankMatch });
+        inProgressMatchStore.match = blankMatch;
+        const store = createStore(matchReducer, { inProgress: inProgressMatchStore });
         const inProgress = ReactTestRenderer.create(<Provider store={store}><InProgress /></Provider>);
 
         expect(inProgress.toJSON()).toMatchSnapshot();
@@ -19,10 +22,11 @@ describe('InProgress', () => {
             ...matchWithStartedInnings,
             currentInnings: matchWithStartedInnings.innings[0],
         };
+        inProgressMatchStore.match = inProgressMatchWithStartedInnings;
 
         const store = createStore(
             matchReducer,
-            { match: inProgressMatchWithStartedInnings },
+            { inProgress: inProgressMatchStore },
         );
         const inProgress = ReactTestRenderer.create(<Provider store={store}><InProgress /></Provider>);
 
