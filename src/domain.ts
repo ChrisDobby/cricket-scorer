@@ -124,10 +124,8 @@ export interface InProgressMatch {
     currentOverComplete?: boolean;
     startInnings: (battingTeam: Team, batter1Index: number, batter2Index: number) => void;
     newBowler: (playerIndex: number) => void;
-}
-
-export interface State {
-    inProgress: InProgressMatch;
+    dotBall: () => void;
+    completeOver: () => void;
 }
 
 export const howOutDescription = (wicket?: Wicket): string => {

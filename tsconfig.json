@@ -15,6 +15,7 @@
       "strictNullChecks": true,
       "suppressImplicitAnyIndexErrors": true,
       "noUnusedLocals": true,
+      "experimentalDecorators": true,
       "plugins": [
         {
           "name": "tslint-language-service"

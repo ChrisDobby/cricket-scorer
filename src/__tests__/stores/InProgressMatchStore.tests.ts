@@ -22,7 +22,7 @@ describe('inProgressMatchStore', () => {
         it('should return the not completed innings', () => {
             inProgressMatchStore.match = matches.matchWithStartedInnings;
 
-            expect(inProgressMatchStore.currentInnings).toBe(matches.matchWithStartedInnings.innings[0]);
+            expect(inProgressMatchStore.currentInnings).toEqual(matches.matchWithStartedInnings.innings[0]);
         });
     });
 
