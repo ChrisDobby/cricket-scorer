@@ -48,6 +48,22 @@ class InProgressMatchStore implements InProgressMatch {
             : innings.bowlers[this.currentBowlerIndex];
     }
 
+    @computed get previousBowler() {
+        if (typeof this.match === 'undefined' ||
+            typeof this.currentInnings === 'undefined' ||
+            this.currentInnings.completedOvers === 0) {
+            return undefined;
+        }
+
+        const innings = this.currentInnings;
+        const deliveryInLastOver = innings.deliveries
+            .find(delivery => delivery.overNumber === innings.completedOvers);
+
+        return typeof deliveryInLastOver === 'undefined'
+            ? undefined
+            : innings.bowlers[deliveryInLastOver.bowlerIndex];
+    }
+
     @action startInnings = (battingTeam: Team, batter1Index: number, batter2Index: number) => {
         if (typeof this.match === 'undefined') { return; }
 

@@ -227,4 +227,25 @@ describe('inProgressMatchStore', () => {
             expect(inProgressMatchStore.currentBowler).toBeUndefined();
         });
     });
+
+    describe('previousBowler', () => {
+        it('should return undefined when no match started', () => {
+            inProgressMatchStore.match = undefined;
+
+            expect(inProgressMatchStore.previousBowler).toBeUndefined();
+        });
+
+        it('should return undefined when no previous over', () => {
+            inProgressMatchStore.match = matches.matchWithOverReadyToComplete;
+
+            expect(inProgressMatchStore.previousBowler).toBeUndefined();
+        });
+
+        it('should return the bowler of the last completed over', () => {
+            inProgressMatchStore.match = matches.matchWithAllDeliveriesInCompletedOver;
+
+            expect(inProgressMatchStore.previousBowler)
+                .toEqual(matches.matchWithAllDeliveriesInCompletedOver.innings[0].bowlers[0]);
+        });
+    });
 });
