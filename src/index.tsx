@@ -1,6 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { configure } from 'mobx';
+import { Provider } from 'mobx-react';
 import Routes from './Routes';
 import 'font-awesome/css/font-awesome.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -47,9 +49,15 @@ const initialMatch = {
 
 inProgressMatchStore.match = initialMatch;
 
+configure({ enforceActions: true });
+
+const stores = { inProgressMatchStore };
+
 ReactDOM.render(
-    <BrowserRouter>
-        <Routes />
-    </BrowserRouter>,
+    <Provider {...stores} >
+        <BrowserRouter>
+            <Routes />
+        </BrowserRouter>
+    </Provider>,
     document.getElementById('react-app'),
 );

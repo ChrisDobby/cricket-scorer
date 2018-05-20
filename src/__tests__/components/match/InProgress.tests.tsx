@@ -8,7 +8,7 @@ import inProgressMatchStore from '../../../stores/inProgressMatchStore';
 describe('InProgress', () => {
     it('should render correctly for match that hasn not started', () => {
         inProgressMatchStore.match = blankMatch;
-        const inProgress = ReactTestRenderer.create(<InProgress />);
+        const inProgress = ReactTestRenderer.create(<InProgress inProgress={inProgressMatchStore} />);
 
         expect(inProgress.toJSON()).toMatchSnapshot();
     });
@@ -20,7 +20,7 @@ describe('InProgress', () => {
         };
         inProgressMatchStore.match = inProgressMatchWithStartedInnings;
 
-        const inProgress = ReactTestRenderer.create(<InProgress />);
+        const inProgress = ReactTestRenderer.create(<InProgress inProgress={inProgressMatchStore} />);
 
         expect(inProgress.toJSON()).toMatchSnapshot();
     });

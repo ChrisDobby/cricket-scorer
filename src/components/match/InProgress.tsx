@@ -1,45 +1,49 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
+import * as domain from '../../domain';
 import WithNavBar from '../WithNavBar';
 import { StartInnings } from './StartInnings';
 import { SelectBowler } from './SelectBowler';
 import { BallEntry } from './BallEntry';
-import inProgressMatchStore from '../../stores/inProgressMatchStore';
+
+export interface InProgressProps {
+    inProgress: domain.InProgressMatch;
+}
 
 @observer
-class InProgress extends React.Component {
+class InProgress extends React.Component<InProgressProps, {}> {
     ballFunctions = {
-        dotBall: () => { inProgressMatchStore.dotBall(); },
-        completeOver: () => { inProgressMatchStore.completeOver(); },
+        dotBall: () => { this.props.inProgress.dotBall(); },
+        completeOver: () => { this.props.inProgress.completeOver(); },
     };
 
     render() {
-        if (inProgressMatchStore.match && !inProgressMatchStore.currentInnings) {
+        if (this.props.inProgress.match && !this.props.inProgress.currentInnings) {
             return (
                 <StartInnings
-                    teams={[inProgressMatchStore.match.homeTeam, inProgressMatchStore.match.awayTeam]}
-                    startInnings={inProgressMatchStore.startInnings}
+                    teams={[this.props.inProgress.match.homeTeam, this.props.inProgress.match.awayTeam]}
+                    startInnings={this.props.inProgress.startInnings}
                 />
             );
         }
 
-        if (inProgressMatchStore.currentInnings && !inProgressMatchStore.currentBowler) {
+        if (this.props.inProgress.currentInnings && !this.props.inProgress.currentBowler) {
             return (
                 <SelectBowler
-                    bowlingTeam={inProgressMatchStore.currentInnings.bowlingTeam}
-                    selectBowler={inProgressMatchStore.newBowler}
+                    bowlingTeam={this.props.inProgress.currentInnings.bowlingTeam}
+                    selectBowler={this.props.inProgress.newBowler}
                 />);
         }
 
-        if (inProgressMatchStore.currentInnings &&
-            inProgressMatchStore.currentBatter &&
-            inProgressMatchStore.currentBowler) {
+        if (this.props.inProgress.currentInnings &&
+            this.props.inProgress.currentBatter &&
+            this.props.inProgress.currentBowler) {
             return (
                 <BallEntry
-                    innings={inProgressMatchStore.currentInnings}
-                    batter={inProgressMatchStore.currentBatter}
-                    bowler={inProgressMatchStore.currentBowler}
-                    overComplete={!!inProgressMatchStore.currentOverComplete}
+                    innings={this.props.inProgress.currentInnings}
+                    batter={this.props.inProgress.currentBatter}
+                    bowler={this.props.inProgress.currentBowler}
+                    overComplete={!!this.props.inProgress.currentOverComplete}
                     ballFunctions={this.ballFunctions}
                 />
             );
