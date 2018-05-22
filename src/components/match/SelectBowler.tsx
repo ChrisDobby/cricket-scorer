@@ -1,32 +1,12 @@
 import * as React from 'react';
 import { Team } from '../../domain';
-import * as styles from './styles';
 import * as globalStyles from '../styles';
+import { Bowler } from './Bowler';
 import { SaveButton } from './SaveButton';
-
-const indicatorStyle: React.CSSProperties = {
-    ...globalStyles.primaryColour,
-    float: 'left',
-    width: '30px',
-    textAlign: 'center',
-};
-
-interface SelectionIndicatorProps {
-    playerIndex: number;
-    selectedIndex: number;
-}
-
-const SelectionIndicator = ({ playerIndex, selectedIndex }: SelectionIndicatorProps) => {
-    return (
-        <div style={indicatorStyle}>
-            {playerIndex === selectedIndex &&
-                <i className="fa fa-circle" />}
-        </div>
-    );
-};
 
 export interface SelectBowlerProps {
     bowlingTeam: Team;
+    disallowedPlayers: number[];
     selectBowler: (b: number) => void;
 }
 
@@ -60,18 +40,14 @@ export class SelectBowler extends React.Component<SelectBowlerProps, {}> {
                                 <h4>Select bowler</h4>
                             </div>
                             {this.props.bowlingTeam.players.map((player, index) => (
-                                <div
+                                <Bowler
                                     key={player}
-                                    className="row bowler-row"
-                                    style={styles.selectablePlayerStyle}
-                                    onClick={() => this.selectBowler(index)}
-                                >
-                                    <SelectionIndicator
-                                        playerIndex={index}
-                                        selectedIndex={this.state.selectedPlayerIndex}
-                                    />
-                                    <h6>{player}</h6>
-                                </div>
+                                    index={index}
+                                    selected={index === this.state.selectedPlayerIndex}
+                                    name={player}
+                                    allowed={this.props.disallowedPlayers.indexOf(index) < 0}
+                                    selectBowler={this.selectBowler}
+                                />
                             ))}
                         </div>
                     </div>

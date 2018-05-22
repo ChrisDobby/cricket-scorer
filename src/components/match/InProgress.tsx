@@ -17,6 +17,11 @@ class InProgress extends React.Component<InProgressProps, {}> {
         completeOver: () => { this.props.inProgress.completeOver(); },
     };
 
+    disallowedPlayers = () =>
+        typeof this.props.inProgress.previousBowler === 'undefined'
+            ? []
+            : [this.props.inProgress.previousBowler.playerIndex]
+
     render() {
         if (this.props.inProgress.match && !this.props.inProgress.currentInnings) {
             return (
@@ -32,6 +37,7 @@ class InProgress extends React.Component<InProgressProps, {}> {
                 <SelectBowler
                     bowlingTeam={this.props.inProgress.currentInnings.bowlingTeam}
                     selectBowler={this.props.inProgress.newBowler}
+                    disallowedPlayers={this.disallowedPlayers()}
                 />);
         }
 

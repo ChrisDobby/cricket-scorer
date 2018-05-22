@@ -28,10 +28,11 @@ describe('SelectBowler', () => {
 
     beforeEach(() => jest.resetAllMocks());
 
-    const selectBowler = shallow(<SelectBowler bowlingTeam={team} selectBowler={select} />);
+    const selectBowler = shallow(<SelectBowler bowlingTeam={team} selectBowler={select} disallowedPlayers={[]} />);
 
-    it('should update state when player clicked', () => {
-        selectBowler.find('.bowler-row').at(0).simulate('click');
+    it('should update state when selectBowler called', () => {
+        const instance = selectBowler.instance() as SelectBowler;
+        instance.selectBowler(0);
 
         expect(selectBowler.state().selectedPlayerIndex).toBe(0);
     });
@@ -77,17 +78,27 @@ describe('SelectBowler', () => {
     });
 
     it('should render correctly when no player selected', () => {
-        const selectBowler = ReactTestRenderer.create(<SelectBowler bowlingTeam={team} selectBowler={select} />);
+        const selectBowler = ReactTestRenderer
+            .create(<SelectBowler bowlingTeam={team} selectBowler={select} disallowedPlayers={[]} />);
 
         expect(selectBowler.toJSON()).toMatchSnapshot();
     });
 
     it('should render correctly when a player is selected', () => {
-        const selectBowler = ReactTestRenderer.create(<SelectBowler bowlingTeam={team} selectBowler={select} />);
+        const selectBowler = ReactTestRenderer
+            .create(<SelectBowler bowlingTeam={team} selectBowler={select} disallowedPlayers={[]} />);
 
         selectBowler.root.instance.setState({
             selectedPlayerIndex: 6,
         });
+
+        expect(selectBowler.toJSON()).toMatchSnapshot();
+    });
+
+
+    it('should render correctly when a player is disallowed', () => {
+        const selectBowler = ReactTestRenderer
+            .create(<SelectBowler bowlingTeam={team} selectBowler={select} disallowedPlayers={[0]} />);
 
         expect(selectBowler.toJSON()).toMatchSnapshot();
     });
