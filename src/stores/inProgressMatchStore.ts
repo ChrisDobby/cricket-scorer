@@ -80,6 +80,11 @@ class InProgressMatchStore implements InProgressMatch {
         if (typeof this.match === 'undefined' ||
             typeof this.currentInnings === 'undefined') { return; }
 
+        if (typeof this.previousBowler !== 'undefined' &&
+            this.previousBowler.playerIndex === playerIndex) {
+            return;
+        }
+
         const [innings, bowlerIndex] = matchInnings.newBowler(this.currentInnings, playerIndex);
 
         this.match = updateMatchInnings(

@@ -143,6 +143,14 @@ describe('inProgressMatchStore', () => {
             expect(inProgressMatchStore.match.innings).toHaveLength(0);
         });
 
+        it('should do nothing if the selected bowler is the previous bowler', () => {
+            inProgressMatchStore.match = matches.matchWithAllDeliveriesInCompletedOver;
+            inProgressMatchStore.currentBowlerIndex = undefined;
+            inProgressMatchStore.newBowler(10);
+
+            expect(inProgressMatchStore.currentBowler).toBeUndefined();
+        });
+
         it('should update the non completed innings with a new bowler', () => {
             inProgressMatchStore.match = matches.matchWithStartedInnings;
             inProgressMatchStore.newBowler(10);
