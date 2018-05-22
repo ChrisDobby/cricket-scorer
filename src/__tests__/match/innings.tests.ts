@@ -199,9 +199,8 @@ describe('innings', () => {
             matches.inningsWithOverReadyToComplete.bowlers[0],
         );
 
-        it('should update the completed overs count and clear the deliveries array', () => {
+        it('should update the completed overs count', () => {
             expect(innings.completedOvers).toBe(1);
-            expect(innings.deliveries).toHaveLength(0);
         });
 
         it('should update the total overs for the innings', () => {

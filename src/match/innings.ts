@@ -157,7 +157,6 @@ export const completeOver =
                 : b)],
             completedOvers: innings.completedOvers + 1,
             totalOvers: domain.oversDescription(innings.completedOvers + 1, []),
-            deliveries: [],
         };
 
         return [updatedInnings, nextBatterIndex];
