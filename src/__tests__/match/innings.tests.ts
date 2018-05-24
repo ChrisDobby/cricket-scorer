@@ -1,5 +1,5 @@
 import { BattingInnings, DeliveryOutcome } from '../../domain';
-import * as Innings from '../../match/innings';
+import { default as Innings } from '../../match/innings';
 import * as matches from '../testData/matches';
 
 describe('innings', () => {

@@ -1,6 +1,6 @@
 import { observable, computed, action } from 'mobx';
 import { InProgressMatch, Match, Team, validDelivery, Innings } from '../domain';
-import * as matchInnings from '../match/innings';
+import { default as matchInnings } from '../match/innings';
 
 const updateMatchInnings = (match: Match, innings: Innings): Match => ({
     ...match,
