@@ -145,16 +145,6 @@ const innings = () => {
         return updatedInnings;
     };
 
-    const dotBall = (innings: domain.Innings, batter: domain.Batter, bowler: domain.Bowler) => {
-        return addDeliveryToInnings(
-            innings,
-            batter,
-            bowler, {
-                deliveryOutcome: domain.DeliveryOutcome.Dot,
-                runs: 0,
-            });
-    };
-
     const flipBatters = (innings: domain.Innings, batter: domain.Batter) => {
         const [nextBatterIndex] = innings.batting.batters
             .map((batter, index) => ({ batter, index }))
@@ -170,18 +160,24 @@ const innings = () => {
         return flipBatters(innings, batter);
     };
 
-    const runs = (innings: domain.Innings, batter: domain.Batter, bowler: domain.Bowler, runs: number)
-    : [domain.Innings, number]    => {
-        return [addDeliveryToInnings(
-            innings,
-            batter,
-            bowler,
-            {
-                runs,
-                deliveryOutcome: domain.DeliveryOutcome.Runs,
-            }),
-            newBatsmanIndex(innings, batter, runs)];
-    };
+    const delivery = (
+        innings: domain.Innings,
+        batter: domain.Batter,
+        bowler: domain.Bowler,
+        deliveryOutcome: domain.DeliveryOutcome,
+        runs: number,
+    ): [domain.Innings, number] =>
+        [
+            addDeliveryToInnings(
+                innings,
+                batter,
+                bowler,
+                {
+                    deliveryOutcome,
+                    runs,
+                }),
+            newBatsmanIndex(innings, batter, runs),
+        ];
 
     const completeOver =
         (innings: domain.Innings, batter: domain.Batter, bowler: domain.Bowler): [domain.Innings, number] => {
@@ -208,8 +204,7 @@ const innings = () => {
     return {
         newInnings,
         newBowler,
-        dotBall,
-        runs,
+        delivery,
         completeOver,
     };
 };

@@ -13,8 +13,9 @@ export interface InProgressProps {
 @observer
 class InProgress extends React.Component<InProgressProps, {}> {
     ballFunctions = {
-        dotBall: () => { this.props.inProgress.dotBall(); },
-        runs: (score: number) => { this.props.inProgress.runs(score); },
+        delivery: (deliveryOutcome: domain.DeliveryOutcome, runs: number) => {
+            this.props.inProgress.delivery(deliveryOutcome, runs);
+        },
         completeOver: () => { this.props.inProgress.completeOver(); },
     };
 

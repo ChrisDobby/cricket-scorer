@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
 import { EntryPanel } from '../../../components/match/EntryPanel';
+import { DeliveryOutcome } from '../../../domain';
 
 describe('EntryPanel', () => {
     const ballFunctions = {
-        dotBall: jest.fn(),
-        runs: jest.fn(),
+        delivery: jest.fn(),
         completeOver: jest.fn(),
     };
 
@@ -15,7 +15,7 @@ describe('EntryPanel', () => {
 
         entryPanel.find('button').at(0).simulate('click');
 
-        expect(ballFunctions.dotBall).toHaveBeenCalled();
+        expect(ballFunctions.delivery).toHaveBeenCalledWith(DeliveryOutcome.Dot, 0);
     });
 
     it('should call runs with 1 when the 1 run button is clicked', () => {
@@ -23,7 +23,7 @@ describe('EntryPanel', () => {
 
         entryPanel.find('button').at(1).simulate('click');
 
-        expect(ballFunctions.runs).toHaveBeenCalledWith(1);
+        expect(ballFunctions.delivery).toHaveBeenCalledWith(DeliveryOutcome.Runs, 1);
     });
 
     it('should call runs with 2 when the 2 run button is clicked', () => {
@@ -31,7 +31,7 @@ describe('EntryPanel', () => {
 
         entryPanel.find('button').at(2).simulate('click');
 
-        expect(ballFunctions.runs).toHaveBeenCalledWith(2);
+        expect(ballFunctions.delivery).toHaveBeenCalledWith(DeliveryOutcome.Runs, 2);
     });
 
     it('should call runs with 3 when the 3 run button is clicked', () => {
@@ -39,6 +39,6 @@ describe('EntryPanel', () => {
 
         entryPanel.find('button').at(3).simulate('click');
 
-        expect(ballFunctions.runs).toHaveBeenCalledWith(3);
+        expect(ballFunctions.delivery).toHaveBeenCalledWith(DeliveryOutcome.Runs, 3);
     });
 });

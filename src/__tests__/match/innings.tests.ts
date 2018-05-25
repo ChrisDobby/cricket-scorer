@@ -155,17 +155,27 @@ describe('innings', () => {
         });
     });
 
-    describe('dotBall', () => {
-        const innings = Innings.dotBall(
+    describe('delivery', () => {
+        const [inningsAfterDotBall] = Innings.delivery(
             matches.inningsWithStartedOver,
             matches.inningsWithStartedOver.batting.batters[0],
             matches.inningsWithStartedOver.bowlers[0],
+            DeliveryOutcome.Dot,
+            0,
         );
 
-        it('should add a delivery with outcome of dot to the innings', () => {
-            expect(innings.deliveries).toHaveLength(1);
+        const [inningsAfterRuns, batterIndexAfterRuns] = Innings.delivery(
+            matches.inningsWithStartedOver,
+            matches.inningsWithStartedOver.batting.batters[0],
+            matches.inningsWithStartedOver.bowlers[0],
+            DeliveryOutcome.Dot,
+            2,
+        );
 
-            const delivery = innings.deliveries[0];
+        it('should add a delivery with the specified outcome to the innings', () => {
+            expect(inningsAfterDotBall.deliveries).toHaveLength(1);
+
+            const delivery = inningsAfterDotBall.deliveries[0];
             expect(delivery.overNumber).toBe(1);
             expect(delivery.outcome).toEqual({
                 deliveryOutcome: DeliveryOutcome.Dot,
@@ -176,82 +186,47 @@ describe('innings', () => {
         });
 
         it('should add a ball to the balls faced for the current batter', () => {
-            const batter = innings.batting.batters[0];
+            const batter = inningsAfterDotBall.batting.batters[0];
 
             expect((batter.innings as BattingInnings).ballsFaced).toBe(1);
         });
 
-        it('should update the total overs for the innings', () => {
-            expect(innings.totalOvers).toBe('0.1');
-        });
-
-        it('should update the bowlers figures', () => {
-            const bowler = innings.bowlers[0];
-
-            expect(bowler.totalOvers).toBe('0.1');
-        });
-    });
-
-    describe('runs', () => {
-        const [innings, batterIndex] = Innings.runs(
-            matches.inningsWithStartedOver,
-            matches.inningsWithStartedOver.batting.batters[0],
-            matches.inningsWithStartedOver.bowlers[0],
-            2,
-        );
-
-        it('should add a delivery with outcome runs to the innings', () => {
-            expect(innings.deliveries).toHaveLength(1);
-
-            const delivery = innings.deliveries[0];
-            expect(delivery.overNumber).toBe(1);
-            expect(delivery.outcome).toEqual({
-                deliveryOutcome: DeliveryOutcome.Runs,
-                runs: 2,
-            });
-        });
-
-        it('should add a ball to the balls faced for the current batter', () => {
-            const batter = innings.batting.batters[0];
-
-            expect((batter.innings as BattingInnings).ballsFaced).toBe(1);
-        });
-
-        it('should add the runs to the current batters score', () => {
-            const batter = innings.batting.batters[0];
+        it('should add runs to the current batters score', () => {
+            const batter = inningsAfterRuns.batting.batters[0];
 
             expect((batter.innings as BattingInnings).runs).toBe(2);
         });
 
         it('should update the total overs for the innings', () => {
-            expect(innings.totalOvers).toBe('0.1');
+            expect(inningsAfterDotBall.totalOvers).toBe('0.1');
         });
 
         it('should update the total score for the innings', () => {
-            expect(innings.score).toBe(2);
+            expect(inningsAfterRuns.score).toBe(2);
         });
 
         it('should update the bowlers total overs', () => {
-            const bowler = innings.bowlers[0];
+            const bowler = inningsAfterDotBall.bowlers[0];
 
             expect(bowler.totalOvers).toBe('0.1');
         });
 
         it('should update the bowlers runs', () => {
-            const bowler = innings.bowlers[0];
+            const bowler = inningsAfterRuns.bowlers[0];
 
             expect(bowler.runs).toBe(2);
         });
 
         it('should return the same batter index if an even no of runs scored', () => {
-            expect(batterIndex).toBe(0);
+            expect(batterIndexAfterRuns).toBe(0);
         });
 
         it('should return the other in batter when odd no of runs scored', () => {
-            const [, batterIndex] = Innings.runs(
+            const [, batterIndex] = Innings.delivery(
                 matches.inningsWithStartedOver,
                 matches.inningsWithStartedOver.batting.batters[0],
                 matches.inningsWithStartedOver.bowlers[0],
+                DeliveryOutcome.Runs,
                 3,
             );
 

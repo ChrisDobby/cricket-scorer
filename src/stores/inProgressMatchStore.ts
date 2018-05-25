@@ -1,5 +1,5 @@
 import { observable, computed, action } from 'mobx';
-import { InProgressMatch, Match, Team, validDelivery, Innings } from '../domain';
+import { InProgressMatch, Match, Team, validDelivery, Innings, DeliveryOutcome } from '../domain';
 import { default as matchInnings } from '../match/innings';
 
 const updateMatchInnings = (match: Match, innings: Innings): Match => ({
@@ -95,26 +95,14 @@ class InProgressMatchStore implements InProgressMatch {
         this.currentBowlerIndex = bowlerIndex;
     }
 
-    @action dotBall = () => {
-        if (typeof this.match === 'undefined' ||
-            typeof this.currentInnings === 'undefined' ||
-            typeof this.currentBatter === 'undefined' ||
-            typeof this.currentBowler === 'undefined') { return; }
-
-        this.match = updateMatchInnings(
-            this.match,
-            matchInnings.dotBall(this.currentInnings, this.currentBatter, this.currentBowler),
-        );
-    }
-
-    @action runs = (score: number) => {
+    @action delivery = (deliveryOutcome: DeliveryOutcome, runs: number) => {
         if (typeof this.match === 'undefined' ||
             typeof this.currentInnings === 'undefined' ||
             typeof this.currentBatter === 'undefined' ||
             typeof this.currentBowler === 'undefined') { return; }
 
         const [innings, batterIndex] =
-            matchInnings.runs(this.currentInnings, this.currentBatter, this.currentBowler, score);
+            matchInnings.delivery(this.currentInnings, this.currentBatter, this.currentBowler, deliveryOutcome, runs);
 
         this.match = updateMatchInnings(
             this.match,
