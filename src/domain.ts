@@ -31,7 +31,7 @@ export interface Wicket {
 
 export interface Outcome {
     deliveryOutcome: DeliveryOutcome;
-    score: number;
+    runs: number;
 }
 
 export interface Delivery {

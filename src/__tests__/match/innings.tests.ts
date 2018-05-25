@@ -169,7 +169,7 @@ describe('innings', () => {
             expect(delivery.overNumber).toBe(1);
             expect(delivery.outcome).toEqual({
                 deliveryOutcome: DeliveryOutcome.Dot,
-                score: 0,
+                runs: 0,
             });
             expect(delivery.batsmanIndex).toBe(0);
             expect(delivery.bowlerIndex).toBe(0);
@@ -207,7 +207,7 @@ describe('innings', () => {
             expect(delivery.overNumber).toBe(1);
             expect(delivery.outcome).toEqual({
                 deliveryOutcome: DeliveryOutcome.Runs,
-                score: 2,
+                runs: 2,
             });
         });
 

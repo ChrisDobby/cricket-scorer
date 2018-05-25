@@ -96,7 +96,7 @@ const innings = () => {
         const updatedBatterInnings = (battingInnings: domain.BattingInnings) => ({
             ...battingInnings,
             ballsFaced: battingInnings.ballsFaced + 1,
-            runs: battingInnings.runs + deliveryOutcome.score,
+            runs: battingInnings.runs + deliveryOutcome.runs,
         });
 
         const updatedDeliveries = [
@@ -133,13 +133,13 @@ const innings = () => {
                         ? {
                             ...bowler,
                             totalOvers: domain.oversDescription(bowler.completedOvers, currentOver),
-                            runs: bowler.runs + deliveryOutcome.score,
+                            runs: bowler.runs + deliveryOutcome.runs,
                         }
                         : b),
             ],
             deliveries: updatedDeliveries,
             totalOvers: domain.oversDescription(innings.completedOvers, updatedDeliveries),
-            score: innings.score + deliveryOutcome.score,
+            score: innings.score + deliveryOutcome.runs,
         };
 
         return updatedInnings;
@@ -151,7 +151,7 @@ const innings = () => {
             batter,
             bowler, {
                 deliveryOutcome: domain.DeliveryOutcome.Dot,
-                score: 0,
+                runs: 0,
             });
     };
 
@@ -170,17 +170,17 @@ const innings = () => {
         return flipBatters(innings, batter);
     };
 
-    const runs = (innings: domain.Innings, batter: domain.Batter, bowler: domain.Bowler, score: number)
+    const runs = (innings: domain.Innings, batter: domain.Batter, bowler: domain.Bowler, runs: number)
     : [domain.Innings, number]    => {
         return [addDeliveryToInnings(
             innings,
             batter,
             bowler,
             {
-                score,
+                runs,
                 deliveryOutcome: domain.DeliveryOutcome.Runs,
             }),
-            newBatsmanIndex(innings, batter, score)];
+            newBatsmanIndex(innings, batter, runs)];
     };
 
     const completeOver =
