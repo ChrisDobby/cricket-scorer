@@ -232,6 +232,18 @@ describe('innings', () => {
 
             expect(batterIndex).toBe(1);
         });
+
+        it('should update the total overs for the innings after the first over', () => {
+            const [innings] = Innings.delivery(
+                matches.inningsWithAllDeliveriesInCompletedOver,
+                matches.inningsWithAllDeliveriesInCompletedOver.batting.batters[0],
+                matches.inningsWithAllDeliveriesInCompletedOver.bowlers[0],
+                DeliveryOutcome.Dot,
+                0,
+            );
+
+            expect(innings.totalOvers).toBe('1.1');
+        });
     });
 
     describe('completeOver', () => {

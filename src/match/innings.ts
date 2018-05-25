@@ -138,7 +138,10 @@ const innings = () => {
                         : b),
             ],
             deliveries: updatedDeliveries,
-            totalOvers: domain.oversDescription(innings.completedOvers, updatedDeliveries),
+            totalOvers: domain.oversDescription(
+                innings.completedOvers,
+                updatedDeliveries.filter(delivery => delivery.overNumber > innings.completedOvers,
+                )),
             score: innings.score + deliveryOutcome.runs,
         };
 

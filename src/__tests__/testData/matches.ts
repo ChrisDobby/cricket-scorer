@@ -156,7 +156,7 @@ export const inningsWithOverReadyToComplete = {
     ],
 };
 
-const inningsWithAllDeliveriesInCompletedOver = {
+export const inningsWithAllDeliveriesInCompletedOver = {
     ...inningsWithOverReadyToComplete,
     completedOvers: 1,
 };
