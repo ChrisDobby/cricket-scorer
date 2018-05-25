@@ -14,6 +14,7 @@ export interface InProgressProps {
 class InProgress extends React.Component<InProgressProps, {}> {
     ballFunctions = {
         dotBall: () => { this.props.inProgress.dotBall(); },
+        runs: (score: number) => { this.props.inProgress.runs(score); },
         completeOver: () => { this.props.inProgress.completeOver(); },
     };
 

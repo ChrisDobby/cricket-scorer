@@ -192,6 +192,73 @@ describe('innings', () => {
         });
     });
 
+    describe('runs', () => {
+        const [innings, batterIndex] = Innings.runs(
+            matches.inningsWithStartedOver,
+            matches.inningsWithStartedOver.batting.batters[0],
+            matches.inningsWithStartedOver.bowlers[0],
+            2,
+        );
+
+        it('should add a delivery with outcome runs to the innings', () => {
+            expect(innings.deliveries).toHaveLength(1);
+
+            const delivery = innings.deliveries[0];
+            expect(delivery.overNumber).toBe(1);
+            expect(delivery.outcome).toEqual({
+                deliveryOutcome: DeliveryOutcome.Runs,
+                score: 2,
+            });
+        });
+
+        it('should add a ball to the balls faced for the current batter', () => {
+            const batter = innings.batting.batters[0];
+
+            expect((batter.innings as BattingInnings).ballsFaced).toBe(1);
+        });
+
+        it('should add the runs to the current batters score', () => {
+            const batter = innings.batting.batters[0];
+
+            expect((batter.innings as BattingInnings).runs).toBe(2);
+        });
+
+        it('should update the total overs for the innings', () => {
+            expect(innings.totalOvers).toBe('0.1');
+        });
+
+        it('should update the total score for the innings', () => {
+            expect(innings.score).toBe(2);
+        });
+
+        it('should update the bowlers total overs', () => {
+            const bowler = innings.bowlers[0];
+
+            expect(bowler.totalOvers).toBe('0.1');
+        });
+
+        it('should update the bowlers runs', () => {
+            const bowler = innings.bowlers[0];
+
+            expect(bowler.runs).toBe(2);
+        });
+
+        it('should return the same batter index if an even no of runs scored', () => {
+            expect(batterIndex).toBe(0);
+        });
+
+        it('should return the other in batter when odd no of runs scored', () => {
+            const [, batterIndex] = Innings.runs(
+                matches.inningsWithStartedOver,
+                matches.inningsWithStartedOver.batting.batters[0],
+                matches.inningsWithStartedOver.bowlers[0],
+                3,
+            );
+
+            expect(batterIndex).toBe(1);
+        });
+    });
+
     describe('completeOver', () => {
         const [innings, batterIndex] = Innings.completeOver(
             matches.inningsWithOverReadyToComplete,

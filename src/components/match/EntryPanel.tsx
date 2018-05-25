@@ -10,6 +10,7 @@ const rowStyle: React.CSSProperties = {
 
 export interface BallFunctions {
     dotBall: () => void;
+    runs: (score: number) => void;
     completeOver: () => void;
 }
 
@@ -21,6 +22,9 @@ export const EntryPanel = ({ ballFunctions }: EntryPanelProps) => (
     <div>
         <div className="row" style={rowStyle}>
             <button className="btn btn-primary" style={buttonStyle} onClick={ballFunctions.dotBall}>.</button>
+            <button className="btn btn-primary" style={buttonStyle} onClick={() => ballFunctions.runs(1)}>1</button>
+            <button className="btn btn-primary" style={buttonStyle} onClick={() => ballFunctions.runs(2)}>2</button>
+            <button className="btn btn-primary" style={buttonStyle} onClick={() => ballFunctions.runs(3)}>3</button>
         </div>
         <div className="row" style={rowStyle}>
             <button className="btn btn-primary" style={buttonStyle} onClick={ballFunctions.completeOver}>

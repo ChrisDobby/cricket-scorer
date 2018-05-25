@@ -126,6 +126,7 @@ export interface InProgressMatch {
     startInnings: (battingTeam: Team, batter1Index: number, batter2Index: number) => void;
     newBowler: (playerIndex: number) => void;
     dotBall: () => void;
+    runs: (score: number) => void;
     completeOver: () => void;
 }
 

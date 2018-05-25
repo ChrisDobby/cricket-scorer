@@ -87,15 +87,23 @@ const innings = () => {
         return [newInnings, newBowlerIndex];
     };
 
-    const dotBall = (innings: domain.Innings, batter: domain.Batter, bowler: domain.Bowler) => {
+    const addDeliveryToInnings = (
+        innings: domain.Innings,
+        batter: domain.Batter,
+        bowler: domain.Bowler,
+        deliveryOutcome: domain.Outcome,
+    ) => {
+        const updatedBatterInnings = (battingInnings: domain.BattingInnings) => ({
+            ...battingInnings,
+            ballsFaced: battingInnings.ballsFaced + 1,
+            runs: battingInnings.runs + deliveryOutcome.score,
+        });
+
         const updatedDeliveries = [
             ...innings.deliveries,
             {
                 time: new Date(),
-                outcome: {
-                    deliveryOutcome: domain.DeliveryOutcome.Dot,
-                    score: 0,
-                },
+                outcome: deliveryOutcome,
                 overNumber: innings.completedOvers + 1,
                 batsmanIndex: innings.batting.batters.indexOf(batter),
                 bowlerIndex: innings.bowlers.indexOf(bowler),
@@ -112,12 +120,9 @@ const innings = () => {
                         b === batter
                             ? {
                                 ...batter,
-                                innings: {
-                                    ...batter
-                                        .innings as domain.BattingInnings,
-                                    ballsFaced:
-                                        (batter.innings as domain.BattingInnings).ballsFaced + 1,
-                                },
+                                innings: typeof batter.innings === 'undefined'
+                                    ? batter.innings
+                                    : updatedBatterInnings(batter.innings),
                             }
                             : b),
                 ],
@@ -128,14 +133,54 @@ const innings = () => {
                         ? {
                             ...bowler,
                             totalOvers: domain.oversDescription(bowler.completedOvers, currentOver),
+                            runs: bowler.runs + deliveryOutcome.score,
                         }
                         : b),
             ],
             deliveries: updatedDeliveries,
             totalOvers: domain.oversDescription(innings.completedOvers, updatedDeliveries),
+            score: innings.score + deliveryOutcome.score,
         };
 
         return updatedInnings;
+    };
+
+    const dotBall = (innings: domain.Innings, batter: domain.Batter, bowler: domain.Bowler) => {
+        return addDeliveryToInnings(
+            innings,
+            batter,
+            bowler, {
+                deliveryOutcome: domain.DeliveryOutcome.Dot,
+                score: 0,
+            });
+    };
+
+    const flipBatters = (innings: domain.Innings, batter: domain.Batter) => {
+        const [nextBatterIndex] = innings.batting.batters
+            .map((batter, index) => ({ batter, index }))
+            .filter(indexedBatter => indexedBatter.batter.innings && indexedBatter.batter !== batter)
+            .map(indexedBatter => indexedBatter.index);
+
+        return nextBatterIndex;
+    };
+
+    const newBatsmanIndex = (innings: domain.Innings, batter: domain.Batter, score: number) => {
+        if (score % 2 === 0) { return innings.batting.batters.indexOf(batter); }
+
+        return flipBatters(innings, batter);
+    };
+
+    const runs = (innings: domain.Innings, batter: domain.Batter, bowler: domain.Bowler, score: number)
+    : [domain.Innings, number]    => {
+        return [addDeliveryToInnings(
+            innings,
+            batter,
+            bowler,
+            {
+                score,
+                deliveryOutcome: domain.DeliveryOutcome.Runs,
+            }),
+            newBatsmanIndex(innings, batter, score)];
     };
 
     const completeOver =
@@ -146,10 +191,7 @@ const innings = () => {
                 totalOvers: domain.oversDescription(bowler.completedOvers + 1, []),
             };
 
-            const [nextBatterIndex] = innings.batting.batters
-                .map((batter, index) => ({ batter, index }))
-                .filter(indexedBatter => indexedBatter.batter.innings && indexedBatter.batter !== batter)
-                .map(indexedBatter => indexedBatter.index);
+            const nextBatterIndex = flipBatters(innings, batter);
 
             const updatedInnings = {
                 ...innings,
@@ -167,6 +209,7 @@ const innings = () => {
         newInnings,
         newBowler,
         dotBall,
+        runs,
         completeOver,
     };
 };

@@ -107,6 +107,23 @@ class InProgressMatchStore implements InProgressMatch {
         );
     }
 
+    @action runs = (score: number) => {
+        if (typeof this.match === 'undefined' ||
+            typeof this.currentInnings === 'undefined' ||
+            typeof this.currentBatter === 'undefined' ||
+            typeof this.currentBowler === 'undefined') { return; }
+
+        const [innings, batterIndex] =
+            matchInnings.runs(this.currentInnings, this.currentBatter, this.currentBowler, score);
+
+        this.match = updateMatchInnings(
+            this.match,
+            innings,
+        );
+
+        this.currentBatterIndex = batterIndex;
+    }
+
     @action completeOver = () => {
         if (typeof this.match === 'undefined' ||
             typeof this.currentInnings === 'undefined' ||
