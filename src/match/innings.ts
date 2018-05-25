@@ -1,5 +1,8 @@
 import * as domain from '../domain';
 
+const latestOver = (deliveries: domain.Delivery[], complete: number): domain.Delivery[] =>
+    deliveries.filter(delivery => delivery.overNumber > complete);
+
 const battingInOrder = (players: string[], batsman1Index: number, batsman2Index: number): string[] =>
     [
         players[batsman1Index],
@@ -110,7 +113,7 @@ const innings = () => {
             },
         ];
 
-        const currentOver = updatedDeliveries.filter(del => del.overNumber > innings.completedOvers);
+        const currentOver = latestOver(updatedDeliveries, innings.completedOvers);
         const updatedInnings = {
             ...innings,
             batting: {
@@ -140,8 +143,7 @@ const innings = () => {
             deliveries: updatedDeliveries,
             totalOvers: domain.oversDescription(
                 innings.completedOvers,
-                updatedDeliveries.filter(delivery => delivery.overNumber > innings.completedOvers,
-                )),
+                latestOver(updatedDeliveries, innings.completedOvers)),
             score: innings.score + deliveryOutcome.runs,
         };
 
@@ -190,7 +192,7 @@ const innings = () => {
                     delivery.outcome.deliveryOutcome === domain.DeliveryOutcome.Byes ||
                     delivery.outcome.deliveryOutcome === domain.DeliveryOutcome.LegByes).length === deliveries.length;
 
-            const over = innings.deliveries.filter(del => del.overNumber > innings.completedOvers);
+            const over = latestOver(innings.deliveries, innings.completedOvers);
             const updatedBowler = {
                 ...bowler,
                 completedOvers: bowler.completedOvers + 1,
