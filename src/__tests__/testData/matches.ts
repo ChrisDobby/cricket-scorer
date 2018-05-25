@@ -156,6 +156,54 @@ export const inningsWithOverReadyToComplete = {
     ],
 };
 
+export const inningsWithMaidenOverReadyToComplete = {
+    ...inningsWithStartedOver,
+    deliveries: [
+        {
+            time: new Date(),
+            bowlerIndex: 0,
+            batsmanIndex: 0,
+            overNumber: 1,
+            outcome: { runs: 2, deliveryOutcome: DeliveryOutcome.Byes },
+        },
+        {
+            time: new Date(),
+            bowlerIndex: 0,
+            batsmanIndex: 0,
+            overNumber: 1,
+            outcome: { runs: 1, deliveryOutcome: DeliveryOutcome.LegByes },
+        },
+        {
+            time: new Date(),
+            bowlerIndex: 0,
+            batsmanIndex: 0,
+            overNumber: 1,
+            outcome: { runs: 0, deliveryOutcome: DeliveryOutcome.Dot },
+        },
+        {
+            time: new Date(),
+            bowlerIndex: 0,
+            batsmanIndex: 0,
+            overNumber: 1,
+            outcome: { runs: 0, deliveryOutcome: DeliveryOutcome.Dot },
+        },
+        {
+            time: new Date(),
+            bowlerIndex: 0,
+            batsmanIndex: 0,
+            overNumber: 1,
+            outcome: { runs: 0, deliveryOutcome: DeliveryOutcome.Dot },
+        },
+        {
+            time: new Date(),
+            bowlerIndex: 0,
+            batsmanIndex: 0,
+            overNumber: 1,
+            outcome: { runs: 0, deliveryOutcome: DeliveryOutcome.Dot },
+        },
+    ],
+};
+
 export const inningsWithAllDeliveriesInCompletedOver = {
     ...inningsWithOverReadyToComplete,
     completedOvers: 1,

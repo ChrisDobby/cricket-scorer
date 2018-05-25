@@ -272,5 +272,16 @@ describe('innings', () => {
             expect(bowler.totalOvers).toBe('1');
             expect(bowler.maidenOvers).toBe(0);
         });
+
+        it('should increase the bowlers maiden overs if no runs scored', () => {
+            const [innings] = Innings.completeOver(
+                matches.inningsWithMaidenOverReadyToComplete,
+                matches.inningsWithMaidenOverReadyToComplete.batting.batters[0],
+                matches.inningsWithMaidenOverReadyToComplete.bowlers[0],
+            );
+
+            const bowler = innings.bowlers[0];
+            expect(bowler.maidenOvers).toBe(1);
+        });
     });
 });

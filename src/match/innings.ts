@@ -184,10 +184,18 @@ const innings = () => {
 
     const completeOver =
         (innings: domain.Innings, batter: domain.Batter, bowler: domain.Bowler): [domain.Innings, number] => {
+            const isMaidenOver = (deliveries: domain.Delivery[]) =>
+                deliveries.filter(delivery => delivery.outcome.deliveryOutcome === domain.DeliveryOutcome.Dot ||
+                    (delivery.outcome.deliveryOutcome === domain.DeliveryOutcome.Runs && delivery.outcome.runs === 0) ||
+                    delivery.outcome.deliveryOutcome === domain.DeliveryOutcome.Byes ||
+                    delivery.outcome.deliveryOutcome === domain.DeliveryOutcome.LegByes).length === deliveries.length;
+
+            const over = innings.deliveries.filter(del => del.overNumber > innings.completedOvers);
             const updatedBowler = {
                 ...bowler,
                 completedOvers: bowler.completedOvers + 1,
                 totalOvers: domain.oversDescription(bowler.completedOvers + 1, []),
+                maidenOvers: isMaidenOver(over) ? bowler.maidenOvers + 1 : bowler.maidenOvers,
             };
 
             const nextBatterIndex = flipBatters(innings, batter);
