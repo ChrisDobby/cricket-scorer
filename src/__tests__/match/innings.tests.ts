@@ -161,7 +161,7 @@ describe('innings', () => {
             matches.inningsWithStartedOver.batting.batters[0],
             matches.inningsWithStartedOver.bowlers[0],
             DeliveryOutcome.Valid,
-            0,
+            {},
         );
 
         const [inningsAfterRuns, batterIndexAfterRuns] = Innings.delivery(
@@ -169,7 +169,7 @@ describe('innings', () => {
             matches.inningsWithStartedOver.batting.batters[0],
             matches.inningsWithStartedOver.bowlers[0],
             DeliveryOutcome.Valid,
-            2,
+            { runs: 2 },
         );
 
         it('should add a delivery with the specified outcome to the innings', () => {
@@ -179,7 +179,7 @@ describe('innings', () => {
             expect(delivery.overNumber).toBe(1);
             expect(delivery.outcome).toEqual({
                 deliveryOutcome: DeliveryOutcome.Valid,
-                scores: { runs: 0 },
+                scores: {},
             });
             expect(delivery.batsmanIndex).toBe(0);
             expect(delivery.bowlerIndex).toBe(0);
@@ -227,7 +227,7 @@ describe('innings', () => {
                 matches.inningsWithStartedOver.batting.batters[0],
                 matches.inningsWithStartedOver.bowlers[0],
                 DeliveryOutcome.Valid,
-                3,
+                { runs: 3 },
             );
 
             expect(batterIndex).toBe(1);
@@ -239,7 +239,7 @@ describe('innings', () => {
                 matches.inningsWithAllDeliveriesInCompletedOver.batting.batters[0],
                 matches.inningsWithAllDeliveriesInCompletedOver.bowlers[0],
                 DeliveryOutcome.Valid,
-                0,
+                {},
             );
 
             expect(innings.totalOvers).toBe('1.1');

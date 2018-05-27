@@ -164,8 +164,11 @@ const innings = () => {
         return nextBatterIndex;
     };
 
-    const newBatsmanIndex = (innings: domain.Innings, batter: domain.Batter, score: number) => {
-        if (score % 2 === 0) { return innings.batting.batters.indexOf(batter); }
+    const newBatsmanIndex = (innings: domain.Innings, batter: domain.Batter, scores: domain.DeliveryScores) => {
+        const score = [scores.byes, scores.legByes, scores.runs]
+            .find(sc => typeof sc !== 'undefined');
+
+        if (typeof score === 'undefined' || score % 2 === 0) { return innings.batting.batters.indexOf(batter); }
 
         return flipBatters(innings, batter);
     };
@@ -175,7 +178,7 @@ const innings = () => {
         batter: domain.Batter,
         bowler: domain.Bowler,
         deliveryOutcome: domain.DeliveryOutcome,
-        runs: number,
+        scores: domain.DeliveryScores,
     ): [domain.Innings, number] =>
         [
             addDeliveryToInnings(
@@ -184,9 +187,9 @@ const innings = () => {
                 bowler,
                 {
                     deliveryOutcome,
-                    scores: { runs },
+                    scores,
                 }),
-            newBatsmanIndex(innings, batter, runs),
+            newBatsmanIndex(innings, batter, scores),
         ];
 
     const completeOver =

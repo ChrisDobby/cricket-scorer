@@ -13,8 +13,8 @@ export interface InProgressProps {
 @observer
 class InProgress extends React.Component<InProgressProps, {}> {
     ballFunctions = {
-        delivery: (deliveryOutcome: domain.DeliveryOutcome, runs: number) => {
-            this.props.inProgress.delivery(deliveryOutcome, runs);
+        delivery: (deliveryOutcome: domain.DeliveryOutcome, scores: domain.DeliveryScores) => {
+            this.props.inProgress.delivery(deliveryOutcome, scores);
         },
         completeOver: () => { this.props.inProgress.completeOver(); },
     };

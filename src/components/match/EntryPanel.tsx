@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { DeliveryOutcome } from '../../domain';
+import { DeliveryOutcome, DeliveryScores } from '../../domain';
 import { ActionButton } from './ActionButton';
-import { OtherScore } from './OtherScore';
+import { ScoresEntry } from './ScoresEntry';
 
 const rowStyle: React.CSSProperties = {
     marginTop: '4px',
@@ -11,7 +11,7 @@ const rowStyle: React.CSSProperties = {
 };
 
 export interface BallFunctions {
-    delivery: (deliveryOutcome: DeliveryOutcome, score: number) => void;
+    delivery: (deliveryOutcome: DeliveryOutcome, scores: DeliveryScores) => void;
     completeOver: () => void;
 }
 
@@ -25,14 +25,11 @@ export const EntryPanel = ({ ballFunctions }: EntryPanelProps) => (
             <div className="col-2">
                 Runs
             </div>
-            <div className="col-10">
-                <ActionButton caption="." action={() => ballFunctions.delivery(DeliveryOutcome.Valid, 0)} />
-                <ActionButton caption="1" action={() => ballFunctions.delivery(DeliveryOutcome.Valid, 1)} />
-                <ActionButton caption="2" action={() => ballFunctions.delivery(DeliveryOutcome.Valid, 2)} />
-                <ActionButton caption="3" action={() => ballFunctions.delivery(DeliveryOutcome.Valid, 3)} />
-                <ActionButton caption="4" action={() => ballFunctions.delivery(DeliveryOutcome.Valid, 4)} />
-                <OtherScore action={runs => ballFunctions.delivery(DeliveryOutcome.Valid, runs)} />
-            </div>
+            <ScoresEntry
+                deliveryOutcome={DeliveryOutcome.Valid}
+                getScores={score => ({ runs: score })}
+                action={ballFunctions.delivery}
+            />
         </div>
         <div className="row" style={rowStyle}>
             <div className="col-2" />
