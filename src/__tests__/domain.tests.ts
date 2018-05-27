@@ -143,21 +143,21 @@ describe('domain', () => {
                     bowlerIndex: 0,
                     batsmanIndex: 0,
                     overNumber: 7,
-                    outcome: { runs: 0, deliveryOutcome: domain.DeliveryOutcome.Dot },
+                    outcome: { scores: {}, deliveryOutcome: domain.DeliveryOutcome.Valid },
                 },
                 {
                     time: new Date(),
                     bowlerIndex: 0,
                     batsmanIndex: 0,
                     overNumber: 7,
-                    outcome: { runs: 0, deliveryOutcome: domain.DeliveryOutcome.Dot },
+                    outcome: { scores: {}, deliveryOutcome: domain.DeliveryOutcome.Valid },
                 },
                 {
                     time: new Date(),
                     bowlerIndex: 0,
                     batsmanIndex: 0,
                     overNumber: 7,
-                    outcome: { runs: 0, deliveryOutcome: domain.DeliveryOutcome.Dot },
+                    outcome: { scores: {}, deliveryOutcome: domain.DeliveryOutcome.Valid },
                 },
             ]);
 
@@ -171,21 +171,21 @@ describe('domain', () => {
                     bowlerIndex: 0,
                     batsmanIndex: 0,
                     overNumber: 7,
-                    outcome: { runs: 0, deliveryOutcome: domain.DeliveryOutcome.Dot },
+                    outcome: { scores: {}, deliveryOutcome: domain.DeliveryOutcome.Valid },
                 },
                 {
                     time: new Date(),
                     bowlerIndex: 0,
                     batsmanIndex: 0,
                     overNumber: 7,
-                    outcome: { runs: 1, deliveryOutcome: domain.DeliveryOutcome.Noball },
+                    outcome: { scores: {}, deliveryOutcome: domain.DeliveryOutcome.Noball },
                 },
                 {
                     time: new Date(),
                     bowlerIndex: 0,
                     batsmanIndex: 0,
                     overNumber: 7,
-                    outcome: { runs: 0, deliveryOutcome: domain.DeliveryOutcome.Dot },
+                    outcome: { scores: {}, deliveryOutcome: domain.DeliveryOutcome.Valid },
                 },
             ]);
 
@@ -199,21 +199,21 @@ describe('domain', () => {
                     bowlerIndex: 0,
                     batsmanIndex: 0,
                     overNumber: 7,
-                    outcome: { runs: 0, deliveryOutcome: domain.DeliveryOutcome.Dot },
+                    outcome: { scores: {}, deliveryOutcome: domain.DeliveryOutcome.Valid },
                 },
                 {
                     time: new Date(),
                     bowlerIndex: 0,
                     batsmanIndex: 0,
                     overNumber: 7,
-                    outcome: { runs: 1, deliveryOutcome: domain.DeliveryOutcome.Wide },
+                    outcome: { scores: {}, deliveryOutcome: domain.DeliveryOutcome.Wide },
                 },
                 {
                     time: new Date(),
                     bowlerIndex: 0,
                     batsmanIndex: 0,
                     overNumber: 7,
-                    outcome: { runs: 0, deliveryOutcome: domain.DeliveryOutcome.Dot },
+                    outcome: { scores: {}, deliveryOutcome: domain.DeliveryOutcome.Valid },
                 },
             ]);
 

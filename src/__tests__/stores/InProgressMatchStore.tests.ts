@@ -162,33 +162,33 @@ describe('inProgressMatchStore', () => {
     describe('delivery', () => {
         it('should do nothing if no match has been started', () => {
             inProgressMatchStore.match = undefined;
-            inProgressMatchStore.delivery(DeliveryOutcome.Dot, 0);
+            inProgressMatchStore.delivery(DeliveryOutcome.Valid, 0);
 
             expect(inProgressMatchStore.match).toBeUndefined();
         });
 
         it('should do nothing if no innings has been started', () => {
             inProgressMatchStore.match = matches.blankMatch;
-            inProgressMatchStore.delivery(DeliveryOutcome.Dot, 0);
+            inProgressMatchStore.delivery(DeliveryOutcome.Valid, 0);
 
             expect(inProgressMatchStore.match.innings).toHaveLength(0);
         });
 
         it('should do nothing if no over has been started', () => {
             inProgressMatchStore.match = matches.matchWithStartedInnings;
-            inProgressMatchStore.delivery(DeliveryOutcome.Dot, 0);
+            inProgressMatchStore.delivery(DeliveryOutcome.Valid, 0);
 
             expect(inProgressMatchStore.match.innings[0].deliveries).toHaveLength(0);
         });
 
         it('should add a delivery to the innings', () => {
             inProgressMatchStore.match = matches.matchWithStartedOver;
-            inProgressMatchStore.delivery(DeliveryOutcome.Runs, 2);
+            inProgressMatchStore.delivery(DeliveryOutcome.Valid, 2);
 
             expect(inProgressMatchStore.match.innings[0].deliveries).toHaveLength(1);
             expect(inProgressMatchStore.match.innings[0].deliveries[0].outcome.deliveryOutcome)
-                .toBe(DeliveryOutcome.Runs);
-            expect(inProgressMatchStore.match.innings[0].deliveries[0].outcome.runs)
+                .toBe(DeliveryOutcome.Valid);
+            expect(inProgressMatchStore.match.innings[0].deliveries[0].outcome.scores.runs)
                 .toBe(2);
         });
     });

@@ -96,10 +96,15 @@ const innings = () => {
         bowler: domain.Bowler,
         deliveryOutcome: domain.Outcome,
     ) => {
+        const runsScored = () =>
+            typeof deliveryOutcome.scores.runs === 'undefined'
+                ? 0
+                : deliveryOutcome.scores.runs;
+
         const updatedBatterInnings = (battingInnings: domain.BattingInnings) => ({
             ...battingInnings,
             ballsFaced: battingInnings.ballsFaced + 1,
-            runs: battingInnings.runs + deliveryOutcome.runs,
+            runs: battingInnings.runs + runsScored(),
         });
 
         const updatedDeliveries = [
@@ -136,7 +141,7 @@ const innings = () => {
                         ? {
                             ...bowler,
                             totalOvers: domain.oversDescription(bowler.completedOvers, currentOver),
-                            runs: bowler.runs + deliveryOutcome.runs,
+                            runs: bowler.runs + runsScored(),
                         }
                         : b),
             ],
@@ -144,7 +149,7 @@ const innings = () => {
             totalOvers: domain.oversDescription(
                 innings.completedOvers,
                 latestOver(updatedDeliveries, innings.completedOvers)),
-            score: innings.score + deliveryOutcome.runs,
+            score: innings.score + runsScored(),
         };
 
         return updatedInnings;
@@ -179,7 +184,7 @@ const innings = () => {
                 bowler,
                 {
                     deliveryOutcome,
-                    runs,
+                    scores: { runs },
                 }),
             newBatsmanIndex(innings, batter, runs),
         ];
@@ -187,10 +192,9 @@ const innings = () => {
     const completeOver =
         (innings: domain.Innings, batter: domain.Batter, bowler: domain.Bowler): [domain.Innings, number] => {
             const isMaidenOver = (deliveries: domain.Delivery[]) =>
-                deliveries.filter(delivery => delivery.outcome.deliveryOutcome === domain.DeliveryOutcome.Dot ||
-                    (delivery.outcome.deliveryOutcome === domain.DeliveryOutcome.Runs && delivery.outcome.runs === 0) ||
-                    delivery.outcome.deliveryOutcome === domain.DeliveryOutcome.Byes ||
-                    delivery.outcome.deliveryOutcome === domain.DeliveryOutcome.LegByes).length === deliveries.length;
+                deliveries.filter(delivery => delivery.outcome.deliveryOutcome === domain.DeliveryOutcome.Valid &&
+                    (typeof delivery.outcome.scores.runs === 'undefined' || delivery.outcome.scores.runs === 0))
+                    .length === deliveries.length;
 
             const over = latestOver(innings.deliveries, innings.completedOvers);
             const updatedBowler = {

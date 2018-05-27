@@ -160,7 +160,7 @@ describe('innings', () => {
             matches.inningsWithStartedOver,
             matches.inningsWithStartedOver.batting.batters[0],
             matches.inningsWithStartedOver.bowlers[0],
-            DeliveryOutcome.Dot,
+            DeliveryOutcome.Valid,
             0,
         );
 
@@ -168,7 +168,7 @@ describe('innings', () => {
             matches.inningsWithStartedOver,
             matches.inningsWithStartedOver.batting.batters[0],
             matches.inningsWithStartedOver.bowlers[0],
-            DeliveryOutcome.Dot,
+            DeliveryOutcome.Valid,
             2,
         );
 
@@ -178,8 +178,8 @@ describe('innings', () => {
             const delivery = inningsAfterDotBall.deliveries[0];
             expect(delivery.overNumber).toBe(1);
             expect(delivery.outcome).toEqual({
-                deliveryOutcome: DeliveryOutcome.Dot,
-                runs: 0,
+                deliveryOutcome: DeliveryOutcome.Valid,
+                scores: { runs: 0 },
             });
             expect(delivery.batsmanIndex).toBe(0);
             expect(delivery.bowlerIndex).toBe(0);
@@ -226,7 +226,7 @@ describe('innings', () => {
                 matches.inningsWithStartedOver,
                 matches.inningsWithStartedOver.batting.batters[0],
                 matches.inningsWithStartedOver.bowlers[0],
-                DeliveryOutcome.Runs,
+                DeliveryOutcome.Valid,
                 3,
             );
 
@@ -238,7 +238,7 @@ describe('innings', () => {
                 matches.inningsWithAllDeliveriesInCompletedOver,
                 matches.inningsWithAllDeliveriesInCompletedOver.batting.batters[0],
                 matches.inningsWithAllDeliveriesInCompletedOver.bowlers[0],
-                DeliveryOutcome.Dot,
+                DeliveryOutcome.Valid,
                 0,
             );
 

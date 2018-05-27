@@ -12,11 +12,7 @@ export enum Howout {
 }
 
 export enum DeliveryOutcome {
-    Dot,
-    Runs,
-    Byes,
-    LegByes,
-    PenaltyRuns,
+    Valid,
     Noball,
     Wide,
     Wicket,
@@ -29,9 +25,16 @@ export interface Wicket {
     fielder?: string;
 }
 
+export interface DeliveryScores {
+    runs?: number;
+    byes?: number;
+    legByes?: number;
+    penaltyRuns?: number;
+}
+
 export interface Outcome {
     deliveryOutcome: DeliveryOutcome;
-    runs: number;
+    scores: DeliveryScores;
 }
 
 export interface Delivery {
