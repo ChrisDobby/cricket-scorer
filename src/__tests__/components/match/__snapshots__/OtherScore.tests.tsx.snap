@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OtherScore should render correctly when can be selected 1`] = `
+<span>
+  <select
+    className="custom-select"
+    onChange={[Function]}
+    style={
+      Object {
+        "width": "84px",
+      }
+    }
+    value="6"
+  >
+    <option>
+      other
+    </option>
+    <option
+      value="5"
+    >
+      5
+    </option>
+    <option
+      value="6"
+    >
+      6
+    </option>
+    <option
+      value="7"
+    >
+      7
+    </option>
+    <option
+      value="8"
+    >
+      8
+    </option>
+    <option
+      value="9"
+    >
+      9
+    </option>
+    <option
+      value="10"
+    >
+      10
+    </option>
+  </select>
+  <button
+    className="btn btn-primary"
+    disabled={false}
+    onClick={[Function]}
+    style={
+      Object {
+        "margin": "2px",
+      }
+    }
+  >
+    <i
+      className="fa fa-check"
+    />
+  </button>
+</span>
+`;
+
+exports[`OtherScore should render correctly when cannot be selected 1`] = `
+<span>
+  <select
+    className="custom-select"
+    onChange={[Function]}
+    style={
+      Object {
+        "width": "84px",
+      }
+    }
+    value="other"
+  >
+    <option>
+      other
+    </option>
+    <option
+      value="5"
+    >
+      5
+    </option>
+    <option
+      value="6"
+    >
+      6
+    </option>
+    <option
+      value="7"
+    >
+      7
+    </option>
+    <option
+      value="8"
+    >
+      8
+    </option>
+    <option
+      value="9"
+    >
+      9
+    </option>
+    <option
+      value="10"
+    >
+      10
+    </option>
+  </select>
+  <button
+    className="btn btn-primary"
+    disabled={true}
+    onClick={[Function]}
+    style={
+      Object {
+        "margin": "2px",
+      }
+    }
+  >
+    <i
+      className="fa fa-check"
+    />
+  </button>
+</span>
+`;

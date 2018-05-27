@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActionButton should render correctly 1`] = `
+<button
+  className="btn btn-primary"
+  onClick={[Function]}
+  style={
+    Object {
+      "margin": "2px",
+      "minWidth": "36px",
+    }
+  }
+>
+  1
+</button>
+`;

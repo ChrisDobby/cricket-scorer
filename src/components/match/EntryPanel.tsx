@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { DeliveryOutcome } from '../../domain';
-
-const buttonStyle: React.CSSProperties = {
-    width: '36px',
-};
+import { ActionButton } from './ActionButton';
+import { OtherScore } from './OtherScore';
 
 const rowStyle: React.CSSProperties = {
+    marginTop: '4px',
     marginBottom: '4px',
+    backgroundColor: '#fefefe',
+    borderColor: '#fdfdfe',
 };
 
 export interface BallFunctions {
@@ -18,24 +19,26 @@ export interface EntryPanelProps {
     ballFunctions: BallFunctions;
 }
 
-const dotBall = (ballFunctions: BallFunctions) =>
-    ballFunctions.delivery(DeliveryOutcome.Dot, 0);
-
-const runs = (ballFunctions: BallFunctions, runs: number) =>
-    ballFunctions.delivery(DeliveryOutcome.Runs, runs);
-
 export const EntryPanel = ({ ballFunctions }: EntryPanelProps) => (
     <div>
         <div className="row" style={rowStyle}>
-            <button className="btn btn-primary" style={buttonStyle} onClick={() => dotBall(ballFunctions)}>.</button>
-            <button className="btn btn-primary" style={buttonStyle} onClick={() => runs(ballFunctions, 1)}>1</button>
-            <button className="btn btn-primary" style={buttonStyle} onClick={() => runs(ballFunctions, 2)}>2</button>
-            <button className="btn btn-primary" style={buttonStyle} onClick={() => runs(ballFunctions, 3)}>3</button>
+            <div className="col-2">
+                Runs
+            </div>
+            <div className="col-10">
+                <ActionButton caption="." action={() => ballFunctions.delivery(DeliveryOutcome.Dot, 0)} />
+                <ActionButton caption="1" action={() => ballFunctions.delivery(DeliveryOutcome.Runs, 1)} />
+                <ActionButton caption="2" action={() => ballFunctions.delivery(DeliveryOutcome.Runs, 2)} />
+                <ActionButton caption="3" action={() => ballFunctions.delivery(DeliveryOutcome.Runs, 3)} />
+                <ActionButton caption="4" action={() => ballFunctions.delivery(DeliveryOutcome.Runs, 4)} />
+                <OtherScore action={runs => ballFunctions.delivery(DeliveryOutcome.Runs, runs)} />
+            </div>
         </div>
         <div className="row" style={rowStyle}>
-            <button className="btn btn-primary" style={buttonStyle} onClick={ballFunctions.completeOver}>
-                <i className="fa fa-fast-forward" />
-            </button>
+            <div className="col-2" />
+            <div className="col-10">
+                <ActionButton caption="complete over" action={ballFunctions.completeOver} />
+            </div>
         </div>
     </div>
 );
