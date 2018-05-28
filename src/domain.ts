@@ -131,6 +131,7 @@ export interface InProgressMatch {
     newBowler: (playerIndex: number) => void;
     delivery: (deliveryOutcome: DeliveryOutcome, scores: DeliveryScores) => void;
     completeOver: () => void;
+    flipBatters: () => void;
 }
 
 export const howOutDescription = (wicket?: Wicket): string => {

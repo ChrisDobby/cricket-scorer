@@ -13,6 +13,7 @@ const rowStyle: React.CSSProperties = {
 export interface BallFunctions {
     delivery: (deliveryOutcome: DeliveryOutcome, scores: DeliveryScores) => void;
     completeOver: () => void;
+    changeEnds: () => void;
 }
 
 export interface EntryPanelProps {
@@ -73,6 +74,7 @@ export const EntryPanel = ({ ballFunctions }: EntryPanelProps) => (
             <div className="col-2" />
             <div className="col-10">
                 <ActionButton caption="complete over" action={ballFunctions.completeOver} />
+                <ActionButton caption="change ends" action={ballFunctions.changeEnds} />
             </div>
         </div>
     </div>

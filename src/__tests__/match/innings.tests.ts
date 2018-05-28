@@ -1,5 +1,5 @@
 import { BattingInnings, DeliveryOutcome, Outcome } from '../../domain';
-import { default as Innings } from '../../match/innings';
+import innings, { default as Innings } from '../../match/innings';
 import * as matches from '../testData/matches';
 
 jest.mock('../../match/delivery', () => {
@@ -315,6 +315,17 @@ describe('innings', () => {
 
             const bowler = innings.bowlers[0];
             expect(bowler.maidenOvers).toBe(1);
+        });
+    });
+
+    describe('flipBatters', () => {
+        it('should swap the current batters round', () => {
+            const newBatterIndex = innings.flipBatters(
+                matches.inningsWithStartedOver,
+                matches.inningsWithStartedOver.batting.batters[0],
+            );
+
+            expect(newBatterIndex).toBe(1);
         });
     });
 });

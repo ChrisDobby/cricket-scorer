@@ -18,6 +18,7 @@ class InProgress extends React.Component<InProgressProps, {}> {
             this.props.inProgress.delivery(deliveryOutcome, scores);
         },
         completeOver: () => { this.props.inProgress.completeOver(); },
+        changeEnds: () => { this.props.inProgress.flipBatters(); },
     };
 
     disallowedPlayers = () =>

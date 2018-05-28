@@ -258,4 +258,29 @@ describe('inProgressMatchStore', () => {
                 .toEqual(matches.matchWithAllDeliveriesInCompletedOver.innings[0].bowlers[0]);
         });
     });
+
+    describe('flipBatters', () => {
+        it('should do nothing if no match has been started', () => {
+            inProgressMatchStore.match = undefined;
+            inProgressMatchStore.flipBatters();
+
+            expect(inProgressMatchStore.match).toBeUndefined();
+        });
+
+        it('should do nothing if no innings has been started', () => {
+            inProgressMatchStore.match = matches.blankMatch;
+            inProgressMatchStore.flipBatters();
+
+            expect(inProgressMatchStore.match.innings).toHaveLength(0);
+        });
+
+        it('should swap the current batter over', () => {
+            inProgressMatchStore.match = matches.matchWithStartedOver;
+            inProgressMatchStore.flipBatters();
+
+            console.log(inProgressMatchStore.currentBatter);
+            expect(inProgressMatchStore.currentBatter)
+                .toEqual(matches.matchWithStartedOver.innings[0].batting.batters[0]);
+        });
+    });
 });

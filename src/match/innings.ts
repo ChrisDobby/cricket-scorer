@@ -225,6 +225,7 @@ const innings = () => {
         newBowler,
         delivery,
         completeOver,
+        flipBatters,
     };
 };
 

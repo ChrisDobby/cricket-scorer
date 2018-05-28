@@ -129,6 +129,14 @@ class InProgressMatchStore implements InProgressMatch {
         this.currentBatterIndex = batterIndex;
         this.currentBowlerIndex = undefined;
     }
+
+    @action flipBatters = () => {
+        if (typeof this.match === 'undefined' ||
+            typeof this.currentInnings === 'undefined' ||
+            typeof this.currentBatter === 'undefined') { return; }
+
+        this.currentBatterIndex = matchInnings.flipBatters(this.currentInnings, this.currentBatter);
+    }
 }
 
 const inProgressMatch = new InProgressMatchStore();
