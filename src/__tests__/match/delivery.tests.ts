@@ -20,6 +20,15 @@ describe('delivery', () => {
 
             expect(runs).toBe(3);
         });
+
+        it('should return the boundaries if defined', () => {
+            const runs = delivery.runsScored({
+                deliveryOutcome: DeliveryOutcome.Valid,
+                scores: { boundaries: 4 },
+            });
+
+            expect(runs).toBe(4);
+        });
     });
 
     describe('runsFromBatter', () => {
@@ -32,17 +41,18 @@ describe('delivery', () => {
             expect(runs).toBe(0);
         });
 
-        it('should return total of runs, byes and leg byes', () => {
+        it('should return total of runs, boundaries, byes and leg byes', () => {
             const runs = delivery.runsFromBatter({
                 deliveryOutcome: DeliveryOutcome.Valid,
                 scores: {
                     runs: 2,
+                    boundaries: 4,
                     byes: 1,
                     legByes: 3,
                 },
             });
 
-            expect(runs).toBe(6);
+            expect(runs).toBe(10);
         });
     });
 
@@ -56,17 +66,18 @@ describe('delivery', () => {
             expect(score).toBe(0);
         });
 
-        it('should return total of runs, byes and leg byes', () => {
+        it('should return total of runs, boundaries, byes and leg byes', () => {
             const score = delivery.totalScore({
                 deliveryOutcome: DeliveryOutcome.Valid,
                 scores: {
                     runs: 2,
+                    boundaries: 4,
                     byes: 1,
                     legByes: 3,
                 },
             });
 
-            expect(score).toBe(6);
+            expect(score).toBe(10);
         });
     });
 
@@ -113,6 +124,36 @@ describe('delivery', () => {
             );
 
             expect(updatedExtras).toEqual({ ...extras, legByes: 3 });
+        });
+    });
+
+    describe('boundariesScored', () => {
+        it('should return zeroes if no boundaries', () => {
+            const [fours, sixes] = delivery.boundariesScored({
+                deliveryOutcome: DeliveryOutcome.Valid,
+                scores: {},
+            });
+
+            expect(fours).toBe(0);
+            expect(sixes).toBe(0);
+        });
+
+        it('should return 1 four if a boundary 4 was scored', () => {
+            const [fours] = delivery.boundariesScored({
+                deliveryOutcome: DeliveryOutcome.Valid,
+                scores: { boundaries: 4 },
+            });
+
+            expect(fours).toBe(1);
+        });
+
+        it('should return 1 six if a boundary 6 was scored', () => {
+            const [, sixes] = delivery.boundariesScored({
+                deliveryOutcome: DeliveryOutcome.Valid,
+                scores: { boundaries: 6 },
+            });
+
+            expect(sixes).toBe(1);
         });
     });
 });

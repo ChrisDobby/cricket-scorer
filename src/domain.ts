@@ -27,6 +27,7 @@ export interface Wicket {
 
 export interface DeliveryScores {
     runs?: number;
+    boundaries?: number;
     byes?: number;
     legByes?: number;
     penaltyRuns?: number;

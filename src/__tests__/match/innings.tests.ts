@@ -15,12 +15,14 @@ jest.mock('../../match/delivery', () => {
         typeof outcome.scores.runs === 'undefined'
             ? 0
             : outcome.scores.runs;
+    const boundariesScored = () => [1, 1];
 
     return {
         runsScored,
         updatedExtras,
         totalScore,
         runsFromBatter,
+        boundariesScored,
     };
 });
 
@@ -209,6 +211,13 @@ describe('innings', () => {
             const batter = updatedInnings.batting.batters[0];
 
             expect((batter.innings as BattingInnings).runs).toBe(2);
+        });
+
+        it('should add boundaries to the current batters innings', () => {
+            const batter = updatedInnings.batting.batters[0];
+
+            expect((batter.innings as BattingInnings).fours).toBe(1);
+            expect((batter.innings as BattingInnings).sixes).toBe(1);
         });
 
         it('should update the total overs for the innings', () => {

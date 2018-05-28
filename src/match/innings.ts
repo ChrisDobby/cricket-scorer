@@ -97,11 +97,16 @@ const innings = () => {
         bowler: domain.Bowler,
         deliveryOutcome: domain.Outcome,
     ) => {
-        const updatedBatterInnings = (battingInnings: domain.BattingInnings) => ({
-            ...battingInnings,
-            ballsFaced: battingInnings.ballsFaced + 1,
-            runs: battingInnings.runs + deliveries.runsScored(deliveryOutcome),
-        });
+        const updatedBatterInnings = (battingInnings: domain.BattingInnings) => {
+            const [fours, sixes] = deliveries.boundariesScored(deliveryOutcome);
+            return {
+                ...battingInnings,
+                ballsFaced: battingInnings.ballsFaced + 1,
+                runs: battingInnings.runs + deliveries.runsScored(deliveryOutcome),
+                fours: battingInnings.fours + fours,
+                sixes: battingInnings.sixes + sixes,
+            };
+        };
 
         const updatedDeliveries = [
             ...innings.deliveries,
