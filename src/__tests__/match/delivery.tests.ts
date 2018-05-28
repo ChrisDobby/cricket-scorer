@@ -69,4 +69,50 @@ describe('delivery', () => {
             expect(score).toBe(6);
         });
     });
+
+    describe('updatedExtras', () => {
+        const extras = {
+            byes: 0,
+            legByes: 0,
+            wides: 0,
+            noBalls: 0,
+            penaltyRuns: 0,
+        };
+
+        it('should return the same extras if none defined in delivery', () => {
+            const updatedExtras = delivery.updatedExtras(
+                extras,
+                {
+                    deliveryOutcome: DeliveryOutcome.Valid,
+                    scores: {},
+                },
+            );
+
+            expect(updatedExtras).toEqual(extras);
+        });
+
+        it('should add byes to the total if defined', () => {
+            const updatedExtras = delivery.updatedExtras(
+                extras,
+                {
+                    deliveryOutcome: DeliveryOutcome.Valid,
+                    scores: { byes: 3 },
+                },
+            );
+
+            expect(updatedExtras).toEqual({ ...extras, byes: 3 });
+        });
+
+        it('should add leg byes to the total if defined', () => {
+            const updatedExtras = delivery.updatedExtras(
+                extras,
+                {
+                    deliveryOutcome: DeliveryOutcome.Valid,
+                    scores: { legByes: 3 },
+                },
+            );
+
+            expect(updatedExtras).toEqual({ ...extras, legByes: 3 });
+        });
+    });
 });

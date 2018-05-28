@@ -14,6 +14,7 @@ export const runsScored = (outcome: domain.Outcome) =>
 export const updatedExtras = (extras: domain.Extras, outcome: domain.Outcome) => ({
     ...extras,
     byes: extras.byes + (typeof outcome.scores.byes === 'undefined' ? 0 : outcome.scores.byes),
+    legByes: extras.legByes + (typeof outcome.scores.legByes === 'undefined' ? 0 : outcome.scores.legByes),
 });
 
 export const runsFromBatter = (outcome: domain.Outcome) => totalRuns(outcome);
