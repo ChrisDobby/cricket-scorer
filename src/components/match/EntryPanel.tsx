@@ -34,6 +34,21 @@ export const EntryPanel = ({ ballFunctions }: EntryPanelProps) => (
         </div>
         <div className="row" style={rowStyle}>
             <div className="col-2">
+                Boundary
+            </div>
+            <div className="col-10">
+                <ActionButton
+                    caption="4"
+                    action={() => ballFunctions.delivery(DeliveryOutcome.Valid, { boundaries: 4 })}
+                />
+                <ActionButton
+                    caption="6"
+                    action={() => ballFunctions.delivery(DeliveryOutcome.Valid, { boundaries: 6 })}
+                />
+            </div>
+        </div>
+        <div className="row" style={rowStyle}>
+            <div className="col-2">
                 Byes
             </div>
             <ScoresEntry
