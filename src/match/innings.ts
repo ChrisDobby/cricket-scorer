@@ -1,4 +1,5 @@
 import * as domain from '../domain';
+import * as deliveries from './delivery';
 
 const latestOver = (deliveries: domain.Delivery[], complete: number): domain.Delivery[] =>
     deliveries.filter(delivery => delivery.overNumber > complete);
@@ -96,15 +97,10 @@ const innings = () => {
         bowler: domain.Bowler,
         deliveryOutcome: domain.Outcome,
     ) => {
-        const runsScored = () =>
-            typeof deliveryOutcome.scores.runs === 'undefined'
-                ? 0
-                : deliveryOutcome.scores.runs;
-
         const updatedBatterInnings = (battingInnings: domain.BattingInnings) => ({
             ...battingInnings,
             ballsFaced: battingInnings.ballsFaced + 1,
-            runs: battingInnings.runs + runsScored(),
+            runs: battingInnings.runs + deliveries.runsScored(deliveryOutcome),
         });
 
         const updatedDeliveries = [
@@ -134,6 +130,7 @@ const innings = () => {
                             }
                             : b),
                 ],
+                extras: deliveries.updatedExtras(innings.batting.extras, deliveryOutcome),
             },
             bowlers: [
                 ...innings.bowlers.map(b =>
@@ -141,7 +138,7 @@ const innings = () => {
                         ? {
                             ...bowler,
                             totalOvers: domain.oversDescription(bowler.completedOvers, currentOver),
-                            runs: bowler.runs + runsScored(),
+                            runs: bowler.runs + deliveries.runsScored(deliveryOutcome),
                         }
                         : b),
             ],
@@ -149,7 +146,7 @@ const innings = () => {
             totalOvers: domain.oversDescription(
                 innings.completedOvers,
                 latestOver(updatedDeliveries, innings.completedOvers)),
-            score: innings.score + runsScored(),
+            score: innings.score + deliveries.totalScore(deliveryOutcome),
         };
 
         return updatedInnings;
@@ -164,11 +161,8 @@ const innings = () => {
         return nextBatterIndex;
     };
 
-    const newBatsmanIndex = (innings: domain.Innings, batter: domain.Batter, scores: domain.DeliveryScores) => {
-        const score = [scores.byes, scores.legByes, scores.runs]
-            .find(sc => typeof sc !== 'undefined');
-
-        if (typeof score === 'undefined' || score % 2 === 0) { return innings.batting.batters.indexOf(batter); }
+    const newBatsmanIndex = (innings: domain.Innings, batter: domain.Batter, runs: number) => {
+        if (runs % 2 === 0) { return innings.batting.batters.indexOf(batter); }
 
         return flipBatters(innings, batter);
     };
@@ -189,7 +183,7 @@ const innings = () => {
                     deliveryOutcome,
                     scores,
                 }),
-            newBatsmanIndex(innings, batter, scores),
+            newBatsmanIndex(innings, batter, deliveries.runsFromBatter({ deliveryOutcome, scores })),
         ];
 
     const completeOver =

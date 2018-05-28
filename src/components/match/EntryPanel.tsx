@@ -26,8 +26,31 @@ export const EntryPanel = ({ ballFunctions }: EntryPanelProps) => (
                 Runs
             </div>
             <ScoresEntry
+                showDot={true}
                 deliveryOutcome={DeliveryOutcome.Valid}
                 getScores={score => ({ runs: score })}
+                action={ballFunctions.delivery}
+            />
+        </div>
+        <div className="row" style={rowStyle}>
+            <div className="col-2">
+                Byes
+            </div>
+            <ScoresEntry
+                showDot={false}
+                deliveryOutcome={DeliveryOutcome.Valid}
+                getScores={score => ({ byes: score })}
+                action={ballFunctions.delivery}
+            />
+        </div>
+        <div className="row" style={rowStyle}>
+            <div className="col-2">
+                Leg byes
+            </div>
+            <ScoresEntry
+                showDot={false}
+                deliveryOutcome={DeliveryOutcome.Valid}
+                getScores={score => ({ legByes: score })}
                 action={ballFunctions.delivery}
             />
         </div>

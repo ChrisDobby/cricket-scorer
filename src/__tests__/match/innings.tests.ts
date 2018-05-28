@@ -1,6 +1,28 @@
-import { BattingInnings, DeliveryOutcome } from '../../domain';
+import { BattingInnings, DeliveryOutcome, Outcome } from '../../domain';
 import { default as Innings } from '../../match/innings';
 import * as matches from '../testData/matches';
+
+jest.mock('../../match/delivery', () => {
+    const runsScored = () => 2;
+    const updatedExtras = () => ({
+        byes: 3,
+        legByes: 1,
+        wides: 0,
+        noBalls: 0,
+    });
+    const totalScore = () => 4;
+    const runsFromBatter = (outcome: Outcome) =>
+        typeof outcome.scores.runs === 'undefined'
+            ? 0
+            : outcome.scores.runs;
+
+    return {
+        runsScored,
+        updatedExtras,
+        totalScore,
+        runsFromBatter,
+    };
+});
 
 describe('innings', () => {
     describe('newInnings', () => {
@@ -156,7 +178,7 @@ describe('innings', () => {
     });
 
     describe('delivery', () => {
-        const [inningsAfterDotBall] = Innings.delivery(
+        const [updatedInnings, updatedBatterIndex] = Innings.delivery(
             matches.inningsWithStartedOver,
             matches.inningsWithStartedOver.batting.batters[0],
             matches.inningsWithStartedOver.bowlers[0],
@@ -164,18 +186,10 @@ describe('innings', () => {
             {},
         );
 
-        const [inningsAfterRuns, batterIndexAfterRuns] = Innings.delivery(
-            matches.inningsWithStartedOver,
-            matches.inningsWithStartedOver.batting.batters[0],
-            matches.inningsWithStartedOver.bowlers[0],
-            DeliveryOutcome.Valid,
-            { runs: 2 },
-        );
-
         it('should add a delivery with the specified outcome to the innings', () => {
-            expect(inningsAfterDotBall.deliveries).toHaveLength(1);
+            expect(updatedInnings.deliveries).toHaveLength(1);
 
-            const delivery = inningsAfterDotBall.deliveries[0];
+            const delivery = updatedInnings.deliveries[0];
             expect(delivery.overNumber).toBe(1);
             expect(delivery.outcome).toEqual({
                 deliveryOutcome: DeliveryOutcome.Valid,
@@ -186,39 +200,39 @@ describe('innings', () => {
         });
 
         it('should add a ball to the balls faced for the current batter', () => {
-            const batter = inningsAfterDotBall.batting.batters[0];
+            const batter = updatedInnings.batting.batters[0];
 
             expect((batter.innings as BattingInnings).ballsFaced).toBe(1);
         });
 
         it('should add runs to the current batters score', () => {
-            const batter = inningsAfterRuns.batting.batters[0];
+            const batter = updatedInnings.batting.batters[0];
 
             expect((batter.innings as BattingInnings).runs).toBe(2);
         });
 
         it('should update the total overs for the innings', () => {
-            expect(inningsAfterDotBall.totalOvers).toBe('0.1');
+            expect(updatedInnings.totalOvers).toBe('0.1');
         });
 
         it('should update the total score for the innings', () => {
-            expect(inningsAfterRuns.score).toBe(2);
+            expect(updatedInnings.score).toBe(4);
         });
 
         it('should update the bowlers total overs', () => {
-            const bowler = inningsAfterDotBall.bowlers[0];
+            const bowler = updatedInnings.bowlers[0];
 
             expect(bowler.totalOvers).toBe('0.1');
         });
 
         it('should update the bowlers runs', () => {
-            const bowler = inningsAfterRuns.bowlers[0];
+            const bowler = updatedInnings.bowlers[0];
 
             expect(bowler.runs).toBe(2);
         });
 
         it('should return the same batter index if an even no of runs scored', () => {
-            expect(batterIndexAfterRuns).toBe(0);
+            expect(updatedBatterIndex).toBe(0);
         });
 
         it('should return the other in batter when odd no of runs scored', () => {
@@ -243,6 +257,16 @@ describe('innings', () => {
             );
 
             expect(innings.totalOvers).toBe('1.1');
+        });
+
+        it('should add extras to the innings extras totals', () => {
+            expect(updatedInnings.batting.extras)
+                .toEqual({
+                    byes: 3,
+                    legByes: 1,
+                    wides: 0,
+                    noBalls: 0,
+                });
         });
     });
 
