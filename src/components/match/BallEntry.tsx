@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as globalStyles from '../styles';
-import { Innings, Batter, Bowler, BattingInnings } from '../../domain';
+import { Innings, Batter, Bowler, BattingInnings, Extras } from '../../domain';
 import { EntryPanel, BallFunctions } from './EntryPanel';
 
 const battingScoreStyle: React.CSSProperties = {
@@ -11,6 +11,9 @@ const battingScoreStyle: React.CSSProperties = {
 const overAlertStyle: React.CSSProperties = {
     textAlign: 'center',
 };
+
+const totalExtras = (extras: Extras): number =>
+    extras.byes + extras.legByes + extras.noBalls + extras.wides + extras.penaltyRuns;
 
 export interface BallEntryProps {
     innings: Innings;
@@ -73,6 +76,14 @@ export const BallEntry = ({ innings, batter, bowler, overComplete, ballFunctions
                             {`${bowler.totalOvers}-` +
                                 `${bowler.maidenOvers}-${bowler.runs}-${bowler.wickets}`}
                         </h5>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-6">
+                        <h5>Extras</h5>
+                    </div>
+                    <div className="col-6">
+                        <h5>{totalExtras(innings.batting.extras)}</h5>
                     </div>
                 </div>
                 {overComplete &&
