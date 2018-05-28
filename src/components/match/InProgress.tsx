@@ -5,6 +5,7 @@ import WithNavBar from '../WithNavBar';
 import { StartInnings } from './StartInnings';
 import { SelectBowler } from './SelectBowler';
 import { BallEntry } from './BallEntry';
+import { Innings } from '../scorecard/Innings';
 
 export interface InProgressProps {
     inProgress: domain.InProgressMatch;
@@ -47,13 +48,16 @@ class InProgress extends React.Component<InProgressProps, {}> {
             this.props.inProgress.currentBatter &&
             this.props.inProgress.currentBowler) {
             return (
-                <BallEntry
-                    innings={this.props.inProgress.currentInnings}
-                    batter={this.props.inProgress.currentBatter}
-                    bowler={this.props.inProgress.currentBowler}
-                    overComplete={!!this.props.inProgress.currentOverComplete}
-                    ballFunctions={this.ballFunctions}
-                />
+                <div>
+                    <BallEntry
+                        innings={this.props.inProgress.currentInnings}
+                        batter={this.props.inProgress.currentBatter}
+                        bowler={this.props.inProgress.currentBowler}
+                        overComplete={!!this.props.inProgress.currentOverComplete}
+                        ballFunctions={this.ballFunctions}
+                    />
+                    <Innings innings={this.props.inProgress.currentInnings}/>
+                </div>
             );
         }
 
