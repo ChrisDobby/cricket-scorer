@@ -1,10 +1,21 @@
 import * as domain from '../domain';
 
-const totalRuns = (outcome: domain.Outcome) =>
-    [outcome.scores.byes, outcome.scores.legByes, outcome.scores.runs, outcome.scores.boundaries]
-        .filter(score => typeof score !== 'undefined')
+const total = (scores: (number | undefined)[]) =>
+    scores.filter(score => typeof score !== 'undefined')
         .map(score => score as number)
-        .reduce((total, score) => total + score, 0);
+        .reduce((tot, score) => tot + score, 0);
+
+const totalRuns = (outcome: domain.Outcome) =>
+    total([
+        outcome.scores.byes,
+        outcome.scores.legByes,
+        outcome.scores.runs,
+        outcome.scores.boundaries,
+        outcome.scores.wides,
+    ]);
+
+const extraRuns = (deliveryOutcome: domain.DeliveryOutcome) =>
+    deliveryOutcome === domain.DeliveryOutcome.Wide ? 1 : 0;
 
 export const runsScored = (outcome: domain.Outcome) => {
     if (typeof outcome.scores.runs === 'undefined') {
@@ -20,11 +31,15 @@ export const updatedExtras = (extras: domain.Extras, outcome: domain.Outcome) =>
     ...extras,
     byes: extras.byes + (typeof outcome.scores.byes === 'undefined' ? 0 : outcome.scores.byes),
     legByes: extras.legByes + (typeof outcome.scores.legByes === 'undefined' ? 0 : outcome.scores.legByes),
+    wides: extras.wides +
+        (typeof outcome.scores.wides === 'undefined' ? 0 : outcome.scores.wides) +
+        extraRuns(outcome.deliveryOutcome),
 });
 
 export const runsFromBatter = (outcome: domain.Outcome) => totalRuns(outcome);
 
-export const totalScore = (outcome: domain.Outcome) => totalRuns(outcome);
+export const totalScore = (outcome: domain.Outcome) =>
+    totalRuns(outcome) + extraRuns(outcome.deliveryOutcome);
 
 export const boundariesScored = (outcome: domain.Outcome): [number, number] => {
     if (typeof outcome.scores.boundaries === 'undefined') { return [0, 0]; }
@@ -34,3 +49,6 @@ export const boundariesScored = (outcome: domain.Outcome): [number, number] => {
         outcome.scores.boundaries === 6 ? 1 : 0,
     ];
 };
+
+export const bowlerRuns = (outcome: domain.Outcome) =>
+    total([outcome.scores.runs, outcome.scores.boundaries, outcome.scores.wides]) + extraRuns(outcome.deliveryOutcome);

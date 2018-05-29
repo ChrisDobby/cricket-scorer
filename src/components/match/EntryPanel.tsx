@@ -71,6 +71,17 @@ export const EntryPanel = ({ ballFunctions }: EntryPanelProps) => (
             />
         </div>
         <div className="row" style={rowStyle}>
+            <div className="col-2">
+                Wide
+            </div>
+            <ScoresEntry
+                showDot={true}
+                deliveryOutcome={DeliveryOutcome.Wide}
+                getScores={score => ({ wides: score })}
+                action={ballFunctions.delivery}
+            />
+        </div>
+        <div className="row" style={rowStyle}>
             <div className="col-2" />
             <div className="col-10">
                 <ActionButton caption="complete over" action={ballFunctions.completeOver} />

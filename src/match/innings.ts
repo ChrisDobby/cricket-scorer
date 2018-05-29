@@ -101,7 +101,8 @@ const innings = () => {
             const [fours, sixes] = deliveries.boundariesScored(deliveryOutcome);
             return {
                 ...battingInnings,
-                ballsFaced: battingInnings.ballsFaced + 1,
+                ballsFaced: battingInnings.ballsFaced +
+                    (deliveryOutcome.deliveryOutcome === domain.DeliveryOutcome.Wide ? 0 : 1),
                 runs: battingInnings.runs + deliveries.runsScored(deliveryOutcome),
                 fours: battingInnings.fours + fours,
                 sixes: battingInnings.sixes + sixes,
@@ -143,7 +144,7 @@ const innings = () => {
                         ? {
                             ...bowler,
                             totalOvers: domain.oversDescription(bowler.completedOvers, currentOver),
-                            runs: bowler.runs + deliveries.runsScored(deliveryOutcome),
+                            runs: bowler.runs + deliveries.bowlerRuns(deliveryOutcome),
                         }
                         : b),
             ],

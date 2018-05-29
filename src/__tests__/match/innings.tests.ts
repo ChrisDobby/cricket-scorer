@@ -16,6 +16,7 @@ jest.mock('../../match/delivery', () => {
             ? 0
             : outcome.scores.runs;
     const boundariesScored = () => [1, 1];
+    const bowlerRuns = () => 3;
 
     return {
         runsScored,
@@ -23,6 +24,7 @@ jest.mock('../../match/delivery', () => {
         totalScore,
         runsFromBatter,
         boundariesScored,
+        bowlerRuns,
     };
 });
 
@@ -188,6 +190,14 @@ describe('innings', () => {
             {},
         );
 
+        const [inningsAfterWide] = Innings.delivery(
+            matches.inningsWithStartedOver,
+            matches.inningsWithStartedOver.batting.batters[0],
+            matches.inningsWithStartedOver.bowlers[0],
+            DeliveryOutcome.Wide,
+            {},
+        );
+
         it('should add a delivery with the specified outcome to the innings', () => {
             expect(updatedInnings.deliveries).toHaveLength(1);
 
@@ -237,7 +247,7 @@ describe('innings', () => {
         it('should update the bowlers runs', () => {
             const bowler = updatedInnings.bowlers[0];
 
-            expect(bowler.runs).toBe(2);
+            expect(bowler.runs).toBe(3);
         });
 
         it('should return the same batter index if an even no of runs scored', () => {
@@ -276,6 +286,12 @@ describe('innings', () => {
                     wides: 0,
                     noBalls: 0,
                 });
+        });
+
+        it('should not add a ball faced when a wide', () => {
+            const batter = inningsAfterWide.batting.batters[0];
+
+            expect((batter.innings as BattingInnings).ballsFaced).toBe(0);
         });
     });
 

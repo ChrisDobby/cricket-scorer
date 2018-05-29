@@ -54,6 +54,17 @@ describe('delivery', () => {
 
             expect(runs).toBe(10);
         });
+
+        it('should include wides', () => {
+            const runs = delivery.runsFromBatter({
+                deliveryOutcome: DeliveryOutcome.Valid,
+                scores: {
+                    wides: 2,
+                },
+            });
+
+            expect(runs).toBe(2);
+        });
     });
 
     describe('totalScore', () => {
@@ -78,6 +89,15 @@ describe('delivery', () => {
             });
 
             expect(score).toBe(10);
+        });
+
+        it('should add a run for a wide', () => {
+            const score = delivery.totalScore({
+                deliveryOutcome: DeliveryOutcome.Wide,
+                scores: {},
+            });
+
+            expect(score).toBe(1);
         });
     });
 
@@ -125,6 +145,18 @@ describe('delivery', () => {
 
             expect(updatedExtras).toEqual({ ...extras, legByes: 3 });
         });
+
+        it('should add wides and extra run to the total if defined', () => {
+            const updatedExtras = delivery.updatedExtras(
+                extras,
+                {
+                    deliveryOutcome: DeliveryOutcome.Wide,
+                    scores: { wides: 1 },
+                },
+            );
+
+            expect(updatedExtras).toEqual({ ...extras, wides: 2 });
+        });
     });
 
     describe('boundariesScored', () => {
@@ -154,6 +186,23 @@ describe('delivery', () => {
             });
 
             expect(sixes).toBe(1);
+        });
+    });
+
+    describe('bowlerRuns', () => {
+        it('should return runs, boundaries and wides with extra run', () => {
+            const score = delivery.bowlerRuns({
+                deliveryOutcome: DeliveryOutcome.Wide,
+                scores: {
+                    runs: 2,
+                    boundaries: 4,
+                    byes: 1,
+                    legByes: 3,
+                    wides: 2,
+                },
+            });
+
+            expect(score).toBe(9);
         });
     });
 });

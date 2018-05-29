@@ -30,7 +30,7 @@ export interface DeliveryScores {
     boundaries?: number;
     byes?: number;
     legByes?: number;
-    penaltyRuns?: number;
+    wides?: number;
 }
 
 export interface Outcome {
