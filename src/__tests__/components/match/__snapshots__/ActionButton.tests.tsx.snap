@@ -2,7 +2,22 @@
 
 exports[`ActionButton should render correctly 1`] = `
 <button
-  className="btn btn-primary"
+  className="btn btn-success"
+  onClick={[Function]}
+  style={
+    Object {
+      "margin": "2px",
+      "minWidth": "36px",
+    }
+  }
+>
+  1
+</button>
+`;
+
+exports[`ActionButton should render correctly when no ball set 1`] = `
+<button
+  className="btn btn-danger"
   onClick={[Function]}
   style={
     Object {

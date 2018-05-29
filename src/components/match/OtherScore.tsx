@@ -9,6 +9,7 @@ const buttonStyle: React.CSSProperties = {
 };
 
 export interface OtherScoreProps {
+    noBall: boolean;
     action: (runs: number) => void;
 }
 
@@ -48,7 +49,7 @@ export class OtherScore extends React.PureComponent<OtherScoreProps, {}> {
                 </select>
                 <button
                     disabled={this.state.selectedValue === 'other'}
-                    className="btn btn-primary"
+                    className={`btn ${this.props.noBall ? 'btn-danger' : 'btn-success'}`}
                     style={buttonStyle}
                     onClick={this.valueSelected}
                 >

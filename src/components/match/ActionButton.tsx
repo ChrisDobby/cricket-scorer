@@ -7,9 +7,15 @@ const buttonStyle: React.CSSProperties = {
 
 export interface ActionButtonProps {
     caption: string;
+    noBall: boolean;
     action: () => void;
 }
 
-export const ActionButton = ({ caption, action }: ActionButtonProps) => (
-    <button className="btn btn-primary" style={buttonStyle} onClick={action}>{caption}</button>
+export const ActionButton = ({ caption, noBall, action }: ActionButtonProps) => (
+    <button
+        className={`btn ${noBall ? 'btn-danger' : 'btn-success'}`}
+        style={buttonStyle}
+        onClick={action}
+    >{caption}
+    </button>
 );

@@ -5,7 +5,7 @@ import { OtherScore } from '../../../components/match/OtherScore';
 
 describe('OtherScore', () => {
     const action = jest.fn();
-    const otherScore = shallow(<OtherScore action={action} />);
+    const otherScore = shallow(<OtherScore noBall={false} action={action} />);
 
     beforeEach(() => jest.resetAllMocks());
 
@@ -29,14 +29,20 @@ describe('OtherScore', () => {
     });
 
     it('should render correctly when can be selected', () => {
-        const other = ReactTestRenderer.create(<OtherScore action={action} />);
+        const other = ReactTestRenderer.create(<OtherScore noBall={false} action={action} />);
         other.root.instance.setState({ selectedValue: '6' });
 
         expect(other.toJSON()).toMatchSnapshot();
     });
 
     it('should render correctly when cannot be selected', () => {
-        const other = ReactTestRenderer.create(<OtherScore action={action} />);
+        const other = ReactTestRenderer.create(<OtherScore noBall={false} action={action} />);
+
+        expect(other.toJSON()).toMatchSnapshot();
+    });
+
+    it('should render correctly when no ball set', () => {
+        const other = ReactTestRenderer.create(<OtherScore noBall={true} action={action} />);
 
         expect(other.toJSON()).toMatchSnapshot();
     });

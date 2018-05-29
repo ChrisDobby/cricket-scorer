@@ -6,7 +6,7 @@ import { ActionButton } from '../../../components/match/ActionButton';
 describe('ActionButton', () => {
     it('should call action when clicked', () => {
         const action = jest.fn();
-        const actionButton = shallow(<ActionButton caption="1" action={action} />);
+        const actionButton = shallow(<ActionButton noBall={false} caption="1" action={action} />);
 
         actionButton.find('button').at(0).simulate('click');
 
@@ -14,7 +14,13 @@ describe('ActionButton', () => {
     });
 
     it('should render correctly', () => {
-        const actionButton = ReactTestRenderer.create(<ActionButton caption="1" action={() => { }} />);
+        const actionButton = ReactTestRenderer.create(<ActionButton noBall={false} caption="1" action={() => { }} />);
+
+        expect(actionButton.toJSON()).toMatchSnapshot();
+    });
+
+    it('should render correctly when no ball set', () => {
+        const actionButton = ReactTestRenderer.create(<ActionButton noBall={true} caption="1" action={() => { }} />);
 
         expect(actionButton.toJSON()).toMatchSnapshot();
     });
