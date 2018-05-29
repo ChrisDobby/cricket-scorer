@@ -1,5 +1,9 @@
 import * as React from 'react';
 
+const containerStyle: React.CSSProperties = {
+    whiteSpace: 'nowrap',
+};
+
 const selectStyle: React.CSSProperties = {
     width: '84px',
 };
@@ -32,7 +36,7 @@ export class OtherScore extends React.PureComponent<OtherScoreProps, {}> {
 
     render() {
         return (
-            <span>
+            <span style={containerStyle}>
                 <select
                     className="custom-select"
                     style={selectStyle}
