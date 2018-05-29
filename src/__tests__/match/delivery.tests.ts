@@ -99,6 +99,15 @@ describe('delivery', () => {
 
             expect(score).toBe(1);
         });
+
+        it('should add a run for a no ball', () => {
+            const score = delivery.totalScore({
+                deliveryOutcome: DeliveryOutcome.Noball,
+                scores: {},
+            });
+
+            expect(score).toBe(1);
+        });
     });
 
     describe('updatedExtras', () => {
@@ -157,6 +166,18 @@ describe('delivery', () => {
 
             expect(updatedExtras).toEqual({ ...extras, wides: 2 });
         });
+
+        it('should add no ball to the total if delivery is no ball', () => {
+            const updatedExtras = delivery.updatedExtras(
+                extras,
+                {
+                    deliveryOutcome: DeliveryOutcome.Noball,
+                    scores: {},
+                },
+            );
+
+            expect(updatedExtras).toEqual({ ...extras, noBalls: 1 });
+        });
     });
 
     describe('boundariesScored', () => {
@@ -203,6 +224,18 @@ describe('delivery', () => {
             });
 
             expect(score).toBe(9);
+        });
+
+        it('should return extra run for no ball', () => {
+            const score = delivery.bowlerRuns({
+                deliveryOutcome: DeliveryOutcome.Noball,
+                scores: {
+                    runs: 2,
+                },
+            });
+
+            expect(score).toBe(3);
+
         });
     });
 });

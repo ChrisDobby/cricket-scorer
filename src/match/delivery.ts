@@ -14,8 +14,16 @@ const totalRuns = (outcome: domain.Outcome) =>
         outcome.scores.wides,
     ]);
 
-const extraRuns = (deliveryOutcome: domain.DeliveryOutcome) =>
-    deliveryOutcome === domain.DeliveryOutcome.Wide ? 1 : 0;
+const extraRuns = (deliveryOutcome: domain.DeliveryOutcome) => {
+    switch (deliveryOutcome) {
+    case domain.DeliveryOutcome.Wide:
+    case domain.DeliveryOutcome.Noball:
+        return 1;
+
+    default:
+        return 0;
+    }
+};
 
 export const runsScored = (outcome: domain.Outcome) => {
     if (typeof outcome.scores.runs === 'undefined') {
@@ -33,7 +41,8 @@ export const updatedExtras = (extras: domain.Extras, outcome: domain.Outcome) =>
     legByes: extras.legByes + (typeof outcome.scores.legByes === 'undefined' ? 0 : outcome.scores.legByes),
     wides: extras.wides +
         (typeof outcome.scores.wides === 'undefined' ? 0 : outcome.scores.wides) +
-        extraRuns(outcome.deliveryOutcome),
+        (outcome.deliveryOutcome === domain.DeliveryOutcome.Wide ? 1 : 0),
+    noBalls: extras.noBalls + (outcome.deliveryOutcome === domain.DeliveryOutcome.Noball ? 1 : 0),
 });
 
 export const runsFromBatter = (outcome: domain.Outcome) => totalRuns(outcome);
