@@ -108,7 +108,7 @@ export const BallEntry = ({ innings, batter, bowler, overComplete, ballFunctions
                     </div>}
             </div>
             <div className="col-12 col-lg-6">
-                <EntryPanel ballFunctions={ballFunctions} />
+                <EntryPanel ballFunctions={ballFunctions} overComplete={overComplete} />
             </div>
         </div>
     </div>

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { DeliveryOutcome, DeliveryScores } from '../../domain';
 import { ActionButton } from './ActionButton';
 import { ScoresEntry } from './ScoresEntry';
+import { WarningModal, WarningType } from './WarningModal';
 
 const rowStyle: React.CSSProperties = {
     marginTop: '4px',
@@ -17,20 +18,86 @@ export interface BallFunctions {
 }
 
 export interface EntryPanelProps {
+    overComplete: boolean;
     ballFunctions: BallFunctions;
 }
 
+interface EntryPanelState {
+    noBall: boolean;
+    overNotCompleteWarning: boolean;
+    allRunFourWarning: boolean;
+    allRunSixWarning: boolean;
+    allRunDeliveryOutcome: DeliveryOutcome | undefined;
+    allRunScores: DeliveryScores | undefined;
+}
+
 export class EntryPanel extends React.Component<EntryPanelProps, {}> {
-    state = { noBall: false };
+    state: EntryPanelState = {
+        noBall: false,
+        overNotCompleteWarning: false,
+        allRunFourWarning: false,
+        allRunSixWarning: false,
+        allRunDeliveryOutcome: undefined,
+        allRunScores: undefined,
+    };
 
     noBallPressed = () => this.setState({ noBall: true });
 
     legalBallPressed = () => this.setState({ noBall: false });
 
     delivery = (deliveryOutcome: DeliveryOutcome, scores: DeliveryScores) => {
+        if (typeof scores.runs !== 'undefined' && (scores.runs === 4 || scores.runs === 6)) {
+            this.setState({
+                allRunFourWarning: scores.runs === 4,
+                allRunSixWarning: scores.runs === 6,
+                allRunDeliveryOutcome: deliveryOutcome,
+                allRunScores: scores,
+            });
+            return;
+        }
         this.props.ballFunctions.delivery(deliveryOutcome, scores);
 
         this.setState({ noBall: false });
+    }
+
+    completeOver = () => {
+        if (this.props.overComplete) {
+            this.props.ballFunctions.completeOver();
+            return;
+        }
+
+        this.setState({ overNotCompleteWarning: true });
+    }
+
+    overWarningYes = () => {
+        this.props.ballFunctions.completeOver();
+        this.clearWarnings();
+    }
+
+    warningNo = () => {
+        this.clearWarnings();
+    }
+
+    clearWarnings = () => {
+        this.setState({
+            overNotCompleteWarning: false,
+            allRunFourWarning: false,
+            allRunSixWarning: false,
+            allRunDeliveryOutcome: undefined,
+            allRunScores: undefined,
+        });
+    }
+
+    allRunWarningYes = () => {
+        if (typeof this.state.allRunDeliveryOutcome !== 'undefined' &&
+            typeof this.state.allRunScores !== 'undefined') {
+            this.props.ballFunctions.delivery(
+                this.state.allRunDeliveryOutcome,
+                this.state.allRunScores);
+        }
+
+        this.setState({ noBall: false });
+        this.clearWarnings();
     }
 
     get deliveryOutcome(): DeliveryOutcome {
@@ -121,7 +188,7 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
                         <ActionButton
                             caption="complete over"
                             noBall={false}
-                            action={this.props.ballFunctions.completeOver}
+                            action={this.completeOver}
                         />
                         <ActionButton
                             caption="change ends"
@@ -130,6 +197,24 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
                         />
                     </div>
                 </div>
+                {this.state.overNotCompleteWarning &&
+                    <WarningModal
+                        warningType={WarningType.OverNotCompleteWarning}
+                        onYes={this.overWarningYes}
+                        onNo={this.warningNo}
+                    />}
+                {this.state.allRunFourWarning &&
+                    <WarningModal
+                        warningType={WarningType.AllRunFourWarning}
+                        onYes={this.allRunWarningYes}
+                        onNo={this.warningNo}
+                    />}
+                {this.state.allRunSixWarning &&
+                    <WarningModal
+                        warningType={WarningType.AllRunSixWarning}
+                        onYes={this.allRunWarningYes}
+                        onNo={this.warningNo}
+                    />}
             </div>
         );
     }
