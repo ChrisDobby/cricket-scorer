@@ -238,4 +238,121 @@ describe('delivery', () => {
 
         });
     });
+
+    describe('notificationDescription', () => {
+        it('should give a description of dot ball for a dot ball', () => {
+            const description = delivery.notificationDescription({
+                deliveryOutcome: DeliveryOutcome.Valid,
+                scores: {},
+            });
+
+            expect(description).toBe('Dot ball');
+        });
+
+        it('should give a description of dot ball for a score of 0 runs', () => {
+            const description = delivery.notificationDescription({
+                deliveryOutcome: DeliveryOutcome.Valid,
+                scores: { runs: 0 },
+            });
+
+            expect(description).toBe('Dot ball');
+        });
+
+        it('should give a description of runs for a run scoring delivery', () => {
+            const description = delivery.notificationDescription({
+                deliveryOutcome: DeliveryOutcome.Valid,
+                scores: {
+                    runs: 2,
+                },
+            });
+
+            expect(description).toBe('2 runs');
+        });
+
+        it('should give no pluralise for a single run', () => {
+            const description = delivery.notificationDescription({
+                deliveryOutcome: DeliveryOutcome.Valid,
+                scores: {
+                    runs: 1,
+                },
+            });
+
+            expect(description).toBe('1 run');
+        });
+
+        it('should give a description of boundary for boundary scoring delivery', () => {
+            const description = delivery.notificationDescription({
+                deliveryOutcome: DeliveryOutcome.Valid,
+                scores: {
+                    boundaries: 4,
+                },
+            });
+
+            expect(description).toBe('boundary 4');
+        });
+
+        it('should give a description of byes for bye scoring delivery', () => {
+            const description = delivery.notificationDescription({
+                deliveryOutcome: DeliveryOutcome.Valid,
+                scores: {
+                    byes: 2,
+                },
+            });
+
+            expect(description).toBe('2 byes');
+        });
+
+        it('should give a description of leg byes for leg bye scoring delivery', () => {
+            const description = delivery.notificationDescription({
+                deliveryOutcome: DeliveryOutcome.Valid,
+                scores: {
+                    legByes: 2,
+                },
+            });
+
+            expect(description).toBe('2 leg byes');
+        });
+
+        it('should give a description of wides for wide delivery', () => {
+            const description = delivery.notificationDescription({
+                deliveryOutcome: DeliveryOutcome.Valid,
+                scores: {
+                    wides: 2,
+                },
+            });
+
+            expect(description).toBe('2 wides');
+        });
+
+        it('should give a description of wide for wide delivery with no extra runs', () => {
+            const description = delivery.notificationDescription({
+                deliveryOutcome: DeliveryOutcome.Valid,
+                scores: {
+                    wides: 0,
+                },
+            });
+
+            expect(description).toBe('wide');
+        });
+
+        it('should prefix with no ball for a no ball', () => {
+            const description = delivery.notificationDescription({
+                deliveryOutcome: DeliveryOutcome.Noball,
+                scores: {
+                    runs: 2,
+                },
+            });
+
+            expect(description).toBe('No ball - 2 runs');
+        });
+
+        it('should give a description of no ball for a no ball with no extra runs', () => {
+            const description = delivery.notificationDescription({
+                deliveryOutcome: DeliveryOutcome.Noball,
+                scores: {},
+            });
+
+            expect(description).toBe('No ball');
+        });
+    });
 });

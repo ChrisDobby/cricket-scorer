@@ -1,9 +1,11 @@
 import * as React from 'react';
+import { toast } from 'react-toastify';
 import { DeliveryOutcome, DeliveryScores } from '../../domain';
 import { ActionButton } from './ActionButton';
 import { ScoresEntry } from './ScoresEntry';
 import { WarningModal, WarningType } from './WarningModal';
 import { showByes, showLegByes } from './symbols';
+import { notificationDescription } from '../../match/delivery';
 
 const rowStyle: React.CSSProperties = {
     marginTop: '4px',
@@ -42,9 +44,22 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
         allRunScores: undefined,
     };
 
+    notifyDelivery = (deliveryOutcome: DeliveryOutcome, scores: DeliveryScores) => {
+        toast.success(notificationDescription({
+            deliveryOutcome,
+            scores,
+        }));
+    }
+
     noBallPressed = () => this.setState({ noBall: true });
 
     legalBallPressed = () => this.setState({ noBall: false });
+
+    addDelivery = (deliveryOutcome: DeliveryOutcome, scores: DeliveryScores) => {
+        this.props.ballFunctions.delivery(deliveryOutcome, scores);
+        this.notifyDelivery(deliveryOutcome, scores);
+        this.setState({ noBall: false });
+    }
 
     delivery = (deliveryOutcome: DeliveryOutcome, scores: DeliveryScores) => {
         if (typeof scores.runs !== 'undefined' && (scores.runs === 4 || scores.runs === 6)) {
@@ -56,9 +71,8 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
             });
             return;
         }
-        this.props.ballFunctions.delivery(deliveryOutcome, scores);
 
-        this.setState({ noBall: false });
+        this.addDelivery(deliveryOutcome, scores);
     }
 
     completeOver = () => {
@@ -92,12 +106,11 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
     allRunWarningYes = () => {
         if (typeof this.state.allRunDeliveryOutcome !== 'undefined' &&
             typeof this.state.allRunScores !== 'undefined') {
-            this.props.ballFunctions.delivery(
+            this.addDelivery(
                 this.state.allRunDeliveryOutcome,
                 this.state.allRunScores);
         }
 
-        this.setState({ noBall: false });
         this.clearWarnings();
     }
 
