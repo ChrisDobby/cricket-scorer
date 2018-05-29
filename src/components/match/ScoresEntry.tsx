@@ -13,20 +13,46 @@ export interface ScoresEntryProps {
     deliveryOutcome: DeliveryOutcome;
     getScores: (score: number) => DeliveryScores;
     action: (deliveryOutcome: DeliveryOutcome, scores: DeliveryScores) => void;
+    show?: (caption: string, action: () => void) => JSX.Element;
 }
 
-export const ScoresEntry = ({ showDot, deliveryOutcome, getScores, action }: ScoresEntryProps) => {
+export const ScoresEntry = ({ showDot, deliveryOutcome, getScores, action, show }: ScoresEntryProps) => {
     const noBall = deliveryOutcome === DeliveryOutcome.Noball;
     return (
         <div className="col-10">
             {showDot &&
-                <ActionButton caption="." action={() => action(deliveryOutcome, getScores(0))} noBall={noBall} />}
+                <ActionButton
+                    caption="."
+                    action={() => action(deliveryOutcome, getScores(0))}
+                    noBall={noBall}
+                    show={show}
+                />}
             {!showDot &&
                 <span style={spacerStyle}/>}
-            <ActionButton caption="1" action={() => action(deliveryOutcome, getScores(1))} noBall={noBall} />
-            <ActionButton caption="2" action={() => action(deliveryOutcome, getScores(2))} noBall={noBall} />
-            <ActionButton caption="3" action={() => action(deliveryOutcome, getScores(3))} noBall={noBall} />
-            <ActionButton caption="4" action={() => action(deliveryOutcome, getScores(4))} noBall={noBall} />
+            <ActionButton
+                caption="1"
+                action={() => action(deliveryOutcome, getScores(1))}
+                noBall={noBall}
+                show={show}
+            />
+            <ActionButton
+                caption="2"
+                action={() => action(deliveryOutcome, getScores(2))}
+                noBall={noBall}
+                show={show}
+            />
+            <ActionButton
+                caption="3"
+                action={() => action(deliveryOutcome, getScores(3))}
+                noBall={noBall}
+                show={show}
+            />
+            <ActionButton
+                caption="4"
+                action={() => action(deliveryOutcome, getScores(4))}
+                noBall={noBall}
+                show={show}
+            />
             <OtherScore action={runs => action(deliveryOutcome, getScores(runs))}  noBall={noBall}/>
         </div>
     );

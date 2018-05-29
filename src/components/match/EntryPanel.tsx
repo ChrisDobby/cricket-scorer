@@ -3,6 +3,7 @@ import { DeliveryOutcome, DeliveryScores } from '../../domain';
 import { ActionButton } from './ActionButton';
 import { ScoresEntry } from './ScoresEntry';
 import { WarningModal, WarningType } from './WarningModal';
+import { showByes, showLegByes } from './symbols';
 
 const rowStyle: React.CSSProperties = {
     marginTop: '4px',
@@ -157,6 +158,7 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
                         deliveryOutcome={this.deliveryOutcome}
                         getScores={score => ({ byes: score })}
                         action={this.delivery}
+                        show={showByes}
                     />
                 </div>
                 <div className="row" style={rowStyle}>
@@ -168,6 +170,7 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
                         deliveryOutcome={this.deliveryOutcome}
                         getScores={score => ({ legByes: score })}
                         action={this.delivery}
+                        show={showLegByes}
                     />
                 </div>
                 {!this.state.noBall &&
