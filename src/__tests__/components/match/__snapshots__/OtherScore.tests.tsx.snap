@@ -1,7 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`OtherScore should render correctly when can be selected 1`] = `
-<span>
+<span
+  style={
+    Object {
+      "whiteSpace": "nowrap",
+    }
+  }
+>
   <select
     className="custom-select"
     onChange={[Function]}
@@ -64,7 +70,13 @@ exports[`OtherScore should render correctly when can be selected 1`] = `
 `;
 
 exports[`OtherScore should render correctly when cannot be selected 1`] = `
-<span>
+<span
+  style={
+    Object {
+      "whiteSpace": "nowrap",
+    }
+  }
+>
   <select
     className="custom-select"
     onChange={[Function]}
@@ -127,7 +139,13 @@ exports[`OtherScore should render correctly when cannot be selected 1`] = `
 `;
 
 exports[`OtherScore should render correctly when no ball set 1`] = `
-<span>
+<span
+  style={
+    Object {
+      "whiteSpace": "nowrap",
+    }
+  }
+>
   <select
     className="custom-select"
     onChange={[Function]}
