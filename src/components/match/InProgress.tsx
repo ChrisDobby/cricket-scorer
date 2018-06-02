@@ -47,7 +47,8 @@ class InProgress extends React.Component<InProgressProps, {}> {
 
         if (this.props.inProgress.currentInnings &&
             this.props.inProgress.currentBatter &&
-            this.props.inProgress.currentBowler) {
+            this.props.inProgress.currentBowler &&
+            this.props.inProgress.currentOver) {
             return (
                 <div>
                     <BallEntry
@@ -55,9 +56,10 @@ class InProgress extends React.Component<InProgressProps, {}> {
                         batter={this.props.inProgress.currentBatter}
                         bowler={this.props.inProgress.currentBowler}
                         overComplete={!!this.props.inProgress.currentOverComplete}
+                        currentOver={this.props.inProgress.currentOver}
                         ballFunctions={this.ballFunctions}
                     />
-                    <Innings innings={this.props.inProgress.currentInnings}/>
+                    <Innings innings={this.props.inProgress.currentInnings} />
                 </div>
             );
         }

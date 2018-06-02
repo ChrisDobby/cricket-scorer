@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as globalStyles from '../styles';
-import { Innings, Batter, Bowler, BattingInnings, Extras } from '../../domain';
+import { Innings, Batter, Bowler, BattingInnings, Extras, Delivery } from '../../domain';
 import { EntryPanel, BallFunctions } from './EntryPanel';
+import { CurrentOver } from './CurrentOver';
 
 const headerStyle: React.CSSProperties = {
     ...globalStyles.singleHeadingRow,
@@ -25,10 +26,11 @@ export interface BallEntryProps {
     batter: Batter;
     bowler: Bowler;
     overComplete: boolean;
+    currentOver: Delivery[];
     ballFunctions: BallFunctions;
 }
 
-export const BallEntry = ({ innings, batter, bowler, overComplete, ballFunctions }: BallEntryProps) => (
+export const BallEntry = ({ innings, batter, bowler, overComplete, currentOver, ballFunctions }: BallEntryProps) => (
     <div style={globalStyles.sectionContainer}>
         <div className="row" style={headerStyle}>
             <h4>{`${bowler.name} to ${batter.name}`}</h4>
@@ -106,6 +108,7 @@ export const BallEntry = ({ innings, batter, bowler, overComplete, ballFunctions
                             </div>
                         </div>
                     </div>}
+                <CurrentOver deliveries={currentOver} />
             </div>
             <div className="col-12 col-lg-6">
                 <EntryPanel ballFunctions={ballFunctions} overComplete={overComplete} />
