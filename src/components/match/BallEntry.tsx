@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as globalStyles from '../styles';
-import { Innings, Batter, Bowler, BattingInnings, Extras, Delivery } from '../../domain';
+import { Innings, Batter, Bowler, BattingInnings, Extras, Over } from '../../domain';
 import { EntryPanel, BallFunctions } from './EntryPanel';
 import { CurrentOver } from './CurrentOver';
 
@@ -26,7 +26,7 @@ export interface BallEntryProps {
     batter: Batter;
     bowler: Bowler;
     overComplete: boolean;
-    currentOver: Delivery[];
+    currentOver: Over;
     ballFunctions: BallFunctions;
 }
 
@@ -108,7 +108,7 @@ export const BallEntry = ({ innings, batter, bowler, overComplete, currentOver, 
                             </div>
                         </div>
                     </div>}
-                <CurrentOver deliveries={currentOver} />
+                <CurrentOver over={currentOver} />
             </div>
             <div className="col-12 col-lg-6">
                 <EntryPanel ballFunctions={ballFunctions} overComplete={overComplete} />

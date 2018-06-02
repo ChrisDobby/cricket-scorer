@@ -1,20 +1,20 @@
 import * as React from 'react';
-import { Delivery } from '../../domain';
+import { Over } from '../../domain';
 import { DeliveryDisplay } from './DeliveryDisplay';
 
 const overRowStyle: React.CSSProperties = {
     paddingLeft: '20px',
 };
 
-export interface CurrentOverProps { deliveries: Delivery[]; }
+export interface CurrentOverProps { over: Over; }
 
-export const CurrentOver = ({ deliveries }: CurrentOverProps) => (
+export const CurrentOver = ({ over }: CurrentOverProps) => (
     <div>
         <div className="row">
-            <div className="col-12"><h6>This over</h6></div>
+            <div className="col-12"><h6>{`This over ${over.wickets} - ${over.bowlingRuns}`}</h6></div>
         </div>
         <div className="row" style={overRowStyle}>
-            {deliveries.map((delivery, index) => <DeliveryDisplay key={index} outcome={delivery.outcome} />)}
+            {over.deliveries.map((delivery, index) => <DeliveryDisplay key={index} outcome={delivery.outcome} />)}
         </div>
     </div>
 );

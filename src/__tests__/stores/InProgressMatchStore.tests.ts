@@ -1,6 +1,16 @@
 import inProgressMatchStore from '../../stores/inProgressMatchStore';
 import * as matches from '../testData/matches';
-import { DeliveryOutcome } from '../../domain';
+import { DeliveryOutcome, Over } from '../../domain';
+
+jest.mock('../../match/over', () => {
+    const wickets = () => 2;
+    const bowlingRuns = () => 5;
+
+    return {
+        wickets,
+        bowlingRuns,
+    };
+});
 
 describe('inProgressMatchStore', () => {
     describe('currentInnings', () => {
@@ -34,16 +44,28 @@ describe('inProgressMatchStore', () => {
             expect(inProgressMatchStore.currentOver).toBeUndefined();
         });
 
-        it('should return empty array if all deliveries are from completed over', () => {
+        it('should return empty array of deliveries if all deliveries are from completed over', () => {
             inProgressMatchStore.match = matches.matchWithAllDeliveriesInCompletedOver;
 
-            expect(inProgressMatchStore.currentOver).toHaveLength(0);
+            expect((inProgressMatchStore.currentOver as Over).deliveries).toHaveLength(0);
         });
 
         it('should return all deliveries after the last completed over', () => {
             inProgressMatchStore.match = matches.matchWithOverReadyToComplete;
 
-            expect(inProgressMatchStore.currentOver).toHaveLength(6);
+            expect((inProgressMatchStore.currentOver as Over).deliveries).toHaveLength(6);
+        });
+
+        it('should return a count of wickets', () => {
+            inProgressMatchStore.match = matches.matchWithOverReadyToComplete;
+
+            expect((inProgressMatchStore.currentOver as Over).wickets).toBe(2);
+        });
+
+        it('should return a count of bowlingRuns', () => {
+            inProgressMatchStore.match = matches.matchWithOverReadyToComplete;
+
+            expect((inProgressMatchStore.currentOver as Over).bowlingRuns).toBe(5);
         });
     });
 

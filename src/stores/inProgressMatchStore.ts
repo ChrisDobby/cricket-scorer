@@ -1,6 +1,7 @@
 import { observable, computed, action } from 'mobx';
 import { InProgressMatch, Match, Team, validDelivery, Innings, DeliveryOutcome, DeliveryScores } from '../domain';
 import { default as matchInnings } from '../match/innings';
+import * as over from '../match/over';
 
 const updateMatchInnings = (match: Match, innings: Innings): Match => ({
     ...match,
@@ -22,16 +23,21 @@ class InProgressMatchStore implements InProgressMatch {
 
     @computed get currentOver() {
         const innings = this.currentInnings;
-        return typeof innings === 'undefined'
-            ? undefined
-            : innings.deliveries.filter(delivery => delivery.overNumber > innings.completedOvers);
+        if (typeof innings === 'undefined') { return undefined; }
+        const deliveries = innings.deliveries.filter(delivery => delivery.overNumber > innings.completedOvers);
+
+        return {
+            deliveries,
+            bowlingRuns: over.bowlingRuns(deliveries),
+            wickets: over.wickets(deliveries),
+        };
     }
 
     @computed get currentOverComplete() {
         const over = this.currentOver;
         return typeof over === 'undefined'
             ? undefined
-            : over.filter(validDelivery).length >= 6;
+            : over.deliveries.filter(validDelivery).length >= 6;
     }
 
     @computed get currentBatter() {

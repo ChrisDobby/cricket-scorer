@@ -46,6 +46,12 @@ export interface Delivery {
     outcome: Outcome;
 }
 
+export interface Over {
+    deliveries: Delivery[];
+    bowlingRuns: number;
+    wickets: number;
+}
+
 export interface BattingInnings {
     runs: number;
     timeIn: Date;
@@ -125,7 +131,7 @@ export interface InProgressMatch {
     currentBatter?: Batter;
     currentBowler?: Bowler;
     previousBowler?: Bowler;
-    currentOver?: Delivery[];
+    currentOver?: Over;
     currentOverComplete?: boolean;
     startInnings: (battingTeam: Team, batter1Index: number, batter2Index: number) => void;
     newBowler: (playerIndex: number) => void;
