@@ -10,16 +10,19 @@ const noBallDisplayStyle: React.CSSProperties = {
 
 export interface ActionButtonProps {
     caption: string;
+    buttonClass?: string;
     noBall: boolean;
     action: () => void;
     show?: (caption: string, action: () => void) => JSX.Element;
 }
 
-export const ActionButton = ({ caption, noBall, action, show }: ActionButtonProps) => {
+export const ActionButton = ({ caption, buttonClass, noBall, action, show }: ActionButtonProps) => {
+    const cls = typeof buttonClass === 'undefined' ? 'btn btn-success' : `btn ${buttonClass}`;
+
     if (noBall) {
         return (
             <button
-                className="btn btn-danger"
+                className={cls}
                 style={styles.symbolButtonStyle}
                 onClick={action}
             ><div style={noBallDisplayStyle}>{caption}</div>
@@ -30,7 +33,7 @@ export const ActionButton = ({ caption, noBall, action, show }: ActionButtonProp
     if (!show) {
         return (
             <button
-                className="btn btn-success"
+                className={cls}
                 style={styles.actionButtonStyle}
                 onClick={action}
             >{caption}

@@ -192,6 +192,7 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
                             Wide
                         </div>
                         <ScoresEntry
+                            buttonClass="btn-danger"
                             showDot={true}
                             deliveryOutcome={DeliveryOutcome.Wide}
                             getScores={score => ({ wides: score })}
