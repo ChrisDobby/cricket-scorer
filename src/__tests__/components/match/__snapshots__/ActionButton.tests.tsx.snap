@@ -17,7 +17,7 @@ exports[`ActionButton should render correctly 1`] = `
 
 exports[`ActionButton should render correctly when no ball set 1`] = `
 <button
-  className="btn btn-danger"
+  className="btn btn-success"
   onClick={[Function]}
   style={
     Object {
