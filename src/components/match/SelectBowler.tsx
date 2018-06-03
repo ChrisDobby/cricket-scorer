@@ -7,11 +7,16 @@ import { SaveButton } from './SaveButton';
 export interface SelectBowlerProps {
     bowlingTeam: Team;
     disallowedPlayers: number[];
+    initiallySelected?: number;
     selectBowler: (b: number) => void;
 }
 
 export class SelectBowler extends React.Component<SelectBowlerProps, {}> {
-    state = { selectedPlayerIndex: -1 };
+    state = {
+        selectedPlayerIndex: typeof this.props.initiallySelected === 'undefined'
+            ? -1
+            : this.props.initiallySelected,
+    };
 
     save = () => {
         if (this.state.selectedPlayerIndex >= 0) {

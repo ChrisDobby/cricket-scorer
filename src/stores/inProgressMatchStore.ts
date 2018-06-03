@@ -10,6 +10,15 @@ const updateMatchInnings = (match: Match, innings: Innings): Match => ({
         : inn)],
 });
 
+const bowlerOfOver = (innings: Innings, overNumber: number) => {
+    const deliveryInOver = innings.deliveries
+        .find(delivery => delivery.overNumber === overNumber);
+
+    return typeof deliveryInOver === 'undefined'
+        ? undefined
+        : innings.bowlers[deliveryInOver.bowlerIndex];
+};
+
 class InProgressMatchStore implements InProgressMatch {
     @observable match: Match | undefined;
     @observable currentBatterIndex: number | undefined;
@@ -61,13 +70,17 @@ class InProgressMatchStore implements InProgressMatch {
             return undefined;
         }
 
-        const innings = this.currentInnings;
-        const deliveryInLastOver = innings.deliveries
-            .find(delivery => delivery.overNumber === innings.completedOvers);
+        return bowlerOfOver(this.currentInnings, this.currentInnings.completedOvers);
+    }
 
-        return typeof deliveryInLastOver === 'undefined'
-            ? undefined
-            : innings.bowlers[deliveryInLastOver.bowlerIndex];
+    @computed get previousBowlerFromEnd() {
+        if (typeof this.match === 'undefined' ||
+            typeof this.currentInnings === 'undefined' ||
+            this.currentInnings.completedOvers <= 1) {
+            return undefined;
+        }
+
+        return bowlerOfOver(this.currentInnings, this.currentInnings.completedOvers - 1);
     }
 
     @action startInnings = (battingTeam: Team, batter1Index: number, batter2Index: number) => {

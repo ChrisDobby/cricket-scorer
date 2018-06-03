@@ -131,6 +131,7 @@ export interface InProgressMatch {
     currentBatter?: Batter;
     currentBowler?: Bowler;
     previousBowler?: Bowler;
+    previousBowlerFromEnd?: Bowler;
     currentOver?: Over;
     currentOverComplete?: boolean;
     startInnings: (battingTeam: Team, batter1Index: number, batter2Index: number) => void;

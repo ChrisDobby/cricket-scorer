@@ -281,6 +281,33 @@ describe('inProgressMatchStore', () => {
         });
     });
 
+    describe('previousBowlerFromEnd', () => {
+        it('should return undefined when no match started', () => {
+            inProgressMatchStore.match = undefined;
+
+            expect(inProgressMatchStore.previousBowlerFromEnd).toBeUndefined();
+        });
+
+        it('should return undefined when no previous over', () => {
+            inProgressMatchStore.match = matches.matchWithOverReadyToComplete;
+
+            expect(inProgressMatchStore.previousBowlerFromEnd).toBeUndefined();
+        });
+
+        it('should return undefined when only one previous over', () => {
+            inProgressMatchStore.match = matches.matchWithAllDeliveriesInCompletedOver;
+
+            expect(inProgressMatchStore.previousBowlerFromEnd).toBeUndefined();
+        });
+
+        it('should return the bowler of the last completed over from the current end', () => {
+            inProgressMatchStore.match = matches.matchWithTwoCompletedOvers;
+
+            expect(inProgressMatchStore.previousBowlerFromEnd)
+                .toEqual(matches.matchWithTwoCompletedOvers.innings[0].bowlers[0]);
+        });
+    });
+
     describe('flipBatters', () => {
         it('should do nothing if no match has been started', () => {
             inProgressMatchStore.match = undefined;

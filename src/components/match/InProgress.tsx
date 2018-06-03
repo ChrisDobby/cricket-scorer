@@ -26,6 +26,11 @@ class InProgress extends React.Component<InProgressProps, {}> {
             ? []
             : [this.props.inProgress.previousBowler.playerIndex]
 
+    previousBowlerFromEndIndex = () =>
+        typeof this.props.inProgress.previousBowlerFromEnd === 'undefined'
+            ? undefined
+            : this.props.inProgress.previousBowlerFromEnd.playerIndex;
+
     render() {
         if (this.props.inProgress.match && !this.props.inProgress.currentInnings) {
             return (
@@ -41,6 +46,7 @@ class InProgress extends React.Component<InProgressProps, {}> {
                 <SelectBowler
                     bowlingTeam={this.props.inProgress.currentInnings.bowlingTeam}
                     selectBowler={this.props.inProgress.newBowler}
+                    initiallySelected={this.previousBowlerFromEndIndex()}
                     disallowedPlayers={this.disallowedPlayers()}
                 />);
         }

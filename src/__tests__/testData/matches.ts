@@ -156,6 +156,27 @@ export const inningsWithOverReadyToComplete = {
     ],
 };
 
+const inningsWithTwoOvers = {
+    ...inningsWithOverReadyToComplete,
+    bowlers: [...inningsWithOverReadyToComplete.bowlers, {
+        playerIndex: 10,
+        name: blankMatch.awayTeam.players[9],
+        completedOvers: 0,
+        totalOvers: '0',
+        maidenOvers: 0,
+        runs: 0,
+        wickets: 0,
+    }],
+    completedOvers: 2,
+    deliveries: [...inningsWithOverReadyToComplete.deliveries, ...inningsWithOverReadyToComplete
+        .deliveries.map(delivery => ({
+            ...delivery,
+            overNumber: 2,
+            bowlerIndex: 1,
+        })),
+    ],
+};
+
 export const inningsWithMaidenOverReadyToComplete = {
     ...inningsWithStartedOver,
     deliveries: [
@@ -237,6 +258,11 @@ export const matchWithOverReadyToComplete: Match = {
 export const matchWithAllDeliveriesInCompletedOver = {
     ...blankMatch,
     innings: [inningsWithAllDeliveriesInCompletedOver],
+};
+
+export const matchWithTwoCompletedOvers = {
+    ...blankMatch,
+    innings: [inningsWithTwoOvers],
 };
 
 export const matchWithOverNotReadyToComplete = {
