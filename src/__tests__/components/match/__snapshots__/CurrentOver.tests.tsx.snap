@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CurrentOver should render correctly 1`] = `
+<div>
+  <div
+    className="row"
+  >
+    <div
+      className="col-12"
+    >
+      <h6>
+        This over 0 - 3
+      </h6>
+    </div>
+  </div>
+  <div
+    className="row"
+    style={
+      Object {
+        "paddingLeft": "20px",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "backgroundColor": "#28a745",
+          "borderRadius": "4px",
+          "color": "#ffffff",
+          "display": "inline-block",
+          "fontSize": "14px",
+          "height": "30px",
+          "marginRight": "4px",
+          "width": "30px",
+        }
+      }
+    >
+      <canvas />
+    </div>
+  </div>
+</div>
+`;

@@ -327,7 +327,6 @@ describe('inProgressMatchStore', () => {
             inProgressMatchStore.match = matches.matchWithStartedOver;
             inProgressMatchStore.flipBatters();
 
-            console.log(inProgressMatchStore.currentBatter);
             expect(inProgressMatchStore.currentBatter)
                 .toEqual(matches.matchWithStartedOver.innings[0].batting.batters[0]);
         });

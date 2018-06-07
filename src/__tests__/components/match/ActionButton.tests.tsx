@@ -24,4 +24,28 @@ describe('ActionButton', () => {
 
         expect(actionButton.toJSON()).toMatchSnapshot();
     });
+
+    it('should render correctly when a button class passed', () => {
+        const actionButton = ReactTestRenderer.create(
+            <ActionButton
+                buttonClass="btn-danger"
+                noBall={false}
+                caption="1"
+                action={() => { }}
+            />);
+
+        expect(actionButton.toJSON()).toMatchSnapshot();
+    });
+
+    it('should render correctly when a show function passed', () => {
+        const actionButton = ReactTestRenderer.create(
+            <ActionButton
+                noBall={false}
+                caption="1"
+                action={() => { }}
+                show={() => <div />}
+            />);
+
+        expect(actionButton.toJSON()).toMatchSnapshot();
+    });
 });
