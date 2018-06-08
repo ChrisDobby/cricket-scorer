@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DeliveryDisplay should render correctly for no ball 1`] = `
+<div
+  style={
+    Object {
+      "backgroundColor": "#dc3545",
+      "borderRadius": "4px",
+      "color": "#ffffff",
+      "display": "inline-block",
+      "fontSize": "14px",
+      "height": "30px",
+      "marginRight": "4px",
+      "width": "30px",
+    }
+  }
+>
+  <canvas />
+</div>
+`;
+
+exports[`DeliveryDisplay should render correctly for valid delivery 1`] = `
+<div
+  style={
+    Object {
+      "backgroundColor": "#28a745",
+      "borderRadius": "4px",
+      "color": "#ffffff",
+      "display": "inline-block",
+      "fontSize": "14px",
+      "height": "30px",
+      "marginRight": "4px",
+      "width": "30px",
+    }
+  }
+>
+  <canvas />
+</div>
+`;
+
+exports[`DeliveryDisplay should render correctly for wide 1`] = `
+<div
+  style={
+    Object {
+      "backgroundColor": "#dc3545",
+      "borderRadius": "4px",
+      "color": "#ffffff",
+      "display": "inline-block",
+      "fontSize": "14px",
+      "height": "30px",
+      "marginRight": "4px",
+      "width": "30px",
+    }
+  }
+>
+  <canvas />
+</div>
+`;

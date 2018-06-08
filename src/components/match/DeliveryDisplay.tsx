@@ -32,11 +32,7 @@ export class DeliveryDisplay extends React.Component<DeliveryDisplayProps, {}> {
     }
 
     componentDidMount() {
-        if (typeof this.symbolCanvas === 'undefined' || this.symbolCanvas === null) { return; }
-        const ctx = this.symbolCanvas.getContext('2d');
-        if (ctx === null) { return; }
-
-        deliveryDrawCanvas.drawOutcome(ctx, this.props.outcome);
+        deliveryDrawCanvas.drawOutcome(this.symbolCanvas, this.props.outcome);
     }
 
     render() {

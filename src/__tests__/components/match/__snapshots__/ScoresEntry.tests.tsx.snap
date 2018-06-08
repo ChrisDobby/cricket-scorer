@@ -1,0 +1,461 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScoresEntry should render correctly when no ball 1`] = `
+<div
+  className="col-10"
+>
+  <button
+    className="btn a class"
+    onClick={[Function]}
+    style={
+      Object {
+        "margin": "2px",
+        "minWidth": "36px",
+        "paddingLeft": "4px",
+        "paddingRight": "4px",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "borderColor": "#ffffff",
+          "borderRadius": "50%",
+          "borderStyle": "solid",
+          "borderWidth": "1px",
+        }
+      }
+    >
+      .
+    </div>
+  </button>
+  <button
+    className="btn a class"
+    onClick={[Function]}
+    style={
+      Object {
+        "margin": "2px",
+        "minWidth": "36px",
+        "paddingLeft": "4px",
+        "paddingRight": "4px",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "borderColor": "#ffffff",
+          "borderRadius": "50%",
+          "borderStyle": "solid",
+          "borderWidth": "1px",
+        }
+      }
+    >
+      1
+    </div>
+  </button>
+  <button
+    className="btn a class"
+    onClick={[Function]}
+    style={
+      Object {
+        "margin": "2px",
+        "minWidth": "36px",
+        "paddingLeft": "4px",
+        "paddingRight": "4px",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "borderColor": "#ffffff",
+          "borderRadius": "50%",
+          "borderStyle": "solid",
+          "borderWidth": "1px",
+        }
+      }
+    >
+      2
+    </div>
+  </button>
+  <button
+    className="btn a class"
+    onClick={[Function]}
+    style={
+      Object {
+        "margin": "2px",
+        "minWidth": "36px",
+        "paddingLeft": "4px",
+        "paddingRight": "4px",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "borderColor": "#ffffff",
+          "borderRadius": "50%",
+          "borderStyle": "solid",
+          "borderWidth": "1px",
+        }
+      }
+    >
+      3
+    </div>
+  </button>
+  <button
+    className="btn a class"
+    onClick={[Function]}
+    style={
+      Object {
+        "margin": "2px",
+        "minWidth": "36px",
+        "paddingLeft": "4px",
+        "paddingRight": "4px",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "borderColor": "#ffffff",
+          "borderRadius": "50%",
+          "borderStyle": "solid",
+          "borderWidth": "1px",
+        }
+      }
+    >
+      4
+    </div>
+  </button>
+  <span
+    style={
+      Object {
+        "whiteSpace": "nowrap",
+      }
+    }
+  >
+    <select
+      className="custom-select"
+      onChange={[Function]}
+      style={
+        Object {
+          "width": "84px",
+        }
+      }
+      value="other"
+    >
+      <option>
+        other
+      </option>
+      <option
+        value="5"
+      >
+        5
+      </option>
+      <option
+        value="6"
+      >
+        6
+      </option>
+      <option
+        value="7"
+      >
+        7
+      </option>
+      <option
+        value="8"
+      >
+        8
+      </option>
+      <option
+        value="9"
+      >
+        9
+      </option>
+      <option
+        value="10"
+      >
+        10
+      </option>
+    </select>
+    <button
+      className="btn btn-danger"
+      disabled={true}
+      onClick={[Function]}
+      style={
+        Object {
+          "margin": "2px",
+        }
+      }
+    >
+      <i
+        className="fa fa-check"
+      />
+    </button>
+  </span>
+</div>
+`;
+
+exports[`ScoresEntry should render correctly when valid delivery and not showing dot 1`] = `
+<div
+  className="col-10"
+>
+  <span
+    style={
+      Object {
+        "display": "inline-block",
+        "width": "40px",
+      }
+    }
+  />
+  <button
+    className="btn a class"
+    onClick={[Function]}
+    style={
+      Object {
+        "margin": "2px",
+        "minWidth": "36px",
+      }
+    }
+  >
+    1
+  </button>
+  <button
+    className="btn a class"
+    onClick={[Function]}
+    style={
+      Object {
+        "margin": "2px",
+        "minWidth": "36px",
+      }
+    }
+  >
+    2
+  </button>
+  <button
+    className="btn a class"
+    onClick={[Function]}
+    style={
+      Object {
+        "margin": "2px",
+        "minWidth": "36px",
+      }
+    }
+  >
+    3
+  </button>
+  <button
+    className="btn a class"
+    onClick={[Function]}
+    style={
+      Object {
+        "margin": "2px",
+        "minWidth": "36px",
+      }
+    }
+  >
+    4
+  </button>
+  <span
+    style={
+      Object {
+        "whiteSpace": "nowrap",
+      }
+    }
+  >
+    <select
+      className="custom-select"
+      onChange={[Function]}
+      style={
+        Object {
+          "width": "84px",
+        }
+      }
+      value="other"
+    >
+      <option>
+        other
+      </option>
+      <option
+        value="5"
+      >
+        5
+      </option>
+      <option
+        value="6"
+      >
+        6
+      </option>
+      <option
+        value="7"
+      >
+        7
+      </option>
+      <option
+        value="8"
+      >
+        8
+      </option>
+      <option
+        value="9"
+      >
+        9
+      </option>
+      <option
+        value="10"
+      >
+        10
+      </option>
+    </select>
+    <button
+      className="btn btn-success"
+      disabled={true}
+      onClick={[Function]}
+      style={
+        Object {
+          "margin": "2px",
+        }
+      }
+    >
+      <i
+        className="fa fa-check"
+      />
+    </button>
+  </span>
+</div>
+`;
+
+exports[`ScoresEntry should render correctly when valid delivery and showing dot 1`] = `
+<div
+  className="col-10"
+>
+  <button
+    className="btn a class"
+    onClick={[Function]}
+    style={
+      Object {
+        "margin": "2px",
+        "minWidth": "36px",
+      }
+    }
+  >
+    .
+  </button>
+  <button
+    className="btn a class"
+    onClick={[Function]}
+    style={
+      Object {
+        "margin": "2px",
+        "minWidth": "36px",
+      }
+    }
+  >
+    1
+  </button>
+  <button
+    className="btn a class"
+    onClick={[Function]}
+    style={
+      Object {
+        "margin": "2px",
+        "minWidth": "36px",
+      }
+    }
+  >
+    2
+  </button>
+  <button
+    className="btn a class"
+    onClick={[Function]}
+    style={
+      Object {
+        "margin": "2px",
+        "minWidth": "36px",
+      }
+    }
+  >
+    3
+  </button>
+  <button
+    className="btn a class"
+    onClick={[Function]}
+    style={
+      Object {
+        "margin": "2px",
+        "minWidth": "36px",
+      }
+    }
+  >
+    4
+  </button>
+  <span
+    style={
+      Object {
+        "whiteSpace": "nowrap",
+      }
+    }
+  >
+    <select
+      className="custom-select"
+      onChange={[Function]}
+      style={
+        Object {
+          "width": "84px",
+        }
+      }
+      value="other"
+    >
+      <option>
+        other
+      </option>
+      <option
+        value="5"
+      >
+        5
+      </option>
+      <option
+        value="6"
+      >
+        6
+      </option>
+      <option
+        value="7"
+      >
+        7
+      </option>
+      <option
+        value="8"
+      >
+        8
+      </option>
+      <option
+        value="9"
+      >
+        9
+      </option>
+      <option
+        value="10"
+      >
+        10
+      </option>
+    </select>
+    <button
+      className="btn btn-success"
+      disabled={true}
+      onClick={[Function]}
+      style={
+        Object {
+          "margin": "2px",
+        }
+      }
+    >
+      <i
+        className="fa fa-check"
+      />
+    </button>
+  </span>
+</div>
+`;

@@ -66,7 +66,14 @@ const deliveryDrawCanvas = () => {
         context.stroke();
     };
 
-    const drawOutcome = (context: CanvasRenderingContext2D, outcome: Outcome) => {
+    const drawOutcome = (
+        canvas: HTMLCanvasElement | undefined,
+        outcome: Outcome,
+    ) => {
+        if (typeof canvas === 'undefined' || canvas === null) { return; }
+        const context = canvas.getContext('2d');
+        if (context === null) { return; }
+
         context.fillStyle = '#ffffff';
         context.strokeStyle = '#ffffff';
         context.font = '14px Segoe UI';
