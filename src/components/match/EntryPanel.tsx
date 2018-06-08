@@ -75,6 +75,8 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
         this.addDelivery(deliveryOutcome, scores);
     }
 
+    boundaryDelivery = (runs: number) => () => this.delivery(this.deliveryOutcome, { boundaries: runs });
+
     completeOver = () => {
         if (this.props.overComplete) {
             this.props.ballFunctions.completeOver();
@@ -122,6 +124,10 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
         return this.state.noBall ? ' (NO BALL)' : '';
     }
 
+    getScore = (field: string) => (score: number) => ({
+        [field]: score,
+    })
+
     render() {
         return (
             <div>
@@ -141,7 +147,7 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
                     <ScoresEntry
                         showDot={true}
                         deliveryOutcome={this.deliveryOutcome}
-                        getScores={score => ({ runs: score })}
+                        getScores={this.getScore('runs')}
                         action={this.delivery}
                     />
                 </div>
@@ -153,12 +159,12 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
                         <ActionButton
                             caption="4"
                             noBall={this.state.noBall}
-                            action={() => this.delivery(this.deliveryOutcome, { boundaries: 4 })}
+                            action={this.boundaryDelivery(4)}
                         />
                         <ActionButton
                             caption="6"
                             noBall={this.state.noBall}
-                            action={() => this.delivery(this.deliveryOutcome, { boundaries: 6 })}
+                            action={this.boundaryDelivery(6)}
                         />
                     </div>
                 </div>
@@ -169,7 +175,7 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
                     <ScoresEntry
                         showDot={false}
                         deliveryOutcome={this.deliveryOutcome}
-                        getScores={score => ({ byes: score })}
+                        getScores={this.getScore('byes')}
                         action={this.delivery}
                         show={showByes}
                     />
@@ -181,7 +187,7 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
                     <ScoresEntry
                         showDot={false}
                         deliveryOutcome={this.deliveryOutcome}
-                        getScores={score => ({ legByes: score })}
+                        getScores={this.getScore('legByes')}
                         action={this.delivery}
                         show={showLegByes}
                     />
@@ -195,7 +201,7 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
                             buttonClass="btn-danger"
                             showDot={true}
                             deliveryOutcome={DeliveryOutcome.Wide}
-                            getScores={score => ({ wides: score })}
+                            getScores={this.getScore('wides')}
                             action={this.delivery}
                         />
                     </div>}

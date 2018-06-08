@@ -161,6 +161,30 @@ describe('EntryPanel', () => {
             expect(ballFunctions.delivery).toHaveBeenCalledWith(DeliveryOutcome.Valid, {});
         });
 
+        it('should not call the delivery function if no outcome', () => {
+            instance.setState({
+                allRunFourWarning: true,
+                allRunSixWarning: true,
+                allRunDeliveryOutcome: undefined,
+                allRunScores: {},
+            });
+
+            instance.allRunWarningYes();
+            expect(ballFunctions.delivery).toHaveBeenCalledTimes(0);
+        });
+
+        it('should not call the delivery function if no scores', () => {
+            instance.setState({
+                allRunFourWarning: true,
+                allRunSixWarning: true,
+                allRunDeliveryOutcome: DeliveryOutcome.Valid,
+                allRunScores: undefined,
+            });
+
+            instance.allRunWarningYes();
+            expect(ballFunctions.delivery).toHaveBeenCalledTimes(0);
+        });
+
         it('should reset the all run warning states', () => {
             instance.setState({
                 allRunFourWarning: true,

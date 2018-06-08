@@ -19,13 +19,14 @@ export interface ScoresEntryProps {
 
 export const ScoresEntry = ({ showDot, deliveryOutcome, buttonClass, getScores, action, show }: ScoresEntryProps) => {
     const noBall = deliveryOutcome === DeliveryOutcome.Noball;
+    const execute = (score: number) => () => action(deliveryOutcome, getScores(score));
     return (
         <div className="col-10">
             {showDot &&
                 <ActionButton
                     buttonClass={buttonClass}
                     caption="."
-                    action={() => action(deliveryOutcome, getScores(0))}
+                    action={execute(0)}
                     noBall={noBall}
                     show={show}
                 />}
@@ -34,32 +35,32 @@ export const ScoresEntry = ({ showDot, deliveryOutcome, buttonClass, getScores, 
             <ActionButton
                 buttonClass={buttonClass}
                 caption="1"
-                action={() => action(deliveryOutcome, getScores(1))}
+                action={execute(1)}
                 noBall={noBall}
                 show={show}
             />
             <ActionButton
                 buttonClass={buttonClass}
                 caption="2"
-                action={() => action(deliveryOutcome, getScores(2))}
+                action={execute(2)}
                 noBall={noBall}
                 show={show}
             />
             <ActionButton
                 buttonClass={buttonClass}
                 caption="3"
-                action={() => action(deliveryOutcome, getScores(3))}
+                action={execute(3)}
                 noBall={noBall}
                 show={show}
             />
             <ActionButton
                 buttonClass={buttonClass}
                 caption="4"
-                action={() => action(deliveryOutcome, getScores(4))}
+                action={execute(4)}
                 noBall={noBall}
                 show={show}
             />
-            <OtherScore action={runs => action(deliveryOutcome, getScores(runs))}  noBall={noBall}/>
+            <OtherScore action={execute} noBall={noBall}/>
         </div>
     );
 };
