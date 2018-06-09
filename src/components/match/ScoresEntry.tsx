@@ -2,6 +2,7 @@ import * as React from 'react';
 import { DeliveryOutcome, DeliveryScores } from '../../domain';
 import { ActionButton } from './ActionButton';
 import { OtherScore } from './OtherScore';
+import executeDeliveryAction from './executeDeliveryAction';
 
 const spacerStyle: React.CSSProperties = {
     width: '40px',
@@ -19,7 +20,8 @@ export interface ScoresEntryProps {
 
 export const ScoresEntry = ({ showDot, deliveryOutcome, buttonClass, getScores, action, show }: ScoresEntryProps) => {
     const noBall = deliveryOutcome === DeliveryOutcome.Noball;
-    const execute = (score: number) => () => action(deliveryOutcome, getScores(score));
+    const execute = executeDeliveryAction(action, getScores, deliveryOutcome);
+
     return (
         <div className="col-10">
             {showDot &&
