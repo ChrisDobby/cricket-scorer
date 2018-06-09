@@ -257,6 +257,30 @@ describe('EntryPanel', () => {
         });
     });
 
+    describe('boundaryDelivery', () => {
+        const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} />);
+        const instance = entryPanel.instance() as EntryPanel;
+
+        it('should add a delivery with the boundaries set', () => {
+            instance.boundaryDelivery(4)();
+
+            expect(ballFunctions.delivery).toHaveBeenCalledWith(DeliveryOutcome.Valid, { boundaries: 4 });
+        });
+    });
+
+    describe('getScore', () => {
+        const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} />);
+        const instance = entryPanel.instance() as EntryPanel;
+
+        it('should return a scores object correctly', () => {
+            const scores = instance.getScore('runs')(3);
+
+            expect(scores).toEqual({
+                runs: 3,
+            });
+        });
+    });
+
     it('should set the state to no ball when the no ball button pressed', () => {
         const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} />);
         entryPanel.find('.btn-danger').at(0).simulate('click');

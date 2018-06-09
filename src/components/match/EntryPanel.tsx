@@ -116,6 +116,10 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
         this.clearWarnings();
     }
 
+    getScore = (field: string) => (score: number) => ({
+        [field]: score,
+    })
+
     get deliveryOutcome(): DeliveryOutcome {
         return this.state.noBall ? DeliveryOutcome.Noball : DeliveryOutcome.Valid;
     }
@@ -123,10 +127,6 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
     get descriptionText(): string {
         return this.state.noBall ? ' (NO BALL)' : '';
     }
-
-    getScore = (field: string) => (score: number) => ({
-        [field]: score,
-    })
 
     render() {
         return (
