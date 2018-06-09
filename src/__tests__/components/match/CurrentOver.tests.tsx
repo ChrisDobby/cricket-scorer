@@ -13,7 +13,7 @@ describe('CurrentOver', () => {
             outcome: {
                 deliveryOutcome: DeliveryOutcome.Valid,
                 scores: {},
-            }
+            },
         }],
         bowlingRuns: 3,
         wickets: 0,

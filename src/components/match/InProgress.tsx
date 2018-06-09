@@ -14,11 +14,9 @@ export interface InProgressProps {
 @observer
 class InProgress extends React.Component<InProgressProps, {}> {
     ballFunctions = {
-        delivery: (deliveryOutcome: domain.DeliveryOutcome, scores: domain.DeliveryScores) => {
-            this.props.inProgress.delivery(deliveryOutcome, scores);
-        },
-        completeOver: () => { this.props.inProgress.completeOver(); },
-        changeEnds: () => { this.props.inProgress.flipBatters(); },
+        delivery: this.props.inProgress.delivery,
+        completeOver: this.props.inProgress.completeOver,
+        changeEnds: this.props.inProgress.flipBatters,
     };
 
     disallowedPlayers = () =>
@@ -29,7 +27,7 @@ class InProgress extends React.Component<InProgressProps, {}> {
     previousBowlerFromEndIndex = () =>
         typeof this.props.inProgress.previousBowlerFromEnd === 'undefined'
             ? undefined
-            : this.props.inProgress.previousBowlerFromEnd.playerIndex;
+            : this.props.inProgress.previousBowlerFromEnd.playerIndex
 
     render() {
         if (this.props.inProgress.match && !this.props.inProgress.currentInnings) {
