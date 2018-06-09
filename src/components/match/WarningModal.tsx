@@ -53,8 +53,6 @@ const warningText = (warningType: WarningType) => {
         return allRunWarningText('four');
     case WarningType.AllRunSixWarning:
         return allRunWarningText('six');
-    default:
-        return '';
     }
 };
 

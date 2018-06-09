@@ -1,0 +1,226 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WarningModal should render correctly for all run 4 warning 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "backgroundColor": "#000000",
+        "bottom": 0,
+        "left": 0,
+        "opacity": 0.6,
+        "position": "fixed",
+        "right": 0,
+        "top": 0,
+        "zIndex": 9000,
+      }
+    }
+  />
+  <div
+    className="row"
+    style={
+      Object {
+        "bottom": 0,
+        "left": 0,
+        "padding": "20px",
+        "position": "fixed",
+        "right": 0,
+        "top": 0,
+        "zIndex": 9001,
+      }
+    }
+  >
+    <div
+      className="col-12"
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <div
+        className="alert alert-danger"
+        role="alert"
+      >
+        You have entered a four as all run rather than a boundary.  Is this correct?
+        <div>
+          <button
+            className="btn btn-danger"
+            onClick={[MockFunction]}
+            style={
+              Object {
+                "marginLeft": "10px",
+                "marginRight": "10px",
+              }
+            }
+          >
+            Yes
+          </button>
+          <button
+            className="btn btn-default"
+            onClick={[MockFunction]}
+            style={
+              Object {
+                "marginLeft": "10px",
+                "marginRight": "10px",
+              }
+            }
+          >
+            No
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`WarningModal should render correctly for all run 6 warning 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "backgroundColor": "#000000",
+        "bottom": 0,
+        "left": 0,
+        "opacity": 0.6,
+        "position": "fixed",
+        "right": 0,
+        "top": 0,
+        "zIndex": 9000,
+      }
+    }
+  />
+  <div
+    className="row"
+    style={
+      Object {
+        "bottom": 0,
+        "left": 0,
+        "padding": "20px",
+        "position": "fixed",
+        "right": 0,
+        "top": 0,
+        "zIndex": 9001,
+      }
+    }
+  >
+    <div
+      className="col-12"
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <div
+        className="alert alert-danger"
+        role="alert"
+      >
+        You have entered a six as all run rather than a boundary.  Is this correct?
+        <div>
+          <button
+            className="btn btn-danger"
+            onClick={[MockFunction]}
+            style={
+              Object {
+                "marginLeft": "10px",
+                "marginRight": "10px",
+              }
+            }
+          >
+            Yes
+          </button>
+          <button
+            className="btn btn-default"
+            onClick={[MockFunction]}
+            style={
+              Object {
+                "marginLeft": "10px",
+                "marginRight": "10px",
+              }
+            }
+          >
+            No
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`WarningModal should render correctly for not complete over warning 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "backgroundColor": "#000000",
+        "bottom": 0,
+        "left": 0,
+        "opacity": 0.6,
+        "position": "fixed",
+        "right": 0,
+        "top": 0,
+        "zIndex": 9000,
+      }
+    }
+  />
+  <div
+    className="row"
+    style={
+      Object {
+        "bottom": 0,
+        "left": 0,
+        "padding": "20px",
+        "position": "fixed",
+        "right": 0,
+        "top": 0,
+        "zIndex": 9001,
+      }
+    }
+  >
+    <div
+      className="col-12"
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <div
+        className="alert alert-danger"
+        role="alert"
+      >
+        There has not been six legal deliveries in this over.  Do you still want to complete it?
+        <div>
+          <button
+            className="btn btn-danger"
+            onClick={[MockFunction]}
+            style={
+              Object {
+                "marginLeft": "10px",
+                "marginRight": "10px",
+              }
+            }
+          >
+            Yes
+          </button>
+          <button
+            className="btn btn-default"
+            onClick={[MockFunction]}
+            style={
+              Object {
+                "marginLeft": "10px",
+                "marginRight": "10px",
+              }
+            }
+          >
+            No
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
