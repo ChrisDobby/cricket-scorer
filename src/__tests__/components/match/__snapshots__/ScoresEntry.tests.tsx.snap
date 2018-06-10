@@ -5,7 +5,7 @@ exports[`ScoresEntry should render correctly when no ball 1`] = `
   className="col-10"
 >
   <button
-    className="btn a class"
+    className="btn btn-danger"
     onClick={[Function]}
     style={
       Object {
@@ -30,7 +30,7 @@ exports[`ScoresEntry should render correctly when no ball 1`] = `
     </div>
   </button>
   <button
-    className="btn a class"
+    className="btn btn-danger"
     onClick={[Function]}
     style={
       Object {
@@ -55,7 +55,7 @@ exports[`ScoresEntry should render correctly when no ball 1`] = `
     </div>
   </button>
   <button
-    className="btn a class"
+    className="btn btn-danger"
     onClick={[Function]}
     style={
       Object {
@@ -80,7 +80,7 @@ exports[`ScoresEntry should render correctly when no ball 1`] = `
     </div>
   </button>
   <button
-    className="btn a class"
+    className="btn btn-danger"
     onClick={[Function]}
     style={
       Object {
@@ -105,7 +105,7 @@ exports[`ScoresEntry should render correctly when no ball 1`] = `
     </div>
   </button>
   <button
-    className="btn a class"
+    className="btn btn-danger"
     onClick={[Function]}
     style={
       Object {
@@ -211,7 +211,7 @@ exports[`ScoresEntry should render correctly when valid delivery and not showing
     }
   />
   <button
-    className="btn a class"
+    className="btn btn-success"
     onClick={[Function]}
     style={
       Object {
@@ -223,7 +223,7 @@ exports[`ScoresEntry should render correctly when valid delivery and not showing
     1
   </button>
   <button
-    className="btn a class"
+    className="btn btn-success"
     onClick={[Function]}
     style={
       Object {
@@ -235,7 +235,7 @@ exports[`ScoresEntry should render correctly when valid delivery and not showing
     2
   </button>
   <button
-    className="btn a class"
+    className="btn btn-success"
     onClick={[Function]}
     style={
       Object {
@@ -247,7 +247,7 @@ exports[`ScoresEntry should render correctly when valid delivery and not showing
     3
   </button>
   <button
-    className="btn a class"
+    className="btn btn-success"
     onClick={[Function]}
     style={
       Object {
@@ -332,7 +332,7 @@ exports[`ScoresEntry should render correctly when valid delivery and showing dot
   className="col-10"
 >
   <button
-    className="btn a class"
+    className="btn btn-success"
     onClick={[Function]}
     style={
       Object {
@@ -344,7 +344,7 @@ exports[`ScoresEntry should render correctly when valid delivery and showing dot
     .
   </button>
   <button
-    className="btn a class"
+    className="btn btn-success"
     onClick={[Function]}
     style={
       Object {
@@ -356,7 +356,7 @@ exports[`ScoresEntry should render correctly when valid delivery and showing dot
     1
   </button>
   <button
-    className="btn a class"
+    className="btn btn-success"
     onClick={[Function]}
     style={
       Object {
@@ -368,7 +368,7 @@ exports[`ScoresEntry should render correctly when valid delivery and showing dot
     2
   </button>
   <button
-    className="btn a class"
+    className="btn btn-success"
     onClick={[Function]}
     style={
       Object {
@@ -380,7 +380,140 @@ exports[`ScoresEntry should render correctly when valid delivery and showing dot
     3
   </button>
   <button
-    className="btn a class"
+    className="btn btn-success"
+    onClick={[Function]}
+    style={
+      Object {
+        "margin": "2px",
+        "minWidth": "36px",
+      }
+    }
+  >
+    4
+  </button>
+  <span
+    style={
+      Object {
+        "whiteSpace": "nowrap",
+      }
+    }
+  >
+    <select
+      className="custom-select"
+      onChange={[Function]}
+      style={
+        Object {
+          "width": "84px",
+        }
+      }
+      value="other"
+    >
+      <option>
+        other
+      </option>
+      <option
+        value="5"
+      >
+        5
+      </option>
+      <option
+        value="6"
+      >
+        6
+      </option>
+      <option
+        value="7"
+      >
+        7
+      </option>
+      <option
+        value="8"
+      >
+        8
+      </option>
+      <option
+        value="9"
+      >
+        9
+      </option>
+      <option
+        value="10"
+      >
+        10
+      </option>
+    </select>
+    <button
+      className="btn btn-success"
+      disabled={true}
+      onClick={[Function]}
+      style={
+        Object {
+          "margin": "2px",
+        }
+      }
+    >
+      <i
+        className="fa fa-check"
+      />
+    </button>
+  </span>
+</div>
+`;
+
+exports[`ScoresEntry should render correctly when wide 1`] = `
+<div
+  className="col-10"
+>
+  <button
+    className="btn btn-danger"
+    onClick={[Function]}
+    style={
+      Object {
+        "margin": "2px",
+        "minWidth": "36px",
+      }
+    }
+  >
+    .
+  </button>
+  <button
+    className="btn btn-danger"
+    onClick={[Function]}
+    style={
+      Object {
+        "margin": "2px",
+        "minWidth": "36px",
+      }
+    }
+  >
+    1
+  </button>
+  <button
+    className="btn btn-danger"
+    onClick={[Function]}
+    style={
+      Object {
+        "margin": "2px",
+        "minWidth": "36px",
+      }
+    }
+  >
+    2
+  </button>
+  <button
+    className="btn btn-danger"
+    onClick={[Function]}
+    style={
+      Object {
+        "margin": "2px",
+        "minWidth": "36px",
+      }
+    }
+  >
+    3
+  </button>
+  <button
+    className="btn btn-danger"
     onClick={[Function]}
     style={
       Object {

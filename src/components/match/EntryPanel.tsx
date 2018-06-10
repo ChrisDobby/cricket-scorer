@@ -6,6 +6,7 @@ import { ScoresEntry } from './ScoresEntry';
 import { WarningModal, WarningType } from './WarningModal';
 import { showByes, showLegByes } from './symbols';
 import { notificationDescription } from '../../match/delivery';
+import actionButtonClass from './actionButtonClass';
 
 const rowStyle: React.CSSProperties = {
     marginTop: '4px',
@@ -160,11 +161,13 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
                             caption="4"
                             noBall={this.state.noBall}
                             action={this.boundaryDelivery(4)}
+                            buttonClass={actionButtonClass(this.deliveryOutcome)}
                         />
                         <ActionButton
                             caption="6"
                             noBall={this.state.noBall}
                             action={this.boundaryDelivery(6)}
+                            buttonClass={actionButtonClass(this.deliveryOutcome)}
                         />
                     </div>
                 </div>
@@ -198,7 +201,6 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
                             Wide
                         </div>
                         <ScoresEntry
-                            buttonClass="btn-danger"
                             showDot={true}
                             deliveryOutcome={DeliveryOutcome.Wide}
                             getScores={this.getScore('wides')}

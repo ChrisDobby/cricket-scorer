@@ -9,7 +9,6 @@ describe('ScoresEntry', () => {
             <ScoresEntry
                 showDot={true}
                 deliveryOutcome={DeliveryOutcome.Valid}
-                buttonClass="a class"
                 getScores={jest.fn()}
                 action={jest.fn()}
             />);
@@ -22,7 +21,18 @@ describe('ScoresEntry', () => {
             <ScoresEntry
                 showDot={true}
                 deliveryOutcome={DeliveryOutcome.Noball}
-                buttonClass="a class"
+                getScores={jest.fn()}
+                action={jest.fn()}
+            />);
+
+        expect(scoresEntry.toJSON()).toMatchSnapshot();
+    });
+
+    it('should render correctly when wide', () => {
+        const scoresEntry = ReactTestRenderer.create(
+            <ScoresEntry
+                showDot={true}
+                deliveryOutcome={DeliveryOutcome.Wide}
                 getScores={jest.fn()}
                 action={jest.fn()}
             />);
@@ -35,7 +45,6 @@ describe('ScoresEntry', () => {
             <ScoresEntry
                 showDot={false}
                 deliveryOutcome={DeliveryOutcome.Valid}
-                buttonClass="a class"
                 getScores={jest.fn()}
                 action={jest.fn()}
             />);

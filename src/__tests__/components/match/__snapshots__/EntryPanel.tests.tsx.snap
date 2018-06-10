@@ -39,7 +39,7 @@ exports[`EntryPanel should render correctly when entering a no ball 1`] = `
       className="col-10"
     >
       <button
-        className="btn btn-success"
+        className="btn btn-danger"
         onClick={[Function]}
         style={
           Object {
@@ -64,7 +64,7 @@ exports[`EntryPanel should render correctly when entering a no ball 1`] = `
         </div>
       </button>
       <button
-        className="btn btn-success"
+        className="btn btn-danger"
         onClick={[Function]}
         style={
           Object {
@@ -89,7 +89,7 @@ exports[`EntryPanel should render correctly when entering a no ball 1`] = `
         </div>
       </button>
       <button
-        className="btn btn-success"
+        className="btn btn-danger"
         onClick={[Function]}
         style={
           Object {
@@ -114,7 +114,7 @@ exports[`EntryPanel should render correctly when entering a no ball 1`] = `
         </div>
       </button>
       <button
-        className="btn btn-success"
+        className="btn btn-danger"
         onClick={[Function]}
         style={
           Object {
@@ -139,7 +139,7 @@ exports[`EntryPanel should render correctly when entering a no ball 1`] = `
         </div>
       </button>
       <button
-        className="btn btn-success"
+        className="btn btn-danger"
         onClick={[Function]}
         style={
           Object {
@@ -251,7 +251,7 @@ exports[`EntryPanel should render correctly when entering a no ball 1`] = `
       className="col-10"
     >
       <button
-        className="btn btn-success"
+        className="btn btn-danger"
         onClick={[Function]}
         style={
           Object {
@@ -276,7 +276,7 @@ exports[`EntryPanel should render correctly when entering a no ball 1`] = `
         </div>
       </button>
       <button
-        className="btn btn-success"
+        className="btn btn-danger"
         onClick={[Function]}
         style={
           Object {
@@ -330,7 +330,7 @@ exports[`EntryPanel should render correctly when entering a no ball 1`] = `
         }
       />
       <button
-        className="btn btn-success"
+        className="btn btn-danger"
         onClick={[Function]}
         style={
           Object {
@@ -355,7 +355,7 @@ exports[`EntryPanel should render correctly when entering a no ball 1`] = `
         </div>
       </button>
       <button
-        className="btn btn-success"
+        className="btn btn-danger"
         onClick={[Function]}
         style={
           Object {
@@ -380,7 +380,7 @@ exports[`EntryPanel should render correctly when entering a no ball 1`] = `
         </div>
       </button>
       <button
-        className="btn btn-success"
+        className="btn btn-danger"
         onClick={[Function]}
         style={
           Object {
@@ -405,7 +405,7 @@ exports[`EntryPanel should render correctly when entering a no ball 1`] = `
         </div>
       </button>
       <button
-        className="btn btn-success"
+        className="btn btn-danger"
         onClick={[Function]}
         style={
           Object {
@@ -525,7 +525,7 @@ exports[`EntryPanel should render correctly when entering a no ball 1`] = `
         }
       />
       <button
-        className="btn btn-success"
+        className="btn btn-danger"
         onClick={[Function]}
         style={
           Object {
@@ -550,7 +550,7 @@ exports[`EntryPanel should render correctly when entering a no ball 1`] = `
         </div>
       </button>
       <button
-        className="btn btn-success"
+        className="btn btn-danger"
         onClick={[Function]}
         style={
           Object {
@@ -575,7 +575,7 @@ exports[`EntryPanel should render correctly when entering a no ball 1`] = `
         </div>
       </button>
       <button
-        className="btn btn-success"
+        className="btn btn-danger"
         onClick={[Function]}
         style={
           Object {
@@ -600,7 +600,7 @@ exports[`EntryPanel should render correctly when entering a no ball 1`] = `
         </div>
       </button>
       <button
-        className="btn btn-success"
+        className="btn btn-danger"
         onClick={[Function]}
         style={
           Object {
