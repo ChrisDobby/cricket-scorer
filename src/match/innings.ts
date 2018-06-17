@@ -47,7 +47,7 @@ const innings = () => {
                                 ballsFaced: 0,
                                 fours: 0,
                                 sixes: 0,
-                                timeIn: new Date(),
+                                timeIn: (new Date()).getTime(),
                             }
                             : undefined,
                     })),
@@ -112,7 +112,7 @@ const innings = () => {
         const updatedDeliveries = [
             ...innings.deliveries,
             {
-                time: new Date(),
+                time: (new Date()).getTime(),
                 outcome: deliveryOutcome,
                 overNumber: innings.completedOvers + 1,
                 batsmanIndex: innings.batting.batters.indexOf(batter),

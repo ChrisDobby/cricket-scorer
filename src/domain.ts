@@ -19,7 +19,7 @@ export enum DeliveryOutcome {
 }
 
 export interface Wicket {
-    time: Date;
+    time: number;
     howOut: Howout;
     bowler?: string;
     fielder?: string;
@@ -39,7 +39,7 @@ export interface Outcome {
 }
 
 export interface Delivery {
-    time: Date;
+    time: number;
     bowlerIndex: number;
     batsmanIndex: number;
     overNumber: number;
@@ -54,7 +54,7 @@ export interface Over {
 
 export interface BattingInnings {
     runs: number;
-    timeIn: Date;
+    timeIn: number;
     ballsFaced: number;
     fours: number;
     sixes: number;

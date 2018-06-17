@@ -10,7 +10,7 @@ describe('domain', () => {
 
         it('should return bowled description for wicket out bowled', () => {
             const description = domain.howOutDescription({
-                time: new Date(),
+                time: (new Date()).getTime(),
                 howOut: domain.Howout.Bowled,
                 bowler: 'A bowler',
             });
@@ -20,7 +20,7 @@ describe('domain', () => {
 
         it('should return lbw description for wicket out lbw', () => {
             const description = domain.howOutDescription({
-                time: new Date(),
+                time: (new Date()).getTime(),
                 howOut: domain.Howout.Lbw,
                 bowler: 'A bowler',
             });
@@ -30,7 +30,7 @@ describe('domain', () => {
 
         it('should return caught description for wicket out caught', () => {
             const description = domain.howOutDescription({
-                time: new Date(),
+                time: (new Date()).getTime(),
                 howOut: domain.Howout.Caught,
                 bowler: 'A bowler',
                 fielder: 'A fielder',
@@ -41,7 +41,7 @@ describe('domain', () => {
 
         it('should return caught & bowled description for wicket out caught & bowled', () => {
             const description = domain.howOutDescription({
-                time: new Date(),
+                time: (new Date()).getTime(),
                 howOut: domain.Howout.Caught,
                 bowler: 'A bowler',
                 fielder: 'A bowler',
@@ -52,7 +52,7 @@ describe('domain', () => {
 
         it('should return run out description for wicket out run out', () => {
             const description = domain.howOutDescription({
-                time: new Date(),
+                time: (new Date()).getTime(),
                 howOut: domain.Howout.RunOut,
                 bowler: 'A bowler',
             });
@@ -62,7 +62,7 @@ describe('domain', () => {
 
         it('should include fielder in run out description if one specified', () => {
             const description = domain.howOutDescription({
-                time: new Date(),
+                time: (new Date()).getTime(),
                 howOut: domain.Howout.RunOut,
                 bowler: 'A bowler',
                 fielder: 'A fielder',
@@ -73,7 +73,7 @@ describe('domain', () => {
 
         it('should return stumped description for wicket out stumped', () => {
             const description = domain.howOutDescription({
-                time: new Date(),
+                time: (new Date()).getTime(),
                 howOut: domain.Howout.Stumped,
                 bowler: 'A bowler',
                 fielder: 'A keeper',
@@ -84,7 +84,7 @@ describe('domain', () => {
 
         it('should return retired description for batter retired', () => {
             const description = domain.howOutDescription({
-                time: new Date(),
+                time: (new Date()).getTime(),
                 howOut: domain.Howout.Retired,
             });
 
@@ -93,7 +93,7 @@ describe('domain', () => {
 
         it('should return timed out description for batter timed out', () => {
             const description = domain.howOutDescription({
-                time: new Date(),
+                time: (new Date()).getTime(),
                 howOut: domain.Howout.TimedOut,
             });
 
@@ -102,7 +102,7 @@ describe('domain', () => {
 
         it('should return obstruction description for wicket out obstructing the field', () => {
             const description = domain.howOutDescription({
-                time: new Date(),
+                time: (new Date()).getTime(),
                 howOut: domain.Howout.ObstructingField,
             });
 
@@ -111,7 +111,7 @@ describe('domain', () => {
 
         it('should return handled description for wicket out handled the ball', () => {
             const description = domain.howOutDescription({
-                time: new Date(),
+                time: (new Date()).getTime(),
                 howOut: domain.Howout.HandledBall,
             });
 
@@ -120,7 +120,7 @@ describe('domain', () => {
 
         it('should return hit wicket description for wicket out hit wicket', () => {
             const description = domain.howOutDescription({
-                time: new Date(),
+                time: (new Date()).getTime(),
                 howOut: domain.Howout.HitWicket,
                 bowler: 'A bowler',
             });
@@ -139,21 +139,21 @@ describe('domain', () => {
         it('should include decimal for not full overs', () => {
             const description = domain.oversDescription(6, [
                 {
-                    time: new Date(),
+                    time: (new Date()).getTime(),
                     bowlerIndex: 0,
                     batsmanIndex: 0,
                     overNumber: 7,
                     outcome: { scores: {}, deliveryOutcome: domain.DeliveryOutcome.Valid },
                 },
                 {
-                    time: new Date(),
+                    time: (new Date()).getTime(),
                     bowlerIndex: 0,
                     batsmanIndex: 0,
                     overNumber: 7,
                     outcome: { scores: {}, deliveryOutcome: domain.DeliveryOutcome.Valid },
                 },
                 {
-                    time: new Date(),
+                    time: (new Date()).getTime(),
                     bowlerIndex: 0,
                     batsmanIndex: 0,
                     overNumber: 7,
@@ -167,21 +167,21 @@ describe('domain', () => {
         it('should not include no balls when calculating', () => {
             const description = domain.oversDescription(6, [
                 {
-                    time: new Date(),
+                    time: (new Date()).getTime(),
                     bowlerIndex: 0,
                     batsmanIndex: 0,
                     overNumber: 7,
                     outcome: { scores: {}, deliveryOutcome: domain.DeliveryOutcome.Valid },
                 },
                 {
-                    time: new Date(),
+                    time: (new Date()).getTime(),
                     bowlerIndex: 0,
                     batsmanIndex: 0,
                     overNumber: 7,
                     outcome: { scores: {}, deliveryOutcome: domain.DeliveryOutcome.Noball },
                 },
                 {
-                    time: new Date(),
+                    time: (new Date()).getTime(),
                     bowlerIndex: 0,
                     batsmanIndex: 0,
                     overNumber: 7,
@@ -195,21 +195,21 @@ describe('domain', () => {
         it('should not include no wides when calculating', () => {
             const description = domain.oversDescription(6, [
                 {
-                    time: new Date(),
+                    time: (new Date()).getTime(),
                     bowlerIndex: 0,
                     batsmanIndex: 0,
                     overNumber: 7,
                     outcome: { scores: {}, deliveryOutcome: domain.DeliveryOutcome.Valid },
                 },
                 {
-                    time: new Date(),
+                    time: (new Date()).getTime(),
                     bowlerIndex: 0,
                     batsmanIndex: 0,
                     overNumber: 7,
                     outcome: { scores: {}, deliveryOutcome: domain.DeliveryOutcome.Wide },
                 },
                 {
-                    time: new Date(),
+                    time: (new Date()).getTime(),
                     bowlerIndex: 0,
                     batsmanIndex: 0,
                     overNumber: 7,

@@ -6,7 +6,7 @@ import { DeliveryOutcome } from '../../../domain';
 describe('CurrentOver', () => {
     const over = {
         deliveries: [{
-            time: new Date(),
+            time: (new Date()).getTime(),
             bowlerIndex: 0,
             batsmanIndex: 0,
             overNumber: 1,

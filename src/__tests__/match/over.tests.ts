@@ -12,42 +12,42 @@ jest.mock('../../match/delivery', () => {
 describe('over', () => {
     const deliveries = [
         {
-            time: new Date(),
+            time: (new Date()).getTime(),
             bowlerIndex: 0,
             batsmanIndex: 0,
             overNumber: 1,
             outcome: { scores: { runs: 2 }, deliveryOutcome: DeliveryOutcome.Valid },
         },
         {
-            time: new Date(),
+            time: (new Date()).getTime(),
             bowlerIndex: 0,
             batsmanIndex: 0,
             overNumber: 1,
             outcome: { scores: {}, deliveryOutcome: DeliveryOutcome.Wicket },
         },
         {
-            time: new Date(),
+            time: (new Date()).getTime(),
             bowlerIndex: 0,
             batsmanIndex: 0,
             overNumber: 1,
             outcome: { scores: {}, deliveryOutcome: DeliveryOutcome.Valid },
         },
         {
-            time: new Date(),
+            time: (new Date()).getTime(),
             bowlerIndex: 0,
             batsmanIndex: 0,
             overNumber: 1,
             outcome: { scores: {}, deliveryOutcome: DeliveryOutcome.Wicket },
         },
         {
-            time: new Date(),
+            time: (new Date()).getTime(),
             bowlerIndex: 0,
             batsmanIndex: 0,
             overNumber: 1,
             outcome: { scores: {}, deliveryOutcome: DeliveryOutcome.Valid },
         },
         {
-            time: new Date(),
+            time: (new Date()).getTime(),
             bowlerIndex: 0,
             batsmanIndex: 0,
             overNumber: 1,
