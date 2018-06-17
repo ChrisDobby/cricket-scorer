@@ -6,18 +6,21 @@ import { StartInnings } from './StartInnings';
 import { SelectBowler } from './SelectBowler';
 import { BallEntry } from './BallEntry';
 import { Innings } from '../scorecard/Innings';
+import { bindMatchStorage } from '../../stores/withMatchStorage';
 
 export interface InProgressProps {
     inProgress: domain.InProgressMatch;
+    storage: any;
 }
 
 @observer
 class InProgress extends React.Component<InProgressProps, {}> {
-    ballFunctions = {
+    bindStorage = bindMatchStorage(this.props.storage.storeMatch, () => this.props.inProgress);
+    ballFunctions = this.bindStorage({
         delivery: this.props.inProgress.delivery,
         completeOver: this.props.inProgress.completeOver,
         changeEnds: this.props.inProgress.flipBatters,
-    };
+    });
 
     disallowedPlayers = () =>
         typeof this.props.inProgress.previousBowler === 'undefined'
@@ -34,7 +37,7 @@ class InProgress extends React.Component<InProgressProps, {}> {
             return (
                 <StartInnings
                     teams={[this.props.inProgress.match.homeTeam, this.props.inProgress.match.awayTeam]}
-                    startInnings={this.props.inProgress.startInnings}
+                    startInnings={this.bindStorage(this.props.inProgress.startInnings)}
                 />
             );
         }
@@ -43,7 +46,7 @@ class InProgress extends React.Component<InProgressProps, {}> {
             return (
                 <SelectBowler
                     bowlingTeam={this.props.inProgress.currentInnings.bowlingTeam}
-                    selectBowler={this.props.inProgress.newBowler}
+                    selectBowler={this.bindStorage(this.props.inProgress.newBowler)}
                     initiallySelected={this.previousBowlerFromEndIndex()}
                     disallowedPlayers={this.disallowedPlayers()}
                 />);

@@ -1206,7 +1206,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                   </button>
                   <button
                     className="btn btn-success"
-                    onClick={[MockFunction]}
+                    onClick={[Function]}
                     style={
                       Object {
                         "margin": "2px",

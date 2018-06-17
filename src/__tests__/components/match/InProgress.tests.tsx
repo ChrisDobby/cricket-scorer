@@ -45,20 +45,32 @@ describe('InProgress', () => {
         },
     };
 
+    const storage = {
+        storeMatch: jest.fn(),
+    };
+
     it('should render correctly when no match', () => {
-        const inProgress = ReactTestRenderer.create(<InProgress inProgress={noMatchProgress} />);
+        const inProgress = ReactTestRenderer.create(<InProgress inProgress={noMatchProgress} storage={storage} />);
 
         expect(inProgress.toJSON()).toMatchSnapshot();
     });
 
     it('should render correctly for match that has not started', () => {
-        const inProgress = ReactTestRenderer.create(<InProgress inProgress={notStartedMatchProgress} />);
+        const inProgress = ReactTestRenderer.create(
+            <InProgress
+                inProgress={notStartedMatchProgress}
+                storage={storage}
+            />);
 
         expect(inProgress.toJSON()).toMatchSnapshot();
     });
 
     it('should render correctly for match with started innings', () => {
-        const inProgress = ReactTestRenderer.create(<InProgress inProgress={matchWithStartedInningsProgress} />);
+        const inProgress = ReactTestRenderer.create(
+            <InProgress
+                inProgress={matchWithStartedInningsProgress}
+                storage={storage}
+            />);
 
         expect(inProgress.toJSON()).toMatchSnapshot();
     });
@@ -69,7 +81,7 @@ describe('InProgress', () => {
             previousBowler: matchWithOverReadyToComplete.innings[0].bowlers[0],
         };
 
-        const inProgress = ReactTestRenderer.create(<InProgress inProgress={withPreviousBowler} />);
+        const inProgress = ReactTestRenderer.create(<InProgress inProgress={withPreviousBowler} storage={storage} />);
 
         expect(inProgress.toJSON()).toMatchSnapshot();
     });
@@ -80,13 +92,21 @@ describe('InProgress', () => {
             previousBowlerFromEnd: matchWithOverReadyToComplete.innings[0].bowlers[0],
         };
 
-        const inProgress = ReactTestRenderer.create(<InProgress inProgress={withPreviousBowlerFromEnd} />);
+        const inProgress = ReactTestRenderer.create(
+            <InProgress
+                inProgress={withPreviousBowlerFromEnd}
+                storage={storage}
+            />);
 
         expect(inProgress.toJSON()).toMatchSnapshot();
     });
 
     it('should render correctly for match during an over', () => {
-        const inProgress = ReactTestRenderer.create(<InProgress inProgress={matchDuringOverProgress} />);
+        const inProgress = ReactTestRenderer.create(
+            <InProgress
+                inProgress={matchDuringOverProgress}
+                storage={storage}
+            />);
 
         expect(inProgress.toJSON()).toMatchSnapshot();
     });
