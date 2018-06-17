@@ -15,7 +15,6 @@ export enum DeliveryOutcome {
     Valid,
     Noball,
     Wide,
-    Wicket,
 }
 
 export interface Wicket {
@@ -36,6 +35,7 @@ export interface DeliveryScores {
 export interface Outcome {
     deliveryOutcome: DeliveryOutcome;
     scores: DeliveryScores;
+    wicket?: Wicket;
 }
 
 export interface Delivery {

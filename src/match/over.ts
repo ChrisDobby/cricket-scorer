@@ -1,8 +1,8 @@
-import { Delivery, DeliveryOutcome } from '../domain';
+import { Delivery } from '../domain';
 import { bowlerRuns } from '../match/delivery';
 
 export const wickets = (deliveries: Delivery[]) =>
-    deliveries.filter(delivery => delivery.outcome.deliveryOutcome === DeliveryOutcome.Wicket)
+    deliveries.filter(delivery => typeof delivery.outcome.wicket !== 'undefined')
         .length;
 
 export const bowlingRuns = (deliveries: Delivery[]) =>

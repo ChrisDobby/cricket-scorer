@@ -1,4 +1,4 @@
-import { DeliveryOutcome } from '../../domain';
+import { DeliveryOutcome, Howout } from '../../domain';
 import * as over from '../../match/over';
 
 jest.mock('../../match/delivery', () => {
@@ -23,7 +23,11 @@ describe('over', () => {
             bowlerIndex: 0,
             batsmanIndex: 0,
             overNumber: 1,
-            outcome: { scores: {}, deliveryOutcome: DeliveryOutcome.Wicket },
+            outcome: {
+                scores: {},
+                deliveryOutcome: DeliveryOutcome.Valid,
+                wicket: { time: (new Date()).getTime(), howOut: Howout.Bowled },
+            },
         },
         {
             time: (new Date()).getTime(),
@@ -37,7 +41,11 @@ describe('over', () => {
             bowlerIndex: 0,
             batsmanIndex: 0,
             overNumber: 1,
-            outcome: { scores: {}, deliveryOutcome: DeliveryOutcome.Wicket },
+            outcome: {
+                scores: {},
+                deliveryOutcome: DeliveryOutcome.Valid,
+                wicket: { time: (new Date()).getTime(), howOut: Howout.Bowled },
+            },
         },
         {
             time: (new Date()).getTime(),
