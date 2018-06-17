@@ -25,8 +25,6 @@ describe('matchStoragestoreMatch', () => {
     });
 
     describe('getMatch', () => {
-        const create = () => ({});
-
         it('should return undefined if no match in storage', () => {
             const storage = {
                 getItem: jest.fn(),
@@ -34,19 +32,19 @@ describe('matchStoragestoreMatch', () => {
             };
 
             const store = matchStorage(storage);
-            const match = store.getMatch(create)();
+            const match = store.getMatch();
 
             expect(match).toBeUndefined();
         });
 
         it('should return the stored match', () => {
             const storage = {
-                getItem: jest.fn(() => matchToStore),
+                getItem: jest.fn(() => JSON.stringify(matchToStore)),
                 setItem: jest.fn(),
             };
 
             const store = matchStorage(storage);
-            const match = store.getMatch(create)();
+            const match = store.getMatch();
 
             expect(match).toEqual(matchToStore);
         });

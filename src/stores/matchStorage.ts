@@ -14,16 +14,12 @@ const matchStorage = (key:string) => (storage: any) => {
             currentBowlerIndex: matchToStore.currentBowlerIndex,
         }));
 
-    const getMatch = (create: () => StoredMatch) => () => {
-        const storedItem = storage.getItem(key) as StoredMatch;
-        if (typeof storedItem === 'undefined') { return undefined; }
+    const getMatch = () => {
+        const item = storage.getItem(key);
 
-        const storedMatch = create();
-        storedMatch.match = storedItem.match;
-        storedMatch.currentBatterIndex = storedItem.currentBatterIndex;
-        storedMatch.currentBowlerIndex = storedItem.currentBowlerIndex;
-
-        return storedMatch;
+        return typeof item === 'undefined'
+            ? undefined
+            : JSON.parse(item) as StoredMatch;
     };
 
     return {
