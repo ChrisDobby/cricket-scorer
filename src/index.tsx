@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { configure } from 'mobx';
 import { Provider } from 'mobx-react';
 import Routes from './Routes';
+import matchStorage from './stores/matchStorage';
 import 'font-awesome/css/font-awesome.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -48,7 +49,14 @@ const initialMatch = {
     innings: [],
 };
 
-inProgressMatchStore.match = initialMatch;
+const storedMatch = matchStorage(localStorage).getMatch();
+if (typeof storedMatch !== 'undefined' && storedMatch !== null) {
+    inProgressMatchStore.match = storedMatch.match;
+    inProgressMatchStore.currentBatterIndex = storedMatch.currentBatterIndex;
+    inProgressMatchStore.currentBowlerIndex = storedMatch.currentBowlerIndex;
+} else {
+    inProgressMatchStore.match = initialMatch;
+}
 
 configure({ enforceActions: true });
 
