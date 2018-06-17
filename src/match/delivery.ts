@@ -94,3 +94,28 @@ export const notificationDescription = (outcome: domain.Outcome) => {
         ? 'No ball'
         : 'Dot ball';
 };
+
+export const wickets = (outcome: domain.Outcome) =>
+    typeof outcome.wicket === 'undefined'
+        ? 0
+        : 1;
+
+export const bowlingWickets = (outcome: domain.Outcome) => {
+    if (typeof outcome.wicket === 'undefined') { return 0; }
+
+    return outcome.wicket.howOut === domain.Howout.RunOut || outcome.wicket.howOut === domain.Howout.ObstructingField
+        ? 0
+        : 1;
+};
+
+export const battingWicket = (outcome: domain.Outcome, time: number, bowler: string, bowlingTeam: string[]) =>
+    typeof outcome.wicket === 'undefined'
+        ? undefined
+        : {
+            time,
+            bowler,
+            howOut: outcome.wicket.howOut,
+            fielder: typeof outcome.wicket.fielderIndex === 'undefined'
+                ? undefined
+                : bowlingTeam[outcome.wicket.fielderIndex],
+        };

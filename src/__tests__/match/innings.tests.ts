@@ -1,8 +1,10 @@
-import { BattingInnings, DeliveryOutcome, Outcome } from '../../domain';
+import { BattingInnings, DeliveryOutcome, Outcome, Howout, Wicket } from '../../domain';
 import innings, { default as Innings } from '../../match/innings';
 import * as matches from '../testData/matches';
 
 jest.mock('../../match/delivery', () => {
+    const domain = require('../../domain');
+
     const runsScored = () => 2;
     const updatedExtras = () => ({
         byes: 3,
@@ -17,6 +19,14 @@ jest.mock('../../match/delivery', () => {
             : outcome.scores.runs;
     const boundariesScored = () => [1, 1];
     const bowlerRuns = () => 3;
+    const wickets = () => 1;
+    const bowlingWickets = () => 1;
+    const battingWicket = () => ({
+        time: (new Date()).getTime(),
+        howOut: domain.Howout.Bowled,
+        bowler: 'A bowler',
+        fielder: 'A fielder',
+    });
 
     return {
         runsScored,
@@ -25,6 +35,9 @@ jest.mock('../../match/delivery', () => {
         runsFromBatter,
         boundariesScored,
         bowlerRuns,
+        wickets,
+        bowlingWickets,
+        battingWicket,
     };
 });
 
@@ -292,6 +305,25 @@ describe('innings', () => {
             const batter = inningsAfterWide.batting.batters[0];
 
             expect((batter.innings as BattingInnings).ballsFaced).toBe(0);
+        });
+
+        it('should update innings wickets', () => {
+            expect(updatedInnings.wickets).toBe(1);
+        });
+
+        it('should update the bowlers wickets', () => {
+            const bowler = updatedInnings.bowlers[0];
+
+            expect(bowler.wickets).toBe(1);
+        });
+
+        it('should add the wicket to the batters innings', () => {
+            const batterInnings = inningsAfterWide.batting.batters[0].innings as BattingInnings;
+            const wicket = batterInnings.wicket as Wicket;
+
+            expect(wicket.howOut).toBe(Howout.Bowled);
+            expect(wicket.bowler).toBe('A bowler');
+            expect(wicket.fielder).toBe('A fielder');
         });
     });
 

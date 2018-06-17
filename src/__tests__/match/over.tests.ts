@@ -26,7 +26,7 @@ describe('over', () => {
             outcome: {
                 scores: {},
                 deliveryOutcome: DeliveryOutcome.Valid,
-                wicket: { time: (new Date()).getTime(), howOut: Howout.Bowled },
+                wicket: { howOut: Howout.Bowled, changedEnds: false },
             },
         },
         {
@@ -44,7 +44,7 @@ describe('over', () => {
             outcome: {
                 scores: {},
                 deliveryOutcome: DeliveryOutcome.Valid,
-                wicket: { time: (new Date()).getTime(), howOut: Howout.Bowled },
+                wicket: { howOut: Howout.Bowled, changedEnds: false },
             },
         },
         {

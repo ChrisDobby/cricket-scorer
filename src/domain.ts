@@ -32,10 +32,16 @@ export interface DeliveryScores {
     wides?: number;
 }
 
+export interface DeliveryWicket {
+    howOut: Howout;
+    fielderIndex?: number;
+    changedEnds: boolean;
+}
+
 export interface Outcome {
     deliveryOutcome: DeliveryOutcome;
     scores: DeliveryScores;
-    wicket?: Wicket;
+    wicket?: DeliveryWicket;
 }
 
 export interface Delivery {

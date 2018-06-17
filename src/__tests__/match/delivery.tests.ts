@@ -1,5 +1,5 @@
 import * as delivery from '../../match/delivery';
-import { DeliveryOutcome } from '../../domain';
+import { DeliveryOutcome, Howout, Wicket } from '../../domain';
 
 describe('delivery', () => {
     describe('runsScored', () => {
@@ -353,6 +353,131 @@ describe('delivery', () => {
             });
 
             expect(description).toBe('No ball');
+        });
+    });
+
+    describe('wickets', () => {
+        it('should return 0 if no wicket taken', () => {
+            const wickets = delivery.wickets({
+                deliveryOutcome: DeliveryOutcome.Valid,
+                scores: {},
+            });
+
+            expect(wickets).toBe(0);
+        });
+
+        it('should return 1 if a wicket was taken', () => {
+            const wickets = delivery.wickets({
+                deliveryOutcome: DeliveryOutcome.Valid,
+                scores: {},
+                wicket: { howOut: Howout.Bowled, changedEnds: false },
+            });
+
+            expect(wickets).toBe(1);
+        });
+    });
+
+    describe('bowlingWickets', () => {
+        const validDelivery = {
+            deliveryOutcome: DeliveryOutcome.Valid,
+            scores: {},
+        };
+
+        it('should return 0 if no wicket taken', () => {
+            const bowlingWickets = delivery.bowlingWickets(validDelivery);
+
+            expect(bowlingWickets).toBe(0);
+        });
+
+        it('should return 0 if a run out', () => {
+            const bowlingWickets = delivery.bowlingWickets({
+                ...validDelivery,
+                wicket: { howOut: Howout.RunOut, changedEnds: false },
+            });
+
+            expect(bowlingWickets).toBe(0);
+        });
+
+        it('should return 0 if obstructing the field', () => {
+            const bowlingWickets = delivery.bowlingWickets({
+                ...validDelivery,
+                wicket: { howOut: Howout.ObstructingField, changedEnds: false },
+            });
+
+            expect(bowlingWickets).toBe(0);
+        });
+
+        it('should return 1 if not obstructing the field or run out', () => {
+            const bowlingWickets = delivery.bowlingWickets({
+                ...validDelivery,
+                wicket: { howOut: Howout.Bowled, changedEnds: false },
+            });
+
+            expect(bowlingWickets).toBe(1);
+        });
+    });
+
+    describe('battingWicket', () => {
+        const validDelivery = {
+            deliveryOutcome: DeliveryOutcome.Valid,
+            scores: {},
+        };
+
+        it('should return undefined if no wicket taken', () => {
+            const battingWicket = delivery.battingWicket(
+                validDelivery,
+                1,
+                'A bowler',
+                [],
+            );
+
+            expect(battingWicket).toBeUndefined();
+        });
+
+        it('should return a wicket if one taken', () => {
+            const battingWicket = delivery.battingWicket(
+                {
+                    ...validDelivery,
+                    wicket: { howOut: Howout.Bowled, changedEnds: false },
+                },
+                1,
+                'A bowler',
+                [],
+            ) as Wicket;
+
+            expect(battingWicket.time).toBe(1);
+            expect(battingWicket.howOut).toBe(Howout.Bowled);
+            expect(battingWicket.bowler).toBe('A bowler');
+        });
+
+        it('should include the fielder when specified', () => {
+            const battingWicket = delivery.battingWicket(
+                {
+                    ...validDelivery,
+                    wicket: {
+                        howOut: Howout.Bowled,
+                        fielderIndex: 2,
+                        changedEnds: false,
+                    },
+                },
+                1,
+                'A bowler',
+                [
+                    'Player 1',
+                    'Player 2',
+                    'Player 3',
+                    'Player 4',
+                    'Player 5',
+                    'Player 6',
+                    'Player 7',
+                    'Player 8',
+                    'Player 9',
+                    'Player 10',
+                    'Player 11',
+                ],
+            ) as Wicket;
+
+            expect(battingWicket.fielder).toBe('Player 3');
         });
     });
 });

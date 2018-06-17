@@ -97,6 +97,8 @@ const innings = () => {
         bowler: domain.Bowler,
         deliveryOutcome: domain.Outcome,
     ) => {
+        const time = (new Date()).getTime();
+
         const updatedBatterInnings = (battingInnings: domain.BattingInnings) => {
             const [fours, sixes] = deliveries.boundariesScored(deliveryOutcome);
             return {
@@ -106,13 +108,14 @@ const innings = () => {
                 runs: battingInnings.runs + deliveries.runsScored(deliveryOutcome),
                 fours: battingInnings.fours + fours,
                 sixes: battingInnings.sixes + sixes,
+                wicket: deliveries.battingWicket(deliveryOutcome, time, bowler.name, innings.bowlingTeam.players),
             };
         };
 
         const updatedDeliveries = [
             ...innings.deliveries,
             {
-                time: (new Date()).getTime(),
+                time,
                 outcome: deliveryOutcome,
                 overNumber: innings.completedOvers + 1,
                 batsmanIndex: innings.batting.batters.indexOf(batter),
@@ -145,6 +148,7 @@ const innings = () => {
                             ...bowler,
                             totalOvers: domain.oversDescription(bowler.completedOvers, currentOver),
                             runs: bowler.runs + deliveries.bowlerRuns(deliveryOutcome),
+                            wickets: bowler.wickets + deliveries.bowlingWickets(deliveryOutcome),
                         }
                         : b),
             ],
@@ -153,6 +157,7 @@ const innings = () => {
                 innings.completedOvers,
                 latestOver(updatedDeliveries, innings.completedOvers)),
             score: innings.score + deliveries.totalScore(deliveryOutcome),
+            wickets: innings.wickets + deliveries.wickets(deliveryOutcome),
         };
 
         return updatedInnings;
