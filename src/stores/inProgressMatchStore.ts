@@ -1,16 +1,16 @@
 import { observable, computed, action } from 'mobx';
-import { InProgressMatch, Match, Team, validDelivery, Innings, DeliveryOutcome, DeliveryScores } from '../domain';
+import * as domain from '../domain';
 import { default as matchInnings } from '../match/innings';
 import * as over from '../match/over';
 
-const updateMatchInnings = (match: Match, innings: Innings): Match => ({
+const updateMatchInnings = (match: domain.Match, innings: domain.Innings): domain.Match => ({
     ...match,
     innings: [...match.innings.map(inn => !inn.complete
         ? innings
         : inn)],
 });
 
-const bowlerOfOver = (innings: Innings, overNumber: number) => {
+const bowlerOfOver = (innings: domain.Innings, overNumber: number) => {
     const deliveryInOver = innings.deliveries
         .find(delivery => delivery.overNumber === overNumber);
 
@@ -19,8 +19,8 @@ const bowlerOfOver = (innings: Innings, overNumber: number) => {
         : innings.bowlers[deliveryInOver.bowlerIndex];
 };
 
-class InProgressMatchStore implements InProgressMatch {
-    @observable match: Match | undefined;
+class InProgressMatchStore implements domain.InProgressMatch {
+    @observable match: domain.Match | undefined;
     @observable currentBatterIndex: number | undefined;
     @observable currentBowlerIndex: number | undefined;
 
@@ -46,7 +46,7 @@ class InProgressMatchStore implements InProgressMatch {
         const over = this.currentOver;
         return typeof over === 'undefined'
             ? undefined
-            : over.deliveries.filter(validDelivery).length >= 6;
+            : over.deliveries.filter(domain.validDelivery).length >= 6;
     }
 
     @computed get currentBatter() {
@@ -83,7 +83,7 @@ class InProgressMatchStore implements InProgressMatch {
         return bowlerOfOver(this.currentInnings, this.currentInnings.completedOvers - 1);
     }
 
-    @action startInnings = (battingTeam: Team, batter1Index: number, batter2Index: number) => {
+    @action startInnings = (battingTeam: domain.Team, batter1Index: number, batter2Index: number) => {
         if (typeof this.match === 'undefined') { return; }
 
         const innings = matchInnings.newInnings(this.match, battingTeam, batter1Index, batter2Index);
@@ -114,14 +114,24 @@ class InProgressMatchStore implements InProgressMatch {
         this.currentBowlerIndex = bowlerIndex;
     }
 
-    @action delivery = (deliveryOutcome: DeliveryOutcome, scores: DeliveryScores) => {
+    @action delivery = (
+        deliveryOutcome: domain.DeliveryOutcome,
+        scores: domain.DeliveryScores,
+        wicket: domain.DeliveryWicket | undefined = undefined,
+    ) => {
         if (typeof this.match === 'undefined' ||
             typeof this.currentInnings === 'undefined' ||
             typeof this.currentBatter === 'undefined' ||
             typeof this.currentBowler === 'undefined') { return; }
 
         const [innings, batterIndex] =
-            matchInnings.delivery(this.currentInnings, this.currentBatter, this.currentBowler, deliveryOutcome, scores);
+            matchInnings.delivery(
+                this.currentInnings,
+                this.currentBatter,
+                this.currentBowler,
+                deliveryOutcome,
+                scores,
+                wicket);
 
         this.match = updateMatchInnings(
             this.match,

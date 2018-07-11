@@ -5,10 +5,12 @@ import DeliveryHeader from '../DeliveryHeader';
 import Entry from './Entry';
 import * as globalStyles from '../../styles';
 import { SaveButton } from '../SaveButton';
+import { bindMatchStorage } from '../../../stores/withMatchStorage';
 
 export interface WicketProps {
     inProgress: domain.InProgressMatch;
     storage: any;
+    history: any;
 }
 
 interface WicketState {
@@ -20,6 +22,9 @@ interface WicketState {
 }
 
 class Wicket extends React.Component<WicketProps, {}> {
+    bindStorage = bindMatchStorage(this.props.storage.storeMatch, () => this.props.inProgress);
+    delivery = this.bindStorage(this.props.inProgress.delivery);
+
     getHowouts =
         typeof this.props.inProgress.currentBatter === 'undefined'
             ? () => []
@@ -60,7 +65,15 @@ class Wicket extends React.Component<WicketProps, {}> {
     scoresChange = (scores: domain.DeliveryScores) =>
         this.setState({ scores })
 
-    save = () => { };
+    save = () => {
+        this.delivery(
+            domain.DeliveryOutcome.Valid,
+            this.state.scores,
+            this.deliveryWicket,
+        );
+
+        this.props.history.push('/inprogress');
+    }
 
     get canSave() {
         return typeof this.state.howout !== 'undefined' &&
@@ -106,6 +119,18 @@ class Wicket extends React.Component<WicketProps, {}> {
     get couldScoreRuns() {
         return typeof this.state.howout !== 'undefined' &&
             domain.howoutCouldScoreRuns(this.state.howout);
+    }
+
+    get deliveryWicket(): domain.DeliveryWicket | undefined {
+        if (typeof this.state.howout === 'undefined') {
+            return undefined;
+        }
+
+        return {
+            howOut: this.state.howout,
+            fielderIndex: this.state.fielderIndex,
+            changedEnds: this.state.crossed,
+        };
     }
 
     render() {

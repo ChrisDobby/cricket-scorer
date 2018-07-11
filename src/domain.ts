@@ -142,7 +142,7 @@ export interface InProgressMatch {
     currentOverComplete?: boolean;
     startInnings: (battingTeam: Team, batter1Index: number, batter2Index: number) => void;
     newBowler: (playerIndex: number) => void;
-    delivery: (deliveryOutcome: DeliveryOutcome, scores: DeliveryScores) => void;
+    delivery: (deliveryOutcome: DeliveryOutcome, scores: DeliveryScores, wicket: DeliveryWicket | undefined) => void;
     completeOver: () => void;
     flipBatters: () => void;
 }

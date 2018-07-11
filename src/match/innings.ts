@@ -184,6 +184,7 @@ const innings = () => {
         bowler: domain.Bowler,
         deliveryOutcome: domain.DeliveryOutcome,
         scores: domain.DeliveryScores,
+        wicket: domain.DeliveryWicket | undefined = undefined,
     ): [domain.Innings, number] =>
         [
             addDeliveryToInnings(
@@ -193,6 +194,7 @@ const innings = () => {
                 {
                     deliveryOutcome,
                     scores,
+                    wicket,
                 }),
             newBatsmanIndex(innings, batter, deliveries.runsFromBatter({ deliveryOutcome, scores })),
         ];
