@@ -69,16 +69,27 @@ describe('innings', () => {
             const batters = innings.batting.batters;
             expect(batters).toHaveLength(11);
             expect(batters[0].name).toBe(homeTeam.players[0]);
+            expect(batters[0].playerIndex).toBe(0);
             expect(batters[1].name).toBe(homeTeam.players[1]);
+            expect(batters[1].playerIndex).toBe(1);
             expect(batters[2].name).toBe(homeTeam.players[2]);
+            expect(batters[2].playerIndex).toBe(2);
             expect(batters[3].name).toBe(homeTeam.players[3]);
+            expect(batters[3].playerIndex).toBe(3);
             expect(batters[4].name).toBe(homeTeam.players[4]);
+            expect(batters[4].playerIndex).toBe(4);
             expect(batters[5].name).toBe(homeTeam.players[5]);
+            expect(batters[5].playerIndex).toBe(5);
             expect(batters[6].name).toBe(homeTeam.players[6]);
+            expect(batters[6].playerIndex).toBe(6);
             expect(batters[7].name).toBe(homeTeam.players[7]);
+            expect(batters[7].playerIndex).toBe(7);
             expect(batters[8].name).toBe(homeTeam.players[8]);
+            expect(batters[8].playerIndex).toBe(8);
             expect(batters[9].name).toBe(homeTeam.players[9]);
+            expect(batters[9].playerIndex).toBe(9);
             expect(batters[10].name).toBe(homeTeam.players[10]);
+            expect(batters[10].playerIndex).toBe(10);
         });
 
         it('should start a batting innings for the two specified batters', () => {
@@ -374,6 +385,20 @@ describe('innings', () => {
             );
 
             expect(newBatterIndex).toBe(1);
+        });
+    });
+
+    describe('newBatter', () => {
+        const [innings, batterIndex] = Innings.newBatter(matches.inningsAfterWicketTaken, 4);
+        const batter = innings.batting.batters[2];
+
+        it('should start an innings for the batter at the next available position', () => {
+            expect(batter.name).toBe(innings.battingTeam.players[4]);
+            expect(batter.innings).not.toBeUndefined();
+        });
+
+        it('should return the next batting index', () => {
+            expect(batterIndex).toBe(2);
         });
     });
 });

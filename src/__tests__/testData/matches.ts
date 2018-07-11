@@ -1,4 +1,4 @@
-import { Match, DeliveryOutcome } from '../../domain';
+import { Match, DeliveryOutcome, Howout, Batter } from '../../domain';
 
 export const blankMatch: Match = {
     homeTeam: {
@@ -77,6 +77,7 @@ export const inningsWithStartedOver = {
         batters: [
             {
                 name: blankMatch.homeTeam.players[0],
+                playerIndex: 0,
                 innings: {
                     runs: 0,
                     timeIn: (new Date()).getTime(),
@@ -87,6 +88,7 @@ export const inningsWithStartedOver = {
             },
             {
                 name: blankMatch.homeTeam.players[1],
+                playerIndex: 1,
                 innings: {
                     runs: 0,
                     timeIn: (new Date()).getTime(),
@@ -268,4 +270,31 @@ export const matchWithTwoCompletedOvers = {
 export const matchWithOverNotReadyToComplete = {
     ...blankMatch,
     innings: [inningsWithOverNotReadyToComplete],
+};
+
+export const inningsAfterWicketTaken = {
+    ...inningsWithStartedOver,
+    batting: {
+        ...inningsWithStartedOver.batting,
+        batters: (inningsWithStartedOver.batting.batters.map((batter, index) => (
+            index === 0
+                ? {
+                    ...batter,
+                    innings: {
+                        ...batter.innings,
+                        wicket: {
+                            time: 1,
+                            howOut: Howout.Bowled,
+                            bowler: 'A bowler',
+                        },
+                    },
+                }
+                : batter
+        )) as Batter[])
+            .concat(inningsWithStartedOver.battingTeam.players.slice(2).map((player, idx) => ({
+                name: player,
+                playerIndex: idx,
+                innings: undefined,
+            }))),
+    },
 };

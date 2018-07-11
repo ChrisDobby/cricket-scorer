@@ -20,6 +20,7 @@ describe('Batting', () => {
                 {
                     position: 1,
                     name: 'A Player',
+                    playerIndex: 0,
                 },
             ],
         };

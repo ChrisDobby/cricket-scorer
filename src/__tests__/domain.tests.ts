@@ -223,10 +223,12 @@ describe('domain', () => {
 
     describe('howouts', () => {
         const striker = {
+            playerIndex: 0,
             name: 'A batter',
         };
 
         const nonStriker = {
+            playerIndex: 1,
             name: 'Another batter',
         };
 

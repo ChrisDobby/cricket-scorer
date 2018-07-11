@@ -30,6 +30,7 @@ const testInnings1: domain.Innings = {
         batters: [
             {
                 name: 'T Hopwood',
+                playerIndex: 0,
                 innings: {
                     runs: 0,
                     timeIn: (new Date()).getTime(),
@@ -46,6 +47,7 @@ const testInnings1: domain.Innings = {
             },
             {
                 name: 'D Wilson',
+                playerIndex: 1,
                 innings: {
                     runs: 58,
                     timeIn: (new Date()).getTime(),
@@ -56,6 +58,7 @@ const testInnings1: domain.Innings = {
             },
             {
                 name: 'K Dalladay',
+                playerIndex: 2,
                 innings: {
                     runs: 10,
                     timeIn: (new Date()).getTime(),
@@ -72,6 +75,7 @@ const testInnings1: domain.Innings = {
             },
             {
                 name: 'R Todd',
+                playerIndex: 3,
                 innings: {
                     runs: 0,
                     timeIn: (new Date()).getTime(),
@@ -87,6 +91,7 @@ const testInnings1: domain.Innings = {
             },
             {
                 name: 'S Bhatti',
+                playerIndex: 4,
                 innings: {
                     runs: 1,
                     timeIn: (new Date()).getTime(),
@@ -102,6 +107,7 @@ const testInnings1: domain.Innings = {
             },
             {
                 name: 'J Butterfield',
+                playerIndex: 5,
                 innings: {
                     runs: 6,
                     timeIn: (new Date()).getTime(),
@@ -118,6 +124,7 @@ const testInnings1: domain.Innings = {
             },
             {
                 name: 'S Khan',
+                playerIndex: 6,
                 innings: {
                     runs: 47,
                     timeIn: (new Date()).getTime(),
@@ -134,6 +141,7 @@ const testInnings1: domain.Innings = {
             },
             {
                 name: 'A Sayed',
+                playerIndex: 7,
                 innings: {
                     runs: 0,
                     timeIn: (new Date()).getTime(),
@@ -144,12 +152,15 @@ const testInnings1: domain.Innings = {
             },
             {
                 name: 'D Metcalfe',
+                playerIndex: 8,
             },
             {
                 name: 'D Hunt',
+                playerIndex: 9,
             },
             {
                 name: 'J Abbott',
+                playerIndex: 10,
             },
         ],
     },
@@ -261,6 +272,7 @@ const testInnings2: domain.Innings = {
         batters: [
             {
                 name: 'Chris Dobson',
+                playerIndex: 0,
                 innings: {
                     runs: 3,
                     timeIn: (new Date()).getTime(),
@@ -276,6 +288,7 @@ const testInnings2: domain.Innings = {
             },
             {
                 name: 'Richard Noble',
+                playerIndex: 1,
                 innings: {
                     runs: 40,
                     ballsFaced: 49,
@@ -292,6 +305,7 @@ const testInnings2: domain.Innings = {
             },
             {
                 name: 'Ethan Lee',
+                playerIndex: 2,
                 innings: {
                     runs: 2,
                     ballsFaced: 13,
@@ -308,6 +322,7 @@ const testInnings2: domain.Innings = {
             },
             {
                 name: 'Shahid Rehman',
+                playerIndex: 3,
                 innings: {
                     runs: 1,
                     ballsFaced: 3,
@@ -323,6 +338,7 @@ const testInnings2: domain.Innings = {
             },
             {
                 name: 'Zahir Shah',
+                playerIndex: 4,
                 innings: {
                     runs: 0,
                     ballsFaced: 1,
@@ -338,6 +354,7 @@ const testInnings2: domain.Innings = {
             },
             {
                 name: 'Elliott Hallas',
+                playerIndex: 5,
                 innings: {
                     runs: 35,
                     ballsFaced: 46,
@@ -353,6 +370,7 @@ const testInnings2: domain.Innings = {
             },
             {
                 name: 'Craig Blackburn',
+                playerIndex: 6,
                 innings: {
                     runs: 19,
                     ballsFaced: 22,
@@ -369,6 +387,7 @@ const testInnings2: domain.Innings = {
             },
             {
                 name: 'Bilal Butt',
+                playerIndex: 7,
                 innings: {
                     runs: 4,
                     ballsFaced: 31,
@@ -385,6 +404,7 @@ const testInnings2: domain.Innings = {
             },
             {
                 name: 'Alex Midgley',
+                playerIndex: 8,
                 innings: {
                     runs: 4,
                     ballsFaced: 20,
@@ -395,6 +415,7 @@ const testInnings2: domain.Innings = {
             },
             {
                 name: 'Atta Rehman',
+                playerIndex: 9,
                 innings: {
                     runs: 0,
                     ballsFaced: 1,
@@ -410,6 +431,7 @@ const testInnings2: domain.Innings = {
             },
             {
                 name: 'Sam Bailey',
+                playerIndex: 10,
                 innings: {
                     runs: 4,
                     ballsFaced: 10,

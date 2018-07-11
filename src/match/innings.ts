@@ -4,11 +4,26 @@ import * as deliveries from './delivery';
 const latestOver = (deliveries: domain.Delivery[], complete: number): domain.Delivery[] =>
     deliveries.filter(delivery => delivery.overNumber > complete);
 
-const battingInOrder = (players: string[], batsman1Index: number, batsman2Index: number): string[] =>
+const newBatterInnings = () => ({
+    runs: 0,
+    ballsFaced: 0,
+    fours: 0,
+    sixes: 0,
+    timeIn: (new Date()).getTime(),
+});
+
+const battingInOrder = (
+    players: string[],
+    batsman1Index: number,
+    batsman2Index: number,
+): { name: string, playerIndex: number }[] =>
     [
-        players[batsman1Index],
-        players[batsman2Index],
-        ...players.filter((_, idx) => idx !== batsman1Index && idx !== batsman2Index)];
+        { name: players[batsman1Index], playerIndex: batsman1Index },
+        { name: players[batsman2Index], playerIndex: batsman2Index },
+        ...players
+            .map((player, idx) => ({ name: player, playerIndex: idx }))
+            .filter(playerWithIndex =>
+                playerWithIndex.playerIndex !== batsman1Index && playerWithIndex.playerIndex !== batsman2Index)];
 
 const innings = () => {
     const newInnings = (
@@ -40,15 +55,10 @@ const innings = () => {
                 )
                     .map((player, idx) => ({
                         position: idx + 1,
-                        name: player,
+                        name: player.name,
+                        playerIndex: player.playerIndex,
                         innings: idx === 0 || idx === 1
-                            ? {
-                                runs: 0,
-                                ballsFaced: 0,
-                                fours: 0,
-                                sixes: 0,
-                                timeIn: (new Date()).getTime(),
-                            }
+                            ? newBatterInnings()
                             : undefined,
                     })),
             },
@@ -228,9 +238,34 @@ const innings = () => {
             return [updatedInnings, nextBatterIndex];
         };
 
+    const newBatter = (innings: domain.Innings, batterIndex: number): [domain.Innings, number] => {
+        const nextIndex = innings.batting.batters.map((batter, index) => ({
+            batter,
+            index,
+        }))
+            .filter(batterIndex => typeof batterIndex.batter.innings === 'undefined')[0].index;
+
+        const updatedInnings = {
+            ...innings,
+            batting: {
+                ...innings.batting,
+                batters: innings.batting.batters.slice(0, nextIndex)
+                    .concat([{
+                        playerIndex: batterIndex,
+                        name: innings.battingTeam.players[batterIndex],
+                        innings: newBatterInnings(),
+                    }])
+                .concat(innings.batting.batters.slice(nextIndex).filter(batter => batter.playerIndex !== batterIndex)),
+            },
+        };
+
+        return [updatedInnings, nextIndex];
+    };
+
     return {
         newInnings,
         newBowler,
+        newBatter,
         delivery,
         completeOver,
         flipBatters,

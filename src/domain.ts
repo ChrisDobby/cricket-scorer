@@ -68,6 +68,7 @@ export interface BattingInnings {
 }
 
 export interface Batter {
+    playerIndex: number;
     name: string;
     innings?: BattingInnings;
 }
