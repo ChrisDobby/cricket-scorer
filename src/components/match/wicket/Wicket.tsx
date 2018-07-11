@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 import * as domain from '../../../domain';
 import WithNavBar from '../../WithNavBar';
 import DeliveryHeader from '../DeliveryHeader';
@@ -7,11 +8,11 @@ import * as globalStyles from '../../styles';
 import { SaveButton } from '../SaveButton';
 import { bindMatchStorage } from '../../../stores/withMatchStorage';
 
-export interface WicketProps {
+type WicketProps = RouteComponentProps<{}> & {
     inProgress: domain.InProgressMatch;
     storage: any;
     history: any;
-}
+};
 
 interface WicketState {
     batterIndex: number;
@@ -175,4 +176,4 @@ class Wicket extends React.Component<WicketProps, {}> {
     }
 }
 
-export default WithNavBar(Wicket);
+export default WithNavBar(withRouter(Wicket));

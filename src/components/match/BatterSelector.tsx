@@ -10,6 +10,7 @@ export interface BatterSelectorProps {
     players: string[];
     playerPositions: PlayerPosition[];
     availablePositions: number[];
+    notAllowedPlayers?: number[];
     playerSelected: (index: number, position: number) => void;
     playerRemoved: (position: number) => void;
 }
@@ -62,19 +63,17 @@ const positionSelected = (
 };
 
 export const BatterSelector = ({
-    players, playerPositions, availablePositions, playerSelected, playerRemoved,
-}: BatterSelectorProps) => {
-    const firstAvailableIndex = availablePositions[0] - 1;
-    return (
+    players, playerPositions, availablePositions, notAllowedPlayers, playerSelected, playerRemoved,
+}: BatterSelectorProps) => (
         <div>
             {players.map((player, index) =>
                 (
                     <div
                         key={player}
                         className="row"
-                        style={index < firstAvailableIndex
+                        style={ notAllowedPlayers && notAllowedPlayers.find(idx => idx === index)
                             ? styles.nonSelectablePlayerStyle : styles.selectablePlayerStyle}
-                        onClick={index < firstAvailableIndex
+                        onClick={notAllowedPlayers && notAllowedPlayers.find(idx => idx === index)
                             ? () => { }
                             : () => positionSelected(
                                 index,
@@ -90,4 +89,3 @@ export const BatterSelector = ({
                 ))}
         </div>
     );
-};

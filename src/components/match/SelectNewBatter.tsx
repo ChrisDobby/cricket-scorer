@@ -6,6 +6,7 @@ import { Batting } from '../../domain';
 
 interface SelectNewBatterProps {
     batting: Batting;
+    players: string[];
     batterSelected: (playerIndex: number) => void;
 }
 
@@ -41,9 +42,11 @@ export default class extends React.Component<SelectNewBatterProps, {}> {
                             <h4>Select batter {this.availablePosition}</h4>
                         </div>
                         <BatterSelector
-                            players={this.props.batting.batters.map(batter => batter.name)}
+                            players={this.props.players}
                             playerPositions={this.state.playerPositions}
                             availablePositions={[this.availablePosition]}
+                            notAllowedPlayers={this.props.batting.batters
+                                .filter(batter => batter.innings).map(batter => batter.playerIndex)}
                             playerSelected={this.playerSelected}
                             playerRemoved={() => { }}
                         />

@@ -59,7 +59,8 @@ class InProgress extends React.Component<InProgressProps, {}> {
             return (
                 <SelectNewBatter
                     batting={this.props.inProgress.currentInnings.batting}
-                    batterSelected={() => { }}
+                    players={this.props.inProgress.currentInnings.battingTeam.players}
+                    batterSelected={this.bindStorage(this.props.inProgress.newBatter)}
                 />);
         }
 
