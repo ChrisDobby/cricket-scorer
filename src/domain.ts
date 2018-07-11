@@ -191,3 +191,27 @@ export const oversDescription = (completedOvers: number, currentOver: Delivery[]
     const remainder = validCurrentOver.length > 0 ? `.${validCurrentOver.length}` : '';
     return `${completedOvers}${remainder}`;
 };
+
+const nonStrikerHowouts = [
+    Howout.RunOut,
+    Howout.Retired,
+    Howout.TimedOut,
+    Howout.HandledBall,
+    Howout.ObstructingField,
+];
+
+export const howouts = (currentBatter: Batter) => (batter: Batter) =>
+    Object.keys(Howout)
+        .filter(key => !isNaN(Number(Howout[key])))
+        .map(key => Howout[key])
+        .filter(howout => batter === currentBatter ||
+            nonStrikerHowouts.find(how => how === howout) !== undefined);
+
+export const howoutRequiresFielder = (howout: Howout) =>
+    howout === Howout.Caught || howout === Howout.Stumped || howout === Howout.RunOut;
+
+export const howoutBattersCouldCross = (howout: Howout) =>
+    howout === Howout.Caught || howout === Howout.RunOut;
+
+export const howoutCouldScoreRuns = (howout: Howout) =>
+    howout === Howout.Caught || howout === Howout.RunOut || howout === Howout.ObstructingField;

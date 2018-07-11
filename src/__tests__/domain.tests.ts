@@ -220,4 +220,127 @@ describe('domain', () => {
             expect(description).toBe('6.2');
         });
     });
+
+    describe('howouts', () => {
+        const striker = {
+            name: 'A batter',
+        };
+
+        const nonStriker = {
+            name: 'Another batter',
+        };
+
+        const getHowouts = domain.howouts(striker);
+
+        const allHowouts = Object.keys(domain.Howout)
+            .filter(key => !isNaN(Number(domain.Howout[key])))
+            .map(key => domain.Howout[key]);
+
+        it('should return all howouts for the striker', () => {
+            const howouts = getHowouts(striker);
+
+            expect(howouts).toEqual(allHowouts);
+        });
+
+        it('should only return runout, retired, timed out, handled ball and obstruction for the non striker', () => {
+            const howouts = getHowouts(nonStriker);
+
+            expect(howouts).toEqual([
+                domain.Howout.RunOut,
+                domain.Howout.Retired,
+                domain.Howout.TimedOut,
+                domain.Howout.HandledBall,
+                domain.Howout.ObstructingField,
+            ]);
+        });
+    });
+
+    describe('howoutRequiresFielder', () => {
+        it('should return true for caught', () => {
+            const fielderRequired = domain.howoutRequiresFielder(domain.Howout.Caught);
+
+            expect(fielderRequired).toBeTruthy();
+        });
+
+        it('should return true for stumped', () => {
+            const fielderRequired = domain.howoutRequiresFielder(domain.Howout.Stumped);
+
+            expect(fielderRequired).toBeTruthy();
+        });
+
+        it('should return true for run out', () => {
+            const fielderRequired = domain.howoutRequiresFielder(domain.Howout.RunOut);
+
+            expect(fielderRequired).toBeTruthy();
+        });
+
+        it('should return false when not caught, stumped or run out', () => {
+            const fieldersRequired = Object.keys(domain.Howout)
+                .filter(key => !isNaN(Number(domain.Howout[key])))
+                .map(key => domain.Howout[key])
+                .filter(howout => howout !== domain.Howout.Caught &&
+                    howout !== domain.Howout.Stumped &&
+                    howout !== domain.Howout.RunOut)
+                .map(howout => domain.howoutRequiresFielder(howout));
+
+            expect(fieldersRequired.every(req => req === false)).toBeTruthy();
+        });
+    });
+
+    describe('howoutBattersCouldCross', () => {
+        it('should return true for caught', () => {
+            const couldCross = domain.howoutBattersCouldCross(domain.Howout.Caught);
+
+            expect(couldCross).toBeTruthy();
+        });
+
+        it('should return true for run out', () => {
+            const couldCross = domain.howoutBattersCouldCross(domain.Howout.RunOut);
+
+            expect(couldCross).toBeTruthy();
+        });
+
+        it('should return false when not caught or run out', () => {
+            const couldCross = Object.keys(domain.Howout)
+                .filter(key => !isNaN(Number(domain.Howout[key])))
+                .map(key => domain.Howout[key])
+                .filter(howout => howout !== domain.Howout.Caught &&
+                    howout !== domain.Howout.RunOut)
+                .map(howout => domain.howoutBattersCouldCross(howout));
+
+            expect(couldCross.every(cross => cross === false)).toBeTruthy();
+        });
+    });
+
+    describe('howoutCouldScoreRuns', () => {
+        it('should return true for caught', () => {
+            const couldScoreRuns = domain.howoutCouldScoreRuns(domain.Howout.Caught);
+
+            expect(couldScoreRuns).toBeTruthy();
+        });
+
+        it('should return true for run out', () => {
+            const couldScoreRuns = domain.howoutCouldScoreRuns(domain.Howout.RunOut);
+
+            expect(couldScoreRuns).toBeTruthy();
+        });
+
+        it('should return true for obstruction', () => {
+            const couldScoreRuns = domain.howoutCouldScoreRuns(domain.Howout.ObstructingField);
+
+            expect(couldScoreRuns).toBeTruthy();
+        });
+
+        it('should return false when not caught, run out or obstruction', () => {
+            const couldScoreRuns = Object.keys(domain.Howout)
+                .filter(key => !isNaN(Number(domain.Howout[key])))
+                .map(key => domain.Howout[key])
+                .filter(howout => howout !== domain.Howout.Caught &&
+                    howout !== domain.Howout.RunOut &&
+                    howout !== domain.Howout.ObstructingField)
+                .map(howout => domain.howoutBattersCouldCross(howout));
+
+            expect(couldScoreRuns.every(runs => runs === false)).toBeTruthy();
+        });
+    });
 });

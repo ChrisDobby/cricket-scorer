@@ -1,0 +1,153 @@
+import * as React from 'react';
+import * as domain from '../../../domain';
+import WithNavBar from '../../WithNavBar';
+import DeliveryHeader from '../DeliveryHeader';
+import Entry from './Entry';
+import * as globalStyles from '../../styles';
+import { SaveButton } from '../SaveButton';
+
+export interface WicketProps {
+    inProgress: domain.InProgressMatch;
+    storage: any;
+}
+
+interface WicketState {
+    batterIndex: number;
+    fielderIndex?: number;
+    howout?: domain.Howout;
+    crossed: boolean;
+    scores: domain.DeliveryScores;
+}
+
+class Wicket extends React.Component<WicketProps, {}> {
+    getHowouts =
+        typeof this.props.inProgress.currentBatter === 'undefined'
+            ? () => []
+            : domain.howouts(this.props.inProgress.currentBatter);
+
+    state: WicketState = {
+        batterIndex: 0,
+        crossed: false,
+        scores: {},
+    };
+
+    batterChange = (batterIndex: number) =>
+        this.setState({
+            batterIndex,
+            howout: undefined,
+            fielderIndex: undefined,
+            crossed: false,
+            runs: undefined,
+        })
+
+    howoutChange = (howout: domain.Howout | undefined) =>
+        this.setState({
+            howout,
+            fielderIndex: undefined,
+            crossed: false,
+        })
+
+    fielderChange = (fielderIndex: number) =>
+        this.setState({
+            fielderIndex: Number.isNaN(fielderIndex) ? undefined : fielderIndex,
+        })
+
+    crossedChange = (crossed: boolean) =>
+        this.setState({
+            crossed,
+        })
+
+    scoresChange = (scores: domain.DeliveryScores) =>
+        this.setState({ scores })
+
+    save = () => { };
+
+    get canSave() {
+        return typeof this.state.howout !== 'undefined' &&
+            ((domain.howoutRequiresFielder(this.state.howout) && typeof this.state.fielderIndex !== 'undefined') ||
+                (!domain.howoutRequiresFielder(this.state.howout) && typeof this.state.fielderIndex === 'undefined'));
+    }
+
+    get batters(): domain.Batter[] {
+        if (typeof this.props.inProgress.currentInnings === 'undefined' ||
+            typeof this.props.inProgress.currentBatter === 'undefined') {
+            return [];
+        }
+
+        return [
+            this.props.inProgress.currentBatter,
+            ...this.props.inProgress.currentInnings.batting.batters.filter(batter =>
+                batter !== this.props.inProgress.currentBatter &&
+                typeof batter.innings !== 'undefined'
+                && typeof batter.innings.wicket === 'undefined'),
+        ];
+    }
+
+    get fielders() {
+        return typeof this.props.inProgress.currentInnings === 'undefined'
+            ? []
+            : this.props.inProgress.currentInnings.bowlingTeam.players;
+    }
+
+    get availableHowouts() {
+        return this.getHowouts(this.batters[this.state.batterIndex]);
+    }
+
+    get fielderRequired() {
+        return typeof this.state.howout !== 'undefined' &&
+            domain.howoutRequiresFielder(this.state.howout);
+    }
+
+    get couldCross() {
+        return typeof this.state.howout !== 'undefined' &&
+            domain.howoutBattersCouldCross(this.state.howout);
+    }
+
+    get couldScoreRuns() {
+        return typeof this.state.howout !== 'undefined' &&
+            domain.howoutCouldScoreRuns(this.state.howout);
+    }
+
+    render() {
+        if (typeof this.props.inProgress.currentBatter === 'undefined' ||
+            typeof this.props.inProgress.currentBowler === 'undefined') {
+            return (
+                <div className="alert alert-danger" role="alert">
+                    No current delivery
+                </div>);
+        }
+
+        return (
+            <React.Fragment>
+                <div style={globalStyles.sectionContainer}>
+                    <DeliveryHeader
+                        batter={this.props.inProgress.currentBatter}
+                        bowler={this.props.inProgress.currentBowler}
+                    />
+                    <Entry
+                        batters={this.batters}
+                        bowler={this.props.inProgress.currentBowler}
+                        fielders={this.fielders}
+                        batterIndex={this.state.batterIndex}
+                        howout={this.state.howout}
+                        fielderIndex={this.state.fielderIndex}
+                        crossed={this.state.crossed}
+                        scores={this.state.scores}
+                        batterChange={this.batterChange}
+                        howoutChange={this.howoutChange}
+                        fielderChange={this.fielderChange}
+                        crossedChange={this.crossedChange}
+                        scoresChange={this.scoresChange}
+                        availableHowouts={this.availableHowouts}
+                        fielderRequired={this.fielderRequired}
+                        couldCross={this.couldCross}
+                        couldScoreRuns={this.couldScoreRuns}
+                        deliveryOutcome={domain.DeliveryOutcome.Valid}
+                    />
+                </div>
+                <SaveButton enabled={this.canSave} save={this.save} />
+            </React.Fragment>);
+    }
+}
+
+export default WithNavBar(Wicket);

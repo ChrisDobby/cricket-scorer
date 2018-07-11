@@ -12,156 +12,91 @@ exports[`EntryPanel should render correctly when entering a no ball 1`] = `
       className="col-10"
     >
       <button
+        className="btn btn-danger"
+        onClick={[Function]}
+      >
+        NO BALL
+      </button>
+    </div>
+  </div>
+  <div
+    className="row"
+    style={
+      Object {
+        "backgroundColor": "#fefefe",
+        "borderColor": "#fdfdfe",
+        "marginBottom": "4px",
+        "marginTop": "4px",
+      }
+    }
+  >
+    <div
+      className="col-2"
+    >
+      Runs
+    </div>
+    <div
+      className="col-10"
+    >
+      <button
         className="btn btn-success"
         onClick={[Function]}
+        style={
+          Object {
+            "margin": "2px",
+            "minWidth": "36px",
+          }
+        }
       >
-        LEGAL BALL
+        .
       </button>
-    </div>
-  </div>
-  <div
-    className="row"
-    style={
-      Object {
-        "backgroundColor": "#fefefe",
-        "borderColor": "#fdfdfe",
-        "marginBottom": "4px",
-        "marginTop": "4px",
-      }
-    }
-  >
-    <div
-      className="col-2"
-    >
-      Runs (NO BALL)
-    </div>
-    <div
-      className="col-10"
-    >
       <button
-        className="btn btn-danger"
+        className="btn btn-success"
         onClick={[Function]}
         style={
           Object {
             "margin": "2px",
             "minWidth": "36px",
-            "paddingLeft": "4px",
-            "paddingRight": "4px",
           }
         }
       >
-        <div
-          style={
-            Object {
-              "borderColor": "#ffffff",
-              "borderRadius": "50%",
-              "borderStyle": "solid",
-              "borderWidth": "1px",
-            }
-          }
-        >
-          .
-        </div>
+        1
       </button>
       <button
-        className="btn btn-danger"
+        className="btn btn-success"
         onClick={[Function]}
         style={
           Object {
             "margin": "2px",
             "minWidth": "36px",
-            "paddingLeft": "4px",
-            "paddingRight": "4px",
           }
         }
       >
-        <div
-          style={
-            Object {
-              "borderColor": "#ffffff",
-              "borderRadius": "50%",
-              "borderStyle": "solid",
-              "borderWidth": "1px",
-            }
-          }
-        >
-          1
-        </div>
+        2
       </button>
       <button
-        className="btn btn-danger"
+        className="btn btn-success"
         onClick={[Function]}
         style={
           Object {
             "margin": "2px",
             "minWidth": "36px",
-            "paddingLeft": "4px",
-            "paddingRight": "4px",
           }
         }
       >
-        <div
-          style={
-            Object {
-              "borderColor": "#ffffff",
-              "borderRadius": "50%",
-              "borderStyle": "solid",
-              "borderWidth": "1px",
-            }
-          }
-        >
-          2
-        </div>
+        3
       </button>
       <button
-        className="btn btn-danger"
+        className="btn btn-success"
         onClick={[Function]}
         style={
           Object {
             "margin": "2px",
             "minWidth": "36px",
-            "paddingLeft": "4px",
-            "paddingRight": "4px",
           }
         }
       >
-        <div
-          style={
-            Object {
-              "borderColor": "#ffffff",
-              "borderRadius": "50%",
-              "borderStyle": "solid",
-              "borderWidth": "1px",
-            }
-          }
-        >
-          3
-        </div>
-      </button>
-      <button
-        className="btn btn-danger"
-        onClick={[Function]}
-        style={
-          Object {
-            "margin": "2px",
-            "minWidth": "36px",
-            "paddingLeft": "4px",
-            "paddingRight": "4px",
-          }
-        }
-      >
-        <div
-          style={
-            Object {
-              "borderColor": "#ffffff",
-              "borderRadius": "50%",
-              "borderStyle": "solid",
-              "borderWidth": "1px",
-            }
-          }
-        >
-          4
-        </div>
+        4
       </button>
       <span
         style={
@@ -215,7 +150,7 @@ exports[`EntryPanel should render correctly when entering a no ball 1`] = `
           </option>
         </select>
         <button
-          className="btn btn-danger"
+          className="btn btn-success"
           disabled={true}
           onClick={[Function]}
           style={
@@ -245,60 +180,34 @@ exports[`EntryPanel should render correctly when entering a no ball 1`] = `
     <div
       className="col-2"
     >
-      Boundary (NO BALL)
+      Boundary
     </div>
     <div
       className="col-10"
     >
       <button
-        className="btn btn-danger"
+        className="btn btn-success"
         onClick={[Function]}
         style={
           Object {
             "margin": "2px",
             "minWidth": "36px",
-            "paddingLeft": "4px",
-            "paddingRight": "4px",
           }
         }
       >
-        <div
-          style={
-            Object {
-              "borderColor": "#ffffff",
-              "borderRadius": "50%",
-              "borderStyle": "solid",
-              "borderWidth": "1px",
-            }
-          }
-        >
-          4
-        </div>
+        4
       </button>
       <button
-        className="btn btn-danger"
+        className="btn btn-success"
         onClick={[Function]}
         style={
           Object {
             "margin": "2px",
             "minWidth": "36px",
-            "paddingLeft": "4px",
-            "paddingRight": "4px",
           }
         }
       >
-        <div
-          style={
-            Object {
-              "borderColor": "#ffffff",
-              "borderRadius": "50%",
-              "borderStyle": "solid",
-              "borderWidth": "1px",
-            }
-          }
-        >
-          6
-        </div>
+        6
       </button>
     </div>
   </div>
@@ -316,7 +225,7 @@ exports[`EntryPanel should render correctly when entering a no ball 1`] = `
     <div
       className="col-2"
     >
-      Byes (NO BALL)
+      Byes
     </div>
     <div
       className="col-10"
@@ -330,103 +239,207 @@ exports[`EntryPanel should render correctly when entering a no ball 1`] = `
         }
       />
       <button
-        className="btn btn-danger"
+        className="btn btn-success"
         onClick={[Function]}
         style={
           Object {
             "margin": "2px",
             "minWidth": "36px",
-            "paddingLeft": "4px",
-            "paddingRight": "4px",
+            "paddingLeft": "2px",
+            "paddingRight": "2px",
           }
         }
       >
         <div
           style={
             Object {
-              "borderColor": "#ffffff",
-              "borderRadius": "50%",
+              "borderColor": "transparent transparent #ffffff transparent",
               "borderStyle": "solid",
-              "borderWidth": "1px",
+              "borderWidth": "0 14px 20px 14px",
+              "float": "left",
+              "height": 0,
+              "width": 0,
             }
           }
         >
-          1
+          <div
+            style={
+              Object {
+                "borderColor": "transparent transparent #28a745 transparent",
+                "borderStyle": "solid",
+                "borderWidth": "0 12px 18px 12px",
+                "float": "left",
+                "height": 0,
+                "marginLeft": "-12px",
+                "marginTop": "1px",
+                "width": 0,
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "marginLeft": "-5px",
+                  "marginTop": "-2px",
+                }
+              }
+            >
+              1
+            </div>
+          </div>
         </div>
       </button>
       <button
-        className="btn btn-danger"
+        className="btn btn-success"
         onClick={[Function]}
         style={
           Object {
             "margin": "2px",
             "minWidth": "36px",
-            "paddingLeft": "4px",
-            "paddingRight": "4px",
+            "paddingLeft": "2px",
+            "paddingRight": "2px",
           }
         }
       >
         <div
           style={
             Object {
-              "borderColor": "#ffffff",
-              "borderRadius": "50%",
+              "borderColor": "transparent transparent #ffffff transparent",
               "borderStyle": "solid",
-              "borderWidth": "1px",
+              "borderWidth": "0 14px 20px 14px",
+              "float": "left",
+              "height": 0,
+              "width": 0,
             }
           }
         >
-          2
+          <div
+            style={
+              Object {
+                "borderColor": "transparent transparent #28a745 transparent",
+                "borderStyle": "solid",
+                "borderWidth": "0 12px 18px 12px",
+                "float": "left",
+                "height": 0,
+                "marginLeft": "-12px",
+                "marginTop": "1px",
+                "width": 0,
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "marginLeft": "-5px",
+                  "marginTop": "-2px",
+                }
+              }
+            >
+              2
+            </div>
+          </div>
         </div>
       </button>
       <button
-        className="btn btn-danger"
+        className="btn btn-success"
         onClick={[Function]}
         style={
           Object {
             "margin": "2px",
             "minWidth": "36px",
-            "paddingLeft": "4px",
-            "paddingRight": "4px",
+            "paddingLeft": "2px",
+            "paddingRight": "2px",
           }
         }
       >
         <div
           style={
             Object {
-              "borderColor": "#ffffff",
-              "borderRadius": "50%",
+              "borderColor": "transparent transparent #ffffff transparent",
               "borderStyle": "solid",
-              "borderWidth": "1px",
+              "borderWidth": "0 14px 20px 14px",
+              "float": "left",
+              "height": 0,
+              "width": 0,
             }
           }
         >
-          3
+          <div
+            style={
+              Object {
+                "borderColor": "transparent transparent #28a745 transparent",
+                "borderStyle": "solid",
+                "borderWidth": "0 12px 18px 12px",
+                "float": "left",
+                "height": 0,
+                "marginLeft": "-12px",
+                "marginTop": "1px",
+                "width": 0,
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "marginLeft": "-5px",
+                  "marginTop": "-2px",
+                }
+              }
+            >
+              3
+            </div>
+          </div>
         </div>
       </button>
       <button
-        className="btn btn-danger"
+        className="btn btn-success"
         onClick={[Function]}
         style={
           Object {
             "margin": "2px",
             "minWidth": "36px",
-            "paddingLeft": "4px",
-            "paddingRight": "4px",
+            "paddingLeft": "2px",
+            "paddingRight": "2px",
           }
         }
       >
         <div
           style={
             Object {
-              "borderColor": "#ffffff",
-              "borderRadius": "50%",
+              "borderColor": "transparent transparent #ffffff transparent",
               "borderStyle": "solid",
-              "borderWidth": "1px",
+              "borderWidth": "0 14px 20px 14px",
+              "float": "left",
+              "height": 0,
+              "width": 0,
             }
           }
         >
-          4
+          <div
+            style={
+              Object {
+                "borderColor": "transparent transparent #28a745 transparent",
+                "borderStyle": "solid",
+                "borderWidth": "0 12px 18px 12px",
+                "float": "left",
+                "height": 0,
+                "marginLeft": "-12px",
+                "marginTop": "1px",
+                "width": 0,
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "marginLeft": "-5px",
+                  "marginTop": "-2px",
+                }
+              }
+            >
+              4
+            </div>
+          </div>
         </div>
       </button>
       <span
@@ -481,7 +494,7 @@ exports[`EntryPanel should render correctly when entering a no ball 1`] = `
           </option>
         </select>
         <button
-          className="btn btn-danger"
+          className="btn btn-success"
           disabled={true}
           onClick={[Function]}
           style={
@@ -511,7 +524,7 @@ exports[`EntryPanel should render correctly when entering a no ball 1`] = `
     <div
       className="col-2"
     >
-      Leg byes (NO BALL)
+      Leg byes
     </div>
     <div
       className="col-10"
@@ -525,103 +538,207 @@ exports[`EntryPanel should render correctly when entering a no ball 1`] = `
         }
       />
       <button
-        className="btn btn-danger"
+        className="btn btn-success"
         onClick={[Function]}
         style={
           Object {
             "margin": "2px",
             "minWidth": "36px",
-            "paddingLeft": "4px",
-            "paddingRight": "4px",
+            "paddingLeft": "2px",
+            "paddingRight": "2px",
           }
         }
       >
         <div
           style={
             Object {
-              "borderColor": "#ffffff",
-              "borderRadius": "50%",
+              "borderColor": "#ffffff transparent transparent transparent",
               "borderStyle": "solid",
-              "borderWidth": "1px",
+              "borderWidth": "20px 14px 0 14px",
+              "float": "left",
+              "height": 0,
+              "width": 0,
             }
           }
         >
-          1
+          <div
+            style={
+              Object {
+                "borderColor": "#28a745 transparent transparent transparent",
+                "borderStyle": "solid",
+                "borderWidth": "18px 12px 0 12px",
+                "float": "left",
+                "height": 0,
+                "marginLeft": "-12px",
+                "marginTop": "-19px",
+                "width": 0,
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "marginLeft": "-5px",
+                  "marginTop": "-24px",
+                }
+              }
+            >
+              1
+            </div>
+          </div>
         </div>
       </button>
       <button
-        className="btn btn-danger"
+        className="btn btn-success"
         onClick={[Function]}
         style={
           Object {
             "margin": "2px",
             "minWidth": "36px",
-            "paddingLeft": "4px",
-            "paddingRight": "4px",
+            "paddingLeft": "2px",
+            "paddingRight": "2px",
           }
         }
       >
         <div
           style={
             Object {
-              "borderColor": "#ffffff",
-              "borderRadius": "50%",
+              "borderColor": "#ffffff transparent transparent transparent",
               "borderStyle": "solid",
-              "borderWidth": "1px",
+              "borderWidth": "20px 14px 0 14px",
+              "float": "left",
+              "height": 0,
+              "width": 0,
             }
           }
         >
-          2
+          <div
+            style={
+              Object {
+                "borderColor": "#28a745 transparent transparent transparent",
+                "borderStyle": "solid",
+                "borderWidth": "18px 12px 0 12px",
+                "float": "left",
+                "height": 0,
+                "marginLeft": "-12px",
+                "marginTop": "-19px",
+                "width": 0,
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "marginLeft": "-5px",
+                  "marginTop": "-24px",
+                }
+              }
+            >
+              2
+            </div>
+          </div>
         </div>
       </button>
       <button
-        className="btn btn-danger"
+        className="btn btn-success"
         onClick={[Function]}
         style={
           Object {
             "margin": "2px",
             "minWidth": "36px",
-            "paddingLeft": "4px",
-            "paddingRight": "4px",
+            "paddingLeft": "2px",
+            "paddingRight": "2px",
           }
         }
       >
         <div
           style={
             Object {
-              "borderColor": "#ffffff",
-              "borderRadius": "50%",
+              "borderColor": "#ffffff transparent transparent transparent",
               "borderStyle": "solid",
-              "borderWidth": "1px",
+              "borderWidth": "20px 14px 0 14px",
+              "float": "left",
+              "height": 0,
+              "width": 0,
             }
           }
         >
-          3
+          <div
+            style={
+              Object {
+                "borderColor": "#28a745 transparent transparent transparent",
+                "borderStyle": "solid",
+                "borderWidth": "18px 12px 0 12px",
+                "float": "left",
+                "height": 0,
+                "marginLeft": "-12px",
+                "marginTop": "-19px",
+                "width": 0,
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "marginLeft": "-5px",
+                  "marginTop": "-24px",
+                }
+              }
+            >
+              3
+            </div>
+          </div>
         </div>
       </button>
       <button
-        className="btn btn-danger"
+        className="btn btn-success"
         onClick={[Function]}
         style={
           Object {
             "margin": "2px",
             "minWidth": "36px",
-            "paddingLeft": "4px",
-            "paddingRight": "4px",
+            "paddingLeft": "2px",
+            "paddingRight": "2px",
           }
         }
       >
         <div
           style={
             Object {
-              "borderColor": "#ffffff",
-              "borderRadius": "50%",
+              "borderColor": "#ffffff transparent transparent transparent",
               "borderStyle": "solid",
-              "borderWidth": "1px",
+              "borderWidth": "20px 14px 0 14px",
+              "float": "left",
+              "height": 0,
+              "width": 0,
             }
           }
         >
-          4
+          <div
+            style={
+              Object {
+                "borderColor": "#28a745 transparent transparent transparent",
+                "borderStyle": "solid",
+                "borderWidth": "18px 12px 0 12px",
+                "float": "left",
+                "height": 0,
+                "marginLeft": "-12px",
+                "marginTop": "-19px",
+                "width": 0,
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "marginLeft": "-5px",
+                  "marginTop": "-24px",
+                }
+              }
+            >
+              4
+            </div>
+          </div>
         </div>
       </button>
       <span
@@ -676,7 +793,154 @@ exports[`EntryPanel should render correctly when entering a no ball 1`] = `
           </option>
         </select>
         <button
-          className="btn btn-danger"
+          className="btn btn-success"
+          disabled={true}
+          onClick={[Function]}
+          style={
+            Object {
+              "margin": "2px",
+            }
+          }
+        >
+          <i
+            className="fa fa-check"
+          />
+        </button>
+      </span>
+    </div>
+  </div>
+  <div
+    className="row"
+    style={
+      Object {
+        "backgroundColor": "#fefefe",
+        "borderColor": "#fdfdfe",
+        "marginBottom": "4px",
+        "marginTop": "4px",
+      }
+    }
+  >
+    <div
+      className="col-2"
+    >
+      Wide
+    </div>
+    <div
+      className="col-10"
+    >
+      <button
+        className="btn btn-danger"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": "2px",
+            "minWidth": "36px",
+          }
+        }
+      >
+        .
+      </button>
+      <button
+        className="btn btn-danger"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": "2px",
+            "minWidth": "36px",
+          }
+        }
+      >
+        1
+      </button>
+      <button
+        className="btn btn-danger"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": "2px",
+            "minWidth": "36px",
+          }
+        }
+      >
+        2
+      </button>
+      <button
+        className="btn btn-danger"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": "2px",
+            "minWidth": "36px",
+          }
+        }
+      >
+        3
+      </button>
+      <button
+        className="btn btn-danger"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": "2px",
+            "minWidth": "36px",
+          }
+        }
+      >
+        4
+      </button>
+      <span
+        style={
+          Object {
+            "whiteSpace": "nowrap",
+          }
+        }
+      >
+        <select
+          className="custom-select"
+          onChange={[Function]}
+          style={
+            Object {
+              "width": "84px",
+            }
+          }
+          value="other"
+        >
+          <option>
+            other
+          </option>
+          <option
+            value="5"
+          >
+            5
+          </option>
+          <option
+            value="6"
+          >
+            6
+          </option>
+          <option
+            value="7"
+          >
+            7
+          </option>
+          <option
+            value="8"
+          >
+            8
+          </option>
+          <option
+            value="9"
+          >
+            9
+          </option>
+          <option
+            value="10"
+          >
+            10
+          </option>
+        </select>
+        <button
+          className="btn btn-success"
           disabled={true}
           onClick={[Function]}
           style={
@@ -709,6 +973,13 @@ exports[`EntryPanel should render correctly when entering a no ball 1`] = `
     <div
       className="col-10"
     >
+      <a
+        className="btn btn-success"
+        href="/inprogress/wicket"
+        onClick={[Function]}
+      >
+        Wicket
+      </a>
       <button
         className="btn btn-success"
         onClick={[Function]}
@@ -1711,6 +1982,13 @@ exports[`EntryPanel should render correctly when over complete 1`] = `
     <div
       className="col-10"
     >
+      <a
+        className="btn btn-success"
+        href="/inprogress/wicket"
+        onClick={[Function]}
+      >
+        Wicket
+      </a>
       <button
         className="btn btn-success"
         onClick={[Function]}
@@ -2713,6 +2991,13 @@ exports[`EntryPanel should render correctly when over not complete 1`] = `
     <div
       className="col-10"
     >
+      <a
+        className="btn btn-success"
+        href="/inprogress/wicket"
+        onClick={[Function]}
+      >
+        Wicket
+      </a>
       <button
         className="btn btn-success"
         onClick={[Function]}
@@ -3715,6 +4000,13 @@ exports[`EntryPanel should render correctly when showing all run 4 warning 1`] =
     <div
       className="col-10"
     >
+      <a
+        className="btn btn-success"
+        href="/inprogress/wicket"
+        onClick={[Function]}
+      >
+        Wicket
+      </a>
       <button
         className="btn btn-success"
         onClick={[Function]}
@@ -3739,78 +4031,6 @@ exports[`EntryPanel should render correctly when showing all run 4 warning 1`] =
       >
         change ends
       </button>
-    </div>
-  </div>
-  <div>
-    <div
-      style={
-        Object {
-          "backgroundColor": "#000000",
-          "bottom": 0,
-          "left": 0,
-          "opacity": 0.6,
-          "position": "fixed",
-          "right": 0,
-          "top": 0,
-          "zIndex": 9000,
-        }
-      }
-    />
-    <div
-      className="row"
-      style={
-        Object {
-          "bottom": 0,
-          "left": 0,
-          "padding": "20px",
-          "position": "fixed",
-          "right": 0,
-          "top": 0,
-          "zIndex": 9001,
-        }
-      }
-    >
-      <div
-        className="col-12"
-        style={
-          Object {
-            "textAlign": "center",
-          }
-        }
-      >
-        <div
-          className="alert alert-danger"
-          role="alert"
-        >
-          You have entered a four as all run rather than a boundary.  Is this correct?
-          <div>
-            <button
-              className="btn btn-danger"
-              onClick={[Function]}
-              style={
-                Object {
-                  "marginLeft": "10px",
-                  "marginRight": "10px",
-                }
-              }
-            >
-              Yes
-            </button>
-            <button
-              className="btn btn-default"
-              onClick={[Function]}
-              style={
-                Object {
-                  "marginLeft": "10px",
-                  "marginRight": "10px",
-                }
-              }
-            >
-              No
-            </button>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
@@ -4789,6 +5009,13 @@ exports[`EntryPanel should render correctly when showing all run 6 warning 1`] =
     <div
       className="col-10"
     >
+      <a
+        className="btn btn-success"
+        href="/inprogress/wicket"
+        onClick={[Function]}
+      >
+        Wicket
+      </a>
       <button
         className="btn btn-success"
         onClick={[Function]}
@@ -4813,78 +5040,6 @@ exports[`EntryPanel should render correctly when showing all run 6 warning 1`] =
       >
         change ends
       </button>
-    </div>
-  </div>
-  <div>
-    <div
-      style={
-        Object {
-          "backgroundColor": "#000000",
-          "bottom": 0,
-          "left": 0,
-          "opacity": 0.6,
-          "position": "fixed",
-          "right": 0,
-          "top": 0,
-          "zIndex": 9000,
-        }
-      }
-    />
-    <div
-      className="row"
-      style={
-        Object {
-          "bottom": 0,
-          "left": 0,
-          "padding": "20px",
-          "position": "fixed",
-          "right": 0,
-          "top": 0,
-          "zIndex": 9001,
-        }
-      }
-    >
-      <div
-        className="col-12"
-        style={
-          Object {
-            "textAlign": "center",
-          }
-        }
-      >
-        <div
-          className="alert alert-danger"
-          role="alert"
-        >
-          You have entered a six as all run rather than a boundary.  Is this correct?
-          <div>
-            <button
-              className="btn btn-danger"
-              onClick={[Function]}
-              style={
-                Object {
-                  "marginLeft": "10px",
-                  "marginRight": "10px",
-                }
-              }
-            >
-              Yes
-            </button>
-            <button
-              className="btn btn-default"
-              onClick={[Function]}
-              style={
-                Object {
-                  "marginLeft": "10px",
-                  "marginRight": "10px",
-                }
-              }
-            >
-              No
-            </button>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>

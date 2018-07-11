@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as ReactTestRenderer from 'react-test-renderer';
+import { StaticRouter } from 'react-router';
 import InProgress from '../../../components/match/InProgress';
 import { blankMatch, matchWithStartedInnings, matchWithOverReadyToComplete } from '../../testData/matches';
 
@@ -81,7 +82,10 @@ describe('InProgress', () => {
             previousBowler: matchWithOverReadyToComplete.innings[0].bowlers[0],
         };
 
-        const inProgress = ReactTestRenderer.create(<InProgress inProgress={withPreviousBowler} storage={storage} />);
+        const inProgress = ReactTestRenderer.create(
+            <StaticRouter context={{}}>
+                <InProgress inProgress={withPreviousBowler} storage={storage} />
+            </StaticRouter>);
 
         expect(inProgress.toJSON()).toMatchSnapshot();
     });
@@ -93,20 +97,24 @@ describe('InProgress', () => {
         };
 
         const inProgress = ReactTestRenderer.create(
-            <InProgress
-                inProgress={withPreviousBowlerFromEnd}
-                storage={storage}
-            />);
+            <StaticRouter context={{}}>
+                <InProgress
+                    inProgress={withPreviousBowlerFromEnd}
+                    storage={storage}
+                />
+            </StaticRouter>);
 
         expect(inProgress.toJSON()).toMatchSnapshot();
     });
 
     it('should render correctly for match during an over', () => {
         const inProgress = ReactTestRenderer.create(
-            <InProgress
-                inProgress={matchDuringOverProgress}
-                storage={storage}
-            />);
+            <StaticRouter context={{}}>
+                <InProgress
+                    inProgress={matchDuringOverProgress}
+                    storage={storage}
+                />
+            </StaticRouter>);
 
         expect(inProgress.toJSON()).toMatchSnapshot();
     });

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 import { DeliveryOutcome, DeliveryScores } from '../../domain';
 import { ActionButton } from './ActionButton';
 import { ScoresEntry } from './ScoresEntry';
@@ -144,7 +145,7 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
                 <div className="row" style={rowStyle}>
                     <div className="col-2">
                         {`Runs${this.descriptionText}`}
-                </div>
+                    </div>
                     <ScoresEntry
                         showDot={true}
                         deliveryOutcome={this.deliveryOutcome}
@@ -210,6 +211,9 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
                 <div className="row" style={rowStyle}>
                     <div className="col-2" />
                     <div className="col-10">
+                        <Link to="/inprogress/wicket" className="btn btn-success">
+                            Wicket
+                        </Link>
                         <ActionButton
                             caption="complete over"
                             noBall={false}

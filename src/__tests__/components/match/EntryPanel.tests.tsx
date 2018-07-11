@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
 import * as ReactTestRenderer from 'react-test-renderer';
+import { StaticRouter } from 'react-router';
 import { toast } from 'react-toastify';
 import { EntryPanel } from '../../../components/match/EntryPanel';
 import { DeliveryOutcome } from '../../../domain';
@@ -297,33 +298,48 @@ describe('EntryPanel', () => {
     });
 
     it('should render correctly when over not complete', () => {
-        const entryPanel = ReactTestRenderer.create(<EntryPanel ballFunctions={ballFunctions} overComplete={false} />);
+        const entryPanel = ReactTestRenderer.create(
+            <StaticRouter context={{}}>
+                <EntryPanel ballFunctions={ballFunctions} overComplete={false} />
+            </StaticRouter>);
 
         expect(entryPanel.toJSON()).toMatchSnapshot();
     });
 
     it('should render correctly when over complete', () => {
-        const entryPanel = ReactTestRenderer.create(<EntryPanel ballFunctions={ballFunctions} overComplete={true} />);
+        const entryPanel = ReactTestRenderer.create(
+            <StaticRouter context={{}}>
+                <EntryPanel ballFunctions={ballFunctions} overComplete={true} />
+            </StaticRouter>);
 
         expect(entryPanel.toJSON()).toMatchSnapshot();
     });
 
     it('should render correctly when entering a no ball', () => {
-        const entryPanel = ReactTestRenderer.create(<EntryPanel ballFunctions={ballFunctions} overComplete={false} />);
+        const entryPanel = ReactTestRenderer.create(
+            <StaticRouter context={{}}>
+                <EntryPanel ballFunctions={ballFunctions} overComplete={false} />
+            </StaticRouter>);
         entryPanel.root.instance.setState({ noBall: true });
 
         expect(entryPanel.toJSON()).toMatchSnapshot();
     });
 
     it('should render correctly when showing all run 4 warning', () => {
-        const entryPanel = ReactTestRenderer.create(<EntryPanel ballFunctions={ballFunctions} overComplete={false} />);
+        const entryPanel = ReactTestRenderer.create(
+            <StaticRouter context={{}}>
+                <EntryPanel ballFunctions={ballFunctions} overComplete={false} />
+            </StaticRouter>);
         entryPanel.root.instance.setState({ allRunFourWarning: true });
 
         expect(entryPanel.toJSON()).toMatchSnapshot();
     });
 
     it('should render correctly when showing all run 6 warning', () => {
-        const entryPanel = ReactTestRenderer.create(<EntryPanel ballFunctions={ballFunctions} overComplete={false} />);
+        const entryPanel = ReactTestRenderer.create(
+            <StaticRouter context={{}}>
+                <EntryPanel ballFunctions={ballFunctions} overComplete={false} />
+            </StaticRouter>);
         entryPanel.root.instance.setState({ allRunSixWarning: true });
 
         expect(entryPanel.toJSON()).toMatchSnapshot();

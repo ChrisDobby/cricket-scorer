@@ -3,11 +3,7 @@ import * as globalStyles from '../styles';
 import { Innings, Batter, Bowler, BattingInnings, Extras, Over } from '../../domain';
 import { EntryPanel, BallFunctions } from './EntryPanel';
 import { CurrentOver } from './CurrentOver';
-
-const headerStyle: React.CSSProperties = {
-    ...globalStyles.singleHeadingRow,
-    marginBottom: '4px',
-};
+import DeliveryHeader from './DeliveryHeader';
 
 const battingScoreStyle: React.CSSProperties = {
     display: 'inline',
@@ -32,9 +28,7 @@ export interface BallEntryProps {
 
 export const BallEntry = ({ innings, batter, bowler, overComplete, currentOver, ballFunctions }: BallEntryProps) => (
     <div style={globalStyles.sectionContainer}>
-        <div className="row" style={headerStyle}>
-            <h4>{`${bowler.name} to ${batter.name}`}</h4>
-        </div>
+        <DeliveryHeader batter={batter} bowler={bowler} />
         <div className="row">
             <div className="col-12 col-lg-6 d-none d-md-block">
                 <div className="row">

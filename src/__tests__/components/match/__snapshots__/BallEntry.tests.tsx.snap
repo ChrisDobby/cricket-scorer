@@ -1162,6 +1162,13 @@ exports[`BallEntry should render correctly 1`] = `
           <div
             className="col-10"
           >
+            <a
+              className="btn btn-success"
+              href="/inprogress/wicket"
+              onClick={[Function]}
+            >
+              Wicket
+            </a>
             <button
               className="btn btn-success"
               onClick={[Function]}
@@ -2383,6 +2390,13 @@ exports[`BallEntry should render correctly when over complete 1`] = `
           <div
             className="col-10"
           >
+            <a
+              className="btn btn-success"
+              href="/inprogress/wicket"
+              onClick={[Function]}
+            >
+              Wicket
+            </a>
             <button
               className="btn btn-success"
               onClick={[Function]}
