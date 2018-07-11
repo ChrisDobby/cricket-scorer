@@ -298,3 +298,8 @@ export const inningsAfterWicketTaken = {
             }))),
     },
 };
+
+export const matchAfterWicketTaken = {
+    ...blankMatch,
+    innings: [inningsAfterWicketTaken],
+};

@@ -114,6 +114,26 @@ class InProgressMatchStore implements domain.InProgressMatch {
         this.currentBowlerIndex = bowlerIndex;
     }
 
+    @action newBatter = (playerIndex: number) => {
+        if (typeof this.match === 'undefined' ||
+            typeof this.currentInnings === 'undefined') { return; }
+
+        if (this.currentInnings.batting.batters.filter(batter =>
+            typeof batter.innings !== 'undefined' &&
+            typeof batter.innings.wicket === 'undefined').length === 2) {
+            return;
+        }
+
+        const [innings, batterIndex] = matchInnings.newBatter(this.currentInnings, playerIndex);
+        console.log(innings);
+        this.match = updateMatchInnings(
+            this.match,
+            innings,
+        );
+
+        this.currentBatterIndex = batterIndex;
+    }
+
     @action delivery = (
         deliveryOutcome: domain.DeliveryOutcome,
         scores: domain.DeliveryScores,
