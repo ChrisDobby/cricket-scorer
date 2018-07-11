@@ -9,10 +9,6 @@ const indicatorStyle: React.CSSProperties = {
     textAlign: 'center',
 };
 
-const nonSelectableStyle: React.CSSProperties = {
-    color: 'rgb(233, 236, 239)',
-};
-
 interface SelectionIndicatorProps {
     playerIndex: number;
     selected: boolean;
@@ -37,7 +33,7 @@ export interface BowlerProps {
 export const Bowler = ({ index, selected, name, allowed, selectBowler }: BowlerProps) => (
     <div
         className="row bowler-row"
-        style={allowed ? styles.selectablePlayerStyle : nonSelectableStyle}
+        style={allowed ? styles.selectablePlayerStyle : styles.nonSelectablePlayerStyle}
         onClick={() => { if (allowed) { selectBowler(index); } }}
     >
         <SelectionIndicator

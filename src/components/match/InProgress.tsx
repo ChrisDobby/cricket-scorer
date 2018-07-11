@@ -6,6 +6,7 @@ import { StartInnings } from './StartInnings';
 import { SelectBowler } from './SelectBowler';
 import { BallEntry } from './BallEntry';
 import { Innings } from '../scorecard/Innings';
+import SelectNewBatter from './SelectNewBatter';
 import { bindMatchStorage } from '../../stores/withMatchStorage';
 
 export interface InProgressProps {
@@ -49,6 +50,16 @@ class InProgress extends React.Component<InProgressProps, {}> {
                     selectBowler={this.bindStorage(this.props.inProgress.newBowler)}
                     initiallySelected={this.previousBowlerFromEndIndex()}
                     disallowedPlayers={this.disallowedPlayers()}
+                />);
+        }
+
+        if (this.props.inProgress.currentInnings &&
+            this.props.inProgress.currentInnings.batting.batters
+                .filter(batter => batter.innings && !batter.innings.wicket).length === 1) {
+            return (
+                <SelectNewBatter
+                    batting={this.props.inProgress.currentInnings.batting}
+                    batterSelected={() => { }}
                 />);
         }
 

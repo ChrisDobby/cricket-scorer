@@ -41,6 +41,11 @@ const positionSelected = (
     playerPositions: PlayerPosition[],
     playerSelected: (index: number, position: number) => void,
     playerRemoved: (position: number) => void): void => {
+    if (availablePositions.length === 1) {
+        playerSelected(index, availablePositions[0]);
+        return;
+    }
+
     const playerPosition = playerPositions.find(playerPos => playerPos.playerIndex === index);
     if (playerPosition) {
         playerRemoved(playerPosition.position);
@@ -58,21 +63,26 @@ const positionSelected = (
 
 export const BatterSelector = ({
     players, playerPositions, availablePositions, playerSelected, playerRemoved,
-}: BatterSelectorProps) => (
+}: BatterSelectorProps) => {
+    const firstAvailableIndex = availablePositions[0] - 1;
+    return (
         <div>
             {players.map((player, index) =>
                 (
                     <div
                         key={player}
                         className="row"
-                        style={styles.selectablePlayerStyle}
-                        onClick={() => positionSelected(
-                            index,
-                            availablePositions,
-                            playerPositions,
-                            playerSelected,
-                            playerRemoved,
-                        )}
+                        style={index < firstAvailableIndex
+                            ? styles.nonSelectablePlayerStyle : styles.selectablePlayerStyle}
+                        onClick={index < firstAvailableIndex
+                            ? () => { }
+                            : () => positionSelected(
+                                index,
+                                availablePositions,
+                                playerPositions,
+                                playerSelected,
+                                playerRemoved,
+                            )}
                     >
                         <PositionIndicator playerIndex={index} playerPositions={playerPositions} />
                         <h6>{player}</h6>
@@ -80,3 +90,4 @@ export const BatterSelector = ({
                 ))}
         </div>
     );
+};
