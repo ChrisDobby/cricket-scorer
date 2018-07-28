@@ -125,7 +125,6 @@ class InProgressMatchStore implements domain.InProgressMatch {
         }
 
         const [innings, batterIndex] = matchInnings.newBatter(this.currentInnings, playerIndex);
-        console.log(innings);
         this.match = updateMatchInnings(
             this.match,
             innings,

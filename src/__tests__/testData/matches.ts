@@ -299,6 +299,27 @@ export const inningsAfterWicketTaken = {
     },
 };
 
+export const inningsAfterWicketTakenAndNewBatterStarted = {
+    ...inningsAfterWicketTaken,
+    batting: {
+        ...inningsAfterWicketTaken.batting,
+        batters: (inningsAfterWicketTaken.batting.batters.map((batter, index) => (
+            index === 2
+                ? {
+                    ...batter,
+                    innings: {
+                        runs: 0,
+                        timeIn: (new Date()).getTime(),
+                        ballsFaced: 0,
+                        fours: 0,
+                        sixes: 0,
+                    },
+                }
+                : batter
+        ))),
+    },
+};
+
 export const matchAfterWicketTaken = {
     ...blankMatch,
     innings: [inningsAfterWicketTaken],

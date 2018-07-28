@@ -386,6 +386,15 @@ describe('innings', () => {
 
             expect(newBatterIndex).toBe(1);
         });
+
+        it('should not swap to an out batter', () => {
+            const newBatterIndex = innings.flipBatters(
+                matches.inningsAfterWicketTakenAndNewBatterStarted,
+                matches.inningsAfterWicketTakenAndNewBatterStarted.batting.batters[1],
+            );
+
+            expect(newBatterIndex).toBe(2);
+        });
     });
 
     describe('newBatter', () => {
