@@ -60,6 +60,10 @@ const deliveryDrawCanvas = () => {
         drawScore(context, runs);
     };
 
+    const drawWicket = (context: CanvasRenderingContext2D) => {
+        context.fillText('W', 9, 20);
+    };
+
     const drawNoBallOutline = (context: CanvasRenderingContext2D) => {
         context.beginPath();
         context.arc(15, 15, 14, 0, 2 * Math.PI);
@@ -79,7 +83,9 @@ const deliveryDrawCanvas = () => {
         context.font = '14px Segoe UI';
         context.lineWidth = 1;
 
-        if (typeof outcome.scores.byes !== 'undefined') {
+        if (typeof outcome.wicket !== 'undefined') {
+            drawWicket(context);
+        } else if (typeof outcome.scores.byes !== 'undefined') {
             drawByes(context, outcome.scores.byes);
         } else if (typeof outcome.scores.legByes !== 'undefined') {
             drawLegByes(context, outcome.scores.legByes);
