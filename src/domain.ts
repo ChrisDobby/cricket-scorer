@@ -217,3 +217,9 @@ export const howoutBattersCouldCross = (howout: Howout) =>
 
 export const howoutCouldScoreRuns = (howout: Howout) =>
     howout === Howout.Caught || howout === Howout.RunOut || howout === Howout.ObstructingField;
+
+export const howoutCouldBeNoBall = (howout: Howout) =>
+    howout === Howout.RunOut || howout === Howout.ObstructingField;
+
+export const howoutCouldBeWide = (howout: Howout) =>
+    howout === Howout.RunOut || howout === Howout.Stumped || howout === Howout.ObstructingField;

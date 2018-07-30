@@ -340,9 +340,66 @@ describe('domain', () => {
                 .filter(howout => howout !== domain.Howout.Caught &&
                     howout !== domain.Howout.RunOut &&
                     howout !== domain.Howout.ObstructingField)
-                .map(howout => domain.howoutBattersCouldCross(howout));
+                .map(howout => domain.howoutCouldScoreRuns(howout));
 
             expect(couldScoreRuns.every(runs => runs === false)).toBeTruthy();
+        });
+    });
+
+    describe('howoutCouldBeNoBall', () => {
+        it('should return false when not run out or obstruction', () => {
+            const couldBeNoBall = Object.keys(domain.Howout)
+                .filter(key => !isNaN(Number(domain.Howout[key])))
+                .map(key => domain.Howout[key])
+                .filter(howout => howout !== domain.Howout.RunOut &&
+                    howout !== domain.Howout.ObstructingField)
+                .map(howout => domain.howoutCouldBeNoBall(howout));
+
+            expect(couldBeNoBall.every(noBall => noBall === false)).toBeTruthy();
+        });
+
+        it('should return true for run out', () => {
+            const couldBeNoBall = domain.howoutCouldBeNoBall(domain.Howout.RunOut);
+
+            expect(couldBeNoBall).toBeTruthy();
+        });
+
+        it('should return true for obstruction', () => {
+            const couldBeNoBall = domain.howoutCouldBeNoBall(domain.Howout.ObstructingField);
+
+            expect(couldBeNoBall).toBeTruthy();
+        });
+    });
+
+    describe('howoutCouldBeWide', () => {
+        it('should return false when not run out, stumped or obstruction', () => {
+            const couldBeWide = Object.keys(domain.Howout)
+                .filter(key => !isNaN(Number(domain.Howout[key])))
+                .map(key => domain.Howout[key])
+                .filter(howout => howout !== domain.Howout.RunOut &&
+                    howout !== domain.Howout.Stumped &&
+                    howout !== domain.Howout.ObstructingField)
+                .map(howout => domain.howoutCouldBeWide(howout));
+
+            expect(couldBeWide.every(wide => wide === false)).toBeTruthy();
+        });
+
+        it('should return true for run out', () => {
+            const couldBeWide = domain.howoutCouldBeWide(domain.Howout.RunOut);
+
+            expect(couldBeWide).toBeTruthy();
+        });
+
+        it('should return true for stumped', () => {
+            const couldBeWide = domain.howoutCouldBeWide(domain.Howout.Stumped);
+
+            expect(couldBeWide).toBeTruthy();
+        });
+
+        it('should return true for obstruction', () => {
+            const couldBeWide = domain.howoutCouldBeWide(domain.Howout.ObstructingField);
+
+            expect(couldBeWide).toBeTruthy();
         });
     });
 });
