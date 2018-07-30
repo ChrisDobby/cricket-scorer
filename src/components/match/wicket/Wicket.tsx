@@ -74,7 +74,7 @@ class Wicket extends React.Component<WicketProps, {}> {
 
     save = () => {
         this.delivery(
-            domain.DeliveryOutcome.Valid,
+            this.state.deliveryOutcome,
             this.state.scores,
             this.deliveryWicket,
         );
