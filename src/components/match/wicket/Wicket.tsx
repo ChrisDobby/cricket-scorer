@@ -20,6 +20,7 @@ interface WicketState {
     howout?: domain.Howout;
     crossed: boolean;
     scores: domain.DeliveryScores;
+    deliveryOutcome: domain.DeliveryOutcome;
 }
 
 class Wicket extends React.Component<WicketProps, {}> {
@@ -35,6 +36,7 @@ class Wicket extends React.Component<WicketProps, {}> {
         batterIndex: 0,
         crossed: false,
         scores: {},
+        deliveryOutcome: domain.DeliveryOutcome.Valid,
     };
 
     batterChange = (batterIndex: number) =>
@@ -51,6 +53,7 @@ class Wicket extends React.Component<WicketProps, {}> {
             howout,
             fielderIndex: undefined,
             crossed: false,
+            deliveryOutcome: domain.DeliveryOutcome.Valid,
         })
 
     fielderChange = (fielderIndex: number) =>
@@ -65,6 +68,9 @@ class Wicket extends React.Component<WicketProps, {}> {
 
     scoresChange = (scores: domain.DeliveryScores) =>
         this.setState({ scores })
+
+    deliveryOutcomeChange = (deliveryOutcome: domain.DeliveryOutcome) =>
+        this.setState({ deliveryOutcome })
 
     save = () => {
         this.delivery(
@@ -122,6 +128,16 @@ class Wicket extends React.Component<WicketProps, {}> {
             domain.howoutCouldScoreRuns(this.state.howout);
     }
 
+    get couldBeNoBall() {
+        return typeof this.state.howout !== 'undefined' &&
+            domain.howoutCouldBeNoBall(this.state.howout);
+    }
+
+    get couldBeWide() {
+        return typeof this.state.howout !== 'undefined' &&
+            domain.howoutCouldBeWide(this.state.howout);
+    }
+
     get deliveryWicket(): domain.DeliveryWicket | undefined {
         if (typeof this.state.howout === 'undefined') {
             return undefined;
@@ -164,11 +180,14 @@ class Wicket extends React.Component<WicketProps, {}> {
                         fielderChange={this.fielderChange}
                         crossedChange={this.crossedChange}
                         scoresChange={this.scoresChange}
+                        deliveryOutcomeChange={this.deliveryOutcomeChange}
                         availableHowouts={this.availableHowouts}
                         fielderRequired={this.fielderRequired}
                         couldCross={this.couldCross}
                         couldScoreRuns={this.couldScoreRuns}
-                        deliveryOutcome={domain.DeliveryOutcome.Valid}
+                        couldBeNoBall={this.couldBeNoBall}
+                        couldBeWide={this.couldBeWide}
+                        deliveryOutcome={this.state.deliveryOutcome}
                     />
                 </div>
                 <SaveButton enabled={this.canSave} save={this.save} />

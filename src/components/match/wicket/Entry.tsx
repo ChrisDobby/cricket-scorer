@@ -49,12 +49,15 @@ interface EntryProps {
     fielderRequired: boolean;
     couldCross: boolean;
     couldScoreRuns: boolean;
+    couldBeNoBall: boolean;
+    couldBeWide: boolean;
     deliveryOutcome: DeliveryOutcome;
     batterChange: (batterIndex: Number) => void;
     howoutChange: (howout: Howout | undefined) => void;
     fielderChange: (fielderIndex: Number | undefined) => void;
     crossedChange: (crossed: boolean) => void;
     scoresChange: (scores: DeliveryScores) => void;
+    deliveryOutcomeChange: (outcome: DeliveryOutcome) => void;
 }
 
 export default (props: EntryProps) => (
@@ -181,4 +184,38 @@ export default (props: EntryProps) => (
                     </div>
                 </div>
             </React.Fragment>}
-    </React.Fragment>);
+        {props.couldBeNoBall &&
+            <div className="row" style={entryRowStyle}>
+            <div className="col-12 col-md-3">
+                <h5>No ball</h5>
+            </div>
+            <div className="col-12 col-md-9">
+                <div className="form-check">
+                    <input
+                        className="form-check-input"
+                        type="checkbox"
+                        checked={props.deliveryOutcome === DeliveryOutcome.Noball}
+                        onChange={ev => props.deliveryOutcomeChange(
+                            ev.currentTarget.checked ? DeliveryOutcome.Noball : DeliveryOutcome.Valid)}
+                    />
+                </div>
+            </div>
+        </div>}
+        {props.couldBeWide &&
+            <div className="row" style={entryRowStyle}>
+            <div className="col-12 col-md-3">
+                <h5>Wide</h5>
+            </div>
+            <div className="col-12 col-md-9">
+                <div className="form-check">
+                    <input
+                        className="form-check-input"
+                        type="checkbox"
+                        checked={props.deliveryOutcome === DeliveryOutcome.Wide}
+                        onChange={ev => props.deliveryOutcomeChange(
+                            ev.currentTarget.checked ? DeliveryOutcome.Wide : DeliveryOutcome.Valid)}
+                    />
+                </div>
+            </div>
+        </div>}
+</React.Fragment>);
