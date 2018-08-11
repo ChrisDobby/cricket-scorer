@@ -145,6 +145,7 @@ export interface InProgressMatch {
     newBowler: (playerIndex: number) => void;
     newBatter: (playerIndex: number) => void;
     delivery: (deliveryOutcome: DeliveryOutcome, scores: DeliveryScores, wicket: DeliveryWicket | undefined) => void;
+    undoPreviousDelivery: () => void;
     completeOver: () => void;
     flipBatters: () => void;
 }

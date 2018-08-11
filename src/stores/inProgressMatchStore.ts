@@ -160,6 +160,22 @@ class InProgressMatchStore implements domain.InProgressMatch {
         this.currentBatterIndex = batterIndex;
     }
 
+    @action undoPreviousDelivery = () => {
+        if (typeof this.match === 'undefined' ||
+            typeof this.currentInnings === 'undefined' ||
+            typeof this.currentBatter === 'undefined' ||
+            typeof this.currentBowler === 'undefined') { return; }
+
+        const [innings, batterIndex] = matchInnings.undoPrevious(this.currentInnings);
+
+        this.match = updateMatchInnings(
+            this.match,
+            innings,
+        );
+
+        this.currentBatterIndex = batterIndex;
+    }
+
     @action completeOver = () => {
         if (typeof this.match === 'undefined' ||
             typeof this.currentInnings === 'undefined' ||

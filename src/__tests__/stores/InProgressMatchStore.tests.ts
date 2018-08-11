@@ -274,6 +274,39 @@ describe('inProgressMatchStore', () => {
         });
     });
 
+    describe('undoPreviousDelivery', () => {
+        it('should do nothing if no match has been started', () => {
+            const inProgressMatchStore = getMatchStore();
+            inProgressMatchStore.undoPreviousDelivery();
+
+            expect(inProgressMatchStore.match).toBeUndefined();
+        });
+
+        it('should do nothing if no innings has been started', () => {
+            const inProgressMatchStore = getMatchStore();
+            inProgressMatchStore.match = matches.blankMatch;
+            inProgressMatchStore.undoPreviousDelivery();
+
+            expect(inProgressMatchStore.match.innings).toHaveLength(0);
+        });
+
+        it('should do nothing if no over has been started', () => {
+            const inProgressMatchStore = getMatchStore();
+            inProgressMatchStore.match = matches.matchWithStartedInnings;
+            inProgressMatchStore.undoPreviousDelivery();
+
+            expect(inProgressMatchStore.match.innings[0].deliveries).toHaveLength(0);
+        });
+
+        it('should remove the delivery from the innings', () => {
+            const inProgressMatchStore = getMatchStore();
+            inProgressMatchStore.match = matches.matchWithOverNotReadyToComplete;
+            inProgressMatchStore.undoPreviousDelivery();
+
+            expect(inProgressMatchStore.match.innings[0].deliveries).toHaveLength(2);
+        });
+    });
+
     describe('completeOver', () => {
         it('should do nothing if no match has been started', () => {
             const inProgressMatchStore = getMatchStore();
