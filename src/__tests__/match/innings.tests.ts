@@ -6,11 +6,17 @@ jest.mock('../../match/delivery', () => {
     const domain = require('../../domain');
 
     const runsScored = () => 2;
-    const updatedExtras = () => ({
+    const addedExtras = () => ({
         byes: 3,
         legByes: 1,
         wides: 0,
         noBalls: 0,
+    });
+    const removedExtras = () => ({
+        byes: 8,
+        legByes: 2,
+        wides: 1,
+        noBalls: 3,
     });
     const totalScore = () => 4;
     const runsFromBatter = (outcome: Outcome) =>
@@ -30,7 +36,8 @@ jest.mock('../../match/delivery', () => {
 
     return {
         runsScored,
-        updatedExtras,
+        addedExtras,
+        removedExtras,
         totalScore,
         runsFromBatter,
         boundariesScored,
@@ -408,6 +415,153 @@ describe('innings', () => {
 
         it('should return the next batting index', () => {
             expect(batterIndex).toBe(2);
+        });
+    });
+
+    describe('undoPrevious', () => {
+        const inningsWithBall = {
+            ...matches.startedInnings,
+            score: 20,
+            wickets: 3,
+            totalOvers: '0.1',
+            deliveries: [{
+                time: 0,
+                bowlerIndex: 0,
+                batsmanIndex: 4,
+                overNumber: 1,
+                outcome: {
+                    deliveryOutcome: DeliveryOutcome.Valid,
+                    scores: {},
+                },
+            }],
+            batting: {
+                ...matches.startedInnings.batting,
+                batters: [
+                    {
+                        name: 'Batter 1',
+                        playerIndex: 0,
+                    },
+                    {
+                        name: 'Batter 2',
+                        playerIndex: 1,
+                    },
+                    {
+                        name: 'Batter 3',
+                        playerIndex: 2,
+                    },
+                    {
+                        name: 'Batter 4',
+                        playerIndex: 3,
+                    },
+                    {
+                        name: 'Batter 5',
+                        playerIndex: 4,
+                        innings: {
+                            runs: 20,
+                            timeIn: (new Date()).getTime(),
+                            ballsFaced: 10,
+                            fours: 2,
+                            sixes: 1,
+                            wicket: {
+                                time: 1,
+                                howOut: Howout.Bowled,
+                                bowler: 'Bowler 1',
+                            },
+                        },
+                    },
+                ],
+            },
+            bowlers: [
+                {
+                    playerIndex: 10,
+                    name: 'Bowler 1',
+                    completedOvers: 0,
+                    totalOvers: '0.1',
+                    maidenOvers: 0,
+                    runs: 10,
+                    wickets: 3,
+                },
+                {
+                    playerIndex: 9,
+                    name: 'Bowler 2',
+                    completedOvers: 2,
+                    totalOvers: '1',
+                    maidenOvers: 1,
+                    runs: 0,
+                    wickets: 0,
+                },
+            ],
+        };
+
+        const [updatedInnings, newBatterIndex] = Innings.undoPrevious(inningsWithBall);
+        const batterInnings = updatedInnings.batting.batters[4].innings as BattingInnings;
+
+        it('should return the same innings and 0 as the batter when innings has no deliveries', () => {
+            const [innings, batterIndex] = Innings.undoPrevious(matches.startedInnings);
+
+            expect(innings).toBe(matches.startedInnings);
+            expect(batterIndex).toBe(0);
+        });
+
+        it('should return the batter index from the last delivery', () => {
+            expect(newBatterIndex).toBe(4);
+        });
+
+        it('should return an innings with the last delivery removed', () => {
+            expect(updatedInnings.deliveries).toHaveLength(0);
+        });
+
+        it('should remove delivery outcome from the total', () => {
+            expect(updatedInnings.score).toBe(16);
+        });
+
+        it('should remove delivery extras from the total', () => {
+            expect(updatedInnings.batting.extras).toEqual({
+                byes: 8,
+                legByes: 2,
+                wides: 1,
+                noBalls: 3,
+            });
+        });
+
+        it('should remove delivery wickets from the innings', () => {
+            expect(updatedInnings.wickets).toBe(2);
+        });
+
+        it('should update the total overs', () => {
+            expect(updatedInnings.totalOvers).toBe('0');
+        });
+
+        it('should update the bowlers runs', () => {
+            expect(updatedInnings.bowlers[0].runs).toBe(7);
+        });
+
+        it('should update the bowlers wickets', () => {
+            expect(updatedInnings.bowlers[0].wickets).toBe(2);
+        });
+
+        it('should update the bowlers total overs', () => {
+            expect(updatedInnings.bowlers[0].totalOvers).toBe('0');
+        });
+
+        it('should update the batters balls faced', () => {
+            expect(batterInnings.ballsFaced).toBe(9);
+        });
+
+        it('should update the batters runs', () => {
+            expect(batterInnings.runs).toBe(18);
+        });
+
+        it('should update the batters fours', () => {
+            expect(batterInnings.fours).toBe(1);
+        });
+
+        it('should update the batters sixes', () => {
+            expect(batterInnings.sixes).toBe(0);
+        });
+
+        it('should update the batters wicket', () => {
+            expect(batterInnings.wicket).toBeUndefined();
         });
     });
 });

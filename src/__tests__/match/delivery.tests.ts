@@ -110,7 +110,7 @@ describe('delivery', () => {
         });
     });
 
-    describe('updatedExtras', () => {
+    describe('addedExtras', () => {
         const extras = {
             byes: 0,
             legByes: 0,
@@ -120,7 +120,7 @@ describe('delivery', () => {
         };
 
         it('should return the same extras if none defined in delivery', () => {
-            const updatedExtras = delivery.updatedExtras(
+            const updatedExtras = delivery.addedExtras(
                 extras,
                 {
                     deliveryOutcome: DeliveryOutcome.Valid,
@@ -132,7 +132,7 @@ describe('delivery', () => {
         });
 
         it('should add byes to the total if defined', () => {
-            const updatedExtras = delivery.updatedExtras(
+            const updatedExtras = delivery.addedExtras(
                 extras,
                 {
                     deliveryOutcome: DeliveryOutcome.Valid,
@@ -144,7 +144,7 @@ describe('delivery', () => {
         });
 
         it('should add leg byes to the total if defined', () => {
-            const updatedExtras = delivery.updatedExtras(
+            const updatedExtras = delivery.addedExtras(
                 extras,
                 {
                     deliveryOutcome: DeliveryOutcome.Valid,
@@ -156,7 +156,7 @@ describe('delivery', () => {
         });
 
         it('should add wides and extra run to the total if defined', () => {
-            const updatedExtras = delivery.updatedExtras(
+            const updatedExtras = delivery.addedExtras(
                 extras,
                 {
                     deliveryOutcome: DeliveryOutcome.Wide,
@@ -168,7 +168,7 @@ describe('delivery', () => {
         });
 
         it('should add no ball to the total if delivery is no ball', () => {
-            const updatedExtras = delivery.updatedExtras(
+            const updatedExtras = delivery.addedExtras(
                 extras,
                 {
                     deliveryOutcome: DeliveryOutcome.Noball,
@@ -177,6 +177,76 @@ describe('delivery', () => {
             );
 
             expect(updatedExtras).toEqual({ ...extras, noBalls: 1 });
+        });
+    });
+
+    describe('removedExtras', () => {
+        const extras = {
+            byes: 10,
+            legByes: 20,
+            wides: 30,
+            noBalls: 40,
+            penaltyRuns: 50,
+        };
+
+        it('should return the same extras if none defined in delivery', () => {
+            const updatedExtras = delivery.removedExtras(
+                extras,
+                {
+                    deliveryOutcome: DeliveryOutcome.Valid,
+                    scores: {},
+                },
+            );
+
+            expect(updatedExtras).toEqual(extras);
+        });
+
+        it('should remove byes from the total if defined', () => {
+            const updatedExtras = delivery.removedExtras(
+                extras,
+                {
+                    deliveryOutcome: DeliveryOutcome.Valid,
+                    scores: { byes: 3 },
+                },
+            );
+
+            expect(updatedExtras).toEqual({ ...extras, byes: 7 });
+        });
+
+        it('should remove leg byes from the total if defined', () => {
+            const updatedExtras = delivery.removedExtras(
+                extras,
+                {
+                    deliveryOutcome: DeliveryOutcome.Valid,
+                    scores: { legByes: 3 },
+                },
+            );
+
+            expect(updatedExtras).toEqual({ ...extras, legByes: 17 });
+        });
+
+        it('should remove wides and extra run from the total if defined', () => {
+            const updatedExtras = delivery.removedExtras(
+                extras,
+                {
+                    deliveryOutcome: DeliveryOutcome.Wide,
+                    scores: { wides: 1 },
+                },
+            );
+
+            expect(updatedExtras).toEqual({ ...extras, wides: 28 });
+        });
+
+        it('should remove no ball from the total if delivery is no ball', () => {
+            const updatedExtras = delivery.removedExtras(
+                extras,
+                {
+                    deliveryOutcome: DeliveryOutcome.Noball,
+                    scores: {},
+                },
+            );
+
+            expect(updatedExtras).toEqual({ ...extras, noBalls: 39 });
         });
     });
 

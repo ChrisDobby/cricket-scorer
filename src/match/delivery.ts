@@ -35,15 +35,20 @@ export const runsScored = (outcome: domain.Outcome) => {
     return outcome.scores.runs;
 };
 
-export const updatedExtras = (extras: domain.Extras, outcome: domain.Outcome) => ({
+const updatedExtras = (update: (a:number, b:number) => number) => (extras: domain.Extras, outcome: domain.Outcome) => ({
     ...extras,
-    byes: extras.byes + (typeof outcome.scores.byes === 'undefined' ? 0 : outcome.scores.byes),
-    legByes: extras.legByes + (typeof outcome.scores.legByes === 'undefined' ? 0 : outcome.scores.legByes),
-    wides: extras.wides +
+    byes: update(extras.byes, (typeof outcome.scores.byes === 'undefined' ? 0 : outcome.scores.byes)),
+    legByes: update(extras.legByes, (typeof outcome.scores.legByes === 'undefined' ? 0 : outcome.scores.legByes)),
+    wides: update(
+        extras.wides,
         (typeof outcome.scores.wides === 'undefined' ? 0 : outcome.scores.wides) +
-        (outcome.deliveryOutcome === domain.DeliveryOutcome.Wide ? 1 : 0),
-    noBalls: extras.noBalls + (outcome.deliveryOutcome === domain.DeliveryOutcome.Noball ? 1 : 0),
+        (outcome.deliveryOutcome === domain.DeliveryOutcome.Wide ? 1 : 0)),
+    noBalls: update(extras.noBalls, (outcome.deliveryOutcome === domain.DeliveryOutcome.Noball ? 1 : 0)),
 });
+
+export const addedExtras = updatedExtras((a: number, b: number) => a + b);
+
+export const removedExtras = updatedExtras((a: number, b: number) => a - b);
 
 export const runsFromBatter = (outcome: domain.Outcome) => totalRuns(outcome);
 

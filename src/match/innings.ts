@@ -101,38 +101,33 @@ const innings = () => {
         return [newInnings, newBowlerIndex];
     };
 
-    const addDeliveryToInnings = (
+    const updateInningsFromDelivery = (
+        getDeliveries: () => domain.Delivery[],
+        updateExtras: (extras: domain.Extras, deliveryOutcome: domain.Outcome) => domain.Extras,
+        getBattingWicket: () => domain.Wicket | undefined,
+        update: (a: number, b: number) => number,
+    ) => (
         innings: domain.Innings,
         batter: domain.Batter,
         bowler: domain.Bowler,
         deliveryOutcome: domain.Outcome,
     ) => {
-        const time = (new Date()).getTime();
-
         const updatedBatterInnings = (battingInnings: domain.BattingInnings) => {
             const [fours, sixes] = deliveries.boundariesScored(deliveryOutcome);
             return {
                 ...battingInnings,
-                ballsFaced: battingInnings.ballsFaced +
+                ballsFaced: update(
+                    battingInnings.ballsFaced,
                     (deliveryOutcome.deliveryOutcome === domain.DeliveryOutcome.Wide ? 0 : 1),
-                runs: battingInnings.runs + deliveries.runsScored(deliveryOutcome),
-                fours: battingInnings.fours + fours,
-                sixes: battingInnings.sixes + sixes,
-                wicket: deliveries.battingWicket(deliveryOutcome, time, bowler.name, innings.bowlingTeam.players),
+                ),
+                runs: update(battingInnings.runs, deliveries.runsScored(deliveryOutcome)),
+                fours: update(battingInnings.fours, fours),
+                sixes: update(battingInnings.sixes, sixes),
+                wicket: getBattingWicket(),
             };
         };
 
-        const updatedDeliveries = [
-            ...innings.deliveries,
-            {
-                time,
-                outcome: deliveryOutcome,
-                overNumber: innings.completedOvers + 1,
-                batsmanIndex: innings.batting.batters.indexOf(batter),
-                bowlerIndex: innings.bowlers.indexOf(bowler),
-            },
-        ];
-
+        const updatedDeliveries = getDeliveries();
         const currentOver = latestOver(updatedDeliveries, innings.completedOvers);
         const updatedInnings = {
             ...innings,
@@ -149,7 +144,7 @@ const innings = () => {
                             }
                             : b),
                 ],
-                extras: deliveries.updatedExtras(innings.batting.extras, deliveryOutcome),
+                extras: updateExtras(innings.batting.extras, deliveryOutcome),
             },
             bowlers: [
                 ...innings.bowlers.map(b =>
@@ -157,8 +152,8 @@ const innings = () => {
                         ? {
                             ...bowler,
                             totalOvers: domain.oversDescription(bowler.completedOvers, currentOver),
-                            runs: bowler.runs + deliveries.bowlerRuns(deliveryOutcome),
-                            wickets: bowler.wickets + deliveries.bowlingWickets(deliveryOutcome),
+                            runs: update(bowler.runs, deliveries.bowlerRuns(deliveryOutcome)),
+                            wickets: update(bowler.wickets, deliveries.bowlingWickets(deliveryOutcome)),
                         }
                         : b),
             ],
@@ -166,12 +161,31 @@ const innings = () => {
             totalOvers: domain.oversDescription(
                 innings.completedOvers,
                 latestOver(updatedDeliveries, innings.completedOvers)),
-            score: innings.score + deliveries.totalScore(deliveryOutcome),
-            wickets: innings.wickets + deliveries.wickets(deliveryOutcome),
+            score: update(innings.score, deliveries.totalScore(deliveryOutcome)),
+            wickets: update(innings.wickets, deliveries.wickets(deliveryOutcome)),
         };
 
         return updatedInnings;
     };
+
+    const addDeliveryToInnings = (
+        updatedDeliveries: domain.Delivery[],
+        battingWicket: domain.Wicket | undefined,
+    ) => updateInningsFromDelivery(
+        () => updatedDeliveries,
+        deliveries.addedExtras,
+        () => battingWicket,
+        (a: number, b: number) => a + b,
+    );
+
+    const removeDeliveryFromInnings = (
+        updatedDeliveries: domain.Delivery[],
+    ) => updateInningsFromDelivery(
+        () => updatedDeliveries,
+        deliveries.removedExtras,
+        () => undefined,
+        (a: number, b: number) => a - b,
+    );
 
     const flipBatters = (innings: domain.Innings, batter: domain.Batter) => {
         const [nextBatterIndex] = innings.batting.batters
@@ -197,19 +211,36 @@ const innings = () => {
         deliveryOutcome: domain.DeliveryOutcome,
         scores: domain.DeliveryScores,
         wicket: domain.DeliveryWicket | undefined = undefined,
-    ): [domain.Innings, number] =>
-        [
+    ): [domain.Innings, number] => {
+        const time = (new Date()).getTime();
+        const outcome = {
+            deliveryOutcome,
+            scores,
+            wicket,
+        };
+
+        return [
             addDeliveryToInnings(
-                innings,
-                batter,
-                bowler,
-                {
-                    deliveryOutcome,
-                    scores,
-                    wicket,
-                }),
+                [
+                    ...innings.deliveries,
+                    {
+                        time,
+                        outcome,
+                        overNumber: innings.completedOvers + 1,
+                        batsmanIndex: innings.batting.batters.indexOf(batter),
+                        bowlerIndex: innings.bowlers.indexOf(bowler),
+                    },
+                ],
+                deliveries.battingWicket(outcome, time, bowler.name, innings.bowlingTeam.players),
+                )(
+                    innings,
+                    batter,
+                    bowler,
+                    outcome,
+                ),
             newBatsmanIndex(innings, batter, deliveries.runsFromBatter({ deliveryOutcome, scores })),
         ];
+    };
 
     const completeOver =
         (innings: domain.Innings, batter: domain.Batter, bowler: domain.Bowler): [domain.Innings, number] => {
@@ -264,6 +295,24 @@ const innings = () => {
         return [updatedInnings, nextIndex];
     };
 
+    const undoPrevious = (innings: domain.Innings): [domain.Innings, number] => {
+        if (innings.deliveries.length === 0) {
+            return [innings, 0];
+        }
+
+        const lastDelivery = innings.deliveries[innings.deliveries.length - 1];
+        return [
+            removeDeliveryFromInnings(
+                [...innings.deliveries.filter(delivery => delivery !== lastDelivery)])
+                (
+                innings,
+                innings.batting.batters[lastDelivery.batsmanIndex],
+                innings.bowlers[lastDelivery.bowlerIndex],
+                lastDelivery.outcome,
+                ),
+            lastDelivery.batsmanIndex];
+    };
+
     return {
         newInnings,
         newBowler,
@@ -271,6 +320,7 @@ const innings = () => {
         delivery,
         completeOver,
         flipBatters,
+        undoPrevious,
     };
 };
 
