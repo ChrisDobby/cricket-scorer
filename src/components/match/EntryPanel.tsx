@@ -18,6 +18,7 @@ const rowStyle: React.CSSProperties = {
 
 export interface BallFunctions {
     delivery: (deliveryOutcome: DeliveryOutcome, scores: DeliveryScores) => void;
+    undoPreviousDelivery: () => void;
     completeOver: () => void;
     changeEnds: () => void;
 }
@@ -223,6 +224,11 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
                             caption="change ends"
                             noBall={false}
                             action={this.props.ballFunctions.changeEnds}
+                        />
+                        <ActionButton
+                            caption="undo previous"
+                            noBall={false}
+                            action={this.props.ballFunctions.undoPreviousDelivery}
                         />
                     </div>
                 </div>

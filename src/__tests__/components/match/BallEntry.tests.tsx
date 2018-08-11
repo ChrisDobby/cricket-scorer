@@ -7,6 +7,7 @@ import { BallEntry } from '../../../components/match/BallEntry';
 describe('BallEntry', () => {
     const ballFunctions = {
         delivery: jest.fn(),
+        undoPreviousDelivery: jest.fn(),
         completeOver: jest.fn(),
         changeEnds: jest.fn(),
     };

@@ -25,6 +25,7 @@ describe('EntryPanel', () => {
 
     const ballFunctions = {
         delivery: jest.fn(),
+        undoPreviousDelivery: jest.fn(),
         completeOver: jest.fn(),
         changeEnds: jest.fn(),
     };

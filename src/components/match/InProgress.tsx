@@ -19,6 +19,7 @@ class InProgress extends React.Component<InProgressProps, {}> {
     bindStorage = bindMatchStorage(this.props.storage.storeMatch, () => this.props.inProgress);
     ballFunctions = this.bindStorage({
         delivery: this.props.inProgress.delivery,
+        undoPreviousDelivery: this.props.inProgress.undoPreviousDelivery,
         completeOver: this.props.inProgress.completeOver,
         changeEnds: this.props.inProgress.flipBatters,
     });
