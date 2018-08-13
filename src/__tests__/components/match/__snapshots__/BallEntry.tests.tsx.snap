@@ -1193,6 +1193,18 @@ exports[`BallEntry should render correctly 1`] = `
             >
               change ends
             </button>
+            <button
+              className="btn btn-success"
+              onClick={[MockFunction]}
+              style={
+                Object {
+                  "margin": "2px",
+                  "minWidth": "36px",
+                }
+              }
+            >
+              undo previous
+            </button>
           </div>
         </div>
       </div>
@@ -2420,6 +2432,18 @@ exports[`BallEntry should render correctly when over complete 1`] = `
               }
             >
               change ends
+            </button>
+            <button
+              className="btn btn-success"
+              onClick={[MockFunction]}
+              style={
+                Object {
+                  "margin": "2px",
+                  "minWidth": "36px",
+                }
+              }
+            >
+              undo previous
             </button>
           </div>
         </div>

@@ -1004,6 +1004,18 @@ exports[`EntryPanel should render correctly when entering a no ball 1`] = `
       >
         change ends
       </button>
+      <button
+        className="btn btn-success"
+        onClick={[MockFunction]}
+        style={
+          Object {
+            "margin": "2px",
+            "minWidth": "36px",
+          }
+        }
+      >
+        undo previous
+      </button>
     </div>
   </div>
 </div>
@@ -2012,6 +2024,18 @@ exports[`EntryPanel should render correctly when over complete 1`] = `
         }
       >
         change ends
+      </button>
+      <button
+        className="btn btn-success"
+        onClick={[MockFunction]}
+        style={
+          Object {
+            "margin": "2px",
+            "minWidth": "36px",
+          }
+        }
+      >
+        undo previous
       </button>
     </div>
   </div>
@@ -3022,6 +3046,18 @@ exports[`EntryPanel should render correctly when over not complete 1`] = `
       >
         change ends
       </button>
+      <button
+        className="btn btn-success"
+        onClick={[MockFunction]}
+        style={
+          Object {
+            "margin": "2px",
+            "minWidth": "36px",
+          }
+        }
+      >
+        undo previous
+      </button>
     </div>
   </div>
 </div>
@@ -4031,6 +4067,18 @@ exports[`EntryPanel should render correctly when showing all run 4 warning 1`] =
       >
         change ends
       </button>
+      <button
+        className="btn btn-success"
+        onClick={[MockFunction]}
+        style={
+          Object {
+            "margin": "2px",
+            "minWidth": "36px",
+          }
+        }
+      >
+        undo previous
+      </button>
     </div>
   </div>
 </div>
@@ -5039,6 +5087,18 @@ exports[`EntryPanel should render correctly when showing all run 6 warning 1`] =
         }
       >
         change ends
+      </button>
+      <button
+        className="btn btn-success"
+        onClick={[MockFunction]}
+        style={
+          Object {
+            "margin": "2px",
+            "minWidth": "36px",
+          }
+        }
+      >
+        undo previous
       </button>
     </div>
   </div>

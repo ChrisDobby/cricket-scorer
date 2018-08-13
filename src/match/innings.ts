@@ -296,20 +296,45 @@ const innings = () => {
     };
 
     const undoPrevious = (innings: domain.Innings): [domain.Innings, number] => {
+        const removeNewBatter = (inningsToRemoveFrom: domain.Innings, outcome: domain.Outcome) => {
+            if (typeof outcome.wicket === 'undefined') { return inningsToRemoveFrom; }
+
+            const batterToRemoveIndex = Math.max(
+                ...inningsToRemoveFrom.batting.batters.map((batter, index) => ({ batter, index }))
+                    .filter(b => typeof b.batter.innings !== 'undefined')
+                    .map(b => b.index));
+
+            return {
+                ...inningsToRemoveFrom,
+                batting: {
+                    ...inningsToRemoveFrom.batting,
+                    batters: [
+                        ...inningsToRemoveFrom.batting.batters.map((batter, index) => (
+                            index !== batterToRemoveIndex
+                                ? batter
+                                : { ...batter, wicket: undefined }
+                        )),
+                    ],
+                },
+            };
+        };
+
         if (innings.deliveries.length === 0) {
             return [innings, 0];
         }
 
         const lastDelivery = innings.deliveries[innings.deliveries.length - 1];
+        const updatedInnings = removeDeliveryFromInnings(
+            [...innings.deliveries.filter(delivery => delivery !== lastDelivery)])
+            (
+            innings,
+            innings.batting.batters[lastDelivery.batsmanIndex],
+            innings.bowlers[lastDelivery.bowlerIndex],
+            lastDelivery.outcome,
+            );
+
         return [
-            removeDeliveryFromInnings(
-                [...innings.deliveries.filter(delivery => delivery !== lastDelivery)])
-                (
-                innings,
-                innings.batting.batters[lastDelivery.batsmanIndex],
-                innings.bowlers[lastDelivery.bowlerIndex],
-                lastDelivery.outcome,
-                ),
+            removeNewBatter(updatedInnings, lastDelivery.outcome),
             lastDelivery.batsmanIndex];
     };
 

@@ -1223,6 +1223,18 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                   >
                     change ends
                   </button>
+                  <button
+                    className="btn btn-success"
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "margin": "2px",
+                        "minWidth": "36px",
+                      }
+                    }
+                  >
+                    undo previous
+                  </button>
                 </div>
               </div>
             </div>

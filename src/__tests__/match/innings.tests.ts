@@ -432,6 +432,10 @@ describe('innings', () => {
                 outcome: {
                     deliveryOutcome: DeliveryOutcome.Valid,
                     scores: {},
+                    wicket: {
+                        howOut: Howout.Bowled,
+                        changedEnds: false,
+                    },
                 },
             }],
             batting: {
@@ -467,6 +471,17 @@ describe('innings', () => {
                                 howOut: Howout.Bowled,
                                 bowler: 'Bowler 1',
                             },
+                        },
+                    },
+                    {
+                        name: 'Batter 6',
+                        playerIndex: 5,
+                        innings: {
+                            runs: 0,
+                            timeIn: 0,
+                            ballsFaced: 0,
+                            fours: 0,
+                            sixes: 0,
                         },
                     },
                 ],
@@ -562,6 +577,11 @@ describe('innings', () => {
 
         it('should update the batters wicket', () => {
             expect(batterInnings.wicket).toBeUndefined();
+        });
+
+        it('should remove the new batters innings if removing a wicket', () => {
+            const batter5Innings = updatedInnings.batting.batters[5].innings as BattingInnings;
+            expect(batter5Innings.wicket).toBeUndefined();
         });
     });
 });
