@@ -4,6 +4,11 @@ import * as deliveries from './delivery';
 const latestOver = (deliveries: domain.Delivery[], complete: number): domain.Delivery[] =>
     deliveries.filter(delivery => delivery.overNumber > complete);
 
+const isMaidenOver = (deliveries: domain.Delivery[]) =>
+    deliveries.filter(delivery => delivery.outcome.deliveryOutcome === domain.DeliveryOutcome.Valid &&
+        (typeof delivery.outcome.scores.runs === 'undefined' || delivery.outcome.scores.runs === 0))
+        .length === deliveries.length;
+
 const newBatterInnings = () => ({
     runs: 0,
     ballsFaced: 0,
@@ -244,11 +249,6 @@ const innings = () => {
 
     const completeOver =
         (innings: domain.Innings, batter: domain.Batter, bowler: domain.Bowler): [domain.Innings, number] => {
-            const isMaidenOver = (deliveries: domain.Delivery[]) =>
-                deliveries.filter(delivery => delivery.outcome.deliveryOutcome === domain.DeliveryOutcome.Valid &&
-                    (typeof delivery.outcome.scores.runs === 'undefined' || delivery.outcome.scores.runs === 0))
-                    .length === deliveries.length;
-
             const over = latestOver(innings.deliveries, innings.completedOvers);
             const updatedBowler = {
                 ...bowler,
@@ -367,6 +367,7 @@ const innings = () => {
                 return inningsToUpdate;
             }
 
+            const lastOver = latestOver(inningsToUpdate.deliveries, inningsToUpdate.completedOvers);
             return {
                 ...inningsToUpdate,
                 bowlers: inningsToUpdate.bowlers.map((bowler, idx) =>
@@ -385,10 +386,10 @@ const innings = () => {
                                 ...bowler,
                                 totalOvers: idx === lastDeliveryBowlerIndex
                                     ? domain.oversDescription(bowler.completedOvers, [])
-                                    : domain.oversDescription(
-                                        bowler.completedOvers,
-                                        latestOver(inningsToUpdate.deliveries, inningsToUpdate.completedOvers),
-                                    ),
+                                    : domain.oversDescription(bowler.completedOvers, lastOver),
+                                maidenOvers: idx === newBowlerIndex && isMaidenOver(lastOver)
+                                    ? bowler.maidenOvers - 1
+                                    : bowler.maidenOvers,
                             }),
             };
         };

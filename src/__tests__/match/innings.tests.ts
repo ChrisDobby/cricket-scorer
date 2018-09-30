@@ -645,5 +645,9 @@ describe('innings', () => {
         it('should reduce the total overs for the bowler of the previous over', () => {
             expect(inningsWithOneOver.bowlers[1].totalOvers).toBe('1.6');
         });
+
+        it('should reduce the maidens for the bowler of the previous over if it was a maiden', () => {
+            expect(inningsWithOneOver.bowlers[1].maidenOvers).toBe(0);
+        });
     });
 });
