@@ -375,7 +375,7 @@ const innings = () => {
                         : {
                             ...bowler,
                             completedOvers: idx === newBowlerIndex
-                                ? bowler.completedOvers - 2
+                                ? bowler.completedOvers - 1
                                 : bowler.completedOvers,
                         })
                     .map((bowler, idx) =>

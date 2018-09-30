@@ -639,11 +639,11 @@ describe('innings', () => {
         });
 
         it('should reduce the completed overs for the bowler of the previous over', () => {
-            expect(inningsWithOneOver.bowlers[1].completedOvers).toBe(0);
+            expect(inningsWithOneOver.bowlers[1].completedOvers).toBe(1);
         });
 
         it('should reduce the total overs for the bowler of the previous over', () => {
-            expect(inningsWithOneOver.bowlers[1].totalOvers).toBe('0.6');
+            expect(inningsWithOneOver.bowlers[1].totalOvers).toBe('1.6');
         });
     });
 });
