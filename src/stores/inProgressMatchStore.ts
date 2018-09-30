@@ -166,7 +166,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
             typeof this.currentBatter === 'undefined' ||
             typeof this.currentBowler === 'undefined') { return; }
 
-        const [innings, batterIndex] = matchInnings.undoPrevious(this.currentInnings);
+        const [innings, batterIndex, bowlerIndex] = matchInnings.undoPrevious(this.currentInnings);
 
         this.match = updateMatchInnings(
             this.match,
@@ -174,6 +174,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
         );
 
         this.currentBatterIndex = batterIndex;
+        this.currentBowlerIndex = bowlerIndex;
     }
 
     @action completeOver = () => {

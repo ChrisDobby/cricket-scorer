@@ -424,6 +424,7 @@ describe('innings', () => {
             score: 20,
             wickets: 3,
             totalOvers: '0.1',
+            completedOvers: 0,
             deliveries: [{
                 time: 0,
                 bowlerIndex: 0,
@@ -508,18 +509,51 @@ describe('innings', () => {
             ],
         };
 
-        const [updatedInnings, newBatterIndex] = Innings.undoPrevious(inningsWithBall);
+        const inningsWithOneOverAndOneBall = {
+            ...inningsWithBall,
+            completedOvers: 1,
+            deliveries: [1, 2, 3, 4, 5, 6].map(time => ({
+                time,
+                bowlerIndex: 1,
+                batsmanIndex: 1,
+                overNumber: 1,
+                outcome: {
+                    deliveryOutcome: DeliveryOutcome.Valid,
+                    scores: {},
+                },
+            }))
+                .concat([{
+                    time: 7,
+                    bowlerIndex: 0,
+                    batsmanIndex: 0,
+                    overNumber: 2,
+                    outcome: {
+                        deliveryOutcome: DeliveryOutcome.Valid,
+                        scores: {},
+                    },
+                }]),
+        };
+
+        const [updatedInnings, newBatterIndex, newBowlerIndex] = Innings.undoPrevious(inningsWithBall);
         const batterInnings = updatedInnings.batting.batters[4].innings as BattingInnings;
 
-        it('should return the same innings and 0 as the batter when innings has no deliveries', () => {
-            const [innings, batterIndex] = Innings.undoPrevious(matches.startedInnings);
+        const [inningsWithOneOver, oneOverBatterIndex, oneOverBowlerIndex] =
+            Innings.undoPrevious(inningsWithOneOverAndOneBall);
+
+        it('should return the same innings and 0 as the batter and bowler when innings has no deliveries', () => {
+            const [innings, batterIndex, bowlerIndex] = Innings.undoPrevious(matches.startedInnings);
 
             expect(innings).toBe(matches.startedInnings);
             expect(batterIndex).toBe(0);
+            expect(bowlerIndex).toBe(0);
         });
 
         it('should return the batter index from the last delivery', () => {
             expect(newBatterIndex).toBe(4);
+        });
+
+        it('should return the bowler index from the last delivery', () => {
+            expect(newBowlerIndex).toBe(0);
         });
 
         it('should return an innings with the last delivery removed', () => {
@@ -582,6 +616,34 @@ describe('innings', () => {
         it('should remove the new batters innings if removing a wicket', () => {
             const batter5Innings = updatedInnings.batting.batters[5].innings as BattingInnings;
             expect(batter5Innings.wicket).toBeUndefined();
+        });
+
+        it('should reduce the completed overs for the innings when undoing the first ball of an over', () => {
+            expect(inningsWithOneOver.completedOvers).toBe(0);
+        });
+
+        it('should update the completed overs for the innings when undoing the first ball of an over', () => {
+            expect(inningsWithOneOver.totalOvers).toBe('0.6');
+        });
+
+        it('should return the batter index from the previous over when undoing the first ball of an over', () => {
+            expect(oneOverBatterIndex).toBe(1);
+        });
+
+        it('should return the index of the bowler of the previous over when undoing the first ball of an over', () => {
+            expect(oneOverBowlerIndex).toBe(1);
+        });
+
+        it('should remove the delivery from the total overs of the new bowler', () => {
+            expect(inningsWithOneOver.bowlers[0].totalOvers).toBe('0');
+        });
+
+        it('should reduce the completed overs for the bowler of the previous over', () => {
+            expect(inningsWithOneOver.bowlers[1].completedOvers).toBe(0);
+        });
+
+        it('should reduce the total overs for the bowler of the previous over', () => {
+            expect(inningsWithOneOver.bowlers[1].totalOvers).toBe('0.6');
         });
     });
 });
