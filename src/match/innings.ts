@@ -390,7 +390,8 @@ const innings = () => {
                                 maidenOvers: idx === newBowlerIndex && isMaidenOver(lastOver)
                                     ? bowler.maidenOvers - 1
                                     : bowler.maidenOvers,
-                            }),
+                            })
+                    .filter(bowler => bowler.totalOvers !== '0'),
             };
         };
 

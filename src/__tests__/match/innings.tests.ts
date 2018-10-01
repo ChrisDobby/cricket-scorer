@@ -491,8 +491,8 @@ describe('innings', () => {
                 {
                     playerIndex: 10,
                     name: 'Bowler 1',
-                    completedOvers: 0,
-                    totalOvers: '0.1',
+                    completedOvers: 1,
+                    totalOvers: '1.1',
                     maidenOvers: 0,
                     runs: 10,
                     wickets: 3,
@@ -503,6 +503,15 @@ describe('innings', () => {
                     completedOvers: 2,
                     totalOvers: '1',
                     maidenOvers: 1,
+                    runs: 0,
+                    wickets: 0,
+                },
+                {
+                    playerIndex: 8,
+                    name: 'Bowler 3',
+                    completedOvers: 0,
+                    totalOvers: '0',
+                    maidenOvers: 0,
                     runs: 0,
                     wickets: 0,
                 },
@@ -590,7 +599,7 @@ describe('innings', () => {
         });
 
         it('should update the bowlers total overs', () => {
-            expect(updatedInnings.bowlers[0].totalOvers).toBe('0');
+            expect(updatedInnings.bowlers[0].totalOvers).toBe('1');
         });
 
         it('should update the batters balls faced', () => {
@@ -635,7 +644,7 @@ describe('innings', () => {
         });
 
         it('should remove the delivery from the total overs of the new bowler', () => {
-            expect(inningsWithOneOver.bowlers[0].totalOvers).toBe('0');
+            expect(inningsWithOneOver.bowlers[0].totalOvers).toBe('1');
         });
 
         it('should reduce the completed overs for the bowler of the previous over', () => {
@@ -648,6 +657,10 @@ describe('innings', () => {
 
         it('should reduce the maidens for the bowler of the previous over if it was a maiden', () => {
             expect(inningsWithOneOver.bowlers[1].maidenOvers).toBe(0);
+        });
+
+        it('should remove bowlers with no deliveries when undoing the first ball of an over', () => {
+            expect(inningsWithOneOver.bowlers).toHaveLength(2);
         });
     });
 });
