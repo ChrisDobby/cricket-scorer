@@ -343,27 +343,29 @@ const innings = () => {
             return lastOfPreviousOver.bowlerIndex;
         };
 
+        const overChangeOver = (
+            inningsToUpdate: domain.Innings,
+            fromDeliveries: domain.Delivery[]) =>
+            inningsToUpdate.completedOvers > 0 &&
+            latestOver(fromDeliveries, inningsToUpdate.completedOvers).length === 0;
+
         const updateCompletedOvers = (
             inningsToUpdate: domain.Innings,
-            fromDeliveries: domain.Delivery[],
-            deliveryOver: number) => {
-            if (inningsToUpdate.completedOvers === 0 ||
-                fromDeliveries.find(delivery => delivery.overNumber === deliveryOver)) {
-                return inningsToUpdate;
-            }
-
-            return {
-                ...inningsToUpdate,
-                completedOvers: inningsToUpdate.completedOvers - 1,
-            };
-        };
+            inOverChangeOver: boolean) => (
+                inOverChangeOver
+                    ? {
+                        ...inningsToUpdate,
+                        completedOvers: inningsToUpdate.completedOvers - 1,
+                    }
+                    : inningsToUpdate);
 
         const inningsWithBowlersTotalOvers = (
             inningsToUpdate: domain.Innings,
             lastDeliveryBowlerIndex: number,
             newBowlerIndex: number,
+            inOverChangeOver: boolean,
         ) => {
-            if (lastDeliveryBowlerIndex === newBowlerIndex) {
+            if (!inOverChangeOver) {
                 return inningsToUpdate;
             }
 
@@ -384,7 +386,7 @@ const innings = () => {
                             ? bowler
                             : {
                                 ...bowler,
-                                totalOvers: idx === lastDeliveryBowlerIndex
+                                totalOvers: idx === lastDeliveryBowlerIndex && idx !== newBowlerIndex
                                     ? domain.oversDescription(bowler.completedOvers, [])
                                     : domain.oversDescription(bowler.completedOvers, lastOver),
                                 maidenOvers: idx === newBowlerIndex && isMaidenOver(lastOver)
@@ -401,7 +403,8 @@ const innings = () => {
 
         const lastDelivery = innings.deliveries[innings.deliveries.length - 1];
         const newDeliveries = [...innings.deliveries.filter(delivery => delivery !== lastDelivery)];
-        const inningsWithUpdatedCompletedOvers = updateCompletedOvers(innings, newDeliveries, lastDelivery.overNumber);
+        const inOverChangeOver = overChangeOver(innings, newDeliveries);
+        const inningsWithUpdatedCompletedOvers = updateCompletedOvers(innings, inOverChangeOver);
         const updatedInnings = removeDeliveryFromInnings(
             newDeliveries)
             (
@@ -413,8 +416,8 @@ const innings = () => {
 
         const newBowlerIndex = bowlerIndex(updatedInnings, lastDelivery);
         const inningsAfterBowlerUpdate =
-            inningsWithBowlersTotalOvers(updatedInnings, lastDelivery.bowlerIndex, newBowlerIndex);
-        console.log(`newBowlerIndex = ${newBowlerIndex}`);
+            inningsWithBowlersTotalOvers(updatedInnings, lastDelivery.bowlerIndex, newBowlerIndex, inOverChangeOver);
+
         return [
             removeNewBatter(inningsAfterBowlerUpdate, lastDelivery.outcome),
             batterIndex(inningsAfterBowlerUpdate, lastDelivery),

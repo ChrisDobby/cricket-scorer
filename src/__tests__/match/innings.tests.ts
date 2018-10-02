@@ -543,11 +543,29 @@ describe('innings', () => {
                 }]),
         };
 
+        const inningsWithCompletedOver = {
+            ...inningsWithBall,
+            completedOvers: 1,
+            deliveries: [1, 2, 3, 4, 5, 6].map(time => ({
+                time,
+                bowlerIndex: 1,
+                batsmanIndex: 1,
+                overNumber: 1,
+                outcome: {
+                    deliveryOutcome: DeliveryOutcome.Valid,
+                    scores: {},
+                },
+            })),
+        };
+
         const [updatedInnings, newBatterIndex, newBowlerIndex] = Innings.undoPrevious(inningsWithBall);
         const batterInnings = updatedInnings.batting.batters[4].innings as BattingInnings;
 
         const [inningsWithOneOver, oneOverBatterIndex, oneOverBowlerIndex] =
             Innings.undoPrevious(inningsWithOneOverAndOneBall);
+
+        const [inningsWithFiveBalls, fiveBallBatterIndex, fiveBallBowlerIndex] =
+            Innings.undoPrevious(inningsWithCompletedOver);
 
         it('should return the same innings and 0 as the batter and bowler when innings has no deliveries', () => {
             const [innings, batterIndex, bowlerIndex] = Innings.undoPrevious(matches.startedInnings);
@@ -661,6 +679,38 @@ describe('innings', () => {
 
         it('should remove bowlers with no deliveries when undoing the first ball of an over', () => {
             expect(inningsWithOneOver.bowlers).toHaveLength(2);
+        });
+
+        it('should reduce the completed overs for the innings when undoing the last ball of an over', () => {
+            expect(inningsWithFiveBalls.completedOvers).toBe(0);
+        });
+
+        it('should update the completed overs for the innings when undoing the last ball of an over', () => {
+            expect(inningsWithFiveBalls.totalOvers).toBe('0.5');
+        });
+
+        it('should return the batter index from the previous over when undoing the last ball of an over', () => {
+            expect(fiveBallBatterIndex).toBe(1);
+        });
+
+        it('should return the index of the bowler of the previous over when undoing the last ball of an over', () => {
+            expect(fiveBallBowlerIndex).toBe(1);
+        });
+
+        it('should reduce the completed overs for the bowler of the over when undoing the last ball', () => {
+            expect(inningsWithFiveBalls.bowlers[1].completedOvers).toBe(1);
+        });
+
+        it('should reduce the total overs for the bowler of the over when undoing the last ball', () => {
+            expect(inningsWithFiveBalls.bowlers[1].totalOvers).toBe('1.5');
+        });
+
+        it('should reduce the maidens for the bowler of the over if it was a maiden when undoing the last ball', () => {
+            expect(inningsWithFiveBalls.bowlers[1].maidenOvers).toBe(0);
+        });
+
+        it('should remove bowlers with no deliveries when undoing the last ball of an over', () => {
+            expect(inningsWithFiveBalls.bowlers).toHaveLength(2);
         });
     });
 });
