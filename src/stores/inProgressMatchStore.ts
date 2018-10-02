@@ -1,6 +1,7 @@
 import { observable, computed, action } from 'mobx';
 import * as domain from '../domain';
 import { default as matchInnings } from '../match/innings';
+import undo from '../match/undo';
 import * as over from '../match/over';
 
 const updateMatchInnings = (match: domain.Match, innings: domain.Innings): domain.Match => ({
@@ -166,7 +167,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
             typeof this.currentBatter === 'undefined' ||
             typeof this.currentBowler === 'undefined') { return; }
 
-        const [innings, batterIndex, bowlerIndex] = matchInnings.undoPrevious(this.currentInnings);
+        const [innings, batterIndex, bowlerIndex] = undo(this.currentInnings);
 
         this.match = updateMatchInnings(
             this.match,
