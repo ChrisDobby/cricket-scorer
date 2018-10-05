@@ -17,6 +17,11 @@ export enum DeliveryOutcome {
     Wide,
 }
 
+export enum MatchType {
+    LimitedOvers,
+    Time,
+}
+
 export interface Wicket {
     time: number;
     howOut: Howout;
@@ -123,7 +128,14 @@ export interface Team {
     players: string[];
 }
 
+export interface MatchConfig {
+    type: MatchType;
+    oversPerSide?: number;
+    inningsPerSide: number;
+}
+
 export interface Match {
+    config: MatchConfig;
     homeTeam: Team;
     awayTeam: Team;
     date: string;

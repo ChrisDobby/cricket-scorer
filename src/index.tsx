@@ -9,8 +9,14 @@ import 'font-awesome/css/font-awesome.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import inProgressMatchStore from './stores/inProgressMatchStore';
+import { MatchType } from './domain';
 
 const initialMatch = {
+    config: {
+        type: MatchType.LimitedOvers,
+        oversPerSide: 50,
+        inningsPerSide: 1,
+    },
     homeTeam: {
         name: 'Team 1',
         players: [

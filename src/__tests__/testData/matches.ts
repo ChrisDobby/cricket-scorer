@@ -1,6 +1,10 @@
-import { Match, DeliveryOutcome, Howout, Batter } from '../../domain';
+import { Match, DeliveryOutcome, Howout, Batter, MatchType } from '../../domain';
 
 export const blankMatch: Match = {
+    config: {
+        type: MatchType.Time,
+        inningsPerSide: 1,
+    },
     homeTeam: {
         name: 'Team 1',
         players: [

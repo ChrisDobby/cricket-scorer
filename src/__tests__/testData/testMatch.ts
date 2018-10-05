@@ -552,6 +552,11 @@ const testInnings2: domain.Innings = {
 };
 
 export const match: domain.Match = {
+    config: {
+        type: domain.MatchType.LimitedOvers,
+        oversPerSide: 45,
+        inningsPerSide: 1,
+    },
     homeTeam: {
         name: 'Cleckheaton',
         players: [],
