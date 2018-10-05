@@ -10,7 +10,7 @@ import { match } from './__tests__/testData/testMatch';
 const CardWithNavBar = WithNavBar(Scorecard);
 
 const Routes = () => (
-    <div className="container-fluid">
+    <div className="container-fluid" style={{ userSelect: 'none' }}>
         <Route path="/" component={App} />
         <Route exact path="/" render={() => <div id="home-route" />} />
         <Route exact path="/scorecard" render={props => <CardWithNavBar {...props} cricketMatch={match} />} />

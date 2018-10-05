@@ -1,6 +1,6 @@
 import { InProgressMatchStore } from '../../stores/inProgressMatchStore';
 import * as matches from '../testData/matches';
-import { DeliveryOutcome, Over, Match } from '../../domain';
+import { DeliveryOutcome, Over, Match, InningsStatus } from '../../domain';
 
 jest.mock('../../match/over', () => {
     const wickets = () => 2;
@@ -433,6 +433,24 @@ describe('inProgressMatchStore', () => {
 
             expect(inProgressMatchStore.currentBatter)
                 .toEqual(matches.matchWithStartedOver.innings[0].batting.batters[1]);
+        });
+    });
+    describe('provisionalInningsStatus', () => {
+        it('should return undefined if no match', () => {
+            const inProgressMatchStore = getMatchStore();
+            expect(inProgressMatchStore.provisionalInningsStatus).toBeUndefined();
+        });
+
+        it('should return undefined if no innings', () => {
+            const inProgressMatchStore = getMatchStore(matches.blankMatch);
+
+            expect(inProgressMatchStore.provisionalInningsStatus).toBeUndefined();
+        });
+
+        it('should return the calculated status', () => {
+            const inProgressMatchStore = getMatchStore(matches.matchWithStartedOver);
+
+            expect(inProgressMatchStore.provisionalInningsStatus).toBe(InningsStatus.InProgress);
         });
     });
 });

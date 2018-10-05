@@ -84,6 +84,15 @@ class InProgressMatchStore implements domain.InProgressMatch {
         return bowlerOfOver(this.currentInnings, this.currentInnings.completedOvers - 1);
     }
 
+    @computed get provisionalInningsStatus() {
+        if (typeof this.match === 'undefined' ||
+            typeof this.currentInnings === 'undefined') {
+            return undefined;
+        }
+
+        return matchInnings.calculateStatus(this.match.config, this.currentInnings);
+    }
+
     @action startInnings = (battingTeam: domain.Team, batter1Index: number, batter2Index: number) => {
         if (typeof this.match === 'undefined') { return; }
 

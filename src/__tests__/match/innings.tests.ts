@@ -1,4 +1,4 @@
-import { BattingInnings, DeliveryOutcome, Outcome, Howout, Wicket, InningsStatus } from '../../domain';
+import { BattingInnings, DeliveryOutcome, Outcome, Howout, Wicket, InningsStatus, MatchType } from '../../domain';
 import innings, { default as Innings } from '../../match/innings';
 import * as matches from '../testData/matches';
 
@@ -428,6 +428,42 @@ describe('innings', () => {
             const notInProgressInnings = { ...matches.startedInnings };
 
             expect(innings.isComplete(notInProgressInnings)).toBeFalsy();
+        });
+    });
+
+    describe('calculateStatus', () => {
+        const fiftyOverMatch = {
+            type: MatchType.LimitedOvers,
+            oversPerSide: 50,
+            inningsPerSide: 1,
+        };
+
+        it('should return the actual status if not in progress', () => {
+            const allOutInnings = { ...matches.startedInnings, status: InningsStatus.AllOut };
+
+            expect(innings.calculateStatus(fiftyOverMatch, allOutInnings)).toBe(InningsStatus.AllOut);
+        });
+
+        it('should return in progress if the innings should still be in progress', () => {
+            expect(innings.calculateStatus(fiftyOverMatch, matches.startedInnings)).toBe(InningsStatus.InProgress);
+        });
+
+        it('should return overs complete for a limited overs match when all the overs have been completed', () => {
+            const completdOversInnings = {
+                ...matches.startedInnings,
+                completedOvers: 50,
+            };
+
+            expect(innings.calculateStatus(fiftyOverMatch, completdOversInnings)).toBe(InningsStatus.OversComplete);
+        });
+
+        it('should return all out if wickets is one less than the number of players in the batting team', () => {
+            const allOutInnings = {
+                ...matches.startedInnings,
+                wickets: 10,
+            };
+
+            expect(innings.calculateStatus(fiftyOverMatch, allOutInnings)).toBe(InningsStatus.AllOut);
         });
     });
 });

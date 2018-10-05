@@ -202,6 +202,19 @@ const innings = (
 
     const isComplete = (innings: domain.Innings) => innings.status !== domain.InningsStatus.InProgress;
 
+    const calculateStatus = (matchConfig: domain.MatchConfig, innings: domain.Innings) => {
+        if (innings.status !== domain.InningsStatus.InProgress) { return innings.status; }
+        if (matchConfig.type === domain.MatchType.LimitedOvers &&
+            typeof matchConfig.oversPerSide !== 'undefined' &&
+            innings.completedOvers >= matchConfig.oversPerSide) {
+            return domain.InningsStatus.OversComplete;
+        }
+        if (innings.wickets >= innings.battingTeam.players.length - 10) {
+            return domain.InningsStatus.AllOut;
+        }
+        return domain.InningsStatus.InProgress;
+    };
+
     return {
         newInnings,
         newBowler,
@@ -210,6 +223,7 @@ const innings = (
         completeOver,
         flipBatters,
         isComplete,
+        calculateStatus,
     };
 };
 
