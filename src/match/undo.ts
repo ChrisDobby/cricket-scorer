@@ -47,12 +47,13 @@ const undo = (
                     ...inningsToRemoveFrom.batting.batters.map((batter, index) => (
                         index !== batterToRemoveIndex
                             ? batter
-                            : { ...batter, wicket: undefined }
+                            : { ...batter, innings: undefined }
                     )),
                 ],
             },
         };
     };
+
     const bowlerIndex = (updatedInnings: domain.Innings, delivery: domain.Delivery) => {
         if (updatedInnings.deliveries.length === 0 ||
             updatedInnings.deliveries.find(del => del.overNumber === delivery.overNumber)) {

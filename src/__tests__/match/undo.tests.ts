@@ -272,8 +272,8 @@ describe('undo', () => {
     });
 
     it('should remove the new batters innings if removing a wicket', () => {
-        const batter5Innings = updatedInnings.batting.batters[5].innings as BattingInnings;
-        expect(batter5Innings.wicket).toBeUndefined();
+        const batter5Innings = updatedInnings.batting.batters[5];
+        expect(batter5Innings.innings).toBeUndefined();
     });
 
     it('should reduce the completed overs for the innings when undoing the first ball of an over', () => {
