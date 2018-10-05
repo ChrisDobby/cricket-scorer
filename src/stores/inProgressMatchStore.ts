@@ -212,6 +212,18 @@ class InProgressMatchStore implements domain.InProgressMatch {
 
         this.currentBatterIndex = matchInnings.flipBatters(this.currentInnings, this.currentBatter);
     }
+
+    @action completeInnings = (status: domain.InningsStatus) => {
+        if (typeof this.match === 'undefined' ||
+            typeof this.currentInnings === 'undefined') {
+            return;
+        }
+
+        if (status === domain.InningsStatus.InProgress) {
+            throw new Error('cannot complete with in progress status');
+        }
+        this.currentInnings.status = status;
+    }
 }
 
 const inProgressMatch = new InProgressMatchStore();

@@ -1,6 +1,6 @@
 import { InProgressMatchStore } from '../../stores/inProgressMatchStore';
 import * as matches from '../testData/matches';
-import { DeliveryOutcome, Over, Match, InningsStatus } from '../../domain';
+import { DeliveryOutcome, Over, Match, InningsStatus, Innings } from '../../domain';
 
 jest.mock('../../match/over', () => {
     const wickets = () => 2;
@@ -435,6 +435,7 @@ describe('inProgressMatchStore', () => {
                 .toEqual(matches.matchWithStartedOver.innings[0].batting.batters[1]);
         });
     });
+
     describe('provisionalInningsStatus', () => {
         it('should return undefined if no match', () => {
             const inProgressMatchStore = getMatchStore();
@@ -451,6 +452,35 @@ describe('inProgressMatchStore', () => {
             const inProgressMatchStore = getMatchStore(matches.matchWithStartedOver);
 
             expect(inProgressMatchStore.provisionalInningsStatus).toBe(InningsStatus.InProgress);
+        });
+    });
+
+    describe('completeInnings', () => {
+        it('should do nothing if no match', () => {
+            const inProgressMatchStore = getMatchStore();
+
+            inProgressMatchStore.completeInnings(InningsStatus.AllOut);
+        });
+
+        it('should do nothing if no match', () => {
+            const inProgressMatchStore = getMatchStore(matches.blankMatch);
+
+            inProgressMatchStore.completeInnings(InningsStatus.AllOut);
+        });
+
+        it('should set the current innings status', () => {
+            const inProgressMatchStore = getMatchStore(matches.matchWithStartedOver);
+
+            inProgressMatchStore.completeInnings(InningsStatus.AllOut);
+
+            expect((inProgressMatchStore.match as Match).innings[0].status).toBe(InningsStatus.AllOut);
+        });
+
+        it('should throw an error if in progress passed', () => {
+            const inProgressMatchStore = getMatchStore(matches.matchWithStartedOver);
+
+            expect(() => inProgressMatchStore.completeInnings(InningsStatus.InProgress))
+                .toThrow('cannot complete with in progress status');
         });
     });
 });
