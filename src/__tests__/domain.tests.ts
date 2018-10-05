@@ -127,6 +127,15 @@ describe('domain', () => {
 
             expect(description).toBe('hit wkt A bowler');
         });
+
+        it('should return absent description for absent batter', () => {
+            const description = domain.howOutDescription({
+                time: (new Date()).getTime(),
+                howOut: domain.Howout.Absent,
+            });
+
+            expect(description).toBe('absent');
+        });
     });
 
     describe('oversDescription', () => {

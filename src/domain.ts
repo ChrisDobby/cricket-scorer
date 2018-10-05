@@ -9,6 +9,7 @@ export enum Howout {
     TimedOut,
     HandledBall,
     ObstructingField,
+    Absent,
 }
 
 export enum DeliveryOutcome {
@@ -189,6 +190,8 @@ export const howOutDescription = (wicket?: Wicket): string => {
             return 'handled the ball';
         case Howout.HitWicket:
             return `hit wkt ${wkt.bowler}`;
+        case Howout.Absent:
+            return 'absent';
         }
     };
 
