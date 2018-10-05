@@ -2,7 +2,7 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 import * as ReactTestRenderer from 'react-test-renderer';
 import { Scorecard } from '../../../components/scorecard/Scorecard';
-import { Innings } from '../../../domain';
+import { Innings, InningsStatus } from '../../../domain';
 import { match, homeTeam, awayTeam } from '../../testData/testMatch';
 
 describe('Scorecard', () => {
@@ -34,8 +34,7 @@ describe('Scorecard', () => {
             completedOvers: 0,
             totalOvers: '0',
             deliveries: [],
-            allOut: false,
-            complete: false,
+            status: InningsStatus.InProgress,
             batting: {
                 extras: {
                     byes: 0,
@@ -57,8 +56,7 @@ describe('Scorecard', () => {
             completedOvers: 0,
             totalOvers: '0',
             deliveries: [],
-            allOut: false,
-            complete: false,
+            status: InningsStatus.InProgress,
             batting: {
                 extras: {
                     byes: 0,

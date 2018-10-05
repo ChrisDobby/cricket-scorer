@@ -11,11 +11,11 @@ export const awayTeam = {
 };
 
 const testInnings1: domain.Innings = {
+    status: domain.InningsStatus.OversComplete,
     battingTeam: awayTeam,
     bowlingTeam: homeTeam,
     score: 130,
     wickets: 6,
-    allOut: false,
     completedOvers: 45,
     totalOvers: '45',
     deliveries: [],
@@ -249,15 +249,14 @@ const testInnings1: domain.Innings = {
             partnership: 86,
         },
     ],
-    complete: true,
 };
 
 const testInnings2: domain.Innings = {
+    status: domain.InningsStatus.AllOut,
     battingTeam: homeTeam,
     bowlingTeam: awayTeam,
     score: 122,
     wickets: 10,
-    allOut: true,
     completedOvers: 34,
     totalOvers: '34.2',
     deliveries: [],
@@ -548,7 +547,6 @@ const testInnings2: domain.Innings = {
             partnership: 8,
         },
     ],
-    complete: true,
 };
 
 export const match: domain.Match = {

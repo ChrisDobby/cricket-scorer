@@ -1,4 +1,4 @@
-import { BattingInnings, DeliveryOutcome, Outcome, Howout, Wicket } from '../../domain';
+import { BattingInnings, DeliveryOutcome, Outcome, Howout, Wicket, InningsStatus } from '../../domain';
 import innings, { default as Innings } from '../../match/innings';
 import * as matches from '../testData/matches';
 
@@ -65,8 +65,7 @@ describe('innings', () => {
             expect(innings.batting.extras.penaltyRuns).toBe(0);
             expect(innings.bowlers).toHaveLength(0);
             expect(innings.fallOfWickets).toHaveLength(0);
-            expect(innings.allOut).toBeFalsy();
-            expect(innings.complete).toBeFalsy();
+            expect(innings.status).toBe(InningsStatus.InProgress);
             expect(innings.deliveries).toHaveLength(0);
             expect(innings.completedOvers).toBe(0);
             expect(innings.totalOvers).toBe('0');
@@ -415,6 +414,20 @@ describe('innings', () => {
 
         it('should return the next batting index', () => {
             expect(batterIndex).toBe(2);
+        });
+    });
+
+    describe('isComplete', () => {
+        it('should return true if the innings status is not in progress', () => {
+            const notInProgressInnings = { ...matches.startedInnings, status: InningsStatus.AllOut };
+
+            expect(innings.isComplete(notInProgressInnings)).toBeTruthy();
+        });
+
+        it('should return false if the innings status is in progress', () => {
+            const notInProgressInnings = { ...matches.startedInnings };
+
+            expect(innings.isComplete(notInProgressInnings)).toBeFalsy();
         });
     });
 });

@@ -68,8 +68,7 @@ const innings = (
             },
             bowlers: [],
             fallOfWickets: [],
-            allOut: false,
-            complete: false,
+            status: domain.InningsStatus.InProgress,
         });
 
     const createBowler = (team: domain.Team, bowlers: domain.Bowler[], bowlerIndex: number): domain.Bowler => ({
@@ -201,6 +200,8 @@ const innings = (
         return [updatedInnings, nextIndex];
     };
 
+    const isComplete = (innings: domain.Innings) => innings.status !== domain.InningsStatus.InProgress;
+
     return {
         newInnings,
         newBowler,
@@ -208,6 +209,7 @@ const innings = (
         delivery,
         completeOver,
         flipBatters,
+        isComplete,
     };
 };
 

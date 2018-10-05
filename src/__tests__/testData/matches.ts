@@ -1,4 +1,4 @@
-import { Match, DeliveryOutcome, Howout, Batter, MatchType } from '../../domain';
+import { Match, DeliveryOutcome, Howout, Batter, MatchType, InningsStatus } from '../../domain';
 
 export const blankMatch: Match = {
     config: {
@@ -44,6 +44,7 @@ export const blankMatch: Match = {
 };
 
 export const startedInnings = {
+    status: InningsStatus.InProgress,
     battingTeam: blankMatch.homeTeam,
     bowlingTeam: blankMatch.awayTeam,
     score: 0,
@@ -71,7 +72,7 @@ export const startedInnings = {
 
 const completedInnings = {
     ...startedInnings,
-    complete: true,
+    status: InningsStatus.OversComplete,
 };
 
 export const inningsWithStartedOver = {

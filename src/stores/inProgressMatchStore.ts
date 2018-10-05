@@ -6,7 +6,7 @@ import * as over from '../match/over';
 
 const updateMatchInnings = (match: domain.Match, innings: domain.Innings): domain.Match => ({
     ...match,
-    innings: [...match.innings.map(inn => !inn.complete
+    innings: [...match.innings.map(inn => !matchInnings.isComplete(inn)
         ? innings
         : inn)],
 });
@@ -28,7 +28,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
     @computed get currentInnings() {
         return typeof this.match === 'undefined'
             ? undefined
-            : this.match.innings.find(inn => !inn.complete);
+            : this.match.innings.find(inn => !matchInnings.isComplete(inn));
     }
 
     @computed get currentOver() {

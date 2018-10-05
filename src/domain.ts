@@ -23,6 +23,13 @@ export enum MatchType {
     Time,
 }
 
+export enum InningsStatus {
+    InProgress,
+    AllOut,
+    OversComplete,
+    Declared,
+}
+
 export interface Wicket {
     time: number;
     howOut: Howout;
@@ -110,18 +117,17 @@ export interface FallOfWicket {
 }
 
 export interface Innings {
+    status: InningsStatus;
     battingTeam: Team;
     bowlingTeam: Team;
     score: number;
     wickets: number;
-    allOut: boolean;
     completedOvers: number;
     totalOvers: string;
     deliveries: Delivery[];
     batting: Batting;
     bowlers: Bowler[];
     fallOfWickets: FallOfWicket[];
-    complete: boolean;
 }
 
 export interface Team {
