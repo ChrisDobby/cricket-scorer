@@ -1920,319 +1920,296 @@ exports[`InProgress should render correctly for match with started innings 1`] =
     }
   >
     <div>
-      <div
-        className="row"
-      >
+      <div>
         <div
-          className="d-none d-md-block d-lg-block col-2 col-lg-3"
-        />
-        <div
-          className="col-12 col-md-8 col-lg-6"
+          className="row"
         >
           <div
+            className="col-12"
             style={
               Object {
-                "marginBottom": "10px",
-                "padding": "20px",
-                "width": "100%",
+                "textAlign": "center",
               }
             }
           >
+            <h5>
+              Team 1 0-0
+            </h5>
+          </div>
+        </div>
+        <div
+          className="row"
+        >
+          <div
+            className="col-xl-8 col-lg-12"
+          >
             <div
-              className="row"
               style={
                 Object {
-                  "backgroundColor": "rgb(233, 236, 239)",
-                  "paddingLeft": "15px",
-                  "paddingTop": "4px",
-                }
-              }
-            >
-              <h4>
-                Select bowler
-              </h4>
-            </div>
-            <div
-              className="row bowler-row"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
+                  "marginBottom": "10px",
+                  "padding": "20px",
+                  "width": "100%",
                 }
               }
             >
               <div
+                className="row"
                 style={
                   Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
+                    "backgroundColor": "rgb(233, 236, 239)",
+                    "paddingTop": "4px",
                   }
                 }
-              />
-              <h6>
-                Player 12
-              </h6>
+              >
+                <div
+                  className="col-10 col-md-7"
+                >
+                  <h6>
+                    Batsman
+                  </h6>
+                </div>
+                <div
+                  className="col-2 col-md-1"
+                  style={
+                    Object {
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  <h6>
+                    Runs
+                  </h6>
+                </div>
+                <div
+                  className="col-1 d-none d-md-block"
+                  style={
+                    Object {
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  <h6>
+                    Balls
+                  </h6>
+                </div>
+                <div
+                  className="col-1 d-none d-md-block"
+                  style={
+                    Object {
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  <h6>
+                    Mins
+                  </h6>
+                </div>
+                <div
+                  className="col-1 d-none d-md-block"
+                  style={
+                    Object {
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  <h6>
+                    4s
+                  </h6>
+                </div>
+                <div
+                  className="col-1 d-none d-md-block"
+                  style={
+                    Object {
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  <h6>
+                    6s
+                  </h6>
+                </div>
+              </div>
+              <div
+                className="row"
+                style={
+                  Object {
+                    "borderBottom": "1px solid rgb(233, 236, 239)",
+                    "fontSize": "14px",
+                    "marginTop": "8px",
+                    "paddingBottom": "4px",
+                  }
+                }
+              >
+                <div
+                  className="col-4 col-md-3"
+                >
+                  Extras
+                </div>
+                <div
+                  className="col-6 col-md-4"
+                >
+                  0nb 0wd 0b 0lb
+                </div>
+                <div
+                  className="col-2 col-md-1"
+                  style={
+                    Object {
+                      "fontWeight": "bold",
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  0
+                </div>
+              </div>
+              <div
+                className="row"
+                style={
+                  Object {
+                    "backgroundColor": "rgb(233, 236, 239)",
+                    "fontSize": "14px",
+                    "paddingBottom": "4px",
+                    "paddingTop": "4px",
+                  }
+                }
+              >
+                <div
+                  className="col-4 col-md-3"
+                >
+                  Total
+                </div>
+                <div
+                  className="col-6 col-md-4"
+                >
+                  (0 wickets) (0 overs)
+                </div>
+                <div
+                  className="col-2 col-md-1"
+                  style={
+                    Object {
+                      "fontWeight": "bold",
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  0
+                </div>
+              </div>
             </div>
+          </div>
+          <div
+            className="col-xl-4 col-lg-12"
+          >
             <div
-              className="row bowler-row"
-              onClick={[Function]}
               style={
                 Object {
-                  "cursor": "pointer",
+                  "marginBottom": "10px",
+                  "padding": "20px",
+                  "width": "100%",
                 }
               }
             >
               <div
+                className="row"
                 style={
                   Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
+                    "backgroundColor": "rgb(233, 236, 239)",
+                    "paddingLeft": "8px",
+                    "paddingTop": "4px",
                   }
                 }
-              />
-              <h6>
-                Player 13
-              </h6>
+              >
+                <h6>
+                  Fall of wickets
+                </h6>
+              </div>
             </div>
+          </div>
+          <div
+            className="col-xl-8 col-lg-12"
+          >
             <div
-              className="row bowler-row"
-              onClick={[Function]}
               style={
                 Object {
-                  "cursor": "pointer",
+                  "marginBottom": "10px",
+                  "padding": "20px",
+                  "width": "100%",
                 }
               }
             >
               <div
-                style={
-                  Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
-                  }
-                }
-              />
-              <h6>
-                Player 14
-              </h6>
-            </div>
-            <div
-              className="row bowler-row"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-            >
+                className="row"
+              >
+                <h6>
+                  Team 2
+                   bowling
+                </h6>
+              </div>
               <div
+                className="row"
                 style={
                   Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
+                    "backgroundColor": "rgb(233, 236, 239)",
+                    "paddingTop": "4px",
                   }
                 }
-              />
-              <h6>
-                Player 15
-              </h6>
-            </div>
-            <div
-              className="row bowler-row"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-            >
-              <div
-                style={
-                  Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
+              >
+                <div
+                  className="col-6 col-md-5"
+                />
+                <div
+                  className="col-2"
+                  style={
+                    Object {
+                      "textAlign": "center",
+                    }
                   }
-                }
-              />
-              <h6>
-                Player 16
-              </h6>
-            </div>
-            <div
-              className="row bowler-row"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-            >
-              <div
-                style={
-                  Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
+                >
+                  <h6>
+                    Overs
+                  </h6>
+                </div>
+                <div
+                  className="col-2 d-none d-md-block"
+                  style={
+                    Object {
+                      "textAlign": "center",
+                    }
                   }
-                }
-              />
-              <h6>
-                Player 17
-              </h6>
-            </div>
-            <div
-              className="row bowler-row"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-            >
-              <div
-                style={
-                  Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
+                >
+                  <h6>
+                    Maidens
+                  </h6>
+                </div>
+                <div
+                  className="col-2"
+                  style={
+                    Object {
+                      "textAlign": "center",
+                    }
                   }
-                }
-              />
-              <h6>
-                Player 18
-              </h6>
-            </div>
-            <div
-              className="row bowler-row"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-            >
-              <div
-                style={
-                  Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
+                >
+                  <h6>
+                    Runs
+                  </h6>
+                </div>
+                <div
+                  className="col-2 col-md-1"
+                  style={
+                    Object {
+                      "textAlign": "center",
+                    }
                   }
-                }
-              />
-              <h6>
-                Player 19
-              </h6>
-            </div>
-            <div
-              className="row bowler-row"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-            >
-              <div
-                style={
-                  Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
-                  }
-                }
-              />
-              <h6>
-                Player 20
-              </h6>
-            </div>
-            <div
-              className="row bowler-row"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-            >
-              <div
-                style={
-                  Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
-                  }
-                }
-              />
-              <h6>
-                Player 21
-              </h6>
-            </div>
-            <div
-              className="row bowler-row"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-            >
-              <div
-                style={
-                  Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
-                  }
-                }
-              />
-              <h6>
-                Player 22
-              </h6>
+                >
+                  <h6>
+                    Wkts
+                  </h6>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <button
-        className="btn btn-success"
-        disabled={true}
-        onClick={[Function]}
-        style={
-          Object {
-            "borderRadius": "25px",
-            "bottom": "10px",
-            "boxShadow": "0 4px 6px 0 rgba(0,0,0,.14), 0 4px 5px rgba(0,0,0,-1)",
-            "fontSize": "18px",
-            "height": "50px",
-            "lineHeight": "1.33",
-            "padding": "10px 16px",
-            "position": "fixed",
-            "right": "10px",
-            "width": "50px",
-            "zIndex": 1049,
-          }
-        }
-        type="button"
-      >
-        <i
-          className="fa fa-check"
-        />
-      </button>
     </div>
   </div>
 </div>
@@ -2304,319 +2281,296 @@ exports[`InProgress should render correctly when there is a previous bowler 1`] 
     }
   >
     <div>
-      <div
-        className="row"
-      >
+      <div>
         <div
-          className="d-none d-md-block d-lg-block col-2 col-lg-3"
-        />
-        <div
-          className="col-12 col-md-8 col-lg-6"
+          className="row"
         >
           <div
+            className="col-12"
             style={
               Object {
-                "marginBottom": "10px",
-                "padding": "20px",
-                "width": "100%",
+                "textAlign": "center",
               }
             }
           >
+            <h5>
+              Team 1 0-0
+            </h5>
+          </div>
+        </div>
+        <div
+          className="row"
+        >
+          <div
+            className="col-xl-8 col-lg-12"
+          >
             <div
-              className="row"
               style={
                 Object {
-                  "backgroundColor": "rgb(233, 236, 239)",
-                  "paddingLeft": "15px",
-                  "paddingTop": "4px",
-                }
-              }
-            >
-              <h4>
-                Select bowler
-              </h4>
-            </div>
-            <div
-              className="row bowler-row"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
+                  "marginBottom": "10px",
+                  "padding": "20px",
+                  "width": "100%",
                 }
               }
             >
               <div
+                className="row"
                 style={
                   Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
+                    "backgroundColor": "rgb(233, 236, 239)",
+                    "paddingTop": "4px",
                   }
                 }
-              />
-              <h6>
-                Player 12
-              </h6>
+              >
+                <div
+                  className="col-10 col-md-7"
+                >
+                  <h6>
+                    Batsman
+                  </h6>
+                </div>
+                <div
+                  className="col-2 col-md-1"
+                  style={
+                    Object {
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  <h6>
+                    Runs
+                  </h6>
+                </div>
+                <div
+                  className="col-1 d-none d-md-block"
+                  style={
+                    Object {
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  <h6>
+                    Balls
+                  </h6>
+                </div>
+                <div
+                  className="col-1 d-none d-md-block"
+                  style={
+                    Object {
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  <h6>
+                    Mins
+                  </h6>
+                </div>
+                <div
+                  className="col-1 d-none d-md-block"
+                  style={
+                    Object {
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  <h6>
+                    4s
+                  </h6>
+                </div>
+                <div
+                  className="col-1 d-none d-md-block"
+                  style={
+                    Object {
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  <h6>
+                    6s
+                  </h6>
+                </div>
+              </div>
+              <div
+                className="row"
+                style={
+                  Object {
+                    "borderBottom": "1px solid rgb(233, 236, 239)",
+                    "fontSize": "14px",
+                    "marginTop": "8px",
+                    "paddingBottom": "4px",
+                  }
+                }
+              >
+                <div
+                  className="col-4 col-md-3"
+                >
+                  Extras
+                </div>
+                <div
+                  className="col-6 col-md-4"
+                >
+                  0nb 0wd 0b 0lb
+                </div>
+                <div
+                  className="col-2 col-md-1"
+                  style={
+                    Object {
+                      "fontWeight": "bold",
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  0
+                </div>
+              </div>
+              <div
+                className="row"
+                style={
+                  Object {
+                    "backgroundColor": "rgb(233, 236, 239)",
+                    "fontSize": "14px",
+                    "paddingBottom": "4px",
+                    "paddingTop": "4px",
+                  }
+                }
+              >
+                <div
+                  className="col-4 col-md-3"
+                >
+                  Total
+                </div>
+                <div
+                  className="col-6 col-md-4"
+                >
+                  (0 wickets) (0 overs)
+                </div>
+                <div
+                  className="col-2 col-md-1"
+                  style={
+                    Object {
+                      "fontWeight": "bold",
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  0
+                </div>
+              </div>
             </div>
+          </div>
+          <div
+            className="col-xl-4 col-lg-12"
+          >
             <div
-              className="row bowler-row"
-              onClick={[Function]}
               style={
                 Object {
-                  "cursor": "pointer",
+                  "marginBottom": "10px",
+                  "padding": "20px",
+                  "width": "100%",
                 }
               }
             >
               <div
+                className="row"
                 style={
                   Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
+                    "backgroundColor": "rgb(233, 236, 239)",
+                    "paddingLeft": "8px",
+                    "paddingTop": "4px",
                   }
                 }
-              />
-              <h6>
-                Player 13
-              </h6>
+              >
+                <h6>
+                  Fall of wickets
+                </h6>
+              </div>
             </div>
+          </div>
+          <div
+            className="col-xl-8 col-lg-12"
+          >
             <div
-              className="row bowler-row"
-              onClick={[Function]}
               style={
                 Object {
-                  "cursor": "pointer",
+                  "marginBottom": "10px",
+                  "padding": "20px",
+                  "width": "100%",
                 }
               }
             >
               <div
-                style={
-                  Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
-                  }
-                }
-              />
-              <h6>
-                Player 14
-              </h6>
-            </div>
-            <div
-              className="row bowler-row"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-            >
+                className="row"
+              >
+                <h6>
+                  Team 2
+                   bowling
+                </h6>
+              </div>
               <div
+                className="row"
                 style={
                   Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
+                    "backgroundColor": "rgb(233, 236, 239)",
+                    "paddingTop": "4px",
                   }
                 }
-              />
-              <h6>
-                Player 15
-              </h6>
-            </div>
-            <div
-              className="row bowler-row"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-            >
-              <div
-                style={
-                  Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
+              >
+                <div
+                  className="col-6 col-md-5"
+                />
+                <div
+                  className="col-2"
+                  style={
+                    Object {
+                      "textAlign": "center",
+                    }
                   }
-                }
-              />
-              <h6>
-                Player 16
-              </h6>
-            </div>
-            <div
-              className="row bowler-row"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-            >
-              <div
-                style={
-                  Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
+                >
+                  <h6>
+                    Overs
+                  </h6>
+                </div>
+                <div
+                  className="col-2 d-none d-md-block"
+                  style={
+                    Object {
+                      "textAlign": "center",
+                    }
                   }
-                }
-              />
-              <h6>
-                Player 17
-              </h6>
-            </div>
-            <div
-              className="row bowler-row"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-            >
-              <div
-                style={
-                  Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
+                >
+                  <h6>
+                    Maidens
+                  </h6>
+                </div>
+                <div
+                  className="col-2"
+                  style={
+                    Object {
+                      "textAlign": "center",
+                    }
                   }
-                }
-              />
-              <h6>
-                Player 18
-              </h6>
-            </div>
-            <div
-              className="row bowler-row"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-            >
-              <div
-                style={
-                  Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
+                >
+                  <h6>
+                    Runs
+                  </h6>
+                </div>
+                <div
+                  className="col-2 col-md-1"
+                  style={
+                    Object {
+                      "textAlign": "center",
+                    }
                   }
-                }
-              />
-              <h6>
-                Player 19
-              </h6>
-            </div>
-            <div
-              className="row bowler-row"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-            >
-              <div
-                style={
-                  Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
-                  }
-                }
-              />
-              <h6>
-                Player 20
-              </h6>
-            </div>
-            <div
-              className="row bowler-row"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-            >
-              <div
-                style={
-                  Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
-                  }
-                }
-              />
-              <h6>
-                Player 21
-              </h6>
-            </div>
-            <div
-              className="row bowler-row"
-              onClick={[Function]}
-              style={
-                Object {
-                  "color": "rgb(233, 236, 239)",
-                }
-              }
-            >
-              <div
-                style={
-                  Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
-                  }
-                }
-              />
-              <h6>
-                Player 22
-              </h6>
+                >
+                  <h6>
+                    Wkts
+                  </h6>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <button
-        className="btn btn-success"
-        disabled={true}
-        onClick={[Function]}
-        style={
-          Object {
-            "borderRadius": "25px",
-            "bottom": "10px",
-            "boxShadow": "0 4px 6px 0 rgba(0,0,0,.14), 0 4px 5px rgba(0,0,0,-1)",
-            "fontSize": "18px",
-            "height": "50px",
-            "lineHeight": "1.33",
-            "padding": "10px 16px",
-            "position": "fixed",
-            "right": "10px",
-            "width": "50px",
-            "zIndex": 1049,
-          }
-        }
-        type="button"
-      >
-        <i
-          className="fa fa-check"
-        />
-      </button>
     </div>
   </div>
 </div>
@@ -2653,323 +2607,296 @@ exports[`InProgress should render correctly when there is a previous bowler from
     }
   >
     <div>
-      <div
-        className="row"
-      >
+      <div>
         <div
-          className="d-none d-md-block d-lg-block col-2 col-lg-3"
-        />
-        <div
-          className="col-12 col-md-8 col-lg-6"
+          className="row"
         >
           <div
+            className="col-12"
             style={
               Object {
-                "marginBottom": "10px",
-                "padding": "20px",
-                "width": "100%",
+                "textAlign": "center",
               }
             }
           >
+            <h5>
+              Team 1 0-0
+            </h5>
+          </div>
+        </div>
+        <div
+          className="row"
+        >
+          <div
+            className="col-xl-8 col-lg-12"
+          >
             <div
-              className="row"
               style={
                 Object {
-                  "backgroundColor": "rgb(233, 236, 239)",
-                  "paddingLeft": "15px",
-                  "paddingTop": "4px",
-                }
-              }
-            >
-              <h4>
-                Select bowler
-              </h4>
-            </div>
-            <div
-              className="row bowler-row"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
+                  "marginBottom": "10px",
+                  "padding": "20px",
+                  "width": "100%",
                 }
               }
             >
               <div
+                className="row"
                 style={
                   Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
-                  }
-                }
-              />
-              <h6>
-                Player 12
-              </h6>
-            </div>
-            <div
-              className="row bowler-row"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-            >
-              <div
-                style={
-                  Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
-                  }
-                }
-              />
-              <h6>
-                Player 13
-              </h6>
-            </div>
-            <div
-              className="row bowler-row"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-            >
-              <div
-                style={
-                  Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
-                  }
-                }
-              />
-              <h6>
-                Player 14
-              </h6>
-            </div>
-            <div
-              className="row bowler-row"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-            >
-              <div
-                style={
-                  Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
-                  }
-                }
-              />
-              <h6>
-                Player 15
-              </h6>
-            </div>
-            <div
-              className="row bowler-row"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-            >
-              <div
-                style={
-                  Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
-                  }
-                }
-              />
-              <h6>
-                Player 16
-              </h6>
-            </div>
-            <div
-              className="row bowler-row"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-            >
-              <div
-                style={
-                  Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
-                  }
-                }
-              />
-              <h6>
-                Player 17
-              </h6>
-            </div>
-            <div
-              className="row bowler-row"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-            >
-              <div
-                style={
-                  Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
-                  }
-                }
-              />
-              <h6>
-                Player 18
-              </h6>
-            </div>
-            <div
-              className="row bowler-row"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-            >
-              <div
-                style={
-                  Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
-                  }
-                }
-              />
-              <h6>
-                Player 19
-              </h6>
-            </div>
-            <div
-              className="row bowler-row"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-            >
-              <div
-                style={
-                  Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
-                  }
-                }
-              />
-              <h6>
-                Player 20
-              </h6>
-            </div>
-            <div
-              className="row bowler-row"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-            >
-              <div
-                style={
-                  Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
-                  }
-                }
-              />
-              <h6>
-                Player 21
-              </h6>
-            </div>
-            <div
-              className="row bowler-row"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-            >
-              <div
-                style={
-                  Object {
-                    "color": "#007bff",
-                    "float": "left",
-                    "textAlign": "center",
-                    "width": "30px",
+                    "backgroundColor": "rgb(233, 236, 239)",
+                    "paddingTop": "4px",
                   }
                 }
               >
-                <i
-                  className="fa fa-circle"
-                />
+                <div
+                  className="col-10 col-md-7"
+                >
+                  <h6>
+                    Batsman
+                  </h6>
+                </div>
+                <div
+                  className="col-2 col-md-1"
+                  style={
+                    Object {
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  <h6>
+                    Runs
+                  </h6>
+                </div>
+                <div
+                  className="col-1 d-none d-md-block"
+                  style={
+                    Object {
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  <h6>
+                    Balls
+                  </h6>
+                </div>
+                <div
+                  className="col-1 d-none d-md-block"
+                  style={
+                    Object {
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  <h6>
+                    Mins
+                  </h6>
+                </div>
+                <div
+                  className="col-1 d-none d-md-block"
+                  style={
+                    Object {
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  <h6>
+                    4s
+                  </h6>
+                </div>
+                <div
+                  className="col-1 d-none d-md-block"
+                  style={
+                    Object {
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  <h6>
+                    6s
+                  </h6>
+                </div>
               </div>
-              <h6>
-                Player 22
-              </h6>
+              <div
+                className="row"
+                style={
+                  Object {
+                    "borderBottom": "1px solid rgb(233, 236, 239)",
+                    "fontSize": "14px",
+                    "marginTop": "8px",
+                    "paddingBottom": "4px",
+                  }
+                }
+              >
+                <div
+                  className="col-4 col-md-3"
+                >
+                  Extras
+                </div>
+                <div
+                  className="col-6 col-md-4"
+                >
+                  0nb 0wd 0b 0lb
+                </div>
+                <div
+                  className="col-2 col-md-1"
+                  style={
+                    Object {
+                      "fontWeight": "bold",
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  0
+                </div>
+              </div>
+              <div
+                className="row"
+                style={
+                  Object {
+                    "backgroundColor": "rgb(233, 236, 239)",
+                    "fontSize": "14px",
+                    "paddingBottom": "4px",
+                    "paddingTop": "4px",
+                  }
+                }
+              >
+                <div
+                  className="col-4 col-md-3"
+                >
+                  Total
+                </div>
+                <div
+                  className="col-6 col-md-4"
+                >
+                  (0 wickets) (0 overs)
+                </div>
+                <div
+                  className="col-2 col-md-1"
+                  style={
+                    Object {
+                      "fontWeight": "bold",
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  0
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="col-xl-4 col-lg-12"
+          >
+            <div
+              style={
+                Object {
+                  "marginBottom": "10px",
+                  "padding": "20px",
+                  "width": "100%",
+                }
+              }
+            >
+              <div
+                className="row"
+                style={
+                  Object {
+                    "backgroundColor": "rgb(233, 236, 239)",
+                    "paddingLeft": "8px",
+                    "paddingTop": "4px",
+                  }
+                }
+              >
+                <h6>
+                  Fall of wickets
+                </h6>
+              </div>
+            </div>
+          </div>
+          <div
+            className="col-xl-8 col-lg-12"
+          >
+            <div
+              style={
+                Object {
+                  "marginBottom": "10px",
+                  "padding": "20px",
+                  "width": "100%",
+                }
+              }
+            >
+              <div
+                className="row"
+              >
+                <h6>
+                  Team 2
+                   bowling
+                </h6>
+              </div>
+              <div
+                className="row"
+                style={
+                  Object {
+                    "backgroundColor": "rgb(233, 236, 239)",
+                    "paddingTop": "4px",
+                  }
+                }
+              >
+                <div
+                  className="col-6 col-md-5"
+                />
+                <div
+                  className="col-2"
+                  style={
+                    Object {
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  <h6>
+                    Overs
+                  </h6>
+                </div>
+                <div
+                  className="col-2 d-none d-md-block"
+                  style={
+                    Object {
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  <h6>
+                    Maidens
+                  </h6>
+                </div>
+                <div
+                  className="col-2"
+                  style={
+                    Object {
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  <h6>
+                    Runs
+                  </h6>
+                </div>
+                <div
+                  className="col-2 col-md-1"
+                  style={
+                    Object {
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  <h6>
+                    Wkts
+                  </h6>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <button
-        className="btn btn-success"
-        disabled={false}
-        onClick={[Function]}
-        style={
-          Object {
-            "borderRadius": "25px",
-            "bottom": "10px",
-            "boxShadow": "0 4px 6px 0 rgba(0,0,0,.14), 0 4px 5px rgba(0,0,0,-1)",
-            "fontSize": "18px",
-            "height": "50px",
-            "lineHeight": "1.33",
-            "padding": "10px 16px",
-            "position": "fixed",
-            "right": "10px",
-            "width": "50px",
-            "zIndex": 1049,
-          }
-        }
-        type="button"
-      >
-        <i
-          className="fa fa-check"
-        />
-      </button>
     </div>
   </div>
 </div>

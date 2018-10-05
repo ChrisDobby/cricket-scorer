@@ -1,6 +1,6 @@
 import { InProgressMatchStore } from '../../stores/inProgressMatchStore';
 import * as matches from '../testData/matches';
-import { DeliveryOutcome, Over, Match, InningsStatus, Innings } from '../../domain';
+import { DeliveryOutcome, Over, Match, InningsStatus } from '../../domain';
 
 jest.mock('../../match/over', () => {
     const wickets = () => 2;

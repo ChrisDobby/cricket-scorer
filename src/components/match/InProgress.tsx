@@ -7,6 +7,7 @@ import { SelectBowler } from './SelectBowler';
 import { BallEntry } from './BallEntry';
 import { Innings } from '../scorecard/Innings';
 import SelectNewBatter from './SelectNewBatter';
+import InningsComplete from './InningsComplete';
 import { bindMatchStorage } from '../../stores/withMatchStorage';
 
 export interface InProgressProps {
@@ -23,6 +24,7 @@ class InProgress extends React.Component<InProgressProps, {}> {
         completeOver: this.props.inProgress.completeOver,
         changeEnds: this.props.inProgress.flipBatters,
     });
+    completeInnings = this.bindStorage(this.props.inProgress.completeInnings);
 
     disallowedPlayers = () =>
         typeof this.props.inProgress.previousBowler === 'undefined'
@@ -35,6 +37,7 @@ class InProgress extends React.Component<InProgressProps, {}> {
             : this.props.inProgress.previousBowlerFromEnd.playerIndex
 
     render() {
+        const inningsStatus = this.props.inProgress.provisionalInningsStatus;
         if (this.props.inProgress.match && !this.props.inProgress.currentInnings) {
             return (
                 <StartInnings
@@ -44,7 +47,8 @@ class InProgress extends React.Component<InProgressProps, {}> {
             );
         }
 
-        if (this.props.inProgress.currentInnings && !this.props.inProgress.currentBowler) {
+        if (this.props.inProgress.currentInnings && !this.props.inProgress.currentBowler &&
+            inningsStatus === domain.InningsStatus.InProgress) {
             return (
                 <SelectBowler
                     bowlingTeam={this.props.inProgress.currentInnings.bowlingTeam}
@@ -54,7 +58,8 @@ class InProgress extends React.Component<InProgressProps, {}> {
                 />);
         }
 
-        if (this.props.inProgress.currentInnings &&
+        if (inningsStatus === domain.InningsStatus.InProgress &&
+            this.props.inProgress.currentInnings &&
             this.props.inProgress.currentInnings.batting.batters
                 .filter(batter => batter.innings && !batter.innings.wicket).length === 1) {
             return (
@@ -65,22 +70,30 @@ class InProgress extends React.Component<InProgressProps, {}> {
                 />);
         }
 
-        if (this.props.inProgress.currentInnings &&
-            this.props.inProgress.currentBatter &&
-            this.props.inProgress.currentBowler &&
-            this.props.inProgress.currentOver) {
+        if (this.props.inProgress.currentInnings) {
             return (
-                <div>
-                    <BallEntry
-                        innings={this.props.inProgress.currentInnings}
-                        batter={this.props.inProgress.currentBatter}
-                        bowler={this.props.inProgress.currentBowler}
-                        overComplete={!!this.props.inProgress.currentOverComplete}
-                        currentOver={this.props.inProgress.currentOver}
-                        ballFunctions={this.ballFunctions}
-                    />
-                    <Innings innings={this.props.inProgress.currentInnings} />
-                </div>
+                <React.Fragment>
+                    <div>
+                        {this.props.inProgress.currentBatter &&
+                            this.props.inProgress.currentBowler &&
+                            this.props.inProgress.currentOver &&
+                            <BallEntry
+                                innings={this.props.inProgress.currentInnings}
+                                batter={this.props.inProgress.currentBatter}
+                                bowler={this.props.inProgress.currentBowler}
+                                overComplete={!!this.props.inProgress.currentOverComplete}
+                                currentOver={this.props.inProgress.currentOver}
+                                ballFunctions={this.ballFunctions}
+                            />}
+                        <Innings innings={this.props.inProgress.currentInnings} />
+                    </div>
+                    {typeof inningsStatus !== 'undefined' && inningsStatus !== domain.InningsStatus.InProgress &&
+                        <InningsComplete
+                            status={inningsStatus}
+                            battingTeam={this.props.inProgress.currentInnings.battingTeam.name}
+                            complete={() => this.completeInnings(inningsStatus)}
+                        />}
+                </React.Fragment>
             );
         }
 
