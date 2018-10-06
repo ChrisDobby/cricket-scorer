@@ -1235,6 +1235,18 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                   >
                     undo previous
                   </button>
+                  <button
+                    className="btn btn-success"
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "margin": "2px",
+                        "minWidth": "36px",
+                      }
+                    }
+                  >
+                    complete innings
+                  </button>
                 </div>
               </div>
             </div>

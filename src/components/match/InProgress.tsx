@@ -23,8 +23,8 @@ class InProgress extends React.Component<InProgressProps, {}> {
         undoPreviousDelivery: this.props.inProgress.undoPreviousDelivery,
         completeOver: this.props.inProgress.completeOver,
         changeEnds: this.props.inProgress.flipBatters,
+        completeInnings: this.props.inProgress.completeInnings,
     });
-    completeInnings = this.bindStorage(this.props.inProgress.completeInnings);
 
     disallowedPlayers = () =>
         typeof this.props.inProgress.previousBowler === 'undefined'
@@ -91,7 +91,7 @@ class InProgress extends React.Component<InProgressProps, {}> {
                         <InningsComplete
                             status={inningsStatus}
                             battingTeam={this.props.inProgress.currentInnings.battingTeam.name}
-                            complete={() => this.completeInnings(inningsStatus)}
+                            complete={() => this.ballFunctions.completeInnings(inningsStatus)}
                         />}
                 </React.Fragment>
             );

@@ -3,6 +3,12 @@ import { shallow } from 'enzyme';
 import * as ReactTestRenderer from 'react-test-renderer';
 import { WarningModal, WarningType } from '../../../components/match/WarningModal';
 
+jest.mock('../../../components/WithModal', () => ({
+    __esModule: true,
+    namedExport: jest.fn(),
+    default: jest.fn(Component => Component),
+}));
+
 describe('WarningModal', () => {
     it('should call yes function when yes button clicked', () => {
         const yes = jest.fn();

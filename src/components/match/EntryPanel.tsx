@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
-import { DeliveryOutcome, DeliveryScores } from '../../domain';
+import { DeliveryOutcome, DeliveryScores, InningsStatus } from '../../domain';
 import { ActionButton } from './ActionButton';
 import { ScoresEntry } from './ScoresEntry';
 import { WarningModal, WarningType } from './WarningModal';
+import CompleteInnings from './CompleteInnings';
 import { showByes, showLegByes } from './symbols';
 import { notificationDescription } from '../../match/delivery';
 import actionButtonClass from './actionButtonClass';
@@ -21,6 +22,7 @@ export interface BallFunctions {
     undoPreviousDelivery: () => void;
     completeOver: () => void;
     changeEnds: () => void;
+    completeInnings: (status: InningsStatus) => void;
 }
 
 export interface EntryPanelProps {
@@ -35,6 +37,7 @@ interface EntryPanelState {
     allRunSixWarning: boolean;
     allRunDeliveryOutcome: DeliveryOutcome | undefined;
     allRunScores: DeliveryScores | undefined;
+    inningsCompleteVerify: boolean;
 }
 
 export class EntryPanel extends React.Component<EntryPanelProps, {}> {
@@ -45,6 +48,7 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
         allRunSixWarning: false,
         allRunDeliveryOutcome: undefined,
         allRunScores: undefined,
+        inningsCompleteVerify: false,
     };
 
     notifyDelivery = (deliveryOutcome: DeliveryOutcome, scores: DeliveryScores) => {
@@ -122,6 +126,19 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
     getScore = (field: string) => (score: number) => ({
         [field]: score,
     })
+
+    verifyCompleteInnings = () => this.setState({ inningsCompleteVerify: true });
+
+    completeInnings = (status: InningsStatus) => {
+        console.log('completeinnings');
+        this.setState({ inningsCompleteVerify: false });
+        console.log('calling');
+        console.log(this.props.ballFunctions.completeInnings);
+        this.props.ballFunctions.completeInnings(status);
+        console.log('completed');
+    }
+
+    cancelCompleteInnings = () => this.setState({ inningsCompleteVerify: false });
 
     get deliveryOutcome(): DeliveryOutcome {
         return this.state.noBall ? DeliveryOutcome.Noball : DeliveryOutcome.Valid;
@@ -230,6 +247,11 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
                             noBall={false}
                             action={this.props.ballFunctions.undoPreviousDelivery}
                         />
+                        <ActionButton
+                            caption="complete innings"
+                            noBall={false}
+                            action={this.verifyCompleteInnings}
+                        />
                     </div>
                 </div>
                 {this.state.overNotCompleteWarning &&
@@ -249,6 +271,11 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
                         warningType={WarningType.AllRunSixWarning}
                         onYes={this.allRunWarningYes}
                         onNo={this.warningNo}
+                    />}
+                {this.state.inningsCompleteVerify &&
+                    <CompleteInnings
+                        complete={this.completeInnings}
+                        cancel={this.cancelCompleteInnings}
                     />}
             </div>
         );

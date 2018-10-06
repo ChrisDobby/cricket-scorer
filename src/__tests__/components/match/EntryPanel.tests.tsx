@@ -4,7 +4,7 @@ import * as ReactTestRenderer from 'react-test-renderer';
 import { StaticRouter } from 'react-router';
 import { toast } from 'react-toastify';
 import { EntryPanel } from '../../../components/match/EntryPanel';
-import { DeliveryOutcome } from '../../../domain';
+import { DeliveryOutcome, InningsStatus } from '../../../domain';
 
 jest.mock('../../../match/delivery', () => {
     return {
@@ -28,6 +28,7 @@ describe('EntryPanel', () => {
         undoPreviousDelivery: jest.fn(),
         completeOver: jest.fn(),
         changeEnds: jest.fn(),
+        completeInnings: jest.fn(),
     };
 
     describe('delivery', () => {
@@ -280,6 +281,23 @@ describe('EntryPanel', () => {
             expect(scores).toEqual({
                 runs: 3,
             });
+        });
+    });
+
+    describe('completeInnings', () => {
+        const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} />);
+        const instance = entryPanel.instance() as EntryPanel;
+        instance.setState({ inningsCompleteVerify: true });
+        it('should set the state to verify innings complete false', () => {
+            instance.completeInnings(InningsStatus.Declared);
+
+            expect(instance.state.inningsCompleteVerify).toBeFalsy();
+        });
+
+        it('should call the complete innings function', () => {
+            instance.completeInnings(InningsStatus.Declared);
+
+            expect(ballFunctions.completeInnings).toHaveBeenCalledWith(InningsStatus.Declared);
         });
     });
 

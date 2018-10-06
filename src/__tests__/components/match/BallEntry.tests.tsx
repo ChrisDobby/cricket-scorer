@@ -10,6 +10,7 @@ describe('BallEntry', () => {
         undoPreviousDelivery: jest.fn(),
         completeOver: jest.fn(),
         changeEnds: jest.fn(),
+        completeInnings: jest.fn(),
     };
 
     it('should render correctly', () => {
