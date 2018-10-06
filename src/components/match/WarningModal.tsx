@@ -1,29 +1,5 @@
 import * as React from 'react';
-
-const fullWindowStyle: React.CSSProperties = {
-    left: 0,
-    top: 0,
-    right: 0,
-    bottom: 0,
-    position: 'fixed',
-};
-
-const modalStyle: React.CSSProperties = {
-    ...fullWindowStyle,
-    backgroundColor: '#000000',
-    opacity: 0.6,
-    zIndex: 9000,
-};
-
-const warningStyle: React.CSSProperties = {
-    ...fullWindowStyle,
-    zIndex: 9001,
-    padding: '20px',
-};
-
-const alertStyle: React.CSSProperties = {
-    textAlign: 'center',
-};
+import WithModal from '../WithModal';
 
 const buttonStyle: React.CSSProperties = {
     marginLeft: '10px',
@@ -56,29 +32,21 @@ const warningText = (warningType: WarningType) => {
     }
 };
 
-export const WarningModal = ({ warningType, onYes, onNo }: WarningModalProps) => (
-    <div>
-        <div style={modalStyle} />
-        <div className="row" style={warningStyle}>
-            <div className="col-12" style={alertStyle}>
-                <div className="alert alert-danger" role="alert">
-                    {warningText(warningType)}
-                    <div>
-                        <button
-                            className="btn btn-danger"
-                            style={buttonStyle}
-                            onClick={onYes}
-                        >Yes
-                        </button>
-                        <button
-                            className="btn btn-default"
-                            style={buttonStyle}
-                            onClick={onNo}
-                        >No
-                        </button>
-                    </div>
-                </div>
-            </div>
+export const WarningModal = WithModal(({ warningType, onYes, onNo }: WarningModalProps) => (
+    <div className="alert alert-danger" role="alert" style={{ width: '100%' }}>
+        {warningText(warningType)}
+        <div>
+            <button
+                className="btn btn-danger"
+                style={buttonStyle}
+                onClick={onYes}
+            >Yes
+            </button>
+            <button
+                className="btn btn-default"
+                style={buttonStyle}
+                onClick={onNo}
+            >No
+            </button>
         </div>
-    </div>
-);
+    </div>));
