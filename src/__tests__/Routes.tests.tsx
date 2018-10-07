@@ -3,6 +3,7 @@ import { mount } from 'enzyme';
 import { MemoryRouter } from 'react-router';
 import Routes from '../Routes';
 import { Scorecard } from '../components/scorecard/Scorecard';
+import Home from '../components/Home';
 
 describe('Routes', () => {
     it('should render correctly', () => {
@@ -11,7 +12,7 @@ describe('Routes', () => {
                 <Routes />
             </MemoryRouter>));
 
-        expect(wrapper.find('#home-route')).toHaveLength(1);
+        expect(wrapper.find(Home)).toHaveLength(1);
     });
 
     it('should render scorecard route correctly', () => {
