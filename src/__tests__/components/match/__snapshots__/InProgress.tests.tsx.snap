@@ -17,8 +17,14 @@ exports[`InProgress should render correctly for match during an over 1`] = `
       className="navbar-brand"
       href="#"
     >
-      Cricket scorer
+      Cricket scores live
     </a>
+    <button
+      className="btn btn-outline-light"
+      onClick={undefined}
+    >
+      Register or login
+    </button>
   </nav>
   <div
     style={
@@ -1786,8 +1792,14 @@ exports[`InProgress should render correctly for match that has not started 1`] =
       className="navbar-brand"
       href="#"
     >
-      Cricket scorer
+      Cricket scores live
     </a>
+    <button
+      className="btn btn-outline-light"
+      onClick={undefined}
+    >
+      Register or login
+    </button>
   </nav>
   <div
     style={
@@ -1918,8 +1930,14 @@ exports[`InProgress should render correctly for match with started innings 1`] =
       className="navbar-brand"
       href="#"
     >
-      Cricket scorer
+      Cricket scores live
     </a>
+    <button
+      className="btn btn-outline-light"
+      onClick={undefined}
+    >
+      Register or login
+    </button>
   </nav>
   <div
     style={
@@ -2244,8 +2262,14 @@ exports[`InProgress should render correctly when no match 1`] = `
       className="navbar-brand"
       href="#"
     >
-      Cricket scorer
+      Cricket scores live
     </a>
+    <button
+      className="btn btn-outline-light"
+      onClick={undefined}
+    >
+      Register or login
+    </button>
   </nav>
   <div
     style={
@@ -2279,8 +2303,14 @@ exports[`InProgress should render correctly when there is a previous bowler 1`] 
       className="navbar-brand"
       href="#"
     >
-      Cricket scorer
+      Cricket scores live
     </a>
+    <button
+      className="btn btn-outline-light"
+      onClick={undefined}
+    >
+      Register or login
+    </button>
   </nav>
   <div
     style={
@@ -2605,8 +2635,14 @@ exports[`InProgress should render correctly when there is a previous bowler from
       className="navbar-brand"
       href="#"
     >
-      Cricket scorer
+      Cricket scores live
     </a>
+    <button
+      className="btn btn-outline-light"
+      onClick={undefined}
+    >
+      Register or login
+    </button>
   </nav>
   <div
     style={

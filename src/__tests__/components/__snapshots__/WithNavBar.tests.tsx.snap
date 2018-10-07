@@ -17,8 +17,14 @@ exports[`WithNavBar should render correctly 1`] = `
       className="navbar-brand"
       href="#"
     >
-      Cricket scorer
+      Cricket scores live
     </a>
+    <button
+      className="btn btn-outline-light"
+      onClick={undefined}
+    >
+      Register or login
+    </button>
   </nav>
   <div
     style={

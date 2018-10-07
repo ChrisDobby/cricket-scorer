@@ -1,5 +1,5 @@
 {
-  "name": "cricket-scorer",
+  "name": "cricket-scores-live",
   "version": "0.0.0",
   "description": "",
   "scripts": {
@@ -42,12 +42,14 @@
     "webpack-hot-middleware": "^2.22.1"
   },
   "dependencies": {
+    "@types/auth0-js": "^8.11.6",
     "@types/jest": "^22.2.3",
     "@types/react": "^16.3.12",
     "@types/react-dom": "^16.0.5",
     "@types/react-router-dom": "^4.2.6",
     "@types/react-test-renderer": "^16.0.1",
     "@types/react-toastify": "^4.0.0",
+    "auth0-js": "^9.8.0",
     "babel-jest": "^22.4.3",
     "bootstrap": "^4.1.0",
     "css-loader": "^0.28.11",

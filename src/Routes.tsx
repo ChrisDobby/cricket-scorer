@@ -6,6 +6,7 @@ import InProgress from './containers/match/InProgress';
 import Wicket from './containers/match/Wicket';
 import App from './App';
 import Home from './components/Home';
+import auth0 from './components/auth0';
 import { match } from './__tests__/testData/testMatch';
 
 const CardWithNavBar = WithNavBar(Scorecard);
@@ -13,7 +14,8 @@ const CardWithNavBar = WithNavBar(Scorecard);
 const Routes = () => (
     <div className="container-fluid" style={{ userSelect: 'none' }}>
         <Route path="/" component={App} />
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={auth0.WithAuth0(Home)} />
+        <Route exact path="/auth" component={auth0.Auth} />
         <Route exact path="/scorecard" render={props => <CardWithNavBar {...props} cricketMatch={match} />} />
         <Route exact path="/inprogress" component={InProgress} />
         <Route exact path="/inprogress/wicket" component={Wicket} />
