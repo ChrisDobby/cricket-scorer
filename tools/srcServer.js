@@ -4,7 +4,7 @@ const express = require('express');
 const webpack = require('webpack');
 const path = require('path');
 const open = require('open');
-const config = require('../webpack.config');
+const config = require('../webpack.config.dev');
 
 /* eslint-disable no-console */
 
