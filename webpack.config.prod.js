@@ -37,8 +37,8 @@ module.exports = {
             staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
         }),
         new webpack.DefinePlugin({
-            AUTH0_DOMAIN: JSON.stringify(process.env.AUTH0_DOMAIN),
-            AUTH0_CLIENT_ID: JSON.stringify(process.env.AUTH0_CLIENT_ID),
+            'process.env.AUTH0_DOMAIN': JSON.stringify(process.env.AUTH0_DOMAIN || 'chrisdobby.eu.auth0.com'),
+            'process.env.AUTH0_CLIENT_ID': JSON.stringify(process.env.AUTH0_CLIENT_ID || '4N00FdvwdqqVkBm9D3n8AruILZcmPX87'),
         }),
     ],
     optimization: {

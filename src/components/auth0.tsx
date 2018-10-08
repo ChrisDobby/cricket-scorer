@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { WebAuth, Auth0DecodedHash } from 'auth0-js';
 import WithModal from './WithModal';
-import { domain, clientId } from '../auth0Config';
 
-const auth0 = () => {
+const auth0 = (domain: string, clientId: string) => {
     const accessTokenKey = 'access_token';
     const idTokenKey = 'id_token';
     const expiresAtKey = 'expires_at';
@@ -106,4 +105,4 @@ const auth0 = () => {
     };
 };
 
-export default auth0();
+export default auth0(process.env.AUTH0_DOMAIN as string, process.env.AUTH0_CLIENT_ID as string);
