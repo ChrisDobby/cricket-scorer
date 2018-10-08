@@ -16,4 +16,5 @@ module.exports = {
     collectCoverage: true,
     automock: false,
     testResultsProcessor: 'jest-junit',
+    testURL: "http://localhost/"
 };
