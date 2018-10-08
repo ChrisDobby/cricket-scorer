@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "description": "",
   "scripts": {
-    "start": "npm-run-all --parallel open:src",
+    "dev": "npm-run-all --parallel open:src",
+    "start": "node app.js",
     "open:src": "babel-node tools/srcServer.js",
     "lint": "node_modules/.bin/tslint -c tslint.json 'src/**/*.ts{,x}'",
     "test": "jest",
@@ -13,7 +14,8 @@
     "clean-dist": "npm run remove-dist && mkdir dist",
     "remove-dist": "node_modules/.bin/rimraf ./dist",
     "build:html": "babel-node tools/buildHtml.js",
-    "build": "webpack --config ./webpack.config.prod.js --hide-modules --progress --colors"
+    "build": "webpack --config ./webpack.config.prod.js --hide-modules --progress",
+    "heroku-postbuild": "npm run build"
   },
   "repository": {
     "type": "git",
