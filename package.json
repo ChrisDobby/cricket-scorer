@@ -15,7 +15,7 @@
     "remove-dist": "node_modules/.bin/rimraf ./dist",
     "build:html": "babel-node tools/buildHtml.js",
     "build": "webpack --config ./webpack.config.prod.js --hide-modules --progress",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "webpack --config ./webpack.config.prod.js --hide-modules --progress"
   },
   "repository": {
     "type": "git",
