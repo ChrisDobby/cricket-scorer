@@ -9,6 +9,14 @@ const app = express();
 
 app.use(express.static('dist'));
 
+app.get('*', (req, res, next) => {
+    if (req.headers['x-forwarded-proto'] !== 'https') {
+        res.redirect(`https://${req.hostname}/${req.url}`);
+    } else {
+        next();
+    }
+});
+
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, './dist/index.html'));
 });
