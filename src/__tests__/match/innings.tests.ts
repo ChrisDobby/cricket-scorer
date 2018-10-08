@@ -436,6 +436,8 @@ describe('innings', () => {
             type: MatchType.LimitedOvers,
             oversPerSide: 50,
             inningsPerSide: 1,
+            runsForNoBall: 1,
+            runsForWide: 1,
         };
 
         it('should return the actual status if not in progress', () => {

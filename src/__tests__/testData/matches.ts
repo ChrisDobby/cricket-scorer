@@ -1,9 +1,13 @@
 import { Match, DeliveryOutcome, Howout, Batter, MatchType, InningsStatus } from '../../domain';
 
 export const blankMatch: Match = {
+    id: '1',
+    user: 'test',
     config: {
         type: MatchType.Time,
         inningsPerSide: 1,
+        runsForNoBall: 1,
+        runsForWide: 1,
     },
     homeTeam: {
         name: 'Team 1',

@@ -139,9 +139,13 @@ export interface MatchConfig {
     type: MatchType;
     oversPerSide?: number;
     inningsPerSide: number;
+    runsForNoBall: number;
+    runsForWide: number;
 }
 
 export interface Match {
+    id: string;
+    user: string;
     config: MatchConfig;
     homeTeam: Team;
     awayTeam: Team;

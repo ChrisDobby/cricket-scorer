@@ -13,10 +13,14 @@ import { MatchType } from './domain';
 import registerServiceWorker from './registerServiceWorker';
 
 const initialMatch = {
+    id: '1',
+    user: 'test',
     config: {
         type: MatchType.LimitedOvers,
         oversPerSide: 50,
         inningsPerSide: 1,
+        runsForNoBall: 1,
+        runsForWide: 1,
     },
     homeTeam: {
         name: 'Team 1',
