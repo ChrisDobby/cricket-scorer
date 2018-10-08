@@ -15,7 +15,7 @@ test_script:
   - node --version
   - npm --version
   # run linting
-  - npm lint
+  - npm run lint
   # run tests
   - npm test
 
