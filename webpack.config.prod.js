@@ -3,6 +3,7 @@ const path = require('path');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+const Visualizer = require('webpack-visualizer-plugin');
 
 module.exports = {
     mode: "production",
@@ -39,6 +40,9 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.AUTH0_DOMAIN': JSON.stringify(process.env.AUTH0_DOMAIN || 'chrisdobby.eu.auth0.com'),
             'process.env.AUTH0_CLIENT_ID': JSON.stringify(process.env.AUTH0_CLIENT_ID || '4N00FdvwdqqVkBm9D3n8AruILZcmPX87'),
+        }),
+        new Visualizer({
+            filename: '../stats.html',
         }),
     ],
     optimization: {
