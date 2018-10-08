@@ -1,2 +1,2 @@
-export const domain = 'chrisdobby.eu.auth0.com';
-export const clientId = '4N00FdvwdqqVkBm9D3n8AruILZcmPX87';
+export const domain = process.env.AUTH0_DOMAIN;
+export const clientId = process.env.AUTH0_CLIENT_ID;
