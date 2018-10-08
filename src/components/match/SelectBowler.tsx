@@ -62,4 +62,3 @@ export class SelectBowler extends React.Component<SelectBowlerProps, {}> {
         );
     }
 }
-

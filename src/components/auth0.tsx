@@ -9,7 +9,7 @@ const auth0 = () => {
     const expiresAtKey = 'expires_at';
     const profileKey = 'user_profile';
 
-    interface profile {
+    interface Profile {
         id: string;
         name: string;
         picture?: string;
@@ -32,7 +32,7 @@ const auth0 = () => {
         afterLogout();
     };
 
-    const userProfile = (): profile | undefined => {
+    const userProfile = (): Profile | undefined => {
         const userProfile = localStorage.getItem(profileKey);
         if (!userProfile) { return undefined; }
         return JSON.parse(userProfile);

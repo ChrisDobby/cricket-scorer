@@ -28,4 +28,4 @@ const matchStorage = (key:string) => (storage: any) => {
     };
 };
 
-export default matchStorage(`__inProgress__`);
+export default matchStorage('__inProgress__');

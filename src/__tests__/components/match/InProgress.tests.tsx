@@ -4,7 +4,6 @@ import { StaticRouter } from 'react-router';
 import InProgress from '../../../components/match/InProgress';
 import { blankMatch, matchWithStartedInnings, matchWithOverReadyToComplete } from '../../testData/matches';
 
-
 describe('InProgress', () => {
     const noMatchProgress = {
         match: undefined,

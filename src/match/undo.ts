@@ -128,8 +128,7 @@ const undo = (
             const newDeliveries = [...innings.deliveries.filter(delivery => delivery !== lastDelivery)];
             const inOverChangeOver = overChangeOver(innings, newDeliveries);
             const inningsWithUpdatedCompletedOvers = updateCompletedOvers(innings, inOverChangeOver);
-            const updatedInnings = removeDeliveryFromInnings(
-                newDeliveries)
+            const updatedInnings = removeDeliveryFromInnings(newDeliveries)
                 (
                 inningsWithUpdatedCompletedOvers,
                 innings.batting.batters[lastDelivery.batsmanIndex],

@@ -151,7 +151,6 @@ describe('EntryPanel', () => {
         const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} />);
         const instance = entryPanel.instance() as EntryPanel;
 
-
         it('should call the delivery function', () => {
             instance.setState({
                 allRunFourWarning: true,

@@ -95,7 +95,6 @@ describe('SelectBowler', () => {
         expect(selectBowler.toJSON()).toMatchSnapshot();
     });
 
-
     it('should render correctly when a player is disallowed', () => {
         const selectBowler = ReactTestRenderer
             .create(<SelectBowler bowlingTeam={team} selectBowler={select} disallowedPlayers={[0]} />);
