@@ -14,7 +14,7 @@ const auth0 = () => {
         name: string;
         picture?: string;
     }
-    console.log(window.location);
+
     const auth = new WebAuth({
         domain,
         clientID: clientId,
@@ -49,7 +49,7 @@ const auth0 = () => {
         const setSession = (hash: Auth0DecodedHash) => {
             if (!hash.expiresIn || !hash.accessToken || !hash.idToken) { return; }
             const expiresAt = JSON.stringify((hash.expiresIn * 1000) + new Date().getTime());
-            console.log(hash);
+
             localStorage.setItem(accessTokenKey, hash.accessToken);
             localStorage.setItem(idTokenKey, hash.idToken);
             localStorage.setItem(expiresAtKey, expiresAt);

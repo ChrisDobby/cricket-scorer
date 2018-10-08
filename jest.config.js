@@ -11,6 +11,7 @@ module.exports = {
     ],
     setupFiles: [
         '<rootDir>/src/__tests__/setup.ts',
+        'jest-localstorage-mock'
     ],
     collectCoverage: true,
     automock: false,

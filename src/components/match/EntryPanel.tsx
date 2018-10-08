@@ -130,12 +130,8 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
     verifyCompleteInnings = () => this.setState({ inningsCompleteVerify: true });
 
     completeInnings = (status: InningsStatus) => {
-        console.log('completeinnings');
         this.setState({ inningsCompleteVerify: false });
-        console.log('calling');
-        console.log(this.props.ballFunctions.completeInnings);
         this.props.ballFunctions.completeInnings(status);
-        console.log('completed');
     }
 
     cancelCompleteInnings = () => this.setState({ inningsCompleteVerify: false });
