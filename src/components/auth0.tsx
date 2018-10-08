@@ -7,6 +7,7 @@ const auth0 = (domain: string, clientId: string) => {
     const idTokenKey = 'id_token';
     const expiresAtKey = 'expires_at';
     const profileKey = 'user_profile';
+    const returnPathKey = 'return_path';
 
     interface Profile {
         id: string;
@@ -22,7 +23,11 @@ const auth0 = (domain: string, clientId: string) => {
         scope: 'openid profile',
     });
 
-    const login = () => auth.authorize();
+    const login = (path: string) => {
+        localStorage.setItem(returnPathKey, path);
+        auth.authorize();
+    };
+
     const logout = (afterLogout: () => void) => () => {
         localStorage.removeItem(accessTokenKey);
         localStorage.removeItem(idTokenKey);
@@ -44,7 +49,7 @@ const auth0 = (domain: string, clientId: string) => {
         return new Date().getTime() < expiresAt;
     };
 
-    const handleAuthentication = (location: any, afterComplete: () => void) => {
+    const handleAuthentication = (location: any, afterComplete: (path: string | null) => void) => {
         const setSession = (hash: Auth0DecodedHash) => {
             if (!hash.expiresIn || !hash.accessToken || !hash.idToken) { return; }
             const expiresAt = JSON.stringify((hash.expiresIn * 1000) + new Date().getTime());
@@ -70,8 +75,9 @@ const auth0 = (domain: string, clientId: string) => {
                 } else if (err) {
                     console.log(err);
                 }
-
-                afterComplete();
+                const returnPath = localStorage.getItem(returnPathKey);
+                localStorage.removeItem(returnPathKey);
+                afterComplete(returnPath);
             });
         };
 
@@ -83,15 +89,42 @@ const auth0 = (domain: string, clientId: string) => {
     const WithAuth0 = (Component: any) => (props: any) => (
         <Component
             {...props}
-            login={login}
+            login={() => login(props.location.pathname)}
             logout={logout(() => props.history.replace('/'))}
             isAuthenticated={isAuthenticated()}
             userProfile={userProfile()}
         />);
 
+    const AuthRequired = (Component: any) => WithAuth0(class extends React.PureComponent<any> {
+        loginIfRequired = () => {
+            if (!this.props.isAuthenticated) {
+                this.props.login(this.props.location.pathname);
+            }
+        }
+
+        componentDidMount() {
+            this.loginIfRequired();
+        }
+
+        componentDidUpdate() {
+            this.loginIfRequired();
+        }
+
+        render() {
+            if (!this.props.isAuthenticated) {
+                return <div />;
+            }
+
+            return <Component {...this.props} />;
+        }
+    });
+
     class AuthCallback extends React.PureComponent<any> {
         componentDidMount() {
-            handleAuthentication(this.props.location, () => this.props.history.replace('/'));
+            handleAuthentication(
+                this.props.location,
+                path => this.props.history.replace(path ? path : '/'),
+            );
         }
 
         render() {
@@ -101,6 +134,7 @@ const auth0 = (domain: string, clientId: string) => {
 
     return {
         WithAuth0,
+        AuthRequired,
         Auth: WithModal(AuthCallback),
     };
 };
