@@ -42,6 +42,7 @@
     "npm-run-all": "^4.1.2",
     "rimraf": "^2.6.2",
     "source-map-loader": "^0.2.3",
+    "sw-precache-webpack-plugin": "^0.11.5",
     "ts-jest": "^22.4.4",
     "ts-loader": "^4.2.0",
     "tslint": "^5.9.1",

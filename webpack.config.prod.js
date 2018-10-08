@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 
 module.exports = {
     mode: "production",
@@ -28,6 +29,13 @@ module.exports = {
             emitError: false,
         }),
         new webpack.optimize.OccurrenceOrderPlugin(),
+        new SWPrecacheWebpackPlugin({
+            cacheId: 'cricket-scores-live',
+            dontCacheBustUrlsMatching: /\.\w{8}\./,
+            filename: 'service-worker.js',
+            minify: true,
+            staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
+        }),
     ],
     optimization: {
         minimizer: [

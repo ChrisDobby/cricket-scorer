@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import inProgressMatchStore from './stores/inProgressMatchStore';
 import { MatchType } from './domain';
+import registerServiceWorker from './registerServiceWorker';
 
 const initialMatch = {
     config: {
@@ -67,6 +68,8 @@ if (typeof storedMatch !== 'undefined' && storedMatch !== null) {
 configure({ enforceActions: true });
 
 const stores = { inProgressMatchStore };
+
+if (process.env.NODE_ENV === 'production') { registerServiceWorker(); }
 
 ReactDOM.render(
     <Provider {...stores} >
