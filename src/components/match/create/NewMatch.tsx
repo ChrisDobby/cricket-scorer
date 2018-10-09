@@ -10,13 +10,16 @@ const createAndStoreMatch =
             complete();
         };
 
-const NewMatch = ({ userProfile, storage, history }: any) => (
+const NewMatch = ({ userProfile, storage, history, inProgress }: any) => (
     <div className="row">
         <div className="col-1 col-md-2" />
         <div className="col-9 col-md-8">
             <MatchForm
                 createMatch={createAndStoreMatch(
-                    storage.storeMatch,
+                    (match) => {
+                        storage.storeMatch(match);
+                        inProgress.match = match;
+                    },
                     userProfile.id,
                     () => history.replace('/match/start'),
                 )}
