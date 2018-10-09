@@ -144,6 +144,11 @@ export interface MatchConfig {
     runsForWide: number;
 }
 
+export interface Toss {
+    tossWonBy: Team;
+    battingFirst: Team;
+}
+
 export interface Match {
     id: string;
     user: string;
@@ -153,6 +158,7 @@ export interface Match {
     date: string;
     complete: boolean;
     status: string;
+    toss?: Toss;
     innings: Innings[];
 }
 

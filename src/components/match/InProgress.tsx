@@ -38,7 +38,7 @@ class InProgress extends React.Component<InProgressProps, {}> {
 
     render() {
         const inningsStatus = this.props.inProgress.provisionalInningsStatus;
-        if (this.props.inProgress.match && !this.props.inProgress.currentInnings) {
+        if (this.props.inProgress.match && this.props.inProgress.match.toss && !this.props.inProgress.currentInnings) {
             return (
                 <StartInnings
                     teams={[this.props.inProgress.match.homeTeam, this.props.inProgress.match.awayTeam]}

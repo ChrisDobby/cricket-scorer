@@ -1,6 +1,6 @@
 import { InProgressMatchStore } from '../../stores/inProgressMatchStore';
 import * as matches from '../testData/matches';
-import { DeliveryOutcome, Over, Match, InningsStatus } from '../../domain';
+import { DeliveryOutcome, Over, Match, InningsStatus, Toss } from '../../domain';
 
 jest.mock('../../match/over', () => {
     const wickets = () => 2;
@@ -488,16 +488,14 @@ describe('inProgressMatchStore', () => {
         it('should do nothing if no match', () => {
             const inProgressMatchStore = getMatchStore();
             inProgressMatchStore.startMatch(matches.blankMatch.homeTeam, matches.blankMatch.homeTeam);
-
-            expect(inProgressMatchStore.start).toBeUndefined();
         });
 
-        it('should set start correctly', () => {
+        it('should set toss correctly', () => {
             const inProgressMatchStore = getMatchStore(matches.blankMatch);
             inProgressMatchStore.startMatch(matches.blankMatch.homeTeam, matches.blankMatch.awayTeam);
-
-            expect(inProgressMatchStore.start.tossWonBy).toEqual(matches.blankMatch.homeTeam);
-            expect(inProgressMatchStore.start.battingFirst).toEqual(matches.blankMatch.awayTeam);
+            const toss = (inProgressMatchStore.match as Match).toss as Toss;
+            expect(toss.tossWonBy).toEqual(matches.blankMatch.homeTeam);
+            expect(toss.battingFirst).toEqual(matches.blankMatch.awayTeam);
         });
     });
 });

@@ -2,26 +2,24 @@ import * as React from 'react';
 import WithNavBar from '../../WithNavBar';
 import MatchForm from './MatchForm';
 import { default as createMatch } from '../../../match/create';
+import { InProgressMatchStore } from '../../../stores/inProgressMatchStore';
+import { bindMatchStorage } from '../../../stores/withMatchStorage';
 
-const createAndStoreMatch =
-    (storeMatch: (match: any) => void, username: string, complete: () => void) =>
-        (data: any) => {
-            storeMatch(createMatch({ ...data, username }));
-            complete();
-        };
+const create = (username: string, inProgress: InProgressMatchStore, complete: () => void) => (data: any) => {
+    const match = createMatch({ ...data, username });
+    inProgress.match = match;
+    complete();
+};
 
 const NewMatch = ({ userProfile, storage, history, inProgress }: any) => (
     <div className="row">
         <div className="col-1 col-md-2" />
         <div className="col-9 col-md-8">
             <MatchForm
-                createMatch={createAndStoreMatch(
-                    (match) => {
-                        storage.storeMatch(match);
-                        inProgress.match = match;
-                    },
-                    userProfile.id,
-                    () => history.replace('/match/start'),
+                createMatch={bindMatchStorage(
+                    storage.storeMatch,
+                    () => inProgress)
+                    (create(userProfile.id, inProgress, () => history.replace('/match/start')),
                 )}
             />
         </div>

@@ -24,7 +24,6 @@ class InProgressMatchStore implements domain.InProgressMatch {
     @observable match: domain.Match | undefined;
     @observable currentBatterIndex: number | undefined;
     @observable currentBowlerIndex: number | undefined;
-    @observable start: domain.MatchStart;
 
     @computed get currentInnings() {
         return typeof this.match === 'undefined'
@@ -95,11 +94,12 @@ class InProgressMatchStore implements domain.InProgressMatch {
     }
 
     @action startMatch = (tossWonBy: domain.Team, battingFirst: domain.Team) => {
+        console.log('startMatch');
         if (typeof this.match === 'undefined') { return; }
 
-        this.start = {
-            tossWonBy,
-            battingFirst,
+        this.match = {
+            ...this.match,
+            toss: { tossWonBy, battingFirst },
         };
     }
 
