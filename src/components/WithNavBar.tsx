@@ -23,7 +23,7 @@ const pictureStyle: React.CSSProperties = {
     boxShadow: '0 4px 6px 0 rgba(0,0,0,.14), 0 4px 5px rgba(0,0,0,-1)',
 };
 
-const WithNavBar = (Component: React.ComponentType) => (props: any) => (
+const WithNavBar = (Component: any) => (props: any) => (
     <div style={containerStyle}>
         <nav className="navbar navbar-dark bg-primary">
             <a className="navbar-brand" href="#">Cricket scores live</a>
