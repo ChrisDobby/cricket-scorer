@@ -43,6 +43,7 @@ export default ({ homeTeam, awayTeam, homePlayers, awayPlayers,  teamChanged, pl
             <div className="form-group col-md-6">
                 {homePlayers.map((player, playerNumber) => (
                     <input
+                        key={playerNumber}
                         type="text"
                         className="form-control"
                         value={player}
@@ -52,6 +53,7 @@ export default ({ homeTeam, awayTeam, homePlayers, awayPlayers,  teamChanged, pl
             <div className="form-group col-md-6">
                 {awayPlayers.map((player, playerNumber) => (
                     <input
+                        key={playerNumber}
                         type="text"
                         className="form-control"
                         value={player}

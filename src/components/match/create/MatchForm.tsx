@@ -2,8 +2,14 @@ import * as React from 'react';
 import { MatchType } from '../../../domain';
 import TeamsEntry, { TeamType } from './TeamsEntry';
 import MatchEntry from './MatchEntry';
+import SaveWarning from './SaveWarning';
+import { SaveButton } from '../SaveButton';
 
-class MatchForm extends React.PureComponent {
+interface MatchFormProps {
+    createMatch: (matchData: any) => void;
+}
+
+class MatchForm extends React.PureComponent<MatchFormProps> {
     state = {
         matchType: MatchType.LimitedOvers,
         oversPerSide: 50,
@@ -15,6 +21,7 @@ class MatchForm extends React.PureComponent {
         awayTeam: '',
         homePlayers: Array(11).fill(''),
         awayPlayers: Array(11).fill(''),
+        saveWarnings: { homePlayersMissing: 0, awayPlayersMissing: 0 },
     };
 
     matchTypeSelected = (matchType: MatchType) =>
@@ -51,29 +58,71 @@ class MatchForm extends React.PureComponent {
         });
     }
 
+    canSave = () =>
+        ((this.state.matchType === MatchType.LimitedOvers && this.state.oversPerSide > 0) ||
+            (this.state.matchType === MatchType.Time && this.state.inningsPerSide > 0)) &&
+        this.state.playersPerSide > 0 &&
+        this.state.runsPerNoBall > 0 &&
+        this.state.runsPerWide > 0 &&
+        !!this.state.homeTeam &&
+        !!this.state.awayTeam &&
+        this.state.homePlayers.filter(player => player).length > 0 &&
+        this.state.awayPlayers.filter(player => player).length > 0
+
+    saveConfirmed = () => {
+        this.setState({ saveWarnings: { homePlayersMissing: 0, awayPlayersMissing: 0 } });
+        this.props.createMatch({ ...this.state });
+    }
+
+    save = () => {
+        if (!this.canSave()) { return; }
+        const unknownHomePlayers = this.state.homePlayers.filter(player => !player).length;
+        const unknownAwayPlayers = this.state.awayPlayers.filter(player => !player).length;
+        if (unknownHomePlayers > 0 || unknownAwayPlayers > 0) {
+            this.setState({
+                saveWarnings: { homePlayersMissing: unknownHomePlayers, awayPlayersMissing: unknownAwayPlayers },
+            });
+            return;
+        }
+
+        this.saveConfirmed();
+    }
+
+    continueEditing = () => this.setState({ saveWarnings: { homePlayersMissing: 0, awayPlayersMissing: 0 } });
+
     render() {
         return (
-            <form>
-                <h4>Match</h4>
-                <MatchEntry
-                    {...this.state}
-                    matchTypeSelected={this.matchTypeSelected}
-                    oversChanged={this.oversChanged}
-                    inningsChanged={this.inningsChanged}
-                    noBallRunsChanged={this.noBallRunsChanged}
-                    wideRunsChanged={this.wideRunsChanged}
-                    playersChanged={this.playersChanged}
-                />
-                <h4>Teams</h4>
-                <TeamsEntry
-                    homeTeam={this.state.homeTeam}
-                    awayTeam={this.state.awayTeam}
-                    homePlayers={this.state.homePlayers}
-                    awayPlayers={this.state.awayPlayers}
-                    playerChanged={this.playerChanged}
-                    teamChanged={this.teamChanged}
-                />
-            </form>);
+            <React.Fragment>
+                <form>
+                    <h4>Match</h4>
+                    <MatchEntry
+                        {...this.state}
+                        matchTypeSelected={this.matchTypeSelected}
+                        oversChanged={this.oversChanged}
+                        inningsChanged={this.inningsChanged}
+                        noBallRunsChanged={this.noBallRunsChanged}
+                        wideRunsChanged={this.wideRunsChanged}
+                        playersChanged={this.playersChanged}
+                    />
+                    <h4>Teams</h4>
+                    <TeamsEntry
+                        homeTeam={this.state.homeTeam}
+                        awayTeam={this.state.awayTeam}
+                        homePlayers={this.state.homePlayers}
+                        awayPlayers={this.state.awayPlayers}
+                        playerChanged={this.playerChanged}
+                        teamChanged={this.teamChanged}
+                    />
+                </form>
+                {(this.state.saveWarnings.homePlayersMissing > 0 || this.state.saveWarnings.awayPlayersMissing) &&
+                    <SaveWarning
+                        homePlayersMissing={this.state.saveWarnings.homePlayersMissing}
+                        awayPlayersMissing={this.state.saveWarnings.awayPlayersMissing}
+                        save={this.saveConfirmed}
+                        cancel={this.continueEditing}
+                    />}
+                <SaveButton enabled={this.canSave()} save={this.save} />
+            </React.Fragment>);
     }
 }
 
