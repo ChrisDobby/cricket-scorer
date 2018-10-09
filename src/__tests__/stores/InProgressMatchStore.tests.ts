@@ -483,4 +483,21 @@ describe('inProgressMatchStore', () => {
                 .toThrow('cannot complete with in progress status');
         });
     });
+
+    describe('startMatch', () => {
+        it('should do nothing if no match', () => {
+            const inProgressMatchStore = getMatchStore();
+            inProgressMatchStore.startMatch(matches.blankMatch.homeTeam, matches.blankMatch.homeTeam);
+
+            expect(inProgressMatchStore.start).toBeUndefined();
+        });
+
+        it('should set start correctly', () => {
+            const inProgressMatchStore = getMatchStore(matches.blankMatch);
+            inProgressMatchStore.startMatch(matches.blankMatch.homeTeam, matches.blankMatch.awayTeam);
+
+            expect(inProgressMatchStore.start.tossWonBy).toEqual(matches.blankMatch.homeTeam);
+            expect(inProgressMatchStore.start.battingFirst).toEqual(matches.blankMatch.awayTeam);
+        });
+    });
 });
