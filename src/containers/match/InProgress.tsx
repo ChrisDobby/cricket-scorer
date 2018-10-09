@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import { InProgressMatchStore } from '../../stores/inProgressMatchStore';
-import { default as InProgressComponent } from '../../components/match/InProgress';
+import { default as InProgressComponent } from '../../components/match/inprogress/InProgress';
 import matchStorage from '../../stores/matchStorage';
 
 interface InProgressProps { inProgressMatchStore: InProgressMatchStore; }
