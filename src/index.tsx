@@ -16,6 +16,7 @@ const initialMatch = {
     id: '1',
     user: 'test',
     config: {
+        playersPerSide: 11,
         type: MatchType.LimitedOvers,
         oversPerSide: 50,
         inningsPerSide: 1,

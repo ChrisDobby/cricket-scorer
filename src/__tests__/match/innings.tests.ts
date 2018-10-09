@@ -433,6 +433,7 @@ describe('innings', () => {
 
     describe('calculateStatus', () => {
         const fiftyOverMatch = {
+            playersPerSide: 11,
             type: MatchType.LimitedOvers,
             oversPerSide: 50,
             inningsPerSide: 1,

@@ -136,6 +136,7 @@ export interface Team {
 }
 
 export interface MatchConfig {
+    playersPerSide: number;
     type: MatchType;
     oversPerSide?: number;
     inningsPerSide: number;

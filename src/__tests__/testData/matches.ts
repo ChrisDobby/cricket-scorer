@@ -4,6 +4,7 @@ export const blankMatch: Match = {
     id: '1',
     user: 'test',
     config: {
+        playersPerSide: 11,
         type: MatchType.Time,
         inningsPerSide: 1,
         runsForNoBall: 1,

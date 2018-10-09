@@ -553,6 +553,7 @@ export const match: domain.Match = {
     id: '1',
     user: 'test',
     config: {
+        playersPerSide: 11,
         type: domain.MatchType.LimitedOvers,
         oversPerSide: 45,
         inningsPerSide: 1,
