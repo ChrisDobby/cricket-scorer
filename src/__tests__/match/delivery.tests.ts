@@ -1,5 +1,5 @@
 import * as delivery from '../../match/delivery';
-import { DeliveryOutcome, Howout, Wicket } from '../../domain';
+import { DeliveryOutcome, Howout, Wicket, MatchType } from '../../domain';
 
 describe('delivery', () => {
     describe('runsScored', () => {
@@ -68,45 +68,89 @@ describe('delivery', () => {
     });
 
     describe('totalScore', () => {
+        const config = {
+            playersPerSide: 11,
+            type: MatchType.Time,
+            inningsPerSide: 1,
+            runsForNoBall: 1,
+            runsForWide: 1,
+        };
+
         it('should return 0 if no runs, byes or leg byes defined', () => {
-            const score = delivery.totalScore({
-                deliveryOutcome: DeliveryOutcome.Valid,
-                scores: {},
-            });
+            const score = delivery.totalScore(
+                {
+                    deliveryOutcome: DeliveryOutcome.Valid,
+                    scores: {},
+                },
+                config);
 
             expect(score).toBe(0);
         });
 
         it('should return total of runs, boundaries, byes and leg byes', () => {
-            const score = delivery.totalScore({
-                deliveryOutcome: DeliveryOutcome.Valid,
-                scores: {
-                    runs: 2,
-                    boundaries: 4,
-                    byes: 1,
-                    legByes: 3,
+            const score = delivery.totalScore(
+                {
+                    deliveryOutcome: DeliveryOutcome.Valid,
+                    scores: {
+                        runs: 2,
+                        boundaries: 4,
+                        byes: 1,
+                        legByes: 3,
+                    },
                 },
-            });
+                config);
 
             expect(score).toBe(10);
         });
 
         it('should add a run for a wide', () => {
-            const score = delivery.totalScore({
-                deliveryOutcome: DeliveryOutcome.Wide,
-                scores: {},
-            });
+            const score = delivery.totalScore(
+                {
+                    deliveryOutcome: DeliveryOutcome.Wide,
+                    scores: {},
+                },
+                config);
 
             expect(score).toBe(1);
         });
 
+        it('should add number of runs from config for a wide', () => {
+            const score = delivery.totalScore(
+                {
+                    deliveryOutcome: DeliveryOutcome.Wide,
+                    scores: {},
+                },
+                {
+                    ...config,
+                    runsForWide: 2,
+                });
+
+            expect(score).toBe(2);
+        });
+
         it('should add a run for a no ball', () => {
-            const score = delivery.totalScore({
-                deliveryOutcome: DeliveryOutcome.Noball,
-                scores: {},
-            });
+            const score = delivery.totalScore(
+                {
+                    deliveryOutcome: DeliveryOutcome.Noball,
+                    scores: {},
+                },
+                config);
 
             expect(score).toBe(1);
+        });
+
+        it('should add number of runs from config for a no ball', () => {
+            const score = delivery.totalScore(
+                {
+                    deliveryOutcome: DeliveryOutcome.Noball,
+                    scores: {},
+                },
+                {
+                    ...config,
+                    runsForNoBall: 2,
+                });
+
+            expect(score).toBe(2);
         });
     });
 
@@ -119,6 +163,14 @@ describe('delivery', () => {
             penaltyRuns: 0,
         };
 
+        const config = {
+            playersPerSide: 11,
+            type: MatchType.Time,
+            inningsPerSide: 1,
+            runsForNoBall: 1,
+            runsForWide: 1,
+        };
+
         it('should return the same extras if none defined in delivery', () => {
             const updatedExtras = delivery.addedExtras(
                 extras,
@@ -126,7 +178,7 @@ describe('delivery', () => {
                     deliveryOutcome: DeliveryOutcome.Valid,
                     scores: {},
                 },
-            );
+                config);
 
             expect(updatedExtras).toEqual(extras);
         });
@@ -138,7 +190,7 @@ describe('delivery', () => {
                     deliveryOutcome: DeliveryOutcome.Valid,
                     scores: { byes: 3 },
                 },
-            );
+                config);
 
             expect(updatedExtras).toEqual({ ...extras, byes: 3 });
         });
@@ -150,7 +202,7 @@ describe('delivery', () => {
                     deliveryOutcome: DeliveryOutcome.Valid,
                     scores: { legByes: 3 },
                 },
-            );
+                config);
 
             expect(updatedExtras).toEqual({ ...extras, legByes: 3 });
         });
@@ -162,9 +214,24 @@ describe('delivery', () => {
                     deliveryOutcome: DeliveryOutcome.Wide,
                     scores: { wides: 1 },
                 },
-            );
+                config);
 
             expect(updatedExtras).toEqual({ ...extras, wides: 2 });
+        });
+
+        it('should add wides and extra runs from config if defined', () => {
+            const updatedExtras = delivery.addedExtras(
+                extras,
+                {
+                    deliveryOutcome: DeliveryOutcome.Wide,
+                    scores: { wides: 1 },
+                },
+                {
+                    ...config,
+                    runsForWide: 2,
+                });
+
+            expect(updatedExtras).toEqual({ ...extras, wides: 3 });
         });
 
         it('should add no ball to the total if delivery is no ball', () => {
@@ -174,9 +241,24 @@ describe('delivery', () => {
                     deliveryOutcome: DeliveryOutcome.Noball,
                     scores: {},
                 },
-            );
+                config);
 
             expect(updatedExtras).toEqual({ ...extras, noBalls: 1 });
+        });
+
+        it('should add runs from config to the total if delivery is no ball', () => {
+            const updatedExtras = delivery.addedExtras(
+                extras,
+                {
+                    deliveryOutcome: DeliveryOutcome.Noball,
+                    scores: {},
+                },
+                {
+                    ...config,
+                    runsForNoBall: 2,
+                });
+
+            expect(updatedExtras).toEqual({ ...extras, noBalls: 2 });
         });
     });
 
@@ -189,6 +271,14 @@ describe('delivery', () => {
             penaltyRuns: 50,
         };
 
+        const config = {
+            playersPerSide: 11,
+            type: MatchType.Time,
+            inningsPerSide: 1,
+            runsForNoBall: 1,
+            runsForWide: 1,
+        };
+
         it('should return the same extras if none defined in delivery', () => {
             const updatedExtras = delivery.removedExtras(
                 extras,
@@ -196,7 +286,7 @@ describe('delivery', () => {
                     deliveryOutcome: DeliveryOutcome.Valid,
                     scores: {},
                 },
-            );
+                config);
 
             expect(updatedExtras).toEqual(extras);
         });
@@ -208,7 +298,7 @@ describe('delivery', () => {
                     deliveryOutcome: DeliveryOutcome.Valid,
                     scores: { byes: 3 },
                 },
-            );
+                config);
 
             expect(updatedExtras).toEqual({ ...extras, byes: 7 });
         });
@@ -220,7 +310,7 @@ describe('delivery', () => {
                     deliveryOutcome: DeliveryOutcome.Valid,
                     scores: { legByes: 3 },
                 },
-            );
+                config);
 
             expect(updatedExtras).toEqual({ ...extras, legByes: 17 });
         });
@@ -232,9 +322,24 @@ describe('delivery', () => {
                     deliveryOutcome: DeliveryOutcome.Wide,
                     scores: { wides: 1 },
                 },
-            );
+                config);
 
             expect(updatedExtras).toEqual({ ...extras, wides: 28 });
+        });
+
+        it('should remove wides and runs from config from the total if defined', () => {
+            const updatedExtras = delivery.removedExtras(
+                extras,
+                {
+                    deliveryOutcome: DeliveryOutcome.Wide,
+                    scores: { wides: 1 },
+                },
+                {
+                    ...config,
+                    runsForWide: 2,
+                });
+
+            expect(updatedExtras).toEqual({ ...extras, wides: 27 });
         });
 
         it('should remove no ball from the total if delivery is no ball', () => {
@@ -244,9 +349,24 @@ describe('delivery', () => {
                     deliveryOutcome: DeliveryOutcome.Noball,
                     scores: {},
                 },
-            );
+                config);
 
             expect(updatedExtras).toEqual({ ...extras, noBalls: 39 });
+        });
+
+        it('should remove runs from config from the total if delivery is no ball', () => {
+            const updatedExtras = delivery.removedExtras(
+                extras,
+                {
+                    deliveryOutcome: DeliveryOutcome.Noball,
+                    scores: {},
+                },
+                {
+                    ...config,
+                    runsForNoBall: 2,
+                });
+
+            expect(updatedExtras).toEqual({ ...extras, noBalls: 38 });
         });
     });
 
@@ -281,31 +401,58 @@ describe('delivery', () => {
     });
 
     describe('bowlerRuns', () => {
+        const config = {
+            playersPerSide: 11,
+            type: MatchType.Time,
+            inningsPerSide: 1,
+            runsForNoBall: 1,
+            runsForWide: 1,
+        };
+
         it('should return runs, boundaries and wides with extra run', () => {
-            const score = delivery.bowlerRuns({
-                deliveryOutcome: DeliveryOutcome.Wide,
-                scores: {
-                    runs: 2,
-                    boundaries: 4,
-                    byes: 1,
-                    legByes: 3,
-                    wides: 2,
+            const score = delivery.bowlerRuns(
+                {
+                    deliveryOutcome: DeliveryOutcome.Wide,
+                    scores: {
+                        runs: 2,
+                        boundaries: 4,
+                        byes: 1,
+                        legByes: 3,
+                        wides: 2,
+                    },
                 },
-            });
+                config);
 
             expect(score).toBe(9);
         });
 
         it('should return extra run for no ball', () => {
-            const score = delivery.bowlerRuns({
-                deliveryOutcome: DeliveryOutcome.Noball,
-                scores: {
-                    runs: 2,
+            const score = delivery.bowlerRuns(
+                {
+                    deliveryOutcome: DeliveryOutcome.Noball,
+                    scores: {
+                        runs: 2,
+                    },
                 },
-            });
+                config);
 
             expect(score).toBe(3);
+        });
 
+        it('should return runs from config for no ball', () => {
+            const score = delivery.bowlerRuns(
+                {
+                    deliveryOutcome: DeliveryOutcome.Noball,
+                    scores: {
+                        runs: 2,
+                    },
+                },
+                {
+                    ...config,
+                    runsForNoBall: 2,
+                });
+
+            expect(score).toBe(4);
         });
     });
 

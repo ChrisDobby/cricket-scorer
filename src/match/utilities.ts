@@ -3,7 +3,7 @@ import * as deliveries from './delivery';
 
 export type InningsFromDelivery = (
     getDeliveries: () => domain.Delivery[],
-    updateExtras: (extras: domain.Extras, deliveryOutcome: domain.Outcome) => domain.Extras,
+    updateExtras: (extras: domain.Extras, deliveryOutcome: domain.Outcome, config: domain.MatchConfig) => domain.Extras,
     getBattingWicket: () => domain.Wicket | undefined,
     update: (a: number, b: number) => number,
 ) => (
@@ -11,6 +11,7 @@ export type InningsFromDelivery = (
         batter: domain.Batter,
         bowler: domain.Bowler,
         deliveryOutcome: domain.Outcome,
+        config: domain.MatchConfig,
     ) => domain.Innings;
 export const latestOver = (deliveries: domain.Delivery[], complete: number): domain.Delivery[] =>
     deliveries.filter(delivery => delivery.overNumber > complete);
@@ -22,7 +23,7 @@ export const isMaidenOver = (deliveries: domain.Delivery[]) =>
 
 export const updateInningsFromDelivery = (
     getDeliveries: () => domain.Delivery[],
-    updateExtras: (extras: domain.Extras, deliveryOutcome: domain.Outcome) => domain.Extras,
+    updateExtras: (extras: domain.Extras, deliveryOutcome: domain.Outcome, config: domain.MatchConfig) => domain.Extras,
     getBattingWicket: () => domain.Wicket | undefined,
     update: (a: number, b: number) => number,
 ) => (
@@ -30,6 +31,7 @@ export const updateInningsFromDelivery = (
     batter: domain.Batter,
     bowler: domain.Bowler,
     deliveryOutcome: domain.Outcome,
+    config: domain.MatchConfig,
     ) => {
     const updatedBatterInnings = (battingInnings: domain.BattingInnings) => {
         const [fours, sixes] = deliveries.boundariesScored(deliveryOutcome);
@@ -63,7 +65,7 @@ export const updateInningsFromDelivery = (
                         }
                         : b),
             ],
-            extras: updateExtras(innings.batting.extras, deliveryOutcome),
+            extras: updateExtras(innings.batting.extras, deliveryOutcome, config),
         },
         bowlers: [
             ...innings.bowlers.map(b =>
@@ -71,7 +73,7 @@ export const updateInningsFromDelivery = (
                     ? {
                         ...bowler,
                         totalOvers: domain.oversDescription(bowler.completedOvers, currentOver),
-                        runs: update(bowler.runs, deliveries.bowlerRuns(deliveryOutcome)),
+                        runs: update(bowler.runs, deliveries.bowlerRuns(deliveryOutcome, config)),
                         wickets: update(bowler.wickets, deliveries.bowlingWickets(deliveryOutcome)),
                     }
                     : b),
@@ -80,7 +82,7 @@ export const updateInningsFromDelivery = (
         totalOvers: domain.oversDescription(
             innings.completedOvers,
             latestOver(updatedDeliveries, innings.completedOvers)),
-        score: update(innings.score, deliveries.totalScore(deliveryOutcome)),
+        score: update(innings.score, deliveries.totalScore(deliveryOutcome, config)),
         wickets: update(innings.wickets, deliveries.wickets(deliveryOutcome)),
     };
 

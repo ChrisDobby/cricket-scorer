@@ -7,7 +7,7 @@ const undo = (
     newBatsmanIndex: (innings: domain.Innings, batter: domain.Batter, runs: number) => number,
     latestOver: (deliveries: domain.Delivery[], complete: number) => domain.Delivery[],
     isMaidenOver: (deliveries: domain.Delivery[]) => boolean,
-) => {
+) => (config: domain.MatchConfig) => {
     const removeDeliveryFromInnings = (
         updatedDeliveries: domain.Delivery[],
     ) => updateInningsFromDelivery(
@@ -133,6 +133,7 @@ const undo = (
                 innings.batting.batters[lastDelivery.batsmanIndex],
                 innings.bowlers[lastDelivery.bowlerIndex],
                 lastDelivery.outcome,
+                config,
             );
 
             const newBowlerIndex = bowlerIndex(updatedInnings, lastDelivery);

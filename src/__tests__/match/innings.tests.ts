@@ -1,5 +1,5 @@
 import { BattingInnings, DeliveryOutcome, Outcome, Howout, Wicket, InningsStatus, MatchType } from '../../domain';
-import innings, { default as Innings } from '../../match/innings';
+import innings from '../../match/innings';
 import * as matches from '../testData/matches';
 
 jest.mock('../../match/delivery', () => {
@@ -49,6 +49,15 @@ jest.mock('../../match/delivery', () => {
 });
 
 describe('innings', () => {
+    const config = {
+        playersPerSide: 11,
+        type: MatchType.Time,
+        inningsPerSide: 1,
+        runsForNoBall: 1,
+        runsForWide: 1,
+    };
+    const Innings = innings(config);
+
     describe('newInnings', () => {
         const homeTeam = matches.blankMatch.homeTeam;
         const awayTeam = matches.blankMatch.awayTeam;
@@ -385,7 +394,7 @@ describe('innings', () => {
 
     describe('flipBatters', () => {
         it('should swap the current batters round', () => {
-            const newBatterIndex = innings.flipBatters(
+            const newBatterIndex = Innings.flipBatters(
                 matches.inningsWithStartedOver,
                 matches.inningsWithStartedOver.batting.batters[0],
             );
@@ -394,7 +403,7 @@ describe('innings', () => {
         });
 
         it('should not swap to an out batter', () => {
-            const newBatterIndex = innings.flipBatters(
+            const newBatterIndex = Innings.flipBatters(
                 matches.inningsAfterWicketTakenAndNewBatterStarted,
                 matches.inningsAfterWicketTakenAndNewBatterStarted.batting.batters[1],
             );
@@ -421,13 +430,13 @@ describe('innings', () => {
         it('should return true if the innings status is not in progress', () => {
             const notInProgressInnings = { ...matches.startedInnings, status: InningsStatus.AllOut };
 
-            expect(innings.isComplete(notInProgressInnings)).toBeTruthy();
+            expect(Innings.isComplete(notInProgressInnings)).toBeTruthy();
         });
 
         it('should return false if the innings status is in progress', () => {
             const notInProgressInnings = { ...matches.startedInnings };
 
-            expect(innings.isComplete(notInProgressInnings)).toBeFalsy();
+            expect(Innings.isComplete(notInProgressInnings)).toBeFalsy();
         });
     });
 
@@ -444,11 +453,11 @@ describe('innings', () => {
         it('should return the actual status if not in progress', () => {
             const allOutInnings = { ...matches.startedInnings, status: InningsStatus.AllOut };
 
-            expect(innings.calculateStatus(fiftyOverMatch, allOutInnings)).toBe(InningsStatus.AllOut);
+            expect(Innings.calculateStatus(fiftyOverMatch, allOutInnings)).toBe(InningsStatus.AllOut);
         });
 
         it('should return in progress if the innings should still be in progress', () => {
-            expect(innings.calculateStatus(fiftyOverMatch, matches.startedInnings)).toBe(InningsStatus.InProgress);
+            expect(Innings.calculateStatus(fiftyOverMatch, matches.startedInnings)).toBe(InningsStatus.InProgress);
         });
 
         it('should return overs complete for a limited overs match when all the overs have been completed', () => {
@@ -457,7 +466,7 @@ describe('innings', () => {
                 completedOvers: 50,
             };
 
-            expect(innings.calculateStatus(fiftyOverMatch, completdOversInnings)).toBe(InningsStatus.OversComplete);
+            expect(Innings.calculateStatus(fiftyOverMatch, completdOversInnings)).toBe(InningsStatus.OversComplete);
         });
 
         it('should return all out if wickets is one less than the number of players in the batting team', () => {
@@ -466,7 +475,7 @@ describe('innings', () => {
                 wickets: 10,
             };
 
-            expect(innings.calculateStatus(fiftyOverMatch, allOutInnings)).toBe(InningsStatus.AllOut);
+            expect(Innings.calculateStatus(fiftyOverMatch, allOutInnings)).toBe(InningsStatus.AllOut);
         });
     });
 });

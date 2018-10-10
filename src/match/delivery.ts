@@ -14,11 +14,12 @@ const totalRuns = (outcome: domain.Outcome) =>
         outcome.scores.wides,
     ]);
 
-const extraRuns = (deliveryOutcome: domain.DeliveryOutcome) => {
+const extraRuns = (deliveryOutcome: domain.DeliveryOutcome, config: domain.MatchConfig) => {
     switch (deliveryOutcome) {
     case domain.DeliveryOutcome.Wide:
+        return config.runsForWide;
     case domain.DeliveryOutcome.Noball:
-        return 1;
+        return config.runsForNoBall;
 
     default:
         return 0;
@@ -35,16 +36,20 @@ export const runsScored = (outcome: domain.Outcome) => {
     return outcome.scores.runs;
 };
 
-const updatedExtras = (update: (a:number, b:number) => number) => (extras: domain.Extras, outcome: domain.Outcome) => ({
-    ...extras,
-    byes: update(extras.byes, (typeof outcome.scores.byes === 'undefined' ? 0 : outcome.scores.byes)),
-    legByes: update(extras.legByes, (typeof outcome.scores.legByes === 'undefined' ? 0 : outcome.scores.legByes)),
-    wides: update(
-        extras.wides,
-        (typeof outcome.scores.wides === 'undefined' ? 0 : outcome.scores.wides) +
-        (outcome.deliveryOutcome === domain.DeliveryOutcome.Wide ? 1 : 0)),
-    noBalls: update(extras.noBalls, (outcome.deliveryOutcome === domain.DeliveryOutcome.Noball ? 1 : 0)),
-});
+const updatedExtras = (update: (a: number, b: number) => number) =>
+    (extras: domain.Extras, outcome: domain.Outcome, config: domain.MatchConfig) => ({
+        ...extras,
+        byes: update(extras.byes, (typeof outcome.scores.byes === 'undefined' ? 0 : outcome.scores.byes)),
+        legByes: update(extras.legByes, (typeof outcome.scores.legByes === 'undefined' ? 0 : outcome.scores.legByes)),
+        wides: update(
+            extras.wides,
+            (typeof outcome.scores.wides === 'undefined' ? 0 : outcome.scores.wides) +
+            (outcome.deliveryOutcome === domain.DeliveryOutcome.Wide ? config.runsForWide : 0)),
+        noBalls: update(
+            extras.noBalls,
+            (outcome.deliveryOutcome === domain.DeliveryOutcome.Noball ? config.runsForNoBall : 0),
+        ),
+    });
 
 export const addedExtras = updatedExtras((a: number, b: number) => a + b);
 
@@ -52,8 +57,8 @@ export const removedExtras = updatedExtras((a: number, b: number) => a - b);
 
 export const runsFromBatter = (outcome: domain.Outcome) => totalRuns(outcome);
 
-export const totalScore = (outcome: domain.Outcome) =>
-    totalRuns(outcome) + extraRuns(outcome.deliveryOutcome);
+export const totalScore = (outcome: domain.Outcome, config: domain.MatchConfig) =>
+    totalRuns(outcome) + extraRuns(outcome.deliveryOutcome, config);
 
 export const boundariesScored = (outcome: domain.Outcome): [number, number] => {
     if (typeof outcome.scores.boundaries === 'undefined') { return [0, 0]; }
@@ -64,8 +69,9 @@ export const boundariesScored = (outcome: domain.Outcome): [number, number] => {
     ];
 };
 
-export const bowlerRuns = (outcome: domain.Outcome) =>
-    total([outcome.scores.runs, outcome.scores.boundaries, outcome.scores.wides]) + extraRuns(outcome.deliveryOutcome);
+export const bowlerRuns = (outcome: domain.Outcome, config: domain.MatchConfig) =>
+    total([outcome.scores.runs, outcome.scores.boundaries, outcome.scores.wides]) +
+    extraRuns(outcome.deliveryOutcome, config);
 
 export const notificationDescription = (outcome: domain.Outcome) => {
     const pluralise = (value: number) => value > 1 ? 's' : '';

@@ -29,7 +29,7 @@ const innings = (
     flipBatters: (innings: domain.Innings, batter: domain.Batter) => number,
     latestOver: (deliveries: domain.Delivery[], complete: number) => domain.Delivery[],
     isMaidenOver: (deliveries: domain.Delivery[]) => boolean,
-) => {
+) => (config: domain.MatchConfig) => {
     const newInnings = (
         match: domain.Match,
         battingTeam: domain.Team,
@@ -147,6 +147,7 @@ const innings = (
                 batter,
                 bowler,
                 outcome,
+                config,
             ),
             newBatsmanIndex(innings, batter, deliveries.runsFromBatter({ deliveryOutcome, scores })),
         ];

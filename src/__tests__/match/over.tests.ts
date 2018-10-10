@@ -1,4 +1,4 @@
-import { DeliveryOutcome, Howout } from '../../domain';
+import { DeliveryOutcome, Howout, MatchType } from '../../domain';
 import * as over from '../../match/over';
 
 jest.mock('../../match/delivery', () => {
@@ -10,6 +10,13 @@ jest.mock('../../match/delivery', () => {
 });
 
 describe('over', () => {
+    const config = {
+        playersPerSide: 11,
+        type: MatchType.Time,
+        inningsPerSide: 1,
+        runsForNoBall: 1,
+        runsForWide: 1,
+    };
     const deliveries = [
         {
             time: (new Date()).getTime(),
@@ -73,7 +80,7 @@ describe('over', () => {
 
     describe('bowlingRuns', () => {
         it('should return the total of bowling runs in the deliveries', () => {
-            const bowlingRuns = over.bowlingRuns(deliveries);
+            const bowlingRuns = over.bowlingRuns(deliveries, config);
 
             expect(bowlingRuns).toBe(18);
         });

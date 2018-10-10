@@ -1,5 +1,5 @@
 import undo from '../../match/undo';
-import { BattingInnings, DeliveryOutcome, Howout, Outcome } from '../../domain';
+import { BattingInnings, DeliveryOutcome, Howout, Outcome, MatchType } from '../../domain';
 import * as matches from '../testData/matches';
 
 jest.mock('../../match/delivery', () => {
@@ -50,6 +50,15 @@ jest.mock('../../match/delivery', () => {
 
 describe('undo', () => {
     beforeEach(() => jest.clearAllMocks());
+    const config = {
+        playersPerSide: 11,
+        type: MatchType.Time,
+        inningsPerSide: 1,
+        runsForNoBall: 1,
+        runsForWide: 1,
+    };
+
+    const Undo = undo(config);
     const inningsWithBall = {
         ...matches.startedInnings,
         score: 20,
@@ -189,17 +198,17 @@ describe('undo', () => {
         })),
     };
 
-    const [updatedInnings, newBatterIndex, newBowlerIndex] = undo(inningsWithBall);
+    const [updatedInnings, newBatterIndex, newBowlerIndex] = Undo(inningsWithBall);
     const batterInnings = updatedInnings.batting.batters[4].innings as BattingInnings;
 
     const [inningsWithOneOver, oneOverBatterIndex, oneOverBowlerIndex] =
-        undo(inningsWithOneOverAndOneBall);
+        Undo(inningsWithOneOverAndOneBall);
 
     const [inningsWithFiveBalls, fiveBallBatterIndex, fiveBallBowlerIndex] =
-        undo(inningsWithCompletedOver);
+        Undo(inningsWithCompletedOver);
 
     it('should return the same innings and 0 as the batter and bowler when innings has no deliveries', () => {
-        const [innings, batterIndex, bowlerIndex] = undo(matches.startedInnings);
+        const [innings, batterIndex, bowlerIndex] = Undo(matches.startedInnings);
 
         expect(innings).toBe(matches.startedInnings);
         expect(batterIndex).toBe(0);
