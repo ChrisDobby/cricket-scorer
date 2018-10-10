@@ -566,9 +566,8 @@ describe('inProgressMatchStore', () => {
                 ...matches.matchWithOnlyCompletedInnings,
                 toss,
             });
-            const lastInnings = matches.matchWithOnlyCompletedInnings.innings[
-                matches.matchWithOnlyCompletedInnings.innings.length - 1
-            ];
+            const lastInnings = matches.matchWithOnlyCompletedInnings
+                .innings[matches.matchWithOnlyCompletedInnings.innings.length - 1];
 
             expect(inProgressMatchStore.nextBattingTeam).toEqual(lastInnings.bowlingTeam);
         });
