@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { MatchType } from '../../../domain';
-import TeamsEntry, { TeamType } from './TeamsEntry';
+import { MatchType, TeamType } from '../../../domain';
+import TeamsEntry from './TeamsEntry';
 import MatchEntry from './MatchEntry';
 import SaveWarning from './SaveWarning';
 import { SaveButton } from '../SaveButton';

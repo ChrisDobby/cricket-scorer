@@ -50,8 +50,15 @@ describe('StartInnings', () => {
 
     const startFunc = jest.fn();
 
+    const props = {
+        teams,
+        startInnings: startFunc,
+        defaultBattingTeam: homeTeam,
+        canChangeBattingTeam: true,
+    };
+
     it('should update state when team selected', () => {
-        const startInnings = shallow(<StartInnings teams={teams} startInnings={startFunc} />);
+        const startInnings = shallow(<StartInnings {...props} />);
 
         startInnings.find('.form-check-input').at(0).simulate('change', { currentTarget: { value: 0 } });
 
@@ -60,7 +67,7 @@ describe('StartInnings', () => {
     });
 
     it('should update state when opener is selected', () => {
-        const startInnings = shallow(<StartInnings teams={teams} startInnings={startFunc} />);
+        const startInnings = shallow(<StartInnings {...props} />);
         startInnings.setState({
             selectedTeamIndex: 0,
             players: homeTeam.players,
@@ -76,7 +83,7 @@ describe('StartInnings', () => {
     });
 
     it('should update state when opener is removed', () => {
-        const startInnings = shallow(<StartInnings teams={teams} startInnings={startFunc} />);
+        const startInnings = shallow(<StartInnings {...props} />);
 
         startInnings.setState({
             selectedTeamIndex: 0,
@@ -94,7 +101,7 @@ describe('StartInnings', () => {
     });
 
     it('should be able to save when two openers are selected', () => {
-        const startInnings = shallow(<StartInnings teams={teams} startInnings={startFunc} />);
+        const startInnings = shallow(<StartInnings {...props} />);
 
         startInnings.setState({
             selectedTeamIndex: 0,
@@ -114,7 +121,7 @@ describe('StartInnings', () => {
     });
 
     it('should not be able to save when only one opener is selected', () => {
-        const startInnings = shallow(<StartInnings teams={teams} startInnings={startFunc} />);
+        const startInnings = shallow(<StartInnings {...props} />);
 
         startInnings.setState({
             selectedTeamIndex: 0,
@@ -130,7 +137,7 @@ describe('StartInnings', () => {
     });
 
     it('should start innings when save called', () => {
-        const startInnings = shallow(<StartInnings teams={teams} startInnings={startFunc} />);
+        const startInnings = shallow(<StartInnings {...props} />);
 
         startInnings.setState({
             selectedTeamIndex: 0,
@@ -152,13 +159,13 @@ describe('StartInnings', () => {
     });
 
     it('should render correctly when no team selected', () => {
-        const startInnings = ReactTestRenderer.create(<StartInnings teams={teams} startInnings={startFunc} />);
+        const startInnings = ReactTestRenderer.create(<StartInnings {...props} />);
 
         expect(startInnings.toJSON()).toMatchSnapshot();
     });
 
     it('should render correctly when team selected', () => {
-        const startInnings = ReactTestRenderer.create(<StartInnings teams={teams} startInnings={startFunc} />);
+        const startInnings = ReactTestRenderer.create(<StartInnings {...props} />);
 
         startInnings.root.instance.setState({
             selectedTeamIndex: 0,

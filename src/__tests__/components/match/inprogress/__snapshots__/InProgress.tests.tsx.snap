@@ -1200,7 +1200,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                 >
                   <a
                     className="btn btn-success"
-                    href="/inprogress/wicket"
+                    href="/match/wicket"
                     onClick={[Function]}
                   >
                     Wicket

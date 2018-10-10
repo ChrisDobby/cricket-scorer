@@ -975,7 +975,7 @@ exports[`EntryPanel should render correctly when entering a no ball 1`] = `
     >
       <a
         className="btn btn-success"
-        href="/inprogress/wicket"
+        href="/match/wicket"
         onClick={[Function]}
       >
         Wicket
@@ -2008,7 +2008,7 @@ exports[`EntryPanel should render correctly when over complete 1`] = `
     >
       <a
         className="btn btn-success"
-        href="/inprogress/wicket"
+        href="/match/wicket"
         onClick={[Function]}
       >
         Wicket
@@ -3041,7 +3041,7 @@ exports[`EntryPanel should render correctly when over not complete 1`] = `
     >
       <a
         className="btn btn-success"
-        href="/inprogress/wicket"
+        href="/match/wicket"
         onClick={[Function]}
       >
         Wicket
@@ -4074,7 +4074,7 @@ exports[`EntryPanel should render correctly when showing all run 4 warning 1`] =
     >
       <a
         className="btn btn-success"
-        href="/inprogress/wicket"
+        href="/match/wicket"
         onClick={[Function]}
       >
         Wicket
@@ -5107,7 +5107,7 @@ exports[`EntryPanel should render correctly when showing all run 6 warning 1`] =
     >
       <a
         className="btn btn-success"
-        href="/inprogress/wicket"
+        href="/match/wicket"
         onClick={[Function]}
       >
         Wicket

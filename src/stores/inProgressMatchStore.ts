@@ -93,7 +93,27 @@ class InProgressMatchStore implements domain.InProgressMatch {
         return matchInnings.calculateStatus(this.match.config, this.currentInnings);
     }
 
-    @action startMatch = (tossWonBy: domain.Team, battingFirst: domain.Team) => {
+    @computed get canSelectBattingTeamForInnings() {
+        return typeof this.match !== 'undefined' &&
+            this.match.config.type === domain.MatchType.Time &&
+            this.match.config.inningsPerSide > 1;
+    }
+
+    @computed get nextBattingTeam() {
+        if (typeof this.match === 'undefined' || typeof this.match.toss === 'undefined') {
+            return undefined;
+        }
+
+        if (this.match.innings.length === 0) {
+            return this.match.toss.battingFirst === domain.TeamType.HomeTeam
+                ? this.match.homeTeam
+                : this.match.awayTeam;
+        }
+
+        return this.match.innings[this.match.innings.length - 1].bowlingTeam;
+    }
+
+    @action startMatch = (tossWonBy: domain.TeamType, battingFirst: domain.TeamType) => {
         console.log('startMatch');
         if (typeof this.match === 'undefined') { return; }
 

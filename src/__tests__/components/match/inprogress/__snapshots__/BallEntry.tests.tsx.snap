@@ -1164,7 +1164,7 @@ exports[`BallEntry should render correctly 1`] = `
           >
             <a
               className="btn btn-success"
-              href="/inprogress/wicket"
+              href="/match/wicket"
               onClick={[Function]}
             >
               Wicket
@@ -2416,7 +2416,7 @@ exports[`BallEntry should render correctly when over complete 1`] = `
           >
             <a
               className="btn btn-success"
-              href="/inprogress/wicket"
+              href="/match/wicket"
               onClick={[Function]}
             >
               Wicket

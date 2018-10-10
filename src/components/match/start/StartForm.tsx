@@ -1,24 +1,17 @@
 import * as React from 'react';
-import { Team } from '../../../domain';
+import { Team, TeamType } from '../../../domain';
 import { SaveButton } from '../SaveButton';
 
 interface StartFormProps {
     homeTeam: Team;
     awayTeam: Team;
-    startMatch: (tossWonBy: Team, battingFirst: Team) => void;
-}
-
-enum TeamType {
-    Home,
-    Away,
+    startMatch: (tossWonBy: TeamType, battingFirst: TeamType) => void;
 }
 
 export default class extends React.PureComponent<StartFormProps> {
-    state = { tossWonBy: TeamType.Home, battingFirst: TeamType.Home };
+    state = { tossWonBy: TeamType.HomeTeam, battingFirst: TeamType.HomeTeam };
 
-    getTeam = (type: TeamType) => type === TeamType.Home ? this.props.homeTeam : this.props.awayTeam;
-
-    save = () => this.props.startMatch(this.getTeam(this.state.tossWonBy), this.getTeam(this.state.battingFirst));
+    save = () => this.props.startMatch(this.state.tossWonBy, this.state.battingFirst);
 
     tossWonByChanged = (ev: React.ChangeEvent<HTMLSelectElement>) =>
         this.setState({ tossWonBy: Number(ev.target.value) })
@@ -38,8 +31,8 @@ export default class extends React.PureComponent<StartFormProps> {
                             value={this.state.tossWonBy}
                             onChange={this.tossWonByChanged}
                         >
-                            <option value={TeamType.Home}>{this.props.homeTeam.name}</option>
-                            <option value={TeamType.Away}>{this.props.awayTeam.name}</option>
+                            <option value={TeamType.HomeTeam}>{this.props.homeTeam.name}</option>
+                            <option value={TeamType.AwayTeam}>{this.props.awayTeam.name}</option>
                         </select>
                     </div>
                     <div className="form-group">
@@ -50,8 +43,8 @@ export default class extends React.PureComponent<StartFormProps> {
                             value={this.state.battingFirst}
                             onChange={this.battingFirstChanged}
                         >
-                            <option value={TeamType.Home}>{this.props.homeTeam.name}</option>
-                            <option value={TeamType.Away}>{this.props.awayTeam.name}</option>
+                            <option value={TeamType.HomeTeam}>{this.props.homeTeam.name}</option>
+                            <option value={TeamType.AwayTeam}>{this.props.awayTeam.name}</option>
                         </select>
                     </div>
                 </form>

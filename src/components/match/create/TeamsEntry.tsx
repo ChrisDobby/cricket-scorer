@@ -1,9 +1,5 @@
 import * as React from 'react';
-
-export enum TeamType {
-    HomeTeam,
-    AwayTeam,
-}
+import { TeamType } from '../../../domain';
 
 interface TeamsEntryProps {
     homeTeam: string;

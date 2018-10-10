@@ -225,7 +225,7 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
                 <div className="row" style={rowStyle}>
                     <div className="col-2" />
                     <div className="col-10">
-                        <Link to="/inprogress/wicket" className="btn btn-success">
+                        <Link to="/match/wicket" className="btn btn-success">
                             Wicket
                         </Link>
                         <ActionButton

@@ -1,6 +1,6 @@
 import { InProgressMatchStore } from '../../stores/inProgressMatchStore';
 import * as matches from '../testData/matches';
-import { DeliveryOutcome, Over, Match, InningsStatus, Toss } from '../../domain';
+import { DeliveryOutcome, Over, Match, InningsStatus, Toss, TeamType, MatchType } from '../../domain';
 
 jest.mock('../../match/over', () => {
     const wickets = () => 2;
@@ -487,15 +487,99 @@ describe('inProgressMatchStore', () => {
     describe('startMatch', () => {
         it('should do nothing if no match', () => {
             const inProgressMatchStore = getMatchStore();
-            inProgressMatchStore.startMatch(matches.blankMatch.homeTeam, matches.blankMatch.homeTeam);
+            inProgressMatchStore.startMatch(TeamType.HomeTeam, TeamType.HomeTeam);
         });
 
         it('should set toss correctly', () => {
             const inProgressMatchStore = getMatchStore(matches.blankMatch);
-            inProgressMatchStore.startMatch(matches.blankMatch.homeTeam, matches.blankMatch.awayTeam);
+            inProgressMatchStore.startMatch(TeamType.HomeTeam, TeamType.AwayTeam);
             const toss = (inProgressMatchStore.match as Match).toss as Toss;
-            expect(toss.tossWonBy).toEqual(matches.blankMatch.homeTeam);
-            expect(toss.battingFirst).toEqual(matches.blankMatch.awayTeam);
+            expect(toss.tossWonBy).toEqual(TeamType.HomeTeam);
+            expect(toss.battingFirst).toEqual(TeamType.AwayTeam);
+        });
+    });
+
+    describe('canSelectBattingTeamForInnings', () => {
+        it('should return false if no match', () => {
+            const inProgressMatchStore = getMatchStore();
+
+            expect(inProgressMatchStore.canSelectBattingTeamForInnings).toBeFalsy();
+        });
+
+        it('should return false for limited overs matches', () => {
+            const inProgressMatchStore = getMatchStore({
+                ...matches.blankMatch,
+                config: {
+                    ...matches.blankMatch.config,
+                    type: MatchType.LimitedOvers,
+                    inningsPerSide: 3,
+                },
+            });
+
+            expect(inProgressMatchStore.canSelectBattingTeamForInnings).toBeFalsy();
+        });
+
+        it('should return false for single innings matches', () => {
+            const inProgressMatchStore = getMatchStore({
+                ...matches.blankMatch,
+                config: {
+                    ...matches.blankMatch.config,
+                    type: MatchType.Time,
+                    inningsPerSide: 1,
+                },
+            });
+
+            expect(inProgressMatchStore.canSelectBattingTeamForInnings).toBeFalsy();
+        });
+
+        it('should return true for time matches with more than one innings', () => {
+            const inProgressMatchStore = getMatchStore({
+                ...matches.blankMatch,
+                config: {
+                    ...matches.blankMatch.config,
+                    type: MatchType.Time,
+                    inningsPerSide: 2,
+                },
+            });
+
+            expect(inProgressMatchStore.canSelectBattingTeamForInnings).toBeTruthy();
+        });
+    });
+
+    describe('nextBattingTeam', () => {
+        const toss = { tossWonBy: TeamType.HomeTeam, battingFirst: TeamType.AwayTeam };
+
+        it('should return undefined if no match', () => {
+            const inProgressMatchStore = getMatchStore();
+
+            expect(inProgressMatchStore.nextBattingTeam).toBeUndefined();
+        });
+
+        it('should return undefined if no toss', () => {
+            const inProgressMatchStore = getMatchStore(matches.blankMatch);
+
+            expect(inProgressMatchStore.nextBattingTeam).toBeUndefined();
+        });
+
+        it('should return the bowling team from the previous innings', () => {
+            const inProgressMatchStore = getMatchStore({
+                ...matches.matchWithOnlyCompletedInnings,
+                toss,
+            });
+            const lastInnings = matches.matchWithOnlyCompletedInnings.innings[
+                matches.matchWithOnlyCompletedInnings.innings.length - 1
+            ];
+
+            expect(inProgressMatchStore.nextBattingTeam).toEqual(lastInnings.bowlingTeam);
+        });
+
+        it('should return the team selected to bat in the toss if no current innings', () => {
+            const inProgressMatchStore = getMatchStore({
+                ...matches.blankMatch,
+                toss,
+            });
+
+            expect(inProgressMatchStore.nextBattingTeam).toEqual(matches.blankMatch.awayTeam);
         });
     });
 });

@@ -20,9 +20,9 @@ const Routes = () => (
         <Route exact path="/auth" component={auth0.Auth} />
         <Route exact path="/match/create" component={auth0.AuthRequired(CreateMatch)}/>
         <Route exact path="/match/start" component={auth0.AuthRequired(StartMatch)}/>
+        <Route exact path="/match/inprogress" component={auth0.AuthRequired(InProgress)}/>
+        <Route exact path="/match/wicket" component={auth0.AuthRequired(Wicket)} />
         <Route exact path="/scorecard" render={props => <CardWithNavBar {...props} cricketMatch={match} />} />
-        <Route exact path="/inprogress" component={InProgress} />
-        <Route exact path="/inprogress/wicket" component={Wicket} />
     </div>
 );
 

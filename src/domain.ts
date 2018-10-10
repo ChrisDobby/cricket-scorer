@@ -30,6 +30,11 @@ export enum InningsStatus {
     Declared,
 }
 
+export enum TeamType {
+    HomeTeam,
+    AwayTeam,
+}
+
 export interface Wicket {
     time: number;
     howOut: Howout;
@@ -145,8 +150,8 @@ export interface MatchConfig {
 }
 
 export interface Toss {
-    tossWonBy: Team;
-    battingFirst: Team;
+    tossWonBy: TeamType;
+    battingFirst: TeamType;
 }
 
 export interface Match {
@@ -172,6 +177,8 @@ export interface InProgressMatch {
     currentOver?: Over;
     currentOverComplete?: boolean;
     provisionalInningsStatus?: InningsStatus;
+    nextBattingTeam?: Team;
+    canSelectBattingTeamForInnings: boolean;
     startInnings: (battingTeam: Team, batter1Index: number, batter2Index: number) => void;
     newBowler: (playerIndex: number) => void;
     newBatter: (playerIndex: number) => void;
