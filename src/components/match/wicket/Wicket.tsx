@@ -79,7 +79,7 @@ class Wicket extends React.Component<WicketProps, {}> {
             this.deliveryWicket,
         );
 
-        this.props.history.push('/inprogress');
+        this.props.history.push('/match/inprogress');
     }
 
     get canSave() {

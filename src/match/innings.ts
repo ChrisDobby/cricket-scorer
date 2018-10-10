@@ -209,7 +209,7 @@ const innings = (
             innings.completedOvers >= matchConfig.oversPerSide) {
             return domain.InningsStatus.OversComplete;
         }
-        if (innings.wickets >= innings.battingTeam.players.length - 10) {
+        if (innings.wickets >= innings.battingTeam.players.length - 1) {
             return domain.InningsStatus.AllOut;
         }
         return domain.InningsStatus.InProgress;
