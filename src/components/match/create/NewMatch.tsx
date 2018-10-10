@@ -16,10 +16,8 @@ const NewMatch = ({ userProfile, storage, history, inProgress }: any) => (
         <div className="col-1 col-md-2" />
         <div className="col-9 col-md-8">
             <MatchForm
-                createMatch={bindMatchStorage(
-                    storage.storeMatch,
-                    () => inProgress)
-                    (create(userProfile.id, inProgress, () => history.replace('/match/start')),
+                createMatch={bindMatchStorage(storage.storeMatch, () => inProgress)(
+                    create(userProfile.id, inProgress, () => history.replace('/match/start')),
                 )}
             />
         </div>

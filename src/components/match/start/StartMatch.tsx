@@ -5,11 +5,12 @@ import { bindMatchStorage } from '../../../stores/withMatchStorage';
 import { Team } from '../../../domain';
 
 const start = (inProgress: any, storage: any, complete: () => void) =>
-    bindMatchStorage(storage.storeMatch, () => inProgress)
-        ((tossWonBy: Team, battingFirst: Team) => {
+    bindMatchStorage(storage.storeMatch, () => inProgress)(
+        (tossWonBy: Team, battingFirst: Team) => {
             inProgress.startMatch(tossWonBy, battingFirst);
             complete();
-        });
+        },
+    );
 
 const StartMatch = ({ inProgress, storage, history }: any) => (
     <div className="row">
