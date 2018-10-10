@@ -114,7 +114,7 @@ class MatchForm extends React.PureComponent<MatchFormProps> {
                         teamChanged={this.teamChanged}
                     />
                 </form>
-                {(this.state.saveWarnings.homePlayersMissing > 0 || this.state.saveWarnings.awayPlayersMissing) &&
+                {(this.state.saveWarnings.homePlayersMissing > 0 || this.state.saveWarnings.awayPlayersMissing > 0) &&
                     <SaveWarning
                         homePlayersMissing={this.state.saveWarnings.homePlayersMissing}
                         awayPlayersMissing={this.state.saveWarnings.awayPlayersMissing}
