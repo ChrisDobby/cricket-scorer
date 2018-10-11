@@ -1,5 +1,4 @@
 import * as React from 'react';
-import WithNavBar from '../../WithNavBar';
 import StartForm from './StartForm';
 import { bindMatchStorage } from '../../../stores/withMatchStorage';
 import { Team } from '../../../domain';
@@ -24,4 +23,4 @@ const StartMatch = ({ inProgress, storage, history }: any) => (
         </div>
     </div>);
 
-export default WithNavBar(StartMatch);
+export default StartMatch;

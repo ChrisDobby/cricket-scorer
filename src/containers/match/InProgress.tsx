@@ -4,6 +4,7 @@ import { InProgressMatchStore } from '../../stores/inProgressMatchStore';
 import { default as InProgressComponent } from '../../components/match/inprogress/InProgress';
 import matchStorage from '../../stores/matchStorage';
 import WithInProgressMatch from '../../components/WithInProgressMatch';
+import WithNavBar from '../../components/WithNavBar';
 
 interface InProgressProps { inProgressMatchStore: InProgressMatchStore; }
 
@@ -11,4 +12,4 @@ const InProgress = observer(({ inProgressMatchStore }: InProgressProps) => (
     <InProgressComponent inProgress={inProgressMatchStore} storage={matchStorage(localStorage)} />
 ));
 
-export default inject('inProgressMatchStore')(WithInProgressMatch(InProgress));
+export default inject('inProgressMatchStore')(WithInProgressMatch(WithNavBar(InProgress)));

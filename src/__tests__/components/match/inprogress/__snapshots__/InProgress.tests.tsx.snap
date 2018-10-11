@@ -1,1771 +1,1734 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InProgress should render correctly for match during an over 1`] = `
-<div
-  style={
-    Object {
-      "display": "flex",
-      "flexDirection": "column",
-      "height": "100vh",
-    }
-  }
->
-  <nav
-    className="navbar navbar-dark bg-primary"
-  >
-    <a
-      className="navbar-brand"
-      href="#"
-    >
-      Cricket scores live
-    </a>
-    <button
-      className="btn btn-outline-light"
-      onClick={undefined}
-    >
-      Register or login
-    </button>
-  </nav>
+<div>
   <div
     style={
       Object {
-        "flex": "1",
-        "marginTop": "8px",
-        "overflowX": "hidden",
-        "overflowY": "auto",
+        "marginBottom": "10px",
+        "padding": "20px",
+        "width": "100%",
       }
     }
   >
-    <div>
-      <div
-        style={
-          Object {
-            "marginBottom": "10px",
-            "padding": "20px",
-            "width": "100%",
-          }
+    <div
+      className="row"
+      style={
+        Object {
+          "backgroundColor": "rgb(233, 236, 239)",
+          "marginBottom": "4px",
+          "paddingLeft": "15px",
+          "paddingTop": "4px",
         }
+      }
+    >
+      <h4>
+        Player 22 to Player 1
+      </h4>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="col-12 col-lg-6 d-none d-md-block"
       >
         <div
           className="row"
-          style={
-            Object {
-              "backgroundColor": "rgb(233, 236, 239)",
-              "marginBottom": "4px",
-              "paddingLeft": "15px",
-              "paddingTop": "4px",
-            }
-          }
         >
-          <h4>
-            Player 22 to Player 1
-          </h4>
+          <div
+            className="col-6"
+          >
+            <h5>
+              Team 1
+            </h5>
+          </div>
+          <div
+            className="col-6"
+          >
+            <h5>
+              0-0
+            </h5>
+          </div>
         </div>
         <div
           className="row"
         >
           <div
-            className="col-12 col-lg-6 d-none d-md-block"
+            className="col-6"
           >
-            <div
-              className="row"
-            >
-              <div
-                className="col-6"
-              >
-                <h5>
-                  Team 1
-                </h5>
-              </div>
-              <div
-                className="col-6"
-              >
-                <h5>
-                  0-0
-                </h5>
-              </div>
-            </div>
-            <div
-              className="row"
-            >
-              <div
-                className="col-6"
-              >
-                <h5>
-                  Overs
-                </h5>
-              </div>
-              <div
-                className="col-6"
-              >
-                <h5>
-                  0
-                </h5>
-              </div>
-            </div>
-            <div
-              className="row"
-            >
-              <div
-                className="col-6"
-              >
-                <h5>
-                  Player 1
-                </h5>
-              </div>
-              <div
-                className="col-6"
-              >
-                <span>
-                  <h5
-                    style={
-                      Object {
-                        "display": "inline",
-                        "marginRight": "10px",
-                      }
-                    }
-                  >
-                    0(0)
-                  </h5>
-                  <i
-                    className="fa fa-certificate"
-                    style={
-                      Object {
-                        "color": "#007bff",
-                      }
-                    }
-                  />
-                </span>
-              </div>
-            </div>
-            <div
-              className="row"
-            >
-              <div
-                className="col-6"
-              >
-                <h5>
-                  Player 2
-                </h5>
-              </div>
-              <div
-                className="col-6"
-              >
-                <span>
-                  <h5
-                    style={
-                      Object {
-                        "display": "inline",
-                        "marginRight": "10px",
-                      }
-                    }
-                  >
-                    0(0)
-                  </h5>
-                </span>
-              </div>
-            </div>
-            <div
-              className="row"
-            >
-              <div
-                className="col-6"
-              >
-                <h5>
-                  Player 22
-                </h5>
-              </div>
-              <div
-                className="col-6"
-              >
-                <h5>
-                  0-0-0-0
-                </h5>
-              </div>
-            </div>
-            <div
-              className="row"
-            >
-              <div
-                className="col-6"
-              >
-                <h5>
-                  Extras
-                </h5>
-              </div>
-              <div
-                className="col-6"
-              >
-                <h5>
-                  0
-                </h5>
-              </div>
-            </div>
-            <div>
-              <div
-                className="row"
-              >
-                <div
-                  className="col-12"
-                >
-                  <h6>
-                    This over 0 - 0
-                  </h6>
-                </div>
-              </div>
-              <div
-                className="row"
+            <h5>
+              Overs
+            </h5>
+          </div>
+          <div
+            className="col-6"
+          >
+            <h5>
+              0
+            </h5>
+          </div>
+        </div>
+        <div
+          className="row"
+        >
+          <div
+            className="col-6"
+          >
+            <h5>
+              Player 1
+            </h5>
+          </div>
+          <div
+            className="col-6"
+          >
+            <span>
+              <h5
                 style={
                   Object {
-                    "paddingLeft": "20px",
+                    "display": "inline",
+                    "marginRight": "10px",
+                  }
+                }
+              >
+                0(0)
+              </h5>
+              <i
+                className="fa fa-certificate"
+                style={
+                  Object {
+                    "color": "#007bff",
                   }
                 }
               />
+            </span>
+          </div>
+        </div>
+        <div
+          className="row"
+        >
+          <div
+            className="col-6"
+          >
+            <h5>
+              Player 2
+            </h5>
+          </div>
+          <div
+            className="col-6"
+          >
+            <span>
+              <h5
+                style={
+                  Object {
+                    "display": "inline",
+                    "marginRight": "10px",
+                  }
+                }
+              >
+                0(0)
+              </h5>
+            </span>
+          </div>
+        </div>
+        <div
+          className="row"
+        >
+          <div
+            className="col-6"
+          >
+            <h5>
+              Player 22
+            </h5>
+          </div>
+          <div
+            className="col-6"
+          >
+            <h5>
+              0-0-0-0
+            </h5>
+          </div>
+        </div>
+        <div
+          className="row"
+        >
+          <div
+            className="col-6"
+          >
+            <h5>
+              Extras
+            </h5>
+          </div>
+          <div
+            className="col-6"
+          >
+            <h5>
+              0
+            </h5>
+          </div>
+        </div>
+        <div>
+          <div
+            className="row"
+          >
+            <div
+              className="col-12"
+            >
+              <h6>
+                This over 0 - 0
+              </h6>
             </div>
           </div>
           <div
-            className="col-12 col-lg-6"
+            className="row"
+            style={
+              Object {
+                "paddingLeft": "20px",
+              }
+            }
+          />
+        </div>
+      </div>
+      <div
+        className="col-12 col-lg-6"
+      >
+        <div>
+          <div
+            className="row"
           >
-            <div>
-              <div
-                className="row"
+            <div
+              className="col-2"
+            />
+            <div
+              className="col-10"
+            >
+              <button
+                className="btn btn-danger"
+                onClick={[Function]}
               >
-                <div
-                  className="col-2"
-                />
-                <div
-                  className="col-10"
-                >
-                  <button
-                    className="btn btn-danger"
-                    onClick={[Function]}
-                  >
-                    NO BALL
-                  </button>
-                </div>
-              </div>
-              <div
-                className="row"
+                NO BALL
+              </button>
+            </div>
+          </div>
+          <div
+            className="row"
+            style={
+              Object {
+                "backgroundColor": "#fefefe",
+                "borderColor": "#fdfdfe",
+                "marginBottom": "4px",
+                "marginTop": "4px",
+              }
+            }
+          >
+            <div
+              className="col-2"
+            >
+              Runs
+            </div>
+            <div
+              className="col-10"
+            >
+              <button
+                className="btn btn-success"
+                onClick={[Function]}
                 style={
                   Object {
-                    "backgroundColor": "#fefefe",
-                    "borderColor": "#fdfdfe",
-                    "marginBottom": "4px",
-                    "marginTop": "4px",
+                    "margin": "2px",
+                    "minWidth": "36px",
                   }
                 }
               >
-                <div
-                  className="col-2"
-                >
-                  Runs
-                </div>
-                <div
-                  className="col-10"
-                >
-                  <button
-                    className="btn btn-success"
-                    onClick={[Function]}
-                    style={
-                      Object {
-                        "margin": "2px",
-                        "minWidth": "36px",
-                      }
-                    }
-                  >
-                    .
-                  </button>
-                  <button
-                    className="btn btn-success"
-                    onClick={[Function]}
-                    style={
-                      Object {
-                        "margin": "2px",
-                        "minWidth": "36px",
-                      }
-                    }
-                  >
-                    1
-                  </button>
-                  <button
-                    className="btn btn-success"
-                    onClick={[Function]}
-                    style={
-                      Object {
-                        "margin": "2px",
-                        "minWidth": "36px",
-                      }
-                    }
-                  >
-                    2
-                  </button>
-                  <button
-                    className="btn btn-success"
-                    onClick={[Function]}
-                    style={
-                      Object {
-                        "margin": "2px",
-                        "minWidth": "36px",
-                      }
-                    }
-                  >
-                    3
-                  </button>
-                  <button
-                    className="btn btn-success"
-                    onClick={[Function]}
-                    style={
-                      Object {
-                        "margin": "2px",
-                        "minWidth": "36px",
-                      }
-                    }
-                  >
-                    4
-                  </button>
-                  <span
-                    style={
-                      Object {
-                        "whiteSpace": "nowrap",
-                      }
-                    }
-                  >
-                    <select
-                      className="custom-select"
-                      onChange={[Function]}
-                      style={
-                        Object {
-                          "width": "84px",
-                        }
-                      }
-                      value="other"
-                    >
-                      <option>
-                        other
-                      </option>
-                      <option
-                        value="5"
-                      >
-                        5
-                      </option>
-                      <option
-                        value="6"
-                      >
-                        6
-                      </option>
-                      <option
-                        value="7"
-                      >
-                        7
-                      </option>
-                      <option
-                        value="8"
-                      >
-                        8
-                      </option>
-                      <option
-                        value="9"
-                      >
-                        9
-                      </option>
-                      <option
-                        value="10"
-                      >
-                        10
-                      </option>
-                    </select>
-                    <button
-                      className="btn btn-success"
-                      disabled={true}
-                      onClick={[Function]}
-                      style={
-                        Object {
-                          "margin": "2px",
-                        }
-                      }
-                    >
-                      <i
-                        className="fa fa-check"
-                      />
-                    </button>
-                  </span>
-                </div>
-              </div>
-              <div
-                className="row"
+                .
+              </button>
+              <button
+                className="btn btn-success"
+                onClick={[Function]}
                 style={
                   Object {
-                    "backgroundColor": "#fefefe",
-                    "borderColor": "#fdfdfe",
-                    "marginBottom": "4px",
-                    "marginTop": "4px",
+                    "margin": "2px",
+                    "minWidth": "36px",
                   }
                 }
               >
-                <div
-                  className="col-2"
-                >
-                  Boundary
-                </div>
-                <div
-                  className="col-10"
-                >
-                  <button
-                    className="btn btn-success"
-                    onClick={[Function]}
-                    style={
-                      Object {
-                        "margin": "2px",
-                        "minWidth": "36px",
-                      }
+                1
+              </button>
+              <button
+                className="btn btn-success"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "margin": "2px",
+                    "minWidth": "36px",
+                  }
+                }
+              >
+                2
+              </button>
+              <button
+                className="btn btn-success"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "margin": "2px",
+                    "minWidth": "36px",
+                  }
+                }
+              >
+                3
+              </button>
+              <button
+                className="btn btn-success"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "margin": "2px",
+                    "minWidth": "36px",
+                  }
+                }
+              >
+                4
+              </button>
+              <span
+                style={
+                  Object {
+                    "whiteSpace": "nowrap",
+                  }
+                }
+              >
+                <select
+                  className="custom-select"
+                  onChange={[Function]}
+                  style={
+                    Object {
+                      "width": "84px",
                     }
+                  }
+                  value="other"
+                >
+                  <option>
+                    other
+                  </option>
+                  <option
+                    value="5"
                   >
-                    4
-                  </button>
-                  <button
-                    className="btn btn-success"
-                    onClick={[Function]}
-                    style={
-                      Object {
-                        "margin": "2px",
-                        "minWidth": "36px",
-                      }
-                    }
+                    5
+                  </option>
+                  <option
+                    value="6"
                   >
                     6
-                  </button>
-                </div>
-              </div>
-              <div
-                className="row"
-                style={
-                  Object {
-                    "backgroundColor": "#fefefe",
-                    "borderColor": "#fdfdfe",
-                    "marginBottom": "4px",
-                    "marginTop": "4px",
-                  }
-                }
-              >
-                <div
-                  className="col-2"
-                >
-                  Byes
-                </div>
-                <div
-                  className="col-10"
-                >
-                  <span
-                    style={
-                      Object {
-                        "display": "inline-block",
-                        "width": "40px",
-                      }
+                  </option>
+                  <option
+                    value="7"
+                  >
+                    7
+                  </option>
+                  <option
+                    value="8"
+                  >
+                    8
+                  </option>
+                  <option
+                    value="9"
+                  >
+                    9
+                  </option>
+                  <option
+                    value="10"
+                  >
+                    10
+                  </option>
+                </select>
+                <button
+                  className="btn btn-success"
+                  disabled={true}
+                  onClick={[Function]}
+                  style={
+                    Object {
+                      "margin": "2px",
                     }
+                  }
+                >
+                  <i
+                    className="fa fa-check"
                   />
-                  <button
-                    className="btn btn-success"
-                    onClick={[Function]}
-                    style={
-                      Object {
-                        "margin": "2px",
-                        "minWidth": "36px",
-                        "paddingLeft": "2px",
-                        "paddingRight": "2px",
-                      }
-                    }
-                  >
-                    <div
-                      style={
-                        Object {
-                          "borderColor": "transparent transparent #ffffff transparent",
-                          "borderStyle": "solid",
-                          "borderWidth": "0 14px 20px 14px",
-                          "float": "left",
-                          "height": 0,
-                          "width": 0,
-                        }
-                      }
-                    >
-                      <div
-                        style={
-                          Object {
-                            "borderColor": "transparent transparent #28a745 transparent",
-                            "borderStyle": "solid",
-                            "borderWidth": "0 12px 18px 12px",
-                            "float": "left",
-                            "height": 0,
-                            "marginLeft": "-12px",
-                            "marginTop": "1px",
-                            "width": 0,
-                          }
-                        }
-                      >
-                        <div
-                          style={
-                            Object {
-                              "marginLeft": "-5px",
-                              "marginTop": "-2px",
-                            }
-                          }
-                        >
-                          1
-                        </div>
-                      </div>
-                    </div>
-                  </button>
-                  <button
-                    className="btn btn-success"
-                    onClick={[Function]}
-                    style={
-                      Object {
-                        "margin": "2px",
-                        "minWidth": "36px",
-                        "paddingLeft": "2px",
-                        "paddingRight": "2px",
-                      }
-                    }
-                  >
-                    <div
-                      style={
-                        Object {
-                          "borderColor": "transparent transparent #ffffff transparent",
-                          "borderStyle": "solid",
-                          "borderWidth": "0 14px 20px 14px",
-                          "float": "left",
-                          "height": 0,
-                          "width": 0,
-                        }
-                      }
-                    >
-                      <div
-                        style={
-                          Object {
-                            "borderColor": "transparent transparent #28a745 transparent",
-                            "borderStyle": "solid",
-                            "borderWidth": "0 12px 18px 12px",
-                            "float": "left",
-                            "height": 0,
-                            "marginLeft": "-12px",
-                            "marginTop": "1px",
-                            "width": 0,
-                          }
-                        }
-                      >
-                        <div
-                          style={
-                            Object {
-                              "marginLeft": "-5px",
-                              "marginTop": "-2px",
-                            }
-                          }
-                        >
-                          2
-                        </div>
-                      </div>
-                    </div>
-                  </button>
-                  <button
-                    className="btn btn-success"
-                    onClick={[Function]}
-                    style={
-                      Object {
-                        "margin": "2px",
-                        "minWidth": "36px",
-                        "paddingLeft": "2px",
-                        "paddingRight": "2px",
-                      }
-                    }
-                  >
-                    <div
-                      style={
-                        Object {
-                          "borderColor": "transparent transparent #ffffff transparent",
-                          "borderStyle": "solid",
-                          "borderWidth": "0 14px 20px 14px",
-                          "float": "left",
-                          "height": 0,
-                          "width": 0,
-                        }
-                      }
-                    >
-                      <div
-                        style={
-                          Object {
-                            "borderColor": "transparent transparent #28a745 transparent",
-                            "borderStyle": "solid",
-                            "borderWidth": "0 12px 18px 12px",
-                            "float": "left",
-                            "height": 0,
-                            "marginLeft": "-12px",
-                            "marginTop": "1px",
-                            "width": 0,
-                          }
-                        }
-                      >
-                        <div
-                          style={
-                            Object {
-                              "marginLeft": "-5px",
-                              "marginTop": "-2px",
-                            }
-                          }
-                        >
-                          3
-                        </div>
-                      </div>
-                    </div>
-                  </button>
-                  <button
-                    className="btn btn-success"
-                    onClick={[Function]}
-                    style={
-                      Object {
-                        "margin": "2px",
-                        "minWidth": "36px",
-                        "paddingLeft": "2px",
-                        "paddingRight": "2px",
-                      }
-                    }
-                  >
-                    <div
-                      style={
-                        Object {
-                          "borderColor": "transparent transparent #ffffff transparent",
-                          "borderStyle": "solid",
-                          "borderWidth": "0 14px 20px 14px",
-                          "float": "left",
-                          "height": 0,
-                          "width": 0,
-                        }
-                      }
-                    >
-                      <div
-                        style={
-                          Object {
-                            "borderColor": "transparent transparent #28a745 transparent",
-                            "borderStyle": "solid",
-                            "borderWidth": "0 12px 18px 12px",
-                            "float": "left",
-                            "height": 0,
-                            "marginLeft": "-12px",
-                            "marginTop": "1px",
-                            "width": 0,
-                          }
-                        }
-                      >
-                        <div
-                          style={
-                            Object {
-                              "marginLeft": "-5px",
-                              "marginTop": "-2px",
-                            }
-                          }
-                        >
-                          4
-                        </div>
-                      </div>
-                    </div>
-                  </button>
-                  <span
-                    style={
-                      Object {
-                        "whiteSpace": "nowrap",
-                      }
-                    }
-                  >
-                    <select
-                      className="custom-select"
-                      onChange={[Function]}
-                      style={
-                        Object {
-                          "width": "84px",
-                        }
-                      }
-                      value="other"
-                    >
-                      <option>
-                        other
-                      </option>
-                      <option
-                        value="5"
-                      >
-                        5
-                      </option>
-                      <option
-                        value="6"
-                      >
-                        6
-                      </option>
-                      <option
-                        value="7"
-                      >
-                        7
-                      </option>
-                      <option
-                        value="8"
-                      >
-                        8
-                      </option>
-                      <option
-                        value="9"
-                      >
-                        9
-                      </option>
-                      <option
-                        value="10"
-                      >
-                        10
-                      </option>
-                    </select>
-                    <button
-                      className="btn btn-success"
-                      disabled={true}
-                      onClick={[Function]}
-                      style={
-                        Object {
-                          "margin": "2px",
-                        }
-                      }
-                    >
-                      <i
-                        className="fa fa-check"
-                      />
-                    </button>
-                  </span>
-                </div>
-              </div>
-              <div
-                className="row"
+                </button>
+              </span>
+            </div>
+          </div>
+          <div
+            className="row"
+            style={
+              Object {
+                "backgroundColor": "#fefefe",
+                "borderColor": "#fdfdfe",
+                "marginBottom": "4px",
+                "marginTop": "4px",
+              }
+            }
+          >
+            <div
+              className="col-2"
+            >
+              Boundary
+            </div>
+            <div
+              className="col-10"
+            >
+              <button
+                className="btn btn-success"
+                onClick={[Function]}
                 style={
                   Object {
-                    "backgroundColor": "#fefefe",
-                    "borderColor": "#fdfdfe",
-                    "marginBottom": "4px",
-                    "marginTop": "4px",
+                    "margin": "2px",
+                    "minWidth": "36px",
+                  }
+                }
+              >
+                4
+              </button>
+              <button
+                className="btn btn-success"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "margin": "2px",
+                    "minWidth": "36px",
+                  }
+                }
+              >
+                6
+              </button>
+            </div>
+          </div>
+          <div
+            className="row"
+            style={
+              Object {
+                "backgroundColor": "#fefefe",
+                "borderColor": "#fdfdfe",
+                "marginBottom": "4px",
+                "marginTop": "4px",
+              }
+            }
+          >
+            <div
+              className="col-2"
+            >
+              Byes
+            </div>
+            <div
+              className="col-10"
+            >
+              <span
+                style={
+                  Object {
+                    "display": "inline-block",
+                    "width": "40px",
+                  }
+                }
+              />
+              <button
+                className="btn btn-success"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "margin": "2px",
+                    "minWidth": "36px",
+                    "paddingLeft": "2px",
+                    "paddingRight": "2px",
                   }
                 }
               >
                 <div
-                  className="col-2"
+                  style={
+                    Object {
+                      "borderColor": "transparent transparent #ffffff transparent",
+                      "borderStyle": "solid",
+                      "borderWidth": "0 14px 20px 14px",
+                      "float": "left",
+                      "height": 0,
+                      "width": 0,
+                    }
+                  }
                 >
-                  Leg byes
-                </div>
-                <div
-                  className="col-10"
-                >
-                  <span
+                  <div
                     style={
                       Object {
-                        "display": "inline-block",
-                        "width": "40px",
+                        "borderColor": "transparent transparent #28a745 transparent",
+                        "borderStyle": "solid",
+                        "borderWidth": "0 12px 18px 12px",
+                        "float": "left",
+                        "height": 0,
+                        "marginLeft": "-12px",
+                        "marginTop": "1px",
+                        "width": 0,
                       }
                     }
+                  >
+                    <div
+                      style={
+                        Object {
+                          "marginLeft": "-5px",
+                          "marginTop": "-2px",
+                        }
+                      }
+                    >
+                      1
+                    </div>
+                  </div>
+                </div>
+              </button>
+              <button
+                className="btn btn-success"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "margin": "2px",
+                    "minWidth": "36px",
+                    "paddingLeft": "2px",
+                    "paddingRight": "2px",
+                  }
+                }
+              >
+                <div
+                  style={
+                    Object {
+                      "borderColor": "transparent transparent #ffffff transparent",
+                      "borderStyle": "solid",
+                      "borderWidth": "0 14px 20px 14px",
+                      "float": "left",
+                      "height": 0,
+                      "width": 0,
+                    }
+                  }
+                >
+                  <div
+                    style={
+                      Object {
+                        "borderColor": "transparent transparent #28a745 transparent",
+                        "borderStyle": "solid",
+                        "borderWidth": "0 12px 18px 12px",
+                        "float": "left",
+                        "height": 0,
+                        "marginLeft": "-12px",
+                        "marginTop": "1px",
+                        "width": 0,
+                      }
+                    }
+                  >
+                    <div
+                      style={
+                        Object {
+                          "marginLeft": "-5px",
+                          "marginTop": "-2px",
+                        }
+                      }
+                    >
+                      2
+                    </div>
+                  </div>
+                </div>
+              </button>
+              <button
+                className="btn btn-success"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "margin": "2px",
+                    "minWidth": "36px",
+                    "paddingLeft": "2px",
+                    "paddingRight": "2px",
+                  }
+                }
+              >
+                <div
+                  style={
+                    Object {
+                      "borderColor": "transparent transparent #ffffff transparent",
+                      "borderStyle": "solid",
+                      "borderWidth": "0 14px 20px 14px",
+                      "float": "left",
+                      "height": 0,
+                      "width": 0,
+                    }
+                  }
+                >
+                  <div
+                    style={
+                      Object {
+                        "borderColor": "transparent transparent #28a745 transparent",
+                        "borderStyle": "solid",
+                        "borderWidth": "0 12px 18px 12px",
+                        "float": "left",
+                        "height": 0,
+                        "marginLeft": "-12px",
+                        "marginTop": "1px",
+                        "width": 0,
+                      }
+                    }
+                  >
+                    <div
+                      style={
+                        Object {
+                          "marginLeft": "-5px",
+                          "marginTop": "-2px",
+                        }
+                      }
+                    >
+                      3
+                    </div>
+                  </div>
+                </div>
+              </button>
+              <button
+                className="btn btn-success"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "margin": "2px",
+                    "minWidth": "36px",
+                    "paddingLeft": "2px",
+                    "paddingRight": "2px",
+                  }
+                }
+              >
+                <div
+                  style={
+                    Object {
+                      "borderColor": "transparent transparent #ffffff transparent",
+                      "borderStyle": "solid",
+                      "borderWidth": "0 14px 20px 14px",
+                      "float": "left",
+                      "height": 0,
+                      "width": 0,
+                    }
+                  }
+                >
+                  <div
+                    style={
+                      Object {
+                        "borderColor": "transparent transparent #28a745 transparent",
+                        "borderStyle": "solid",
+                        "borderWidth": "0 12px 18px 12px",
+                        "float": "left",
+                        "height": 0,
+                        "marginLeft": "-12px",
+                        "marginTop": "1px",
+                        "width": 0,
+                      }
+                    }
+                  >
+                    <div
+                      style={
+                        Object {
+                          "marginLeft": "-5px",
+                          "marginTop": "-2px",
+                        }
+                      }
+                    >
+                      4
+                    </div>
+                  </div>
+                </div>
+              </button>
+              <span
+                style={
+                  Object {
+                    "whiteSpace": "nowrap",
+                  }
+                }
+              >
+                <select
+                  className="custom-select"
+                  onChange={[Function]}
+                  style={
+                    Object {
+                      "width": "84px",
+                    }
+                  }
+                  value="other"
+                >
+                  <option>
+                    other
+                  </option>
+                  <option
+                    value="5"
+                  >
+                    5
+                  </option>
+                  <option
+                    value="6"
+                  >
+                    6
+                  </option>
+                  <option
+                    value="7"
+                  >
+                    7
+                  </option>
+                  <option
+                    value="8"
+                  >
+                    8
+                  </option>
+                  <option
+                    value="9"
+                  >
+                    9
+                  </option>
+                  <option
+                    value="10"
+                  >
+                    10
+                  </option>
+                </select>
+                <button
+                  className="btn btn-success"
+                  disabled={true}
+                  onClick={[Function]}
+                  style={
+                    Object {
+                      "margin": "2px",
+                    }
+                  }
+                >
+                  <i
+                    className="fa fa-check"
                   />
-                  <button
-                    className="btn btn-success"
-                    onClick={[Function]}
-                    style={
-                      Object {
-                        "margin": "2px",
-                        "minWidth": "36px",
-                        "paddingLeft": "2px",
-                        "paddingRight": "2px",
-                      }
-                    }
-                  >
-                    <div
-                      style={
-                        Object {
-                          "borderColor": "#ffffff transparent transparent transparent",
-                          "borderStyle": "solid",
-                          "borderWidth": "20px 14px 0 14px",
-                          "float": "left",
-                          "height": 0,
-                          "width": 0,
-                        }
-                      }
-                    >
-                      <div
-                        style={
-                          Object {
-                            "borderColor": "#28a745 transparent transparent transparent",
-                            "borderStyle": "solid",
-                            "borderWidth": "18px 12px 0 12px",
-                            "float": "left",
-                            "height": 0,
-                            "marginLeft": "-12px",
-                            "marginTop": "-19px",
-                            "width": 0,
-                          }
-                        }
-                      >
-                        <div
-                          style={
-                            Object {
-                              "marginLeft": "-5px",
-                              "marginTop": "-24px",
-                            }
-                          }
-                        >
-                          1
-                        </div>
-                      </div>
-                    </div>
-                  </button>
-                  <button
-                    className="btn btn-success"
-                    onClick={[Function]}
-                    style={
-                      Object {
-                        "margin": "2px",
-                        "minWidth": "36px",
-                        "paddingLeft": "2px",
-                        "paddingRight": "2px",
-                      }
-                    }
-                  >
-                    <div
-                      style={
-                        Object {
-                          "borderColor": "#ffffff transparent transparent transparent",
-                          "borderStyle": "solid",
-                          "borderWidth": "20px 14px 0 14px",
-                          "float": "left",
-                          "height": 0,
-                          "width": 0,
-                        }
-                      }
-                    >
-                      <div
-                        style={
-                          Object {
-                            "borderColor": "#28a745 transparent transparent transparent",
-                            "borderStyle": "solid",
-                            "borderWidth": "18px 12px 0 12px",
-                            "float": "left",
-                            "height": 0,
-                            "marginLeft": "-12px",
-                            "marginTop": "-19px",
-                            "width": 0,
-                          }
-                        }
-                      >
-                        <div
-                          style={
-                            Object {
-                              "marginLeft": "-5px",
-                              "marginTop": "-24px",
-                            }
-                          }
-                        >
-                          2
-                        </div>
-                      </div>
-                    </div>
-                  </button>
-                  <button
-                    className="btn btn-success"
-                    onClick={[Function]}
-                    style={
-                      Object {
-                        "margin": "2px",
-                        "minWidth": "36px",
-                        "paddingLeft": "2px",
-                        "paddingRight": "2px",
-                      }
-                    }
-                  >
-                    <div
-                      style={
-                        Object {
-                          "borderColor": "#ffffff transparent transparent transparent",
-                          "borderStyle": "solid",
-                          "borderWidth": "20px 14px 0 14px",
-                          "float": "left",
-                          "height": 0,
-                          "width": 0,
-                        }
-                      }
-                    >
-                      <div
-                        style={
-                          Object {
-                            "borderColor": "#28a745 transparent transparent transparent",
-                            "borderStyle": "solid",
-                            "borderWidth": "18px 12px 0 12px",
-                            "float": "left",
-                            "height": 0,
-                            "marginLeft": "-12px",
-                            "marginTop": "-19px",
-                            "width": 0,
-                          }
-                        }
-                      >
-                        <div
-                          style={
-                            Object {
-                              "marginLeft": "-5px",
-                              "marginTop": "-24px",
-                            }
-                          }
-                        >
-                          3
-                        </div>
-                      </div>
-                    </div>
-                  </button>
-                  <button
-                    className="btn btn-success"
-                    onClick={[Function]}
-                    style={
-                      Object {
-                        "margin": "2px",
-                        "minWidth": "36px",
-                        "paddingLeft": "2px",
-                        "paddingRight": "2px",
-                      }
-                    }
-                  >
-                    <div
-                      style={
-                        Object {
-                          "borderColor": "#ffffff transparent transparent transparent",
-                          "borderStyle": "solid",
-                          "borderWidth": "20px 14px 0 14px",
-                          "float": "left",
-                          "height": 0,
-                          "width": 0,
-                        }
-                      }
-                    >
-                      <div
-                        style={
-                          Object {
-                            "borderColor": "#28a745 transparent transparent transparent",
-                            "borderStyle": "solid",
-                            "borderWidth": "18px 12px 0 12px",
-                            "float": "left",
-                            "height": 0,
-                            "marginLeft": "-12px",
-                            "marginTop": "-19px",
-                            "width": 0,
-                          }
-                        }
-                      >
-                        <div
-                          style={
-                            Object {
-                              "marginLeft": "-5px",
-                              "marginTop": "-24px",
-                            }
-                          }
-                        >
-                          4
-                        </div>
-                      </div>
-                    </div>
-                  </button>
-                  <span
-                    style={
-                      Object {
-                        "whiteSpace": "nowrap",
-                      }
-                    }
-                  >
-                    <select
-                      className="custom-select"
-                      onChange={[Function]}
-                      style={
-                        Object {
-                          "width": "84px",
-                        }
-                      }
-                      value="other"
-                    >
-                      <option>
-                        other
-                      </option>
-                      <option
-                        value="5"
-                      >
-                        5
-                      </option>
-                      <option
-                        value="6"
-                      >
-                        6
-                      </option>
-                      <option
-                        value="7"
-                      >
-                        7
-                      </option>
-                      <option
-                        value="8"
-                      >
-                        8
-                      </option>
-                      <option
-                        value="9"
-                      >
-                        9
-                      </option>
-                      <option
-                        value="10"
-                      >
-                        10
-                      </option>
-                    </select>
-                    <button
-                      className="btn btn-success"
-                      disabled={true}
-                      onClick={[Function]}
-                      style={
-                        Object {
-                          "margin": "2px",
-                        }
-                      }
-                    >
-                      <i
-                        className="fa fa-check"
-                      />
-                    </button>
-                  </span>
-                </div>
-              </div>
-              <div
-                className="row"
+                </button>
+              </span>
+            </div>
+          </div>
+          <div
+            className="row"
+            style={
+              Object {
+                "backgroundColor": "#fefefe",
+                "borderColor": "#fdfdfe",
+                "marginBottom": "4px",
+                "marginTop": "4px",
+              }
+            }
+          >
+            <div
+              className="col-2"
+            >
+              Leg byes
+            </div>
+            <div
+              className="col-10"
+            >
+              <span
                 style={
                   Object {
-                    "backgroundColor": "#fefefe",
-                    "borderColor": "#fdfdfe",
-                    "marginBottom": "4px",
-                    "marginTop": "4px",
+                    "display": "inline-block",
+                    "width": "40px",
+                  }
+                }
+              />
+              <button
+                className="btn btn-success"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "margin": "2px",
+                    "minWidth": "36px",
+                    "paddingLeft": "2px",
+                    "paddingRight": "2px",
                   }
                 }
               >
                 <div
-                  className="col-2"
+                  style={
+                    Object {
+                      "borderColor": "#ffffff transparent transparent transparent",
+                      "borderStyle": "solid",
+                      "borderWidth": "20px 14px 0 14px",
+                      "float": "left",
+                      "height": 0,
+                      "width": 0,
+                    }
+                  }
                 >
-                  Wide
-                </div>
-                <div
-                  className="col-10"
-                >
-                  <button
-                    className="btn btn-danger"
-                    onClick={[Function]}
+                  <div
                     style={
                       Object {
-                        "margin": "2px",
-                        "minWidth": "36px",
+                        "borderColor": "#28a745 transparent transparent transparent",
+                        "borderStyle": "solid",
+                        "borderWidth": "18px 12px 0 12px",
+                        "float": "left",
+                        "height": 0,
+                        "marginLeft": "-12px",
+                        "marginTop": "-19px",
+                        "width": 0,
                       }
                     }
                   >
-                    .
-                  </button>
-                  <button
-                    className="btn btn-danger"
-                    onClick={[Function]}
-                    style={
-                      Object {
-                        "margin": "2px",
-                        "minWidth": "36px",
-                      }
-                    }
-                  >
-                    1
-                  </button>
-                  <button
-                    className="btn btn-danger"
-                    onClick={[Function]}
-                    style={
-                      Object {
-                        "margin": "2px",
-                        "minWidth": "36px",
-                      }
-                    }
-                  >
-                    2
-                  </button>
-                  <button
-                    className="btn btn-danger"
-                    onClick={[Function]}
-                    style={
-                      Object {
-                        "margin": "2px",
-                        "minWidth": "36px",
-                      }
-                    }
-                  >
-                    3
-                  </button>
-                  <button
-                    className="btn btn-danger"
-                    onClick={[Function]}
-                    style={
-                      Object {
-                        "margin": "2px",
-                        "minWidth": "36px",
-                      }
-                    }
-                  >
-                    4
-                  </button>
-                  <span
-                    style={
-                      Object {
-                        "whiteSpace": "nowrap",
-                      }
-                    }
-                  >
-                    <select
-                      className="custom-select"
-                      onChange={[Function]}
+                    <div
                       style={
                         Object {
-                          "width": "84px",
-                        }
-                      }
-                      value="other"
-                    >
-                      <option>
-                        other
-                      </option>
-                      <option
-                        value="5"
-                      >
-                        5
-                      </option>
-                      <option
-                        value="6"
-                      >
-                        6
-                      </option>
-                      <option
-                        value="7"
-                      >
-                        7
-                      </option>
-                      <option
-                        value="8"
-                      >
-                        8
-                      </option>
-                      <option
-                        value="9"
-                      >
-                        9
-                      </option>
-                      <option
-                        value="10"
-                      >
-                        10
-                      </option>
-                    </select>
-                    <button
-                      className="btn btn-success"
-                      disabled={true}
-                      onClick={[Function]}
-                      style={
-                        Object {
-                          "margin": "2px",
+                          "marginLeft": "-5px",
+                          "marginTop": "-24px",
                         }
                       }
                     >
-                      <i
-                        className="fa fa-check"
-                      />
-                    </button>
-                  </span>
+                      1
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div
-                className="row"
+              </button>
+              <button
+                className="btn btn-success"
+                onClick={[Function]}
                 style={
                   Object {
-                    "backgroundColor": "#fefefe",
-                    "borderColor": "#fdfdfe",
-                    "marginBottom": "4px",
-                    "marginTop": "4px",
+                    "margin": "2px",
+                    "minWidth": "36px",
+                    "paddingLeft": "2px",
+                    "paddingRight": "2px",
                   }
                 }
               >
                 <div
-                  className="col-2"
-                />
-                <div
-                  className="col-10"
+                  style={
+                    Object {
+                      "borderColor": "#ffffff transparent transparent transparent",
+                      "borderStyle": "solid",
+                      "borderWidth": "20px 14px 0 14px",
+                      "float": "left",
+                      "height": 0,
+                      "width": 0,
+                    }
+                  }
                 >
-                  <a
-                    className="btn btn-success"
-                    href="/match/wicket"
-                    onClick={[Function]}
-                  >
-                    Wicket
-                  </a>
-                  <button
-                    className="btn btn-success"
-                    onClick={[Function]}
+                  <div
                     style={
                       Object {
-                        "margin": "2px",
-                        "minWidth": "36px",
+                        "borderColor": "#28a745 transparent transparent transparent",
+                        "borderStyle": "solid",
+                        "borderWidth": "18px 12px 0 12px",
+                        "float": "left",
+                        "height": 0,
+                        "marginLeft": "-12px",
+                        "marginTop": "-19px",
+                        "width": 0,
                       }
                     }
                   >
-                    complete over
-                  </button>
-                  <button
-                    className="btn btn-success"
-                    onClick={[Function]}
-                    style={
-                      Object {
-                        "margin": "2px",
-                        "minWidth": "36px",
+                    <div
+                      style={
+                        Object {
+                          "marginLeft": "-5px",
+                          "marginTop": "-24px",
+                        }
                       }
-                    }
-                  >
-                    change ends
-                  </button>
-                  <button
-                    className="btn btn-success"
-                    onClick={[Function]}
-                    style={
-                      Object {
-                        "margin": "2px",
-                        "minWidth": "36px",
-                      }
-                    }
-                  >
-                    undo previous
-                  </button>
-                  <button
-                    className="btn btn-success"
-                    onClick={[Function]}
-                    style={
-                      Object {
-                        "margin": "2px",
-                        "minWidth": "36px",
-                      }
-                    }
-                  >
-                    complete innings
-                  </button>
+                    >
+                      2
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </button>
+              <button
+                className="btn btn-success"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "margin": "2px",
+                    "minWidth": "36px",
+                    "paddingLeft": "2px",
+                    "paddingRight": "2px",
+                  }
+                }
+              >
+                <div
+                  style={
+                    Object {
+                      "borderColor": "#ffffff transparent transparent transparent",
+                      "borderStyle": "solid",
+                      "borderWidth": "20px 14px 0 14px",
+                      "float": "left",
+                      "height": 0,
+                      "width": 0,
+                    }
+                  }
+                >
+                  <div
+                    style={
+                      Object {
+                        "borderColor": "#28a745 transparent transparent transparent",
+                        "borderStyle": "solid",
+                        "borderWidth": "18px 12px 0 12px",
+                        "float": "left",
+                        "height": 0,
+                        "marginLeft": "-12px",
+                        "marginTop": "-19px",
+                        "width": 0,
+                      }
+                    }
+                  >
+                    <div
+                      style={
+                        Object {
+                          "marginLeft": "-5px",
+                          "marginTop": "-24px",
+                        }
+                      }
+                    >
+                      3
+                    </div>
+                  </div>
+                </div>
+              </button>
+              <button
+                className="btn btn-success"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "margin": "2px",
+                    "minWidth": "36px",
+                    "paddingLeft": "2px",
+                    "paddingRight": "2px",
+                  }
+                }
+              >
+                <div
+                  style={
+                    Object {
+                      "borderColor": "#ffffff transparent transparent transparent",
+                      "borderStyle": "solid",
+                      "borderWidth": "20px 14px 0 14px",
+                      "float": "left",
+                      "height": 0,
+                      "width": 0,
+                    }
+                  }
+                >
+                  <div
+                    style={
+                      Object {
+                        "borderColor": "#28a745 transparent transparent transparent",
+                        "borderStyle": "solid",
+                        "borderWidth": "18px 12px 0 12px",
+                        "float": "left",
+                        "height": 0,
+                        "marginLeft": "-12px",
+                        "marginTop": "-19px",
+                        "width": 0,
+                      }
+                    }
+                  >
+                    <div
+                      style={
+                        Object {
+                          "marginLeft": "-5px",
+                          "marginTop": "-24px",
+                        }
+                      }
+                    >
+                      4
+                    </div>
+                  </div>
+                </div>
+              </button>
+              <span
+                style={
+                  Object {
+                    "whiteSpace": "nowrap",
+                  }
+                }
+              >
+                <select
+                  className="custom-select"
+                  onChange={[Function]}
+                  style={
+                    Object {
+                      "width": "84px",
+                    }
+                  }
+                  value="other"
+                >
+                  <option>
+                    other
+                  </option>
+                  <option
+                    value="5"
+                  >
+                    5
+                  </option>
+                  <option
+                    value="6"
+                  >
+                    6
+                  </option>
+                  <option
+                    value="7"
+                  >
+                    7
+                  </option>
+                  <option
+                    value="8"
+                  >
+                    8
+                  </option>
+                  <option
+                    value="9"
+                  >
+                    9
+                  </option>
+                  <option
+                    value="10"
+                  >
+                    10
+                  </option>
+                </select>
+                <button
+                  className="btn btn-success"
+                  disabled={true}
+                  onClick={[Function]}
+                  style={
+                    Object {
+                      "margin": "2px",
+                    }
+                  }
+                >
+                  <i
+                    className="fa fa-check"
+                  />
+                </button>
+              </span>
+            </div>
+          </div>
+          <div
+            className="row"
+            style={
+              Object {
+                "backgroundColor": "#fefefe",
+                "borderColor": "#fdfdfe",
+                "marginBottom": "4px",
+                "marginTop": "4px",
+              }
+            }
+          >
+            <div
+              className="col-2"
+            >
+              Wide
+            </div>
+            <div
+              className="col-10"
+            >
+              <button
+                className="btn btn-danger"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "margin": "2px",
+                    "minWidth": "36px",
+                  }
+                }
+              >
+                .
+              </button>
+              <button
+                className="btn btn-danger"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "margin": "2px",
+                    "minWidth": "36px",
+                  }
+                }
+              >
+                1
+              </button>
+              <button
+                className="btn btn-danger"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "margin": "2px",
+                    "minWidth": "36px",
+                  }
+                }
+              >
+                2
+              </button>
+              <button
+                className="btn btn-danger"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "margin": "2px",
+                    "minWidth": "36px",
+                  }
+                }
+              >
+                3
+              </button>
+              <button
+                className="btn btn-danger"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "margin": "2px",
+                    "minWidth": "36px",
+                  }
+                }
+              >
+                4
+              </button>
+              <span
+                style={
+                  Object {
+                    "whiteSpace": "nowrap",
+                  }
+                }
+              >
+                <select
+                  className="custom-select"
+                  onChange={[Function]}
+                  style={
+                    Object {
+                      "width": "84px",
+                    }
+                  }
+                  value="other"
+                >
+                  <option>
+                    other
+                  </option>
+                  <option
+                    value="5"
+                  >
+                    5
+                  </option>
+                  <option
+                    value="6"
+                  >
+                    6
+                  </option>
+                  <option
+                    value="7"
+                  >
+                    7
+                  </option>
+                  <option
+                    value="8"
+                  >
+                    8
+                  </option>
+                  <option
+                    value="9"
+                  >
+                    9
+                  </option>
+                  <option
+                    value="10"
+                  >
+                    10
+                  </option>
+                </select>
+                <button
+                  className="btn btn-success"
+                  disabled={true}
+                  onClick={[Function]}
+                  style={
+                    Object {
+                      "margin": "2px",
+                    }
+                  }
+                >
+                  <i
+                    className="fa fa-check"
+                  />
+                </button>
+              </span>
+            </div>
+          </div>
+          <div
+            className="row"
+            style={
+              Object {
+                "backgroundColor": "#fefefe",
+                "borderColor": "#fdfdfe",
+                "marginBottom": "4px",
+                "marginTop": "4px",
+              }
+            }
+          >
+            <div
+              className="col-2"
+            />
+            <div
+              className="col-10"
+            >
+              <a
+                className="btn btn-success"
+                href="/match/wicket"
+                onClick={[Function]}
+              >
+                Wicket
+              </a>
+              <button
+                className="btn btn-success"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "margin": "2px",
+                    "minWidth": "36px",
+                  }
+                }
+              >
+                complete over
+              </button>
+              <button
+                className="btn btn-success"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "margin": "2px",
+                    "minWidth": "36px",
+                  }
+                }
+              >
+                change ends
+              </button>
+              <button
+                className="btn btn-success"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "margin": "2px",
+                    "minWidth": "36px",
+                  }
+                }
+              >
+                undo previous
+              </button>
+              <button
+                className="btn btn-success"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "margin": "2px",
+                    "minWidth": "36px",
+                  }
+                }
+              >
+                complete innings
+              </button>
             </div>
           </div>
         </div>
       </div>
-      <div>
+    </div>
+  </div>
+  <div>
+    <div
+      className="row"
+    >
+      <div
+        className="col-12"
+        style={
+          Object {
+            "textAlign": "center",
+          }
+        }
+      >
+        <h5>
+          Team 1 0-0
+        </h5>
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="col-xl-8 col-lg-12"
+      >
         <div
-          className="row"
+          style={
+            Object {
+              "marginBottom": "10px",
+              "padding": "20px",
+              "width": "100%",
+            }
+          }
         >
           <div
-            className="col-12"
+            className="row"
             style={
               Object {
-                "textAlign": "center",
+                "backgroundColor": "rgb(233, 236, 239)",
+                "paddingTop": "4px",
               }
             }
           >
-            <h5>
-              Team 1 0-0
-            </h5>
+            <div
+              className="col-10 col-md-7"
+            >
+              <h6>
+                Batsman
+              </h6>
+            </div>
+            <div
+              className="col-2 col-md-1"
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <h6>
+                Runs
+              </h6>
+            </div>
+            <div
+              className="col-1 d-none d-md-block"
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <h6>
+                Balls
+              </h6>
+            </div>
+            <div
+              className="col-1 d-none d-md-block"
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <h6>
+                Mins
+              </h6>
+            </div>
+            <div
+              className="col-1 d-none d-md-block"
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <h6>
+                4s
+              </h6>
+            </div>
+            <div
+              className="col-1 d-none d-md-block"
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <h6>
+                6s
+              </h6>
+            </div>
+          </div>
+          <div
+            className="row"
+            style={
+              Object {
+                "borderBottom": "1px solid rgb(233, 236, 239)",
+                "fontSize": "14px",
+                "marginTop": "8px",
+                "paddingBottom": "4px",
+              }
+            }
+          >
+            <div
+              className="col-4 col-md-3"
+            >
+              Player 1
+            </div>
+            <div
+              className="col-6 col-md-4"
+            >
+              not out
+            </div>
+            <div
+              className="col-2 col-md-1"
+              style={
+                Object {
+                  "fontWeight": "bold",
+                  "textAlign": "right",
+                }
+              }
+            >
+              0
+            </div>
+            <div
+              className="col-2 col-md-1 d-none d-md-block"
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              0
+            </div>
+            <div
+              className="col-2 col-md-1 d-none d-md-block"
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              0
+            </div>
+            <div
+              className="col-2 col-md-1 d-none d-md-block"
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              0
+            </div>
+            <div
+              className="col-2 col-md-1 d-none d-md-block"
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              0
+            </div>
+            <div
+              className="d-block d-md-none col-4"
+            />
+            <div
+              className="d-block d-md-none col-8"
+              style={
+                Object {
+                  "fontSize": "10px",
+                }
+              }
+            >
+              0 balls, 0 4s, 0 6s
+            </div>
+          </div>
+          <div
+            className="row"
+            style={
+              Object {
+                "borderBottom": "1px solid rgb(233, 236, 239)",
+                "fontSize": "14px",
+                "marginTop": "8px",
+                "paddingBottom": "4px",
+              }
+            }
+          >
+            <div
+              className="col-4 col-md-3"
+            >
+              Player 2
+            </div>
+            <div
+              className="col-6 col-md-4"
+            >
+              not out
+            </div>
+            <div
+              className="col-2 col-md-1"
+              style={
+                Object {
+                  "fontWeight": "bold",
+                  "textAlign": "right",
+                }
+              }
+            >
+              0
+            </div>
+            <div
+              className="col-2 col-md-1 d-none d-md-block"
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              0
+            </div>
+            <div
+              className="col-2 col-md-1 d-none d-md-block"
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              0
+            </div>
+            <div
+              className="col-2 col-md-1 d-none d-md-block"
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              0
+            </div>
+            <div
+              className="col-2 col-md-1 d-none d-md-block"
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              0
+            </div>
+            <div
+              className="d-block d-md-none col-4"
+            />
+            <div
+              className="d-block d-md-none col-8"
+              style={
+                Object {
+                  "fontSize": "10px",
+                }
+              }
+            >
+              0 balls, 0 4s, 0 6s
+            </div>
+          </div>
+          <div
+            className="row"
+            style={
+              Object {
+                "borderBottom": "1px solid rgb(233, 236, 239)",
+                "fontSize": "14px",
+                "marginTop": "8px",
+                "paddingBottom": "4px",
+              }
+            }
+          >
+            <div
+              className="col-4 col-md-3"
+            >
+              Extras
+            </div>
+            <div
+              className="col-6 col-md-4"
+            >
+              0nb 0wd 0b 0lb
+            </div>
+            <div
+              className="col-2 col-md-1"
+              style={
+                Object {
+                  "fontWeight": "bold",
+                  "textAlign": "right",
+                }
+              }
+            >
+              0
+            </div>
+          </div>
+          <div
+            className="row"
+            style={
+              Object {
+                "backgroundColor": "rgb(233, 236, 239)",
+                "fontSize": "14px",
+                "paddingBottom": "4px",
+                "paddingTop": "4px",
+              }
+            }
+          >
+            <div
+              className="col-4 col-md-3"
+            >
+              Total
+            </div>
+            <div
+              className="col-6 col-md-4"
+            >
+              (0 wickets) (0 overs)
+            </div>
+            <div
+              className="col-2 col-md-1"
+              style={
+                Object {
+                  "fontWeight": "bold",
+                  "textAlign": "right",
+                }
+              }
+            >
+              0
+            </div>
           </div>
         </div>
+      </div>
+      <div
+        className="col-xl-4 col-lg-12"
+      >
         <div
-          className="row"
+          style={
+            Object {
+              "marginBottom": "10px",
+              "padding": "20px",
+              "width": "100%",
+            }
+          }
         >
           <div
-            className="col-xl-8 col-lg-12"
+            className="row"
+            style={
+              Object {
+                "backgroundColor": "rgb(233, 236, 239)",
+                "paddingLeft": "8px",
+                "paddingTop": "4px",
+              }
+            }
+          >
+            <h6>
+              Fall of wickets
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="col-xl-8 col-lg-12"
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": "10px",
+              "padding": "20px",
+              "width": "100%",
+            }
+          }
+        >
+          <div
+            className="row"
+          >
+            <h6>
+              Team 2
+               bowling
+            </h6>
+          </div>
+          <div
+            className="row"
+            style={
+              Object {
+                "backgroundColor": "rgb(233, 236, 239)",
+                "paddingTop": "4px",
+              }
+            }
           >
             <div
+              className="col-6 col-md-5"
+            />
+            <div
+              className="col-2"
               style={
                 Object {
-                  "marginBottom": "10px",
-                  "padding": "20px",
-                  "width": "100%",
+                  "textAlign": "center",
                 }
               }
             >
-              <div
-                className="row"
-                style={
-                  Object {
-                    "backgroundColor": "rgb(233, 236, 239)",
-                    "paddingTop": "4px",
-                  }
+              <h6>
+                Overs
+              </h6>
+            </div>
+            <div
+              className="col-2 d-none d-md-block"
+              style={
+                Object {
+                  "textAlign": "center",
                 }
-              >
-                <div
-                  className="col-10 col-md-7"
-                >
-                  <h6>
-                    Batsman
-                  </h6>
-                </div>
-                <div
-                  className="col-2 col-md-1"
-                  style={
-                    Object {
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  <h6>
-                    Runs
-                  </h6>
-                </div>
-                <div
-                  className="col-1 d-none d-md-block"
-                  style={
-                    Object {
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  <h6>
-                    Balls
-                  </h6>
-                </div>
-                <div
-                  className="col-1 d-none d-md-block"
-                  style={
-                    Object {
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  <h6>
-                    Mins
-                  </h6>
-                </div>
-                <div
-                  className="col-1 d-none d-md-block"
-                  style={
-                    Object {
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  <h6>
-                    4s
-                  </h6>
-                </div>
-                <div
-                  className="col-1 d-none d-md-block"
-                  style={
-                    Object {
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  <h6>
-                    6s
-                  </h6>
-                </div>
-              </div>
-              <div
-                className="row"
-                style={
-                  Object {
-                    "borderBottom": "1px solid rgb(233, 236, 239)",
-                    "fontSize": "14px",
-                    "marginTop": "8px",
-                    "paddingBottom": "4px",
-                  }
+              }
+            >
+              <h6>
+                Maidens
+              </h6>
+            </div>
+            <div
+              className="col-2"
+              style={
+                Object {
+                  "textAlign": "center",
                 }
-              >
-                <div
-                  className="col-4 col-md-3"
-                >
-                  Player 1
-                </div>
-                <div
-                  className="col-6 col-md-4"
-                >
-                  not out
-                </div>
-                <div
-                  className="col-2 col-md-1"
-                  style={
-                    Object {
-                      "fontWeight": "bold",
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  0
-                </div>
-                <div
-                  className="col-2 col-md-1 d-none d-md-block"
-                  style={
-                    Object {
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  0
-                </div>
-                <div
-                  className="col-2 col-md-1 d-none d-md-block"
-                  style={
-                    Object {
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  0
-                </div>
-                <div
-                  className="col-2 col-md-1 d-none d-md-block"
-                  style={
-                    Object {
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  0
-                </div>
-                <div
-                  className="col-2 col-md-1 d-none d-md-block"
-                  style={
-                    Object {
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  0
-                </div>
-                <div
-                  className="d-block d-md-none col-4"
-                />
-                <div
-                  className="d-block d-md-none col-8"
-                  style={
-                    Object {
-                      "fontSize": "10px",
-                    }
-                  }
-                >
-                  0 balls, 0 4s, 0 6s
-                </div>
-              </div>
-              <div
-                className="row"
-                style={
-                  Object {
-                    "borderBottom": "1px solid rgb(233, 236, 239)",
-                    "fontSize": "14px",
-                    "marginTop": "8px",
-                    "paddingBottom": "4px",
-                  }
+              }
+            >
+              <h6>
+                Runs
+              </h6>
+            </div>
+            <div
+              className="col-2 col-md-1"
+              style={
+                Object {
+                  "textAlign": "center",
                 }
-              >
-                <div
-                  className="col-4 col-md-3"
-                >
-                  Player 2
-                </div>
-                <div
-                  className="col-6 col-md-4"
-                >
-                  not out
-                </div>
-                <div
-                  className="col-2 col-md-1"
-                  style={
-                    Object {
-                      "fontWeight": "bold",
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  0
-                </div>
-                <div
-                  className="col-2 col-md-1 d-none d-md-block"
-                  style={
-                    Object {
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  0
-                </div>
-                <div
-                  className="col-2 col-md-1 d-none d-md-block"
-                  style={
-                    Object {
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  0
-                </div>
-                <div
-                  className="col-2 col-md-1 d-none d-md-block"
-                  style={
-                    Object {
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  0
-                </div>
-                <div
-                  className="col-2 col-md-1 d-none d-md-block"
-                  style={
-                    Object {
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  0
-                </div>
-                <div
-                  className="d-block d-md-none col-4"
-                />
-                <div
-                  className="d-block d-md-none col-8"
-                  style={
-                    Object {
-                      "fontSize": "10px",
-                    }
-                  }
-                >
-                  0 balls, 0 4s, 0 6s
-                </div>
-              </div>
-              <div
-                className="row"
-                style={
-                  Object {
-                    "borderBottom": "1px solid rgb(233, 236, 239)",
-                    "fontSize": "14px",
-                    "marginTop": "8px",
-                    "paddingBottom": "4px",
-                  }
-                }
-              >
-                <div
-                  className="col-4 col-md-3"
-                >
-                  Extras
-                </div>
-                <div
-                  className="col-6 col-md-4"
-                >
-                  0nb 0wd 0b 0lb
-                </div>
-                <div
-                  className="col-2 col-md-1"
-                  style={
-                    Object {
-                      "fontWeight": "bold",
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  0
-                </div>
-              </div>
-              <div
-                className="row"
-                style={
-                  Object {
-                    "backgroundColor": "rgb(233, 236, 239)",
-                    "fontSize": "14px",
-                    "paddingBottom": "4px",
-                    "paddingTop": "4px",
-                  }
-                }
-              >
-                <div
-                  className="col-4 col-md-3"
-                >
-                  Total
-                </div>
-                <div
-                  className="col-6 col-md-4"
-                >
-                  (0 wickets) (0 overs)
-                </div>
-                <div
-                  className="col-2 col-md-1"
-                  style={
-                    Object {
-                      "fontWeight": "bold",
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  0
-                </div>
-              </div>
+              }
+            >
+              <h6>
+                Wkts
+              </h6>
             </div>
           </div>
           <div
-            className="col-xl-4 col-lg-12"
+            className="row"
           >
             <div
-              style={
-                Object {
-                  "marginBottom": "10px",
-                  "padding": "20px",
-                  "width": "100%",
-                }
-              }
+              className="col-6 col-md-5"
             >
-              <div
-                className="row"
-                style={
-                  Object {
-                    "backgroundColor": "rgb(233, 236, 239)",
-                    "paddingLeft": "8px",
-                    "paddingTop": "4px",
-                  }
-                }
-              >
-                <h6>
-                  Fall of wickets
-                </h6>
-              </div>
+              Player 22
             </div>
-          </div>
-          <div
-            className="col-xl-8 col-lg-12"
-          >
             <div
+              className="col-2"
               style={
                 Object {
-                  "marginBottom": "10px",
-                  "padding": "20px",
-                  "width": "100%",
+                  "textAlign": "center",
                 }
               }
             >
-              <div
-                className="row"
-              >
-                <h6>
-                  Team 2
-                   bowling
-                </h6>
-              </div>
-              <div
-                className="row"
-                style={
-                  Object {
-                    "backgroundColor": "rgb(233, 236, 239)",
-                    "paddingTop": "4px",
-                  }
+              0
+            </div>
+            <div
+              className="col-2 d-none d-md-block"
+              style={
+                Object {
+                  "textAlign": "center",
                 }
-              >
-                <div
-                  className="col-6 col-md-5"
-                />
-                <div
-                  className="col-2"
-                  style={
-                    Object {
-                      "textAlign": "center",
-                    }
-                  }
-                >
-                  <h6>
-                    Overs
-                  </h6>
-                </div>
-                <div
-                  className="col-2 d-none d-md-block"
-                  style={
-                    Object {
-                      "textAlign": "center",
-                    }
-                  }
-                >
-                  <h6>
-                    Maidens
-                  </h6>
-                </div>
-                <div
-                  className="col-2"
-                  style={
-                    Object {
-                      "textAlign": "center",
-                    }
-                  }
-                >
-                  <h6>
-                    Runs
-                  </h6>
-                </div>
-                <div
-                  className="col-2 col-md-1"
-                  style={
-                    Object {
-                      "textAlign": "center",
-                    }
-                  }
-                >
-                  <h6>
-                    Wkts
-                  </h6>
-                </div>
-              </div>
-              <div
-                className="row"
-              >
-                <div
-                  className="col-6 col-md-5"
-                >
-                  Player 22
-                </div>
-                <div
-                  className="col-2"
-                  style={
-                    Object {
-                      "textAlign": "center",
-                    }
-                  }
-                >
-                  0
-                </div>
-                <div
-                  className="col-2 d-none d-md-block"
-                  style={
-                    Object {
-                      "textAlign": "center",
-                    }
-                  }
-                >
-                  0
-                </div>
-                <div
-                  className="col-2"
-                  style={
-                    Object {
-                      "textAlign": "center",
-                    }
-                  }
-                >
-                  0
-                </div>
-                <div
-                  className="col-2 col-md-1"
-                  style={
-                    Object {
-                      "textAlign": "center",
-                    }
-                  }
-                >
-                  0
-                </div>
-              </div>
+              }
+            >
+              0
+            </div>
+            <div
+              className="col-2"
+              style={
+                Object {
+                  "textAlign": "center",
+                }
+              }
+            >
+              0
+            </div>
+            <div
+              className="col-2 col-md-1"
+              style={
+                Object {
+                  "textAlign": "center",
+                }
+              }
+            >
+              0
             </div>
           </div>
         </div>
@@ -1775,370 +1738,294 @@ exports[`InProgress should render correctly for match during an over 1`] = `
 </div>
 `;
 
-exports[`InProgress should render correctly for match that has not started 1`] = `
-<div
-  style={
-    Object {
-      "display": "flex",
-      "flexDirection": "column",
-      "height": "100vh",
-    }
-  }
->
-  <nav
-    className="navbar navbar-dark bg-primary"
-  >
-    <a
-      className="navbar-brand"
-      href="#"
-    >
-      Cricket scores live
-    </a>
-    <button
-      className="btn btn-outline-light"
-      onClick={undefined}
-    >
-      Register or login
-    </button>
-  </nav>
-  <div
-    style={
-      Object {
-        "flex": "1",
-        "marginTop": "8px",
-        "overflowX": "hidden",
-        "overflowY": "auto",
-      }
-    }
-  >
-    <div />
-  </div>
-</div>
-`;
+exports[`InProgress should render correctly for match that has not started 1`] = `<div />`;
 
 exports[`InProgress should render correctly for match with started innings 1`] = `
-<div
-  style={
-    Object {
-      "display": "flex",
-      "flexDirection": "column",
-      "height": "100vh",
-    }
-  }
->
-  <nav
-    className="navbar navbar-dark bg-primary"
-  >
-    <a
-      className="navbar-brand"
-      href="#"
+<div>
+  <div>
+    <div
+      className="row"
     >
-      Cricket scores live
-    </a>
-    <button
-      className="btn btn-outline-light"
-      onClick={undefined}
+      <div
+        className="col-12"
+        style={
+          Object {
+            "textAlign": "center",
+          }
+        }
+      >
+        <h5>
+          Team 1 0-0
+        </h5>
+      </div>
+    </div>
+    <div
+      className="row"
     >
-      Register or login
-    </button>
-  </nav>
-  <div
-    style={
-      Object {
-        "flex": "1",
-        "marginTop": "8px",
-        "overflowX": "hidden",
-        "overflowY": "auto",
-      }
-    }
-  >
-    <div>
-      <div>
+      <div
+        className="col-xl-8 col-lg-12"
+      >
         <div
-          className="row"
+          style={
+            Object {
+              "marginBottom": "10px",
+              "padding": "20px",
+              "width": "100%",
+            }
+          }
         >
           <div
-            className="col-12"
+            className="row"
             style={
               Object {
-                "textAlign": "center",
+                "backgroundColor": "rgb(233, 236, 239)",
+                "paddingTop": "4px",
               }
             }
           >
-            <h5>
-              Team 1 0-0
-            </h5>
+            <div
+              className="col-10 col-md-7"
+            >
+              <h6>
+                Batsman
+              </h6>
+            </div>
+            <div
+              className="col-2 col-md-1"
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <h6>
+                Runs
+              </h6>
+            </div>
+            <div
+              className="col-1 d-none d-md-block"
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <h6>
+                Balls
+              </h6>
+            </div>
+            <div
+              className="col-1 d-none d-md-block"
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <h6>
+                Mins
+              </h6>
+            </div>
+            <div
+              className="col-1 d-none d-md-block"
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <h6>
+                4s
+              </h6>
+            </div>
+            <div
+              className="col-1 d-none d-md-block"
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <h6>
+                6s
+              </h6>
+            </div>
+          </div>
+          <div
+            className="row"
+            style={
+              Object {
+                "borderBottom": "1px solid rgb(233, 236, 239)",
+                "fontSize": "14px",
+                "marginTop": "8px",
+                "paddingBottom": "4px",
+              }
+            }
+          >
+            <div
+              className="col-4 col-md-3"
+            >
+              Extras
+            </div>
+            <div
+              className="col-6 col-md-4"
+            >
+              0nb 0wd 0b 0lb
+            </div>
+            <div
+              className="col-2 col-md-1"
+              style={
+                Object {
+                  "fontWeight": "bold",
+                  "textAlign": "right",
+                }
+              }
+            >
+              0
+            </div>
+          </div>
+          <div
+            className="row"
+            style={
+              Object {
+                "backgroundColor": "rgb(233, 236, 239)",
+                "fontSize": "14px",
+                "paddingBottom": "4px",
+                "paddingTop": "4px",
+              }
+            }
+          >
+            <div
+              className="col-4 col-md-3"
+            >
+              Total
+            </div>
+            <div
+              className="col-6 col-md-4"
+            >
+              (0 wickets) (0 overs)
+            </div>
+            <div
+              className="col-2 col-md-1"
+              style={
+                Object {
+                  "fontWeight": "bold",
+                  "textAlign": "right",
+                }
+              }
+            >
+              0
+            </div>
           </div>
         </div>
+      </div>
+      <div
+        className="col-xl-4 col-lg-12"
+      >
         <div
-          className="row"
+          style={
+            Object {
+              "marginBottom": "10px",
+              "padding": "20px",
+              "width": "100%",
+            }
+          }
         >
           <div
-            className="col-xl-8 col-lg-12"
-          >
-            <div
-              style={
-                Object {
-                  "marginBottom": "10px",
-                  "padding": "20px",
-                  "width": "100%",
-                }
+            className="row"
+            style={
+              Object {
+                "backgroundColor": "rgb(233, 236, 239)",
+                "paddingLeft": "8px",
+                "paddingTop": "4px",
               }
-            >
-              <div
-                className="row"
-                style={
-                  Object {
-                    "backgroundColor": "rgb(233, 236, 239)",
-                    "paddingTop": "4px",
-                  }
-                }
-              >
-                <div
-                  className="col-10 col-md-7"
-                >
-                  <h6>
-                    Batsman
-                  </h6>
-                </div>
-                <div
-                  className="col-2 col-md-1"
-                  style={
-                    Object {
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  <h6>
-                    Runs
-                  </h6>
-                </div>
-                <div
-                  className="col-1 d-none d-md-block"
-                  style={
-                    Object {
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  <h6>
-                    Balls
-                  </h6>
-                </div>
-                <div
-                  className="col-1 d-none d-md-block"
-                  style={
-                    Object {
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  <h6>
-                    Mins
-                  </h6>
-                </div>
-                <div
-                  className="col-1 d-none d-md-block"
-                  style={
-                    Object {
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  <h6>
-                    4s
-                  </h6>
-                </div>
-                <div
-                  className="col-1 d-none d-md-block"
-                  style={
-                    Object {
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  <h6>
-                    6s
-                  </h6>
-                </div>
-              </div>
-              <div
-                className="row"
-                style={
-                  Object {
-                    "borderBottom": "1px solid rgb(233, 236, 239)",
-                    "fontSize": "14px",
-                    "marginTop": "8px",
-                    "paddingBottom": "4px",
-                  }
-                }
-              >
-                <div
-                  className="col-4 col-md-3"
-                >
-                  Extras
-                </div>
-                <div
-                  className="col-6 col-md-4"
-                >
-                  0nb 0wd 0b 0lb
-                </div>
-                <div
-                  className="col-2 col-md-1"
-                  style={
-                    Object {
-                      "fontWeight": "bold",
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  0
-                </div>
-              </div>
-              <div
-                className="row"
-                style={
-                  Object {
-                    "backgroundColor": "rgb(233, 236, 239)",
-                    "fontSize": "14px",
-                    "paddingBottom": "4px",
-                    "paddingTop": "4px",
-                  }
-                }
-              >
-                <div
-                  className="col-4 col-md-3"
-                >
-                  Total
-                </div>
-                <div
-                  className="col-6 col-md-4"
-                >
-                  (0 wickets) (0 overs)
-                </div>
-                <div
-                  className="col-2 col-md-1"
-                  style={
-                    Object {
-                      "fontWeight": "bold",
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  0
-                </div>
-              </div>
-            </div>
+            }
+          >
+            <h6>
+              Fall of wickets
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="col-xl-8 col-lg-12"
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": "10px",
+              "padding": "20px",
+              "width": "100%",
+            }
+          }
+        >
+          <div
+            className="row"
+          >
+            <h6>
+              Team 2
+               bowling
+            </h6>
           </div>
           <div
-            className="col-xl-4 col-lg-12"
+            className="row"
+            style={
+              Object {
+                "backgroundColor": "rgb(233, 236, 239)",
+                "paddingTop": "4px",
+              }
+            }
           >
             <div
+              className="col-6 col-md-5"
+            />
+            <div
+              className="col-2"
               style={
                 Object {
-                  "marginBottom": "10px",
-                  "padding": "20px",
-                  "width": "100%",
+                  "textAlign": "center",
                 }
               }
             >
-              <div
-                className="row"
-                style={
-                  Object {
-                    "backgroundColor": "rgb(233, 236, 239)",
-                    "paddingLeft": "8px",
-                    "paddingTop": "4px",
-                  }
-                }
-              >
-                <h6>
-                  Fall of wickets
-                </h6>
-              </div>
+              <h6>
+                Overs
+              </h6>
             </div>
-          </div>
-          <div
-            className="col-xl-8 col-lg-12"
-          >
             <div
+              className="col-2 d-none d-md-block"
               style={
                 Object {
-                  "marginBottom": "10px",
-                  "padding": "20px",
-                  "width": "100%",
+                  "textAlign": "center",
                 }
               }
             >
-              <div
-                className="row"
-              >
-                <h6>
-                  Team 2
-                   bowling
-                </h6>
-              </div>
-              <div
-                className="row"
-                style={
-                  Object {
-                    "backgroundColor": "rgb(233, 236, 239)",
-                    "paddingTop": "4px",
-                  }
+              <h6>
+                Maidens
+              </h6>
+            </div>
+            <div
+              className="col-2"
+              style={
+                Object {
+                  "textAlign": "center",
                 }
-              >
-                <div
-                  className="col-6 col-md-5"
-                />
-                <div
-                  className="col-2"
-                  style={
-                    Object {
-                      "textAlign": "center",
-                    }
-                  }
-                >
-                  <h6>
-                    Overs
-                  </h6>
-                </div>
-                <div
-                  className="col-2 d-none d-md-block"
-                  style={
-                    Object {
-                      "textAlign": "center",
-                    }
-                  }
-                >
-                  <h6>
-                    Maidens
-                  </h6>
-                </div>
-                <div
-                  className="col-2"
-                  style={
-                    Object {
-                      "textAlign": "center",
-                    }
-                  }
-                >
-                  <h6>
-                    Runs
-                  </h6>
-                </div>
-                <div
-                  className="col-2 col-md-1"
-                  style={
-                    Object {
-                      "textAlign": "center",
-                    }
-                  }
-                >
-                  <h6>
-                    Wkts
-                  </h6>
-                </div>
-              </div>
+              }
+            >
+              <h6>
+                Runs
+              </h6>
+            </div>
+            <div
+              className="col-2 col-md-1"
+              style={
+                Object {
+                  "textAlign": "center",
+                }
+              }
+            >
+              <h6>
+                Wkts
+              </h6>
             </div>
           </div>
         </div>
@@ -2148,370 +2035,294 @@ exports[`InProgress should render correctly for match with started innings 1`] =
 </div>
 `;
 
-exports[`InProgress should render correctly when no match 1`] = `
-<div
-  style={
-    Object {
-      "display": "flex",
-      "flexDirection": "column",
-      "height": "100vh",
-    }
-  }
->
-  <nav
-    className="navbar navbar-dark bg-primary"
-  >
-    <a
-      className="navbar-brand"
-      href="#"
-    >
-      Cricket scores live
-    </a>
-    <button
-      className="btn btn-outline-light"
-      onClick={undefined}
-    >
-      Register or login
-    </button>
-  </nav>
-  <div
-    style={
-      Object {
-        "flex": "1",
-        "marginTop": "8px",
-        "overflowX": "hidden",
-        "overflowY": "auto",
-      }
-    }
-  >
-    <div />
-  </div>
-</div>
-`;
+exports[`InProgress should render correctly when no match 1`] = `<div />`;
 
 exports[`InProgress should render correctly when there is a previous bowler 1`] = `
-<div
-  style={
-    Object {
-      "display": "flex",
-      "flexDirection": "column",
-      "height": "100vh",
-    }
-  }
->
-  <nav
-    className="navbar navbar-dark bg-primary"
-  >
-    <a
-      className="navbar-brand"
-      href="#"
+<div>
+  <div>
+    <div
+      className="row"
     >
-      Cricket scores live
-    </a>
-    <button
-      className="btn btn-outline-light"
-      onClick={undefined}
+      <div
+        className="col-12"
+        style={
+          Object {
+            "textAlign": "center",
+          }
+        }
+      >
+        <h5>
+          Team 1 0-0
+        </h5>
+      </div>
+    </div>
+    <div
+      className="row"
     >
-      Register or login
-    </button>
-  </nav>
-  <div
-    style={
-      Object {
-        "flex": "1",
-        "marginTop": "8px",
-        "overflowX": "hidden",
-        "overflowY": "auto",
-      }
-    }
-  >
-    <div>
-      <div>
+      <div
+        className="col-xl-8 col-lg-12"
+      >
         <div
-          className="row"
+          style={
+            Object {
+              "marginBottom": "10px",
+              "padding": "20px",
+              "width": "100%",
+            }
+          }
         >
           <div
-            className="col-12"
+            className="row"
             style={
               Object {
-                "textAlign": "center",
+                "backgroundColor": "rgb(233, 236, 239)",
+                "paddingTop": "4px",
               }
             }
           >
-            <h5>
-              Team 1 0-0
-            </h5>
+            <div
+              className="col-10 col-md-7"
+            >
+              <h6>
+                Batsman
+              </h6>
+            </div>
+            <div
+              className="col-2 col-md-1"
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <h6>
+                Runs
+              </h6>
+            </div>
+            <div
+              className="col-1 d-none d-md-block"
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <h6>
+                Balls
+              </h6>
+            </div>
+            <div
+              className="col-1 d-none d-md-block"
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <h6>
+                Mins
+              </h6>
+            </div>
+            <div
+              className="col-1 d-none d-md-block"
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <h6>
+                4s
+              </h6>
+            </div>
+            <div
+              className="col-1 d-none d-md-block"
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <h6>
+                6s
+              </h6>
+            </div>
+          </div>
+          <div
+            className="row"
+            style={
+              Object {
+                "borderBottom": "1px solid rgb(233, 236, 239)",
+                "fontSize": "14px",
+                "marginTop": "8px",
+                "paddingBottom": "4px",
+              }
+            }
+          >
+            <div
+              className="col-4 col-md-3"
+            >
+              Extras
+            </div>
+            <div
+              className="col-6 col-md-4"
+            >
+              0nb 0wd 0b 0lb
+            </div>
+            <div
+              className="col-2 col-md-1"
+              style={
+                Object {
+                  "fontWeight": "bold",
+                  "textAlign": "right",
+                }
+              }
+            >
+              0
+            </div>
+          </div>
+          <div
+            className="row"
+            style={
+              Object {
+                "backgroundColor": "rgb(233, 236, 239)",
+                "fontSize": "14px",
+                "paddingBottom": "4px",
+                "paddingTop": "4px",
+              }
+            }
+          >
+            <div
+              className="col-4 col-md-3"
+            >
+              Total
+            </div>
+            <div
+              className="col-6 col-md-4"
+            >
+              (0 wickets) (0 overs)
+            </div>
+            <div
+              className="col-2 col-md-1"
+              style={
+                Object {
+                  "fontWeight": "bold",
+                  "textAlign": "right",
+                }
+              }
+            >
+              0
+            </div>
           </div>
         </div>
+      </div>
+      <div
+        className="col-xl-4 col-lg-12"
+      >
         <div
-          className="row"
+          style={
+            Object {
+              "marginBottom": "10px",
+              "padding": "20px",
+              "width": "100%",
+            }
+          }
         >
           <div
-            className="col-xl-8 col-lg-12"
-          >
-            <div
-              style={
-                Object {
-                  "marginBottom": "10px",
-                  "padding": "20px",
-                  "width": "100%",
-                }
+            className="row"
+            style={
+              Object {
+                "backgroundColor": "rgb(233, 236, 239)",
+                "paddingLeft": "8px",
+                "paddingTop": "4px",
               }
-            >
-              <div
-                className="row"
-                style={
-                  Object {
-                    "backgroundColor": "rgb(233, 236, 239)",
-                    "paddingTop": "4px",
-                  }
-                }
-              >
-                <div
-                  className="col-10 col-md-7"
-                >
-                  <h6>
-                    Batsman
-                  </h6>
-                </div>
-                <div
-                  className="col-2 col-md-1"
-                  style={
-                    Object {
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  <h6>
-                    Runs
-                  </h6>
-                </div>
-                <div
-                  className="col-1 d-none d-md-block"
-                  style={
-                    Object {
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  <h6>
-                    Balls
-                  </h6>
-                </div>
-                <div
-                  className="col-1 d-none d-md-block"
-                  style={
-                    Object {
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  <h6>
-                    Mins
-                  </h6>
-                </div>
-                <div
-                  className="col-1 d-none d-md-block"
-                  style={
-                    Object {
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  <h6>
-                    4s
-                  </h6>
-                </div>
-                <div
-                  className="col-1 d-none d-md-block"
-                  style={
-                    Object {
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  <h6>
-                    6s
-                  </h6>
-                </div>
-              </div>
-              <div
-                className="row"
-                style={
-                  Object {
-                    "borderBottom": "1px solid rgb(233, 236, 239)",
-                    "fontSize": "14px",
-                    "marginTop": "8px",
-                    "paddingBottom": "4px",
-                  }
-                }
-              >
-                <div
-                  className="col-4 col-md-3"
-                >
-                  Extras
-                </div>
-                <div
-                  className="col-6 col-md-4"
-                >
-                  0nb 0wd 0b 0lb
-                </div>
-                <div
-                  className="col-2 col-md-1"
-                  style={
-                    Object {
-                      "fontWeight": "bold",
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  0
-                </div>
-              </div>
-              <div
-                className="row"
-                style={
-                  Object {
-                    "backgroundColor": "rgb(233, 236, 239)",
-                    "fontSize": "14px",
-                    "paddingBottom": "4px",
-                    "paddingTop": "4px",
-                  }
-                }
-              >
-                <div
-                  className="col-4 col-md-3"
-                >
-                  Total
-                </div>
-                <div
-                  className="col-6 col-md-4"
-                >
-                  (0 wickets) (0 overs)
-                </div>
-                <div
-                  className="col-2 col-md-1"
-                  style={
-                    Object {
-                      "fontWeight": "bold",
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  0
-                </div>
-              </div>
-            </div>
+            }
+          >
+            <h6>
+              Fall of wickets
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="col-xl-8 col-lg-12"
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": "10px",
+              "padding": "20px",
+              "width": "100%",
+            }
+          }
+        >
+          <div
+            className="row"
+          >
+            <h6>
+              Team 2
+               bowling
+            </h6>
           </div>
           <div
-            className="col-xl-4 col-lg-12"
+            className="row"
+            style={
+              Object {
+                "backgroundColor": "rgb(233, 236, 239)",
+                "paddingTop": "4px",
+              }
+            }
           >
             <div
+              className="col-6 col-md-5"
+            />
+            <div
+              className="col-2"
               style={
                 Object {
-                  "marginBottom": "10px",
-                  "padding": "20px",
-                  "width": "100%",
+                  "textAlign": "center",
                 }
               }
             >
-              <div
-                className="row"
-                style={
-                  Object {
-                    "backgroundColor": "rgb(233, 236, 239)",
-                    "paddingLeft": "8px",
-                    "paddingTop": "4px",
-                  }
-                }
-              >
-                <h6>
-                  Fall of wickets
-                </h6>
-              </div>
+              <h6>
+                Overs
+              </h6>
             </div>
-          </div>
-          <div
-            className="col-xl-8 col-lg-12"
-          >
             <div
+              className="col-2 d-none d-md-block"
               style={
                 Object {
-                  "marginBottom": "10px",
-                  "padding": "20px",
-                  "width": "100%",
+                  "textAlign": "center",
                 }
               }
             >
-              <div
-                className="row"
-              >
-                <h6>
-                  Team 2
-                   bowling
-                </h6>
-              </div>
-              <div
-                className="row"
-                style={
-                  Object {
-                    "backgroundColor": "rgb(233, 236, 239)",
-                    "paddingTop": "4px",
-                  }
+              <h6>
+                Maidens
+              </h6>
+            </div>
+            <div
+              className="col-2"
+              style={
+                Object {
+                  "textAlign": "center",
                 }
-              >
-                <div
-                  className="col-6 col-md-5"
-                />
-                <div
-                  className="col-2"
-                  style={
-                    Object {
-                      "textAlign": "center",
-                    }
-                  }
-                >
-                  <h6>
-                    Overs
-                  </h6>
-                </div>
-                <div
-                  className="col-2 d-none d-md-block"
-                  style={
-                    Object {
-                      "textAlign": "center",
-                    }
-                  }
-                >
-                  <h6>
-                    Maidens
-                  </h6>
-                </div>
-                <div
-                  className="col-2"
-                  style={
-                    Object {
-                      "textAlign": "center",
-                    }
-                  }
-                >
-                  <h6>
-                    Runs
-                  </h6>
-                </div>
-                <div
-                  className="col-2 col-md-1"
-                  style={
-                    Object {
-                      "textAlign": "center",
-                    }
-                  }
-                >
-                  <h6>
-                    Wkts
-                  </h6>
-                </div>
-              </div>
+              }
+            >
+              <h6>
+                Runs
+              </h6>
+            </div>
+            <div
+              className="col-2 col-md-1"
+              style={
+                Object {
+                  "textAlign": "center",
+                }
+              }
+            >
+              <h6>
+                Wkts
+              </h6>
             </div>
           </div>
         </div>
@@ -2522,328 +2333,291 @@ exports[`InProgress should render correctly when there is a previous bowler 1`] 
 `;
 
 exports[`InProgress should render correctly when there is a previous bowler from the current end 1`] = `
-<div
-  style={
-    Object {
-      "display": "flex",
-      "flexDirection": "column",
-      "height": "100vh",
-    }
-  }
->
-  <nav
-    className="navbar navbar-dark bg-primary"
-  >
-    <a
-      className="navbar-brand"
-      href="#"
+<div>
+  <div>
+    <div
+      className="row"
     >
-      Cricket scores live
-    </a>
-    <button
-      className="btn btn-outline-light"
-      onClick={undefined}
+      <div
+        className="col-12"
+        style={
+          Object {
+            "textAlign": "center",
+          }
+        }
+      >
+        <h5>
+          Team 1 0-0
+        </h5>
+      </div>
+    </div>
+    <div
+      className="row"
     >
-      Register or login
-    </button>
-  </nav>
-  <div
-    style={
-      Object {
-        "flex": "1",
-        "marginTop": "8px",
-        "overflowX": "hidden",
-        "overflowY": "auto",
-      }
-    }
-  >
-    <div>
-      <div>
+      <div
+        className="col-xl-8 col-lg-12"
+      >
         <div
-          className="row"
+          style={
+            Object {
+              "marginBottom": "10px",
+              "padding": "20px",
+              "width": "100%",
+            }
+          }
         >
           <div
-            className="col-12"
+            className="row"
             style={
               Object {
-                "textAlign": "center",
+                "backgroundColor": "rgb(233, 236, 239)",
+                "paddingTop": "4px",
               }
             }
           >
-            <h5>
-              Team 1 0-0
-            </h5>
+            <div
+              className="col-10 col-md-7"
+            >
+              <h6>
+                Batsman
+              </h6>
+            </div>
+            <div
+              className="col-2 col-md-1"
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <h6>
+                Runs
+              </h6>
+            </div>
+            <div
+              className="col-1 d-none d-md-block"
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <h6>
+                Balls
+              </h6>
+            </div>
+            <div
+              className="col-1 d-none d-md-block"
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <h6>
+                Mins
+              </h6>
+            </div>
+            <div
+              className="col-1 d-none d-md-block"
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <h6>
+                4s
+              </h6>
+            </div>
+            <div
+              className="col-1 d-none d-md-block"
+              style={
+                Object {
+                  "textAlign": "right",
+                }
+              }
+            >
+              <h6>
+                6s
+              </h6>
+            </div>
+          </div>
+          <div
+            className="row"
+            style={
+              Object {
+                "borderBottom": "1px solid rgb(233, 236, 239)",
+                "fontSize": "14px",
+                "marginTop": "8px",
+                "paddingBottom": "4px",
+              }
+            }
+          >
+            <div
+              className="col-4 col-md-3"
+            >
+              Extras
+            </div>
+            <div
+              className="col-6 col-md-4"
+            >
+              0nb 0wd 0b 0lb
+            </div>
+            <div
+              className="col-2 col-md-1"
+              style={
+                Object {
+                  "fontWeight": "bold",
+                  "textAlign": "right",
+                }
+              }
+            >
+              0
+            </div>
+          </div>
+          <div
+            className="row"
+            style={
+              Object {
+                "backgroundColor": "rgb(233, 236, 239)",
+                "fontSize": "14px",
+                "paddingBottom": "4px",
+                "paddingTop": "4px",
+              }
+            }
+          >
+            <div
+              className="col-4 col-md-3"
+            >
+              Total
+            </div>
+            <div
+              className="col-6 col-md-4"
+            >
+              (0 wickets) (0 overs)
+            </div>
+            <div
+              className="col-2 col-md-1"
+              style={
+                Object {
+                  "fontWeight": "bold",
+                  "textAlign": "right",
+                }
+              }
+            >
+              0
+            </div>
           </div>
         </div>
+      </div>
+      <div
+        className="col-xl-4 col-lg-12"
+      >
         <div
-          className="row"
+          style={
+            Object {
+              "marginBottom": "10px",
+              "padding": "20px",
+              "width": "100%",
+            }
+          }
         >
           <div
-            className="col-xl-8 col-lg-12"
-          >
-            <div
-              style={
-                Object {
-                  "marginBottom": "10px",
-                  "padding": "20px",
-                  "width": "100%",
-                }
+            className="row"
+            style={
+              Object {
+                "backgroundColor": "rgb(233, 236, 239)",
+                "paddingLeft": "8px",
+                "paddingTop": "4px",
               }
-            >
-              <div
-                className="row"
-                style={
-                  Object {
-                    "backgroundColor": "rgb(233, 236, 239)",
-                    "paddingTop": "4px",
-                  }
-                }
-              >
-                <div
-                  className="col-10 col-md-7"
-                >
-                  <h6>
-                    Batsman
-                  </h6>
-                </div>
-                <div
-                  className="col-2 col-md-1"
-                  style={
-                    Object {
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  <h6>
-                    Runs
-                  </h6>
-                </div>
-                <div
-                  className="col-1 d-none d-md-block"
-                  style={
-                    Object {
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  <h6>
-                    Balls
-                  </h6>
-                </div>
-                <div
-                  className="col-1 d-none d-md-block"
-                  style={
-                    Object {
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  <h6>
-                    Mins
-                  </h6>
-                </div>
-                <div
-                  className="col-1 d-none d-md-block"
-                  style={
-                    Object {
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  <h6>
-                    4s
-                  </h6>
-                </div>
-                <div
-                  className="col-1 d-none d-md-block"
-                  style={
-                    Object {
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  <h6>
-                    6s
-                  </h6>
-                </div>
-              </div>
-              <div
-                className="row"
-                style={
-                  Object {
-                    "borderBottom": "1px solid rgb(233, 236, 239)",
-                    "fontSize": "14px",
-                    "marginTop": "8px",
-                    "paddingBottom": "4px",
-                  }
-                }
-              >
-                <div
-                  className="col-4 col-md-3"
-                >
-                  Extras
-                </div>
-                <div
-                  className="col-6 col-md-4"
-                >
-                  0nb 0wd 0b 0lb
-                </div>
-                <div
-                  className="col-2 col-md-1"
-                  style={
-                    Object {
-                      "fontWeight": "bold",
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  0
-                </div>
-              </div>
-              <div
-                className="row"
-                style={
-                  Object {
-                    "backgroundColor": "rgb(233, 236, 239)",
-                    "fontSize": "14px",
-                    "paddingBottom": "4px",
-                    "paddingTop": "4px",
-                  }
-                }
-              >
-                <div
-                  className="col-4 col-md-3"
-                >
-                  Total
-                </div>
-                <div
-                  className="col-6 col-md-4"
-                >
-                  (0 wickets) (0 overs)
-                </div>
-                <div
-                  className="col-2 col-md-1"
-                  style={
-                    Object {
-                      "fontWeight": "bold",
-                      "textAlign": "right",
-                    }
-                  }
-                >
-                  0
-                </div>
-              </div>
-            </div>
+            }
+          >
+            <h6>
+              Fall of wickets
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div
+        className="col-xl-8 col-lg-12"
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": "10px",
+              "padding": "20px",
+              "width": "100%",
+            }
+          }
+        >
+          <div
+            className="row"
+          >
+            <h6>
+              Team 2
+               bowling
+            </h6>
           </div>
           <div
-            className="col-xl-4 col-lg-12"
+            className="row"
+            style={
+              Object {
+                "backgroundColor": "rgb(233, 236, 239)",
+                "paddingTop": "4px",
+              }
+            }
           >
             <div
+              className="col-6 col-md-5"
+            />
+            <div
+              className="col-2"
               style={
                 Object {
-                  "marginBottom": "10px",
-                  "padding": "20px",
-                  "width": "100%",
+                  "textAlign": "center",
                 }
               }
             >
-              <div
-                className="row"
-                style={
-                  Object {
-                    "backgroundColor": "rgb(233, 236, 239)",
-                    "paddingLeft": "8px",
-                    "paddingTop": "4px",
-                  }
-                }
-              >
-                <h6>
-                  Fall of wickets
-                </h6>
-              </div>
+              <h6>
+                Overs
+              </h6>
             </div>
-          </div>
-          <div
-            className="col-xl-8 col-lg-12"
-          >
             <div
+              className="col-2 d-none d-md-block"
               style={
                 Object {
-                  "marginBottom": "10px",
-                  "padding": "20px",
-                  "width": "100%",
+                  "textAlign": "center",
                 }
               }
             >
-              <div
-                className="row"
-              >
-                <h6>
-                  Team 2
-                   bowling
-                </h6>
-              </div>
-              <div
-                className="row"
-                style={
-                  Object {
-                    "backgroundColor": "rgb(233, 236, 239)",
-                    "paddingTop": "4px",
-                  }
+              <h6>
+                Maidens
+              </h6>
+            </div>
+            <div
+              className="col-2"
+              style={
+                Object {
+                  "textAlign": "center",
                 }
-              >
-                <div
-                  className="col-6 col-md-5"
-                />
-                <div
-                  className="col-2"
-                  style={
-                    Object {
-                      "textAlign": "center",
-                    }
-                  }
-                >
-                  <h6>
-                    Overs
-                  </h6>
-                </div>
-                <div
-                  className="col-2 d-none d-md-block"
-                  style={
-                    Object {
-                      "textAlign": "center",
-                    }
-                  }
-                >
-                  <h6>
-                    Maidens
-                  </h6>
-                </div>
-                <div
-                  className="col-2"
-                  style={
-                    Object {
-                      "textAlign": "center",
-                    }
-                  }
-                >
-                  <h6>
-                    Runs
-                  </h6>
-                </div>
-                <div
-                  className="col-2 col-md-1"
-                  style={
-                    Object {
-                      "textAlign": "center",
-                    }
-                  }
-                >
-                  <h6>
-                    Wkts
-                  </h6>
-                </div>
-              </div>
+              }
+            >
+              <h6>
+                Runs
+              </h6>
+            </div>
+            <div
+              className="col-2 col-md-1"
+              style={
+                Object {
+                  "textAlign": "center",
+                }
+              }
+            >
+              <h6>
+                Wkts
+              </h6>
             </div>
           </div>
         </div>

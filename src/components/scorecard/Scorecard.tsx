@@ -5,7 +5,6 @@ import { MatchHeading } from './MatchHeading';
 import * as styles from './styles';
 import * as globalStyles from '../styles';
 import { getTeam } from '../../match/utilities';
-import WithNavBar from '../WithNavBar';
 
 const flexContainerStyle: React.CSSProperties = {
     ...globalStyles.flexContainerStyle,
@@ -94,4 +93,4 @@ class Scorecard extends React.Component<ScorecardProps, {}> {
     }
 }
 
-export default WithNavBar(Scorecard);
+export default Scorecard;

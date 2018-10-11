@@ -2,7 +2,7 @@ import * as React from 'react';
 import { mount } from 'enzyme';
 import { MemoryRouter } from 'react-router';
 import Routes from '../Routes';
-import { Scorecard } from '../components/scorecard/Scorecard';
+import Scorecard from '../containers/Scorecard';
 import Home from '../components/Home';
 
 describe('Routes', () => {

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
 import * as domain from '../../../domain';
-import WithNavBar from '../../WithNavBar';
 import { StartInnings } from './StartInnings';
 import { SelectBowler } from './SelectBowler';
 import { BallEntry } from './BallEntry';
@@ -116,4 +115,4 @@ class InProgress extends React.Component<InProgressProps, {}> {
     }
 }
 
-export default WithNavBar(InProgress);
+export default InProgress;

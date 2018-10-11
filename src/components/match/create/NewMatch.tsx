@@ -1,5 +1,4 @@
 import * as React from 'react';
-import WithNavBar from '../../WithNavBar';
 import MatchForm from './MatchForm';
 import { default as createMatch } from '../../../match/create';
 import { InProgressMatchStore } from '../../../stores/inProgressMatchStore';
@@ -24,4 +23,4 @@ const NewMatch = ({ userProfile, storage, history, inProgress }: any) => (
     </div>
 );
 
-export default WithNavBar(NewMatch);
+export default NewMatch;

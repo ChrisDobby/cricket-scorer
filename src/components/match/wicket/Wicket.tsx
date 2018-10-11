@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import * as domain from '../../../domain';
-import WithNavBar from '../../WithNavBar';
 import DeliveryHeader from '../DeliveryHeader';
 import Entry from './Entry';
 import * as globalStyles from '../../styles';
@@ -198,4 +197,4 @@ class Wicket extends React.Component<WicketProps, {}> {
     }
 }
 
-export default WithNavBar(withRouter(Wicket));
+export default withRouter(Wicket);
