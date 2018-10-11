@@ -12,8 +12,8 @@ export const awayTeam = {
 
 const testInnings1: domain.Innings = {
     status: domain.InningsStatus.OversComplete,
-    battingTeam: awayTeam,
-    bowlingTeam: homeTeam,
+    battingTeam: domain.TeamType.AwayTeam,
+    bowlingTeam: domain.TeamType.HomeTeam,
     score: 130,
     wickets: 6,
     completedOvers: 45,
@@ -253,8 +253,8 @@ const testInnings1: domain.Innings = {
 
 const testInnings2: domain.Innings = {
     status: domain.InningsStatus.AllOut,
-    battingTeam: homeTeam,
-    bowlingTeam: awayTeam,
+    battingTeam: domain.TeamType.HomeTeam,
+    bowlingTeam: domain.TeamType.AwayTeam,
     score: 122,
     wickets: 10,
     completedOvers: 34,

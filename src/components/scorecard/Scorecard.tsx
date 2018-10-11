@@ -4,6 +4,8 @@ import { Innings } from './Innings';
 import { MatchHeading } from './MatchHeading';
 import * as styles from './styles';
 import * as globalStyles from '../styles';
+import { getTeam } from '../../match/utilities';
+import WithNavBar from '../WithNavBar';
 
 const flexContainerStyle: React.CSSProperties = {
     ...globalStyles.flexContainerStyle,
@@ -38,9 +40,9 @@ const inningsNumberDescription = (innings: number): string => {
     return `${numberDescription()} innings`;
 };
 
-export interface ScorecardProps { cricketMatch?: MatchEntity; }
+interface ScorecardProps { cricketMatch?: MatchEntity; }
 
-export class Scorecard extends React.Component<ScorecardProps, {}> {
+class Scorecard extends React.Component<ScorecardProps, {}> {
     state = {
         selectedInningsIndex: this.props.cricketMatch && this.props.cricketMatch.innings.length > 0
             ? this.props.cricketMatch.innings.length - 1
@@ -82,9 +84,14 @@ export class Scorecard extends React.Component<ScorecardProps, {}> {
                 </div>
                 <div style={globalStyles.flexFillStyle}>
                     {this.state.selectedInningsIndex >= 0 &&
-                        <Innings innings={this.props.cricketMatch.innings[this.state.selectedInningsIndex]} />}
+                        <Innings
+                            innings={this.props.cricketMatch.innings[this.state.selectedInningsIndex]}
+                            getTeam={type => getTeam(this.props.cricketMatch as MatchEntity, type)}
+                        />}
                 </div>
             </div>
         );
     }
 }
+
+export default WithNavBar(Scorecard);

@@ -17,6 +17,7 @@ describe('BallEntry', () => {
         const ballEntry = ReactTestRenderer.create(
             <StaticRouter context={{}}>
                 <BallEntry
+                    battingTeam={matches.blankMatch.homeTeam}
                     innings={matches.inningsWithStartedOver}
                     batter={matches.inningsWithStartedOver.batting.batters[0]}
                     bowler={matches.inningsWithStartedOver.bowlers[0]}
@@ -33,6 +34,7 @@ describe('BallEntry', () => {
         const ballEntry = ReactTestRenderer.create(
             <StaticRouter context={{}}>
                 <BallEntry
+                    battingTeam={matches.blankMatch.homeTeam}
                     innings={matches.inningsWithStartedOver}
                     batter={matches.inningsWithStartedOver.batting.batters[0]}
                     bowler={matches.inningsWithStartedOver.bowlers[0]}

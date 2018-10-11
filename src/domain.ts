@@ -123,8 +123,8 @@ export interface FallOfWicket {
 
 export interface Innings {
     status: InningsStatus;
-    battingTeam: Team;
-    bowlingTeam: Team;
+    battingTeam: TeamType;
+    bowlingTeam: TeamType;
     score: number;
     wickets: number;
     completedOvers: number;
@@ -179,7 +179,7 @@ export interface InProgressMatch {
     provisionalInningsStatus?: InningsStatus;
     nextBattingTeam?: Team;
     canSelectBattingTeamForInnings: boolean;
-    startInnings: (battingTeam: Team, batter1Index: number, batter2Index: number) => void;
+    startInnings: (battingTeam: TeamType, batter1Index: number, batter2Index: number) => void;
     newBowler: (playerIndex: number) => void;
     newBatter: (playerIndex: number) => void;
     delivery: (deliveryOutcome: DeliveryOutcome, scores: DeliveryScores, wicket: DeliveryWicket | undefined) => void;

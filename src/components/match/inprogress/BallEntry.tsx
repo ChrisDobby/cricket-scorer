@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as globalStyles from '../../styles';
-import { Innings, Batter, Bowler, BattingInnings, Extras, Over } from '../../../domain';
+import { Innings, Batter, Bowler, BattingInnings, Extras, Over, Team } from '../../../domain';
 import { EntryPanel, BallFunctions } from './EntryPanel';
 import { CurrentOver } from './CurrentOver';
 import DeliveryHeader from '../DeliveryHeader';
@@ -19,6 +19,7 @@ const totalExtras = (extras: Extras): number =>
 
 export interface BallEntryProps {
     innings: Innings;
+    battingTeam: Team;
     batter: Batter;
     bowler: Bowler;
     overComplete: boolean;
@@ -26,14 +27,16 @@ export interface BallEntryProps {
     ballFunctions: BallFunctions;
 }
 
-export const BallEntry = ({ innings, batter, bowler, overComplete, currentOver, ballFunctions }: BallEntryProps) => (
+export const BallEntry = ({
+    innings, battingTeam, batter, bowler, overComplete, currentOver, ballFunctions,
+}: BallEntryProps) => (
     <div style={globalStyles.sectionContainer}>
         <DeliveryHeader batter={batter} bowler={bowler} />
         <div className="row">
             <div className="col-12 col-lg-6 d-none d-md-block">
                 <div className="row">
                     <div className="col-6">
-                        <h5>{innings.battingTeam.name}</h5>
+                        <h5>{battingTeam.name}</h5>
                     </div>
                     <div className="col-6">
                         <h5>{`${innings.score}-${innings.wickets}`}</h5>

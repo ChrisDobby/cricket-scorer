@@ -1,4 +1,4 @@
-import { Match, DeliveryOutcome, Howout, Batter, MatchType, InningsStatus } from '../../domain';
+import { Match, DeliveryOutcome, Howout, Batter, MatchType, InningsStatus, TeamType } from '../../domain';
 
 export const blankMatch: Match = {
     id: '1',
@@ -50,8 +50,8 @@ export const blankMatch: Match = {
 
 export const startedInnings = {
     status: InningsStatus.InProgress,
-    battingTeam: blankMatch.homeTeam,
-    bowlingTeam: blankMatch.awayTeam,
+    battingTeam: TeamType.HomeTeam,
+    bowlingTeam: TeamType.AwayTeam,
     score: 0,
     wickets: 0,
     allOut: false,
@@ -301,7 +301,7 @@ export const inningsAfterWicketTaken = {
                 }
                 : batter
         )) as Batter[])
-            .concat(inningsWithStartedOver.battingTeam.players.slice(2).map((player, idx) => ({
+            .concat(blankMatch.homeTeam.players.slice(2).map((player, idx) => ({
                 name: player,
                 playerIndex: idx,
                 innings: undefined,

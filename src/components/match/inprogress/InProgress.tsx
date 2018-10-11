@@ -9,6 +9,7 @@ import { Innings } from '../../scorecard/Innings';
 import SelectNewBatter from './SelectNewBatter';
 import InningsComplete from './InningsComplete';
 import { bindMatchStorage } from '../../../stores/withMatchStorage';
+import { getTeam } from '../../../match/utilities';
 
 export interface InProgressProps {
     inProgress: domain.InProgressMatch;
@@ -53,7 +54,8 @@ class InProgress extends React.Component<InProgressProps, {}> {
             inningsStatus === domain.InningsStatus.InProgress) {
             return (
                 <SelectBowler
-                    bowlingTeam={this.props.inProgress.currentInnings.bowlingTeam}
+                    bowlingTeam={getTeam(
+                        this.props.inProgress.match as domain.Match, this.props.inProgress.currentInnings.bowlingTeam)}
                     selectBowler={this.bindStorage(this.props.inProgress.newBowler)}
                     initiallySelected={this.previousBowlerFromEndIndex()}
                     disallowedPlayers={this.disallowedPlayers()}
@@ -67,7 +69,10 @@ class InProgress extends React.Component<InProgressProps, {}> {
             return (
                 <SelectNewBatter
                     batting={this.props.inProgress.currentInnings.batting}
-                    players={this.props.inProgress.currentInnings.battingTeam.players}
+                    players={getTeam(
+                        this.props.inProgress.match as domain.Match,
+                        this.props.inProgress.currentInnings.battingTeam)
+                        .players}
                     batterSelected={this.bindStorage(this.props.inProgress.newBatter)}
                 />);
         }
@@ -85,14 +90,22 @@ class InProgress extends React.Component<InProgressProps, {}> {
                                 bowler={this.props.inProgress.currentBowler}
                                 overComplete={!!this.props.inProgress.currentOverComplete}
                                 currentOver={this.props.inProgress.currentOver}
+                                battingTeam={getTeam(
+                                    this.props.inProgress.match as domain.Match,
+                                    this.props.inProgress.currentInnings.battingTeam)}
                                 ballFunctions={this.ballFunctions}
                             />}
-                        <Innings innings={this.props.inProgress.currentInnings} />
+                        <Innings
+                            innings={this.props.inProgress.currentInnings}
+                            getTeam={type => getTeam(this.props.inProgress.match as domain.Match, type)}
+                        />
                     </div>
                     {typeof inningsStatus !== 'undefined' && inningsStatus !== domain.InningsStatus.InProgress &&
                         <InningsComplete
                             status={inningsStatus}
-                            battingTeam={this.props.inProgress.currentInnings.battingTeam.name}
+                            battingTeam={getTeam(
+                                this.props.inProgress.match as domain.Match,
+                                this.props.inProgress.currentInnings.battingTeam).name}
                             complete={() => this.ballFunctions.completeInnings(inningsStatus)}
                         />}
                 </React.Fragment>

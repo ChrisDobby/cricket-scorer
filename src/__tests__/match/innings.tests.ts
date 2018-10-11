@@ -1,6 +1,8 @@
-import { BattingInnings, DeliveryOutcome, Outcome, Howout, Wicket, InningsStatus, MatchType } from '../../domain';
+import { BattingInnings, DeliveryOutcome, Outcome, Howout, Wicket, InningsStatus, MatchType, TeamType }
+    from '../../domain';
 import innings from '../../match/innings';
 import * as matches from '../testData/matches';
+import { getTeam } from '../../match/utilities';
 
 jest.mock('../../match/delivery', () => {
     const domain = require('../../domain');
@@ -56,15 +58,15 @@ describe('innings', () => {
         runsForNoBall: 1,
         runsForWide: 1,
     };
-    const Innings = innings(config);
+    const Innings = innings(config, type => getTeam(matches.blankMatch, type));
 
     describe('newInnings', () => {
         const homeTeam = matches.blankMatch.homeTeam;
         const awayTeam = matches.blankMatch.awayTeam;
-        const innings = Innings.newInnings(matches.blankMatch, homeTeam, 0, 1);
+        const innings = Innings.newInnings(TeamType.HomeTeam, 0, 1);
         it('should create a newly started innings', () => {
-            expect(innings.battingTeam).toBe(homeTeam);
-            expect(innings.bowlingTeam).toBe(awayTeam);
+            expect(innings.battingTeam).toBe(TeamType.HomeTeam);
+            expect(innings.bowlingTeam).toBe(TeamType.AwayTeam);
             expect(innings.score).toBe(0);
             expect(innings.wickets).toBe(0);
             expect(innings.batting.extras.byes).toBe(0);
@@ -131,7 +133,7 @@ describe('innings', () => {
         });
 
         it('should use the correct batters when selecting 1 and 3', () => {
-            const inningsFor1And3 = Innings.newInnings(matches.blankMatch, homeTeam, 0, 2);
+            const inningsFor1And3 = Innings.newInnings(TeamType.HomeTeam, 0, 2);
             const batters = inningsFor1And3.batting.batters;
 
             expect(batters[0].name).toBe(homeTeam.players[0]);
@@ -143,7 +145,7 @@ describe('innings', () => {
         });
 
         it('should update the batting positions', () => {
-            const inningsFor5And3 = Innings.newInnings(matches.blankMatch, homeTeam, 5, 3);
+            const inningsFor5And3 = Innings.newInnings(TeamType.HomeTeam, 5, 3);
             const batters = inningsFor5And3.batting.batters;
 
             expect(batters[0].name).toBe(homeTeam.players[5]);
@@ -161,13 +163,12 @@ describe('innings', () => {
 
         it('should create  a new innings for the away team if specified', () => {
             const awayTeamBattingInnings = Innings.newInnings(
-                matches.blankMatch,
-                awayTeam,
+                TeamType.AwayTeam,
                 0,
                 1,
             );
-            expect(awayTeamBattingInnings.battingTeam).toBe(awayTeam);
-            expect(awayTeamBattingInnings.bowlingTeam).toBe(homeTeam);
+            expect(awayTeamBattingInnings.battingTeam).toBe(TeamType.AwayTeam);
+            expect(awayTeamBattingInnings.bowlingTeam).toBe(TeamType.HomeTeam);
 
             const batters = awayTeamBattingInnings.batting.batters;
             expect(batters[0].name).toBe(awayTeam.players[0]);
@@ -417,7 +418,7 @@ describe('innings', () => {
         const batter = innings.batting.batters[2];
 
         it('should start an innings for the batter at the next available position', () => {
-            expect(batter.name).toBe(innings.battingTeam.players[4]);
+            expect(batter.name).toBe(matches.blankMatch.homeTeam.players[4]);
             expect(batter.innings).not.toBeUndefined();
         });
 

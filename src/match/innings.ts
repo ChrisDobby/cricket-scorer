@@ -29,16 +29,15 @@ const innings = (
     flipBatters: (innings: domain.Innings, batter: domain.Batter) => number,
     latestOver: (deliveries: domain.Delivery[], complete: number) => domain.Delivery[],
     isMaidenOver: (deliveries: domain.Delivery[]) => boolean,
-) => (config: domain.MatchConfig) => {
+) => (config: domain.MatchConfig, getTeam: (type: domain.TeamType) => domain.Team) => {
     const newInnings = (
-        match: domain.Match,
-        battingTeam: domain.Team,
+        battingTeam: domain.TeamType,
         batsman1Index: number,
         batsman2Index: number,
     ): domain.Innings =>
         ({
             battingTeam,
-            bowlingTeam: battingTeam.name === match.homeTeam.name ? match.awayTeam : match.homeTeam,
+            bowlingTeam: battingTeam === domain.TeamType.HomeTeam ? domain.TeamType.AwayTeam : domain.TeamType.HomeTeam,
             score: 0,
             wickets: 0,
             completedOvers: 0,
@@ -53,7 +52,7 @@ const innings = (
                     penaltyRuns: 0,
                 },
                 batters: battingInOrder(
-                    battingTeam.name === match.homeTeam.name ? match.homeTeam.players : match.awayTeam.players,
+                    getTeam(battingTeam).players,
                     batsman1Index,
                     batsman2Index,
                 )
@@ -71,7 +70,7 @@ const innings = (
             status: domain.InningsStatus.InProgress,
         });
 
-    const createBowler = (team: domain.Team, bowlers: domain.Bowler[], bowlerIndex: number): domain.Bowler => ({
+    const createBowler = (team: domain.Team, bowlerIndex: number): domain.Bowler => ({
         playerIndex: bowlerIndex,
         name: team.players[bowlerIndex],
         completedOvers: 0,
@@ -90,7 +89,7 @@ const innings = (
                 }, innings.bowlers.indexOf(existingBowler)];
             }
 
-            const bowler = createBowler(innings.bowlingTeam, innings.bowlers, bowlerIndex);
+            const bowler = createBowler(getTeam(innings.bowlingTeam), bowlerIndex);
             const updatedBowlers = [...innings.bowlers, bowler];
 
             return [{
@@ -141,7 +140,7 @@ const innings = (
                         bowlerIndex: innings.bowlers.indexOf(bowler),
                     },
                 ],
-                deliveries.battingWicket(outcome, time, bowler.name, innings.bowlingTeam.players),
+                deliveries.battingWicket(outcome, time, bowler.name, getTeam(innings.bowlingTeam).players),
             )(
                 innings,
                 batter,
@@ -191,7 +190,7 @@ const innings = (
                 batters: innings.batting.batters.slice(0, nextIndex)
                     .concat([{
                         playerIndex: batterIndex,
-                        name: innings.battingTeam.players[batterIndex],
+                        name: getTeam(innings.battingTeam).players[batterIndex],
                         innings: newBatterInnings(),
                     }])
                 .concat(innings.batting.batters.slice(nextIndex).filter(batter => batter.playerIndex !== batterIndex)),
@@ -210,7 +209,7 @@ const innings = (
             innings.completedOvers >= matchConfig.oversPerSide) {
             return domain.InningsStatus.OversComplete;
         }
-        if (innings.wickets >= innings.battingTeam.players.length - 1) {
+        if (innings.wickets >= getTeam(innings.battingTeam).players.length - 1) {
             return domain.InningsStatus.AllOut;
         }
         return domain.InningsStatus.InProgress;

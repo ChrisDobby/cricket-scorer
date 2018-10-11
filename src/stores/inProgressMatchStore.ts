@@ -3,11 +3,16 @@ import * as domain from '../domain';
 import { default as matchInnings } from '../match/innings';
 import undo from '../match/undo';
 import * as over from '../match/over';
+import status from '../match/status';
+import { getTeam } from '../match/utilities';
+
+const teamFromType = (match: domain.Match) => (type: domain.TeamType) => getTeam(match, type);
 
 const updateMatchInnings =
     (match: domain.Match, innings: domain.Innings, config: domain.MatchConfig): domain.Match => ({
         ...match,
-        innings: [...match.innings.map(inn => !matchInnings(config).isComplete(inn)
+        status: status(match),
+        innings: [...match.innings.map(inn => !matchInnings(config, teamFromType(match)).isComplete(inn)
             ? innings
             : inn)],
     });
@@ -39,8 +44,9 @@ class InProgressMatchStore implements domain.InProgressMatch {
             ? this.match.config
             : defaultConfig;
     }
+
     get matchInnings() {
-        return matchInnings(this.config);
+        return matchInnings(this.config, teamFromType(this.match as domain.Match));
     }
 
     get undo() {
@@ -132,11 +138,10 @@ class InProgressMatchStore implements domain.InProgressMatch {
                 : this.match.awayTeam;
         }
 
-        return this.match.innings[this.match.innings.length - 1].bowlingTeam;
+        return getTeam(this.match, this.match.innings[this.match.innings.length - 1].bowlingTeam);
     }
 
     @action startMatch = (tossWonBy: domain.TeamType, battingFirst: domain.TeamType) => {
-        console.log('startMatch');
         if (typeof this.match === 'undefined') { return; }
 
         this.match = {
@@ -145,10 +150,10 @@ class InProgressMatchStore implements domain.InProgressMatch {
         };
     }
 
-    @action startInnings = (battingTeam: domain.Team, batter1Index: number, batter2Index: number) => {
+    @action startInnings = (battingTeam: domain.TeamType, batter1Index: number, batter2Index: number) => {
         if (typeof this.match === 'undefined') { return; }
 
-        const innings = this.matchInnings.newInnings(this.match, battingTeam, batter1Index, batter2Index);
+        const innings = this.matchInnings.newInnings(battingTeam, batter1Index, batter2Index);
         this.match = {
             ...this.match,
             innings: [...this.match.innings, innings],

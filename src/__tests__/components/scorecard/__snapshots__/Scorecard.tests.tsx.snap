@@ -6,1939 +6,1976 @@ exports[`Scorecard should render correctly when match available 1`] = `
     Object {
       "display": "flex",
       "flexDirection": "column",
-      "height": "100%",
+      "height": "100vh",
     }
   }
 >
-  <div>
-    <div
-      className="col-12"
-    >
-      <div
-        className="row"
-        style={
-          Object {
-            "backgroundColor": "rgb(233, 236, 239)",
-            "paddingTop": "4px",
-            "textAlign": "center",
-          }
-        }
-      >
-        <div
-          className="col-12"
-        >
-          <h5>
-            28-Apr-2018
-          </h5>
-        </div>
-        <div
-          className="col-12"
-        >
-          <h4>
-            Cleckheaton v Baildon
-          </h4>
-        </div>
-        <div
-          className="col-12"
-        >
-          <h6>
-            Baildon won by 8 runs
-          </h6>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    style={
-      Object {
-        "marginBottom": "4px",
-        "marginTop": "4px",
-        "textAlign": "center",
-      }
-    }
+  <nav
+    className="navbar navbar-dark bg-primary"
   >
-    <button
-      className="btn btn-primary"
-      disabled={false}
-      onClick={[Function]}
-      style={
-        Object {
-          "marginLeft": "8px",
-          "marginRight": "8px",
-        }
-      }
+    <a
+      className="navbar-brand"
+      href="#"
     >
-      1st innings
-    </button>
+      Cricket scores live
+    </a>
     <button
-      className="btn btn-primary"
-      disabled={true}
-      onClick={[Function]}
-      style={
-        Object {
-          "marginLeft": "8px",
-          "marginRight": "8px",
-        }
-      }
+      className="btn btn-outline-light"
+      onClick={undefined}
     >
-      2nd innings
+      Register or login
     </button>
-  </div>
+  </nav>
   <div
     style={
       Object {
         "flex": "1",
+        "marginTop": "8px",
         "overflowX": "hidden",
         "overflowY": "auto",
       }
     }
   >
-    <div>
-      <div
-        className="row"
-      >
+    <div
+      style={
+        Object {
+          "display": "flex",
+          "flexDirection": "column",
+          "height": "100%",
+        }
+      }
+    >
+      <div>
         <div
           className="col-12"
-          style={
-            Object {
-              "textAlign": "center",
-            }
-          }
         >
-          <h5>
-            Cleckheaton 122 all out
-          </h5>
+          <div
+            className="row"
+            style={
+              Object {
+                "backgroundColor": "rgb(233, 236, 239)",
+                "paddingTop": "4px",
+                "textAlign": "center",
+              }
+            }
+          >
+            <div
+              className="col-12"
+            >
+              <h5>
+                28-Apr-2018
+              </h5>
+            </div>
+            <div
+              className="col-12"
+            >
+              <h4>
+                Cleckheaton v Baildon
+              </h4>
+            </div>
+            <div
+              className="col-12"
+            >
+              <h6>
+                Baildon won by 8 runs
+              </h6>
+            </div>
+          </div>
         </div>
       </div>
       <div
-        className="row"
+        style={
+          Object {
+            "marginBottom": "4px",
+            "marginTop": "4px",
+            "textAlign": "center",
+          }
+        }
       >
-        <div
-          className="col-xl-8 col-lg-12"
-        >
-          <div
-            style={
-              Object {
-                "marginBottom": "10px",
-                "padding": "20px",
-                "width": "100%",
-              }
+        <button
+          className="btn btn-primary"
+          disabled={false}
+          onClick={[Function]}
+          style={
+            Object {
+              "marginLeft": "8px",
+              "marginRight": "8px",
             }
+          }
+        >
+          1st innings
+        </button>
+        <button
+          className="btn btn-primary"
+          disabled={true}
+          onClick={[Function]}
+          style={
+            Object {
+              "marginLeft": "8px",
+              "marginRight": "8px",
+            }
+          }
+        >
+          2nd innings
+        </button>
+      </div>
+      <div
+        style={
+          Object {
+            "flex": "1",
+            "overflowX": "hidden",
+            "overflowY": "auto",
+          }
+        }
+      >
+        <div>
+          <div
+            className="row"
           >
             <div
-              className="row"
+              className="col-12"
               style={
                 Object {
-                  "backgroundColor": "rgb(233, 236, 239)",
-                  "paddingTop": "4px",
+                  "textAlign": "center",
                 }
               }
             >
-              <div
-                className="col-10 col-md-7"
-              >
-                <h6>
-                  Batsman
-                </h6>
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                <h6>
-                  Runs
-                </h6>
-              </div>
-              <div
-                className="col-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                <h6>
-                  Balls
-                </h6>
-              </div>
-              <div
-                className="col-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                <h6>
-                  Mins
-                </h6>
-              </div>
-              <div
-                className="col-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                <h6>
-                  4s
-                </h6>
-              </div>
-              <div
-                className="col-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                <h6>
-                  6s
-                </h6>
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-4 col-md-3"
-              >
-                Chris Dobson
-              </div>
-              <div
-                className="col-6 col-md-4"
-              >
-                lbw D Metcalfe
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                3
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                11
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="d-block d-md-none col-4"
-              />
-              <div
-                className="d-block d-md-none col-8"
-                style={
-                  Object {
-                    "fontSize": "10px",
-                  }
-                }
-              >
-                11 balls, 0 4s, 0 6s
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-4 col-md-3"
-              >
-                Richard Noble
-              </div>
-              <div
-                className="col-6 col-md-4"
-              >
-                ct T Hopwood b A Sayed
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                40
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                49
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                6
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="d-block d-md-none col-4"
-              />
-              <div
-                className="d-block d-md-none col-8"
-                style={
-                  Object {
-                    "fontSize": "10px",
-                  }
-                }
-              >
-                49 balls, 6 4s, 0 6s
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-4 col-md-3"
-              >
-                Ethan Lee
-              </div>
-              <div
-                className="col-6 col-md-4"
-              >
-                ct R Todd b D Hunt
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                2
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                13
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="d-block d-md-none col-4"
-              />
-              <div
-                className="d-block d-md-none col-8"
-                style={
-                  Object {
-                    "fontSize": "10px",
-                  }
-                }
-              >
-                13 balls, 0 4s, 0 6s
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-4 col-md-3"
-              >
-                Shahid Rehman
-              </div>
-              <div
-                className="col-6 col-md-4"
-              >
-                run out
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                1
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                3
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="d-block d-md-none col-4"
-              />
-              <div
-                className="d-block d-md-none col-8"
-                style={
-                  Object {
-                    "fontSize": "10px",
-                  }
-                }
-              >
-                3 balls, 0 4s, 0 6s
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-4 col-md-3"
-              >
-                Zahir Shah
-              </div>
-              <div
-                className="col-6 col-md-4"
-              >
-                lbw D Hunt
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                1
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="d-block d-md-none col-4"
-              />
-              <div
-                className="d-block d-md-none col-8"
-                style={
-                  Object {
-                    "fontSize": "10px",
-                  }
-                }
-              >
-                1 balls, 0 4s, 0 6s
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-4 col-md-3"
-              >
-                Elliott Hallas
-              </div>
-              <div
-                className="col-6 col-md-4"
-              >
-                bowled A Sayed
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                35
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                46
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                2
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                3
-              </div>
-              <div
-                className="d-block d-md-none col-4"
-              />
-              <div
-                className="d-block d-md-none col-8"
-                style={
-                  Object {
-                    "fontSize": "10px",
-                  }
-                }
-              >
-                46 balls, 2 4s, 3 6s
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-4 col-md-3"
-              >
-                Craig Blackburn
-              </div>
-              <div
-                className="col-6 col-md-4"
-              >
-                ct A Sayed b J Abbott
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                19
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                22
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                1
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="d-block d-md-none col-4"
-              />
-              <div
-                className="d-block d-md-none col-8"
-                style={
-                  Object {
-                    "fontSize": "10px",
-                  }
-                }
-              >
-                22 balls, 1 4s, 0 6s
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-4 col-md-3"
-              >
-                Bilal Butt
-              </div>
-              <div
-                className="col-6 col-md-4"
-              >
-                run out (A Sayed)
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                4
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                31
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="d-block d-md-none col-4"
-              />
-              <div
-                className="d-block d-md-none col-8"
-                style={
-                  Object {
-                    "fontSize": "10px",
-                  }
-                }
-              >
-                31 balls, 0 4s, 0 6s
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-4 col-md-3"
-              >
-                Alex Midgley
-              </div>
-              <div
-                className="col-6 col-md-4"
-              >
-                not out
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                4
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                20
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="d-block d-md-none col-4"
-              />
-              <div
-                className="d-block d-md-none col-8"
-                style={
-                  Object {
-                    "fontSize": "10px",
-                  }
-                }
-              >
-                20 balls, 0 4s, 0 6s
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-4 col-md-3"
-              >
-                Atta Rehman
-              </div>
-              <div
-                className="col-6 col-md-4"
-              >
-                lbw J Abbott
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                1
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="d-block d-md-none col-4"
-              />
-              <div
-                className="d-block d-md-none col-8"
-                style={
-                  Object {
-                    "fontSize": "10px",
-                  }
-                }
-              >
-                1 balls, 0 4s, 0 6s
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-4 col-md-3"
-              >
-                Sam Bailey
-              </div>
-              <div
-                className="col-6 col-md-4"
-              >
-                ct J Butterfield b D Hunt
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                4
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                10
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="d-block d-md-none col-4"
-              />
-              <div
-                className="d-block d-md-none col-8"
-                style={
-                  Object {
-                    "fontSize": "10px",
-                  }
-                }
-              >
-                10 balls, 0 4s, 0 6s
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-4 col-md-3"
-              >
-                Extras
-              </div>
-              <div
-                className="col-6 col-md-4"
-              >
-                1nb 9wd 3b 0lb
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                13
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "backgroundColor": "rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "paddingBottom": "4px",
-                  "paddingTop": "4px",
-                }
-              }
-            >
-              <div
-                className="col-4 col-md-3"
-              >
-                Total
-              </div>
-              <div
-                className="col-6 col-md-4"
-              >
-                (10 wickets) (34.2 overs)
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                122
-              </div>
+              <h5>
+                Cleckheaton 122 all out
+              </h5>
             </div>
           </div>
-        </div>
-        <div
-          className="col-xl-4 col-lg-12"
-        >
           <div
-            style={
-              Object {
-                "marginBottom": "10px",
-                "padding": "20px",
-                "width": "100%",
-              }
-            }
+            className="row"
           >
             <div
-              className="row"
-              style={
-                Object {
-                  "backgroundColor": "rgb(233, 236, 239)",
-                  "paddingLeft": "8px",
-                  "paddingTop": "4px",
-                }
-              }
+              className="col-xl-8 col-lg-12"
             >
-              <h6>
-                Fall of wickets
-              </h6>
+              <div
+                style={
+                  Object {
+                    "marginBottom": "10px",
+                    "padding": "20px",
+                    "width": "100%",
+                  }
+                }
+              >
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "backgroundColor": "rgb(233, 236, 239)",
+                      "paddingTop": "4px",
+                    }
+                  }
+                >
+                  <div
+                    className="col-10 col-md-7"
+                  >
+                    <h6>
+                      Batsman
+                    </h6>
+                  </div>
+                  <div
+                    className="col-2 col-md-1"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    <h6>
+                      Runs
+                    </h6>
+                  </div>
+                  <div
+                    className="col-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    <h6>
+                      Balls
+                    </h6>
+                  </div>
+                  <div
+                    className="col-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    <h6>
+                      Mins
+                    </h6>
+                  </div>
+                  <div
+                    className="col-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    <h6>
+                      4s
+                    </h6>
+                  </div>
+                  <div
+                    className="col-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    <h6>
+                      6s
+                    </h6>
+                  </div>
+                </div>
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "borderBottom": "1px solid rgb(233, 236, 239)",
+                      "fontSize": "14px",
+                      "marginTop": "8px",
+                      "paddingBottom": "4px",
+                    }
+                  }
+                >
+                  <div
+                    className="col-4 col-md-3"
+                  >
+                    Chris Dobson
+                  </div>
+                  <div
+                    className="col-6 col-md-4"
+                  >
+                    lbw D Metcalfe
+                  </div>
+                  <div
+                    className="col-2 col-md-1"
+                    style={
+                      Object {
+                        "fontWeight": "bold",
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    3
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    11
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="d-block d-md-none col-4"
+                  />
+                  <div
+                    className="d-block d-md-none col-8"
+                    style={
+                      Object {
+                        "fontSize": "10px",
+                      }
+                    }
+                  >
+                    11 balls, 0 4s, 0 6s
+                  </div>
+                </div>
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "borderBottom": "1px solid rgb(233, 236, 239)",
+                      "fontSize": "14px",
+                      "marginTop": "8px",
+                      "paddingBottom": "4px",
+                    }
+                  }
+                >
+                  <div
+                    className="col-4 col-md-3"
+                  >
+                    Richard Noble
+                  </div>
+                  <div
+                    className="col-6 col-md-4"
+                  >
+                    ct T Hopwood b A Sayed
+                  </div>
+                  <div
+                    className="col-2 col-md-1"
+                    style={
+                      Object {
+                        "fontWeight": "bold",
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    40
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    49
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    6
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="d-block d-md-none col-4"
+                  />
+                  <div
+                    className="d-block d-md-none col-8"
+                    style={
+                      Object {
+                        "fontSize": "10px",
+                      }
+                    }
+                  >
+                    49 balls, 6 4s, 0 6s
+                  </div>
+                </div>
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "borderBottom": "1px solid rgb(233, 236, 239)",
+                      "fontSize": "14px",
+                      "marginTop": "8px",
+                      "paddingBottom": "4px",
+                    }
+                  }
+                >
+                  <div
+                    className="col-4 col-md-3"
+                  >
+                    Ethan Lee
+                  </div>
+                  <div
+                    className="col-6 col-md-4"
+                  >
+                    ct R Todd b D Hunt
+                  </div>
+                  <div
+                    className="col-2 col-md-1"
+                    style={
+                      Object {
+                        "fontWeight": "bold",
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    2
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    13
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="d-block d-md-none col-4"
+                  />
+                  <div
+                    className="d-block d-md-none col-8"
+                    style={
+                      Object {
+                        "fontSize": "10px",
+                      }
+                    }
+                  >
+                    13 balls, 0 4s, 0 6s
+                  </div>
+                </div>
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "borderBottom": "1px solid rgb(233, 236, 239)",
+                      "fontSize": "14px",
+                      "marginTop": "8px",
+                      "paddingBottom": "4px",
+                    }
+                  }
+                >
+                  <div
+                    className="col-4 col-md-3"
+                  >
+                    Shahid Rehman
+                  </div>
+                  <div
+                    className="col-6 col-md-4"
+                  >
+                    run out
+                  </div>
+                  <div
+                    className="col-2 col-md-1"
+                    style={
+                      Object {
+                        "fontWeight": "bold",
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    1
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    3
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="d-block d-md-none col-4"
+                  />
+                  <div
+                    className="d-block d-md-none col-8"
+                    style={
+                      Object {
+                        "fontSize": "10px",
+                      }
+                    }
+                  >
+                    3 balls, 0 4s, 0 6s
+                  </div>
+                </div>
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "borderBottom": "1px solid rgb(233, 236, 239)",
+                      "fontSize": "14px",
+                      "marginTop": "8px",
+                      "paddingBottom": "4px",
+                    }
+                  }
+                >
+                  <div
+                    className="col-4 col-md-3"
+                  >
+                    Zahir Shah
+                  </div>
+                  <div
+                    className="col-6 col-md-4"
+                  >
+                    lbw D Hunt
+                  </div>
+                  <div
+                    className="col-2 col-md-1"
+                    style={
+                      Object {
+                        "fontWeight": "bold",
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    1
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="d-block d-md-none col-4"
+                  />
+                  <div
+                    className="d-block d-md-none col-8"
+                    style={
+                      Object {
+                        "fontSize": "10px",
+                      }
+                    }
+                  >
+                    1 balls, 0 4s, 0 6s
+                  </div>
+                </div>
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "borderBottom": "1px solid rgb(233, 236, 239)",
+                      "fontSize": "14px",
+                      "marginTop": "8px",
+                      "paddingBottom": "4px",
+                    }
+                  }
+                >
+                  <div
+                    className="col-4 col-md-3"
+                  >
+                    Elliott Hallas
+                  </div>
+                  <div
+                    className="col-6 col-md-4"
+                  >
+                    bowled A Sayed
+                  </div>
+                  <div
+                    className="col-2 col-md-1"
+                    style={
+                      Object {
+                        "fontWeight": "bold",
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    35
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    46
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    2
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    3
+                  </div>
+                  <div
+                    className="d-block d-md-none col-4"
+                  />
+                  <div
+                    className="d-block d-md-none col-8"
+                    style={
+                      Object {
+                        "fontSize": "10px",
+                      }
+                    }
+                  >
+                    46 balls, 2 4s, 3 6s
+                  </div>
+                </div>
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "borderBottom": "1px solid rgb(233, 236, 239)",
+                      "fontSize": "14px",
+                      "marginTop": "8px",
+                      "paddingBottom": "4px",
+                    }
+                  }
+                >
+                  <div
+                    className="col-4 col-md-3"
+                  >
+                    Craig Blackburn
+                  </div>
+                  <div
+                    className="col-6 col-md-4"
+                  >
+                    ct A Sayed b J Abbott
+                  </div>
+                  <div
+                    className="col-2 col-md-1"
+                    style={
+                      Object {
+                        "fontWeight": "bold",
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    19
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    22
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    1
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="d-block d-md-none col-4"
+                  />
+                  <div
+                    className="d-block d-md-none col-8"
+                    style={
+                      Object {
+                        "fontSize": "10px",
+                      }
+                    }
+                  >
+                    22 balls, 1 4s, 0 6s
+                  </div>
+                </div>
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "borderBottom": "1px solid rgb(233, 236, 239)",
+                      "fontSize": "14px",
+                      "marginTop": "8px",
+                      "paddingBottom": "4px",
+                    }
+                  }
+                >
+                  <div
+                    className="col-4 col-md-3"
+                  >
+                    Bilal Butt
+                  </div>
+                  <div
+                    className="col-6 col-md-4"
+                  >
+                    run out (A Sayed)
+                  </div>
+                  <div
+                    className="col-2 col-md-1"
+                    style={
+                      Object {
+                        "fontWeight": "bold",
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    4
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    31
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="d-block d-md-none col-4"
+                  />
+                  <div
+                    className="d-block d-md-none col-8"
+                    style={
+                      Object {
+                        "fontSize": "10px",
+                      }
+                    }
+                  >
+                    31 balls, 0 4s, 0 6s
+                  </div>
+                </div>
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "borderBottom": "1px solid rgb(233, 236, 239)",
+                      "fontSize": "14px",
+                      "marginTop": "8px",
+                      "paddingBottom": "4px",
+                    }
+                  }
+                >
+                  <div
+                    className="col-4 col-md-3"
+                  >
+                    Alex Midgley
+                  </div>
+                  <div
+                    className="col-6 col-md-4"
+                  >
+                    not out
+                  </div>
+                  <div
+                    className="col-2 col-md-1"
+                    style={
+                      Object {
+                        "fontWeight": "bold",
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    4
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    20
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="d-block d-md-none col-4"
+                  />
+                  <div
+                    className="d-block d-md-none col-8"
+                    style={
+                      Object {
+                        "fontSize": "10px",
+                      }
+                    }
+                  >
+                    20 balls, 0 4s, 0 6s
+                  </div>
+                </div>
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "borderBottom": "1px solid rgb(233, 236, 239)",
+                      "fontSize": "14px",
+                      "marginTop": "8px",
+                      "paddingBottom": "4px",
+                    }
+                  }
+                >
+                  <div
+                    className="col-4 col-md-3"
+                  >
+                    Atta Rehman
+                  </div>
+                  <div
+                    className="col-6 col-md-4"
+                  >
+                    lbw J Abbott
+                  </div>
+                  <div
+                    className="col-2 col-md-1"
+                    style={
+                      Object {
+                        "fontWeight": "bold",
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    1
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="d-block d-md-none col-4"
+                  />
+                  <div
+                    className="d-block d-md-none col-8"
+                    style={
+                      Object {
+                        "fontSize": "10px",
+                      }
+                    }
+                  >
+                    1 balls, 0 4s, 0 6s
+                  </div>
+                </div>
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "borderBottom": "1px solid rgb(233, 236, 239)",
+                      "fontSize": "14px",
+                      "marginTop": "8px",
+                      "paddingBottom": "4px",
+                    }
+                  }
+                >
+                  <div
+                    className="col-4 col-md-3"
+                  >
+                    Sam Bailey
+                  </div>
+                  <div
+                    className="col-6 col-md-4"
+                  >
+                    ct J Butterfield b D Hunt
+                  </div>
+                  <div
+                    className="col-2 col-md-1"
+                    style={
+                      Object {
+                        "fontWeight": "bold",
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    4
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    10
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="col-2 col-md-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="d-block d-md-none col-4"
+                  />
+                  <div
+                    className="d-block d-md-none col-8"
+                    style={
+                      Object {
+                        "fontSize": "10px",
+                      }
+                    }
+                  >
+                    10 balls, 0 4s, 0 6s
+                  </div>
+                </div>
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "borderBottom": "1px solid rgb(233, 236, 239)",
+                      "fontSize": "14px",
+                      "marginTop": "8px",
+                      "paddingBottom": "4px",
+                    }
+                  }
+                >
+                  <div
+                    className="col-4 col-md-3"
+                  >
+                    Extras
+                  </div>
+                  <div
+                    className="col-6 col-md-4"
+                  >
+                    1nb 9wd 3b 0lb
+                  </div>
+                  <div
+                    className="col-2 col-md-1"
+                    style={
+                      Object {
+                        "fontWeight": "bold",
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    13
+                  </div>
+                </div>
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "backgroundColor": "rgb(233, 236, 239)",
+                      "fontSize": "14px",
+                      "paddingBottom": "4px",
+                      "paddingTop": "4px",
+                    }
+                  }
+                >
+                  <div
+                    className="col-4 col-md-3"
+                  >
+                    Total
+                  </div>
+                  <div
+                    className="col-6 col-md-4"
+                  >
+                    (10 wickets) (34.2 overs)
+                  </div>
+                  <div
+                    className="col-2 col-md-1"
+                    style={
+                      Object {
+                        "fontWeight": "bold",
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    122
+                  </div>
+                </div>
+              </div>
             </div>
             <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
+              className="col-xl-4 col-lg-12"
             >
               <div
-                className="col-1"
-              >
-                1
-              </div>
-              <div
-                className="col-6"
-              >
-                C Dobson
-              </div>
-              <div
-                className="col-2"
                 style={
                   Object {
-                    "textAlign": "right",
+                    "marginBottom": "10px",
+                    "padding": "20px",
+                    "width": "100%",
                   }
                 }
               >
-                9
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "backgroundColor": "rgb(233, 236, 239)",
+                      "paddingLeft": "8px",
+                      "paddingTop": "4px",
+                    }
                   }
-                }
-              >
-                9
+                >
+                  <h6>
+                    Fall of wickets
+                  </h6>
+                </div>
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "borderBottom": "1px solid rgb(233, 236, 239)",
+                      "fontSize": "14px",
+                      "marginTop": "8px",
+                      "paddingBottom": "4px",
+                    }
+                  }
+                >
+                  <div
+                    className="col-1"
+                  >
+                    1
+                  </div>
+                  <div
+                    className="col-6"
+                  >
+                    C Dobson
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    9
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    9
+                  </div>
+                </div>
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "borderBottom": "1px solid rgb(233, 236, 239)",
+                      "fontSize": "14px",
+                      "marginTop": "8px",
+                      "paddingBottom": "4px",
+                    }
+                  }
+                >
+                  <div
+                    className="col-1"
+                  >
+                    2
+                  </div>
+                  <div
+                    className="col-6"
+                  >
+                    E Lee
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    19
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    10
+                  </div>
+                </div>
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "borderBottom": "1px solid rgb(233, 236, 239)",
+                      "fontSize": "14px",
+                      "marginTop": "8px",
+                      "paddingBottom": "4px",
+                    }
+                  }
+                >
+                  <div
+                    className="col-1"
+                  >
+                    3
+                  </div>
+                  <div
+                    className="col-6"
+                  >
+                    S Rehman
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    20
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    1
+                  </div>
+                </div>
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "borderBottom": "1px solid rgb(233, 236, 239)",
+                      "fontSize": "14px",
+                      "marginTop": "8px",
+                      "paddingBottom": "4px",
+                    }
+                  }
+                >
+                  <div
+                    className="col-1"
+                  >
+                    4
+                  </div>
+                  <div
+                    className="col-6"
+                  >
+                    Z Shah
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    20
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                </div>
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "borderBottom": "1px solid rgb(233, 236, 239)",
+                      "fontSize": "14px",
+                      "marginTop": "8px",
+                      "paddingBottom": "4px",
+                    }
+                  }
+                >
+                  <div
+                    className="col-1"
+                  >
+                    5
+                  </div>
+                  <div
+                    className="col-6"
+                  >
+                    R Noble
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    86
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    66
+                  </div>
+                </div>
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "borderBottom": "1px solid rgb(233, 236, 239)",
+                      "fontSize": "14px",
+                      "marginTop": "8px",
+                      "paddingBottom": "4px",
+                    }
+                  }
+                >
+                  <div
+                    className="col-1"
+                  >
+                    6
+                  </div>
+                  <div
+                    className="col-6"
+                  >
+                    E Hallas
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    89
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    3
+                  </div>
+                </div>
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "borderBottom": "1px solid rgb(233, 236, 239)",
+                      "fontSize": "14px",
+                      "marginTop": "8px",
+                      "paddingBottom": "4px",
+                    }
+                  }
+                >
+                  <div
+                    className="col-1"
+                  >
+                    7
+                  </div>
+                  <div
+                    className="col-6"
+                  >
+                    B Butt
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    113
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    24
+                  </div>
+                </div>
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "borderBottom": "1px solid rgb(233, 236, 239)",
+                      "fontSize": "14px",
+                      "marginTop": "8px",
+                      "paddingBottom": "4px",
+                    }
+                  }
+                >
+                  <div
+                    className="col-1"
+                  >
+                    8
+                  </div>
+                  <div
+                    className="col-6"
+                  >
+                    C Blackburn
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    114
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    1
+                  </div>
+                </div>
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "borderBottom": "1px solid rgb(233, 236, 239)",
+                      "fontSize": "14px",
+                      "marginTop": "8px",
+                      "paddingBottom": "4px",
+                    }
+                  }
+                >
+                  <div
+                    className="col-1"
+                  >
+                    9
+                  </div>
+                  <div
+                    className="col-6"
+                  >
+                    A Rehman
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    114
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                </div>
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "borderBottom": "1px solid rgb(233, 236, 239)",
+                      "fontSize": "14px",
+                      "marginTop": "8px",
+                      "paddingBottom": "4px",
+                    }
+                  }
+                >
+                  <div
+                    className="col-1"
+                  >
+                    10
+                  </div>
+                  <div
+                    className="col-6"
+                  >
+                    S Bailey
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    122
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    8
+                  </div>
+                </div>
               </div>
             </div>
             <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
+              className="col-xl-8 col-lg-12"
             >
               <div
-                className="col-1"
-              >
-                2
-              </div>
-              <div
-                className="col-6"
-              >
-                E Lee
-              </div>
-              <div
-                className="col-2"
                 style={
                   Object {
-                    "textAlign": "right",
+                    "marginBottom": "10px",
+                    "padding": "20px",
+                    "width": "100%",
                   }
                 }
               >
-                19
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
+                <div
+                  className="row"
+                >
+                  <h6>
+                    Baildon
+                     bowling
+                  </h6>
+                </div>
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "backgroundColor": "rgb(233, 236, 239)",
+                      "paddingTop": "4px",
+                    }
                   }
-                }
-              >
-                10
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-1"
-              >
-                3
-              </div>
-              <div
-                className="col-6"
-              >
-                S Rehman
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                20
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                1
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-1"
-              >
-                4
-              </div>
-              <div
-                className="col-6"
-              >
-                Z Shah
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                20
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-1"
-              >
-                5
-              </div>
-              <div
-                className="col-6"
-              >
-                R Noble
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                86
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                66
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-1"
-              >
-                6
-              </div>
-              <div
-                className="col-6"
-              >
-                E Hallas
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                89
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                3
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-1"
-              >
-                7
-              </div>
-              <div
-                className="col-6"
-              >
-                B Butt
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                113
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                24
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-1"
-              >
-                8
-              </div>
-              <div
-                className="col-6"
-              >
-                C Blackburn
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                114
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                1
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-1"
-              >
-                9
-              </div>
-              <div
-                className="col-6"
-              >
-                A Rehman
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                114
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-1"
-              >
-                10
-              </div>
-              <div
-                className="col-6"
-              >
-                S Bailey
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                122
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                8
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="col-xl-8 col-lg-12"
-        >
-          <div
-            style={
-              Object {
-                "marginBottom": "10px",
-                "padding": "20px",
-                "width": "100%",
-              }
-            }
-          >
-            <div
-              className="row"
-            >
-              <h6>
-                Baildon
-                 bowling
-              </h6>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "backgroundColor": "rgb(233, 236, 239)",
-                  "paddingTop": "4px",
-                }
-              }
-            >
-              <div
-                className="col-6 col-md-5"
-              />
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                <h6>
-                  Overs
-                </h6>
-              </div>
-              <div
-                className="col-2 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                <h6>
-                  Maidens
-                </h6>
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                <h6>
-                  Runs
-                </h6>
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                <h6>
-                  Wkts
-                </h6>
-              </div>
-            </div>
-            <div
-              className="row"
-            >
-              <div
-                className="col-6 col-md-5"
-              >
-                D Hunt
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                10.2
-              </div>
-              <div
-                className="col-2 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                1
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                46
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                3
-              </div>
-            </div>
-            <div
-              className="row"
-            >
-              <div
-                className="col-6 col-md-5"
-              >
-                D Metcalfe
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                6
-              </div>
-              <div
-                className="col-2 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                3
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                17
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                1
-              </div>
-            </div>
-            <div
-              className="row"
-            >
-              <div
-                className="col-6 col-md-5"
-              >
-                J Abbott
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                11
-              </div>
-              <div
-                className="col-2 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                3
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                16
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                2
-              </div>
-            </div>
-            <div
-              className="row"
-            >
-              <div
-                className="col-6 col-md-5"
-              >
-                A Sayed
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                7
-              </div>
-              <div
-                className="col-2 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                38
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                2
+                >
+                  <div
+                    className="col-6 col-md-5"
+                  />
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    <h6>
+                      Overs
+                    </h6>
+                  </div>
+                  <div
+                    className="col-2 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    <h6>
+                      Maidens
+                    </h6>
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    <h6>
+                      Runs
+                    </h6>
+                  </div>
+                  <div
+                    className="col-2 col-md-1"
+                    style={
+                      Object {
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    <h6>
+                      Wkts
+                    </h6>
+                  </div>
+                </div>
+                <div
+                  className="row"
+                >
+                  <div
+                    className="col-6 col-md-5"
+                  >
+                    D Hunt
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    10.2
+                  </div>
+                  <div
+                    className="col-2 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    1
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    46
+                  </div>
+                  <div
+                    className="col-2 col-md-1"
+                    style={
+                      Object {
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    3
+                  </div>
+                </div>
+                <div
+                  className="row"
+                >
+                  <div
+                    className="col-6 col-md-5"
+                  >
+                    D Metcalfe
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    6
+                  </div>
+                  <div
+                    className="col-2 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    3
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    17
+                  </div>
+                  <div
+                    className="col-2 col-md-1"
+                    style={
+                      Object {
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    1
+                  </div>
+                </div>
+                <div
+                  className="row"
+                >
+                  <div
+                    className="col-6 col-md-5"
+                  >
+                    J Abbott
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    11
+                  </div>
+                  <div
+                    className="col-2 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    3
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    16
+                  </div>
+                  <div
+                    className="col-2 col-md-1"
+                    style={
+                      Object {
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    2
+                  </div>
+                </div>
+                <div
+                  className="row"
+                >
+                  <div
+                    className="col-6 col-md-5"
+                  >
+                    A Sayed
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    7
+                  </div>
+                  <div
+                    className="col-2 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    38
+                  </div>
+                  <div
+                    className="col-2 col-md-1"
+                    style={
+                      Object {
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    2
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1955,403 +1992,440 @@ exports[`Scorecard should render correctly when match has four innings 1`] = `
     Object {
       "display": "flex",
       "flexDirection": "column",
-      "height": "100%",
+      "height": "100vh",
     }
   }
 >
-  <div>
-    <div
-      className="col-12"
-    >
-      <div
-        className="row"
-        style={
-          Object {
-            "backgroundColor": "rgb(233, 236, 239)",
-            "paddingTop": "4px",
-            "textAlign": "center",
-          }
-        }
-      >
-        <div
-          className="col-12"
-        >
-          <h5>
-            28-Apr-2018
-          </h5>
-        </div>
-        <div
-          className="col-12"
-        >
-          <h4>
-            Cleckheaton v Baildon
-          </h4>
-        </div>
-        <div
-          className="col-12"
-        >
-          <h6>
-            Baildon won by 8 runs
-          </h6>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    style={
-      Object {
-        "marginBottom": "4px",
-        "marginTop": "4px",
-        "textAlign": "center",
-      }
-    }
+  <nav
+    className="navbar navbar-dark bg-primary"
   >
-    <button
-      className="btn btn-primary"
-      disabled={false}
-      onClick={[Function]}
-      style={
-        Object {
-          "marginLeft": "8px",
-          "marginRight": "8px",
-        }
-      }
+    <a
+      className="navbar-brand"
+      href="#"
     >
-      1st innings
-    </button>
+      Cricket scores live
+    </a>
     <button
-      className="btn btn-primary"
-      disabled={false}
-      onClick={[Function]}
-      style={
-        Object {
-          "marginLeft": "8px",
-          "marginRight": "8px",
-        }
-      }
+      className="btn btn-outline-light"
+      onClick={undefined}
     >
-      2nd innings
+      Register or login
     </button>
-    <button
-      className="btn btn-primary"
-      disabled={false}
-      onClick={[Function]}
-      style={
-        Object {
-          "marginLeft": "8px",
-          "marginRight": "8px",
-        }
-      }
-    >
-      3rd innings
-    </button>
-    <button
-      className="btn btn-primary"
-      disabled={true}
-      onClick={[Function]}
-      style={
-        Object {
-          "marginLeft": "8px",
-          "marginRight": "8px",
-        }
-      }
-    >
-      4th innings
-    </button>
-  </div>
+  </nav>
   <div
     style={
       Object {
         "flex": "1",
+        "marginTop": "8px",
         "overflowX": "hidden",
         "overflowY": "auto",
       }
     }
   >
-    <div>
-      <div
-        className="row"
-      >
+    <div
+      style={
+        Object {
+          "display": "flex",
+          "flexDirection": "column",
+          "height": "100%",
+        }
+      }
+    >
+      <div>
         <div
           className="col-12"
-          style={
-            Object {
-              "textAlign": "center",
-            }
-          }
         >
-          <h5>
-            Baildon 0-0
-          </h5>
+          <div
+            className="row"
+            style={
+              Object {
+                "backgroundColor": "rgb(233, 236, 239)",
+                "paddingTop": "4px",
+                "textAlign": "center",
+              }
+            }
+          >
+            <div
+              className="col-12"
+            >
+              <h5>
+                28-Apr-2018
+              </h5>
+            </div>
+            <div
+              className="col-12"
+            >
+              <h4>
+                Cleckheaton v Baildon
+              </h4>
+            </div>
+            <div
+              className="col-12"
+            >
+              <h6>
+                Baildon won by 8 runs
+              </h6>
+            </div>
+          </div>
         </div>
       </div>
       <div
-        className="row"
+        style={
+          Object {
+            "marginBottom": "4px",
+            "marginTop": "4px",
+            "textAlign": "center",
+          }
+        }
       >
-        <div
-          className="col-xl-8 col-lg-12"
-        >
-          <div
-            style={
-              Object {
-                "marginBottom": "10px",
-                "padding": "20px",
-                "width": "100%",
-              }
+        <button
+          className="btn btn-primary"
+          disabled={false}
+          onClick={[Function]}
+          style={
+            Object {
+              "marginLeft": "8px",
+              "marginRight": "8px",
             }
+          }
+        >
+          1st innings
+        </button>
+        <button
+          className="btn btn-primary"
+          disabled={false}
+          onClick={[Function]}
+          style={
+            Object {
+              "marginLeft": "8px",
+              "marginRight": "8px",
+            }
+          }
+        >
+          2nd innings
+        </button>
+        <button
+          className="btn btn-primary"
+          disabled={false}
+          onClick={[Function]}
+          style={
+            Object {
+              "marginLeft": "8px",
+              "marginRight": "8px",
+            }
+          }
+        >
+          3rd innings
+        </button>
+        <button
+          className="btn btn-primary"
+          disabled={true}
+          onClick={[Function]}
+          style={
+            Object {
+              "marginLeft": "8px",
+              "marginRight": "8px",
+            }
+          }
+        >
+          4th innings
+        </button>
+      </div>
+      <div
+        style={
+          Object {
+            "flex": "1",
+            "overflowX": "hidden",
+            "overflowY": "auto",
+          }
+        }
+      >
+        <div>
+          <div
+            className="row"
           >
             <div
-              className="row"
+              className="col-12"
               style={
                 Object {
-                  "backgroundColor": "rgb(233, 236, 239)",
-                  "paddingTop": "4px",
+                  "textAlign": "center",
                 }
               }
             >
-              <div
-                className="col-10 col-md-7"
-              >
-                <h6>
-                  Batsman
-                </h6>
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                <h6>
-                  Runs
-                </h6>
-              </div>
-              <div
-                className="col-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                <h6>
-                  Balls
-                </h6>
-              </div>
-              <div
-                className="col-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                <h6>
-                  Mins
-                </h6>
-              </div>
-              <div
-                className="col-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                <h6>
-                  4s
-                </h6>
-              </div>
-              <div
-                className="col-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                <h6>
-                  6s
-                </h6>
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-4 col-md-3"
-              >
-                Extras
-              </div>
-              <div
-                className="col-6 col-md-4"
-              >
-                0nb 0wd 0b 0lb
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "backgroundColor": "rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "paddingBottom": "4px",
-                  "paddingTop": "4px",
-                }
-              }
-            >
-              <div
-                className="col-4 col-md-3"
-              >
-                Total
-              </div>
-              <div
-                className="col-6 col-md-4"
-              >
-                (0 wickets) (0 overs)
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
+              <h5>
+                Baildon 0-0
+              </h5>
             </div>
           </div>
-        </div>
-        <div
-          className="col-xl-4 col-lg-12"
-        >
           <div
-            style={
-              Object {
-                "marginBottom": "10px",
-                "padding": "20px",
-                "width": "100%",
-              }
-            }
+            className="row"
           >
             <div
-              className="row"
-              style={
-                Object {
-                  "backgroundColor": "rgb(233, 236, 239)",
-                  "paddingLeft": "8px",
-                  "paddingTop": "4px",
-                }
-              }
+              className="col-xl-8 col-lg-12"
             >
-              <h6>
-                Fall of wickets
-              </h6>
+              <div
+                style={
+                  Object {
+                    "marginBottom": "10px",
+                    "padding": "20px",
+                    "width": "100%",
+                  }
+                }
+              >
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "backgroundColor": "rgb(233, 236, 239)",
+                      "paddingTop": "4px",
+                    }
+                  }
+                >
+                  <div
+                    className="col-10 col-md-7"
+                  >
+                    <h6>
+                      Batsman
+                    </h6>
+                  </div>
+                  <div
+                    className="col-2 col-md-1"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    <h6>
+                      Runs
+                    </h6>
+                  </div>
+                  <div
+                    className="col-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    <h6>
+                      Balls
+                    </h6>
+                  </div>
+                  <div
+                    className="col-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    <h6>
+                      Mins
+                    </h6>
+                  </div>
+                  <div
+                    className="col-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    <h6>
+                      4s
+                    </h6>
+                  </div>
+                  <div
+                    className="col-1 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    <h6>
+                      6s
+                    </h6>
+                  </div>
+                </div>
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "borderBottom": "1px solid rgb(233, 236, 239)",
+                      "fontSize": "14px",
+                      "marginTop": "8px",
+                      "paddingBottom": "4px",
+                    }
+                  }
+                >
+                  <div
+                    className="col-4 col-md-3"
+                  >
+                    Extras
+                  </div>
+                  <div
+                    className="col-6 col-md-4"
+                  >
+                    0nb 0wd 0b 0lb
+                  </div>
+                  <div
+                    className="col-2 col-md-1"
+                    style={
+                      Object {
+                        "fontWeight": "bold",
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                </div>
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "backgroundColor": "rgb(233, 236, 239)",
+                      "fontSize": "14px",
+                      "paddingBottom": "4px",
+                      "paddingTop": "4px",
+                    }
+                  }
+                >
+                  <div
+                    className="col-4 col-md-3"
+                  >
+                    Total
+                  </div>
+                  <div
+                    className="col-6 col-md-4"
+                  >
+                    (0 wickets) (0 overs)
+                  </div>
+                  <div
+                    className="col-2 col-md-1"
+                    style={
+                      Object {
+                        "fontWeight": "bold",
+                        "textAlign": "right",
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div
-          className="col-xl-8 col-lg-12"
-        >
-          <div
-            style={
-              Object {
-                "marginBottom": "10px",
-                "padding": "20px",
-                "width": "100%",
-              }
-            }
-          >
             <div
-              className="row"
+              className="col-xl-4 col-lg-12"
             >
-              <h6>
-                Cleckheaton
-                 bowling
-              </h6>
+              <div
+                style={
+                  Object {
+                    "marginBottom": "10px",
+                    "padding": "20px",
+                    "width": "100%",
+                  }
+                }
+              >
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "backgroundColor": "rgb(233, 236, 239)",
+                      "paddingLeft": "8px",
+                      "paddingTop": "4px",
+                    }
+                  }
+                >
+                  <h6>
+                    Fall of wickets
+                  </h6>
+                </div>
+              </div>
             </div>
             <div
-              className="row"
-              style={
-                Object {
-                  "backgroundColor": "rgb(233, 236, 239)",
-                  "paddingTop": "4px",
-                }
-              }
+              className="col-xl-8 col-lg-12"
             >
               <div
-                className="col-6 col-md-5"
-              />
-              <div
-                className="col-2"
                 style={
                   Object {
-                    "textAlign": "center",
+                    "marginBottom": "10px",
+                    "padding": "20px",
+                    "width": "100%",
                   }
                 }
               >
-                <h6>
-                  Overs
-                </h6>
-              </div>
-              <div
-                className="col-2 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "center",
+                <div
+                  className="row"
+                >
+                  <h6>
+                    Cleckheaton
+                     bowling
+                  </h6>
+                </div>
+                <div
+                  className="row"
+                  style={
+                    Object {
+                      "backgroundColor": "rgb(233, 236, 239)",
+                      "paddingTop": "4px",
+                    }
                   }
-                }
-              >
-                <h6>
-                  Maidens
-                </h6>
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                <h6>
-                  Runs
-                </h6>
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                <h6>
-                  Wkts
-                </h6>
+                >
+                  <div
+                    className="col-6 col-md-5"
+                  />
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    <h6>
+                      Overs
+                    </h6>
+                  </div>
+                  <div
+                    className="col-2 d-none d-md-block"
+                    style={
+                      Object {
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    <h6>
+                      Maidens
+                    </h6>
+                  </div>
+                  <div
+                    className="col-2"
+                    style={
+                      Object {
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    <h6>
+                      Runs
+                    </h6>
+                  </div>
+                  <div
+                    className="col-2 col-md-1"
+                    style={
+                      Object {
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    <h6>
+                      Wkts
+                    </h6>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -2364,22 +2438,59 @@ exports[`Scorecard should render correctly when match has four innings 1`] = `
 
 exports[`Scorecard should render correctly when no match available 1`] = `
 <div
-  className="col-12"
   style={
     Object {
-      "textAlign": "center",
+      "display": "flex",
+      "flexDirection": "column",
+      "height": "100vh",
     }
   }
 >
-  <div>
-    <i
-      className="fa fa-spinner fa-spin"
+  <nav
+    className="navbar navbar-dark bg-primary"
+  >
+    <a
+      className="navbar-brand"
+      href="#"
+    >
+      Cricket scores live
+    </a>
+    <button
+      className="btn btn-outline-light"
+      onClick={undefined}
+    >
+      Register or login
+    </button>
+  </nav>
+  <div
+    style={
+      Object {
+        "flex": "1",
+        "marginTop": "8px",
+        "overflowX": "hidden",
+        "overflowY": "auto",
+      }
+    }
+  >
+    <div
+      className="col-12"
       style={
         Object {
-          "fontSize": "24px",
+          "textAlign": "center",
         }
       }
-    />
+    >
+      <div>
+        <i
+          className="fa fa-spinner fa-spin"
+          style={
+            Object {
+              "fontSize": "24px",
+            }
+          }
+        />
+      </div>
+    </div>
   </div>
 </div>
 `;

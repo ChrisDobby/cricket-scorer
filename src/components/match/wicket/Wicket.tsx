@@ -7,6 +7,7 @@ import Entry from './Entry';
 import * as globalStyles from '../../styles';
 import { SaveButton } from '../SaveButton';
 import { bindMatchStorage } from '../../../stores/withMatchStorage';
+import { getTeam } from '../../../match/utilities';
 
 type WicketProps = RouteComponentProps<{}> & {
     inProgress: domain.InProgressMatch;
@@ -106,7 +107,9 @@ class Wicket extends React.Component<WicketProps, {}> {
     get fielders() {
         return typeof this.props.inProgress.currentInnings === 'undefined'
             ? []
-            : this.props.inProgress.currentInnings.bowlingTeam.players;
+            : getTeam(
+                this.props.inProgress.match as domain.Match,
+                this.props.inProgress.currentInnings.bowlingTeam).players;
     }
 
     get availableHowouts() {

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
 import * as ReactTestRenderer from 'react-test-renderer';
-import { Scorecard } from '../../../components/scorecard/Scorecard';
-import { Innings, InningsStatus } from '../../../domain';
-import { match, homeTeam, awayTeam } from '../../testData/testMatch';
+import Scorecard from '../../../components/scorecard/Scorecard';
+import { Innings, InningsStatus, TeamType } from '../../../domain';
+import { match } from '../../testData/testMatch';
 
 describe('Scorecard', () => {
     it('should change selected innings when button clicked', () => {
@@ -27,8 +27,8 @@ describe('Scorecard', () => {
 
     it('should render correctly when match has four innings', () => {
         const thirdInnings: Innings = {
-            battingTeam: homeTeam,
-            bowlingTeam: awayTeam,
+            battingTeam: TeamType.HomeTeam,
+            bowlingTeam: TeamType.AwayTeam,
             score: 0,
             wickets: 0,
             completedOvers: 0,
@@ -49,8 +49,8 @@ describe('Scorecard', () => {
             fallOfWickets: [],
         };
         const fourthInnings: Innings = {
-            battingTeam: awayTeam,
-            bowlingTeam: homeTeam,
+            battingTeam: TeamType.AwayTeam,
+            bowlingTeam: TeamType.HomeTeam,
             score: 0,
             wickets: 0,
             completedOvers: 0,

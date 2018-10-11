@@ -105,3 +105,6 @@ export const newBatsmanIndex = (innings: domain.Innings, batter: domain.Batter, 
 
     return flipBatters(innings, batter);
 };
+
+export const getTeam = (match: domain.Match, teamType: domain.TeamType) =>
+    teamType === domain.TeamType.HomeTeam ? match.homeTeam : match.awayTeam;

@@ -156,7 +156,7 @@ describe('inProgressMatchStore', () => {
     describe('startInnings', () => {
         it('should do nothing if no match has been started', () => {
             const inProgressMatchStore = getMatchStore();
-            inProgressMatchStore.startInnings(matches.blankMatch.homeTeam, 0, 1);
+            inProgressMatchStore.startInnings(TeamType.HomeTeam, 0, 1);
 
             expect(inProgressMatchStore.match).toBeUndefined();
         });
@@ -164,7 +164,7 @@ describe('inProgressMatchStore', () => {
         it('should add a new innings to the list of innings in the match', () => {
             const inProgressMatchStore = getMatchStore();
             inProgressMatchStore.match = matches.blankMatch;
-            inProgressMatchStore.startInnings(matches.blankMatch.homeTeam, 0, 1);
+            inProgressMatchStore.startInnings(TeamType.HomeTeam, 0, 1);
 
             expect(inProgressMatchStore.match.innings).toHaveLength(1);
         });
@@ -568,8 +568,11 @@ describe('inProgressMatchStore', () => {
             });
             const lastInnings = matches.matchWithOnlyCompletedInnings
                 .innings[matches.matchWithOnlyCompletedInnings.innings.length - 1];
+            const expectedNextBattingTeam = lastInnings.bowlingTeam === TeamType.HomeTeam
+                ? matches.blankMatch.homeTeam
+                : matches.blankMatch.awayTeam;
 
-            expect(inProgressMatchStore.nextBattingTeam).toEqual(lastInnings.bowlingTeam);
+            expect(inProgressMatchStore.nextBattingTeam).toEqual(expectedNextBattingTeam);
         });
 
         it('should return the team selected to bat in the toss if no current innings', () => {

@@ -3,14 +3,17 @@ import { Batting } from './Batting';
 import { FallOfWickets } from './FallOfWickets';
 import { Bowling } from './Bowling';
 import { TeamTotal } from './TeamTotal';
-import { Innings as ScorecardInnings } from '../../domain';
+import { Innings as ScorecardInnings, TeamType, Team } from '../../domain';
 
-export interface InningsProps { innings: ScorecardInnings; }
+export interface InningsProps {
+    innings: ScorecardInnings;
+    getTeam: (teamType: TeamType) => Team;
+}
 
-export const Innings = ({ innings }: InningsProps) => (
+export const Innings = ({ innings, getTeam }: InningsProps) => (
     <div>
         <div className="row">
-            <TeamTotal innings={innings} />
+            <TeamTotal innings={innings} getTeam={getTeam} />
         </div>
         <div className="row">
             <Batting
@@ -20,7 +23,7 @@ export const Innings = ({ innings }: InningsProps) => (
                 totalOvers={innings.totalOvers}
             />
             <FallOfWickets fallOfWickets={innings.fallOfWickets} />
-            <Bowling team={innings.bowlingTeam.name} bowlers={innings.bowlers} />
+            <Bowling team={getTeam(innings.bowlingTeam).name} bowlers={innings.bowlers} />
         </div>
     </div>
 );
