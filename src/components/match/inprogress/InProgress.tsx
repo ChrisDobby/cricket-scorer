@@ -90,14 +90,12 @@ class InProgress extends React.Component<InProgressProps, {}> {
                 />);
         }
 
-        if (inningsStatus === domain.InningsStatus.InProgress &&
-            this.props.inProgress.currentInnings &&
-            this.props.inProgress.currentInnings.batting.batters
-                .filter(batter => batter.innings && !batter.innings.wicket).length === 1) {
+        if (this.props.inProgress.newBatterRequired) {
+            const currentInnings = this.props.inProgress.currentInnings as domain.Innings;
             return (
                 <SelectNewBatter
-                    batting={this.props.inProgress.currentInnings.batting}
-                    players={getTeam(match, this.props.inProgress.currentInnings.battingTeam).players}
+                    batting={currentInnings.batting}
+                    players={getTeam(match, currentInnings.battingTeam).players}
                     batterSelected={this.bindStorage(this.props.inProgress.newBatter)}
                 />);
         }

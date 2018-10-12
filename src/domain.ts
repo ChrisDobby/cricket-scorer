@@ -216,6 +216,7 @@ export interface InProgressMatch {
     provisionalMatchComplete: boolean;
     nextBattingTeam?: Team;
     canSelectBattingTeamForInnings: boolean;
+    newBatterRequired: boolean;
     startInnings: (battingTeam: TeamType, batter1Index: number, batter2Index: number) => void;
     newBowler: (playerIndex: number) => void;
     newBatter: (playerIndex: number) => void;

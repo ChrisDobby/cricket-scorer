@@ -149,6 +149,14 @@ class InProgressMatchStore implements domain.InProgressMatch {
         return getTeam(this.match, this.match.innings[this.match.innings.length - 1].bowlingTeam);
     }
 
+    @computed get newBatterRequired() {
+        if (typeof this.match === 'undefined' ||
+        typeof this.currentInnings === 'undefined') { return false; }
+
+        return this.currentInnings.batting.batters
+                .filter(batter => batter.innings && !batter.innings.wicket).length < 2;
+    }
+
     @action startMatch = (tossWonBy: domain.TeamType, battingFirst: domain.TeamType) => {
         if (typeof this.match === 'undefined') { return; }
 

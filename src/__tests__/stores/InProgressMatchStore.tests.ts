@@ -1,6 +1,6 @@
 import { InProgressMatchStore } from '../../stores/inProgressMatchStore';
 import * as matches from '../testData/matches';
-import { Delivery, DeliveryOutcome, Over, Match, InningsStatus, Toss, TeamType, MatchType, Result } from '../../domain';
+import * as domain from '../../domain';
 
 jest.mock('../../match/over', () => {
     const wickets = () => 2;
@@ -21,7 +21,7 @@ jest.mock('../../match/complete', () => ({
     },
 }));
 
-const getMatchStore = (match?: Match) => {
+const getMatchStore = (match?: domain.Match) => {
     const store = new InProgressMatchStore();
     store.match = match;
     store.currentBatterIndex = 0;
@@ -66,27 +66,27 @@ describe('inProgressMatchStore', () => {
         it('should return empty array of deliveries if all deliveries are from completed over', () => {
             const inProgressMatchStore = getMatchStore(matches.matchWithAllDeliveriesInCompletedOver);
 
-            expect((inProgressMatchStore.currentOver as Over).deliveries).toHaveLength(0);
+            expect((inProgressMatchStore.currentOver as domain.Over).deliveries).toHaveLength(0);
         });
 
         it('should return all deliveries after the last completed over', () => {
             const inProgressMatchStore = getMatchStore(matches.matchWithOverReadyToComplete);
 
-            expect((inProgressMatchStore.currentOver as Over).deliveries).toHaveLength(6);
+            expect((inProgressMatchStore.currentOver as domain.Over).deliveries).toHaveLength(6);
         });
 
         it('should return a count of wickets', () => {
             const inProgressMatchStore = getMatchStore();
             inProgressMatchStore.match = matches.matchWithOverReadyToComplete;
 
-            expect((inProgressMatchStore.currentOver as Over).wickets).toBe(2);
+            expect((inProgressMatchStore.currentOver as domain.Over).wickets).toBe(2);
         });
 
         it('should return a count of bowlingRuns', () => {
             const inProgressMatchStore = getMatchStore();
             inProgressMatchStore.match = matches.matchWithOverReadyToComplete;
 
-            expect((inProgressMatchStore.currentOver as Over).bowlingRuns).toBe(5);
+            expect((inProgressMatchStore.currentOver as domain.Over).bowlingRuns).toBe(5);
         });
     });
 
@@ -165,7 +165,7 @@ describe('inProgressMatchStore', () => {
     describe('startInnings', () => {
         it('should do nothing if no match has been started', () => {
             const inProgressMatchStore = getMatchStore();
-            inProgressMatchStore.startInnings(TeamType.HomeTeam, 0, 1);
+            inProgressMatchStore.startInnings(domain.TeamType.HomeTeam, 0, 1);
 
             expect(inProgressMatchStore.match).toBeUndefined();
         });
@@ -173,7 +173,7 @@ describe('inProgressMatchStore', () => {
         it('should add a new innings to the list of innings in the match', () => {
             const inProgressMatchStore = getMatchStore();
             inProgressMatchStore.match = matches.blankMatch;
-            inProgressMatchStore.startInnings(TeamType.HomeTeam, 0, 1);
+            inProgressMatchStore.startInnings(domain.TeamType.HomeTeam, 0, 1);
 
             expect(inProgressMatchStore.match.innings).toHaveLength(1);
         });
@@ -249,7 +249,7 @@ describe('inProgressMatchStore', () => {
     describe('delivery', () => {
         it('should do nothing if no match has been started', () => {
             const inProgressMatchStore = getMatchStore();
-            inProgressMatchStore.delivery(DeliveryOutcome.Valid, {});
+            inProgressMatchStore.delivery(domain.DeliveryOutcome.Valid, {});
 
             expect(inProgressMatchStore.match).toBeUndefined();
         });
@@ -257,7 +257,7 @@ describe('inProgressMatchStore', () => {
         it('should do nothing if no innings has been started', () => {
             const inProgressMatchStore = getMatchStore();
             inProgressMatchStore.match = matches.blankMatch;
-            inProgressMatchStore.delivery(DeliveryOutcome.Valid, {});
+            inProgressMatchStore.delivery(domain.DeliveryOutcome.Valid, {});
 
             expect(inProgressMatchStore.match.innings).toHaveLength(0);
         });
@@ -265,7 +265,7 @@ describe('inProgressMatchStore', () => {
         it('should do nothing if no over has been started', () => {
             const inProgressMatchStore = getMatchStore();
             inProgressMatchStore.match = matches.matchWithStartedInnings;
-            inProgressMatchStore.delivery(DeliveryOutcome.Valid, {});
+            inProgressMatchStore.delivery(domain.DeliveryOutcome.Valid, {});
 
             expect(inProgressMatchStore.match.innings[0].events).toHaveLength(0);
         });
@@ -273,11 +273,11 @@ describe('inProgressMatchStore', () => {
         it('should add a delivery to the innings', () => {
             const inProgressMatchStore = getMatchStore();
             inProgressMatchStore.match = matches.matchWithStartedOver;
-            inProgressMatchStore.delivery(DeliveryOutcome.Valid, { runs: 2 });
+            inProgressMatchStore.delivery(domain.DeliveryOutcome.Valid, { runs: 2 });
 
             expect(inProgressMatchStore.match.innings[0].events).toHaveLength(1);
-            const delivery = inProgressMatchStore.match.innings[0].events[0] as Delivery;
-            expect(delivery.outcome.deliveryOutcome).toBe(DeliveryOutcome.Valid);
+            const delivery = inProgressMatchStore.match.innings[0].events[0] as domain.Delivery;
+            expect(delivery.outcome.deliveryOutcome).toBe(domain.DeliveryOutcome.Valid);
             expect(delivery.outcome.scores.runs).toBe(2);
         });
     });
@@ -459,7 +459,7 @@ describe('inProgressMatchStore', () => {
         it('should return the calculated status', () => {
             const inProgressMatchStore = getMatchStore(matches.matchWithStartedOver);
 
-            expect(inProgressMatchStore.provisionalInningsStatus).toBe(InningsStatus.InProgress);
+            expect(inProgressMatchStore.provisionalInningsStatus).toBe(domain.InningsStatus.InProgress);
         });
     });
 
@@ -481,27 +481,27 @@ describe('inProgressMatchStore', () => {
         it('should do nothing if no match', () => {
             const inProgressMatchStore = getMatchStore();
 
-            inProgressMatchStore.completeInnings(InningsStatus.AllOut);
+            inProgressMatchStore.completeInnings(domain.InningsStatus.AllOut);
         });
 
         it('should do nothing if no match', () => {
             const inProgressMatchStore = getMatchStore(matches.blankMatch);
 
-            inProgressMatchStore.completeInnings(InningsStatus.AllOut);
+            inProgressMatchStore.completeInnings(domain.InningsStatus.AllOut);
         });
 
         it('should set the current innings status', () => {
             const inProgressMatchStore = getMatchStore(matches.matchWithStartedOver);
 
-            inProgressMatchStore.completeInnings(InningsStatus.AllOut);
+            inProgressMatchStore.completeInnings(domain.InningsStatus.AllOut);
 
-            expect((inProgressMatchStore.match as Match).innings[0].status).toBe(InningsStatus.AllOut);
+            expect((inProgressMatchStore.match as domain.Match).innings[0].status).toBe(domain.InningsStatus.AllOut);
         });
 
         it('should throw an error if in progress passed', () => {
             const inProgressMatchStore = getMatchStore(matches.matchWithStartedOver);
 
-            expect(() => inProgressMatchStore.completeInnings(InningsStatus.InProgress))
+            expect(() => inProgressMatchStore.completeInnings(domain.InningsStatus.InProgress))
                 .toThrow('cannot complete with in progress status');
         });
     });
@@ -510,63 +510,63 @@ describe('inProgressMatchStore', () => {
         it('should do nothing if no match', () => {
             const inProgressMatchStore = getMatchStore();
 
-            inProgressMatchStore.completeMatch({ result: Result.Abandoned });
+            inProgressMatchStore.completeMatch({ result: domain.Result.Abandoned });
         });
 
         it('should update the match result', () => {
             const inProgressMatchStore = getMatchStore(matches.blankMatch);
 
-            inProgressMatchStore.completeMatch({ result: Result.Abandoned });
+            inProgressMatchStore.completeMatch({ result: domain.Result.Abandoned });
 
-            expect((inProgressMatchStore.match as Match).result).toEqual({ result: Result.Abandoned });
+            expect((inProgressMatchStore.match as domain.Match).result).toEqual({ result: domain.Result.Abandoned });
         });
 
         it('should update the match status', () => {
             const inProgressMatchStore = getMatchStore(matches.blankMatch);
 
-            inProgressMatchStore.completeMatch({ result: Result.Abandoned });
+            inProgressMatchStore.completeMatch({ result: domain.Result.Abandoned });
 
-            expect((inProgressMatchStore.match as Match).status).toEqual('abandoned');
+            expect((inProgressMatchStore.match as domain.Match).status).toEqual('abandoned');
         });
 
         it('should set complete to true', () => {
             const inProgressMatchStore = getMatchStore(matches.blankMatch);
 
-            inProgressMatchStore.completeMatch({ result: Result.Abandoned });
+            inProgressMatchStore.completeMatch({ result: domain.Result.Abandoned });
 
-            expect((inProgressMatchStore.match as Match).complete).toBeTruthy();
+            expect((inProgressMatchStore.match as domain.Match).complete).toBeTruthy();
         });
 
         it('should set any in progress innings to match complete status', () => {
             const match = {
                 ...matches.blankMatch,
                 innings: [
-                    { ...matches.inningsAfterWicketTaken, status: InningsStatus.AllOut },
+                    { ...matches.inningsAfterWicketTaken, status: domain.InningsStatus.AllOut },
                     matches.inningsAfterWicketTaken,
                 ],
             };
 
             const inProgressMatchStore = getMatchStore(match);
-            inProgressMatchStore.completeMatch({ result: Result.Abandoned });
+            inProgressMatchStore.completeMatch({ result: domain.Result.Abandoned });
 
-            const completedMatch = inProgressMatchStore.match as Match;
-            expect(completedMatch.innings[0].status).toEqual(InningsStatus.AllOut);
-            expect(completedMatch.innings[1].status).toEqual(InningsStatus.MatchComplete);
+            const completedMatch = inProgressMatchStore.match as domain.Match;
+            expect(completedMatch.innings[0].status).toEqual(domain.InningsStatus.AllOut);
+            expect(completedMatch.innings[1].status).toEqual(domain.InningsStatus.MatchComplete);
         });
     });
 
     describe('startMatch', () => {
         it('should do nothing if no match', () => {
             const inProgressMatchStore = getMatchStore();
-            inProgressMatchStore.startMatch(TeamType.HomeTeam, TeamType.HomeTeam);
+            inProgressMatchStore.startMatch(domain.TeamType.HomeTeam, domain.TeamType.HomeTeam);
         });
 
         it('should set toss correctly', () => {
             const inProgressMatchStore = getMatchStore(matches.blankMatch);
-            inProgressMatchStore.startMatch(TeamType.HomeTeam, TeamType.AwayTeam);
-            const toss = (inProgressMatchStore.match as Match).toss as Toss;
-            expect(toss.tossWonBy).toEqual(TeamType.HomeTeam);
-            expect(toss.battingFirst).toEqual(TeamType.AwayTeam);
+            inProgressMatchStore.startMatch(domain.TeamType.HomeTeam, domain.TeamType.AwayTeam);
+            const toss = (inProgressMatchStore.match as domain.Match).toss as domain.Toss;
+            expect(toss.tossWonBy).toEqual(domain.TeamType.HomeTeam);
+            expect(toss.battingFirst).toEqual(domain.TeamType.AwayTeam);
         });
     });
 
@@ -582,7 +582,7 @@ describe('inProgressMatchStore', () => {
                 ...matches.blankMatch,
                 config: {
                     ...matches.blankMatch.config,
-                    type: MatchType.LimitedOvers,
+                    type: domain.MatchType.LimitedOvers,
                     inningsPerSide: 3,
                 },
             });
@@ -595,7 +595,7 @@ describe('inProgressMatchStore', () => {
                 ...matches.blankMatch,
                 config: {
                     ...matches.blankMatch.config,
-                    type: MatchType.Time,
+                    type: domain.MatchType.Time,
                     inningsPerSide: 1,
                 },
             });
@@ -608,7 +608,7 @@ describe('inProgressMatchStore', () => {
                 ...matches.blankMatch,
                 config: {
                     ...matches.blankMatch.config,
-                    type: MatchType.Time,
+                    type: domain.MatchType.Time,
                     inningsPerSide: 2,
                 },
             });
@@ -618,7 +618,7 @@ describe('inProgressMatchStore', () => {
     });
 
     describe('nextBattingTeam', () => {
-        const toss = { tossWonBy: TeamType.HomeTeam, battingFirst: TeamType.AwayTeam };
+        const toss = { tossWonBy: domain.TeamType.HomeTeam, battingFirst: domain.TeamType.AwayTeam };
 
         it('should return undefined if no match', () => {
             const inProgressMatchStore = getMatchStore();
@@ -639,7 +639,7 @@ describe('inProgressMatchStore', () => {
             });
             const lastInnings = matches.matchWithOnlyCompletedInnings
                 .innings[matches.matchWithOnlyCompletedInnings.innings.length - 1];
-            const expectedNextBattingTeam = lastInnings.bowlingTeam === TeamType.HomeTeam
+            const expectedNextBattingTeam = lastInnings.bowlingTeam === domain.TeamType.HomeTeam
                 ? matches.blankMatch.homeTeam
                 : matches.blankMatch.awayTeam;
 
@@ -653,6 +653,79 @@ describe('inProgressMatchStore', () => {
             });
 
             expect(inProgressMatchStore.nextBattingTeam).toEqual(matches.blankMatch.awayTeam);
+        });
+    });
+
+    describe('newBatterRequired', () => {
+        it('should return false if no match', () => {
+            const inProgressMatchStore = getMatchStore();
+
+            expect(inProgressMatchStore.newBatterRequired).toBeFalsy();
+        });
+
+        it('should return false if no current innings', () => {
+            const inProgressMatchStore = getMatchStore(matches.blankMatch);
+
+            expect(inProgressMatchStore.newBatterRequired).toBeFalsy();
+        });
+
+        it('should return false if there are two not out batters', () => {
+            const inProgressMatchStore = getMatchStore(matches.matchWithStartedOver);
+
+            expect(inProgressMatchStore.newBatterRequired).toBeFalsy();
+        });
+
+        it('should return false if there is one not out batters', () => {
+            const batters = [
+                matches.inningsWithStartedOver.batting.batters[0],
+                {
+                    ...matches.inningsWithStartedOver.batting.batters[1],
+                    innings: {
+                        ...matches.inningsWithStartedOver.batting.batters[1].innings,
+                        wicket: { time: 1, howOut: domain.Howout.Bowled },
+                    },
+                },
+            ];
+
+            const inProgressMatchStore = getMatchStore({
+                ...matches.matchWithStartedOver,
+                innings: [
+                    {
+                        ...matches.inningsWithStartedOver,
+                        batting: {
+                            ...matches.inningsWithStartedOver.batting,
+                            batters,
+                        },
+                    },
+                ],
+            });
+
+            expect(inProgressMatchStore.newBatterRequired).toBeTruthy();
+        });
+
+        it('should return false if there is one batter that is unavailable', () => {
+            const batters = [
+                matches.inningsWithStartedOver.batting.batters[0],
+                {
+                    ...matches.inningsWithStartedOver.batting.batters[1],
+                    unavailable: domain.UnavailableReason.Absent,
+                },
+            ];
+
+            const inProgressMatchStore = getMatchStore({
+                ...matches.matchWithStartedOver,
+                innings: [
+                    {
+                        ...matches.inningsWithStartedOver,
+                        batting: {
+                            ...matches.inningsWithStartedOver.batting,
+                            batters,
+                        },
+                    },
+                ],
+            });
+
+            expect(inProgressMatchStore.newBatterRequired).toBeTruthy();
         });
     });
 });
