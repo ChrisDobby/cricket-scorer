@@ -5,7 +5,6 @@ import { configure } from 'mobx';
 import { Provider } from 'mobx-react';
 import Routes from './Routes';
 import matchStorage from './stores/matchStorage';
-import 'font-awesome/css/font-awesome.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import inProgressMatchStore from './stores/inProgressMatchStore';

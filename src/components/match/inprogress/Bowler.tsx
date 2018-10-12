@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import * as styles from './styles';
 import * as globalStyles from '../../styles';
 
@@ -17,7 +19,7 @@ interface SelectionIndicatorProps {
 const SelectionIndicator = ({ playerIndex, selected }: SelectionIndicatorProps) => {
     return (
         <div style={indicatorStyle}>
-            {selected && <i className="fa fa-circle" />}
+            {selected && <FontAwesomeIcon icon={faCircle} />}
         </div>
     );
 };

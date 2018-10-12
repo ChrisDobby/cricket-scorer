@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { Match as MatchEntity } from '../../domain';
 import { Innings } from './Innings';
 import { MatchHeading } from './MatchHeading';
@@ -56,7 +58,7 @@ class Scorecard extends React.Component<ScorecardProps, {}> {
         if (!this.props.cricketMatch) {
             return (
                 <div className="col-12" style={styles.textCentre}>
-                    <div><i className="fa fa-spinner fa-spin" style={globalStyles.spinnerStyle} /></div>
+                    <div><FontAwesomeIcon icon={faSpinner} style={globalStyles.spinnerStyle} /></div>
                 </div>);
         }
         return (

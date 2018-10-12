@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyle: React.CSSProperties = {
     whiteSpace: 'nowrap',
@@ -57,7 +59,7 @@ export class OtherScore extends React.PureComponent<OtherScoreProps, {}> {
                     style={buttonStyle}
                     onClick={this.valueSelected}
                 >
-                    <i className="fa fa-check" />
+                    <FontAwesomeIcon icon={faCheck} />
                 </button>
             </span>
         );

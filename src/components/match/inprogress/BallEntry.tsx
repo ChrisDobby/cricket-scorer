@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCertificate } from '@fortawesome/free-solid-svg-icons';
 import * as globalStyles from '../../styles';
 import { Innings, Batter, Bowler, BattingInnings, Extras, Over, Team, MatchResult } from '../../../domain';
 import { EntryPanel, BallFunctions } from './EntryPanel';
@@ -69,7 +71,7 @@ export const BallEntry = ({
                                     <h5 style={battingScoreStyle}>{`${currentBatter.innings.runs}` +
                                         `(${currentBatter.innings.ballsFaced})`}</h5>
                                     {currentBatter.name === batter.name &&
-                                        <i style={globalStyles.primaryColour} className="fa fa-certificate" />}
+                                        <FontAwesomeIcon style={globalStyles.primaryColour} icon={faCertificate} />}
                                 </span>
                             </div>
                         </div>
