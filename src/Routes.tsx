@@ -7,6 +7,7 @@ import CreateMatch from './containers/match/CreateMatch';
 import StartMatch from './containers/match/StartMatch';
 import App from './App';
 import Home from './components/Home';
+import Match from './containers/Match';
 import auth0 from './components/auth0';
 
 const Routes = () => (
@@ -14,6 +15,7 @@ const Routes = () => (
         <Route path="/" component={App} />
         <Route exact path="/" component={auth0.WithAuth0(Home)} />
         <Route exact path="/auth" component={auth0.Auth} />
+        <Route exact path="/match" component={Match} />
         <Route exact path="/match/create" component={auth0.AuthRequired(CreateMatch)}/>
         <Route exact path="/match/start" component={auth0.AuthRequired(StartMatch)}/>
         <Route exact path="/match/inprogress" component={auth0.AuthRequired(InProgress)}/>
