@@ -1,5 +1,4 @@
-import { BattingInnings, DeliveryOutcome, Outcome, Howout, Wicket, InningsStatus, MatchType, TeamType, Delivery }
-    from '../../domain';
+import * as domain from '../../domain';
 import innings from '../../match/innings';
 import * as matches from '../testData/matches';
 import { getTeam } from '../../match/utilities';
@@ -21,7 +20,7 @@ jest.mock('../../match/delivery', () => {
         noBalls: 3,
     });
     const totalScore = () => 4;
-    const runsFromBatter = (outcome: Outcome) =>
+    const runsFromBatter = (outcome: domain.Outcome) =>
         typeof outcome.scores.runs === 'undefined'
             ? 0
             : outcome.scores.runs;
@@ -53,7 +52,7 @@ jest.mock('../../match/delivery', () => {
 describe('innings', () => {
     const config = {
         playersPerSide: 11,
-        type: MatchType.Time,
+        type: domain.MatchType.Time,
         inningsPerSide: 1,
         runsForNoBall: 1,
         runsForWide: 1,
@@ -63,10 +62,10 @@ describe('innings', () => {
     describe('newInnings', () => {
         const homeTeam = matches.blankMatch.homeTeam;
         const awayTeam = matches.blankMatch.awayTeam;
-        const innings = Innings.newInnings(TeamType.HomeTeam, 0, 1);
+        const innings = Innings.newInnings(domain.TeamType.HomeTeam, 0, 1);
         it('should create a newly started innings', () => {
-            expect(innings.battingTeam).toBe(TeamType.HomeTeam);
-            expect(innings.bowlingTeam).toBe(TeamType.AwayTeam);
+            expect(innings.battingTeam).toBe(domain.TeamType.HomeTeam);
+            expect(innings.bowlingTeam).toBe(domain.TeamType.AwayTeam);
             expect(innings.score).toBe(0);
             expect(innings.wickets).toBe(0);
             expect(innings.batting.extras.byes).toBe(0);
@@ -76,7 +75,7 @@ describe('innings', () => {
             expect(innings.batting.extras.penaltyRuns).toBe(0);
             expect(innings.bowlers).toHaveLength(0);
             expect(innings.fallOfWickets).toHaveLength(0);
-            expect(innings.status).toBe(InningsStatus.InProgress);
+            expect(innings.status).toBe(domain.InningsStatus.InProgress);
             expect(innings.events).toHaveLength(0);
             expect(innings.completedOvers).toBe(0);
             expect(innings.totalOvers).toBe('0');
@@ -110,7 +109,7 @@ describe('innings', () => {
         });
 
         it('should start a batting innings for the two specified batters', () => {
-            const checkInnings = (innings: BattingInnings) => {
+            const checkInnings = (innings: domain.BattingInnings) => {
                 expect(innings.runs).toBe(0);
                 expect(innings.ballsFaced).toBe(0);
                 expect(innings.fours).toBe(0);
@@ -133,7 +132,7 @@ describe('innings', () => {
         });
 
         it('should use the correct batters when selecting 1 and 3', () => {
-            const inningsFor1And3 = Innings.newInnings(TeamType.HomeTeam, 0, 2);
+            const inningsFor1And3 = Innings.newInnings(domain.TeamType.HomeTeam, 0, 2);
             const batters = inningsFor1And3.batting.batters;
 
             expect(batters[0].name).toBe(homeTeam.players[0]);
@@ -145,7 +144,7 @@ describe('innings', () => {
         });
 
         it('should update the batting positions', () => {
-            const inningsFor5And3 = Innings.newInnings(TeamType.HomeTeam, 5, 3);
+            const inningsFor5And3 = Innings.newInnings(domain.TeamType.HomeTeam, 5, 3);
             const batters = inningsFor5And3.batting.batters;
 
             expect(batters[0].name).toBe(homeTeam.players[5]);
@@ -163,12 +162,12 @@ describe('innings', () => {
 
         it('should create  a new innings for the away team if specified', () => {
             const awayTeamBattingInnings = Innings.newInnings(
-                TeamType.AwayTeam,
+                domain.TeamType.AwayTeam,
                 0,
                 1,
             );
-            expect(awayTeamBattingInnings.battingTeam).toBe(TeamType.AwayTeam);
-            expect(awayTeamBattingInnings.bowlingTeam).toBe(TeamType.HomeTeam);
+            expect(awayTeamBattingInnings.battingTeam).toBe(domain.TeamType.AwayTeam);
+            expect(awayTeamBattingInnings.bowlingTeam).toBe(domain.TeamType.HomeTeam);
 
             const batters = awayTeamBattingInnings.batting.batters;
             expect(batters[0].name).toBe(awayTeam.players[0]);
@@ -226,7 +225,7 @@ describe('innings', () => {
             matches.inningsWithStartedOver,
             matches.inningsWithStartedOver.batting.batters[0],
             matches.inningsWithStartedOver.bowlers[0],
-            DeliveryOutcome.Valid,
+            domain.DeliveryOutcome.Valid,
             {},
         );
 
@@ -234,17 +233,17 @@ describe('innings', () => {
             matches.inningsWithStartedOver,
             matches.inningsWithStartedOver.batting.batters[0],
             matches.inningsWithStartedOver.bowlers[0],
-            DeliveryOutcome.Wide,
+            domain.DeliveryOutcome.Wide,
             {},
         );
 
         it('should add a delivery with the specified outcome to the innings', () => {
             expect(updatedInnings.events).toHaveLength(1);
 
-            const delivery = updatedInnings.events[0] as Delivery;
+            const delivery = updatedInnings.events[0] as domain.Delivery;
             expect(delivery.overNumber).toBe(1);
             expect(delivery.outcome).toEqual({
-                deliveryOutcome: DeliveryOutcome.Valid,
+                deliveryOutcome: domain.DeliveryOutcome.Valid,
                 scores: {},
             });
             expect(delivery.batsmanIndex).toBe(0);
@@ -254,20 +253,20 @@ describe('innings', () => {
         it('should add a ball to the balls faced for the current batter', () => {
             const batter = updatedInnings.batting.batters[0];
 
-            expect((batter.innings as BattingInnings).ballsFaced).toBe(1);
+            expect((batter.innings as domain.BattingInnings).ballsFaced).toBe(1);
         });
 
         it('should add runs to the current batters score', () => {
             const batter = updatedInnings.batting.batters[0];
 
-            expect((batter.innings as BattingInnings).runs).toBe(2);
+            expect((batter.innings as domain.BattingInnings).runs).toBe(2);
         });
 
         it('should add boundaries to the current batters innings', () => {
             const batter = updatedInnings.batting.batters[0];
 
-            expect((batter.innings as BattingInnings).fours).toBe(1);
-            expect((batter.innings as BattingInnings).sixes).toBe(1);
+            expect((batter.innings as domain.BattingInnings).fours).toBe(1);
+            expect((batter.innings as domain.BattingInnings).sixes).toBe(1);
         });
 
         it('should update the total overs for the innings', () => {
@@ -299,7 +298,7 @@ describe('innings', () => {
                 matches.inningsWithStartedOver,
                 matches.inningsWithStartedOver.batting.batters[0],
                 matches.inningsWithStartedOver.bowlers[0],
-                DeliveryOutcome.Valid,
+                domain.DeliveryOutcome.Valid,
                 { runs: 3 },
             );
 
@@ -311,7 +310,7 @@ describe('innings', () => {
                 matches.inningsWithAllDeliveriesInCompletedOver,
                 matches.inningsWithAllDeliveriesInCompletedOver.batting.batters[0],
                 matches.inningsWithAllDeliveriesInCompletedOver.bowlers[0],
-                DeliveryOutcome.Valid,
+                domain.DeliveryOutcome.Valid,
                 {},
             );
 
@@ -331,7 +330,7 @@ describe('innings', () => {
         it('should not add a ball faced when a wide', () => {
             const batter = inningsAfterWide.batting.batters[0];
 
-            expect((batter.innings as BattingInnings).ballsFaced).toBe(0);
+            expect((batter.innings as domain.BattingInnings).ballsFaced).toBe(0);
         });
 
         it('should update innings wickets', () => {
@@ -345,10 +344,10 @@ describe('innings', () => {
         });
 
         it('should add the wicket to the batters innings', () => {
-            const batterInnings = inningsAfterWide.batting.batters[0].innings as BattingInnings;
-            const wicket = batterInnings.wicket as Wicket;
+            const batterInnings = inningsAfterWide.batting.batters[0].innings as domain.BattingInnings;
+            const wicket = batterInnings.wicket as domain.Wicket;
 
-            expect(wicket.howOut).toBe(Howout.Bowled);
+            expect(wicket.howOut).toBe(domain.Howout.Bowled);
             expect(wicket.bowler).toBe('A bowler');
             expect(wicket.fielder).toBe('A fielder');
         });
@@ -429,7 +428,7 @@ describe('innings', () => {
 
     describe('isComplete', () => {
         it('should return true if the innings status is not in progress', () => {
-            const notInProgressInnings = { ...matches.startedInnings, status: InningsStatus.AllOut };
+            const notInProgressInnings = { ...matches.startedInnings, status: domain.InningsStatus.AllOut };
 
             expect(Innings.isComplete(notInProgressInnings)).toBeTruthy();
         });
@@ -444,7 +443,7 @@ describe('innings', () => {
     describe('calculateStatus', () => {
         const fiftyOverMatch = {
             playersPerSide: 11,
-            type: MatchType.LimitedOvers,
+            type: domain.MatchType.LimitedOvers,
             oversPerSide: 50,
             inningsPerSide: 1,
             runsForNoBall: 1,
@@ -452,13 +451,14 @@ describe('innings', () => {
         };
 
         it('should return the actual status if not in progress', () => {
-            const allOutInnings = { ...matches.startedInnings, status: InningsStatus.AllOut };
+            const allOutInnings = { ...matches.startedInnings, status: domain.InningsStatus.AllOut };
 
-            expect(Innings.calculateStatus(fiftyOverMatch, allOutInnings)).toBe(InningsStatus.AllOut);
+            expect(Innings.calculateStatus(fiftyOverMatch, allOutInnings)).toBe(domain.InningsStatus.AllOut);
         });
 
         it('should return in progress if the innings should still be in progress', () => {
-            expect(Innings.calculateStatus(fiftyOverMatch, matches.startedInnings)).toBe(InningsStatus.InProgress);
+            expect(Innings.calculateStatus(fiftyOverMatch, matches.startedInnings))
+                .toBe(domain.InningsStatus.InProgress);
         });
 
         it('should return overs complete for a limited overs match when all the overs have been completed', () => {
@@ -467,7 +467,8 @@ describe('innings', () => {
                 completedOvers: 50,
             };
 
-            expect(Innings.calculateStatus(fiftyOverMatch, completdOversInnings)).toBe(InningsStatus.OversComplete);
+            expect(Innings.calculateStatus(fiftyOverMatch, completdOversInnings))
+                .toBe(domain.InningsStatus.OversComplete);
         });
 
         it('should return all out if wickets is one less than the number of players in the batting team', () => {
@@ -476,7 +477,54 @@ describe('innings', () => {
                 wickets: 10,
             };
 
-            expect(Innings.calculateStatus(fiftyOverMatch, allOutInnings)).toBe(InningsStatus.AllOut);
+            expect(Innings.calculateStatus(fiftyOverMatch, allOutInnings)).toBe(domain.InningsStatus.AllOut);
+        });
+    });
+
+    describe('nonDeliveryWicket', () => {
+        const updatedInnings = Innings.nonDeliveryWicket(
+            matches.inningsWithStartedOver,
+            matches.inningsWithStartedOver.batting.batters[0],
+            domain.Howout.TimedOut,
+        );
+
+        it('should add an event to the events for the innings', () => {
+            expect(updatedInnings.events).toHaveLength(1);
+
+            const event = updatedInnings.events[0] as domain.NonDeliveryWicket;
+            expect(event.out).toBe(domain.Howout.TimedOut);
+        });
+
+        it('should update innings wickets', () => {
+            expect(updatedInnings.wickets).toBe(1);
+        });
+
+        it('should add the wicket to the batters innings', () => {
+            const batterInnings = updatedInnings.batting.batters[0].innings as domain.BattingInnings;
+            const wicket = batterInnings.wicket as domain.Wicket;
+
+            expect(wicket.howOut).toBe(domain.Howout.TimedOut);
+        });
+    });
+
+    describe('batterUnavailable', () => {
+        const updatedInnings = Innings.batterUnavailable(
+            matches.inningsWithStartedOver,
+            matches.inningsWithStartedOver.batting.batters[0],
+            domain.UnavailableReason.Retired,
+        );
+
+        it('should add an event to the events for the innings', () => {
+            expect(updatedInnings.events).toHaveLength(1);
+
+            const event = updatedInnings.events[0] as domain.BatterUnavailable;
+            expect(event.reason).toBe(domain.UnavailableReason.Retired);
+        });
+
+        it('should make the batter unavailable', () => {
+            const unavailable = updatedInnings.batting.batters[0].unavailableReason as domain.UnavailableReason;
+
+            expect(unavailable).toBe(domain.UnavailableReason.Retired);
         });
     });
 });

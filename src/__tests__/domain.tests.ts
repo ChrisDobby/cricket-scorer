@@ -82,15 +82,6 @@ describe('domain', () => {
             expect(description).toBe('st A keeper b A bowler');
         });
 
-        it('should return retired description for batter retired', () => {
-            const description = domain.howOutDescription({
-                time: (new Date()).getTime(),
-                howOut: domain.Howout.Retired,
-            });
-
-            expect(description).toBe('retired');
-        });
-
         it('should return timed out description for batter timed out', () => {
             const description = domain.howOutDescription({
                 time: (new Date()).getTime(),
@@ -127,12 +118,17 @@ describe('domain', () => {
 
             expect(description).toBe('hit wkt A bowler');
         });
+    });
 
-        it('should return absent description for absent batter', () => {
-            const description = domain.howOutDescription({
-                time: (new Date()).getTime(),
-                howOut: domain.Howout.Absent,
-            });
+    describe('unavailablDescription', () => {
+        it('should return retired description for retired reason', () => {
+            const description = domain.unavailablDescription(domain.UnavailableReason.Retired);
+
+            expect(description).toBe('retired');
+        });
+
+        it('should return absent description for absent reason', () => {
+            const description = domain.unavailablDescription(domain.UnavailableReason.Absent);
 
             expect(description).toBe('absent');
         });
@@ -258,7 +254,6 @@ describe('domain', () => {
 
             expect(howouts).toEqual([
                 domain.Howout.RunOut,
-                domain.Howout.Retired,
                 domain.Howout.TimedOut,
                 domain.Howout.HandledBall,
                 domain.Howout.ObstructingField,

@@ -4,11 +4,14 @@ export enum Howout {
     Caught,
     RunOut,
     Stumped,
-    Retired,
     HitWicket,
     TimedOut,
     HandledBall,
     ObstructingField,
+}
+
+export enum UnavailableReason {
+    Retired,
     Absent,
 }
 
@@ -87,8 +90,12 @@ export interface Delivery extends Event {
     outcome: Outcome;
 }
 
-export interface NonDelivery extends Event {
-    out?: Howout;
+export interface NonDeliveryWicket extends Event {
+    out: Howout;
+}
+
+export interface BatterUnavailable extends Event {
+    reason: UnavailableReason;
 }
 
 export interface Over {
@@ -110,6 +117,7 @@ export interface Batter {
     playerIndex: number;
     name: string;
     innings?: BattingInnings;
+    unavailableReason?: UnavailableReason;
 }
 
 export interface Bowler {
@@ -236,8 +244,6 @@ export const howOutDescription = (wicket?: Wicket): string => {
                 : 'run out';
         case Howout.Stumped:
             return `st ${wkt.fielder} b ${wkt.bowler}`;
-        case Howout.Retired:
-            return 'retired';
         case Howout.TimedOut:
             return 'timed out';
         case Howout.ObstructingField:
@@ -246,14 +252,23 @@ export const howOutDescription = (wicket?: Wicket): string => {
             return 'handled the ball';
         case Howout.HitWicket:
             return `hit wkt ${wkt.bowler}`;
-        case Howout.Absent:
-            return 'absent';
         }
     };
 
     return wicket
         ? description(wicket)
         : 'not out';
+};
+
+export const unavailablDescription = (reason: UnavailableReason): string => {
+    switch (reason) {
+    case UnavailableReason.Absent:
+        return 'absent';
+    case UnavailableReason.Retired:
+        return 'retired';
+    default:
+        return '';
+    }
 };
 
 export const validDelivery = (delivery: Delivery) =>
@@ -268,7 +283,6 @@ export const oversDescription = (completedOvers: number, currentOver: Delivery[]
 
 const nonStrikerHowouts = [
     Howout.RunOut,
-    Howout.Retired,
     Howout.TimedOut,
     Howout.HandledBall,
     Howout.ObstructingField,

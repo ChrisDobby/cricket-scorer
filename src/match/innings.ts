@@ -152,6 +152,67 @@ const innings = (
         ];
     };
 
+    const addEvent = (
+        innings: domain.Innings,
+        event: domain.Event,
+        wickets: number,
+        batter: domain.Batter,
+        updateBatter: (b: domain.Batter) => domain.Batter,
+    ): domain.Innings =>
+        ({
+            ...innings,
+            events: [...innings.events, event],
+            batting: {
+                ...innings.batting,
+                batters: [
+                    ...innings.batting.batters.map(b => b === batter
+                        ? updateBatter(b)
+                        : batter),
+                ],
+            },
+            wickets: innings.wickets + wickets,
+        });
+
+    const nonDeliveryWicket = (
+        innings: domain.Innings,
+        batter: domain.Batter,
+        howout: domain.Howout,
+    ): domain.Innings => {
+        const time = (new Date()).getTime();
+
+        return addEvent(
+            innings,
+            { time, out: howout } as domain.Event,
+            1,
+            batter,
+            b => ({
+                ...b,
+                innings: typeof b.innings === 'undefined'
+                    ? b.innings
+                    : {
+                        ...b.innings,
+                        wicket: { time, howOut: howout },
+                    },
+            }),
+        );
+    };
+
+    const batterUnavailable = (
+        innings: domain.Innings,
+        batter: domain.Batter,
+        reason: domain.UnavailableReason,
+    ): domain.Innings => {
+        const time = (new Date()).getTime();
+
+        return addEvent(
+            innings,
+            { time, reason } as domain.Event,
+            0,
+            batter,
+            b => ({ ...b, unavailableReason: reason }),
+        );
+    };
+
     const completeOver =
         (innings: domain.Innings, batter: domain.Batter, bowler: domain.Bowler): [domain.Innings, number] => {
             const over = latestOver(innings.events, innings.completedOvers);
@@ -224,6 +285,8 @@ const innings = (
         flipBatters,
         isComplete,
         calculateStatus,
+        nonDeliveryWicket,
+        batterUnavailable,
     };
 };
 
