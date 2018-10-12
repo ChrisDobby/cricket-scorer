@@ -12,6 +12,7 @@ import InningsComplete from './InningsComplete';
 import MatchComplete from './MatchComplete';
 import { bindMatchStorage } from '../../../stores/withMatchStorage';
 import { getTeam } from '../../../match/utilities';
+import calculateResult from '../../../match/calculateResult';
 
 type InProgressProps = RouteComponentProps<{}> & {
     inProgress: domain.InProgressMatch;
@@ -117,6 +118,7 @@ class InProgress extends React.Component<InProgressProps, {}> {
                                 battingTeam={getTeam(match, this.props.inProgress.currentInnings.battingTeam)}
                                 homeTeam={match.homeTeam.name}
                                 awayTeam={match.awayTeam.name}
+                                calculateResult={() => calculateResult(match)}
                                 ballFunctions={this.ballFunctions}
                             />}
                         <Innings
@@ -137,6 +139,7 @@ class InProgress extends React.Component<InProgressProps, {}> {
                             disallowCancel
                             complete={this.ballFunctions.completeMatch}
                             cancel={() => { }}
+                            calculateResult={() => calculateResult(match)}
                         />}
                 </React.Fragment>);
         }

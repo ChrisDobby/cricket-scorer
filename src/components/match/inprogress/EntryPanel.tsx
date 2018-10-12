@@ -32,6 +32,7 @@ export interface EntryPanelProps {
     ballFunctions: BallFunctions;
     homeTeam: string;
     awayTeam: string;
+    calculateResult: () => MatchResult | undefined;
 }
 
 interface EntryPanelState {
@@ -299,6 +300,7 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
                         awayTeam={this.props.awayTeam}
                         complete={this.completeMatch}
                         cancel={this.cancelCompleteMatch}
+                        calculateResult={this.props.calculateResult}
                     />}
             </div>
         );

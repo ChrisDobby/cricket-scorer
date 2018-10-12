@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as globalStyles from '../../styles';
-import { Innings, Batter, Bowler, BattingInnings, Extras, Over, Team } from '../../../domain';
+import { Innings, Batter, Bowler, BattingInnings, Extras, Over, Team, MatchResult } from '../../../domain';
 import { EntryPanel, BallFunctions } from './EntryPanel';
 import { CurrentOver } from './CurrentOver';
 import DeliveryHeader from '../DeliveryHeader';
@@ -27,10 +27,11 @@ export interface BallEntryProps {
     ballFunctions: BallFunctions;
     homeTeam: string;
     awayTeam: string;
+    calculateResult: () => MatchResult | undefined;
 }
 
 export const BallEntry = ({
-    innings, battingTeam, batter, bowler, overComplete, currentOver, ballFunctions, homeTeam, awayTeam,
+    innings, battingTeam, batter, bowler, overComplete, currentOver, ballFunctions, homeTeam, awayTeam, calculateResult,
 }: BallEntryProps) => (
     <div style={globalStyles.sectionContainer}>
         <DeliveryHeader batter={batter} bowler={bowler} />
@@ -115,6 +116,7 @@ export const BallEntry = ({
                         overComplete={overComplete}
                         homeTeam={homeTeam}
                         awayTeam={awayTeam}
+                        calculateResult={calculateResult}
                     />
             </div>
         </div>

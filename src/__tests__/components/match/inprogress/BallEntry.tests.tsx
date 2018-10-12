@@ -27,6 +27,7 @@ describe('BallEntry', () => {
                     ballFunctions={ballFunctions}
                     homeTeam="home"
                     awayTeam="home"
+                    calculateResult={jest.fn()}
                 />
             </StaticRouter>);
 
@@ -46,6 +47,7 @@ describe('BallEntry', () => {
                     ballFunctions={ballFunctions}
                     homeTeam="home"
                     awayTeam="home"
+                    calculateResult={jest.fn()}
                 />
             </StaticRouter>);
 

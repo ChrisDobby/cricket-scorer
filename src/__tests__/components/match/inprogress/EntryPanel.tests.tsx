@@ -32,7 +32,7 @@ describe('EntryPanel', () => {
         completeMatch: jest.fn(),
     };
 
-    const defaultProps = { homeTeam: 'home', awayTeam: 'away' };
+    const defaultProps = { homeTeam: 'home', awayTeam: 'away', calculateResult: jest.fn() };
 
     describe('delivery', () => {
         const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} {...defaultProps} />);

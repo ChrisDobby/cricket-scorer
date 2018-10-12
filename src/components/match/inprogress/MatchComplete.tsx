@@ -12,6 +12,7 @@ type MatchCompleteProps = {
     awayTeam: string;
     disallowCancel?: boolean;
     complete: (result: MatchResult) => void;
+    calculateResult: () => MatchResult | undefined;
     cancel: () => void;
 };
 
@@ -21,6 +22,13 @@ class Match extends React.PureComponent<MatchCompleteProps> {
         winBy: undefined,
         winMargin: undefined,
     };
+
+    componentDidMount() {
+        const defaultResult = this.props.calculateResult();
+        if (typeof defaultResult !== 'undefined') {
+            this.setState({ ...defaultResult });
+        }
+    }
 
     selectResult = (ev: React.ChangeEvent<HTMLSelectElement>) =>
         this.setState({ result: ev.target.value ? Number(ev.target.value) : undefined })
