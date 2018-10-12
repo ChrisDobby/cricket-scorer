@@ -1738,7 +1738,55 @@ exports[`InProgress should render correctly for match during an over 1`] = `
 </div>
 `;
 
-exports[`InProgress should render correctly for match that has not started 1`] = `<div />`;
+exports[`InProgress should render correctly for match that has not started 1`] = `
+<div>
+  <div
+    className="row"
+  >
+    <div
+      className="d-none d-md-block d-lg-block col-2 col-lg-3"
+    />
+    <div
+      className="col-12 col-md-8 col-lg-6"
+    >
+      <div
+        style={
+          Object {
+            "marginBottom": "10px",
+            "padding": "20px",
+            "width": "100%",
+          }
+        }
+      />
+    </div>
+  </div>
+  <button
+    className="btn btn-success"
+    disabled={true}
+    onClick={[Function]}
+    style={
+      Object {
+        "borderRadius": "25px",
+        "bottom": "10px",
+        "boxShadow": "0 4px 6px 0 rgba(0,0,0,.14), 0 4px 5px rgba(0,0,0,-1)",
+        "fontSize": "18px",
+        "height": "50px",
+        "lineHeight": "1.33",
+        "padding": "10px 16px",
+        "position": "fixed",
+        "right": "10px",
+        "width": "50px",
+        "zIndex": 1049,
+      }
+    }
+    type="button"
+  >
+    <i
+      className="fa fa-check"
+    />
+  </button>
+</div>
+`;
 
 exports[`InProgress should render correctly for match with started innings 1`] = `
 <div>

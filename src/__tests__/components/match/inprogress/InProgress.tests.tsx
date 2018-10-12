@@ -5,6 +5,8 @@ import InProgress from '../../../../components/match/inprogress/InProgress';
 import { blankMatch, matchWithStartedInnings, matchWithOverReadyToComplete } from '../../../testData/matches';
 
 describe('InProgress', () => {
+    const history = jest.fn();
+
     const noMatchProgress = {
         match: undefined,
         currentInnings: undefined,
@@ -54,27 +56,34 @@ describe('InProgress', () => {
     };
 
     it('should render correctly when no match', () => {
-        const inProgress = ReactTestRenderer.create(<InProgress inProgress={noMatchProgress} storage={storage} />);
+        const inProgress = ReactTestRenderer.create(
+            <StaticRouter context={{}}>
+                <InProgress inProgress={noMatchProgress} storage={storage} history={history} />
+            </StaticRouter>);
 
         expect(inProgress.toJSON()).toMatchSnapshot();
     });
 
     it('should render correctly for match that has not started', () => {
         const inProgress = ReactTestRenderer.create(
-            <InProgress
-                inProgress={notStartedMatchProgress}
-                storage={storage}
-            />);
+            <StaticRouter context={{}}>
+                <InProgress
+                    inProgress={notStartedMatchProgress}
+                    storage={storage}
+                />
+            </StaticRouter>);
 
         expect(inProgress.toJSON()).toMatchSnapshot();
     });
 
     it('should render correctly for match with started innings', () => {
         const inProgress = ReactTestRenderer.create(
-            <InProgress
-                inProgress={matchWithStartedInningsProgress}
-                storage={storage}
-            />);
+            <StaticRouter context={{}}>
+                <InProgress
+                    inProgress={matchWithStartedInningsProgress}
+                    storage={storage}
+                />
+            </StaticRouter>);
 
         expect(inProgress.toJSON()).toMatchSnapshot();
     });
