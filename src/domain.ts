@@ -35,6 +35,19 @@ export enum TeamType {
     AwayTeam,
 }
 
+export enum Result {
+    HomeWin,
+    AwayWin,
+    Tie,
+    Draw,
+    Abandoned,
+}
+
+export enum WinBy {
+    Runs,
+    Wickets,
+}
+
 export interface Wicket {
     time: number;
     howOut: Howout;
@@ -154,6 +167,12 @@ export interface Toss {
     battingFirst: TeamType;
 }
 
+export interface MatchResult {
+    result: Result;
+    winBy?: WinBy;
+    winMargin?: string;
+}
+
 export interface Match {
     id: string;
     user: string;
@@ -164,6 +183,7 @@ export interface Match {
     complete: boolean;
     status: string;
     toss?: Toss;
+    result?: MatchResult;
     innings: Innings[];
 }
 
