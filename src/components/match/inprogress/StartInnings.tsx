@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Team } from '../../../domain';
+import { Team, TeamType } from '../../../domain';
 import * as globalStyles from '../../styles';
 import { BatterSelector, PlayerPosition } from './BatterSelector';
 import { SaveButton } from '../SaveButton';
 
 export interface StartInningsProps {
     teams: Team[];
-    startInnings: (t: Team, b1: number, b2: number) => void;
+    startInnings: (t: TeamType, b1: number, b2: number) => void;
     defaultBattingTeam?: Team;
     canChangeBattingTeam: boolean;
 }
@@ -55,7 +55,7 @@ export class StartInnings extends React.Component<StartInningsProps, {}> {
             .find(playerPos => playerPos.position === 2));
 
         this.props.startInnings(
-            this.props.teams[this.state.selectedTeamIndex],
+            this.state.selectedTeamIndex === 0 ? TeamType.HomeTeam : TeamType.AwayTeam,
             batter1Index,
             batter2Index,
         );
