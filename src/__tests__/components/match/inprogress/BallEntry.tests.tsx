@@ -11,6 +11,7 @@ describe('BallEntry', () => {
         completeOver: jest.fn(),
         changeEnds: jest.fn(),
         completeInnings: jest.fn(),
+        completeMatch: jest.fn(),
     };
 
     it('should render correctly', () => {
@@ -24,6 +25,8 @@ describe('BallEntry', () => {
                     overComplete={false}
                     currentOver={{ bowlingRuns: 0, wickets: 0, deliveries: matches.inningsWithStartedOver.deliveries }}
                     ballFunctions={ballFunctions}
+                    homeTeam="home"
+                    awayTeam="home"
                 />
             </StaticRouter>);
 
@@ -41,6 +44,8 @@ describe('BallEntry', () => {
                     overComplete={true}
                     currentOver={{ bowlingRuns: 0, wickets: 0, deliveries: matches.inningsWithStartedOver.deliveries }}
                     ballFunctions={ballFunctions}
+                    homeTeam="home"
+                    awayTeam="home"
                 />
             </StaticRouter>);
 

@@ -1028,6 +1028,18 @@ exports[`EntryPanel should render correctly when entering a no ball 1`] = `
       >
         complete innings
       </button>
+      <button
+        className="btn btn-success"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": "2px",
+            "minWidth": "36px",
+          }
+        }
+      >
+        complete match
+      </button>
     </div>
   </div>
 </div>
@@ -2060,6 +2072,18 @@ exports[`EntryPanel should render correctly when over complete 1`] = `
         }
       >
         complete innings
+      </button>
+      <button
+        className="btn btn-success"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": "2px",
+            "minWidth": "36px",
+          }
+        }
+      >
+        complete match
       </button>
     </div>
   </div>
@@ -3094,6 +3118,18 @@ exports[`EntryPanel should render correctly when over not complete 1`] = `
       >
         complete innings
       </button>
+      <button
+        className="btn btn-success"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": "2px",
+            "minWidth": "36px",
+          }
+        }
+      >
+        complete match
+      </button>
     </div>
   </div>
 </div>
@@ -4127,6 +4163,18 @@ exports[`EntryPanel should render correctly when showing all run 4 warning 1`] =
       >
         complete innings
       </button>
+      <button
+        className="btn btn-success"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": "2px",
+            "minWidth": "36px",
+          }
+        }
+      >
+        complete match
+      </button>
     </div>
   </div>
 </div>
@@ -5159,6 +5207,18 @@ exports[`EntryPanel should render correctly when showing all run 6 warning 1`] =
         }
       >
         complete innings
+      </button>
+      <button
+        className="btn btn-success"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": "2px",
+            "minWidth": "36px",
+          }
+        }
+      >
+        complete match
       </button>
     </div>
   </div>

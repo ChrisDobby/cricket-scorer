@@ -29,10 +29,13 @@ describe('EntryPanel', () => {
         completeOver: jest.fn(),
         changeEnds: jest.fn(),
         completeInnings: jest.fn(),
+        completeMatch: jest.fn(),
     };
 
+    const defaultProps = { homeTeam: 'home', awayTeam: 'away' };
+
     describe('delivery', () => {
-        const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} />);
+        const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} {...defaultProps} />);
 
         const deliveryOutcome = DeliveryOutcome.Valid;
         const deliveryScores = {
@@ -103,7 +106,8 @@ describe('EntryPanel', () => {
 
     describe('completeOver', () => {
         it('should call the completeOver function if the over is marked complete', () => {
-            const entryPanel = shallow(<EntryPanel overComplete={true} ballFunctions={ballFunctions} />);
+            const entryPanel = shallow(
+                <EntryPanel overComplete={true} ballFunctions={ballFunctions} {...defaultProps} />);
             const instance = entryPanel.instance() as EntryPanel;
             instance.completeOver();
 
@@ -111,7 +115,8 @@ describe('EntryPanel', () => {
         });
 
         it('should not call the completeOver function if the over is not marked as complete', () => {
-            const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} />);
+            const entryPanel = shallow(
+                <EntryPanel overComplete={false} ballFunctions={ballFunctions} {...defaultProps} />);
             const instance = entryPanel.instance() as EntryPanel;
             instance.completeOver();
 
@@ -119,7 +124,8 @@ describe('EntryPanel', () => {
         });
 
         it('should set the state to ask the not complete question if not marked as complete', () => {
-            const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} />);
+            const entryPanel = shallow(
+                <EntryPanel overComplete={false} ballFunctions={ballFunctions} {...defaultProps} />);
             const instance = entryPanel.instance() as EntryPanel;
             instance.completeOver();
 
@@ -128,7 +134,7 @@ describe('EntryPanel', () => {
     });
 
     describe('overWarningYes', () => {
-        const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} />);
+        const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} {...defaultProps} />);
         const instance = entryPanel.instance() as EntryPanel;
 
         it('should call the completeOver function', () => {
@@ -148,7 +154,7 @@ describe('EntryPanel', () => {
     });
 
     describe('allRunWarningYes', () => {
-        const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} />);
+        const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} {...defaultProps} />);
         const instance = entryPanel.instance() as EntryPanel;
 
         it('should call the delivery function', () => {
@@ -204,7 +210,7 @@ describe('EntryPanel', () => {
     });
 
     describe('warningNo', () => {
-        const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} />);
+        const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} {...defaultProps} />);
         const instance = entryPanel.instance() as EntryPanel;
 
         it('should clear the warning states', () => {
@@ -226,7 +232,7 @@ describe('EntryPanel', () => {
     });
 
     describe('deliveryOutcome', () => {
-        const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} />);
+        const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} {...defaultProps} />);
         const instance = entryPanel.instance() as EntryPanel;
 
         it('should return no ball when the state is set to noBall', () => {
@@ -243,7 +249,7 @@ describe('EntryPanel', () => {
     });
 
     describe('descriptionText', () => {
-        const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} />);
+        const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} {...defaultProps} />);
         const instance = entryPanel.instance() as EntryPanel;
 
         it('should include no ball when the state is set to noBall', () => {
@@ -260,7 +266,7 @@ describe('EntryPanel', () => {
     });
 
     describe('boundaryDelivery', () => {
-        const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} />);
+        const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} {...defaultProps} />);
         const instance = entryPanel.instance() as EntryPanel;
 
         it('should add a delivery with the boundaries set', () => {
@@ -271,7 +277,7 @@ describe('EntryPanel', () => {
     });
 
     describe('getScore', () => {
-        const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} />);
+        const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} {...defaultProps} />);
         const instance = entryPanel.instance() as EntryPanel;
 
         it('should return a scores object correctly', () => {
@@ -284,7 +290,7 @@ describe('EntryPanel', () => {
     });
 
     describe('completeInnings', () => {
-        const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} />);
+        const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} {...defaultProps} />);
         const instance = entryPanel.instance() as EntryPanel;
         instance.setState({ inningsCompleteVerify: true });
         it('should set the state to verify innings complete false', () => {
@@ -301,14 +307,14 @@ describe('EntryPanel', () => {
     });
 
     it('should set the state to no ball when the no ball button pressed', () => {
-        const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} />);
+        const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} {...defaultProps}/>);
         entryPanel.find('.btn-danger').at(0).simulate('click');
 
         expect(entryPanel.state().noBall).toBeTruthy();
     });
 
     it('should set the state to not no ball when the legal delivery button pressed', () => {
-        const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} />);
+        const entryPanel = shallow(<EntryPanel overComplete={false} ballFunctions={ballFunctions} {...defaultProps} />);
         entryPanel.setState({ noBall: true });
         entryPanel.find('.btn-success').at(0).simulate('click');
 
@@ -318,7 +324,7 @@ describe('EntryPanel', () => {
     it('should render correctly when over not complete', () => {
         const entryPanel = ReactTestRenderer.create(
             <StaticRouter context={{}}>
-                <EntryPanel ballFunctions={ballFunctions} overComplete={false} />
+                <EntryPanel ballFunctions={ballFunctions} overComplete={false} {...defaultProps} />
             </StaticRouter>);
 
         expect(entryPanel.toJSON()).toMatchSnapshot();
@@ -327,7 +333,7 @@ describe('EntryPanel', () => {
     it('should render correctly when over complete', () => {
         const entryPanel = ReactTestRenderer.create(
             <StaticRouter context={{}}>
-                <EntryPanel ballFunctions={ballFunctions} overComplete={true} />
+                <EntryPanel ballFunctions={ballFunctions} overComplete={true} {...defaultProps} />
             </StaticRouter>);
 
         expect(entryPanel.toJSON()).toMatchSnapshot();
@@ -336,7 +342,7 @@ describe('EntryPanel', () => {
     it('should render correctly when entering a no ball', () => {
         const entryPanel = ReactTestRenderer.create(
             <StaticRouter context={{}}>
-                <EntryPanel ballFunctions={ballFunctions} overComplete={false} />
+                <EntryPanel ballFunctions={ballFunctions} overComplete={false} {...defaultProps} />
             </StaticRouter>);
         entryPanel.root.instance.setState({ noBall: true });
 
@@ -346,7 +352,7 @@ describe('EntryPanel', () => {
     it('should render correctly when showing all run 4 warning', () => {
         const entryPanel = ReactTestRenderer.create(
             <StaticRouter context={{}}>
-                <EntryPanel ballFunctions={ballFunctions} overComplete={false} />
+                <EntryPanel ballFunctions={ballFunctions} overComplete={false} {...defaultProps} />
             </StaticRouter>);
         entryPanel.root.instance.setState({ allRunFourWarning: true });
 
@@ -356,7 +362,7 @@ describe('EntryPanel', () => {
     it('should render correctly when showing all run 6 warning', () => {
         const entryPanel = ReactTestRenderer.create(
             <StaticRouter context={{}}>
-                <EntryPanel ballFunctions={ballFunctions} overComplete={false} />
+                <EntryPanel ballFunctions={ballFunctions} overComplete={false} {...defaultProps} />
             </StaticRouter>);
         entryPanel.root.instance.setState({ allRunSixWarning: true });
 

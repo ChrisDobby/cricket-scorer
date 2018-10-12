@@ -25,10 +25,12 @@ export interface BallEntryProps {
     overComplete: boolean;
     currentOver: Over;
     ballFunctions: BallFunctions;
+    homeTeam: string;
+    awayTeam: string;
 }
 
 export const BallEntry = ({
-    innings, battingTeam, batter, bowler, overComplete, currentOver, ballFunctions,
+    innings, battingTeam, batter, bowler, overComplete, currentOver, ballFunctions, homeTeam, awayTeam,
 }: BallEntryProps) => (
     <div style={globalStyles.sectionContainer}>
         <DeliveryHeader batter={batter} bowler={bowler} />
@@ -108,7 +110,12 @@ export const BallEntry = ({
                 <CurrentOver over={currentOver} />
             </div>
             <div className="col-12 col-lg-6">
-                <EntryPanel ballFunctions={ballFunctions} overComplete={overComplete} />
+                    <EntryPanel
+                        ballFunctions={ballFunctions}
+                        overComplete={overComplete}
+                        homeTeam={homeTeam}
+                        awayTeam={awayTeam}
+                    />
             </div>
         </div>
     </div>

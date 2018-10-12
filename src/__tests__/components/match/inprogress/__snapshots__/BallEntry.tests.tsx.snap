@@ -1217,6 +1217,18 @@ exports[`BallEntry should render correctly 1`] = `
             >
               complete innings
             </button>
+            <button
+              className="btn btn-success"
+              onClick={[Function]}
+              style={
+                Object {
+                  "margin": "2px",
+                  "minWidth": "36px",
+                }
+              }
+            >
+              complete match
+            </button>
           </div>
         </div>
       </div>
@@ -2468,6 +2480,18 @@ exports[`BallEntry should render correctly when over complete 1`] = `
               }
             >
               complete innings
+            </button>
+            <button
+              className="btn btn-success"
+              onClick={[Function]}
+              style={
+                Object {
+                  "margin": "2px",
+                  "minWidth": "36px",
+                }
+              }
+            >
+              complete match
             </button>
           </div>
         </div>

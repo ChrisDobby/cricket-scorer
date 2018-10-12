@@ -115,6 +115,8 @@ class InProgress extends React.Component<InProgressProps, {}> {
                                 overComplete={!!this.props.inProgress.currentOverComplete}
                                 currentOver={this.props.inProgress.currentOver}
                                 battingTeam={getTeam(match, this.props.inProgress.currentInnings.battingTeam)}
+                                homeTeam={match.homeTeam.name}
+                                awayTeam={match.awayTeam.name}
                                 ballFunctions={this.ballFunctions}
                             />}
                         <Innings
@@ -130,8 +132,8 @@ class InProgress extends React.Component<InProgressProps, {}> {
                         />}
                     {shouldBeComplete &&
                         <MatchComplete
-                            homeTeam={match.homeTeam}
-                            awayTeam={match.awayTeam}
+                            homeTeam={match.homeTeam.name}
+                            awayTeam={match.awayTeam.name}
                             complete={this.ballFunctions.completeMatch}
                             cancel={() => { }}
                         />}

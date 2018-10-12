@@ -1,6 +1,6 @@
 import * as React from 'react';
 import WithModal from '../../WithModal';
-import { Team, Result, WinBy, MatchResult } from '../../../domain';
+import { Result, WinBy, MatchResult } from '../../../domain';
 
 const buttonStyle: React.CSSProperties = {
     marginLeft: '10px',
@@ -8,8 +8,8 @@ const buttonStyle: React.CSSProperties = {
 };
 
 type MatchCompleteProps = {
-    homeTeam: Team;
-    awayTeam: Team;
+    homeTeam: string;
+    awayTeam: string;
     complete: (result: MatchResult) => void;
     cancel: () => void;
 };
@@ -49,8 +49,8 @@ class Match extends React.PureComponent<MatchCompleteProps> {
                                 onChange={this.selectResult}
                             >
                                 <option>Select result..</option>
-                                <option value={Result.HomeWin}>{`${this.props.homeTeam.name} won`}</option>
-                                <option value={Result.AwayWin}>{`${this.props.awayTeam.name} won`}</option>
+                                <option value={Result.HomeWin}>{`${this.props.homeTeam} won`}</option>
+                                <option value={Result.AwayWin}>{`${this.props.awayTeam} won`}</option>
                                 <option value={Result.Tie}>Match tied</option>
                                 <option value={Result.Draw}>Match drawn</option>
                                 <option value={Result.Abandoned}>Match abandoned</option>
