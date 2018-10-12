@@ -28,6 +28,7 @@ export enum InningsStatus {
     AllOut,
     OversComplete,
     Declared,
+    MatchComplete,
 }
 
 export enum TeamType {

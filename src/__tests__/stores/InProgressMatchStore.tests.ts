@@ -537,6 +537,23 @@ describe('inProgressMatchStore', () => {
 
             expect((inProgressMatchStore.match as Match).complete).toBeTruthy();
         });
+
+        it('should set any in progress innings to match complete status', () => {
+            const match = {
+                ...matches.blankMatch,
+                innings: [
+                    { ...matches.inningsAfterWicketTaken, status: InningsStatus.AllOut },
+                    matches.inningsAfterWicketTaken,
+                ],
+            };
+
+            const inProgressMatchStore = getMatchStore(match);
+            inProgressMatchStore.completeMatch({ result: Result.Abandoned });
+
+            const completedMatch = inProgressMatchStore.match as Match;
+            expect(completedMatch.innings[0].status).toEqual(InningsStatus.AllOut);
+            expect(completedMatch.innings[1].status).toEqual(InningsStatus.MatchComplete);
+        });
     });
 
     describe('startMatch', () => {

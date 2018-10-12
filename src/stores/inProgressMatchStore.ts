@@ -299,6 +299,13 @@ class InProgressMatchStore implements domain.InProgressMatch {
         this.match = {
             ...this.match,
             status,
+            innings: [
+                ...this.match.innings.map(innings =>
+                    innings.status !== domain.InningsStatus.InProgress
+                        ? innings
+                        : { ...innings, status: domain.InningsStatus.MatchComplete },
+                ),
+            ],
             complete: true,
             result: res,
         };
