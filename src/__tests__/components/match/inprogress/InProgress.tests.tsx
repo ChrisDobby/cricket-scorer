@@ -5,8 +5,6 @@ import InProgress from '../../../../components/match/inprogress/InProgress';
 import { blankMatch, matchWithStartedInnings, matchWithOverReadyToComplete } from '../../../testData/matches';
 
 describe('InProgress', () => {
-    const history = jest.fn();
-
     const noMatchProgress = {
         match: undefined,
         currentInnings: undefined,
@@ -58,7 +56,7 @@ describe('InProgress', () => {
     it('should render correctly when no match', () => {
         const inProgress = ReactTestRenderer.create(
             <StaticRouter context={{}}>
-                <InProgress inProgress={noMatchProgress} storage={storage} history={history} />
+                <InProgress inProgress={noMatchProgress} storage={storage} />
             </StaticRouter>);
 
         expect(inProgress.toJSON()).toMatchSnapshot();
