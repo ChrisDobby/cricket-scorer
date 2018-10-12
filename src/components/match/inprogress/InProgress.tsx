@@ -90,7 +90,7 @@ class InProgress extends React.Component<InProgressProps, {}> {
                 />);
         }
 
-        if (this.props.inProgress.newBatterRequired) {
+        if (this.props.inProgress.newBatterRequired && inningsStatus === domain.InningsStatus.InProgress) {
             const currentInnings = this.props.inProgress.currentInnings as domain.Innings;
             return (
                 <SelectNewBatter
