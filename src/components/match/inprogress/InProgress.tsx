@@ -9,6 +9,7 @@ import { BallEntry } from './BallEntry';
 import { Innings } from '../../scorecard/Innings';
 import SelectNewBatter from './SelectNewBatter';
 import InningsComplete from './InningsComplete';
+import MatchComplete from './MatchComplete';
 import { bindMatchStorage } from '../../../stores/withMatchStorage';
 import { getTeam } from '../../../match/utilities';
 
@@ -27,6 +28,7 @@ class InProgress extends React.Component<InProgressProps, {}> {
         completeOver: this.props.inProgress.completeOver,
         changeEnds: this.props.inProgress.flipBatters,
         completeInnings: this.props.inProgress.completeInnings,
+        completeMatch: this.props.inProgress.completeMatch,
     });
 
     disallowedPlayers = () =>
@@ -63,6 +65,7 @@ class InProgress extends React.Component<InProgressProps, {}> {
 
     render() {
         const inningsStatus = this.props.inProgress.provisionalInningsStatus;
+        const shouldBeComplete = this.props.inProgress.provisionalMatchComplete;
         const match = this.props.inProgress.match as domain.Match;
         if (match && !this.props.inProgress.currentInnings) {
             return (
@@ -125,8 +128,14 @@ class InProgress extends React.Component<InProgressProps, {}> {
                             battingTeam={getTeam(match, this.props.inProgress.currentInnings.battingTeam).name}
                             complete={() => this.ballFunctions.completeInnings(inningsStatus)}
                         />}
-                </React.Fragment>
-            );
+                    {shouldBeComplete &&
+                        <MatchComplete
+                            homeTeam={match.homeTeam}
+                            awayTeam={match.awayTeam}
+                            complete={this.ballFunctions.completeMatch}
+                            cancel={() => { }}
+                        />}
+                </React.Fragment>);
         }
 
         return <div />;

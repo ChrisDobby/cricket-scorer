@@ -24,6 +24,7 @@ describe('InProgress', () => {
         completeOver: jest.fn(),
         flipBatters: jest.fn(),
         completeInnings: jest.fn(),
+        completeMatch: jest.fn(),
     };
 
     const notStartedMatchProgress = {

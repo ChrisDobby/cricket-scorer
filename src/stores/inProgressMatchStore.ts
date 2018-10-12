@@ -123,7 +123,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
     }
 
     @computed get provisionalMatchComplete() {
-        return typeof this.match !== 'undefined' && complete(this.match);
+        return typeof this.match !== 'undefined' && complete.isComplete(this.match);
     }
 
     @computed get canSelectBattingTeamForInnings() {
@@ -290,6 +290,18 @@ class InProgressMatchStore implements domain.InProgressMatch {
             throw new Error('cannot complete with in progress status');
         }
         this.currentInnings.status = status;
+    }
+
+    @action completeMatch = (result: domain.MatchResult) => {
+        if (typeof this.match === 'undefined') { return; }
+        const [res, status] = complete.status(this.match, result);
+
+        this.match = {
+            ...this.match,
+            status,
+            complete: true,
+            result: res,
+        };
     }
 }
 

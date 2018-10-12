@@ -1,6 +1,6 @@
 import { InProgressMatchStore } from '../../stores/inProgressMatchStore';
 import * as matches from '../testData/matches';
-import { DeliveryOutcome, Over, Match, InningsStatus, Toss, TeamType, MatchType } from '../../domain';
+import { DeliveryOutcome, Over, Match, InningsStatus, Toss, TeamType, MatchType, Result } from '../../domain';
 
 jest.mock('../../match/over', () => {
     const wickets = () => 2;
@@ -15,7 +15,10 @@ jest.mock('../../match/over', () => {
 jest.mock('../../match/complete', () => ({
     __esModule: true,
     namedExport: jest.fn(),
-    default: jest.fn(() => true),
+    default: {
+        isComplete: jest.fn(() => true),
+        status: jest.fn(() => [{ result: 4 }, 'abandoned']),
+    },
 }));
 
 const getMatchStore = (match?: Match) => {
@@ -501,6 +504,38 @@ describe('inProgressMatchStore', () => {
 
             expect(() => inProgressMatchStore.completeInnings(InningsStatus.InProgress))
                 .toThrow('cannot complete with in progress status');
+        });
+    });
+
+    describe('completeMatch', () => {
+        it('should do nothing if no match', () => {
+            const inProgressMatchStore = getMatchStore();
+
+            inProgressMatchStore.completeMatch({ result: Result.Abandoned });
+        });
+
+        it('should update the match result', () => {
+            const inProgressMatchStore = getMatchStore(matches.blankMatch);
+
+            inProgressMatchStore.completeMatch({ result: Result.Abandoned });
+
+            expect((inProgressMatchStore.match as Match).result).toEqual({ result: Result.Abandoned });
+        });
+
+        it('should update the match status', () => {
+            const inProgressMatchStore = getMatchStore(matches.blankMatch);
+
+            inProgressMatchStore.completeMatch({ result: Result.Abandoned });
+
+            expect((inProgressMatchStore.match as Match).status).toEqual('abandoned');
+        });
+
+        it('should set complete to true', () => {
+            const inProgressMatchStore = getMatchStore(matches.blankMatch);
+
+            inProgressMatchStore.completeMatch({ result: Result.Abandoned });
+
+            expect((inProgressMatchStore.match as Match).complete).toBeTruthy();
         });
     });
 
