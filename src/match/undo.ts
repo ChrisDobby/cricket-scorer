@@ -5,11 +5,11 @@ import * as utilities from './utilities';
 const undo = (
     updateInningsFromDelivery: utilities.InningsFromDelivery,
     newBatsmanIndex: (innings: domain.Innings, batter: domain.Batter, runs: number) => number,
-    latestOver: (deliveries: domain.Delivery[], complete: number) => domain.Delivery[],
+    latestOver: (events: domain.Event[], complete: number) => domain.Delivery[],
     isMaidenOver: (deliveries: domain.Delivery[]) => boolean,
 ) => (config: domain.MatchConfig) => {
     const removeDeliveryFromInnings = (
-        updatedDeliveries: domain.Delivery[],
+        updatedDeliveries: domain.Event[],
     ) => updateInningsFromDelivery(
         () => updatedDeliveries,
         deliveries.removedExtras,
@@ -18,12 +18,13 @@ const undo = (
     );
 
     const batterIndex = (updatedInnings: domain.Innings, delivery: domain.Delivery) => {
-        if (updatedInnings.deliveries.length === 0 ||
-            updatedInnings.deliveries.find(del => del.overNumber === delivery.overNumber)) {
+        const deliveryEvents = domain.deliveries(updatedInnings.events);
+        if (deliveryEvents.length === 0 ||
+            deliveryEvents.find(del => del.overNumber === delivery.overNumber)) {
             return delivery.batsmanIndex;
         }
 
-        const lastOfPreviousOver = updatedInnings.deliveries[updatedInnings.deliveries.length - 1];
+        const lastOfPreviousOver = deliveryEvents[deliveryEvents.length - 1];
         return newBatsmanIndex(
             updatedInnings,
             updatedInnings.batting.batters[lastOfPreviousOver.batsmanIndex],
@@ -55,20 +56,21 @@ const undo = (
     };
 
     const bowlerIndex = (updatedInnings: domain.Innings, delivery: domain.Delivery) => {
-        if (updatedInnings.deliveries.length === 0 ||
-            updatedInnings.deliveries.find(del => del.overNumber === delivery.overNumber)) {
+        const deliveryEvents = domain.deliveries(updatedInnings.events);
+        if (deliveryEvents.length === 0 ||
+            deliveryEvents.find(del => del.overNumber === delivery.overNumber)) {
             return delivery.bowlerIndex;
         }
 
-        const lastOfPreviousOver = updatedInnings.deliveries[updatedInnings.deliveries.length - 1];
+        const lastOfPreviousOver = deliveryEvents[deliveryEvents.length - 1];
         return lastOfPreviousOver.bowlerIndex;
     };
 
     const overChangeOver = (
         inningsToUpdate: domain.Innings,
-        fromDeliveries: domain.Delivery[]) =>
+        fromEvents: domain.Event[]) =>
         inningsToUpdate.completedOvers > 0 &&
-        latestOver(fromDeliveries, inningsToUpdate.completedOvers).length === 0;
+        latestOver(fromEvents, inningsToUpdate.completedOvers).length === 0;
 
     const updateCompletedOvers = (
         inningsToUpdate: domain.Innings,
@@ -90,7 +92,7 @@ const undo = (
             return inningsToUpdate;
         }
 
-        const lastOver = latestOver(inningsToUpdate.deliveries, inningsToUpdate.completedOvers);
+        const lastOver = latestOver(inningsToUpdate.events, inningsToUpdate.completedOvers);
         return {
             ...inningsToUpdate,
             bowlers: inningsToUpdate.bowlers.map((bowler, idx) =>
@@ -119,13 +121,16 @@ const undo = (
     };
 
     const previousDelivery =
-        (innings: domain.Innings): [domain.Innings, number, number] => {
-            if (innings.deliveries.length === 0) {
+        (innings: domain.Innings, currentBatterIndex: number, currentBowlerIndex: number):
+            [domain.Innings, number, number] => {
+            if (innings.events.length === 0) {
                 return [innings, 0, 0];
             }
 
-            const lastDelivery = innings.deliveries[innings.deliveries.length - 1];
-            const newDeliveries = [...innings.deliveries.filter(delivery => delivery !== lastDelivery)];
+            const lastDelivery = innings.events[innings.events.length - 1] as domain.Delivery;
+            if (typeof lastDelivery === 'undefined') { return [innings, currentBatterIndex, currentBowlerIndex]; }
+
+            const newDeliveries = [...innings.events.filter(delivery => delivery !== lastDelivery)];
             const inOverChangeOver = overChangeOver(innings, newDeliveries);
             const inningsWithUpdatedCompletedOvers = updateCompletedOvers(innings, inOverChangeOver);
             const updatedInnings = removeDeliveryFromInnings(newDeliveries)(

@@ -27,7 +27,7 @@ const innings = (
     updateInningsFromDelivery: utilities.InningsFromDelivery,
     newBatsmanIndex: (innings: domain.Innings, batter: domain.Batter, runs: number) => number,
     flipBatters: (innings: domain.Innings, batter: domain.Batter) => number,
-    latestOver: (deliveries: domain.Delivery[], complete: number) => domain.Delivery[],
+    latestOver: (events: domain.Event[], complete: number) => domain.Delivery[],
     isMaidenOver: (deliveries: domain.Delivery[]) => boolean,
 ) => (config: domain.MatchConfig, getTeam: (type: domain.TeamType) => domain.Team) => {
     const newInnings = (
@@ -42,7 +42,7 @@ const innings = (
             wickets: 0,
             completedOvers: 0,
             totalOvers: '0',
-            deliveries: [],
+            events: [],
             batting: {
                 extras: {
                     byes: 0,
@@ -104,7 +104,7 @@ const innings = (
     };
 
     const addDeliveryToInnings = (
-        updatedDeliveries: domain.Delivery[],
+        updatedDeliveries: domain.Event[],
         battingWicket: domain.Wicket | undefined,
     ) => updateInningsFromDelivery(
         () => updatedDeliveries,
@@ -131,14 +131,14 @@ const innings = (
         return [
             addDeliveryToInnings(
                 [
-                    ...innings.deliveries,
+                    ...innings.events,
                     {
                         time,
                         outcome,
                         overNumber: innings.completedOvers + 1,
                         batsmanIndex: innings.batting.batters.indexOf(batter),
                         bowlerIndex: innings.bowlers.indexOf(bowler),
-                    },
+                    } as domain.Event,
                 ],
                 deliveries.battingWicket(outcome, time, bowler.name, getTeam(innings.bowlingTeam).players),
             )(
@@ -154,7 +154,7 @@ const innings = (
 
     const completeOver =
         (innings: domain.Innings, batter: domain.Batter, bowler: domain.Bowler): [domain.Innings, number] => {
-            const over = latestOver(innings.deliveries, innings.completedOvers);
+            const over = latestOver(innings.events, innings.completedOvers);
             const updatedBowler = {
                 ...bowler,
                 completedOvers: bowler.completedOvers + 1,

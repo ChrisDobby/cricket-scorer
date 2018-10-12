@@ -19,7 +19,9 @@ const updateMatchInnings =
     });
 
 const bowlerOfOver = (innings: domain.Innings, overNumber: number) => {
-    const deliveryInOver = innings.deliveries
+    const deliveryInOver = innings.events
+        .map(event => event as domain.Delivery)
+        .filter(delivery => typeof delivery !== 'undefined')
         .find(delivery => delivery.overNumber === overNumber);
 
     return typeof deliveryInOver === 'undefined'
@@ -63,7 +65,8 @@ class InProgressMatchStore implements domain.InProgressMatch {
     @computed get currentOver() {
         const innings = this.currentInnings;
         if (typeof innings === 'undefined') { return undefined; }
-        const deliveries = innings.deliveries.filter(delivery => delivery.overNumber > innings.completedOvers);
+        const deliveries = domain.deliveries(innings.events)
+            .filter(delivery => delivery.overNumber > innings.completedOvers);
 
         return {
             deliveries,
@@ -241,7 +244,8 @@ class InProgressMatchStore implements domain.InProgressMatch {
             typeof this.currentBatter === 'undefined' ||
             typeof this.currentBowler === 'undefined') { return; }
 
-        const [innings, batterIndex, bowlerIndex] = this.undo(this.currentInnings);
+        const [innings, batterIndex, bowlerIndex] =
+            this.undo(this.currentInnings, Number(this.currentBatterIndex), Number(this.currentBowlerIndex));
 
         this.match = updateMatchInnings(
             this.match,

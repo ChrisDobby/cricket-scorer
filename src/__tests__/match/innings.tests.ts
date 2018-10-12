@@ -1,4 +1,4 @@
-import { BattingInnings, DeliveryOutcome, Outcome, Howout, Wicket, InningsStatus, MatchType, TeamType }
+import { BattingInnings, DeliveryOutcome, Outcome, Howout, Wicket, InningsStatus, MatchType, TeamType, Delivery }
     from '../../domain';
 import innings from '../../match/innings';
 import * as matches from '../testData/matches';
@@ -77,7 +77,7 @@ describe('innings', () => {
             expect(innings.bowlers).toHaveLength(0);
             expect(innings.fallOfWickets).toHaveLength(0);
             expect(innings.status).toBe(InningsStatus.InProgress);
-            expect(innings.deliveries).toHaveLength(0);
+            expect(innings.events).toHaveLength(0);
             expect(innings.completedOvers).toBe(0);
             expect(innings.totalOvers).toBe('0');
         });
@@ -239,9 +239,9 @@ describe('innings', () => {
         );
 
         it('should add a delivery with the specified outcome to the innings', () => {
-            expect(updatedInnings.deliveries).toHaveLength(1);
+            expect(updatedInnings.events).toHaveLength(1);
 
-            const delivery = updatedInnings.deliveries[0];
+            const delivery = updatedInnings.events[0] as Delivery;
             expect(delivery.overNumber).toBe(1);
             expect(delivery.outcome).toEqual({
                 deliveryOutcome: DeliveryOutcome.Valid,

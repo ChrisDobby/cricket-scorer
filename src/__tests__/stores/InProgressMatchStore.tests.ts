@@ -1,6 +1,6 @@
 import { InProgressMatchStore } from '../../stores/inProgressMatchStore';
 import * as matches from '../testData/matches';
-import { DeliveryOutcome, Over, Match, InningsStatus, Toss, TeamType, MatchType, Result } from '../../domain';
+import { Delivery, DeliveryOutcome, Over, Match, InningsStatus, Toss, TeamType, MatchType, Result } from '../../domain';
 
 jest.mock('../../match/over', () => {
     const wickets = () => 2;
@@ -267,7 +267,7 @@ describe('inProgressMatchStore', () => {
             inProgressMatchStore.match = matches.matchWithStartedInnings;
             inProgressMatchStore.delivery(DeliveryOutcome.Valid, {});
 
-            expect(inProgressMatchStore.match.innings[0].deliveries).toHaveLength(0);
+            expect(inProgressMatchStore.match.innings[0].events).toHaveLength(0);
         });
 
         it('should add a delivery to the innings', () => {
@@ -275,11 +275,10 @@ describe('inProgressMatchStore', () => {
             inProgressMatchStore.match = matches.matchWithStartedOver;
             inProgressMatchStore.delivery(DeliveryOutcome.Valid, { runs: 2 });
 
-            expect(inProgressMatchStore.match.innings[0].deliveries).toHaveLength(1);
-            expect(inProgressMatchStore.match.innings[0].deliveries[0].outcome.deliveryOutcome)
-                .toBe(DeliveryOutcome.Valid);
-            expect(inProgressMatchStore.match.innings[0].deliveries[0].outcome.scores.runs)
-                .toBe(2);
+            expect(inProgressMatchStore.match.innings[0].events).toHaveLength(1);
+            const delivery = inProgressMatchStore.match.innings[0].events[0] as Delivery;
+            expect(delivery.outcome.deliveryOutcome).toBe(DeliveryOutcome.Valid);
+            expect(delivery.outcome.scores.runs).toBe(2);
         });
     });
 
@@ -304,7 +303,7 @@ describe('inProgressMatchStore', () => {
             inProgressMatchStore.match = matches.matchWithStartedInnings;
             inProgressMatchStore.undoPreviousDelivery();
 
-            expect(inProgressMatchStore.match.innings[0].deliveries).toHaveLength(0);
+            expect(inProgressMatchStore.match.innings[0].events).toHaveLength(0);
         });
 
         it('should remove the delivery from the innings', () => {
@@ -312,7 +311,7 @@ describe('inProgressMatchStore', () => {
             inProgressMatchStore.match = matches.matchWithOverNotReadyToComplete;
             inProgressMatchStore.undoPreviousDelivery();
 
-            expect(inProgressMatchStore.match.innings[0].deliveries).toHaveLength(2);
+            expect(inProgressMatchStore.match.innings[0].events).toHaveLength(2);
         });
     });
 

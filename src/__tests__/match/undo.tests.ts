@@ -65,7 +65,7 @@ describe('undo', () => {
         wickets: 3,
         totalOvers: '0.1',
         completedOvers: 0,
-        deliveries: [{
+        events: [{
             time: 0,
             bowlerIndex: 0,
             batsmanIndex: 4,
@@ -161,7 +161,7 @@ describe('undo', () => {
     const inningsWithOneOverAndOneBall = {
         ...inningsWithBall,
         completedOvers: 1,
-        deliveries: [1, 2, 3, 4, 5, 6].map(time => ({
+        events: [1, 2, 3, 4, 5, 6].map(time => ({
             time,
             bowlerIndex: 1,
             batsmanIndex: 1,
@@ -186,7 +186,7 @@ describe('undo', () => {
     const inningsWithCompletedOver = {
         ...inningsWithBall,
         completedOvers: 1,
-        deliveries: [1, 2, 3, 4, 5, 6].map(time => ({
+        events: [1, 2, 3, 4, 5, 6].map(time => ({
             time,
             bowlerIndex: 1,
             batsmanIndex: 1,
@@ -198,17 +198,17 @@ describe('undo', () => {
         })),
     };
 
-    const [updatedInnings, newBatterIndex, newBowlerIndex] = Undo(inningsWithBall);
+    const [updatedInnings, newBatterIndex, newBowlerIndex] = Undo(inningsWithBall, 99, 99);
     const batterInnings = updatedInnings.batting.batters[4].innings as BattingInnings;
 
     const [inningsWithOneOver, oneOverBatterIndex, oneOverBowlerIndex] =
-        Undo(inningsWithOneOverAndOneBall);
+        Undo(inningsWithOneOverAndOneBall, 99, 99);
 
     const [inningsWithFiveBalls, fiveBallBatterIndex, fiveBallBowlerIndex] =
-        Undo(inningsWithCompletedOver);
+        Undo(inningsWithCompletedOver, 99, 99);
 
     it('should return the same innings and 0 as the batter and bowler when innings has no deliveries', () => {
-        const [innings, batterIndex, bowlerIndex] = Undo(matches.startedInnings);
+        const [innings, batterIndex, bowlerIndex] = Undo(matches.startedInnings, 99, 99);
 
         expect(innings).toBe(matches.startedInnings);
         expect(batterIndex).toBe(0);
@@ -224,7 +224,7 @@ describe('undo', () => {
     });
 
     it('should return an innings with the last delivery removed', () => {
-        expect(updatedInnings.deliveries).toHaveLength(0);
+        expect(updatedInnings.events).toHaveLength(0);
     });
 
     it('should remove delivery outcome from the total', () => {

@@ -33,7 +33,7 @@ describe('Scorecard', () => {
             wickets: 0,
             completedOvers: 0,
             totalOvers: '0',
-            deliveries: [],
+            events: [],
             status: InningsStatus.InProgress,
             batting: {
                 extras: {
@@ -55,7 +55,7 @@ describe('Scorecard', () => {
             wickets: 0,
             completedOvers: 0,
             totalOvers: '0',
-            deliveries: [],
+            events: [],
             status: InningsStatus.InProgress,
             batting: {
                 extras: {

@@ -76,12 +76,19 @@ export interface Outcome {
     wicket?: DeliveryWicket;
 }
 
-export interface Delivery {
+export interface Event {
     time: number;
+}
+
+export interface Delivery extends Event {
     bowlerIndex: number;
     batsmanIndex: number;
     overNumber: number;
     outcome: Outcome;
+}
+
+export interface NonDelivery extends Event {
+    out?: Howout;
 }
 
 export interface Over {
@@ -143,7 +150,7 @@ export interface Innings {
     wickets: number;
     completedOvers: number;
     totalOvers: string;
-    deliveries: Delivery[];
+    events: Event[];
     batting: Batting;
     bowlers: Bowler[];
     fallOfWickets: FallOfWicket[];
@@ -288,3 +295,9 @@ export const howoutCouldBeNoBall = (howout: Howout) =>
 
 export const howoutCouldBeWide = (howout: Howout) =>
     howout === Howout.RunOut || howout === Howout.Stumped || howout === Howout.ObstructingField;
+
+export const eventDelivery = (event: Event) => event as Delivery;
+
+export const deliveries = (events: Event[]) =>
+    events.map(eventDelivery)
+        .filter(delivery => typeof delivery !== 'undefined');

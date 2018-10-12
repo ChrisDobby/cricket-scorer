@@ -59,7 +59,7 @@ export const startedInnings = {
     completedOvers: 0,
     totalOvers: '0',
     currentOver: [],
-    deliveries: [],
+    events: [],
     batting: {
         batters: [],
         extras: {
@@ -122,7 +122,7 @@ export const inningsWithStartedOver = {
 
 export const inningsWithOverReadyToComplete = {
     ...inningsWithStartedOver,
-    deliveries: [
+    events: [
         {
             time: (new Date()).getTime(),
             bowlerIndex: 0,
@@ -180,8 +180,8 @@ const inningsWithTwoOvers = {
         wickets: 0,
     }],
     completedOvers: 2,
-    deliveries: [...inningsWithOverReadyToComplete.deliveries, ...inningsWithOverReadyToComplete
-        .deliveries.map(delivery => ({
+    events: [...inningsWithOverReadyToComplete.events, ...inningsWithOverReadyToComplete
+        .events.map(delivery => ({
             ...delivery,
             overNumber: 2,
             bowlerIndex: 1,
@@ -191,7 +191,7 @@ const inningsWithTwoOvers = {
 
 export const inningsWithMaidenOverReadyToComplete = {
     ...inningsWithStartedOver,
-    deliveries: [
+    events: [
         {
             time: (new Date()).getTime(),
             bowlerIndex: 0,
@@ -244,7 +244,7 @@ export const inningsWithAllDeliveriesInCompletedOver = {
 
 const inningsWithOverNotReadyToComplete = {
     ...inningsWithOverReadyToComplete,
-    deliveries: [...inningsWithOverReadyToComplete.deliveries.slice(0, 3)],
+    events: [...inningsWithOverReadyToComplete.events.slice(0, 3)],
 };
 
 export const matchWithStartedInnings: Match = {

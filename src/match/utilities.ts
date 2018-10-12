@@ -2,7 +2,7 @@ import * as domain from '../domain';
 import * as deliveries from './delivery';
 
 export type InningsFromDelivery = (
-    getDeliveries: () => domain.Delivery[],
+    getDeliveries: () => domain.Event[],
     updateExtras: (extras: domain.Extras, deliveryOutcome: domain.Outcome, config: domain.MatchConfig) => domain.Extras,
     getBattingWicket: () => domain.Wicket | undefined,
     update: (a: number, b: number) => number,
@@ -13,8 +13,8 @@ export type InningsFromDelivery = (
         deliveryOutcome: domain.Outcome,
         config: domain.MatchConfig,
     ) => domain.Innings;
-export const latestOver = (deliveries: domain.Delivery[], complete: number): domain.Delivery[] =>
-    deliveries.filter(delivery => delivery.overNumber > complete);
+export const latestOver = (events: domain.Event[], complete: number): domain.Delivery[] =>
+    domain.deliveries(events).filter(delivery => delivery.overNumber > complete);
 
 export const isMaidenOver = (deliveries: domain.Delivery[]) =>
     deliveries.filter(delivery => delivery.outcome.deliveryOutcome === domain.DeliveryOutcome.Valid &&
@@ -22,7 +22,7 @@ export const isMaidenOver = (deliveries: domain.Delivery[]) =>
         .length === deliveries.length;
 
 export const updateInningsFromDelivery = (
-    getDeliveries: () => domain.Delivery[],
+    getDeliveries: () => domain.Event[],
     updateExtras: (extras: domain.Extras, deliveryOutcome: domain.Outcome, config: domain.MatchConfig) => domain.Extras,
     getBattingWicket: () => domain.Wicket | undefined,
     update: (a: number, b: number) => number,
@@ -78,7 +78,7 @@ export const updateInningsFromDelivery = (
                     }
                     : b),
         ],
-        deliveries: updatedDeliveries,
+        events: updatedDeliveries,
         totalOvers: domain.oversDescription(
             innings.completedOvers,
             latestOver(updatedDeliveries, innings.completedOvers)),
