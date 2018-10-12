@@ -177,6 +177,7 @@ export interface InProgressMatch {
     currentOver?: Over;
     currentOverComplete?: boolean;
     provisionalInningsStatus?: InningsStatus;
+    provisionalMatchComplete: boolean;
     nextBattingTeam?: Team;
     canSelectBattingTeamForInnings: boolean;
     startInnings: (battingTeam: TeamType, batter1Index: number, batter2Index: number) => void;

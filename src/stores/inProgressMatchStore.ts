@@ -4,6 +4,7 @@ import { default as matchInnings } from '../match/innings';
 import undo from '../match/undo';
 import * as over from '../match/over';
 import status from '../match/status';
+import complete from '../match/complete';
 import { getTeam } from '../match/utilities';
 
 const teamFromType = (match: domain.Match) => (type: domain.TeamType) => getTeam(match, type);
@@ -119,6 +120,10 @@ class InProgressMatchStore implements domain.InProgressMatch {
         }
 
         return this.matchInnings.calculateStatus(this.match.config, this.currentInnings);
+    }
+
+    @computed get provisionalMatchComplete() {
+        return typeof this.match !== 'undefined' && complete(this.match);
     }
 
     @computed get canSelectBattingTeamForInnings() {

@@ -12,6 +12,12 @@ jest.mock('../../match/over', () => {
     };
 });
 
+jest.mock('../../match/complete', () => ({
+    __esModule: true,
+    namedExport: jest.fn(),
+    default: jest.fn(() => true),
+}));
+
 const getMatchStore = (match?: Match) => {
     const store = new InProgressMatchStore();
     store.match = match;
@@ -452,6 +458,20 @@ describe('inProgressMatchStore', () => {
             const inProgressMatchStore = getMatchStore(matches.matchWithStartedOver);
 
             expect(inProgressMatchStore.provisionalInningsStatus).toBe(InningsStatus.InProgress);
+        });
+    });
+
+    describe('provisionalMatchComplete', () => {
+        it('should return false if no match', () => {
+            const inProgressMatchStore = getMatchStore();
+
+            expect(inProgressMatchStore.provisionalMatchComplete).toBeFalsy();
+        });
+
+        it('should return the calculated complete status', () => {
+            const inProgressMatchStore = getMatchStore(matches.blankMatch);
+
+            expect(inProgressMatchStore.provisionalMatchComplete).toBeTruthy();
         });
     });
 

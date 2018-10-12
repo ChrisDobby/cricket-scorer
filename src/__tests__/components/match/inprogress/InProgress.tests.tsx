@@ -15,6 +15,7 @@ describe('InProgress', () => {
         currentOver: undefined,
         currentOverComplete: undefined,
         canSelectBattingTeamForInnings: false,
+        provisionalMatchComplete: false,
         startInnings: jest.fn(),
         newBowler: jest.fn(),
         newBatter: jest.fn(),
