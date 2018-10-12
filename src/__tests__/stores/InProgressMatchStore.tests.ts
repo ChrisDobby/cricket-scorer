@@ -708,7 +708,7 @@ describe('inProgressMatchStore', () => {
                 matches.inningsWithStartedOver.batting.batters[0],
                 {
                     ...matches.inningsWithStartedOver.batting.batters[1],
-                    unavailable: domain.UnavailableReason.Absent,
+                    unavailableReason: domain.UnavailableReason.Absent,
                 },
             ];
 

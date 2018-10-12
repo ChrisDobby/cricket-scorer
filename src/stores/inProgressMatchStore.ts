@@ -154,7 +154,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
         typeof this.currentInnings === 'undefined') { return false; }
 
         return this.currentInnings.batting.batters
-                .filter(batter => batter.innings && !batter.innings.wicket).length < 2;
+                .filter(batter => batter.innings && !batter.innings.wicket && !batter.unavailableReason).length < 2;
     }
 
     @action startMatch = (tossWonBy: domain.TeamType, battingFirst: domain.TeamType) => {
