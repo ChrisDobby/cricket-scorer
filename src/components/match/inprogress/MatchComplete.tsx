@@ -10,6 +10,7 @@ const buttonStyle: React.CSSProperties = {
 type MatchCompleteProps = {
     homeTeam: string;
     awayTeam: string;
+    disallowCancel?: boolean;
     complete: (result: MatchResult) => void;
     cancel: () => void;
 };
@@ -33,6 +34,11 @@ class Match extends React.PureComponent<MatchCompleteProps> {
             winBy: this.state.winBy,
             winMargin: this.state.winMargin,
         })
+    formComplete = () =>
+        this.state.result === Result.Abandoned ||
+        this.state.result === Result.Draw ||
+        this.state.result === Result.Tie ||
+        (typeof this.state.winBy !== 'undefined' && this.state.winMargin)
 
     render() {
         return (
@@ -87,15 +93,17 @@ class Match extends React.PureComponent<MatchCompleteProps> {
                 <button
                     className="btn btn-dark"
                     style={buttonStyle}
+                    disabled={!this.formComplete()}
                     onClick={this.complete}
                 >OK
                 </button>
-                <button
-                    className="btn btn-dark"
-                    style={buttonStyle}
-                    onClick={this.props.cancel}
-                >Cancel
-                </button>
+                {!this.props.disallowCancel &&
+                    <button
+                        className="btn btn-dark"
+                        style={buttonStyle}
+                        onClick={this.props.cancel}
+                    >Cancel
+                    </button>}
             </div>);
     }
 }

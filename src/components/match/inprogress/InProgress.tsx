@@ -134,6 +134,7 @@ class InProgress extends React.Component<InProgressProps, {}> {
                         <MatchComplete
                             homeTeam={match.homeTeam.name}
                             awayTeam={match.awayTeam.name}
+                            disallowCancel
                             complete={this.ballFunctions.completeMatch}
                             cancel={() => { }}
                         />}
