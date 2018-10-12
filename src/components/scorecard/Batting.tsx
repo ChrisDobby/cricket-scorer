@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Extras } from './Extras';
 import { TotalLine } from './TotalLine';
-import { Batting as InningsBatting, BattingInnings, howOutDescription } from '../../domain';
+import { Batting as InningsBatting, BattingInnings, howOutDescription, unavailablDescription, Batter }
+    from '../../domain';
 import * as styles from './styles';
 import * as globalStyles from '../styles';
 
@@ -14,15 +15,17 @@ const smallExtraDetailText = (innings?: BattingInnings): string =>
         ? `${innings.ballsFaced} balls, ${innings.fours} 4s, ${innings.sixes} 6s`
         : '';
 
-const howOut = (innings?: BattingInnings): string => {
-    if (!innings) { return ''; }
+const howOut = (batter: Batter): string => {
+    if (!batter.innings && !batter.unavailableReason) { return ''; }
 
-    return howOutDescription(innings.wicket);
+    return batter.unavailableReason
+        ? unavailablDescription(batter.unavailableReason)
+        : howOutDescription((batter.innings as BattingInnings).wicket);
 };
 
-interface InningsItemProps { innings?: BattingInnings; }
+interface InningsItemProps { batter: Batter; }
 const Howout = (props: InningsItemProps) => (
-    <div className="col-6 col-md-4">{howOut(props.innings)}</div>
+    <div className="col-6 col-md-4">{howOut(props.batter)}</div>
 );
 
 interface CellItemProps {
@@ -55,7 +58,7 @@ export const Batting = ({ batting, score, wickets, totalOvers }: BattingProps) =
             {batting.batters.map((batter, idx) =>
                 <div className="row" style={styles.itemRow} key={idx}>
                     <div className="col-4 col-md-3">{batter.name}</div>
-                    <Howout innings={batter.innings} />
+                    <Howout batter={batter} />
                     <CellItem property={batter.innings ? batter.innings.runs.toString() : ''} style={styles.runsCell} />
                     <CellItem
                         property={batter.innings ? batter.innings.ballsFaced.toString() : ''}
