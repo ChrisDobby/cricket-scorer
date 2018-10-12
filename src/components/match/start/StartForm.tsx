@@ -17,7 +17,7 @@ export default class extends React.PureComponent<StartFormProps> {
         this.setState({ tossWonBy: Number(ev.target.value) })
 
     battingFirstChanged = (ev: React.ChangeEvent<HTMLSelectElement>) =>
-        this.setState({ tossWonBy: Number(ev.target.value) })
+        this.setState({ battingFirst: Number(ev.target.value) })
 
     render() {
         return (
