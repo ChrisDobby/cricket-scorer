@@ -1,12 +1,13 @@
 import * as React from 'react';
 import * as ReactTestRenderer from 'react-test-renderer';
 import { CurrentOver } from '../../../../components/match/inprogress/CurrentOver';
-import { DeliveryOutcome } from '../../../../domain';
+import { DeliveryOutcome, EventType } from '../../../../domain';
 
 describe('CurrentOver', () => {
     const over = {
         deliveries: [{
             time: (new Date()).getTime(),
+            type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
             overNumber: 1,

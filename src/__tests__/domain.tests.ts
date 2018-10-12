@@ -145,6 +145,7 @@ describe('domain', () => {
             const description = domain.oversDescription(6, [
                 {
                     time: (new Date()).getTime(),
+                    type: domain.EventType.Delivery,
                     bowlerIndex: 0,
                     batsmanIndex: 0,
                     overNumber: 7,
@@ -152,6 +153,7 @@ describe('domain', () => {
                 },
                 {
                     time: (new Date()).getTime(),
+                    type: domain.EventType.Delivery,
                     bowlerIndex: 0,
                     batsmanIndex: 0,
                     overNumber: 7,
@@ -159,6 +161,7 @@ describe('domain', () => {
                 },
                 {
                     time: (new Date()).getTime(),
+                    type: domain.EventType.Delivery,
                     bowlerIndex: 0,
                     batsmanIndex: 0,
                     overNumber: 7,
@@ -173,6 +176,7 @@ describe('domain', () => {
             const description = domain.oversDescription(6, [
                 {
                     time: (new Date()).getTime(),
+                    type: domain.EventType.Delivery,
                     bowlerIndex: 0,
                     batsmanIndex: 0,
                     overNumber: 7,
@@ -180,6 +184,7 @@ describe('domain', () => {
                 },
                 {
                     time: (new Date()).getTime(),
+                    type: domain.EventType.Delivery,
                     bowlerIndex: 0,
                     batsmanIndex: 0,
                     overNumber: 7,
@@ -187,6 +192,7 @@ describe('domain', () => {
                 },
                 {
                     time: (new Date()).getTime(),
+                    type: domain.EventType.Delivery,
                     bowlerIndex: 0,
                     batsmanIndex: 0,
                     overNumber: 7,
@@ -201,6 +207,7 @@ describe('domain', () => {
             const description = domain.oversDescription(6, [
                 {
                     time: (new Date()).getTime(),
+                    type: domain.EventType.Delivery,
                     bowlerIndex: 0,
                     batsmanIndex: 0,
                     overNumber: 7,
@@ -208,6 +215,7 @@ describe('domain', () => {
                 },
                 {
                     time: (new Date()).getTime(),
+                    type: domain.EventType.Delivery,
                     bowlerIndex: 0,
                     batsmanIndex: 0,
                     overNumber: 7,
@@ -215,6 +223,7 @@ describe('domain', () => {
                 },
                 {
                     time: (new Date()).getTime(),
+                    type: domain.EventType.Delivery,
                     bowlerIndex: 0,
                     batsmanIndex: 0,
                     overNumber: 7,

@@ -52,6 +52,12 @@ export enum WinBy {
     Wickets,
 }
 
+export enum EventType {
+    Delivery,
+    NonDeliveryWicket,
+    BatterUnavailable,
+}
+
 export interface Wicket {
     time: number;
     howOut: Howout;
@@ -81,6 +87,7 @@ export interface Outcome {
 
 export interface Event {
     time: number;
+    type: EventType;
 }
 
 export interface Delivery extends Event {
@@ -91,10 +98,12 @@ export interface Delivery extends Event {
 }
 
 export interface NonDeliveryWicket extends Event {
+    batsmanIndex: number;
     out: Howout;
 }
 
 export interface BatterUnavailable extends Event {
+    batsmanIndex: number;
     reason: UnavailableReason;
 }
 
@@ -311,8 +320,7 @@ export const howoutCouldBeNoBall = (howout: Howout) =>
 export const howoutCouldBeWide = (howout: Howout) =>
     howout === Howout.RunOut || howout === Howout.Stumped || howout === Howout.ObstructingField;
 
-export const eventDelivery = (event: Event) => event as Delivery;
-
 export const deliveries = (events: Event[]) =>
-    events.map(eventDelivery)
-        .filter(delivery => typeof delivery !== 'undefined');
+    events
+        .filter(event => event.type === EventType.Delivery)
+        .map(event => event as Delivery);

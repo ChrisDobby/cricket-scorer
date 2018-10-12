@@ -1,4 +1,5 @@
-import { Match, DeliveryOutcome, Howout, Batter, MatchType, InningsStatus, TeamType } from '../../domain';
+import { Match, DeliveryOutcome, Howout, Batter, MatchType, InningsStatus, TeamType, EventType, Innings }
+    from '../../domain';
 
 export const blankMatch: Match = {
     id: '1',
@@ -48,17 +49,14 @@ export const blankMatch: Match = {
     innings: [],
 };
 
-export const startedInnings = {
+export const startedInnings: Innings = {
     status: InningsStatus.InProgress,
     battingTeam: TeamType.HomeTeam,
     bowlingTeam: TeamType.AwayTeam,
     score: 0,
     wickets: 0,
-    allOut: false,
-    balls: 0,
     completedOvers: 0,
     totalOvers: '0',
-    currentOver: [],
     events: [],
     batting: {
         batters: [],
@@ -72,7 +70,6 @@ export const startedInnings = {
     },
     bowlers: [],
     fallOfWickets: [],
-    complete: false,
 };
 
 const completedInnings = {
@@ -125,6 +122,7 @@ export const inningsWithOverReadyToComplete = {
     events: [
         {
             time: (new Date()).getTime(),
+            type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
             overNumber: 1,
@@ -132,6 +130,7 @@ export const inningsWithOverReadyToComplete = {
         },
         {
             time: (new Date()).getTime(),
+            type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
             overNumber: 1,
@@ -139,6 +138,7 @@ export const inningsWithOverReadyToComplete = {
         },
         {
             time: (new Date()).getTime(),
+            type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
             overNumber: 1,
@@ -146,6 +146,7 @@ export const inningsWithOverReadyToComplete = {
         },
         {
             time: (new Date()).getTime(),
+            type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
             overNumber: 1,
@@ -153,6 +154,7 @@ export const inningsWithOverReadyToComplete = {
         },
         {
             time: (new Date()).getTime(),
+            type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
             overNumber: 1,
@@ -160,6 +162,7 @@ export const inningsWithOverReadyToComplete = {
         },
         {
             time: (new Date()).getTime(),
+            type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
             overNumber: 1,
@@ -194,6 +197,7 @@ export const inningsWithMaidenOverReadyToComplete = {
     events: [
         {
             time: (new Date()).getTime(),
+            type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
             overNumber: 1,
@@ -201,6 +205,7 @@ export const inningsWithMaidenOverReadyToComplete = {
         },
         {
             time: (new Date()).getTime(),
+            type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
             overNumber: 1,
@@ -208,6 +213,7 @@ export const inningsWithMaidenOverReadyToComplete = {
         },
         {
             time: (new Date()).getTime(),
+            type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
             overNumber: 1,
@@ -215,6 +221,7 @@ export const inningsWithMaidenOverReadyToComplete = {
         },
         {
             time: (new Date()).getTime(),
+            type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
             overNumber: 1,
@@ -222,6 +229,7 @@ export const inningsWithMaidenOverReadyToComplete = {
         },
         {
             time: (new Date()).getTime(),
+            type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
             overNumber: 1,
@@ -229,6 +237,7 @@ export const inningsWithMaidenOverReadyToComplete = {
         },
         {
             time: (new Date()).getTime(),
+            type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
             overNumber: 1,

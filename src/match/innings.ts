@@ -135,6 +135,7 @@ const innings = (
                     {
                         time,
                         outcome,
+                        type: domain.EventType.Delivery,
                         overNumber: innings.completedOvers + 1,
                         batsmanIndex: innings.batting.batters.indexOf(batter),
                         bowlerIndex: innings.bowlers.indexOf(bowler),
@@ -182,7 +183,7 @@ const innings = (
 
         return addEvent(
             innings,
-            { time, out: howout } as domain.Event,
+            { time, out: howout, type: domain.EventType.NonDeliveryWicket } as domain.Event,
             1,
             batter,
             b => ({
@@ -206,7 +207,7 @@ const innings = (
 
         return addEvent(
             innings,
-            { time, reason } as domain.Event,
+            { time, reason, type: domain.EventType.BatterUnavailable } as domain.Event,
             0,
             batter,
             b => ({ ...b, unavailableReason: reason }),

@@ -1,4 +1,4 @@
-import { DeliveryOutcome, Howout, MatchType } from '../../domain';
+import { DeliveryOutcome, Howout, MatchType, EventType } from '../../domain';
 import * as over from '../../match/over';
 
 jest.mock('../../match/delivery', () => {
@@ -20,6 +20,7 @@ describe('over', () => {
     const deliveries = [
         {
             time: (new Date()).getTime(),
+            type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
             overNumber: 1,
@@ -27,6 +28,7 @@ describe('over', () => {
         },
         {
             time: (new Date()).getTime(),
+            type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
             overNumber: 1,
@@ -38,6 +40,7 @@ describe('over', () => {
         },
         {
             time: (new Date()).getTime(),
+            type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
             overNumber: 1,
@@ -45,6 +48,7 @@ describe('over', () => {
         },
         {
             time: (new Date()).getTime(),
+            type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
             overNumber: 1,
@@ -56,6 +60,7 @@ describe('over', () => {
         },
         {
             time: (new Date()).getTime(),
+            type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
             overNumber: 1,
@@ -63,6 +68,7 @@ describe('over', () => {
         },
         {
             time: (new Date()).getTime(),
+            type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
             overNumber: 1,
