@@ -16,9 +16,9 @@ const smallExtraDetailText = (innings?: BattingInnings): string =>
         : '';
 
 const howOut = (batter: Batter): string => {
-    if (!batter.innings && !batter.unavailableReason) { return ''; }
+    if (!batter.innings && typeof batter.unavailableReason === 'undefined') { return ''; }
 
-    return batter.unavailableReason
+    return typeof batter.unavailableReason !== 'undefined'
         ? unavailablDescription(batter.unavailableReason)
         : howOutDescription((batter.innings as BattingInnings).wicket);
 };

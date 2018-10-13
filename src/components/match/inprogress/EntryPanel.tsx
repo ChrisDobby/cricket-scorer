@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
-import { DeliveryOutcome, DeliveryScores, InningsStatus, MatchResult } from '../../../domain';
+import { DeliveryOutcome, DeliveryScores, InningsStatus, MatchResult, UnavailableReason } from '../../../domain';
 import { ActionButton } from './ActionButton';
 import { ScoresEntry } from './ScoresEntry';
 import { WarningModal, WarningType } from './WarningModal';
@@ -25,6 +25,7 @@ export interface BallFunctions {
     changeEnds: () => void;
     completeInnings: (status: InningsStatus) => void;
     completeMatch: (result: MatchResult) => void;
+    batterUnavailable: (reason: UnavailableReason) => void;
 }
 
 export interface EntryPanelProps {
@@ -253,6 +254,16 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
                             caption="change ends"
                             noBall={false}
                             action={this.props.ballFunctions.changeEnds}
+                        />
+                        <ActionButton
+                            caption="retired"
+                            noBall={false}
+                            action={() => this.props.ballFunctions.batterUnavailable(UnavailableReason.Retired)}
+                        />
+                        <ActionButton
+                            caption="absent"
+                            noBall={false}
+                            action={() => this.props.ballFunctions.batterUnavailable(UnavailableReason.Absent)}
                         />
                         <ActionButton
                             caption="undo previous"

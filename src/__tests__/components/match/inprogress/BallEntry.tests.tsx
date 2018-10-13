@@ -13,6 +13,7 @@ describe('BallEntry', () => {
         changeEnds: jest.fn(),
         completeInnings: jest.fn(),
         completeMatch: jest.fn(),
+        batterUnavailable: jest.fn(),
     };
 
     it('should render correctly', () => {

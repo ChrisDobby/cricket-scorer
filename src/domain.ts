@@ -236,6 +236,7 @@ export interface InProgressMatch {
     completeInnings: (status: InningsStatus) => void;
     completeMatch: (result: MatchResult) => void;
     nonDeliveryWicket: (howout: Howout) => void;
+    batterUnavailable: (reason: UnavailableReason) => void;
 }
 
 export const howOutDescription = (wicket?: Wicket): string => {

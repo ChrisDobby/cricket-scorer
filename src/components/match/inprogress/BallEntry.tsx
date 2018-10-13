@@ -55,7 +55,9 @@ export const BallEntry = ({
                         <h5>{innings.totalOvers}</h5>
                     </div>
                 </div>
-                {innings.batting.batters.filter(batter => batter.innings && !batter.innings.wicket)
+                    {innings.batting.batters.filter(batter => batter.innings &&
+                        !batter.innings.wicket &&
+                        typeof batter.unavailableReason === 'undefined')
                     .map((batter, idx) => ({
                         name: batter.name,
                         innings: batter.innings as BattingInnings,

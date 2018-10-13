@@ -30,6 +30,7 @@ describe('EntryPanel', () => {
         changeEnds: jest.fn(),
         completeInnings: jest.fn(),
         completeMatch: jest.fn(),
+        batterUnavailable: jest.fn(),
     };
 
     const defaultProps = { homeTeam: 'home', awayTeam: 'away', calculateResult: jest.fn() };

@@ -30,6 +30,7 @@ class InProgress extends React.Component<InProgressProps, {}> {
         changeEnds: this.props.inProgress.flipBatters,
         completeInnings: this.props.inProgress.completeInnings,
         completeMatch: this.props.inProgress.completeMatch,
+        batterUnavailable: this.props.inProgress.batterUnavailable,
     });
 
     disallowedPlayers = () =>

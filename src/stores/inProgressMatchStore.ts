@@ -154,7 +154,9 @@ class InProgressMatchStore implements domain.InProgressMatch {
         typeof this.currentInnings === 'undefined') { return false; }
 
         return this.currentInnings.batting.batters
-                .filter(batter => batter.innings && !batter.innings.wicket && !batter.unavailableReason).length < 2;
+            .filter(batter => batter.innings &&
+                !batter.innings.wicket &&
+                typeof batter.unavailableReason === 'undefined').length < 2;
     }
 
     @action startMatch = (tossWonBy: domain.TeamType, battingFirst: domain.TeamType) => {
@@ -204,7 +206,8 @@ class InProgressMatchStore implements domain.InProgressMatch {
 
         if (this.currentInnings.batting.batters.filter(batter =>
             typeof batter.innings !== 'undefined' &&
-            typeof batter.innings.wicket === 'undefined').length === 2) {
+            typeof batter.innings.wicket === 'undefined' &&
+            typeof batter.unavailableReason === 'undefined').length === 2) {
             return;
         }
 
@@ -257,6 +260,25 @@ class InProgressMatchStore implements domain.InProgressMatch {
             this.currentInnings,
             this.currentBatter,
             howout,
+        );
+
+        this.match = updateMatchInnings(
+            this.match,
+            updatedInnings,
+            this.config);
+    }
+
+    @action batterUnavailable = (
+        reason: domain.UnavailableReason,
+    ) => {
+        if (typeof this.match === 'undefined' ||
+            typeof this.currentInnings === 'undefined' ||
+            typeof this.currentBatter === 'undefined') { return; }
+
+        const updatedInnings = this.matchInnings.batterUnavailable(
+            this.currentInnings,
+            this.currentBatter,
+            reason,
         );
 
         this.match = updateMatchInnings(

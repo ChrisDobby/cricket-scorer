@@ -209,10 +209,15 @@ const innings = (
         reason: domain.UnavailableReason,
     ): domain.Innings => {
         const time = (new Date()).getTime();
-
+        console.log(reason);
         return addEvent(
             innings,
-            { time, reason, type: domain.EventType.BatterUnavailable } as domain.Event,
+            {
+                time,
+                reason,
+                type: domain.EventType.BatterUnavailable,
+                batsmanIndex: innings.batting.batters.indexOf(batter),
+            } as domain.Event,
             0,
             batter,
             b => ({ ...b, unavailableReason: reason }),
