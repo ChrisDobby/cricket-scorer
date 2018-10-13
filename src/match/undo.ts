@@ -33,9 +33,8 @@ const undo = (
     };
 
     const removeNewBatter = (inningsToRemoveFrom: domain.Innings, event: domain.Event) => {
-        if ((event.type === domain.EventType.Delivery
-            && typeof ((event as domain.Delivery).outcome.wicket) === 'undefined') ||
-            (event.type === domain.EventType.BatterUnavailable)) {
+        if (event.type === domain.EventType.Delivery
+            && typeof ((event as domain.Delivery).outcome.wicket) === 'undefined') {
             return inningsToRemoveFrom;
         }
 
