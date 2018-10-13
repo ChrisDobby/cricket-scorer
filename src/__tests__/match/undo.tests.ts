@@ -100,6 +100,13 @@ describe('undo', () => {
                     {
                         name: 'Batter 4',
                         playerIndex: 3,
+                        innings: {
+                            runs: 1,
+                            timeIn: (new Date()).getTime(),
+                            ballsFaced: 10,
+                            fours: 0,
+                            sixes: 0,
+                        },
                     },
                     {
                         name: 'Batter 5',

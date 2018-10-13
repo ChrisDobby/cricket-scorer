@@ -21,8 +21,26 @@ exports[`InningsComplete should render correctly when status is all out 1`] = `
   <button
     className="btn btn-dark"
     onClick={[MockFunction]}
+    style={
+      Object {
+        "marginLeft": "10px",
+        "marginRight": "10px",
+      }
+    }
   >
     OK
+  </button>
+  <button
+    className="btn btn-dark"
+    onClick={undefined}
+    style={
+      Object {
+        "marginLeft": "10px",
+        "marginRight": "10px",
+      }
+    }
+  >
+    Undo previous
   </button>
 </div>
 `;
@@ -48,8 +66,26 @@ exports[`InningsComplete should render correctly when status is neither all out 
   <button
     className="btn btn-dark"
     onClick={[MockFunction]}
+    style={
+      Object {
+        "marginLeft": "10px",
+        "marginRight": "10px",
+      }
+    }
   >
     OK
+  </button>
+  <button
+    className="btn btn-dark"
+    onClick={undefined}
+    style={
+      Object {
+        "marginLeft": "10px",
+        "marginRight": "10px",
+      }
+    }
+  >
+    Undo previous
   </button>
 </div>
 `;
@@ -75,8 +111,26 @@ exports[`InningsComplete should render correctly when status is overs complete 1
   <button
     className="btn btn-dark"
     onClick={[MockFunction]}
+    style={
+      Object {
+        "marginLeft": "10px",
+        "marginRight": "10px",
+      }
+    }
   >
     OK
+  </button>
+  <button
+    className="btn btn-dark"
+    onClick={undefined}
+    style={
+      Object {
+        "marginLeft": "10px",
+        "marginRight": "10px",
+      }
+    }
+  >
+    Undo previous
   </button>
 </div>
 `;

@@ -14,6 +14,7 @@ type MatchCompleteProps = {
     complete: (result: MatchResult) => void;
     calculateResult: () => MatchResult | undefined;
     cancel: () => void;
+    undoPrevious: () => void;
 };
 
 class Match extends React.PureComponent<MatchCompleteProps> {
@@ -112,6 +113,12 @@ class Match extends React.PureComponent<MatchCompleteProps> {
                         onClick={this.props.cancel}
                     >Cancel
                     </button>}
+                <button
+                    className="btn btn-dark"
+                    style={buttonStyle}
+                    onClick={this.props.undoPrevious}
+                >Undo previous
+                </button>
             </div>);
     }
 }

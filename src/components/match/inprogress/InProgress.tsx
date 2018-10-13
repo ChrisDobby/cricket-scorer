@@ -130,6 +130,7 @@ class InProgress extends React.Component<InProgressProps, {}> {
                             status={inningsStatus}
                             battingTeam={getTeam(match, this.props.inProgress.currentInnings.battingTeam).name}
                             complete={() => this.ballFunctions.completeInnings(inningsStatus)}
+                            undoPrevious={this.ballFunctions.undoPreviousDelivery}
                         />}
                     {shouldBeComplete &&
                         <MatchComplete
@@ -139,6 +140,7 @@ class InProgress extends React.Component<InProgressProps, {}> {
                             complete={this.ballFunctions.completeMatch}
                             cancel={() => { }}
                             calculateResult={() => calculateResult(match)}
+                            undoPrevious={this.ballFunctions.undoPreviousDelivery}
                         />}
                 </React.Fragment>);
         }

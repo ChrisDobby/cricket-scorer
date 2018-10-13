@@ -38,11 +38,16 @@ const undo = (
             return inningsToRemoveFrom;
         }
 
-        const batterToRemoveIndex = Math.max(
-            ...inningsToRemoveFrom.batting.batters.map((batter, index) => ({ batter, index }))
+        if (inningsToRemoveFrom.batting.batters.filter(b => typeof b.innings !== 'undefined' &&
+            typeof b.innings.wicket === 'undefined'
+            && typeof b.unavailableReason === 'undefined').length <= 2) {
+            return inningsToRemoveFrom;
+        }
+
+        const batterToRemoveIndex = Math.max
+            (...inningsToRemoveFrom.batting.batters.map((batter, index) => ({ batter, index }))
                 .filter(b => typeof b.batter.innings !== 'undefined')
                 .map(b => b.index));
-
         return {
             ...inningsToRemoveFrom,
             batting: {
@@ -137,13 +142,13 @@ const undo = (
             lastDelivery.outcome,
             config,
         );
-
         const newBowlerIndex = bowlerIndex(updatedInnings, lastDelivery);
         const inningsAfterBowlerUpdate = inningsWithBowlersTotalOvers(
             updatedInnings, lastDelivery.bowlerIndex, newBowlerIndex, inOverChangeOver);
-
+        const withBatterRemoved = removeNewBatter(inningsAfterBowlerUpdate, lastDelivery);
+        console.log(withBatterRemoved);
         return [
-            removeNewBatter(inningsAfterBowlerUpdate, lastDelivery),
+            withBatterRemoved,
             batterIndex(inningsAfterBowlerUpdate, lastDelivery),
             newBowlerIndex];
     };
