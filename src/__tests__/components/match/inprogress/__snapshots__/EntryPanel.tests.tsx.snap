@@ -1058,6 +1058,30 @@ exports[`EntryPanel should render correctly when entering a no ball 1`] = `
       </button>
       <button
         className="btn btn-success"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": "2px",
+            "minWidth": "36px",
+          }
+        }
+      >
+        retired
+      </button>
+      <button
+        className="btn btn-success"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": "2px",
+            "minWidth": "36px",
+          }
+        }
+      >
+        absent
+      </button>
+      <button
+        className="btn btn-success"
         onClick={[MockFunction]}
         style={
           Object {
@@ -2152,6 +2176,30 @@ exports[`EntryPanel should render correctly when over complete 1`] = `
         }
       >
         change ends
+      </button>
+      <button
+        className="btn btn-success"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": "2px",
+            "minWidth": "36px",
+          }
+        }
+      >
+        retired
+      </button>
+      <button
+        className="btn btn-success"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": "2px",
+            "minWidth": "36px",
+          }
+        }
+      >
+        absent
       </button>
       <button
         className="btn btn-success"
@@ -3252,6 +3300,30 @@ exports[`EntryPanel should render correctly when over not complete 1`] = `
       </button>
       <button
         className="btn btn-success"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": "2px",
+            "minWidth": "36px",
+          }
+        }
+      >
+        retired
+      </button>
+      <button
+        className="btn btn-success"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": "2px",
+            "minWidth": "36px",
+          }
+        }
+      >
+        absent
+      </button>
+      <button
+        className="btn btn-success"
         onClick={[MockFunction]}
         style={
           Object {
@@ -4349,6 +4421,30 @@ exports[`EntryPanel should render correctly when showing all run 4 warning 1`] =
       </button>
       <button
         className="btn btn-success"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": "2px",
+            "minWidth": "36px",
+          }
+        }
+      >
+        retired
+      </button>
+      <button
+        className="btn btn-success"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": "2px",
+            "minWidth": "36px",
+          }
+        }
+      >
+        absent
+      </button>
+      <button
+        className="btn btn-success"
         onClick={[MockFunction]}
         style={
           Object {
@@ -5443,6 +5539,30 @@ exports[`EntryPanel should render correctly when showing all run 6 warning 1`] =
         }
       >
         change ends
+      </button>
+      <button
+        className="btn btn-success"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": "2px",
+            "minWidth": "36px",
+          }
+        }
+      >
+        retired
+      </button>
+      <button
+        className="btn btn-success"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": "2px",
+            "minWidth": "36px",
+          }
+        }
+      >
+        absent
       </button>
       <button
         className="btn btn-success"

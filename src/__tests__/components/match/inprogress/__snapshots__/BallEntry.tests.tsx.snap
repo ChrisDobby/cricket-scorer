@@ -1259,6 +1259,30 @@ exports[`BallEntry should render correctly 1`] = `
             </button>
             <button
               className="btn btn-success"
+              onClick={[Function]}
+              style={
+                Object {
+                  "margin": "2px",
+                  "minWidth": "36px",
+                }
+              }
+            >
+              retired
+            </button>
+            <button
+              className="btn btn-success"
+              onClick={[Function]}
+              style={
+                Object {
+                  "margin": "2px",
+                  "minWidth": "36px",
+                }
+              }
+            >
+              absent
+            </button>
+            <button
+              className="btn btn-success"
               onClick={[MockFunction]}
               style={
                 Object {
@@ -2584,6 +2608,30 @@ exports[`BallEntry should render correctly when over complete 1`] = `
               }
             >
               change ends
+            </button>
+            <button
+              className="btn btn-success"
+              onClick={[Function]}
+              style={
+                Object {
+                  "margin": "2px",
+                  "minWidth": "36px",
+                }
+              }
+            >
+              retired
+            </button>
+            <button
+              className="btn btn-success"
+              onClick={[Function]}
+              style={
+                Object {
+                  "margin": "2px",
+                  "minWidth": "36px",
+                }
+              }
+            >
+              absent
             </button>
             <button
               className="btn btn-success"

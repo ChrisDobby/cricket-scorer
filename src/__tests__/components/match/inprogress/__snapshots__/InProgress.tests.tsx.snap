@@ -1268,6 +1268,30 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                   }
                 }
               >
+                retired
+              </button>
+              <button
+                className="btn btn-success"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "margin": "2px",
+                    "minWidth": "36px",
+                  }
+                }
+              >
+                absent
+              </button>
+              <button
+                className="btn btn-success"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "margin": "2px",
+                    "minWidth": "36px",
+                  }
+                }
+              >
                 undo previous
               </button>
               <button
