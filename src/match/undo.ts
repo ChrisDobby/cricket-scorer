@@ -44,10 +44,10 @@ const undo = (
             return inningsToRemoveFrom;
         }
 
-        const batterToRemoveIndex = Math.max
-            (...inningsToRemoveFrom.batting.batters.map((batter, index) => ({ batter, index }))
-                .filter(b => typeof b.batter.innings !== 'undefined')
-                .map(b => b.index));
+        const batterToRemoveIndex = Math.max(...inningsToRemoveFrom
+            .batting.batters.map((batter, index) => ({ batter, index }))
+            .filter(b => typeof b.batter.innings !== 'undefined')
+            .map(b => b.index));
         return {
             ...inningsToRemoveFrom,
             batting: {
