@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import * as ReactTestRenderer from 'react-test-renderer';
 import { StartInnings } from '../../../../components/match/inprogress/StartInnings';
 import { match } from '../../../testData/testMatch';
+import { TeamType } from '../../../../domain';
 
 describe('StartInnings', () => {
     const homePlayers = [
@@ -155,7 +156,7 @@ describe('StartInnings', () => {
         const instance = startInnings.instance() as StartInnings;
         instance.save();
 
-        expect(startFunc).toHaveBeenCalledWith(homeTeam, 3, 0);
+        expect(startFunc).toHaveBeenCalledWith(TeamType.HomeTeam, 3, 0);
     });
 
     it('should render correctly when no team selected', () => {

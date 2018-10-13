@@ -168,7 +168,7 @@ const innings = (
                 batters: [
                     ...innings.batting.batters.map(b => b === batter
                         ? updateBatter(b)
-                        : batter),
+                        : b),
                 ],
             },
             wickets: innings.wickets + wickets,
@@ -183,7 +183,12 @@ const innings = (
 
         return addEvent(
             innings,
-            { time, out: howout, type: domain.EventType.NonDeliveryWicket } as domain.Event,
+            {
+                time,
+                out: howout,
+                type: domain.EventType.NonDeliveryWicket,
+                batsmanIndex: innings.batting.batters.indexOf(batter),
+            } as domain.Event,
             1,
             batter,
             b => ({

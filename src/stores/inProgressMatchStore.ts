@@ -246,6 +246,25 @@ class InProgressMatchStore implements domain.InProgressMatch {
         this.currentBatterIndex = batterIndex;
     }
 
+    @action nonDeliveryWicket = (
+        howout: domain.Howout,
+    ) => {
+        if (typeof this.match === 'undefined' ||
+            typeof this.currentInnings === 'undefined' ||
+            typeof this.currentBatter === 'undefined') { return; }
+
+        const updatedInnings = this.matchInnings.nonDeliveryWicket(
+            this.currentInnings,
+            this.currentBatter,
+            howout,
+        );
+
+        this.match = updateMatchInnings(
+            this.match,
+            updatedInnings,
+            this.config);
+    }
+
     @action undoPreviousDelivery = () => {
         if (typeof this.match === 'undefined' ||
             typeof this.currentInnings === 'undefined' ||

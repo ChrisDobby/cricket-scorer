@@ -8,6 +8,8 @@ import { SaveButton } from '../SaveButton';
 import { bindMatchStorage } from '../../../stores/withMatchStorage';
 import { getTeam } from '../../../match/utilities';
 
+const nonDeliveryHowouts = [domain.Howout.TimedOut];
+
 type WicketProps = RouteComponentProps<{}> & {
     inProgress: domain.InProgressMatch;
     storage: any;
@@ -26,6 +28,7 @@ interface WicketState {
 class Wicket extends React.Component<WicketProps, {}> {
     bindStorage = bindMatchStorage(this.props.storage.storeMatch, () => this.props.inProgress);
     delivery = this.bindStorage(this.props.inProgress.delivery);
+    nonDeliveryWicket = this.bindStorage(this.props.inProgress.nonDeliveryWicket);
 
     getHowouts =
         typeof this.props.inProgress.currentBatter === 'undefined'
@@ -73,11 +76,13 @@ class Wicket extends React.Component<WicketProps, {}> {
         this.setState({ deliveryOutcome })
 
     save = () => {
-        this.delivery(
-            this.state.deliveryOutcome,
-            this.state.scores,
-            this.deliveryWicket,
-        );
+        nonDeliveryHowouts.find(h => h === this.state.howout)
+            ? this.nonDeliveryWicket(this.state.howout)
+            : this.delivery(
+                this.state.deliveryOutcome,
+                this.state.scores,
+                this.deliveryWicket,
+            );
 
         this.props.history.push('/match/inprogress');
     }
