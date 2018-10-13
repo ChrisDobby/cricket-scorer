@@ -1,5 +1,4 @@
 import { MatchType, Match } from '../domain';
-import { v1 } from 'uuid';
 
 type MatchData = {
     username: string,
@@ -17,7 +16,6 @@ type MatchData = {
 
 export default (matchData: MatchData): Match => {
     return {
-        id: v1(),
         user: matchData.username,
         config: {
             playersPerSide: matchData.playersPerSide,

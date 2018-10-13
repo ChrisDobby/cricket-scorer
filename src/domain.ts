@@ -199,7 +199,7 @@ export interface MatchResult {
 }
 
 export interface Match {
-    id: string;
+    id?: string;
     user: string;
     config: MatchConfig;
     homeTeam: Team;
