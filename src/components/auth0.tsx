@@ -132,9 +132,17 @@ const auth0 = (domain: string, clientId: string) => {
         }
     }
 
+    const addBearerToken = (headers: any) => {
+        return ({
+            ...headers,
+            Authorization: `Bearer ${localStorage.getItem(idTokenKey)}`,
+        });
+    };
+
     return {
         WithAuth0,
         AuthRequired,
+        addBearerToken,
         Auth: WithModal(AuthCallback),
     };
 };

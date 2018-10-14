@@ -1,4 +1,6 @@
-export default (defaultRetries: number, retryWaitMilliseconds: number) => {
+import auth0 from '../components/auth0';
+
+const api = (addBearerToken: any) => (defaultRetries: number, retryWaitMilliseconds: number) => {
     const tryFetch = async (fetchPromise: any, retries: number | undefined) => {
         const retryAfterWait = (retryCount: number): any => new Promise(resolve =>
             setTimeout(resolve, retryWaitMilliseconds, tryFetch(fetchPromise, retryCount)));
@@ -31,9 +33,9 @@ export default (defaultRetries: number, retryWaitMilliseconds: number) => {
                     {
                         method,
                         body: JSON.stringify(data),
-                        headers: {
+                        headers: addBearerToken({
                             'Content-Type': 'application/json',
-                        },
+                        }),
                     }),
             undefined);
         return responseData(response);
@@ -48,3 +50,5 @@ export default (defaultRetries: number, retryWaitMilliseconds: number) => {
         put,
     };
 };
+
+export default api(auth0.addBearerToken);
