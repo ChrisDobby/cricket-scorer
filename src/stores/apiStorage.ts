@@ -27,8 +27,12 @@ const apiStorage = (api: any) => {
         const storeMatch = async (inProgressMatch: any) => {
             matchToStore = storedMatch(inProgressMatch);
             if (!sending) {
-                sending = true;
-                await sendMatch();
+                try {
+                    sending = true;
+                    await sendMatch();
+                } catch (err) {
+                }
+
                 sending = false;
             }
         };
