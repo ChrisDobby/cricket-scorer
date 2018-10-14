@@ -2,7 +2,6 @@ import { Match, DeliveryOutcome, Howout, Batter, MatchType, InningsStatus, TeamT
     from '../../domain';
 
 export const blankMatch: Match = {
-    id: '1',
     user: 'test',
     config: {
         playersPerSide: 11,

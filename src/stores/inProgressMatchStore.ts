@@ -363,6 +363,12 @@ class InProgressMatchStore implements domain.InProgressMatch {
             result: res,
         };
     }
+
+    @action setId = (id: string) => {
+        if (typeof this.match !== 'undefined') {
+            this.match.id = id;
+        }
+    }
 }
 
 const inProgressMatch = new InProgressMatchStore();

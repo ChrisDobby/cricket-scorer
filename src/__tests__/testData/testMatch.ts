@@ -550,7 +550,6 @@ const testInnings2: domain.Innings = {
 };
 
 export const match: domain.Match = {
-    id: '1',
     user: 'test',
     config: {
         playersPerSide: 11,

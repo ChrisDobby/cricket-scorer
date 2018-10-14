@@ -209,7 +209,7 @@ const innings = (
         reason: domain.UnavailableReason,
     ): domain.Innings => {
         const time = (new Date()).getTime();
-        console.log(reason);
+
         return addEvent(
             innings,
             {

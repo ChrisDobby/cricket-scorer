@@ -146,7 +146,6 @@ const undo = (
         const inningsAfterBowlerUpdate = inningsWithBowlersTotalOvers(
             updatedInnings, lastDelivery.bowlerIndex, newBowlerIndex, inOverChangeOver);
         const withBatterRemoved = removeNewBatter(inningsAfterBowlerUpdate, lastDelivery);
-        console.log(withBatterRemoved);
         return [
             withBatterRemoved,
             batterIndex(inningsAfterBowlerUpdate, lastDelivery),

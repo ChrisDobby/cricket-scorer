@@ -16,13 +16,13 @@ import calculateResult from '../../../match/calculateResult';
 
 type InProgressProps = RouteComponentProps<{}> & {
     inProgress: domain.InProgressMatch;
-    storage: any;
+    storeMatch: (m: domain.InProgressMatch) => void;
     history: History;
 };
 
 @observer
 class InProgress extends React.Component<InProgressProps, {}> {
-    bindStorage = bindMatchStorage(this.props.storage.storeMatch, () => this.props.inProgress);
+    bindStorage = bindMatchStorage(this.props.storeMatch, () => this.props.inProgress);
     ballFunctions = this.bindStorage({
         delivery: this.props.inProgress.delivery,
         undoPreviousDelivery: this.props.inProgress.undoPreviousDelivery,

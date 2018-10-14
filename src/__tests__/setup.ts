@@ -5,3 +5,4 @@ configure({ adapter: new Adapter() });
 
 process.env.AUTH0_DOMAIN = 'domain';
 process.env.AUTH0_CLIENT_ID = 'clientid';
+process.env.API_URL = 'http://localhost';

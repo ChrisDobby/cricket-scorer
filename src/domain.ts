@@ -212,6 +212,12 @@ export interface Match {
     innings: Innings[];
 }
 
+export interface StoredMatch {
+    match?: Match;
+    currentBatterIndex?: number;
+    currentBowlerIndex?: number;
+}
+
 export interface InProgressMatch {
     match?: Match;
     currentInnings?: Innings;

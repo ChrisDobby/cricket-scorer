@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { inject } from 'mobx-react';
 import { default as StartMatchComponent } from '../../components/match/start/StartMatch';
-import matchStorage from '../../stores/matchStorage';
+import storeMatch from '../../storeMatch';
 import WithInProgressMatch from '../../components/WithInProgressMatch';
 import WithNavBar from '../../components/WithNavBar';
 
@@ -20,7 +20,7 @@ class StartMatch extends React.Component<any> {
         return (
             <StartMatchComponent
                 inProgress={this.props.inProgressMatchStore}
-                storage={matchStorage(localStorage)}
+                storeMatch={storeMatch(this.props.inProgressMatchStore.setId)}
                 {...this.props}
             />);
     }

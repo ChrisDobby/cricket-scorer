@@ -1,10 +1,4 @@
-import { Match } from '../domain';
-
-interface StoredMatch {
-    match?: Match;
-    currentBatterIndex?: number;
-    currentBowlerIndex?: number;
-}
+import { StoredMatch } from '../domain';
 
 const matchStorage = (key:string) => (storage: any) => {
     const storeMatch = (matchToStore: StoredMatch) =>

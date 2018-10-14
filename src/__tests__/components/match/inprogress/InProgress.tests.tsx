@@ -54,14 +54,12 @@ describe('InProgress', () => {
         },
     };
 
-    const storage = {
-        storeMatch: jest.fn(),
-    };
+    const storeMatch = jest.fn();
 
     it('should render correctly when no match', () => {
         const inProgress = ReactTestRenderer.create(
             <StaticRouter context={{}}>
-                <InProgress inProgress={noMatchProgress} storage={storage} />
+                <InProgress inProgress={noMatchProgress} storeMatch={storeMatch} />
             </StaticRouter>);
 
         expect(inProgress.toJSON()).toMatchSnapshot();
@@ -72,7 +70,7 @@ describe('InProgress', () => {
             <StaticRouter context={{}}>
                 <InProgress
                     inProgress={notStartedMatchProgress}
-                    storage={storage}
+                    storeMatch={storeMatch}
                 />
             </StaticRouter>);
 
@@ -84,7 +82,7 @@ describe('InProgress', () => {
             <StaticRouter context={{}}>
                 <InProgress
                     inProgress={matchWithStartedInningsProgress}
-                    storage={storage}
+                    storeMatch={storeMatch}
                 />
             </StaticRouter>);
 
@@ -99,7 +97,7 @@ describe('InProgress', () => {
 
         const inProgress = ReactTestRenderer.create(
             <StaticRouter context={{}}>
-                <InProgress inProgress={withPreviousBowler} storage={storage} />
+                <InProgress inProgress={withPreviousBowler} storeMatch={storeMatch} />
             </StaticRouter>);
 
         expect(inProgress.toJSON()).toMatchSnapshot();
@@ -115,7 +113,7 @@ describe('InProgress', () => {
             <StaticRouter context={{}}>
                 <InProgress
                     inProgress={withPreviousBowlerFromEnd}
-                    storage={storage}
+                    storeMatch={storeMatch}
                 />
             </StaticRouter>);
 
@@ -127,7 +125,7 @@ describe('InProgress', () => {
             <StaticRouter context={{}}>
                 <InProgress
                     inProgress={matchDuringOverProgress}
-                    storage={storage}
+                    storeMatch={storeMatch}
                 />
             </StaticRouter>);
 

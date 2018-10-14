@@ -2,10 +2,14 @@ import * as React from 'react';
 import { inject } from 'mobx-react';
 import NewMatch from '../../components/match/create/NewMatch';
 import WithNavBar from '../../components/WithNavBar';
-import matchStorage from '../../stores/matchStorage';
+import storeMatch from '../../storeMatch';
 
 const CreateMatch = (props: any) => (
-    <NewMatch inProgress={props.inProgressMatchStore} storage={matchStorage(localStorage)} {...props} />
+    <NewMatch
+        inProgress={props.inProgressMatchStore}
+        storeMatch={storeMatch(props.inProgressMatchStore.setId)}
+        {...props}
+    />
 );
 
 export default inject('inProgressMatchStore')(WithNavBar(CreateMatch));

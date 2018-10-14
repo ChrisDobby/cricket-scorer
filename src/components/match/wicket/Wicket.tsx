@@ -12,7 +12,7 @@ const nonDeliveryHowouts = [domain.Howout.TimedOut];
 
 type WicketProps = RouteComponentProps<{}> & {
     inProgress: domain.InProgressMatch;
-    storage: any;
+    storeMatch: (m: domain.InProgressMatch) => void;
     history: any;
 };
 
@@ -26,7 +26,7 @@ interface WicketState {
 }
 
 class Wicket extends React.Component<WicketProps, {}> {
-    bindStorage = bindMatchStorage(this.props.storage.storeMatch, () => this.props.inProgress);
+    bindStorage = bindMatchStorage(this.props.storeMatch, () => this.props.inProgress);
     delivery = this.bindStorage(this.props.inProgress.delivery);
     nonDeliveryWicket = this.bindStorage(this.props.inProgress.nonDeliveryWicket);
 
