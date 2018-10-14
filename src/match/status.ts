@@ -26,7 +26,7 @@ export default (match: Match) => {
                     }),
                 { homeTeamRuns: 0, awayTeamRuns: 0 });
 
-        if (homeTeamRuns === awayTeamRuns) { return 'The scores are level'; }
+        if (homeTeamRuns === awayTeamRuns) { return 'the scores are level'; }
 
         const leaders = homeTeamRuns > awayTeamRuns
             ? { name: getTeam(match, TeamType.HomeTeam).name, by: homeTeamRuns - awayTeamRuns }
@@ -35,11 +35,24 @@ export default (match: Match) => {
         return `${leaders.name} lead by ${leaders.by}`;
     };
 
+    const tossResult = () => (
+        typeof match.toss === 'undefined'
+            ? ''
+            : `Toss won by ${getTeam(match, match.toss.tossWonBy).name}, ` +
+            `${getTeam(match, match.toss.battingFirst).name} to bat first`);
+
+    const currentInningsScore = () => {
+        const innings = match.innings[match.innings.length - 1];
+        return `${getTeam(match, innings.battingTeam).name} ${innings.score}-${innings.wickets}`;
+    };
+
     if (match.complete) { return match.status; }
-    if (match.innings.length <= 1) { return ''; }
+    if (match.innings.length === 0) { return tossResult(); }
+    const score = currentInningsScore();
+    if (match.innings.length === 1) { return score; }
     if (match.config.inningsPerSide === 1) {
-        return battingTeamRunsToWin();
+        return  `${score}, ${battingTeamRunsToWin()}`;
     }
 
-    return leadingTeam();
+    return `${score}, ${leadingTeam()}`;
 };

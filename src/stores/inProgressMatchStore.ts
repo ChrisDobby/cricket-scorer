@@ -166,6 +166,8 @@ class InProgressMatchStore implements domain.InProgressMatch {
             ...this.match,
             toss: { tossWonBy, battingFirst },
         };
+
+        this.match.status = status(this.match);
     }
 
     @action startInnings = (battingTeam: domain.TeamType, batter1Index: number, batter2Index: number) => {

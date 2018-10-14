@@ -9,10 +9,18 @@ describe('status', () => {
         expect(status(match)).toBe(match.status);
     });
 
-    it('should return nothing when in the first innings', () => {
-        const match = { ...matches.blankMatch, innings: [matches.inningsAfterWicketTaken] };
+    it('should return just the score when in the first innings', () => {
+        const match = {
+            ...matches.blankMatch, innings: [
+                {
+                    ...matches.inningsAfterWicketTaken,
+                    score: 123,
+                    wickets: 2,
+                },
+            ],
+        };
 
-        expect(status(match)).toBe('');
+        expect(status(match)).toBe(`${matches.blankMatch.homeTeam.name} 123-2`);
     });
 
     it('should return the runs required if in the second innings of a single innings match', () => {
@@ -35,7 +43,8 @@ describe('status', () => {
             ],
         };
 
-        expect(status(match)).toBe(`${matches.blankMatch.awayTeam.name} need 81 to win`);
+        const battingTeamName = matches.blankMatch.awayTeam.name;
+        expect(status(match)).toBe(`${battingTeamName} 120-0, ${battingTeamName} need 81 to win`);
     });
 
     it('should return the team in the lead in a multiple innings match', () => {
@@ -67,7 +76,8 @@ describe('status', () => {
             ],
         };
 
-        expect(status(match)).toBe(`${matches.blankMatch.homeTeam.name} lead by 30`);
+        const homeTeamName = matches.blankMatch.homeTeam.name;
+        expect(status(match)).toBe(`${homeTeamName} 70-0, ${homeTeamName} lead by 30`);
     });
 
     it('should return the away team in the lead in a multiple innings match', () => {
@@ -94,7 +104,8 @@ describe('status', () => {
             ],
         };
 
-        expect(status(match)).toBe(`${matches.blankMatch.awayTeam.name} lead by 40`);
+        const awayTeamName = matches.blankMatch.awayTeam.name;
+        expect(status(match)).toBe(`${awayTeamName} 240-0, ${awayTeamName} lead by 40`);
     });
 
     it('should return scores level when the scores are level in a multiple innings match', () => {
@@ -129,6 +140,23 @@ describe('status', () => {
             ],
         };
 
-        expect(status(match)).toBe('The scores are level');
+        expect(status(match)).toBe(`${matches.blankMatch.homeTeam.name} 40-0, the scores are level`);
+    });
+
+    it('should return nothing if the match has not started and the toss not taken place', () => {
+        expect(status(matches.blankMatch)).toBe('');
+    });
+
+    it('should return the toss if the match has not started and the toss has taken place', () => {
+        const match = {
+            ...matches.blankMatch,
+            toss: {
+                tossWonBy: TeamType.HomeTeam,
+                battingFirst: TeamType.AwayTeam,
+            },
+        };
+
+        expect(status(match))
+            .toBe(`Toss won by ${matches.blankMatch.homeTeam.name}, ${matches.blankMatch.awayTeam.name} to bat first`);
     });
 });
