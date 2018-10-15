@@ -3,6 +3,7 @@ import { inject } from 'mobx-react';
 import NewMatch from '../../components/match/create/NewMatch';
 import WithNavBar from '../../components/WithNavBar';
 import storeMatch from '../../storeMatch';
+import MatchWithNetworkStatus from '../../components/match/MatchWithNetworkStatus';
 
 const CreateMatch = (props: any) => (
     <NewMatch
@@ -12,4 +13,4 @@ const CreateMatch = (props: any) => (
     />
 );
 
-export default inject('inProgressMatchStore')(WithNavBar(CreateMatch));
+export default inject('inProgressMatchStore')(MatchWithNetworkStatus(WithNavBar(CreateMatch)));

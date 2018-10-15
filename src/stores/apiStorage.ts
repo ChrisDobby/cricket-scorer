@@ -1,12 +1,21 @@
 import matchApi from '../api/matchApi';
 import { StoredMatch } from '../domain';
+import auth0 from '../components/auth0';
 
-const apiStorage = (api: any) => {
+const apiStorage = (
+    api: any,
+    isOnline: () => boolean,
+    isAuthenticated: () => boolean,
+    userProfile: () => any | undefined,
+) => {
     let matchToStore: StoredMatch | undefined = undefined;
     let sending = false;
     return (setId: (id: string) => void) => {
-        const storedMatch = (inProgressMatch: any) => ({
-            match: inProgressMatch.match,
+        const storedMatch = (inProgressMatch: any, userProfile: any) => ({
+            match: {
+                ...inProgressMatch.match,
+                user: userProfile ? userProfile.id : inProgressMatch.match.user,
+            },
             currentBatterIndex: inProgressMatch.currentBatterIndex,
             currentBowlerIndex: inProgressMatch.currentBowlerIndex,
         });
@@ -25,7 +34,8 @@ const apiStorage = (api: any) => {
         };
 
         const storeMatch = async (inProgressMatch: any) => {
-            matchToStore = storedMatch(inProgressMatch);
+            if (!isOnline() || !isAuthenticated()) { return; }
+            matchToStore = storedMatch(inProgressMatch, userProfile());
             if (!sending) {
                 try {
                     sending = true;
@@ -43,4 +53,4 @@ const apiStorage = (api: any) => {
     };
 };
 
-export default apiStorage(matchApi);
+export default apiStorage(matchApi, () => navigator.onLine, auth0.isAuthenticated, auth0.userProfile);

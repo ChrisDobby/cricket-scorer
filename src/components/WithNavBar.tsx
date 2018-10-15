@@ -1,5 +1,9 @@
 import * as React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWifi } from '@fortawesome/free-solid-svg-icons';
 import * as styles from './styles';
+import NetworkStatusContext from '../context/NetworkStatusContext';
+import { ONLINE, OFFLINE } from '../context/networkStatus';
 
 const containerStyle: React.CSSProperties = {
     ...styles.flexContainerStyle,
@@ -23,27 +27,37 @@ const pictureStyle: React.CSSProperties = {
     boxShadow: '0 4px 6px 0 rgba(0,0,0,.14), 0 4px 5px rgba(0,0,0,-1)',
 };
 
-const WithNavBar = (Component: any) => (props: any) => (
-    <div style={containerStyle}>
-        <nav className="navbar navbar-dark bg-primary">
-            <a className="navbar-brand" href="#">Cricket scores live</a>
-            {!props.isAuthenticated &&
-                <button className="btn btn-outline-light" onClick={props.login}>Register or login</button>}
-            {props.isAuthenticated &&
-                <span>
-                    {props.userProfile &&
-                        <React.Fragment>
-                            {props.userProfile.picture &&
-                                <img src={props.userProfile.picture} style={pictureStyle} />}
-                            <span className="navbar-text" style={profileItemStyle}>{props.userProfile.name}</span>
-                        </React.Fragment>}
-                    <button className="btn btn-outline-light" onClick={props.logout}>Logout</button>
-                </span>}
-        </nav>
+const offlineStyle: React.CSSProperties = {
+    opacity: 0.2,
+};
 
-        <div style={componentStyle}>
-            <Component {...props} />
+const WithNavBar = (Component: any) => (props: any) => (
+    <NetworkStatusContext.Consumer>{({
+        status,
+    }) =>
+        <div style={containerStyle}>
+            <nav className="navbar navbar-dark bg-primary">
+                <a className="navbar-brand" href="#">Cricket scores live</a>
+                {!props.isAuthenticated && status === ONLINE &&
+                    <button className="btn btn-outline-light" onClick={props.login}>Register or login</button>}
+                {props.isAuthenticated &&
+                    <span>
+                        {props.userProfile &&
+                            <React.Fragment>
+                                {props.userProfile.picture &&
+                                    <img src={props.userProfile.picture} style={pictureStyle} />}
+                                <span className="navbar-text" style={profileItemStyle}>{props.userProfile.name}</span>
+                            </React.Fragment>}
+                        <button className="btn btn-outline-light" onClick={props.logout}>Logout</button>
+                    </span>}
+                {status === OFFLINE && !props.isAuthenticated && <FontAwesomeIcon icon={faWifi} style={offlineStyle} />}
+            </nav>
+
+            <div style={componentStyle}>
+                <Component {...props} />
+            </div>
         </div>
-    </div>);
+    }
+    </NetworkStatusContext.Consumer>);
 
 export default WithNavBar;

@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import inProgressMatchStore from './stores/inProgressMatchStore';
 import registerServiceWorker from './registerServiceWorker';
+import NetworkStatusProvider from './context/NetworkStatusProvider';
 
 const storedMatch = matchStorage(localStorage).getMatch();
 if (typeof storedMatch !== 'undefined' && storedMatch !== null) {
@@ -25,9 +26,11 @@ if (process.env.NODE_ENV === 'production') { registerServiceWorker(); }
 
 ReactDOM.render(
     <Provider {...stores} >
-        <BrowserRouter>
-            <Routes />
-        </BrowserRouter>
+        <NetworkStatusProvider>
+            <BrowserRouter>
+                <Routes />
+            </BrowserRouter>
+        </NetworkStatusProvider>
     </Provider>,
     document.getElementById('react-app'),
 );

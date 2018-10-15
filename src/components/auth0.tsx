@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { WebAuth, Auth0DecodedHash } from 'auth0-js';
 import WithModal from './WithModal';
+import NetworkStatusContext from '../context/NetworkStatusContext';
+import { OFFLINE } from '../context/networkStatus';
 
 const auth0 = (domain: string, clientId: string) => {
     const accessTokenKey = 'access_token';
@@ -95,9 +97,22 @@ const auth0 = (domain: string, clientId: string) => {
             userProfile={userProfile()}
         />);
 
-    const AuthRequired = (Component: any) => WithAuth0(class extends React.PureComponent<any> {
+    const WithNetworkStatus = (Component: any) => (props: any) => (
+        <NetworkStatusContext.Consumer>{({
+            status,
+            offlineUser,
+        }) =>
+            <Component {...props} status={status} offlineUser={offlineUser} />
+        }
+        </NetworkStatusContext.Consumer>);
+
+    const AuthRequired = (Component: any) => WithNetworkStatus(WithAuth0(class extends React.PureComponent<any> {
+        get loginRequired() {
+            return this.props.status !== OFFLINE && !this.props.isAuthenticated;
+        }
+
         loginIfRequired = () => {
-            if (!this.props.isAuthenticated) {
+            if (this.loginRequired) {
                 this.props.login(this.props.location.pathname);
             }
         }
@@ -111,13 +126,17 @@ const auth0 = (domain: string, clientId: string) => {
         }
 
         render() {
-            if (!this.props.isAuthenticated) {
+            if (this.loginRequired) {
                 return <div />;
             }
 
-            return <Component {...this.props} />;
+            return (
+                <Component
+                    {...this.props}
+                    userProfile={!this.props.isAuthenticated ? this.props.offlineUser : this.props.userProfile}
+                />);
         }
-    });
+    }));
 
     class AuthCallback extends React.PureComponent<any> {
         componentDidMount() {
@@ -143,6 +162,9 @@ const auth0 = (domain: string, clientId: string) => {
         WithAuth0,
         AuthRequired,
         addBearerToken,
+        isAuthenticated,
+        userProfile,
+        login,
         Auth: WithModal(AuthCallback),
     };
 };
