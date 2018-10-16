@@ -33,6 +33,7 @@ const styles = (theme: any) => ({
         ...theme.mixins.gutters(),
         paddingTop: theme.spacing.unit * 2,
         paddingBottom: theme.spacing.unit * 2,
+        margin: '20px',
     },
 });
 
