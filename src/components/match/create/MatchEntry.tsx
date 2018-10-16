@@ -1,4 +1,10 @@
 import * as React from 'react';
+import Grid from '@material-ui/core/Grid';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
 import { MatchType } from '../../../domain';
 
 interface MatchEntryProps {
@@ -15,76 +21,84 @@ interface MatchEntryProps {
     noBallRunsChanged: (runs: number) => void;
     wideRunsChanged: (runs: number) => void;
 }
+
+const entryRow: React.CSSProperties = {
+    marginTop: '20px',
+};
+
+const entryComponent: React.CSSProperties = {
+    padding: '4px',
+};
+
 export default (props: MatchEntryProps) => (
     <React.Fragment>
-        <div className="form-row">
-            <div className="form-group col-md-4">
-                <label htmlFor="matchType">Match type</label>
-                <select
-                    id="matchType"
-                    className="custom-select"
-                    value={props.matchType}
-                    onChange={ev => props.matchTypeSelected(Number(ev.target.value))}
-                >
-                    <option value={MatchType.LimitedOvers}>Limited overs</option>
-                    <option value={MatchType.Time}>Time</option>
-                </select>
-            </div>
-            <div className="form-group col-md-4">
+        <Grid container style={entryRow}>
+            <Grid xs={12} md={4}>
+                <FormControl fullWidth style={entryComponent}>
+                    <InputLabel htmlFor="matchType">Match type</InputLabel>
+                    <Select
+                        inputProps={{
+                            id: 'matchType',
+                        }}
+                        value={props.matchType}
+                        onChange={ev => props.matchTypeSelected(Number(ev.target.value))}
+                    >
+                        <MenuItem value={MatchType.LimitedOvers}>Limited overs</MenuItem>
+                        <MenuItem value={MatchType.Time}>Time</MenuItem>
+                    </Select>
+                </FormControl>
+            </Grid>
+            <Grid xs={12} md={4}>
                 {props.matchType === MatchType.LimitedOvers &&
-                    <React.Fragment>
-                        <label htmlFor="numberOfOvers">Number of overs</label>
-                        <input
-                            id="numberOfOvers"
-                            type="number"
-                            className="form-control"
-                            value={props.oversPerSide}
-                            onChange={ev => props.oversChanged(Number(ev.target.value))}
-                        />
-                    </React.Fragment>}
+                    <TextField
+                        style={entryComponent}
+                        fullWidth
+                        label="Number of overs"
+                        value={props.oversPerSide}
+                        type="number"
+                        onChange={ev => props.oversChanged(Number(ev.target.value))}
+                    />}
                 {props.matchType === MatchType.Time &&
-                    <React.Fragment>
-                        <label htmlFor="numberOfInnings">Number of innings per team</label>
-                        <input
-                            id="numberOfInnings"
-                            type="number"
-                            className="form-control"
-                            value={props.inningsPerSide}
-                            onChange={ev => props.inningsChanged(Number(ev.target.value))}
-                        />
-                    </React.Fragment>}
-            </div>
-            <div className="form-group col-md-4">
-                <label htmlFor="numberOfPlayers">Number of players</label>
-                <input
-                    id="numberOfPlayers"
+                    <TextField
+                        style={entryComponent}
+                        fullWidth
+                        label="Number of innings per team"
+                        value={props.inningsPerSide}
+                        type="number"
+                        onChange={ev => props.inningsChanged(Number(ev.target.value))}
+                    />}
+            </Grid>
+            <Grid xs={12} md={4}>
+                <TextField
+                    style={entryComponent}
+                    fullWidth
+                    label="Number of players"
                     type="number"
-                    className="form-control"
                     value={props.playersPerSide}
                     onChange={ev => props.playersChanged(Number(ev.target.value))}
                 />
-            </div>
-        </div>
-        <div className="form-row">
-            <div className="form-group col-md-6">
-                <label htmlFor="noBallRuns">Runs for no ball</label>
-                <input
-                    id="noBallRuns"
+            </Grid>
+        </Grid>
+        <Grid container style={entryRow}>
+            <Grid xs={12} md={6}>
+                <TextField
+                    style={entryComponent}
+                    fullWidth
+                    label="Runs for no ball"
                     type="number"
-                    className="form-control"
                     value={props.runsPerNoBall}
                     onChange={ev => props.noBallRunsChanged(Number(ev.target.value))}
                 />
-            </div>
-            <div className="form-group col-md-6">
-                <label htmlFor="wideRuns">Runs for a wide</label>
-                <input
-                    id="wideRuns"
+            </Grid>
+            <Grid xs={12} md={6}>
+                <TextField
+                    style={entryComponent}
+                    fullWidth
+                    label="Runs for wide"
                     type="number"
-                    className="form-control"
                     value={props.runsPerWide}
                     onChange={ev => props.wideRunsChanged(Number(ev.target.value))}
                 />
-            </div>
-        </div>
+            </Grid>
+        </Grid>
     </React.Fragment>);

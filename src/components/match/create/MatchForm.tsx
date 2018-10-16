@@ -1,9 +1,13 @@
 import * as React from 'react';
+import Typography from '@material-ui/core/Typography';
+import Toolbar from '@material-ui/core/Toolbar';
+import Button from '@material-ui/core/Button';
+import Divider from '@material-ui/core/Divider';
+import { default as SaveIcon } from '@material-ui/icons/Save';
 import { MatchType, TeamType } from '../../../domain';
 import TeamsEntry from './TeamsEntry';
 import MatchEntry from './MatchEntry';
 import SaveWarning from './SaveWarning';
-import { SaveButton } from '../SaveButton';
 
 interface MatchFormProps {
     createMatch: (matchData: any) => void;
@@ -94,7 +98,12 @@ class MatchForm extends React.PureComponent<MatchFormProps> {
         return (
             <React.Fragment>
                 <form>
-                    <h4>Match</h4>
+                    <Toolbar disableGutters>
+                        <Typography variant="h4" color="inherit" style={{ flexGrow: 1 }}>New match</Typography>
+                        <Button variant="fab" color="primary" onClick={this.save} disabled={!this.canSave()}>
+                            <SaveIcon />
+                        </Button>
+                    </Toolbar>
                     <MatchEntry
                         {...this.state}
                         matchTypeSelected={this.matchTypeSelected}
@@ -104,7 +113,8 @@ class MatchForm extends React.PureComponent<MatchFormProps> {
                         wideRunsChanged={this.wideRunsChanged}
                         playersChanged={this.playersChanged}
                     />
-                    <h4>Teams</h4>
+                    <Divider style={{ marginTop: '10px', marginBottom: '10px' }} />
+                    <Typography variant="h5">Teams</Typography>
                     <TeamsEntry
                         homeTeam={this.state.homeTeam}
                         awayTeam={this.state.awayTeam}
@@ -121,8 +131,7 @@ class MatchForm extends React.PureComponent<MatchFormProps> {
                         save={this.saveConfirmed}
                         cancel={this.continueEditing}
                     />}
-                <SaveButton enabled={this.canSave()} save={this.save} />
-            </React.Fragment>);
+            </React.Fragment >);
     }
 }
 
