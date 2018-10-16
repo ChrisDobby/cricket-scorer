@@ -6,6 +6,7 @@ import Divider from '@material-ui/core/Divider';
 import { withStyles } from '@material-ui/core/styles';
 import { Bowler } from '../../domain';
 import * as styles from './styles';
+import * as globalStyles from '../styles';
 
 interface BowlingProps {
     team: string;
@@ -63,4 +64,4 @@ const Bowling = ({ team, bowlers, classes }: BowlingProps) => (
         ))}
     </Grid>);
 
-export default withStyles(styles.themedStyles)(Bowling);
+export default withStyles(globalStyles.themedStyles)(Bowling);

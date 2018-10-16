@@ -1,12 +1,25 @@
 import * as React from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import Toolbar from '@material-ui/core/Toolbar';
+import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
+import { default as SaveIcon } from '@material-ui/icons/Save';
 import * as domain from '../../../domain';
 import DeliveryHeader from '../DeliveryHeader';
 import Entry from './Entry';
-import * as globalStyles from '../../styles';
-import { SaveButton } from '../SaveButton';
 import { bindMatchStorage } from '../../../stores/withMatchStorage';
 import { getTeam } from '../../../match/utilities';
+
+const styles = (theme: any) => ({
+    root: {
+        ...theme.mixins.gutters(),
+        paddingTop: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing.unit * 2,
+        margin: '20px',
+    },
+});
 
 const nonDeliveryHowouts = [domain.Howout.TimedOut];
 
@@ -14,6 +27,7 @@ type WicketProps = RouteComponentProps<{}> & {
     inProgress: domain.InProgressMatch;
     storeMatch: (m: domain.InProgressMatch) => void;
     history: any;
+    classes: any;
 };
 
 interface WicketState {
@@ -42,14 +56,16 @@ class Wicket extends React.Component<WicketProps, {}> {
         deliveryOutcome: domain.DeliveryOutcome.Valid,
     };
 
-    batterChange = (batterIndex: number) =>
+    batterChange = (batterIndex: number) => {
+        console.log(batterIndex);
         this.setState({
             batterIndex,
             howout: undefined,
             fielderIndex: undefined,
             crossed: false,
             runs: undefined,
-        })
+        });
+    }
 
     howoutChange = (howout: domain.Howout | undefined) =>
         this.setState({
@@ -167,39 +183,43 @@ class Wicket extends React.Component<WicketProps, {}> {
         }
 
         return (
-            <React.Fragment>
-                <div style={globalStyles.sectionContainer}>
-                    <DeliveryHeader
-                        batter={this.props.inProgress.currentBatter}
-                        bowler={this.props.inProgress.currentBowler}
-                    />
-                    <Entry
-                        batters={this.batters}
-                        bowler={this.props.inProgress.currentBowler}
-                        fielders={this.fielders}
-                        batterIndex={this.state.batterIndex}
-                        howout={this.state.howout}
-                        fielderIndex={this.state.fielderIndex}
-                        crossed={this.state.crossed}
-                        scores={this.state.scores}
-                        batterChange={this.batterChange}
-                        howoutChange={this.howoutChange}
-                        fielderChange={this.fielderChange}
-                        crossedChange={this.crossedChange}
-                        scoresChange={this.scoresChange}
-                        deliveryOutcomeChange={this.deliveryOutcomeChange}
-                        availableHowouts={this.availableHowouts}
-                        fielderRequired={this.fielderRequired}
-                        couldCross={this.couldCross}
-                        couldScoreRuns={this.couldScoreRuns}
-                        couldBeNoBall={this.couldBeNoBall}
-                        couldBeWide={this.couldBeWide}
-                        deliveryOutcome={this.state.deliveryOutcome}
-                    />
-                </div>
-                <SaveButton enabled={this.canSave} save={this.save} />
-            </React.Fragment>);
+            <Paper className={this.props.classes.root}>
+                <Toolbar disableGutters>
+                    <Typography variant="h4" color="inherit" style={{ flexGrow: 1 }}>Wicket</Typography>
+                    <Button variant="fab" color="primary" onClick={this.save} disabled={!this.canSave}>
+                        <SaveIcon />
+                    </Button>
+                </Toolbar>
+
+                <DeliveryHeader
+                    batter={this.props.inProgress.currentBatter}
+                    bowler={this.props.inProgress.currentBowler}
+                />
+                <Entry
+                    batters={this.batters}
+                    bowler={this.props.inProgress.currentBowler}
+                    fielders={this.fielders}
+                    batterIndex={this.state.batterIndex}
+                    howout={this.state.howout}
+                    fielderIndex={this.state.fielderIndex}
+                    crossed={this.state.crossed}
+                    scores={this.state.scores}
+                    batterChange={this.batterChange}
+                    howoutChange={this.howoutChange}
+                    fielderChange={this.fielderChange}
+                    crossedChange={this.crossedChange}
+                    scoresChange={this.scoresChange}
+                    deliveryOutcomeChange={this.deliveryOutcomeChange}
+                    availableHowouts={this.availableHowouts}
+                    fielderRequired={this.fielderRequired}
+                    couldCross={this.couldCross}
+                    couldScoreRuns={this.couldScoreRuns}
+                    couldBeNoBall={this.couldBeNoBall}
+                    couldBeWide={this.couldBeWide}
+                    deliveryOutcome={this.state.deliveryOutcome}
+                />
+            </Paper>);
     }
 }
 
-export default withRouter(Wicket);
+export default withStyles(styles)(withRouter(Wicket));

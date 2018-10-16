@@ -8,6 +8,7 @@ import Extras from './Extras';
 import { Batting as InningsBatting, BattingInnings, howOutDescription, unavailablDescription, Batter }
     from '../../domain';
 import * as styles from './styles';
+import * as globalStyles from '../styles';
 
 const smallExtraDetailText = (innings?: BattingInnings): string =>
     innings
@@ -139,4 +140,4 @@ const Batting = ({ batting, score, wickets, totalOvers, classes }: BattingProps)
         </Grid>
     </Grid>);
 
-export default withStyles(styles.themedStyles)(Batting);
+export default withStyles(globalStyles.themedStyles)(Batting);

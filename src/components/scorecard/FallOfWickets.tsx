@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import { FallOfWicket } from '../../domain';
 import * as styles from './styles';
+import * as globalStyles from '../styles';
 
 interface FallOfWicketsProps { fallOfWickets: FallOfWicket[]; classes: any; }
 
@@ -36,4 +37,4 @@ const FallOfWickets = ({ fallOfWickets, classes }: FallOfWicketsProps) => (
         ))}
     </Grid>);
 
-export default withStyles(styles.themedStyles)(FallOfWickets);
+export default withStyles(globalStyles.themedStyles)(FallOfWickets);

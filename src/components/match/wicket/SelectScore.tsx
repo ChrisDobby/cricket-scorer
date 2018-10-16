@@ -1,4 +1,6 @@
 import * as React from 'react';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 
 interface SelectScoreProps {
     fieldName: string;
@@ -7,16 +9,15 @@ interface SelectScoreProps {
 }
 
 export default ({ fieldName, selected, changed }: SelectScoreProps) => (
-    <select
-        className="custom-select"
-        value={selected}
-        onChange={event => changed(Number(event.currentTarget.value), fieldName)}
+    <Select
+        value={typeof selected === 'undefined' ? 0 : selected}
+        onChange={event => changed(Number(event.target.value), fieldName)}
     >
-        <option>0</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-        <option>6</option>
-    </select>);
+        <MenuItem value={0}>0</MenuItem>
+        <MenuItem value={1}>1</MenuItem>
+        <MenuItem value={2}>2</MenuItem>
+        <MenuItem value={3}>3</MenuItem>
+        <MenuItem value={4}>4</MenuItem>
+        <MenuItem value={5}>5</MenuItem>
+        <MenuItem value={6}>6</MenuItem>
+    </Select>);

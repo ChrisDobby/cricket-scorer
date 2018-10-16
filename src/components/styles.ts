@@ -32,3 +32,10 @@ export const sectionContainer: React.CSSProperties = {
 export const primaryColour: React.CSSProperties = {
     color: '#007bff',
 };
+
+export const themedStyles = (theme: any) => ({
+    header: {
+        backgroundColor: theme.palette.primary.light,
+        color: theme.palette.primary.contrastText,
+    },
+});
