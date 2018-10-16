@@ -1,29 +1,39 @@
 import * as React from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
 import { FallOfWicket } from '../../domain';
 import * as styles from './styles';
-import * as globalStyles from '../styles';
 
-const fallOfWicketHeader: React.CSSProperties = {
-    ...globalStyles.headingRow,
-    paddingLeft: '8px',
-};
+interface FallOfWicketsProps { fallOfWickets: FallOfWicket[]; classes: any; }
 
-export interface FallOfWicketsProps { fallOfWickets: FallOfWicket[]; }
+const FallOfWickets = ({ fallOfWickets, classes }: FallOfWicketsProps) => (
+    <Grid xs={12} lg={3}>
+        <Grid container className={classes.header}>
+            <Typography variant="h6" color="inherit">Fall of wickets</Typography>
+        </Grid>
+        {fallOfWickets.map(fow => (
+            <React.Fragment key={fow.wicket}>
+                <Grid container>
+                    <Grid xs={1}>
+                        <Typography variant="body1">{fow.wicket}</Typography>
+                    </Grid>
+                    <Grid xs={6}>
+                        <Typography variant="body1">{fow.batter}</Typography>
+                    </Grid>
+                    <Grid xs={2}>
+                        <Typography variant="body1" style={styles.numberCell}>{fow.score}</Typography>
+                    </Grid>
+                    <Grid xs={2}>
+                        <Typography variant="body1" style={styles.numberCell}>{fow.partnership}</Typography>
+                    </Grid>
+                </Grid>
+                <Grid xs={12}>
+                    <Divider />
+                </Grid>
+            </React.Fragment>
+        ))}
+    </Grid>);
 
-export const FallOfWickets = ({ fallOfWickets }: FallOfWicketsProps) => (
-    <div className="col-xl-4 col-lg-12">
-        <div style={globalStyles.sectionContainer}>
-            <div className="row" style={fallOfWicketHeader}>
-                <h6>Fall of wickets</h6>
-            </div>
-            {fallOfWickets.map(fow => (
-                <div key={fow.wicket} className="row" style={styles.itemRow}>
-                    <div className="col-1">{fow.wicket}</div>
-                    <div className="col-6">{fow.batter}</div>
-                    <div className="col-2" style={styles.numberCell}>{fow.score}</div>
-                    <div className="col-2" style={styles.numberCell}>{fow.partnership}</div>
-                </div>
-            ))}
-        </div>
-    </div>
-);
+export default withStyles(styles.themedStyles)(FallOfWickets);

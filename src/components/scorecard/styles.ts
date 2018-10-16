@@ -21,3 +21,11 @@ export const itemRow: React.CSSProperties = {
     fontSize: '14px',
     paddingBottom: '4px',
 };
+
+
+export const themedStyles = (theme: any) => ({
+    header: {
+        backgroundColor: theme.palette.primary.light,
+        color: theme.palette.primary.contrastText,
+    },
+});

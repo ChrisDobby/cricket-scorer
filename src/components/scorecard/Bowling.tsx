@@ -1,35 +1,66 @@
 import * as React from 'react';
+import Grid from '@material-ui/core/Grid';
+import Hidden from '@material-ui/core/Hidden';
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
+import { withStyles } from '@material-ui/core/styles';
 import { Bowler } from '../../domain';
 import * as styles from './styles';
-import * as globalStyles from '../styles';
 
-export interface BowlingProps {
+interface BowlingProps {
     team: string;
     bowlers: Bowler[];
+    classes: any;
 }
 
-export const Bowling = ({ team, bowlers }: BowlingProps) => (
-    <div className="col-xl-8 col-lg-12">
-        <div style={globalStyles.sectionContainer}>
-            <div className="row">
-                <h6>{team} bowling</h6>
-            </div>
-            <div className="row" style={globalStyles.headingRow}>
-                <div className="col-6 col-md-5" />
-                <div className="col-2" style={styles.centreCell}><h6>Overs</h6></div>
-                <div className="col-2 d-none d-md-block" style={styles.centreCell}><h6>Maidens</h6></div>
-                <div className="col-2" style={styles.centreCell}><h6>Runs</h6></div>
-                <div className="col-2 col-md-1" style={styles.centreCell}><h6>Wkts</h6></div>
-            </div>
-            {bowlers.map((bowler, idx) => (
-                <div key={idx} className="row">
-                    <div className="col-6 col-md-5">{bowler.name}</div>
-                    <div className="col-2" style={styles.centreCell}>{bowler.totalOvers}</div>
-                    <div className="col-2 d-none d-md-block" style={styles.centreCell}>{bowler.maidenOvers}</div>
-                    <div className="col-2" style={styles.centreCell}>{bowler.runs}</div>
-                    <div className="col-2 col-md-1" style={styles.centreCell}>{bowler.wickets}</div>
-                </div>
-            ))}
-        </div>
-    </div>
-);
+const Bowling = ({ team, bowlers, classes }: BowlingProps) => (
+    <Grid lg={8} md={12} container>
+        <Typography variant="h5">
+            {team} bowling
+        </Typography>
+        <Grid container className={classes.header}>
+            <Grid xs={6} md={5} />
+            <Grid xs={2}>
+                <Typography color="inherit" variant="h6" style={styles.centreCell}>Overs</Typography>
+            </Grid>
+            <Hidden smDown>
+                <Grid md={2}>
+                    <Typography color="inherit" variant="h6" style={styles.centreCell}>Maidens</Typography>
+                </Grid>
+            </Hidden>
+            <Grid xs={2}>
+                <Typography color="inherit" variant="h6" style={styles.centreCell}>Runs</Typography>
+            </Grid>
+            <Grid xs={2} md={1}>
+                <Typography color="inherit" variant="h6" style={styles.centreCell}>Wkts</Typography>
+            </Grid>
+        </Grid>
+        {bowlers.map((bowler, idx) => (
+            <React.Fragment key={idx}>
+                <Grid container>
+                    <Grid xs={6} md={5}>
+                        <Typography variant="body2">{bowler.name}</Typography>
+                    </Grid>
+                    <Grid xs={2} style={styles.centreCell}>
+                        <Typography variant="body2">{bowler.totalOvers}</Typography>
+                    </Grid>
+                    <Hidden smDown>
+                        <Grid md={2} style={styles.centreCell}>
+                            <Typography variant="body2">{bowler.maidenOvers}</Typography>
+                        </Grid>
+                    </Hidden>
+                    <Grid xs={2} style={styles.centreCell}>
+                        <Typography variant="body2">{bowler.runs}</Typography>
+                    </Grid>
+                    <Grid xs={2} md={1} style={styles.centreCell}>
+                        <Typography variant="body2">{bowler.wickets}</Typography>
+                    </Grid>
+                </Grid>
+                <Grid xs={12}>
+                    <Divider />
+                </Grid>
+            </React.Fragment>
+        ))}
+    </Grid>);
+
+export default withStyles(styles.themedStyles)(Bowling);

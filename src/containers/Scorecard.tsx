@@ -2,6 +2,7 @@ import * as React from 'react';
 import Scorecard from '../components/scorecard/Scorecard';
 import matchStorage from '../stores/matchStorage';
 import WithNavBar from '../components/WithNavBar';
+import { match } from '../__tests__/testData/testMatch';
 
 export default WithNavBar(class extends React.Component {
     state = { match: undefined };
@@ -18,6 +19,6 @@ export default WithNavBar(class extends React.Component {
             return <div />;
         }
 
-        return <Scorecard cricketMatch={this.state.match} />;
+        return <Scorecard cricketMatch={match} />;
     }
 });

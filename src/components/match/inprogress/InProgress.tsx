@@ -6,7 +6,7 @@ import * as domain from '../../../domain';
 import { StartInnings } from './StartInnings';
 import { SelectBowler } from './SelectBowler';
 import { BallEntry } from './BallEntry';
-import { Innings } from '../../scorecard/Innings';
+import Innings from '../../scorecard/Innings';
 import SelectNewBatter from './SelectNewBatter';
 import InningsComplete from './InningsComplete';
 import MatchComplete from './MatchComplete';

@@ -1,28 +1,15 @@
 import * as React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Paper from '@material-ui/core/Paper';
+import Divider from '@material-ui/core/Divider';
+import { withStyles } from '@material-ui/core/styles';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import { default as ReactSwipeableViews } from 'react-swipeable-views';
 import { Match as MatchEntity } from '../../domain';
-import { Innings } from './Innings';
-import { MatchHeading } from './MatchHeading';
-import * as styles from './styles';
-import * as globalStyles from '../styles';
+import Innings from './Innings';
+import MatchHeading from './MatchHeading';
 import { getTeam } from '../../match/utilities';
-
-const flexContainerStyle: React.CSSProperties = {
-    ...globalStyles.flexContainerStyle,
-    height: '100%',
-};
-
-const inningsRowStyle: React.CSSProperties = {
-    ...styles.textCentre,
-    marginTop: '4px',
-    marginBottom: '4px',
-};
-
-const inningButtonStyle: React.CSSProperties = {
-    marginLeft: '8px',
-    marginRight: '8px',
-};
 
 const inningsNumberDescription = (innings: number): string => {
     const numberDescription = (): string => {
@@ -41,7 +28,15 @@ const inningsNumberDescription = (innings: number): string => {
     return `${numberDescription()} innings`;
 };
 
-interface ScorecardProps { cricketMatch?: MatchEntity; }
+const styles = (theme: any) => ({
+    root: {
+        ...theme.mixins.gutters(),
+        paddingTop: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing.unit * 2,
+    },
+});
+
+interface ScorecardProps { cricketMatch?: MatchEntity; classes: any; }
 
 class Scorecard extends React.Component<ScorecardProps, {}> {
     state = {
@@ -50,49 +45,51 @@ class Scorecard extends React.Component<ScorecardProps, {}> {
             : -1,
     };
 
-    inningsSelected(index: number) {
+    inningsSelected = (event: any, index: number) => {
+        this.changeIndex(index);
+    }
+
+    changeIndex = (index: number) => {
         this.setState({ selectedInningsIndex: index });
     }
 
     render() {
         if (!this.props.cricketMatch) {
-            return (
-                <div className="col-12" style={styles.textCentre}>
-                    <div><FontAwesomeIcon icon={faSpinner} style={globalStyles.spinnerStyle} /></div>
-                </div>);
+            return <CircularProgress size={50}/>;
         }
         return (
-            <div style={flexContainerStyle}>
-                <div>
-                    <MatchHeading
-                        homeTeam={this.props.cricketMatch.homeTeam.name}
-                        awayTeam={this.props.cricketMatch.awayTeam.name}
-                        date={this.props.cricketMatch.date}
-                        matchStatus={this.props.cricketMatch.status}
-                    />
-                </div>
-                <div style={inningsRowStyle}>
+            <Paper className={this.props.classes.root} elevation={1}>
+                <MatchHeading
+                    homeTeam={this.props.cricketMatch.homeTeam.name}
+                    awayTeam={this.props.cricketMatch.awayTeam.name}
+                    date={this.props.cricketMatch.date}
+                    matchStatus={this.props.cricketMatch.status}
+                />
+                <Divider />
+                <Tabs
+                    value={this.state.selectedInningsIndex}
+                    onChange={this.inningsSelected}
+                    indicatorColor="primary"
+                    textColor="primary"
+                    centered
+                >
                     {this.props.cricketMatch.innings.map((_, index) => (
-                        <button
-                            style={inningButtonStyle}
-                            key={index}
-                            disabled={index === this.state.selectedInningsIndex}
-                            className="btn btn-primary"
-                            onClick={() => this.inningsSelected(index)}
-                        >{inningsNumberDescription(index + 1)}
-                        </button>
+                        <Tab key={index} label={inningsNumberDescription(index + 1)} />
                     ))}
-                </div>
-                <div style={globalStyles.flexFillStyle}>
-                    {this.state.selectedInningsIndex >= 0 &&
+                </Tabs>
+                <ReactSwipeableViews
+                    index={this.state.selectedInningsIndex}
+                    onChangeIndex={this.changeIndex}
+                >
+                    {this.props.cricketMatch.innings.map(inn => (
                         <Innings
-                            innings={this.props.cricketMatch.innings[this.state.selectedInningsIndex]}
+                            innings={inn}
                             getTeam={type => getTeam(this.props.cricketMatch as MatchEntity, type)}
-                        />}
-                </div>
-            </div>
-        );
+                        />
+                    ))}
+                </ReactSwipeableViews>
+            </Paper>);
     }
 }
 
-export default Scorecard;
+export default withStyles(styles)(Scorecard);

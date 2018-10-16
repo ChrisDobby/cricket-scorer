@@ -1,14 +1,13 @@
 import * as React from 'react';
-import { Extras } from './Extras';
-import { TotalLine } from './TotalLine';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Hidden from '@material-ui/core/Hidden';
+import Divider from '@material-ui/core/Divider';
+import { withStyles } from '@material-ui/core/styles';
+import Extras from './Extras';
 import { Batting as InningsBatting, BattingInnings, howOutDescription, unavailablDescription, Batter }
     from '../../domain';
 import * as styles from './styles';
-import * as globalStyles from '../styles';
-
-const smallExtraDetailStyle: React.CSSProperties = {
-    fontSize: '10px',
-};
 
 const smallExtraDetailText = (innings?: BattingInnings): string =>
     innings
@@ -25,68 +24,119 @@ const howOut = (batter: Batter): string => {
 
 interface InningsItemProps { batter: Batter; }
 const Howout = (props: InningsItemProps) => (
-    <div className="col-6 col-md-4">{howOut(props.batter)}</div>
+    <Grid xs={6} md={4}><Typography variant="body2">{howOut(props.batter)}</Typography></Grid>
 );
 
-interface CellItemProps {
-    property: string;
-    style: React.CSSProperties;
-    extraClass?: string;
-}
-const CellItem = ({ property, style, extraClass }: CellItemProps) => (
-    <div className={`col-2 col-md-1${extraClass || ''}`} style={style}>{property}</div>
-);
-
-export interface BattingProps {
+interface BattingProps {
     batting: InningsBatting;
     score: number;
     wickets: number;
     totalOvers: string;
+    classes: any;
 }
 
-export const Batting = ({ batting, score, wickets, totalOvers }: BattingProps) => (
-    <div className="col-xl-8 col-lg-12">
-        <div style={globalStyles.sectionContainer}>
-            <div className="row" style={globalStyles.headingRow}>
-                <div className="col-10 col-md-7"><h6>Batsman</h6></div>
-                <div className="col-2 col-md-1" style={styles.numberCell}><h6>Runs</h6></div>
-                <div className="col-1 d-none d-md-block" style={styles.numberCell}><h6>Balls</h6></div>
-                <div className="col-1 d-none d-md-block" style={styles.numberCell}><h6>Mins</h6></div>
-                <div className="col-1 d-none d-md-block" style={styles.numberCell}><h6>4s</h6></div>
-                <div className="col-1 d-none d-md-block" style={styles.numberCell}><h6>6s</h6></div>
-            </div>
-            {batting.batters.map((batter, idx) =>
-                <div className="row" style={styles.itemRow} key={idx}>
-                    <div className="col-4 col-md-3">{batter.name}</div>
+const Batting = ({ batting, score, wickets, totalOvers, classes }: BattingProps) => (
+    <Grid lg={8} md={12} container>
+        <Grid container className={classes.header}>
+            <Grid xs={10} md={7}>
+                <Typography variant="h6" color="inherit">Batsman</Typography>
+            </Grid>
+            <Grid xs={2} md={1}>
+                <Typography variant="h6" color="inherit" style={styles.numberCell}>Runs</Typography>
+            </Grid>
+            <Hidden smDown>
+                <Grid md={1}>
+                    <Typography variant="h6" color="inherit" style={styles.numberCell}>Balls</Typography>
+                </Grid>
+            </Hidden>
+            <Hidden smDown>
+                <Grid xs={false} md={1}>
+                    <Typography variant="h6" color="inherit" style={styles.numberCell}>Mins</Typography>
+                </Grid>
+            </Hidden>
+            <Hidden smDown>
+                <Grid xs={false} md={1}>
+                    <Typography variant="h6" color="inherit" style={styles.numberCell}>4s</Typography>
+                </Grid>
+            </Hidden>
+            <Hidden smDown>
+                <Grid xs={false} md={1}>
+                    <Typography variant="h6" color="inherit" style={styles.numberCell}>6s</Typography>
+                </Grid>
+            </Hidden>
+        </Grid>
+        {batting.batters.map((batter, idx) => (
+            <React.Fragment key={idx}>
+                <Grid container>
+                    <Grid xs={4} md={3}>
+                        <Typography variant="body2">{batter.name}</Typography>
+                    </Grid>
                     <Howout batter={batter} />
-                    <CellItem property={batter.innings ? batter.innings.runs.toString() : ''} style={styles.runsCell} />
-                    <CellItem
-                        property={batter.innings ? batter.innings.ballsFaced.toString() : ''}
-                        style={styles.numberCell}
-                        extraClass=" d-none d-md-block"
-                    />
-                    <CellItem
-                        property={batter.innings ? '0' : ''}
-                        style={styles.numberCell}
-                        extraClass=" d-none d-md-block"
-                    />
-                    <CellItem
-                        property={batter.innings ? batter.innings.fours.toString() : ''}
-                        style={styles.numberCell}
-                        extraClass=" d-none d-md-block"
-                    />
-                    <CellItem
-                        property={batter.innings ? batter.innings.sixes.toString() : ''}
-                        style={styles.numberCell}
-                        extraClass=" d-none d-md-block"
-                    />
-                    <div className="d-block d-md-none col-4" />
-                    <div className="d-block d-md-none col-8" style={smallExtraDetailStyle}>
-                        {smallExtraDetailText(batter.innings)}
-                    </div>
-                </div>)}
-            <Extras extras={batting.extras} />
-            <TotalLine score={score} wickets={wickets} totalOvers={totalOvers} />
-        </div>
-    </div>
-);
+                    <Grid xs={2} md={1}>
+                        <Typography variant="body1" style={styles.runsCell}>
+                            {batter.innings ? batter.innings.runs.toString() : ''}
+                        </Typography>
+                    </Grid>
+                    <Hidden smDown>
+                        <Grid md={1}>
+                            <Typography
+                                variant="body1"
+                                style={styles.numberCell}
+                            >{batter.innings ? batter.innings.ballsFaced.toString() : ''}
+                            </Typography>
+                        </Grid>
+                    </Hidden>
+                    <Hidden smDown>
+                        <Grid md={1}>
+                            <Typography
+                                variant="body1"
+                                style={styles.numberCell}
+                            >{batter.innings ? '0' : ''}
+                            </Typography>
+                        </Grid>
+                    </Hidden>
+                    <Hidden smDown>
+                        <Grid md={1}>
+                            <Typography
+                                variant="body1"
+                                style={styles.numberCell}
+                            >{batter.innings ? batter.innings.fours.toString() : ''}
+                            </Typography>
+                        </Grid>
+                    </Hidden>
+                    <Hidden smDown>
+                        <Grid md={1}>
+                            <Typography
+                                variant="body1"
+                                style={styles.numberCell}
+                            >{batter.innings ? batter.innings.sixes.toString() : ''}
+                            </Typography>
+                        </Grid>
+                    </Hidden>
+                    <Hidden mdUp><Grid xs={4} /></Hidden>
+                    <Hidden mdUp>
+                        <Grid xs={8}>
+                            <Typography variant="caption">
+                                {smallExtraDetailText(batter.innings)}
+                            </Typography>
+                        </Grid>
+                    </Hidden>
+                </Grid>
+                <Grid xs={12}><Divider /></Grid>
+            </React.Fragment>
+        ))}
+        <Extras extras={batting.extras} />
+        <Grid container className={classes.header}>
+            <Grid xs={4} md={3}>
+                <Typography variant="h6" color="inherit">Total</Typography>
+            </Grid>
+            <Grid xs={6} md={4}>
+                <Typography variant="h6" color="inherit">{`(${wickets} wickets) (${totalOvers} overs)`}</Typography>
+            </Grid>
+            <Grid xs={2} md={1}>
+                <Typography variant="h6" color="inherit" style={styles.runsCell}>{score}</Typography>
+            </Grid>
+        </Grid>
+    </Grid>);
+
+export default withStyles(styles.themedStyles)(Batting);

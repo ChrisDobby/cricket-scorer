@@ -11,7 +11,7 @@ import Match from './containers/Match';
 import auth0 from './components/auth0';
 
 const Routes = () => (
-    <div className="container-fluid" style={{ userSelect: 'none' }}>
+    <div style={{ userSelect: 'none' }}>
         <Route path="/" component={App} />
         <Route exact path="/" component={auth0.WithAuth0(Home)} />
         <Route exact path="/auth" component={auth0.Auth} />
