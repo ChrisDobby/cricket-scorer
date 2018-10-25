@@ -1,77 +1,80 @@
 import * as React from 'react';
-import { toast } from 'react-toastify';
-import { Link } from 'react-router-dom';
-import { DeliveryOutcome, DeliveryScores, InningsStatus, MatchResult, UnavailableReason } from '../../../domain';
-import { ActionButton } from './ActionButton';
-import { ScoresEntry } from './ScoresEntry';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
+import Grid from '@material-ui/core/Grid';
+import Radio from '@material-ui/core/Radio';
+import Button from '@material-ui/core/Button';
+import Divider from '@material-ui/core/Divider';
+import { DeliveryOutcome, DeliveryScores, MatchResult, Outcome } from '../../../domain';
+import ScoresEntry from './ScoresEntry';
 import { WarningModal, WarningType } from './WarningModal';
-import CompleteInnings from './CompleteInnings';
-import MatchComplete from './MatchComplete';
-import { showByes, showLegByes } from './symbols';
-import { notificationDescription } from '../../../match/delivery';
-import actionButtonClass from './actionButtonClass';
+import DeliveryNotify from './DeliveryNotify';
 
-const rowStyle: React.CSSProperties = {
-    marginTop: '4px',
-    marginBottom: '4px',
-    backgroundColor: '#fefefe',
-    borderColor: '#fdfdfe',
-};
-
-export interface BallFunctions {
-    delivery: (deliveryOutcome: DeliveryOutcome, scores: DeliveryScores) => void;
-    undoPreviousDelivery: () => void;
-    completeOver: () => void;
-    changeEnds: () => void;
-    completeInnings: (status: InningsStatus) => void;
-    completeMatch: (result: MatchResult) => void;
-    batterUnavailable: (reason: UnavailableReason) => void;
-}
-
-export interface EntryPanelProps {
+type EntryPanelProps = RouteComponentProps<{}> & {
     overComplete: boolean;
-    ballFunctions: BallFunctions;
+    delivery: (deliveryOutcome: DeliveryOutcome, scores: DeliveryScores) => void;
     homeTeam: string;
     awayTeam: string;
     calculateResult: () => MatchResult | undefined;
+};
+
+enum ScoreType {
+    Runs,
+    Byes,
+    LegByes,
+    Wide,
 }
 
 interface EntryPanelState {
     noBall: boolean;
-    overNotCompleteWarning: boolean;
+    scoreType: ScoreType;
     allRunFourWarning: boolean;
     allRunSixWarning: boolean;
     allRunDeliveryOutcome: DeliveryOutcome | undefined;
     allRunScores: DeliveryScores | undefined;
-    inningsCompleteVerify: boolean;
-    matchCompleteVerify: boolean;
+    notifyOutcome: Outcome | undefined;
 }
 
-export class EntryPanel extends React.Component<EntryPanelProps, {}> {
+class EntryPanel extends React.Component<EntryPanelProps, {}> {
     state: EntryPanelState = {
         noBall: false,
-        overNotCompleteWarning: false,
+        scoreType: ScoreType.Runs,
         allRunFourWarning: false,
         allRunSixWarning: false,
         allRunDeliveryOutcome: undefined,
         allRunScores: undefined,
-        inningsCompleteVerify: false,
-        matchCompleteVerify: false,
+        notifyOutcome: undefined,
     };
 
     notifyDelivery = (deliveryOutcome: DeliveryOutcome, scores: DeliveryScores) => {
-        toast.success(notificationDescription({
-            deliveryOutcome,
-            scores,
-        }));
+        this.setState({
+            notifyOutcome: {
+                deliveryOutcome,
+                scores,
+            },
+        });
+        // toast.success(notificationDescription({
+        //     deliveryOutcome,
+        //     scores,
+        // }));
     }
 
-    noBallPressed = () => this.setState({ noBall: true });
+    notificationClosed = () => this.setState({ notifyOutcome: undefined });
+
+    noBallPressed = () => {
+        this.setState({
+            noBall: true,
+            scoreType: this.state.scoreType === ScoreType.Wide ? ScoreType.Runs : this.state.scoreType,
+        });
+    }
 
     legalBallPressed = () => this.setState({ noBall: false });
 
+    scoreTypeChange = (scoreType: ScoreType) => this.setState({ scoreType });
+
     addDelivery = (deliveryOutcome: DeliveryOutcome, scores: DeliveryScores) => {
-        this.props.ballFunctions.delivery(deliveryOutcome, scores);
+        this.props.delivery(deliveryOutcome, scores);
         this.notifyDelivery(deliveryOutcome, scores);
         this.setState({ noBall: false });
     }
@@ -90,29 +93,12 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
         this.addDelivery(deliveryOutcome, scores);
     }
 
-    boundaryDelivery = (runs: number) => () => this.delivery(this.deliveryOutcome, { boundaries: runs });
-
-    completeOver = () => {
-        if (this.props.overComplete) {
-            this.props.ballFunctions.completeOver();
-            return;
-        }
-
-        this.setState({ overNotCompleteWarning: true });
-    }
-
-    overWarningYes = () => {
-        this.props.ballFunctions.completeOver();
-        this.clearWarnings();
-    }
-
     warningNo = () => {
         this.clearWarnings();
     }
 
     clearWarnings = () => {
         this.setState({
-            overNotCompleteWarning: false,
             allRunFourWarning: false,
             allRunSixWarning: false,
             allRunDeliveryOutcome: undefined,
@@ -135,159 +121,101 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
         [field]: score,
     })
 
-    verifyCompleteInnings = () => this.setState({ inningsCompleteVerify: true });
-
-    completeInnings = (status: InningsStatus) => {
-        this.setState({ inningsCompleteVerify: false });
-        this.props.ballFunctions.completeInnings(status);
+    get scoresFunc() {
+        switch (this.state.scoreType) {
+        case ScoreType.Byes:
+            return this.getScore('byes');
+        case ScoreType.LegByes:
+            return this.getScore('legByes');
+        case ScoreType.Wide:
+            return this.getScore('wides');
+        default:
+            return this.getScore('runs');
+        }
     }
 
-    cancelCompleteInnings = () => this.setState({ inningsCompleteVerify: false });
-
-    verifyCompleteMatch = () => this.setState({ matchCompleteVerify: true });
-
-    completeMatch = (result: MatchResult) => {
-        this.setState({ matchCompleteVerify: false });
-        this.props.ballFunctions.completeMatch(result);
+    get hasBoundaries() {
+        return this.state.scoreType === ScoreType.Runs;
     }
-
-    cancelCompleteMatch = () => this.setState({ matchCompleteVerify: false });
 
     get deliveryOutcome(): DeliveryOutcome {
-        return this.state.noBall ? DeliveryOutcome.Noball : DeliveryOutcome.Valid;
-    }
-
-    get descriptionText(): string {
-        return this.state.noBall ? ' (NO BALL)' : '';
+        if (this.state.noBall) { return DeliveryOutcome.Noball; }
+        if (this.state.scoreType === ScoreType.Wide) { return DeliveryOutcome.Wide; }
+        return DeliveryOutcome.Valid;
     }
 
     render() {
         return (
-            <div>
-                <div className="row">
-                    <div className="col-2" />
-                    <div className="col-10">
+            <React.Fragment>
+                <div>
+                    <Grid container>
+                        <Button
+                            style={{ marginRight: '10px' }}
+                            variant="fab"
+                            aria-label="Wicket"
+                            color="primary"
+                            onClick={() => this.props.history.push('/match/wicket')}
+                        >{'W'}
+                        </Button>
+                        <FormControlLabel
+                            style={{ float: 'right' }}
+                            label="No ball"
+                            control={
+                                <Switch
+                                    color="secondary"
+                                    checked={this.state.noBall}
+                                    onChange={ev => ev.target.checked ? this.noBallPressed() : this.legalBallPressed()}
+                                />}
+                        />
+                    </Grid>
+                    <Grid container>
+                        <Grid xs={12}>
+                            <Divider style={{ marginTop: '10px', marginBottom: '10px' }} />
+                        </Grid>
+                    </Grid>
+                    <Grid container>
+                        <FormControlLabel
+                            label="Runs"
+                            control={
+                                <Radio
+                                    checked={this.state.scoreType === ScoreType.Runs}
+                                    onChange={() => this.scoreTypeChange(ScoreType.Runs)}
+                                />}
+                        />
+                        <FormControlLabel
+                            label="Byes"
+                            control={
+                                <Radio
+                                    checked={this.state.scoreType === ScoreType.Byes}
+                                    onChange={() => this.scoreTypeChange(ScoreType.Byes)}
+                                />}
+                        />
+                        <FormControlLabel
+                            label="Leg byes"
+                            control={
+                                <Radio
+                                    onChange={() => this.scoreTypeChange(ScoreType.LegByes)}
+                                    checked={this.state.scoreType === ScoreType.LegByes}
+                                />}
+                        />
                         {!this.state.noBall &&
-                            <button className="btn btn-danger" onClick={this.noBallPressed}>NO BALL</button>}
-                        {this.state.noBall &&
-                            <button className="btn btn-success" onClick={this.legalBallPressed}>LEGAL BALL</button>}
-                    </div>
-                </div>
-                <div className="row" style={rowStyle}>
-                    <div className="col-2">
-                        {`Runs${this.descriptionText}`}
-                    </div>
-                    <ScoresEntry
-                        showDot={true}
-                        deliveryOutcome={this.deliveryOutcome}
-                        getScores={this.getScore('runs')}
-                        action={this.delivery}
-                    />
-                </div>
-                <div className="row" style={rowStyle}>
-                    <div className="col-2">
-                        {`Boundary${this.descriptionText}`}
-                    </div>
-                    <div className="col-10">
-                        <ActionButton
-                            caption="4"
-                            noBall={this.state.noBall}
-                            action={this.boundaryDelivery(4)}
-                            buttonClass={actionButtonClass(this.deliveryOutcome)}
-                        />
-                        <ActionButton
-                            caption="6"
-                            noBall={this.state.noBall}
-                            action={this.boundaryDelivery(6)}
-                            buttonClass={actionButtonClass(this.deliveryOutcome)}
-                        />
-                    </div>
-                </div>
-                <div className="row" style={rowStyle}>
-                    <div className="col-2">
-                        {`Byes${this.descriptionText}`}
-                    </div>
-                    <ScoresEntry
-                        showDot={false}
-                        deliveryOutcome={this.deliveryOutcome}
-                        getScores={this.getScore('byes')}
-                        action={this.delivery}
-                        show={showByes}
-                    />
-                </div>
-                <div className="row" style={rowStyle}>
-                    <div className="col-2">
-                        {`Leg byes${this.descriptionText}`}
-                    </div>
-                    <ScoresEntry
-                        showDot={false}
-                        deliveryOutcome={this.deliveryOutcome}
-                        getScores={this.getScore('legByes')}
-                        action={this.delivery}
-                        show={showLegByes}
-                    />
-                </div>
-                {!this.state.noBall &&
-                    <div className="row" style={rowStyle}>
-                        <div className="col-2">
-                            Wide
-                        </div>
+                            <FormControlLabel
+                                label="Wide"
+                                control={<Radio
+                                    checked={this.state.scoreType === ScoreType.Wide}
+                                    onChange={() => this.scoreTypeChange(ScoreType.Wide)}
+                                />}
+                            />}
+                    </Grid>
+                    <Grid container>
                         <ScoresEntry
-                            showDot={true}
-                            deliveryOutcome={DeliveryOutcome.Wide}
-                            getScores={this.getScore('wides')}
+                            deliveryOutcome={this.deliveryOutcome}
+                            getScores={this.scoresFunc}
                             action={this.delivery}
+                            hasBoundaries={this.hasBoundaries}
                         />
-                    </div>}
-                <div className="row" style={rowStyle}>
-                    <div className="col-2" />
-                    <div className="col-10">
-                        <Link to="/match/wicket" className="btn btn-success">
-                            Wicket
-                        </Link>
-                        <ActionButton
-                            caption="complete over"
-                            noBall={false}
-                            action={this.completeOver}
-                        />
-                        <ActionButton
-                            caption="change ends"
-                            noBall={false}
-                            action={this.props.ballFunctions.changeEnds}
-                        />
-                        <ActionButton
-                            caption="retired"
-                            noBall={false}
-                            action={() => this.props.ballFunctions.batterUnavailable(UnavailableReason.Retired)}
-                        />
-                        <ActionButton
-                            caption="absent"
-                            noBall={false}
-                            action={() => this.props.ballFunctions.batterUnavailable(UnavailableReason.Absent)}
-                        />
-                        <ActionButton
-                            caption="undo previous"
-                            noBall={false}
-                            action={this.props.ballFunctions.undoPreviousDelivery}
-                        />
-                        <ActionButton
-                            caption="complete innings"
-                            noBall={false}
-                            action={this.verifyCompleteInnings}
-                        />
-                        <ActionButton
-                            caption="complete match"
-                            noBall={false}
-                            action={this.verifyCompleteMatch}
-                        />
-                    </div>
+                    </Grid>
                 </div>
-                {this.state.overNotCompleteWarning &&
-                    <WarningModal
-                        warningType={WarningType.OverNotCompleteWarning}
-                        onYes={this.overWarningYes}
-                        onNo={this.warningNo}
-                    />}
                 {this.state.allRunFourWarning &&
                     <WarningModal
                         warningType={WarningType.AllRunFourWarning}
@@ -300,20 +228,11 @@ export class EntryPanel extends React.Component<EntryPanelProps, {}> {
                         onYes={this.allRunWarningYes}
                         onNo={this.warningNo}
                     />}
-                {this.state.inningsCompleteVerify &&
-                    <CompleteInnings
-                        complete={this.completeInnings}
-                        cancel={this.cancelCompleteInnings}
-                    />}
-                {this.state.matchCompleteVerify &&
-                    <MatchComplete
-                        homeTeam={this.props.homeTeam}
-                        awayTeam={this.props.awayTeam}
-                        complete={this.completeMatch}
-                        cancel={this.cancelCompleteMatch}
-                        calculateResult={this.props.calculateResult}
-                    />}
-            </div>
-        );
+
+                {this.state.notifyOutcome &&
+                    <DeliveryNotify outcome={this.state.notifyOutcome} onClose={this.notificationClosed} />}
+            </React.Fragment>);
     }
 }
+
+export default withRouter(EntryPanel);

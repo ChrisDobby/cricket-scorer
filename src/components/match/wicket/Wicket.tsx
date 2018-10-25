@@ -57,7 +57,6 @@ class Wicket extends React.Component<WicketProps, {}> {
     };
 
     batterChange = (batterIndex: number) => {
-        console.log(batterIndex);
         this.setState({
             batterIndex,
             howout: undefined,

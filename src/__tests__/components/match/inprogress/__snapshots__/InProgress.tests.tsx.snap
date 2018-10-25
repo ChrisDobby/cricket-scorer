@@ -1,1837 +1,1369 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InProgress should render correctly for match during an over 1`] = `
-<div>
+<div
+  className="MuiPaper-root-2 MuiPaper-elevation2-6 MuiPaper-rounded-3 withRouter-InProgress--root-1"
+>
   <div
-    style={
-      Object {
-        "marginBottom": "10px",
-        "padding": "20px",
-        "width": "100%",
-      }
-    }
+    className="MuiGrid-container-29"
   >
     <div
-      className="row"
-      style={
-        Object {
-          "backgroundColor": "rgb(233, 236, 239)",
-          "marginBottom": "4px",
-          "paddingLeft": "15px",
-          "paddingTop": "4px",
-        }
-      }
+      className="MuiGrid-container-29 DeliveryHeader-header-242"
     >
-      <h4>
+      <h5
+        className="MuiTypography-root-130 MuiTypography-h5-146 MuiTypography-colorInherit-159"
+        style={
+          Object {
+            "marginLeft": "20px",
+          }
+        }
+      >
         Player 22 to Player 1
-      </h4>
+      </h5>
     </div>
     <div
-      className="row"
+      className="MuiGrid-container-29"
     >
       <div
-        className="col-12 col-lg-6 d-none d-md-block"
+        className="MuiGrid-container-29 MuiGrid-grid-xs-12-69 MuiGrid-grid-lg-6-105"
       >
         <div
-          className="row"
+          className="MuiGrid-grid-xs-6-63"
         >
-          <div
-            className="col-6"
+          <h5
+            className="MuiTypography-root-130 MuiTypography-h5-146"
           >
-            <h5>
-              Team 1
-            </h5>
-          </div>
-          <div
-            className="col-6"
-          >
-            <h5>
-              0-0
-            </h5>
-          </div>
+            Team 1
+          </h5>
         </div>
         <div
-          className="row"
+          className="MuiGrid-grid-xs-6-63"
         >
-          <div
-            className="col-6"
+          <h5
+            className="MuiTypography-root-130 MuiTypography-h5-146"
           >
-            <h5>
-              Overs
-            </h5>
-          </div>
-          <div
-            className="col-6"
-          >
-            <h5>
-              0
-            </h5>
-          </div>
+            0-0
+          </h5>
         </div>
         <div
-          className="row"
+          className="MuiGrid-grid-xs-6-63"
         >
-          <div
-            className="col-6"
+          <h5
+            className="MuiTypography-root-130 MuiTypography-h5-146"
           >
-            <h5>
-              Player 1
-            </h5>
-          </div>
-          <div
-            className="col-6"
-          >
-            <span>
-              <h5
-                style={
-                  Object {
-                    "display": "inline",
-                    "marginRight": "10px",
-                  }
-                }
-              >
-                0(0)
-              </h5>
-              <svg
-                aria-hidden="true"
-                className="svg-inline--fa fa-certificate fa-w-16 "
-                data-icon="certificate"
-                data-prefix="fas"
-                role="img"
-                style={
-                  Object {
-                    "color": "#007bff",
-                  }
-                }
-                viewBox="0 0 512 512"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M458.622 255.92l45.985-45.005c13.708-12.977 7.316-36.039-10.664-40.339l-62.65-15.99 17.661-62.015c4.991-17.838-11.829-34.663-29.661-29.671l-61.994 17.667-15.984-62.671C337.085.197 313.765-6.276 300.99 7.228L256 53.57 211.011 7.229c-12.63-13.351-36.047-7.234-40.325 10.668l-15.984 62.671-61.995-17.667C74.87 57.907 58.056 74.738 63.046 92.572l17.661 62.015-62.65 15.99C.069 174.878-6.31 197.944 7.392 210.915l45.985 45.005-45.985 45.004c-13.708 12.977-7.316 36.039 10.664 40.339l62.65 15.99-17.661 62.015c-4.991 17.838 11.829 34.663 29.661 29.671l61.994-17.667 15.984 62.671c4.439 18.575 27.696 24.018 40.325 10.668L256 458.61l44.989 46.001c12.5 13.488 35.987 7.486 40.325-10.668l15.984-62.671 61.994 17.667c17.836 4.994 34.651-11.837 29.661-29.671l-17.661-62.015 62.65-15.99c17.987-4.302 24.366-27.367 10.664-40.339l-45.984-45.004z"
-                  fill="currentColor"
-                  style={Object {}}
-                />
-              </svg>
-            </span>
-          </div>
+            Overs
+          </h5>
         </div>
         <div
-          className="row"
+          className="MuiGrid-grid-xs-6-63"
         >
-          <div
-            className="col-6"
+          <h5
+            className="MuiTypography-root-130 MuiTypography-h5-146"
           >
-            <h5>
-              Player 2
-            </h5>
-          </div>
-          <div
-            className="col-6"
-          >
-            <span>
-              <h5
-                style={
-                  Object {
-                    "display": "inline",
-                    "marginRight": "10px",
-                  }
-                }
-              >
-                0(0)
-              </h5>
-            </span>
-          </div>
+            0
+          </h5>
         </div>
         <div
-          className="row"
+          className="MuiGrid-grid-xs-6-63"
         >
-          <div
-            className="col-6"
+          <h5
+            className="MuiTypography-root-130 MuiTypography-h5-146"
           >
-            <h5>
-              Player 22
-            </h5>
-          </div>
-          <div
-            className="col-6"
-          >
-            <h5>
-              0-0-0-0
-            </h5>
-          </div>
+            Player 1
+          </h5>
         </div>
         <div
-          className="row"
+          className="MuiGrid-grid-xs-6-63"
         >
-          <div
-            className="col-6"
+          <h5
+            className="MuiTypography-root-130 MuiTypography-h5-146"
           >
-            <h5>
-              Extras
-            </h5>
-          </div>
-          <div
-            className="col-6"
-          >
-            <h5>
-              0
-            </h5>
-          </div>
-        </div>
-        <div>
-          <div
-            className="row"
-          >
-            <div
-              className="col-12"
+            0(0)
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-190 MuiSvgIcon-colorPrimary-191"
+              color={undefined}
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
             >
-              <h6>
-                This over 0 - 0
-              </h6>
-            </div>
-          </div>
-          <div
-            className="row"
-            style={
-              Object {
-                "paddingLeft": "20px",
-              }
-            }
-          />
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+              <path
+                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+              />
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+            </svg>
+          </h5>
         </div>
+        <div
+          className="MuiGrid-grid-xs-6-63"
+        >
+          <h5
+            className="MuiTypography-root-130 MuiTypography-h5-146"
+          >
+            Player 2
+          </h5>
+        </div>
+        <div
+          className="MuiGrid-grid-xs-6-63"
+        >
+          <h5
+            className="MuiTypography-root-130 MuiTypography-h5-146"
+          >
+            0(0)
+          </h5>
+        </div>
+        <div
+          className="MuiGrid-grid-xs-6-63"
+        >
+          <h5
+            className="MuiTypography-root-130 MuiTypography-h5-146"
+          >
+            Player 22
+          </h5>
+        </div>
+        <div
+          className="MuiGrid-grid-xs-6-63"
+        >
+          <h5
+            className="MuiTypography-root-130 MuiTypography-h5-146"
+          >
+            0-0-0-0
+          </h5>
+        </div>
+        <div
+          className="MuiGrid-grid-xs-6-63"
+        >
+          <h5
+            className="MuiTypography-root-130 MuiTypography-h5-146"
+          >
+            Extras
+          </h5>
+        </div>
+        <div
+          className="MuiGrid-grid-xs-6-63"
+        >
+          <h5
+            className="MuiTypography-root-130 MuiTypography-h5-146"
+          >
+            0
+          </h5>
+        </div>
+        <div
+          className="MuiGrid-container-29"
+        >
+          <h6
+            className="MuiTypography-root-130 MuiTypography-h6-147"
+          >
+            This over 0 - 0
+          </h6>
+        </div>
+        <div
+          className="MuiGrid-container-29"
+        />
       </div>
       <div
-        className="col-12 col-lg-6"
+        className="MuiGrid-container-29 MuiGrid-grid-xs-12-69 MuiGrid-grid-lg-6-105"
       >
         <div>
           <div
-            className="row"
+            className="MuiGrid-container-29"
           >
-            <div
-              className="col-2"
-            />
-            <div
-              className="col-10"
-            >
-              <button
-                className="btn btn-danger"
-                onClick={[Function]}
-              >
-                NO BALL
-              </button>
-            </div>
-          </div>
-          <div
-            className="row"
-            style={
-              Object {
-                "backgroundColor": "#fefefe",
-                "borderColor": "#fdfdfe",
-                "marginBottom": "4px",
-                "marginTop": "4px",
+            <button
+              aria-label="Wicket"
+              className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-contained-224 MuiButton-containedPrimary-225 MuiButton-raised-227 MuiButton-raisedPrimary-228"
+              disabled={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              style={
+                Object {
+                  "marginRight": "10px",
+                }
               }
-            }
-          >
-            <div
-              className="col-2"
+              tabIndex="0"
+              type="button"
             >
-              Runs
-            </div>
-            <div
-              className="col-10"
-            >
-              <button
-                className="btn btn-success"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "margin": "2px",
-                    "minWidth": "36px",
-                  }
-                }
-              >
-                .
-              </button>
-              <button
-                className="btn btn-success"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "margin": "2px",
-                    "minWidth": "36px",
-                  }
-                }
-              >
-                1
-              </button>
-              <button
-                className="btn btn-success"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "margin": "2px",
-                    "minWidth": "36px",
-                  }
-                }
-              >
-                2
-              </button>
-              <button
-                className="btn btn-success"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "margin": "2px",
-                    "minWidth": "36px",
-                  }
-                }
-              >
-                3
-              </button>
-              <button
-                className="btn btn-success"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "margin": "2px",
-                    "minWidth": "36px",
-                  }
-                }
-              >
-                4
-              </button>
               <span
-                style={
-                  Object {
-                    "whiteSpace": "nowrap",
-                  }
-                }
+                className="MuiButton-label-214"
               >
-                <select
-                  className="custom-select"
-                  onChange={[Function]}
-                  style={
-                    Object {
-                      "width": "84px",
-                    }
-                  }
-                  value="other"
-                >
-                  <option>
-                    other
-                  </option>
-                  <option
-                    value="5"
-                  >
-                    5
-                  </option>
-                  <option
-                    value="6"
-                  >
-                    6
-                  </option>
-                  <option
-                    value="7"
-                  >
-                    7
-                  </option>
-                  <option
-                    value="8"
-                  >
-                    8
-                  </option>
-                  <option
-                    value="9"
-                  >
-                    9
-                  </option>
-                  <option
-                    value="10"
-                  >
-                    10
-                  </option>
-                </select>
-                <button
-                  className="btn btn-success"
-                  disabled={true}
-                  onClick={[Function]}
-                  style={
-                    Object {
-                      "margin": "2px",
-                    }
-                  }
-                >
-                  <svg
-                    aria-hidden="true"
-                    className="svg-inline--fa fa-check fa-w-16 "
-                    data-icon="check"
-                    data-prefix="fas"
-                    role="img"
-                    style={Object {}}
-                    viewBox="0 0 512 512"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"
-                      fill="currentColor"
-                      style={Object {}}
-                    />
-                  </svg>
-                </button>
+                W
               </span>
-            </div>
-          </div>
-          <div
-            className="row"
-            style={
-              Object {
-                "backgroundColor": "#fefefe",
-                "borderColor": "#fdfdfe",
-                "marginBottom": "4px",
-                "marginTop": "4px",
-              }
-            }
-          >
-            <div
-              className="col-2"
-            >
-              Boundary
-            </div>
-            <div
-              className="col-10"
-            >
-              <button
-                className="btn btn-success"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "margin": "2px",
-                    "minWidth": "36px",
-                  }
+              <span
+                className="MuiTouchRipple-root-323"
+              />
+            </button>
+            <label
+              className="MuiFormControlLabel-root-244"
+              style={
+                Object {
+                  "float": "right",
                 }
-              >
-                4
-              </button>
-              <button
-                className="btn btn-success"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "margin": "2px",
-                    "minWidth": "36px",
-                  }
-                }
-              >
-                6
-              </button>
-            </div>
-          </div>
-          <div
-            className="row"
-            style={
-              Object {
-                "backgroundColor": "#fefefe",
-                "borderColor": "#fdfdfe",
-                "marginBottom": "4px",
-                "marginTop": "4px",
               }
-            }
-          >
-            <div
-              className="col-2"
-            >
-              Byes
-            </div>
-            <div
-              className="col-10"
             >
               <span
+                className="MuiSwitch-root-248"
+              >
+                <span
+                  className="MuiButtonBase-root-239 MuiIconButton-root-261 MuiSwitchBase-root-257 MuiSwitch-switchBase-251 MuiSwitch-colorSecondary-254"
+                  onBlur={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  role={undefined}
+                  tabIndex={null}
+                >
+                  <span
+                    className="MuiIconButton-label-266"
+                  >
+                    <span
+                      className="MuiSwitch-icon-249"
+                    />
+                    <input
+                      autoFocus={undefined}
+                      checked={false}
+                      className="MuiSwitchBase-input-260"
+                      disabled={undefined}
+                      id={undefined}
+                      name={undefined}
+                      onChange={[Function]}
+                      readOnly={undefined}
+                      required={undefined}
+                      tabIndex={undefined}
+                      type="checkbox"
+                      value={undefined}
+                    />
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root-323"
+                  />
+                </span>
+                <span
+                  className="MuiSwitch-bar-256"
+                />
+              </span>
+              <span
+                className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-247"
+              >
+                No ball
+              </span>
+            </label>
+          </div>
+          <div
+            className="MuiGrid-container-29"
+          >
+            <div
+              className="MuiGrid-grid-xs-12-69"
+            >
+              <hr
+                className="MuiDivider-root-267"
                 style={
                   Object {
-                    "display": "inline-block",
-                    "width": "40px",
+                    "marginBottom": "10px",
+                    "marginTop": "10px",
                   }
                 }
               />
-              <button
-                className="btn btn-success"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "margin": "2px",
-                    "minWidth": "36px",
-                    "paddingLeft": "2px",
-                    "paddingRight": "2px",
-                  }
-                }
-              >
-                <div
-                  style={
-                    Object {
-                      "borderColor": "transparent transparent #ffffff transparent",
-                      "borderStyle": "solid",
-                      "borderWidth": "0 14px 20px 14px",
-                      "float": "left",
-                      "height": 0,
-                      "width": 0,
-                    }
-                  }
-                >
-                  <div
-                    style={
-                      Object {
-                        "borderColor": "transparent transparent #28a745 transparent",
-                        "borderStyle": "solid",
-                        "borderWidth": "0 12px 18px 12px",
-                        "float": "left",
-                        "height": 0,
-                        "marginLeft": "-12px",
-                        "marginTop": "1px",
-                        "width": 0,
-                      }
-                    }
-                  >
-                    <div
-                      style={
-                        Object {
-                          "marginLeft": "-5px",
-                          "marginTop": "-2px",
-                        }
-                      }
-                    >
-                      1
-                    </div>
-                  </div>
-                </div>
-              </button>
-              <button
-                className="btn btn-success"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "margin": "2px",
-                    "minWidth": "36px",
-                    "paddingLeft": "2px",
-                    "paddingRight": "2px",
-                  }
-                }
-              >
-                <div
-                  style={
-                    Object {
-                      "borderColor": "transparent transparent #ffffff transparent",
-                      "borderStyle": "solid",
-                      "borderWidth": "0 14px 20px 14px",
-                      "float": "left",
-                      "height": 0,
-                      "width": 0,
-                    }
-                  }
-                >
-                  <div
-                    style={
-                      Object {
-                        "borderColor": "transparent transparent #28a745 transparent",
-                        "borderStyle": "solid",
-                        "borderWidth": "0 12px 18px 12px",
-                        "float": "left",
-                        "height": 0,
-                        "marginLeft": "-12px",
-                        "marginTop": "1px",
-                        "width": 0,
-                      }
-                    }
-                  >
-                    <div
-                      style={
-                        Object {
-                          "marginLeft": "-5px",
-                          "marginTop": "-2px",
-                        }
-                      }
-                    >
-                      2
-                    </div>
-                  </div>
-                </div>
-              </button>
-              <button
-                className="btn btn-success"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "margin": "2px",
-                    "minWidth": "36px",
-                    "paddingLeft": "2px",
-                    "paddingRight": "2px",
-                  }
-                }
-              >
-                <div
-                  style={
-                    Object {
-                      "borderColor": "transparent transparent #ffffff transparent",
-                      "borderStyle": "solid",
-                      "borderWidth": "0 14px 20px 14px",
-                      "float": "left",
-                      "height": 0,
-                      "width": 0,
-                    }
-                  }
-                >
-                  <div
-                    style={
-                      Object {
-                        "borderColor": "transparent transparent #28a745 transparent",
-                        "borderStyle": "solid",
-                        "borderWidth": "0 12px 18px 12px",
-                        "float": "left",
-                        "height": 0,
-                        "marginLeft": "-12px",
-                        "marginTop": "1px",
-                        "width": 0,
-                      }
-                    }
-                  >
-                    <div
-                      style={
-                        Object {
-                          "marginLeft": "-5px",
-                          "marginTop": "-2px",
-                        }
-                      }
-                    >
-                      3
-                    </div>
-                  </div>
-                </div>
-              </button>
-              <button
-                className="btn btn-success"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "margin": "2px",
-                    "minWidth": "36px",
-                    "paddingLeft": "2px",
-                    "paddingRight": "2px",
-                  }
-                }
-              >
-                <div
-                  style={
-                    Object {
-                      "borderColor": "transparent transparent #ffffff transparent",
-                      "borderStyle": "solid",
-                      "borderWidth": "0 14px 20px 14px",
-                      "float": "left",
-                      "height": 0,
-                      "width": 0,
-                    }
-                  }
-                >
-                  <div
-                    style={
-                      Object {
-                        "borderColor": "transparent transparent #28a745 transparent",
-                        "borderStyle": "solid",
-                        "borderWidth": "0 12px 18px 12px",
-                        "float": "left",
-                        "height": 0,
-                        "marginLeft": "-12px",
-                        "marginTop": "1px",
-                        "width": 0,
-                      }
-                    }
-                  >
-                    <div
-                      style={
-                        Object {
-                          "marginLeft": "-5px",
-                          "marginTop": "-2px",
-                        }
-                      }
-                    >
-                      4
-                    </div>
-                  </div>
-                </div>
-              </button>
-              <span
-                style={
-                  Object {
-                    "whiteSpace": "nowrap",
-                  }
-                }
-              >
-                <select
-                  className="custom-select"
-                  onChange={[Function]}
-                  style={
-                    Object {
-                      "width": "84px",
-                    }
-                  }
-                  value="other"
-                >
-                  <option>
-                    other
-                  </option>
-                  <option
-                    value="5"
-                  >
-                    5
-                  </option>
-                  <option
-                    value="6"
-                  >
-                    6
-                  </option>
-                  <option
-                    value="7"
-                  >
-                    7
-                  </option>
-                  <option
-                    value="8"
-                  >
-                    8
-                  </option>
-                  <option
-                    value="9"
-                  >
-                    9
-                  </option>
-                  <option
-                    value="10"
-                  >
-                    10
-                  </option>
-                </select>
-                <button
-                  className="btn btn-success"
-                  disabled={true}
-                  onClick={[Function]}
-                  style={
-                    Object {
-                      "margin": "2px",
-                    }
-                  }
-                >
-                  <svg
-                    aria-hidden="true"
-                    className="svg-inline--fa fa-check fa-w-16 "
-                    data-icon="check"
-                    data-prefix="fas"
-                    role="img"
-                    style={Object {}}
-                    viewBox="0 0 512 512"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"
-                      fill="currentColor"
-                      style={Object {}}
-                    />
-                  </svg>
-                </button>
-              </span>
             </div>
           </div>
           <div
-            className="row"
-            style={
-              Object {
-                "backgroundColor": "#fefefe",
-                "borderColor": "#fdfdfe",
-                "marginBottom": "4px",
-                "marginTop": "4px",
-              }
-            }
+            className="MuiGrid-container-29"
           >
-            <div
-              className="col-2"
-            >
-              Leg byes
-            </div>
-            <div
-              className="col-10"
+            <label
+              className="MuiFormControlLabel-root-244"
             >
               <span
-                style={
-                  Object {
-                    "display": "inline-block",
-                    "width": "40px",
-                  }
-                }
-              />
-              <button
-                className="btn btn-success"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "margin": "2px",
-                    "minWidth": "36px",
-                    "paddingLeft": "2px",
-                    "paddingRight": "2px",
-                  }
-                }
+                className="MuiButtonBase-root-239 MuiIconButton-root-261 MuiSwitchBase-root-257 MuiRadio-root-271 MuiRadio-colorSecondary-275 MuiSwitchBase-checked-258 MuiRadio-checked-272"
+                onBlur={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role={undefined}
+                tabIndex={null}
               >
-                <div
-                  style={
-                    Object {
-                      "borderColor": "#ffffff transparent transparent transparent",
-                      "borderStyle": "solid",
-                      "borderWidth": "20px 14px 0 14px",
-                      "float": "left",
-                      "height": 0,
-                      "width": 0,
-                    }
-                  }
-                >
-                  <div
-                    style={
-                      Object {
-                        "borderColor": "#28a745 transparent transparent transparent",
-                        "borderStyle": "solid",
-                        "borderWidth": "18px 12px 0 12px",
-                        "float": "left",
-                        "height": 0,
-                        "marginLeft": "-12px",
-                        "marginTop": "-19px",
-                        "width": 0,
-                      }
-                    }
-                  >
-                    <div
-                      style={
-                        Object {
-                          "marginLeft": "-5px",
-                          "marginTop": "-24px",
-                        }
-                      }
-                    >
-                      1
-                    </div>
-                  </div>
-                </div>
-              </button>
-              <button
-                className="btn btn-success"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "margin": "2px",
-                    "minWidth": "36px",
-                    "paddingLeft": "2px",
-                    "paddingRight": "2px",
-                  }
-                }
-              >
-                <div
-                  style={
-                    Object {
-                      "borderColor": "#ffffff transparent transparent transparent",
-                      "borderStyle": "solid",
-                      "borderWidth": "20px 14px 0 14px",
-                      "float": "left",
-                      "height": 0,
-                      "width": 0,
-                    }
-                  }
-                >
-                  <div
-                    style={
-                      Object {
-                        "borderColor": "#28a745 transparent transparent transparent",
-                        "borderStyle": "solid",
-                        "borderWidth": "18px 12px 0 12px",
-                        "float": "left",
-                        "height": 0,
-                        "marginLeft": "-12px",
-                        "marginTop": "-19px",
-                        "width": 0,
-                      }
-                    }
-                  >
-                    <div
-                      style={
-                        Object {
-                          "marginLeft": "-5px",
-                          "marginTop": "-24px",
-                        }
-                      }
-                    >
-                      2
-                    </div>
-                  </div>
-                </div>
-              </button>
-              <button
-                className="btn btn-success"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "margin": "2px",
-                    "minWidth": "36px",
-                    "paddingLeft": "2px",
-                    "paddingRight": "2px",
-                  }
-                }
-              >
-                <div
-                  style={
-                    Object {
-                      "borderColor": "#ffffff transparent transparent transparent",
-                      "borderStyle": "solid",
-                      "borderWidth": "20px 14px 0 14px",
-                      "float": "left",
-                      "height": 0,
-                      "width": 0,
-                    }
-                  }
-                >
-                  <div
-                    style={
-                      Object {
-                        "borderColor": "#28a745 transparent transparent transparent",
-                        "borderStyle": "solid",
-                        "borderWidth": "18px 12px 0 12px",
-                        "float": "left",
-                        "height": 0,
-                        "marginLeft": "-12px",
-                        "marginTop": "-19px",
-                        "width": 0,
-                      }
-                    }
-                  >
-                    <div
-                      style={
-                        Object {
-                          "marginLeft": "-5px",
-                          "marginTop": "-24px",
-                        }
-                      }
-                    >
-                      3
-                    </div>
-                  </div>
-                </div>
-              </button>
-              <button
-                className="btn btn-success"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "margin": "2px",
-                    "minWidth": "36px",
-                    "paddingLeft": "2px",
-                    "paddingRight": "2px",
-                  }
-                }
-              >
-                <div
-                  style={
-                    Object {
-                      "borderColor": "#ffffff transparent transparent transparent",
-                      "borderStyle": "solid",
-                      "borderWidth": "20px 14px 0 14px",
-                      "float": "left",
-                      "height": 0,
-                      "width": 0,
-                    }
-                  }
-                >
-                  <div
-                    style={
-                      Object {
-                        "borderColor": "#28a745 transparent transparent transparent",
-                        "borderStyle": "solid",
-                        "borderWidth": "18px 12px 0 12px",
-                        "float": "left",
-                        "height": 0,
-                        "marginLeft": "-12px",
-                        "marginTop": "-19px",
-                        "width": 0,
-                      }
-                    }
-                  >
-                    <div
-                      style={
-                        Object {
-                          "marginLeft": "-5px",
-                          "marginTop": "-24px",
-                        }
-                      }
-                    >
-                      4
-                    </div>
-                  </div>
-                </div>
-              </button>
-              <span
-                style={
-                  Object {
-                    "whiteSpace": "nowrap",
-                  }
-                }
-              >
-                <select
-                  className="custom-select"
-                  onChange={[Function]}
-                  style={
-                    Object {
-                      "width": "84px",
-                    }
-                  }
-                  value="other"
-                >
-                  <option>
-                    other
-                  </option>
-                  <option
-                    value="5"
-                  >
-                    5
-                  </option>
-                  <option
-                    value="6"
-                  >
-                    6
-                  </option>
-                  <option
-                    value="7"
-                  >
-                    7
-                  </option>
-                  <option
-                    value="8"
-                  >
-                    8
-                  </option>
-                  <option
-                    value="9"
-                  >
-                    9
-                  </option>
-                  <option
-                    value="10"
-                  >
-                    10
-                  </option>
-                </select>
-                <button
-                  className="btn btn-success"
-                  disabled={true}
-                  onClick={[Function]}
-                  style={
-                    Object {
-                      "margin": "2px",
-                    }
-                  }
+                <span
+                  className="MuiIconButton-label-266"
                 >
                   <svg
                     aria-hidden="true"
-                    className="svg-inline--fa fa-check fa-w-16 "
-                    data-icon="check"
-                    data-prefix="fas"
-                    role="img"
-                    style={Object {}}
-                    viewBox="0 0 512 512"
-                    xmlns="http://www.w3.org/2000/svg"
+                    className="MuiSvgIcon-root-190"
+                    color={undefined}
+                    focusable="false"
+                    role="presentation"
+                    viewBox="0 0 24 24"
                   >
                     <path
-                      d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"
-                      fill="currentColor"
-                      style={Object {}}
+                      d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
                     />
                   </svg>
-                </button>
+                  <input
+                    autoFocus={undefined}
+                    checked={true}
+                    className="MuiSwitchBase-input-260"
+                    disabled={undefined}
+                    id={undefined}
+                    name={undefined}
+                    onChange={[Function]}
+                    readOnly={undefined}
+                    required={undefined}
+                    tabIndex={undefined}
+                    type="radio"
+                    value={undefined}
+                  />
+                </span>
+                <span
+                  className="MuiTouchRipple-root-323"
+                />
               </span>
-            </div>
-          </div>
-          <div
-            className="row"
-            style={
-              Object {
-                "backgroundColor": "#fefefe",
-                "borderColor": "#fdfdfe",
-                "marginBottom": "4px",
-                "marginTop": "4px",
-              }
-            }
-          >
-            <div
-              className="col-2"
-            >
-              Wide
-            </div>
-            <div
-              className="col-10"
-            >
-              <button
-                className="btn btn-danger"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "margin": "2px",
-                    "minWidth": "36px",
-                  }
-                }
-              >
-                .
-              </button>
-              <button
-                className="btn btn-danger"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "margin": "2px",
-                    "minWidth": "36px",
-                  }
-                }
-              >
-                1
-              </button>
-              <button
-                className="btn btn-danger"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "margin": "2px",
-                    "minWidth": "36px",
-                  }
-                }
-              >
-                2
-              </button>
-              <button
-                className="btn btn-danger"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "margin": "2px",
-                    "minWidth": "36px",
-                  }
-                }
-              >
-                3
-              </button>
-              <button
-                className="btn btn-danger"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "margin": "2px",
-                    "minWidth": "36px",
-                  }
-                }
-              >
-                4
-              </button>
               <span
-                style={
-                  Object {
-                    "whiteSpace": "nowrap",
-                  }
-                }
+                className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-247"
               >
-                <select
-                  className="custom-select"
-                  onChange={[Function]}
-                  style={
-                    Object {
-                      "width": "84px",
-                    }
-                  }
-                  value="other"
-                >
-                  <option>
-                    other
-                  </option>
-                  <option
-                    value="5"
-                  >
-                    5
-                  </option>
-                  <option
-                    value="6"
-                  >
-                    6
-                  </option>
-                  <option
-                    value="7"
-                  >
-                    7
-                  </option>
-                  <option
-                    value="8"
-                  >
-                    8
-                  </option>
-                  <option
-                    value="9"
-                  >
-                    9
-                  </option>
-                  <option
-                    value="10"
-                  >
-                    10
-                  </option>
-                </select>
-                <button
-                  className="btn btn-success"
-                  disabled={true}
-                  onClick={[Function]}
-                  style={
-                    Object {
-                      "margin": "2px",
-                    }
-                  }
+                Runs
+              </span>
+            </label>
+            <label
+              className="MuiFormControlLabel-root-244"
+            >
+              <span
+                className="MuiButtonBase-root-239 MuiIconButton-root-261 MuiSwitchBase-root-257 MuiRadio-root-271 MuiRadio-colorSecondary-275"
+                onBlur={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role={undefined}
+                tabIndex={null}
+              >
+                <span
+                  className="MuiIconButton-label-266"
                 >
                   <svg
                     aria-hidden="true"
-                    className="svg-inline--fa fa-check fa-w-16 "
-                    data-icon="check"
-                    data-prefix="fas"
-                    role="img"
-                    style={Object {}}
-                    viewBox="0 0 512 512"
-                    xmlns="http://www.w3.org/2000/svg"
+                    className="MuiSvgIcon-root-190"
+                    color={undefined}
+                    focusable="false"
+                    role="presentation"
+                    viewBox="0 0 24 24"
                   >
                     <path
-                      d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"
-                      fill="currentColor"
-                      style={Object {}}
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
                     />
                   </svg>
-                </button>
+                  <input
+                    autoFocus={undefined}
+                    checked={false}
+                    className="MuiSwitchBase-input-260"
+                    disabled={undefined}
+                    id={undefined}
+                    name={undefined}
+                    onChange={[Function]}
+                    readOnly={undefined}
+                    required={undefined}
+                    tabIndex={undefined}
+                    type="radio"
+                    value={undefined}
+                  />
+                </span>
+                <span
+                  className="MuiTouchRipple-root-323"
+                />
               </span>
-            </div>
+              <span
+                className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-247"
+              >
+                Byes
+              </span>
+            </label>
+            <label
+              className="MuiFormControlLabel-root-244"
+            >
+              <span
+                className="MuiButtonBase-root-239 MuiIconButton-root-261 MuiSwitchBase-root-257 MuiRadio-root-271 MuiRadio-colorSecondary-275"
+                onBlur={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role={undefined}
+                tabIndex={null}
+              >
+                <span
+                  className="MuiIconButton-label-266"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="MuiSvgIcon-root-190"
+                    color={undefined}
+                    focusable="false"
+                    role="presentation"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                    />
+                  </svg>
+                  <input
+                    autoFocus={undefined}
+                    checked={false}
+                    className="MuiSwitchBase-input-260"
+                    disabled={undefined}
+                    id={undefined}
+                    name={undefined}
+                    onChange={[Function]}
+                    readOnly={undefined}
+                    required={undefined}
+                    tabIndex={undefined}
+                    type="radio"
+                    value={undefined}
+                  />
+                </span>
+                <span
+                  className="MuiTouchRipple-root-323"
+                />
+              </span>
+              <span
+                className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-247"
+              >
+                Leg byes
+              </span>
+            </label>
+            <label
+              className="MuiFormControlLabel-root-244"
+            >
+              <span
+                className="MuiButtonBase-root-239 MuiIconButton-root-261 MuiSwitchBase-root-257 MuiRadio-root-271 MuiRadio-colorSecondary-275"
+                onBlur={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role={undefined}
+                tabIndex={null}
+              >
+                <span
+                  className="MuiIconButton-label-266"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="MuiSvgIcon-root-190"
+                    color={undefined}
+                    focusable="false"
+                    role="presentation"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                    />
+                  </svg>
+                  <input
+                    autoFocus={undefined}
+                    checked={false}
+                    className="MuiSwitchBase-input-260"
+                    disabled={undefined}
+                    id={undefined}
+                    name={undefined}
+                    onChange={[Function]}
+                    readOnly={undefined}
+                    required={undefined}
+                    tabIndex={undefined}
+                    type="radio"
+                    value={undefined}
+                  />
+                </span>
+                <span
+                  className="MuiTouchRipple-root-323"
+                />
+              </span>
+              <span
+                className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-247"
+              >
+                Wide
+              </span>
+            </label>
           </div>
           <div
-            className="row"
-            style={
-              Object {
-                "backgroundColor": "#fefefe",
-                "borderColor": "#fdfdfe",
-                "marginBottom": "4px",
-                "marginTop": "4px",
-              }
-            }
+            className="MuiGrid-container-29"
           >
             <div
-              className="col-2"
-            />
-            <div
-              className="col-10"
+              className="MuiGrid-container-29"
             >
-              <a
-                className="btn btn-success"
-                href="/match/wicket"
-                onClick={[Function]}
+              <div
+                className="MuiGrid-container-29"
               >
-                Wicket
-              </a>
-              <button
-                className="btn btn-success"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "margin": "2px",
-                    "minWidth": "36px",
+                <button
+                  aria-label="Dot ball"
+                  className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-contained-224 MuiButton-raised-227"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  style={
+                    Object {
+                      "backgroundColor": "#43a047",
+                      "color": "#ffffff",
+                      "marginBottom": "8px",
+                      "marginRight": "8px",
+                    }
                   }
-                }
-              >
-                complete over
-              </button>
-              <button
-                className="btn btn-success"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "margin": "2px",
-                    "minWidth": "36px",
+                  tabIndex="0"
+                  type="button"
+                >
+                  <span
+                    className="MuiButton-label-214"
+                  >
+                    .
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root-323"
+                  />
+                </button>
+                <button
+                  aria-label="Single"
+                  className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-contained-224 MuiButton-raised-227"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  style={
+                    Object {
+                      "backgroundColor": "#43a047",
+                      "color": "#ffffff",
+                      "marginBottom": "8px",
+                      "marginRight": "8px",
+                    }
                   }
-                }
-              >
-                change ends
-              </button>
-              <button
-                className="btn btn-success"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "margin": "2px",
-                    "minWidth": "36px",
+                  tabIndex="0"
+                  type="button"
+                >
+                  <span
+                    className="MuiButton-label-214"
+                  >
+                    1
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root-323"
+                  />
+                </button>
+                <button
+                  aria-label="Two"
+                  className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-contained-224 MuiButton-raised-227"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  style={
+                    Object {
+                      "backgroundColor": "#43a047",
+                      "color": "#ffffff",
+                      "marginBottom": "8px",
+                      "marginRight": "8px",
+                    }
                   }
-                }
-              >
-                retired
-              </button>
-              <button
-                className="btn btn-success"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "margin": "2px",
-                    "minWidth": "36px",
+                  tabIndex="0"
+                  type="button"
+                >
+                  <span
+                    className="MuiButton-label-214"
+                  >
+                    2
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root-323"
+                  />
+                </button>
+                <button
+                  aria-label="Three"
+                  className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-contained-224 MuiButton-raised-227"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  style={
+                    Object {
+                      "backgroundColor": "#43a047",
+                      "color": "#ffffff",
+                      "marginBottom": "8px",
+                      "marginRight": "8px",
+                    }
                   }
-                }
-              >
-                absent
-              </button>
-              <button
-                className="btn btn-success"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "margin": "2px",
-                    "minWidth": "36px",
+                  tabIndex="0"
+                  type="button"
+                >
+                  <span
+                    className="MuiButton-label-214"
+                  >
+                    3
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root-323"
+                  />
+                </button>
+                <button
+                  aria-label="Four"
+                  className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-contained-224 MuiButton-raised-227"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  style={
+                    Object {
+                      "backgroundColor": "#43a047",
+                      "color": "#ffffff",
+                      "marginBottom": "8px",
+                      "marginRight": "8px",
+                    }
                   }
-                }
-              >
-                undo previous
-              </button>
-              <button
-                className="btn btn-success"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "margin": "2px",
-                    "minWidth": "36px",
+                  tabIndex="0"
+                  type="button"
+                >
+                  <span
+                    className="MuiButton-label-214"
+                  >
+                    4
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root-323"
+                  />
+                </button>
+                <button
+                  aria-label="Boundary Four"
+                  className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-extendedFab-231 MuiButton-contained-224 MuiButton-raised-227"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  style={
+                    Object {
+                      "backgroundColor": "#43a047",
+                      "color": "#ffffff",
+                      "marginBottom": "8px",
+                      "marginRight": "8px",
+                    }
                   }
-                }
-              >
-                complete innings
-              </button>
-              <button
-                className="btn btn-success"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "margin": "2px",
-                    "minWidth": "36px",
+                  tabIndex="0"
+                  type="button"
+                >
+                  <span
+                    className="MuiButton-label-214"
+                  >
+                    Boundary 4
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root-323"
+                  />
+                </button>
+                <button
+                  aria-label="Boundary Six"
+                  className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-extendedFab-231 MuiButton-contained-224 MuiButton-raised-227"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  style={
+                    Object {
+                      "backgroundColor": "#43a047",
+                      "color": "#ffffff",
+                      "marginBottom": "8px",
+                      "marginRight": "8px",
+                    }
                   }
-                }
+                  tabIndex="0"
+                  type="button"
+                >
+                  <span
+                    className="MuiButton-label-214"
+                  >
+                    Boundary 6
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root-323"
+                  />
+                </button>
+              </div>
+              <div
+                className="MuiGrid-container-29"
               >
-                complete match
-              </button>
+                <div
+                  className="MuiInputBase-root-296 MuiInput-root-283 MuiInput-underline-287"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="MuiSelect-root-276"
+                  >
+                    <div
+                      aria-haspopup="true"
+                      aria-owns={null}
+                      aria-pressed="false"
+                      className="MuiSelect-select-277 MuiSelect-selectMenu-280 MuiInputBase-input-306 MuiInput-input-291"
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      role="button"
+                      tabIndex={0}
+                    >
+                      or select a score...
+                    </div>
+                    <input
+                      autoComplete={undefined}
+                      autoFocus={undefined}
+                      defaultValue={undefined}
+                      id={undefined}
+                      name={undefined}
+                      onKeyDown={undefined}
+                      onKeyUp={undefined}
+                      placeholder={undefined}
+                      rows={undefined}
+                      type="hidden"
+                      value={0}
+                    />
+                    <svg
+                      aria-hidden="true"
+                      className="MuiSvgIcon-root-190 MuiSelect-icon-282"
+                      color={undefined}
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M7 10l5 5 5-5z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div>
+  <h5
+    className="MuiTypography-root-130 MuiTypography-h5-146"
+  >
+    Team 1 0-0
+  </h5>
+  <div
+    className="MuiGrid-container-29"
+  >
     <div
-      className="row"
+      className="MuiGrid-container-29 MuiGrid-grid-md-12-97 MuiGrid-grid-lg-8-107"
     >
       <div
-        className="col-12"
-        style={
-          Object {
-            "textAlign": "center",
-          }
-        }
+        className="MuiGrid-container-29 Batting-header-317"
       >
-        <h5>
-          Team 1 0-0
-        </h5>
+        <div
+          className="MuiGrid-grid-xs-10-67 MuiGrid-grid-md-7-92"
+        >
+          <h6
+            className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+          >
+            Batsman
+          </h6>
+        </div>
+        <div
+          className="MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
+        >
+          <h6
+            className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+            style={
+              Object {
+                "textAlign": "right",
+              }
+            }
+          >
+            Runs
+          </h6>
+        </div>
+        <div
+          className="MuiGrid-grid-md-1-86"
+        >
+          <h6
+            className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+            style={
+              Object {
+                "textAlign": "right",
+              }
+            }
+          >
+            Balls
+          </h6>
+        </div>
+        <div
+          className="MuiGrid-grid-md-1-86"
+        >
+          <h6
+            className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+            style={
+              Object {
+                "textAlign": "right",
+              }
+            }
+          >
+            Mins
+          </h6>
+        </div>
+        <div
+          className="MuiGrid-grid-md-1-86"
+        >
+          <h6
+            className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+            style={
+              Object {
+                "textAlign": "right",
+              }
+            }
+          >
+            4s
+          </h6>
+        </div>
+        <div
+          className="MuiGrid-grid-md-1-86"
+        >
+          <h6
+            className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+            style={
+              Object {
+                "textAlign": "right",
+              }
+            }
+          >
+            6s
+          </h6>
+        </div>
+      </div>
+      <div
+        className="MuiGrid-container-29"
+      >
+        <div
+          className="MuiGrid-grid-xs-4-61 MuiGrid-grid-md-3-88"
+        >
+          <p
+            className="MuiTypography-root-130 MuiTypography-body2-138"
+          >
+            Player 1
+          </p>
+        </div>
+        <div
+          className="MuiGrid-grid-xs-6-63 MuiGrid-grid-md-4-89"
+        >
+          <p
+            className="MuiTypography-root-130 MuiTypography-body2-138"
+          >
+            not out
+          </p>
+        </div>
+        <div
+          className="MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
+        >
+          <p
+            className="MuiTypography-root-130 MuiTypography-body1-139"
+            style={
+              Object {
+                "fontWeight": "bold",
+                "textAlign": "right",
+              }
+            }
+          >
+            0
+          </p>
+        </div>
+        <div
+          className="MuiGrid-grid-md-1-86"
+        >
+          <p
+            className="MuiTypography-root-130 MuiTypography-body1-139"
+            style={
+              Object {
+                "textAlign": "right",
+              }
+            }
+          >
+            0
+          </p>
+        </div>
+        <div
+          className="MuiGrid-grid-md-1-86"
+        >
+          <p
+            className="MuiTypography-root-130 MuiTypography-body1-139"
+            style={
+              Object {
+                "textAlign": "right",
+              }
+            }
+          >
+            0
+          </p>
+        </div>
+        <div
+          className="MuiGrid-grid-md-1-86"
+        >
+          <p
+            className="MuiTypography-root-130 MuiTypography-body1-139"
+            style={
+              Object {
+                "textAlign": "right",
+              }
+            }
+          >
+            0
+          </p>
+        </div>
+        <div
+          className="MuiGrid-grid-md-1-86"
+        >
+          <p
+            className="MuiTypography-root-130 MuiTypography-body1-139"
+            style={
+              Object {
+                "textAlign": "right",
+              }
+            }
+          >
+            0
+          </p>
+        </div>
+      </div>
+      <div
+        className="MuiGrid-grid-xs-12-69"
+      >
+        <hr
+          className="MuiDivider-root-267"
+        />
+      </div>
+      <div
+        className="MuiGrid-container-29"
+      >
+        <div
+          className="MuiGrid-grid-xs-4-61 MuiGrid-grid-md-3-88"
+        >
+          <p
+            className="MuiTypography-root-130 MuiTypography-body2-138"
+          >
+            Player 2
+          </p>
+        </div>
+        <div
+          className="MuiGrid-grid-xs-6-63 MuiGrid-grid-md-4-89"
+        >
+          <p
+            className="MuiTypography-root-130 MuiTypography-body2-138"
+          >
+            not out
+          </p>
+        </div>
+        <div
+          className="MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
+        >
+          <p
+            className="MuiTypography-root-130 MuiTypography-body1-139"
+            style={
+              Object {
+                "fontWeight": "bold",
+                "textAlign": "right",
+              }
+            }
+          >
+            0
+          </p>
+        </div>
+        <div
+          className="MuiGrid-grid-md-1-86"
+        >
+          <p
+            className="MuiTypography-root-130 MuiTypography-body1-139"
+            style={
+              Object {
+                "textAlign": "right",
+              }
+            }
+          >
+            0
+          </p>
+        </div>
+        <div
+          className="MuiGrid-grid-md-1-86"
+        >
+          <p
+            className="MuiTypography-root-130 MuiTypography-body1-139"
+            style={
+              Object {
+                "textAlign": "right",
+              }
+            }
+          >
+            0
+          </p>
+        </div>
+        <div
+          className="MuiGrid-grid-md-1-86"
+        >
+          <p
+            className="MuiTypography-root-130 MuiTypography-body1-139"
+            style={
+              Object {
+                "textAlign": "right",
+              }
+            }
+          >
+            0
+          </p>
+        </div>
+        <div
+          className="MuiGrid-grid-md-1-86"
+        >
+          <p
+            className="MuiTypography-root-130 MuiTypography-body1-139"
+            style={
+              Object {
+                "textAlign": "right",
+              }
+            }
+          >
+            0
+          </p>
+        </div>
+      </div>
+      <div
+        className="MuiGrid-grid-xs-12-69"
+      >
+        <hr
+          className="MuiDivider-root-267"
+        />
+      </div>
+      <div
+        className="MuiGrid-container-29"
+      >
+        <div
+          className="MuiGrid-grid-xs-4-61 MuiGrid-grid-md-3-88"
+        >
+          <p
+            className="MuiTypography-root-130 MuiTypography-body1-139"
+          >
+            Extras
+          </p>
+        </div>
+        <div
+          className="MuiGrid-grid-xs-6-63 MuiGrid-grid-md-4-89"
+        >
+          <p
+            className="MuiTypography-root-130 MuiTypography-body2-138"
+          >
+            0nb 0wd 0b 0lb
+          </p>
+        </div>
+        <div
+          className="MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
+        >
+          <p
+            className="MuiTypography-root-130 MuiTypography-body1-139"
+            style={
+              Object {
+                "fontWeight": "bold",
+                "textAlign": "right",
+              }
+            }
+          >
+            0
+          </p>
+        </div>
+      </div>
+      <div
+        className="MuiGrid-container-29 Batting-header-317"
+      >
+        <div
+          className="MuiGrid-grid-xs-4-61 MuiGrid-grid-md-3-88"
+        >
+          <h6
+            className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+          >
+            Total
+          </h6>
+        </div>
+        <div
+          className="MuiGrid-grid-xs-6-63 MuiGrid-grid-md-4-89"
+        >
+          <h6
+            className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+          >
+            (0 wickets) (0 overs)
+          </h6>
+        </div>
+        <div
+          className="MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
+        >
+          <h6
+            className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+            style={
+              Object {
+                "fontWeight": "bold",
+                "textAlign": "right",
+              }
+            }
+          >
+            0
+          </h6>
+        </div>
       </div>
     </div>
     <div
-      className="row"
+      className="MuiGrid-grid-xs-12-69 MuiGrid-grid-lg-3-102"
     >
       <div
-        className="col-xl-8 col-lg-12"
+        className="MuiGrid-container-29 FallOfWickets-header-319"
+      >
+        <h6
+          className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+        >
+          Fall of wickets
+        </h6>
+      </div>
+    </div>
+    <div
+      className="MuiGrid-container-29 MuiGrid-grid-md-12-97 MuiGrid-grid-lg-8-107"
+    >
+      <h5
+        className="MuiTypography-root-130 MuiTypography-h5-146"
+      >
+        Team 2
+         bowling
+      </h5>
+      <div
+        className="MuiGrid-container-29 Bowling-header-321"
       >
         <div
-          style={
-            Object {
-              "marginBottom": "10px",
-              "padding": "20px",
-              "width": "100%",
-            }
-          }
+          className="MuiGrid-grid-xs-6-63 MuiGrid-grid-md-5-90"
+        />
+        <div
+          className="MuiGrid-grid-xs-2-59"
         >
-          <div
-            className="row"
+          <h6
+            className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
             style={
               Object {
-                "backgroundColor": "rgb(233, 236, 239)",
-                "paddingTop": "4px",
+                "textAlign": "center",
               }
             }
           >
-            <div
-              className="col-10 col-md-7"
-            >
-              <h6>
-                Batsman
-              </h6>
-            </div>
-            <div
-              className="col-2 col-md-1"
-              style={
-                Object {
-                  "textAlign": "right",
-                }
-              }
-            >
-              <h6>
-                Runs
-              </h6>
-            </div>
-            <div
-              className="col-1 d-none d-md-block"
-              style={
-                Object {
-                  "textAlign": "right",
-                }
-              }
-            >
-              <h6>
-                Balls
-              </h6>
-            </div>
-            <div
-              className="col-1 d-none d-md-block"
-              style={
-                Object {
-                  "textAlign": "right",
-                }
-              }
-            >
-              <h6>
-                Mins
-              </h6>
-            </div>
-            <div
-              className="col-1 d-none d-md-block"
-              style={
-                Object {
-                  "textAlign": "right",
-                }
-              }
-            >
-              <h6>
-                4s
-              </h6>
-            </div>
-            <div
-              className="col-1 d-none d-md-block"
-              style={
-                Object {
-                  "textAlign": "right",
-                }
-              }
-            >
-              <h6>
-                6s
-              </h6>
-            </div>
-          </div>
-          <div
-            className="row"
+            Overs
+          </h6>
+        </div>
+        <div
+          className="MuiGrid-grid-md-2-87"
+        >
+          <h6
+            className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
             style={
               Object {
-                "borderBottom": "1px solid rgb(233, 236, 239)",
-                "fontSize": "14px",
-                "marginTop": "8px",
-                "paddingBottom": "4px",
+                "textAlign": "center",
               }
             }
           >
-            <div
-              className="col-4 col-md-3"
-            >
-              Player 1
-            </div>
-            <div
-              className="col-6 col-md-4"
-            >
-              not out
-            </div>
-            <div
-              className="col-2 col-md-1"
-              style={
-                Object {
-                  "fontWeight": "bold",
-                  "textAlign": "right",
-                }
-              }
-            >
-              0
-            </div>
-            <div
-              className="col-2 col-md-1 d-none d-md-block"
-              style={
-                Object {
-                  "textAlign": "right",
-                }
-              }
-            >
-              0
-            </div>
-            <div
-              className="col-2 col-md-1 d-none d-md-block"
-              style={
-                Object {
-                  "textAlign": "right",
-                }
-              }
-            >
-              0
-            </div>
-            <div
-              className="col-2 col-md-1 d-none d-md-block"
-              style={
-                Object {
-                  "textAlign": "right",
-                }
-              }
-            >
-              0
-            </div>
-            <div
-              className="col-2 col-md-1 d-none d-md-block"
-              style={
-                Object {
-                  "textAlign": "right",
-                }
-              }
-            >
-              0
-            </div>
-            <div
-              className="d-block d-md-none col-4"
-            />
-            <div
-              className="d-block d-md-none col-8"
-              style={
-                Object {
-                  "fontSize": "10px",
-                }
-              }
-            >
-              0 balls, 0 4s, 0 6s
-            </div>
-          </div>
-          <div
-            className="row"
+            Maidens
+          </h6>
+        </div>
+        <div
+          className="MuiGrid-grid-xs-2-59"
+        >
+          <h6
+            className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
             style={
               Object {
-                "borderBottom": "1px solid rgb(233, 236, 239)",
-                "fontSize": "14px",
-                "marginTop": "8px",
-                "paddingBottom": "4px",
+                "textAlign": "center",
               }
             }
           >
-            <div
-              className="col-4 col-md-3"
-            >
-              Player 2
-            </div>
-            <div
-              className="col-6 col-md-4"
-            >
-              not out
-            </div>
-            <div
-              className="col-2 col-md-1"
-              style={
-                Object {
-                  "fontWeight": "bold",
-                  "textAlign": "right",
-                }
-              }
-            >
-              0
-            </div>
-            <div
-              className="col-2 col-md-1 d-none d-md-block"
-              style={
-                Object {
-                  "textAlign": "right",
-                }
-              }
-            >
-              0
-            </div>
-            <div
-              className="col-2 col-md-1 d-none d-md-block"
-              style={
-                Object {
-                  "textAlign": "right",
-                }
-              }
-            >
-              0
-            </div>
-            <div
-              className="col-2 col-md-1 d-none d-md-block"
-              style={
-                Object {
-                  "textAlign": "right",
-                }
-              }
-            >
-              0
-            </div>
-            <div
-              className="col-2 col-md-1 d-none d-md-block"
-              style={
-                Object {
-                  "textAlign": "right",
-                }
-              }
-            >
-              0
-            </div>
-            <div
-              className="d-block d-md-none col-4"
-            />
-            <div
-              className="d-block d-md-none col-8"
-              style={
-                Object {
-                  "fontSize": "10px",
-                }
-              }
-            >
-              0 balls, 0 4s, 0 6s
-            </div>
-          </div>
-          <div
-            className="row"
+            Runs
+          </h6>
+        </div>
+        <div
+          className="MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
+        >
+          <h6
+            className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
             style={
               Object {
-                "borderBottom": "1px solid rgb(233, 236, 239)",
-                "fontSize": "14px",
-                "marginTop": "8px",
-                "paddingBottom": "4px",
+                "textAlign": "center",
               }
             }
           >
-            <div
-              className="col-4 col-md-3"
-            >
-              Extras
-            </div>
-            <div
-              className="col-6 col-md-4"
-            >
-              0nb 0wd 0b 0lb
-            </div>
-            <div
-              className="col-2 col-md-1"
-              style={
-                Object {
-                  "fontWeight": "bold",
-                  "textAlign": "right",
-                }
-              }
-            >
-              0
-            </div>
-          </div>
-          <div
-            className="row"
-            style={
-              Object {
-                "backgroundColor": "rgb(233, 236, 239)",
-                "fontSize": "14px",
-                "paddingBottom": "4px",
-                "paddingTop": "4px",
-              }
-            }
-          >
-            <div
-              className="col-4 col-md-3"
-            >
-              Total
-            </div>
-            <div
-              className="col-6 col-md-4"
-            >
-              (0 wickets) (0 overs)
-            </div>
-            <div
-              className="col-2 col-md-1"
-              style={
-                Object {
-                  "fontWeight": "bold",
-                  "textAlign": "right",
-                }
-              }
-            >
-              0
-            </div>
-          </div>
+            Wkts
+          </h6>
         </div>
       </div>
       <div
-        className="col-xl-4 col-lg-12"
+        className="MuiGrid-container-29"
       >
         <div
+          className="MuiGrid-grid-xs-6-63 MuiGrid-grid-md-5-90"
+        >
+          <p
+            className="MuiTypography-root-130 MuiTypography-body2-138"
+          >
+            Player 22
+          </p>
+        </div>
+        <div
+          className="MuiGrid-grid-xs-2-59"
           style={
             Object {
-              "marginBottom": "10px",
-              "padding": "20px",
-              "width": "100%",
+              "textAlign": "center",
             }
           }
         >
-          <div
-            className="row"
-            style={
-              Object {
-                "backgroundColor": "rgb(233, 236, 239)",
-                "paddingLeft": "8px",
-                "paddingTop": "4px",
-              }
-            }
+          <p
+            className="MuiTypography-root-130 MuiTypography-body2-138"
           >
-            <h6>
-              Fall of wickets
-            </h6>
-          </div>
+            0
+          </p>
+        </div>
+        <div
+          className="MuiGrid-grid-md-2-87"
+          style={
+            Object {
+              "textAlign": "center",
+            }
+          }
+        >
+          <p
+            className="MuiTypography-root-130 MuiTypography-body2-138"
+          >
+            0
+          </p>
+        </div>
+        <div
+          className="MuiGrid-grid-xs-2-59"
+          style={
+            Object {
+              "textAlign": "center",
+            }
+          }
+        >
+          <p
+            className="MuiTypography-root-130 MuiTypography-body2-138"
+          >
+            0
+          </p>
+        </div>
+        <div
+          className="MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
+          style={
+            Object {
+              "textAlign": "center",
+            }
+          }
+        >
+          <p
+            className="MuiTypography-root-130 MuiTypography-body2-138"
+          >
+            0
+          </p>
         </div>
       </div>
       <div
-        className="col-xl-8 col-lg-12"
+        className="MuiGrid-grid-xs-12-69"
       >
-        <div
-          style={
-            Object {
-              "marginBottom": "10px",
-              "padding": "20px",
-              "width": "100%",
-            }
-          }
-        >
-          <div
-            className="row"
-          >
-            <h6>
-              Team 2
-               bowling
-            </h6>
-          </div>
-          <div
-            className="row"
-            style={
-              Object {
-                "backgroundColor": "rgb(233, 236, 239)",
-                "paddingTop": "4px",
-              }
-            }
-          >
-            <div
-              className="col-6 col-md-5"
-            />
-            <div
-              className="col-2"
-              style={
-                Object {
-                  "textAlign": "center",
-                }
-              }
-            >
-              <h6>
-                Overs
-              </h6>
-            </div>
-            <div
-              className="col-2 d-none d-md-block"
-              style={
-                Object {
-                  "textAlign": "center",
-                }
-              }
-            >
-              <h6>
-                Maidens
-              </h6>
-            </div>
-            <div
-              className="col-2"
-              style={
-                Object {
-                  "textAlign": "center",
-                }
-              }
-            >
-              <h6>
-                Runs
-              </h6>
-            </div>
-            <div
-              className="col-2 col-md-1"
-              style={
-                Object {
-                  "textAlign": "center",
-                }
-              }
-            >
-              <h6>
-                Wkts
-              </h6>
-            </div>
-          </div>
-          <div
-            className="row"
-          >
-            <div
-              className="col-6 col-md-5"
-            >
-              Player 22
-            </div>
-            <div
-              className="col-2"
-              style={
-                Object {
-                  "textAlign": "center",
-                }
-              }
-            >
-              0
-            </div>
-            <div
-              className="col-2 d-none d-md-block"
-              style={
-                Object {
-                  "textAlign": "center",
-                }
-              }
-            >
-              0
-            </div>
-            <div
-              className="col-2"
-              style={
-                Object {
-                  "textAlign": "center",
-                }
-              }
-            >
-              0
-            </div>
-            <div
-              className="col-2 col-md-1"
-              style={
-                Object {
-                  "textAlign": "center",
-                }
-              }
-            >
-              0
-            </div>
-          </div>
-        </div>
+        <hr
+          className="MuiDivider-root-267"
+        />
       </div>
     </div>
   </div>
@@ -1839,951 +1371,245 @@ exports[`InProgress should render correctly for match during an over 1`] = `
 `;
 
 exports[`InProgress should render correctly for match that has not started 1`] = `
-<div>
+<div
+  className="MuiPaper-root-2 MuiPaper-elevation2-6 MuiPaper-rounded-3 withRouter-InProgress--root-1"
+>
   <div
-    className="row"
+    className="MuiGrid-container-29"
   >
     <div
-      className="d-none d-md-block d-lg-block col-2 col-lg-3"
+      className="MuiGrid-grid-sm-1-72 MuiGrid-grid-md-2-87"
     />
     <div
-      className="col-12 col-md-8 col-lg-6"
+      className="MuiGrid-grid-xs-12-69 MuiGrid-grid-sm-10-81 MuiGrid-grid-md-8-93"
     >
       <div
-        style={
-          Object {
-            "marginBottom": "10px",
-            "padding": "20px",
-            "width": "100%",
+        className="MuiToolbar-root-126 MuiToolbar-regular-128"
+      >
+        <h4
+          className="MuiTypography-root-130 MuiTypography-h4-145 MuiTypography-colorInherit-159"
+          style={
+            Object {
+              "flexGrow": 1,
+            }
           }
-        }
+        >
+          Select number 1
+        </h4>
+      </div>
+      <div
+        className="MuiPaper-root-2 MuiPaper-elevation0-4 MuiStepper-root-165 MuiStepper-horizontal-166"
+      >
+        <div
+          className="MuiStep-root-169 MuiStep-horizontal-170 MuiStep-completed-173"
+        >
+          <span
+            className="MuiStepLabel-root-174 MuiStepLabel-horizontal-175 MuiStepLabel-disabled-181"
+          >
+            <span
+              className="MuiStepLabel-iconContainer-182"
+            >
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root-190 MuiStepIcon-root-185 MuiStepIcon-completed-188"
+                color={undefined}
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm-2 17l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z"
+                />
+              </svg>
+            </span>
+            <span
+              className="MuiStepLabel-labelContainer-184"
+            >
+              <span
+                className="MuiTypography-root-130 MuiTypography-body1-139 MuiStepLabel-label-177 MuiStepLabel-completed-179"
+              >
+                Select batting team
+              </span>
+            </span>
+          </span>
+        </div>
+        <div
+          className="MuiStepConnector-root-199 MuiStepConnector-horizontal-200 MuiStepConnector-active-203"
+        >
+          <span
+            className="MuiStepConnector-line-206 MuiStepConnector-lineHorizontal-207"
+          />
+        </div>
+        <div
+          className="MuiStep-root-169 MuiStep-horizontal-170"
+        >
+          <span
+            className="MuiStepLabel-root-174 MuiStepLabel-horizontal-175"
+          >
+            <span
+              className="MuiStepLabel-iconContainer-182"
+            >
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root-190 MuiStepIcon-root-185 MuiStepIcon-active-187"
+                color={undefined}
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="12"
+                />
+                <text
+                  className="MuiStepIcon-text-186"
+                  textAnchor="middle"
+                  x="12"
+                  y="16"
+                >
+                  2
+                </text>
+              </svg>
+            </span>
+            <span
+              className="MuiStepLabel-labelContainer-184"
+            >
+              <span
+                className="MuiTypography-root-130 MuiTypography-body1-139 MuiStepLabel-label-177 MuiStepLabel-active-178"
+              >
+                Select number 1
+              </span>
+            </span>
+          </span>
+        </div>
+        <div
+          className="MuiStepConnector-root-199 MuiStepConnector-horizontal-200 MuiStepConnector-disabled-205"
+        >
+          <span
+            className="MuiStepConnector-line-206 MuiStepConnector-lineHorizontal-207"
+          />
+        </div>
+        <div
+          className="MuiStep-root-169 MuiStep-horizontal-170"
+        >
+          <span
+            className="MuiStepLabel-root-174 MuiStepLabel-horizontal-175"
+          >
+            <span
+              className="MuiStepLabel-iconContainer-182"
+            >
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root-190 MuiStepIcon-root-185"
+                color={undefined}
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="12"
+                />
+                <text
+                  className="MuiStepIcon-text-186"
+                  textAnchor="middle"
+                  x="12"
+                  y="16"
+                >
+                  3
+                </text>
+              </svg>
+            </span>
+            <span
+              className="MuiStepLabel-labelContainer-184"
+            >
+              <span
+                className="MuiTypography-root-130 MuiTypography-body1-139 MuiStepLabel-label-177"
+              >
+                Select number 2
+              </span>
+            </span>
+          </span>
+        </div>
+      </div>
+      <ul
+        className="MuiList-root-209 MuiList-padding-210"
       />
+      <div>
+        <button
+          className="MuiButtonBase-root-239 MuiButtonBase-disabled-240 MuiButton-root-213 MuiButton-text-215 MuiButton-flat-218 MuiButton-disabled-233"
+          disabled={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="-1"
+          type="button"
+        >
+          <span
+            className="MuiButton-label-214"
+          >
+            Back
+          </span>
+        </button>
+        <button
+          className="MuiButtonBase-root-239 MuiButtonBase-disabled-240 MuiButton-root-213 MuiButton-contained-224 MuiButton-containedPrimary-225 MuiButton-raised-227 MuiButton-raisedPrimary-228 MuiButton-disabled-233"
+          disabled={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="-1"
+          type="button"
+        >
+          <span
+            className="MuiButton-label-214"
+          >
+            Next
+          </span>
+        </button>
+      </div>
     </div>
   </div>
-  <button
-    className="btn btn-success"
-    disabled={true}
-    onClick={[Function]}
-    style={
-      Object {
-        "borderRadius": "25px",
-        "bottom": "10px",
-        "boxShadow": "0 4px 6px 0 rgba(0,0,0,.14), 0 4px 5px rgba(0,0,0,-1)",
-        "fontSize": "18px",
-        "height": "50px",
-        "lineHeight": "1.33",
-        "padding": "10px 16px",
-        "position": "fixed",
-        "right": "10px",
-        "width": "50px",
-        "zIndex": 1049,
-      }
-    }
-    type="button"
-  >
-    <svg
-      aria-hidden="true"
-      className="svg-inline--fa fa-check fa-w-16 "
-      data-icon="check"
-      data-prefix="fas"
-      role="img"
-      style={Object {}}
-      viewBox="0 0 512 512"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"
-        fill="currentColor"
-        style={Object {}}
-      />
-    </svg>
-  </button>
 </div>
 `;
 
 exports[`InProgress should render correctly for match with started innings 1`] = `
-<div>
-  <div>
-    <div
-      className="row"
-    >
-      <div
-        className="col-12"
-        style={
-          Object {
-            "textAlign": "center",
-          }
-        }
-      >
-        <h5>
-          Team 1 0-0
-        </h5>
-      </div>
-    </div>
-    <div
-      className="row"
-    >
-      <div
-        className="col-xl-8 col-lg-12"
-      >
-        <div
-          style={
-            Object {
-              "marginBottom": "10px",
-              "padding": "20px",
-              "width": "100%",
-            }
-          }
-        >
-          <div
-            className="row"
-            style={
-              Object {
-                "backgroundColor": "rgb(233, 236, 239)",
-                "paddingTop": "4px",
-              }
-            }
-          >
-            <div
-              className="col-10 col-md-7"
-            >
-              <h6>
-                Batsman
-              </h6>
-            </div>
-            <div
-              className="col-2 col-md-1"
-              style={
-                Object {
-                  "textAlign": "right",
-                }
-              }
-            >
-              <h6>
-                Runs
-              </h6>
-            </div>
-            <div
-              className="col-1 d-none d-md-block"
-              style={
-                Object {
-                  "textAlign": "right",
-                }
-              }
-            >
-              <h6>
-                Balls
-              </h6>
-            </div>
-            <div
-              className="col-1 d-none d-md-block"
-              style={
-                Object {
-                  "textAlign": "right",
-                }
-              }
-            >
-              <h6>
-                Mins
-              </h6>
-            </div>
-            <div
-              className="col-1 d-none d-md-block"
-              style={
-                Object {
-                  "textAlign": "right",
-                }
-              }
-            >
-              <h6>
-                4s
-              </h6>
-            </div>
-            <div
-              className="col-1 d-none d-md-block"
-              style={
-                Object {
-                  "textAlign": "right",
-                }
-              }
-            >
-              <h6>
-                6s
-              </h6>
-            </div>
-          </div>
-          <div
-            className="row"
-            style={
-              Object {
-                "borderBottom": "1px solid rgb(233, 236, 239)",
-                "fontSize": "14px",
-                "marginTop": "8px",
-                "paddingBottom": "4px",
-              }
-            }
-          >
-            <div
-              className="col-4 col-md-3"
-            >
-              Extras
-            </div>
-            <div
-              className="col-6 col-md-4"
-            >
-              0nb 0wd 0b 0lb
-            </div>
-            <div
-              className="col-2 col-md-1"
-              style={
-                Object {
-                  "fontWeight": "bold",
-                  "textAlign": "right",
-                }
-              }
-            >
-              0
-            </div>
-          </div>
-          <div
-            className="row"
-            style={
-              Object {
-                "backgroundColor": "rgb(233, 236, 239)",
-                "fontSize": "14px",
-                "paddingBottom": "4px",
-                "paddingTop": "4px",
-              }
-            }
-          >
-            <div
-              className="col-4 col-md-3"
-            >
-              Total
-            </div>
-            <div
-              className="col-6 col-md-4"
-            >
-              (0 wickets) (0 overs)
-            </div>
-            <div
-              className="col-2 col-md-1"
-              style={
-                Object {
-                  "fontWeight": "bold",
-                  "textAlign": "right",
-                }
-              }
-            >
-              0
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className="col-xl-4 col-lg-12"
-      >
-        <div
-          style={
-            Object {
-              "marginBottom": "10px",
-              "padding": "20px",
-              "width": "100%",
-            }
-          }
-        >
-          <div
-            className="row"
-            style={
-              Object {
-                "backgroundColor": "rgb(233, 236, 239)",
-                "paddingLeft": "8px",
-                "paddingTop": "4px",
-              }
-            }
-          >
-            <h6>
-              Fall of wickets
-            </h6>
-          </div>
-        </div>
-      </div>
-      <div
-        className="col-xl-8 col-lg-12"
-      >
-        <div
-          style={
-            Object {
-              "marginBottom": "10px",
-              "padding": "20px",
-              "width": "100%",
-            }
-          }
-        >
-          <div
-            className="row"
-          >
-            <h6>
-              Team 2
-               bowling
-            </h6>
-          </div>
-          <div
-            className="row"
-            style={
-              Object {
-                "backgroundColor": "rgb(233, 236, 239)",
-                "paddingTop": "4px",
-              }
-            }
-          >
-            <div
-              className="col-6 col-md-5"
-            />
-            <div
-              className="col-2"
-              style={
-                Object {
-                  "textAlign": "center",
-                }
-              }
-            >
-              <h6>
-                Overs
-              </h6>
-            </div>
-            <div
-              className="col-2 d-none d-md-block"
-              style={
-                Object {
-                  "textAlign": "center",
-                }
-              }
-            >
-              <h6>
-                Maidens
-              </h6>
-            </div>
-            <div
-              className="col-2"
-              style={
-                Object {
-                  "textAlign": "center",
-                }
-              }
-            >
-              <h6>
-                Runs
-              </h6>
-            </div>
-            <div
-              className="col-2 col-md-1"
-              style={
-                Object {
-                  "textAlign": "center",
-                }
-              }
-            >
-              <h6>
-                Wkts
-              </h6>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<div
+  className="MuiPaper-root-2 MuiPaper-elevation2-6 MuiPaper-rounded-3 withRouter-InProgress--root-1"
+/>
 `;
 
-exports[`InProgress should render correctly when no match 1`] = `<div />`;
+exports[`InProgress should render correctly when no match 1`] = `
+<div
+  className="MuiPaper-root-2 MuiPaper-elevation2-6 MuiPaper-rounded-3 withRouter-InProgress--root-1"
+/>
+`;
 
 exports[`InProgress should render correctly when there is a previous bowler 1`] = `
-<div>
-  <div>
-    <div
-      className="row"
-    >
-      <div
-        className="col-12"
-        style={
-          Object {
-            "textAlign": "center",
-          }
-        }
-      >
-        <h5>
-          Team 1 0-0
-        </h5>
-      </div>
-    </div>
-    <div
-      className="row"
-    >
-      <div
-        className="col-xl-8 col-lg-12"
-      >
-        <div
-          style={
-            Object {
-              "marginBottom": "10px",
-              "padding": "20px",
-              "width": "100%",
-            }
-          }
-        >
-          <div
-            className="row"
-            style={
-              Object {
-                "backgroundColor": "rgb(233, 236, 239)",
-                "paddingTop": "4px",
-              }
-            }
-          >
-            <div
-              className="col-10 col-md-7"
-            >
-              <h6>
-                Batsman
-              </h6>
-            </div>
-            <div
-              className="col-2 col-md-1"
-              style={
-                Object {
-                  "textAlign": "right",
-                }
-              }
-            >
-              <h6>
-                Runs
-              </h6>
-            </div>
-            <div
-              className="col-1 d-none d-md-block"
-              style={
-                Object {
-                  "textAlign": "right",
-                }
-              }
-            >
-              <h6>
-                Balls
-              </h6>
-            </div>
-            <div
-              className="col-1 d-none d-md-block"
-              style={
-                Object {
-                  "textAlign": "right",
-                }
-              }
-            >
-              <h6>
-                Mins
-              </h6>
-            </div>
-            <div
-              className="col-1 d-none d-md-block"
-              style={
-                Object {
-                  "textAlign": "right",
-                }
-              }
-            >
-              <h6>
-                4s
-              </h6>
-            </div>
-            <div
-              className="col-1 d-none d-md-block"
-              style={
-                Object {
-                  "textAlign": "right",
-                }
-              }
-            >
-              <h6>
-                6s
-              </h6>
-            </div>
-          </div>
-          <div
-            className="row"
-            style={
-              Object {
-                "borderBottom": "1px solid rgb(233, 236, 239)",
-                "fontSize": "14px",
-                "marginTop": "8px",
-                "paddingBottom": "4px",
-              }
-            }
-          >
-            <div
-              className="col-4 col-md-3"
-            >
-              Extras
-            </div>
-            <div
-              className="col-6 col-md-4"
-            >
-              0nb 0wd 0b 0lb
-            </div>
-            <div
-              className="col-2 col-md-1"
-              style={
-                Object {
-                  "fontWeight": "bold",
-                  "textAlign": "right",
-                }
-              }
-            >
-              0
-            </div>
-          </div>
-          <div
-            className="row"
-            style={
-              Object {
-                "backgroundColor": "rgb(233, 236, 239)",
-                "fontSize": "14px",
-                "paddingBottom": "4px",
-                "paddingTop": "4px",
-              }
-            }
-          >
-            <div
-              className="col-4 col-md-3"
-            >
-              Total
-            </div>
-            <div
-              className="col-6 col-md-4"
-            >
-              (0 wickets) (0 overs)
-            </div>
-            <div
-              className="col-2 col-md-1"
-              style={
-                Object {
-                  "fontWeight": "bold",
-                  "textAlign": "right",
-                }
-              }
-            >
-              0
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className="col-xl-4 col-lg-12"
-      >
-        <div
-          style={
-            Object {
-              "marginBottom": "10px",
-              "padding": "20px",
-              "width": "100%",
-            }
-          }
-        >
-          <div
-            className="row"
-            style={
-              Object {
-                "backgroundColor": "rgb(233, 236, 239)",
-                "paddingLeft": "8px",
-                "paddingTop": "4px",
-              }
-            }
-          >
-            <h6>
-              Fall of wickets
-            </h6>
-          </div>
-        </div>
-      </div>
-      <div
-        className="col-xl-8 col-lg-12"
-      >
-        <div
-          style={
-            Object {
-              "marginBottom": "10px",
-              "padding": "20px",
-              "width": "100%",
-            }
-          }
-        >
-          <div
-            className="row"
-          >
-            <h6>
-              Team 2
-               bowling
-            </h6>
-          </div>
-          <div
-            className="row"
-            style={
-              Object {
-                "backgroundColor": "rgb(233, 236, 239)",
-                "paddingTop": "4px",
-              }
-            }
-          >
-            <div
-              className="col-6 col-md-5"
-            />
-            <div
-              className="col-2"
-              style={
-                Object {
-                  "textAlign": "center",
-                }
-              }
-            >
-              <h6>
-                Overs
-              </h6>
-            </div>
-            <div
-              className="col-2 d-none d-md-block"
-              style={
-                Object {
-                  "textAlign": "center",
-                }
-              }
-            >
-              <h6>
-                Maidens
-              </h6>
-            </div>
-            <div
-              className="col-2"
-              style={
-                Object {
-                  "textAlign": "center",
-                }
-              }
-            >
-              <h6>
-                Runs
-              </h6>
-            </div>
-            <div
-              className="col-2 col-md-1"
-              style={
-                Object {
-                  "textAlign": "center",
-                }
-              }
-            >
-              <h6>
-                Wkts
-              </h6>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<div
+  className="MuiPaper-root-2 MuiPaper-elevation2-6 MuiPaper-rounded-3 withRouter-InProgress--root-1"
+/>
 `;
 
 exports[`InProgress should render correctly when there is a previous bowler from the current end 1`] = `
-<div>
-  <div>
-    <div
-      className="row"
-    >
-      <div
-        className="col-12"
-        style={
-          Object {
-            "textAlign": "center",
-          }
-        }
-      >
-        <h5>
-          Team 1 0-0
-        </h5>
-      </div>
-    </div>
-    <div
-      className="row"
-    >
-      <div
-        className="col-xl-8 col-lg-12"
-      >
-        <div
-          style={
-            Object {
-              "marginBottom": "10px",
-              "padding": "20px",
-              "width": "100%",
-            }
-          }
-        >
-          <div
-            className="row"
-            style={
-              Object {
-                "backgroundColor": "rgb(233, 236, 239)",
-                "paddingTop": "4px",
-              }
-            }
-          >
-            <div
-              className="col-10 col-md-7"
-            >
-              <h6>
-                Batsman
-              </h6>
-            </div>
-            <div
-              className="col-2 col-md-1"
-              style={
-                Object {
-                  "textAlign": "right",
-                }
-              }
-            >
-              <h6>
-                Runs
-              </h6>
-            </div>
-            <div
-              className="col-1 d-none d-md-block"
-              style={
-                Object {
-                  "textAlign": "right",
-                }
-              }
-            >
-              <h6>
-                Balls
-              </h6>
-            </div>
-            <div
-              className="col-1 d-none d-md-block"
-              style={
-                Object {
-                  "textAlign": "right",
-                }
-              }
-            >
-              <h6>
-                Mins
-              </h6>
-            </div>
-            <div
-              className="col-1 d-none d-md-block"
-              style={
-                Object {
-                  "textAlign": "right",
-                }
-              }
-            >
-              <h6>
-                4s
-              </h6>
-            </div>
-            <div
-              className="col-1 d-none d-md-block"
-              style={
-                Object {
-                  "textAlign": "right",
-                }
-              }
-            >
-              <h6>
-                6s
-              </h6>
-            </div>
-          </div>
-          <div
-            className="row"
-            style={
-              Object {
-                "borderBottom": "1px solid rgb(233, 236, 239)",
-                "fontSize": "14px",
-                "marginTop": "8px",
-                "paddingBottom": "4px",
-              }
-            }
-          >
-            <div
-              className="col-4 col-md-3"
-            >
-              Extras
-            </div>
-            <div
-              className="col-6 col-md-4"
-            >
-              0nb 0wd 0b 0lb
-            </div>
-            <div
-              className="col-2 col-md-1"
-              style={
-                Object {
-                  "fontWeight": "bold",
-                  "textAlign": "right",
-                }
-              }
-            >
-              0
-            </div>
-          </div>
-          <div
-            className="row"
-            style={
-              Object {
-                "backgroundColor": "rgb(233, 236, 239)",
-                "fontSize": "14px",
-                "paddingBottom": "4px",
-                "paddingTop": "4px",
-              }
-            }
-          >
-            <div
-              className="col-4 col-md-3"
-            >
-              Total
-            </div>
-            <div
-              className="col-6 col-md-4"
-            >
-              (0 wickets) (0 overs)
-            </div>
-            <div
-              className="col-2 col-md-1"
-              style={
-                Object {
-                  "fontWeight": "bold",
-                  "textAlign": "right",
-                }
-              }
-            >
-              0
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className="col-xl-4 col-lg-12"
-      >
-        <div
-          style={
-            Object {
-              "marginBottom": "10px",
-              "padding": "20px",
-              "width": "100%",
-            }
-          }
-        >
-          <div
-            className="row"
-            style={
-              Object {
-                "backgroundColor": "rgb(233, 236, 239)",
-                "paddingLeft": "8px",
-                "paddingTop": "4px",
-              }
-            }
-          >
-            <h6>
-              Fall of wickets
-            </h6>
-          </div>
-        </div>
-      </div>
-      <div
-        className="col-xl-8 col-lg-12"
-      >
-        <div
-          style={
-            Object {
-              "marginBottom": "10px",
-              "padding": "20px",
-              "width": "100%",
-            }
-          }
-        >
-          <div
-            className="row"
-          >
-            <h6>
-              Team 2
-               bowling
-            </h6>
-          </div>
-          <div
-            className="row"
-            style={
-              Object {
-                "backgroundColor": "rgb(233, 236, 239)",
-                "paddingTop": "4px",
-              }
-            }
-          >
-            <div
-              className="col-6 col-md-5"
-            />
-            <div
-              className="col-2"
-              style={
-                Object {
-                  "textAlign": "center",
-                }
-              }
-            >
-              <h6>
-                Overs
-              </h6>
-            </div>
-            <div
-              className="col-2 d-none d-md-block"
-              style={
-                Object {
-                  "textAlign": "center",
-                }
-              }
-            >
-              <h6>
-                Maidens
-              </h6>
-            </div>
-            <div
-              className="col-2"
-              style={
-                Object {
-                  "textAlign": "center",
-                }
-              }
-            >
-              <h6>
-                Runs
-              </h6>
-            </div>
-            <div
-              className="col-2 col-md-1"
-              style={
-                Object {
-                  "textAlign": "center",
-                }
-              }
-            >
-              <h6>
-                Wkts
-              </h6>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<div
+  className="MuiPaper-root-2 MuiPaper-elevation2-6 MuiPaper-rounded-3 withRouter-InProgress--root-1"
+/>
 `;

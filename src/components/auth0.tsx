@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { WebAuth, Auth0DecodedHash } from 'auth0-js';
-import WithModal from './WithModal';
 import NetworkStatusContext from '../context/NetworkStatusContext';
 import { OFFLINE } from '../context/networkStatus';
 
@@ -165,7 +164,7 @@ const auth0 = (domain: string, clientId: string) => {
         isAuthenticated,
         userProfile,
         login,
-        Auth: WithModal(AuthCallback),
+        Auth: AuthCallback,
     };
 };
 

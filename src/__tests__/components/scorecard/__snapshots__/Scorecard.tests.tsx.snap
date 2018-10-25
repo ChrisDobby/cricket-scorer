@@ -2364,34 +2364,28 @@ exports[`Scorecard should render correctly when match has four innings 1`] = `
 
 exports[`Scorecard should render correctly when no match available 1`] = `
 <div
-  className="col-12"
+  className="MuiCircularProgress-root-2 MuiCircularProgress-colorPrimary-5 MuiCircularProgress-indeterminate-4"
+  role="progressbar"
   style={
     Object {
-      "textAlign": "center",
+      "height": 50,
+      "width": 50,
     }
   }
 >
-  <div>
-    <svg
-      aria-hidden="true"
-      className="svg-inline--fa fa-spinner fa-w-16 "
-      data-icon="spinner"
-      data-prefix="fas"
-      role="img"
-      style={
-        Object {
-          "fontSize": "24px",
-        }
-      }
-      viewBox="0 0 512 512"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z"
-        fill="currentColor"
-        style={Object {}}
-      />
-    </svg>
-  </div>
+  <svg
+    className="MuiCircularProgress-svg-7"
+    viewBox="22 22 44 44"
+  >
+    <circle
+      className="MuiCircularProgress-circle-8 MuiCircularProgress-circleIndeterminate-10"
+      cx={44}
+      cy={44}
+      fill="none"
+      r={20.2}
+      strokeWidth={3.6}
+      style={Object {}}
+    />
+  </svg>
 </div>
 `;

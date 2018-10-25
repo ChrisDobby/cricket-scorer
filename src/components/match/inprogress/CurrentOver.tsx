@@ -1,20 +1,17 @@
 import * as React from 'react';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 import { Over } from '../../../domain';
 import { DeliveryDisplay } from './DeliveryDisplay';
-
-const overRowStyle: React.CSSProperties = {
-    paddingLeft: '20px',
-};
 
 export interface CurrentOverProps { over: Over; }
 
 export const CurrentOver = ({ over }: CurrentOverProps) => (
-    <div>
-        <div className="row">
-            <div className="col-12"><h6>{`This over ${over.wickets} - ${over.bowlingRuns}`}</h6></div>
-        </div>
-        <div className="row" style={overRowStyle}>
+    <React.Fragment>
+        <Grid container>
+            <Typography variant="h6">{`This over ${over.wickets} - ${over.bowlingRuns}`}</Typography>
+        </Grid>
+        <Grid container>
             {over.deliveries.map((delivery, index) => <DeliveryDisplay key={index} outcome={delivery.outcome} />)}
-        </div>
-    </div>
-);
+        </Grid>
+    </React.Fragment>);

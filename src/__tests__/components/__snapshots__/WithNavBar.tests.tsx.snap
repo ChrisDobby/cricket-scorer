@@ -1,42 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`WithNavBar should render correctly 1`] = `
-<div
-  style={
-    Object {
-      "display": "flex",
-      "flexDirection": "column",
-      "height": "100vh",
-    }
-  }
->
-  <nav
-    className="navbar navbar-dark bg-primary"
+Array [
+  <header
+    className="MuiPaper-root-10 MuiPaper-elevation4-16 MuiAppBar-root-1 MuiAppBar-positionSticky-4 MuiAppBar-colorPrimary-8"
   >
-    <a
-      className="navbar-brand"
-      href="#"
+    <div
+      className="MuiToolbar-root-37 MuiToolbar-regular-39 MuiToolbar-gutters-38"
     >
-      Cricket scores live
-    </a>
-    <button
-      className="btn btn-outline-light"
-      onClick={undefined}
-    >
-      Register or login
-    </button>
-  </nav>
-  <div
-    style={
-      Object {
-        "flex": "1",
-        "marginTop": "8px",
-        "overflowX": "hidden",
-        "overflowY": "auto",
-      }
-    }
-  >
-    <div />
-  </div>
-</div>
+      <h2
+        className="MuiTypography-root-41 MuiTypography-title-47 MuiTypography-colorInherit-70"
+        style={
+          Object {
+            "flexGrow": 1,
+          }
+        }
+      >
+        Cricket scores live
+      </h2>
+    </div>
+  </header>,
+  <div />,
+]
 `;

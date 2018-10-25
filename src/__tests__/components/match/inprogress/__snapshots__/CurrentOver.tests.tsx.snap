@@ -1,25 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CurrentOver should render correctly 1`] = `
-<div>
+Array [
   <div
-    className="row"
+    className="MuiGrid-container-1"
   >
-    <div
-      className="col-12"
+    <h6
+      className="MuiTypography-root-98 MuiTypography-h6-115"
     >
-      <h6>
-        This over 0 - 3
-      </h6>
-    </div>
-  </div>
+      This over 0 - 3
+    </h6>
+  </div>,
   <div
-    className="row"
-    style={
-      Object {
-        "paddingLeft": "20px",
-      }
-    }
+    className="MuiGrid-container-1"
   >
     <div
       style={
@@ -37,6 +30,6 @@ exports[`CurrentOver should render correctly 1`] = `
     >
       <canvas />
     </div>
-  </div>
-</div>
+  </div>,
+]
 `;

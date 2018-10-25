@@ -1,13 +1,12 @@
 import * as React from 'react';
-import WithModal from '../../WithModal';
-
-const buttonStyle: React.CSSProperties = {
-    marginLeft: '10px',
-    marginRight: '10px',
-};
+import Dialog from '@material-ui/core/Dialog';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogActions from '@material-ui/core/DialogActions';
+import Button from '@material-ui/core/Button';
 
 export enum WarningType {
-    OverNotCompleteWarning,
     AllRunFourWarning,
     AllRunSixWarning,
 }
@@ -23,8 +22,6 @@ const allRunWarningText = (runs: string) =>
 
 const warningText = (warningType: WarningType) => {
     switch (warningType) {
-    case WarningType.OverNotCompleteWarning:
-        return 'There has not been six legal deliveries in this over.  Do you still want to complete it?';
     case WarningType.AllRunFourWarning:
         return allRunWarningText('four');
     case WarningType.AllRunSixWarning:
@@ -32,21 +29,26 @@ const warningText = (warningType: WarningType) => {
     }
 };
 
-export const WarningModal = WithModal(({ warningType, onYes, onNo }: WarningModalProps) => (
-    <div className="alert alert-danger" role="alert" style={{ width: '100%' }}>
-        {warningText(warningType)}
-        <div>
-            <button
-                className="btn btn-danger"
-                style={buttonStyle}
-                onClick={onYes}
-            >Yes
-            </button>
-            <button
-                className="btn btn-default"
-                style={buttonStyle}
-                onClick={onNo}
-            >No
-            </button>
-        </div>
-    </div>));
+export const WarningModal = ({ warningType, onYes, onNo }: WarningModalProps) => (
+    <div>
+        <Dialog
+            open={true}
+            aria-labelledby="all-run-warning-title"
+        >
+            <DialogTitle id="all-run-warning-title">All run</DialogTitle>
+            <DialogContent>
+                <DialogContentText>
+                    {warningText(warningType)}
+                </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+                <Button
+                    onClick={onYes}
+                    color="primary"
+                    autoFocus
+                >Yes
+                </Button>
+                <Button onClick={onNo} color="primary">No</Button>
+            </DialogActions>
+        </Dialog>
+    </div>);

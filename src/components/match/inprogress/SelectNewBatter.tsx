@@ -1,7 +1,10 @@
 import * as React from 'react';
-import * as globalStyles from '../../styles';
-import { BatterSelector, PlayerPosition } from './BatterSelector';
-import { SaveButton } from '../SaveButton';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Toolbar from '@material-ui/core/Toolbar';
+import Button from '@material-ui/core/Button';
+import { default as SaveIcon } from '@material-ui/icons/Save';
+import BatterSelector, { PlayerPosition } from './BatterSelector';
 import { Batting } from '../../../domain';
 
 interface SelectNewBatterProps {
@@ -34,25 +37,22 @@ export default class extends React.Component<SelectNewBatterProps, {}> {
 
     render() {
         return (
-            <React.Fragment>
-                <div className="row">
-                    <div className="d-none d-md-block d-lg-block col-2 col-lg-3" />
-                    <div className="col-12 col-md-8 col-lg-6">
-                        <div className="row" style={globalStyles.singleHeadingRow}>
-                            <h4>Select batter {this.availablePosition}</h4>
-                        </div>
-                        <BatterSelector
-                            players={this.props.players}
-                            playerPositions={this.state.playerPositions}
-                            availablePositions={[this.availablePosition]}
-                            notAllowedPlayers={this.props.batting.batters
-                                .filter(batter => batter.innings).map(batter => batter.playerIndex)}
-                            playerSelected={this.playerSelected}
-                            playerRemoved={() => { }}
-                        />
-                    </div>
-                </div>
-                <SaveButton enabled={this.canSave} save={this.save} />
-            </React.Fragment>);
+            <Grid container>
+                <Grid sm={1} md={2} />
+                <Grid xs={12} sm={10} md={8}>
+                    <Toolbar disableGutters>
+                        <Typography variant="h4" color="inherit" style={{ flexGrow: 1 }}>Select batter</Typography>
+                        <Button variant="fab" color="primary" onClick={this.save} disabled={!this.canSave}>
+                            <SaveIcon />
+                        </Button>
+                    </Toolbar>
+                    <BatterSelector
+                        players={this.props.players}
+                        notAllowedPlayers={this.props.batting.batters
+                            .filter(batter => batter.innings).map(batter => batter.playerIndex)}
+                        playerSelected={index => this.playerSelected(index, this.availablePosition)}
+                    />
+                </Grid>
+            </Grid>);
     }
 }

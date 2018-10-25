@@ -1,11 +1,11 @@
 import * as React from 'react';
+import Dialog from '@material-ui/core/Dialog';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogActions from '@material-ui/core/DialogActions';
+import Button from '@material-ui/core/Button';
 import { InningsStatus } from '../../../domain';
-import WithModal from '../../WithModal';
-
-const buttonStyle: React.CSSProperties = {
-    marginLeft: '10px',
-    marginRight: '10px',
-};
 
 interface InningsCompleteProps {
     status: InningsStatus;
@@ -25,23 +25,26 @@ const completeText = (state: InningsStatus, battingTeam: string) => {
     }
 };
 
-const InningsComplete = ({ status, battingTeam, complete, undoPrevious }: InningsCompleteProps) => (
-    <div className="alert alert-dark" style={{ width: '100%' }}>
-        <h4 className="alert-heading">Innings complete</h4>
-        <p>{completeText(status, battingTeam)}</p>
-        <hr />
-        <button
-            className="btn btn-dark"
-            style={buttonStyle}
-            onClick={complete}
-        >OK
-        </button>
-        <button
-            className="btn btn-dark"
-            style={buttonStyle}
-            onClick={undoPrevious}
-        >Undo previous
-        </button>
+export default ({ status, battingTeam, complete, undoPrevious }: InningsCompleteProps) => (
+    <div>
+        <Dialog
+            open={true}
+            aria-labelledby="innings-complete-title"
+        >
+            <DialogTitle id="innings-complete-title">Innings complete</DialogTitle>
+            <DialogContent>
+                <DialogContentText>
+                    {completeText(status, battingTeam)}
+                </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+                <Button
+                    onClick={complete}
+                    color="primary"
+                    autoFocus
+                >OK
+                </Button>
+                <Button onClick={undoPrevious} color="primary">Undo previous</Button>
+            </DialogActions>
+        </Dialog>
     </div>);
-
-export default WithModal(InningsComplete);

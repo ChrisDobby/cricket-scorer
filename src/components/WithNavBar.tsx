@@ -4,7 +4,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
 import SignalWifiOff from '@material-ui/icons/SignalWifiOff';
+import Menu from '@material-ui/icons/Menu';
 import NetworkStatusContext from '../context/NetworkStatusContext';
 import { ONLINE, OFFLINE } from '../context/networkStatus';
 
@@ -30,6 +32,14 @@ const WithNavBar = (Component: any) => (props: any) => (
                         </React.Fragment>}
                     {status === OFFLINE && !props.isAuthenticated &&
                         <SignalWifiOff />}
+                    {props.openDrawer &&
+                        <IconButton
+                            color="inherit"
+                            aria-label="Open drawer"
+                            onClick={props.openDrawer}
+                        >
+                            <Menu />
+                        </IconButton>}
                 </Toolbar>
             </AppBar>
             <Component {...props} />

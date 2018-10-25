@@ -38,4 +38,8 @@ export const themedStyles = (theme: any) => ({
         backgroundColor: theme.palette.primary.light,
         color: theme.palette.primary.contrastText,
     },
+    toolbar: {
+        padding: '0 8px',
+        ...theme.mixins.toolbar,
+    },
 });

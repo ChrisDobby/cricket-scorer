@@ -2,117 +2,117 @@
 
 exports[`Batting should render correctly when batter has no innings 1`] = `
 <div
-  className="col-xl-8 col-lg-12"
+  className="MuiGrid-container-3 MuiGrid-grid-md-12-71 MuiGrid-grid-lg-8-81"
 >
   <div
-    style={
-      Object {
-        "marginBottom": "10px",
-        "padding": "20px",
-        "width": "100%",
-      }
-    }
+    className="MuiGrid-container-3 Batting-header-1"
   >
     <div
-      className="row"
-      style={
-        Object {
-          "backgroundColor": "rgb(233, 236, 239)",
-          "paddingTop": "4px",
-        }
-      }
+      className="MuiGrid-grid-xs-10-41 MuiGrid-grid-md-7-66"
     >
-      <div
-        className="col-10 col-md-7"
+      <h6
+        className="MuiTypography-root-100 MuiTypography-h6-117 MuiTypography-colorInherit-129"
       >
-        <h6>
-          Batsman
-        </h6>
-      </div>
-      <div
-        className="col-2 col-md-1"
-        style={
-          Object {
-            "textAlign": "right",
-          }
-        }
-      >
-        <h6>
-          Runs
-        </h6>
-      </div>
-      <div
-        className="col-1 d-none d-md-block"
-        style={
-          Object {
-            "textAlign": "right",
-          }
-        }
-      >
-        <h6>
-          Balls
-        </h6>
-      </div>
-      <div
-        className="col-1 d-none d-md-block"
-        style={
-          Object {
-            "textAlign": "right",
-          }
-        }
-      >
-        <h6>
-          Mins
-        </h6>
-      </div>
-      <div
-        className="col-1 d-none d-md-block"
-        style={
-          Object {
-            "textAlign": "right",
-          }
-        }
-      >
-        <h6>
-          4s
-        </h6>
-      </div>
-      <div
-        className="col-1 d-none d-md-block"
-        style={
-          Object {
-            "textAlign": "right",
-          }
-        }
-      >
-        <h6>
-          6s
-        </h6>
-      </div>
+        Batsman
+      </h6>
     </div>
     <div
-      className="row"
-      style={
-        Object {
-          "borderBottom": "1px solid rgb(233, 236, 239)",
-          "fontSize": "14px",
-          "marginTop": "8px",
-          "paddingBottom": "4px",
-        }
-      }
+      className="MuiGrid-grid-xs-2-33 MuiGrid-grid-md-1-60"
     >
-      <div
-        className="col-4 col-md-3"
+      <h6
+        className="MuiTypography-root-100 MuiTypography-h6-117 MuiTypography-colorInherit-129"
+        style={
+          Object {
+            "textAlign": "right",
+          }
+        }
+      >
+        Runs
+      </h6>
+    </div>
+    <div
+      className="MuiGrid-grid-md-1-60"
+    >
+      <h6
+        className="MuiTypography-root-100 MuiTypography-h6-117 MuiTypography-colorInherit-129"
+        style={
+          Object {
+            "textAlign": "right",
+          }
+        }
+      >
+        Balls
+      </h6>
+    </div>
+    <div
+      className="MuiGrid-grid-md-1-60"
+    >
+      <h6
+        className="MuiTypography-root-100 MuiTypography-h6-117 MuiTypography-colorInherit-129"
+        style={
+          Object {
+            "textAlign": "right",
+          }
+        }
+      >
+        Mins
+      </h6>
+    </div>
+    <div
+      className="MuiGrid-grid-md-1-60"
+    >
+      <h6
+        className="MuiTypography-root-100 MuiTypography-h6-117 MuiTypography-colorInherit-129"
+        style={
+          Object {
+            "textAlign": "right",
+          }
+        }
+      >
+        4s
+      </h6>
+    </div>
+    <div
+      className="MuiGrid-grid-md-1-60"
+    >
+      <h6
+        className="MuiTypography-root-100 MuiTypography-h6-117 MuiTypography-colorInherit-129"
+        style={
+          Object {
+            "textAlign": "right",
+          }
+        }
+      >
+        6s
+      </h6>
+    </div>
+  </div>
+  <div
+    className="MuiGrid-container-3"
+  >
+    <div
+      className="MuiGrid-grid-xs-4-35 MuiGrid-grid-md-3-62"
+    >
+      <p
+        className="MuiTypography-root-100 MuiTypography-body2-108"
       >
         A Player
-      </div>
-      <div
-        className="col-6 col-md-4"
+      </p>
+    </div>
+    <div
+      className="MuiGrid-grid-xs-6-37 MuiGrid-grid-md-4-63"
+    >
+      <p
+        className="MuiTypography-root-100 MuiTypography-body2-108"
       >
         
-      </div>
-      <div
-        className="col-2 col-md-1"
+      </p>
+    </div>
+    <div
+      className="MuiGrid-grid-xs-2-33 MuiGrid-grid-md-1-60"
+    >
+      <p
+        className="MuiTypography-root-100 MuiTypography-body1-109"
         style={
           Object {
             "fontWeight": "bold",
@@ -121,84 +121,98 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
         }
       >
         
-      </div>
-      <div
-        className="col-2 col-md-1 d-none d-md-block"
-        style={
-          Object {
-            "textAlign": "right",
-          }
-        }
-      >
-        
-      </div>
-      <div
-        className="col-2 col-md-1 d-none d-md-block"
-        style={
-          Object {
-            "textAlign": "right",
-          }
-        }
-      >
-        
-      </div>
-      <div
-        className="col-2 col-md-1 d-none d-md-block"
-        style={
-          Object {
-            "textAlign": "right",
-          }
-        }
-      >
-        
-      </div>
-      <div
-        className="col-2 col-md-1 d-none d-md-block"
-        style={
-          Object {
-            "textAlign": "right",
-          }
-        }
-      >
-        
-      </div>
-      <div
-        className="d-block d-md-none col-4"
-      />
-      <div
-        className="d-block d-md-none col-8"
-        style={
-          Object {
-            "fontSize": "10px",
-          }
-        }
-      >
-        
-      </div>
+      </p>
     </div>
     <div
-      className="row"
-      style={
-        Object {
-          "borderBottom": "1px solid rgb(233, 236, 239)",
-          "fontSize": "14px",
-          "marginTop": "8px",
-          "paddingBottom": "4px",
-        }
-      }
+      className="MuiGrid-grid-md-1-60"
     >
-      <div
-        className="col-4 col-md-3"
+      <p
+        className="MuiTypography-root-100 MuiTypography-body1-109"
+        style={
+          Object {
+            "textAlign": "right",
+          }
+        }
+      >
+        
+      </p>
+    </div>
+    <div
+      className="MuiGrid-grid-md-1-60"
+    >
+      <p
+        className="MuiTypography-root-100 MuiTypography-body1-109"
+        style={
+          Object {
+            "textAlign": "right",
+          }
+        }
+      >
+        
+      </p>
+    </div>
+    <div
+      className="MuiGrid-grid-md-1-60"
+    >
+      <p
+        className="MuiTypography-root-100 MuiTypography-body1-109"
+        style={
+          Object {
+            "textAlign": "right",
+          }
+        }
+      >
+        
+      </p>
+    </div>
+    <div
+      className="MuiGrid-grid-md-1-60"
+    >
+      <p
+        className="MuiTypography-root-100 MuiTypography-body1-109"
+        style={
+          Object {
+            "textAlign": "right",
+          }
+        }
+      >
+        
+      </p>
+    </div>
+  </div>
+  <div
+    className="MuiGrid-grid-xs-12-43"
+  >
+    <hr
+      className="MuiDivider-root-135"
+    />
+  </div>
+  <div
+    className="MuiGrid-container-3"
+  >
+    <div
+      className="MuiGrid-grid-xs-4-35 MuiGrid-grid-md-3-62"
+    >
+      <p
+        className="MuiTypography-root-100 MuiTypography-body1-109"
       >
         Extras
-      </div>
-      <div
-        className="col-6 col-md-4"
+      </p>
+    </div>
+    <div
+      className="MuiGrid-grid-xs-6-37 MuiGrid-grid-md-4-63"
+    >
+      <p
+        className="MuiTypography-root-100 MuiTypography-body2-108"
       >
         0nb 0wd 0b 0lb
-      </div>
-      <div
-        className="col-2 col-md-1"
+      </p>
+    </div>
+    <div
+      className="MuiGrid-grid-xs-2-33 MuiGrid-grid-md-1-60"
+    >
+      <p
+        className="MuiTypography-root-100 MuiTypography-body1-109"
         style={
           Object {
             "fontWeight": "bold",
@@ -207,31 +221,35 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
         }
       >
         0
-      </div>
+      </p>
     </div>
+  </div>
+  <div
+    className="MuiGrid-container-3 Batting-header-1"
+  >
     <div
-      className="row"
-      style={
-        Object {
-          "backgroundColor": "rgb(233, 236, 239)",
-          "fontSize": "14px",
-          "paddingBottom": "4px",
-          "paddingTop": "4px",
-        }
-      }
+      className="MuiGrid-grid-xs-4-35 MuiGrid-grid-md-3-62"
     >
-      <div
-        className="col-4 col-md-3"
+      <h6
+        className="MuiTypography-root-100 MuiTypography-h6-117 MuiTypography-colorInherit-129"
       >
         Total
-      </div>
-      <div
-        className="col-6 col-md-4"
+      </h6>
+    </div>
+    <div
+      className="MuiGrid-grid-xs-6-37 MuiGrid-grid-md-4-63"
+    >
+      <h6
+        className="MuiTypography-root-100 MuiTypography-h6-117 MuiTypography-colorInherit-129"
       >
         (1 wickets) (20 overs)
-      </div>
-      <div
-        className="col-2 col-md-1"
+      </h6>
+    </div>
+    <div
+      className="MuiGrid-grid-xs-2-33 MuiGrid-grid-md-1-60"
+    >
+      <h6
+        className="MuiTypography-root-100 MuiTypography-h6-117 MuiTypography-colorInherit-129"
         style={
           Object {
             "fontWeight": "bold",
@@ -240,7 +258,7 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
         }
       >
         100
-      </div>
+      </h6>
     </div>
   </div>
 </div>
