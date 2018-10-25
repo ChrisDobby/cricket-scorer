@@ -23,7 +23,7 @@ export default (props: BallEntryProps) => (
     <Grid container>
         <DeliveryHeader batter={props.batter} bowler={props.bowler} />
         <Grid container>
-            <Grid xs={12} lg={6} container>
+            <Grid item xs={12} lg={6} container>
                 <CurrentState
                     battingTeam={props.battingTeam.name}
                     innings={props.innings}
@@ -32,7 +32,7 @@ export default (props: BallEntryProps) => (
                     currentOver={props.currentOver}
                 />
             </Grid>
-            <Grid xs={12} lg={6} container>
+            <Grid item xs={12} lg={6} container>
                 <EntryPanel
                     delivery={props.delivery}
                     overComplete={props.overComplete}

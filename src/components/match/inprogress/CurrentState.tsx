@@ -18,16 +18,16 @@ const totalExtras = (extras: Extras): number =>
 
 export default ({ battingTeam, innings, batter, bowler, currentOver }: CurrentStateProps) => (
     <React.Fragment>
-        <Grid xs={6}>
+        <Grid item xs={6}>
             <Typography variant="h5">{battingTeam}</Typography>
         </Grid>
-        <Grid xs={6}>
+        <Grid item xs={6}>
             <Typography variant="h5">{`${innings.score}-${innings.wickets}`}</Typography>
         </Grid>
-        <Grid xs={6}>
+        <Grid item xs={6}>
             <Typography variant="h5">Overs</Typography>
         </Grid>
-        <Grid xs={6}>
+        <Grid item xs={6}>
             <Typography variant="h5">{innings.totalOvers}</Typography>
         </Grid>
         {innings.batting.batters.filter(batter => batter.innings &&
@@ -40,10 +40,10 @@ export default ({ battingTeam, innings, batter, bowler, currentOver }: CurrentSt
             }))
             .map(currentBatter => (
                 <React.Fragment key={currentBatter.index}>
-                    <Grid xs={6}>
+                    <Grid item xs={6}>
                         <Typography variant="h5">{currentBatter.name}</Typography>
                     </Grid>
-                    <Grid xs={6}>
+                    <Grid item xs={6}>
                         <Typography variant="h5">
                             {`${currentBatter.innings.runs}` +
                                 `(${currentBatter.innings.ballsFaced})`}
@@ -51,17 +51,17 @@ export default ({ battingTeam, innings, batter, bowler, currentOver }: CurrentSt
                         </Typography>
                     </Grid>
                 </React.Fragment>))}
-        <Grid xs={6}>
+        <Grid item xs={6}>
             <Typography variant="h5">{bowler.name}</Typography>
         </Grid>
-        <Grid xs={6}>
+        <Grid item xs={6}>
             <Typography variant="h5">{`${bowler.totalOvers}-` +
                 `${bowler.maidenOvers}-${bowler.runs}-${bowler.wickets}`}</Typography>
         </Grid>
-        <Grid xs={6}>
+        <Grid item xs={6}>
             <Typography variant="h5">Extras</Typography>
         </Grid>
-        <Grid xs={6}>
+        <Grid item xs={6}>
             <Typography variant="h5">{totalExtras(innings.batting.extras)}</Typography>
         </Grid>
         <CurrentOver over={currentOver} />

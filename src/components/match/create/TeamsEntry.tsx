@@ -19,7 +19,7 @@ interface TeamsEntryProps {
 
 export default ({ homeTeam, awayTeam, homePlayers, awayPlayers, teamChanged, playerChanged }: TeamsEntryProps) => (
     <Grid container>
-        <Grid xs={12} md={6}>
+        <Grid item xs={12} md={6}>
             <TextField
                 style={entryComponent}
                 fullWidth
@@ -39,7 +39,7 @@ export default ({ homeTeam, awayTeam, homePlayers, awayPlayers, teamChanged, pla
                 />
             ))}
         </Grid>
-        <Grid xs={12} md={6}>
+        <Grid item xs={12} md={6}>
             <TextField
                 style={entryComponent}
                 fullWidth

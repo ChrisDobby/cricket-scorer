@@ -10,27 +10,27 @@ import * as globalStyles from '../styles';
 interface FallOfWicketsProps { fallOfWickets: FallOfWicket[]; classes: any; }
 
 const FallOfWickets = ({ fallOfWickets, classes }: FallOfWicketsProps) => (
-    <Grid xs={12} lg={3}>
+    <Grid item xs={12} lg={3}>
         <Grid container className={classes.header}>
             <Typography variant="h6" color="inherit">Fall of wickets</Typography>
         </Grid>
         {fallOfWickets.map(fow => (
             <React.Fragment key={fow.wicket}>
                 <Grid container>
-                    <Grid xs={1}>
+                    <Grid item xs={1}>
                         <Typography variant="body1">{fow.wicket}</Typography>
                     </Grid>
-                    <Grid xs={6}>
+                    <Grid item xs={6}>
                         <Typography variant="body1">{fow.batter}</Typography>
                     </Grid>
-                    <Grid xs={2}>
+                    <Grid item xs={2}>
                         <Typography variant="body1" style={styles.numberCell}>{fow.score}</Typography>
                     </Grid>
-                    <Grid xs={2}>
+                    <Grid item xs={2}>
                         <Typography variant="body1" style={styles.numberCell}>{fow.partnership}</Typography>
                     </Grid>
                 </Grid>
-                <Grid xs={12}>
+                <Grid item xs={12}>
                     <Divider />
                 </Grid>
             </React.Fragment>

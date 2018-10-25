@@ -82,8 +82,9 @@ class Scorecard extends React.Component<ScorecardProps, {}> {
                     index={this.state.selectedInningsIndex}
                     onChangeIndex={this.changeIndex}
                 >
-                    {this.props.cricketMatch.innings.map(inn => (
+                    {this.props.cricketMatch.innings.map((inn, idx) => (
                         <Innings
+                            key={idx}
                             innings={inn}
                             getTeam={type => getTeam(this.props.cricketMatch as MatchEntity, type)}
                         />

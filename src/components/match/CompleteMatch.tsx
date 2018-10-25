@@ -74,7 +74,7 @@ export default class extends React.PureComponent<CompleteMatchProps> {
                         </DialogContentText>
                     </DialogContent>
                     <Grid container>
-                        <Grid xs={12} md={6}>
+                        <Grid item xs={12} md={6}>
                             <FormControl fullWidth>
                                 <InputLabel htmlFor="result">Result</InputLabel>
                                 <Select
@@ -95,7 +95,7 @@ export default class extends React.PureComponent<CompleteMatchProps> {
                         </Grid>
                         {(this.state.result === Result.HomeWin || this.state.result === Result.AwayWin) &&
                             <React.Fragment>
-                                <Grid xs={6} md={3}>
+                                <Grid item xs={6} md={3}>
                                     <TextField
                                         fullWidth
                                         label="by"
@@ -104,7 +104,7 @@ export default class extends React.PureComponent<CompleteMatchProps> {
                                         onChange={this.marginChange}
                                     />
                                 </Grid>
-                                <Grid xs={6} md={3}>
+                                <Grid item xs={6} md={3}>
                                     <FormControl fullWidth>
                                         <Select
                                             value={this.state.winBy}

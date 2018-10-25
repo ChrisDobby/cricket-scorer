@@ -26,8 +26,8 @@ const start = (inProgress: any, storeMatch: any, complete: () => void) =>
 const StartMatch = ({ inProgress, storeMatch, history, classes }: any) => (
     <Paper className={classes.root}>
         <Grid container>
-            <Grid sm={1} md={2} />
-            <Grid xs={12} sm={10} md={8}>
+            <Grid item sm={1} md={2} />
+            <Grid item xs={12} sm={10} md={8}>
                 <StartForm
                     homeTeam={inProgress.match.homeTeam}
                     awayTeam={inProgress.match.awayTeam}

@@ -33,7 +33,7 @@ const entryComponent: React.CSSProperties = {
 export default (props: MatchEntryProps) => (
     <React.Fragment>
         <Grid container style={entryRow}>
-            <Grid xs={12} md={4}>
+            <Grid item xs={12} md={4}>
                 <FormControl fullWidth style={entryComponent}>
                     <InputLabel htmlFor="matchType">Match type</InputLabel>
                     <Select
@@ -48,7 +48,7 @@ export default (props: MatchEntryProps) => (
                     </Select>
                 </FormControl>
             </Grid>
-            <Grid xs={12} md={4}>
+            <Grid item xs={12} md={4}>
                 {props.matchType === MatchType.LimitedOvers &&
                     <TextField
                         style={entryComponent}
@@ -68,7 +68,7 @@ export default (props: MatchEntryProps) => (
                         onChange={ev => props.inningsChanged(Number(ev.target.value))}
                     />}
             </Grid>
-            <Grid xs={12} md={4}>
+            <Grid item xs={12} md={4}>
                 <TextField
                     style={entryComponent}
                     fullWidth
@@ -80,7 +80,7 @@ export default (props: MatchEntryProps) => (
             </Grid>
         </Grid>
         <Grid container style={entryRow}>
-            <Grid xs={12} md={6}>
+            <Grid item xs={12} md={6}>
                 <TextField
                     style={entryComponent}
                     fullWidth
@@ -90,7 +90,7 @@ export default (props: MatchEntryProps) => (
                     onChange={ev => props.noBallRunsChanged(Number(ev.target.value))}
                 />
             </Grid>
-            <Grid xs={12} md={6}>
+            <Grid item xs={12} md={6}>
                 <TextField
                     style={entryComponent}
                     fullWidth

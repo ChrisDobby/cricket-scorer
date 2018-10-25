@@ -25,8 +25,8 @@ const styles = (theme: any) => ({
 const NewMatch = ({ userProfile, storeMatch, history, inProgress, classes }: any) => (
     <Paper className={classes.root}>
         <Grid container>
-            <Grid sm={1} md={2} />
-            <Grid xs={12} sm={10} md={8}>
+            <Grid item sm={1} md={2} />
+            <Grid item xs={12} sm={10} md={8}>
                 <MatchForm
                     createMatch={bindMatchStorage(storeMatch, () => inProgress)(
                         create(userProfile.id, inProgress, () => history.replace('/match/start')),

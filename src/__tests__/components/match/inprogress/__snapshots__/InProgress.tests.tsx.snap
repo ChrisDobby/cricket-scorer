@@ -25,10 +25,10 @@ exports[`InProgress should render correctly for match during an over 1`] = `
       className="MuiGrid-container-29"
     >
       <div
-        className="MuiGrid-container-29 MuiGrid-grid-xs-12-69 MuiGrid-grid-lg-6-105"
+        className="MuiGrid-container-29 MuiGrid-item-30 MuiGrid-grid-xs-12-69 MuiGrid-grid-lg-6-105"
       >
         <div
-          className="MuiGrid-grid-xs-6-63"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
         >
           <h5
             className="MuiTypography-root-130 MuiTypography-h5-146"
@@ -37,7 +37,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </h5>
         </div>
         <div
-          className="MuiGrid-grid-xs-6-63"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
         >
           <h5
             className="MuiTypography-root-130 MuiTypography-h5-146"
@@ -46,7 +46,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </h5>
         </div>
         <div
-          className="MuiGrid-grid-xs-6-63"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
         >
           <h5
             className="MuiTypography-root-130 MuiTypography-h5-146"
@@ -55,7 +55,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </h5>
         </div>
         <div
-          className="MuiGrid-grid-xs-6-63"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
         >
           <h5
             className="MuiTypography-root-130 MuiTypography-h5-146"
@@ -64,7 +64,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </h5>
         </div>
         <div
-          className="MuiGrid-grid-xs-6-63"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
         >
           <h5
             className="MuiTypography-root-130 MuiTypography-h5-146"
@@ -73,7 +73,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </h5>
         </div>
         <div
-          className="MuiGrid-grid-xs-6-63"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
         >
           <h5
             className="MuiTypography-root-130 MuiTypography-h5-146"
@@ -102,7 +102,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </h5>
         </div>
         <div
-          className="MuiGrid-grid-xs-6-63"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
         >
           <h5
             className="MuiTypography-root-130 MuiTypography-h5-146"
@@ -111,7 +111,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </h5>
         </div>
         <div
-          className="MuiGrid-grid-xs-6-63"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
         >
           <h5
             className="MuiTypography-root-130 MuiTypography-h5-146"
@@ -120,7 +120,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </h5>
         </div>
         <div
-          className="MuiGrid-grid-xs-6-63"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
         >
           <h5
             className="MuiTypography-root-130 MuiTypography-h5-146"
@@ -129,7 +129,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </h5>
         </div>
         <div
-          className="MuiGrid-grid-xs-6-63"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
         >
           <h5
             className="MuiTypography-root-130 MuiTypography-h5-146"
@@ -138,7 +138,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </h5>
         </div>
         <div
-          className="MuiGrid-grid-xs-6-63"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
         >
           <h5
             className="MuiTypography-root-130 MuiTypography-h5-146"
@@ -147,7 +147,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </h5>
         </div>
         <div
-          className="MuiGrid-grid-xs-6-63"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
         >
           <h5
             className="MuiTypography-root-130 MuiTypography-h5-146"
@@ -169,7 +169,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
         />
       </div>
       <div
-        className="MuiGrid-container-29 MuiGrid-grid-xs-12-69 MuiGrid-grid-lg-6-105"
+        className="MuiGrid-container-29 MuiGrid-item-30 MuiGrid-grid-xs-12-69 MuiGrid-grid-lg-6-105"
       >
         <div>
           <div
@@ -273,7 +273,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
             className="MuiGrid-container-29"
           >
             <div
-              className="MuiGrid-grid-xs-12-69"
+              className="MuiGrid-item-30 MuiGrid-grid-xs-12-69"
             >
               <hr
                 className="MuiDivider-root-267"
@@ -844,13 +844,13 @@ exports[`InProgress should render correctly for match during an over 1`] = `
     className="MuiGrid-container-29"
   >
     <div
-      className="MuiGrid-container-29 MuiGrid-grid-md-12-97 MuiGrid-grid-lg-8-107"
+      className="MuiGrid-item-30 MuiGrid-grid-md-12-97 MuiGrid-grid-lg-8-107"
     >
       <div
         className="MuiGrid-container-29 Batting-header-317"
       >
         <div
-          className="MuiGrid-grid-xs-10-67 MuiGrid-grid-md-7-92"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-10-67 MuiGrid-grid-md-7-92"
         >
           <h6
             className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
@@ -859,7 +859,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </h6>
         </div>
         <div
-          className="MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
         >
           <h6
             className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
@@ -873,7 +873,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </h6>
         </div>
         <div
-          className="MuiGrid-grid-md-1-86"
+          className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
         >
           <h6
             className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
@@ -887,7 +887,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </h6>
         </div>
         <div
-          className="MuiGrid-grid-md-1-86"
+          className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
         >
           <h6
             className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
@@ -901,7 +901,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </h6>
         </div>
         <div
-          className="MuiGrid-grid-md-1-86"
+          className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
         >
           <h6
             className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
@@ -915,7 +915,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </h6>
         </div>
         <div
-          className="MuiGrid-grid-md-1-86"
+          className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
         >
           <h6
             className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
@@ -933,7 +933,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
         className="MuiGrid-container-29"
       >
         <div
-          className="MuiGrid-grid-xs-4-61 MuiGrid-grid-md-3-88"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-4-61 MuiGrid-grid-md-3-88"
         >
           <p
             className="MuiTypography-root-130 MuiTypography-body2-138"
@@ -942,7 +942,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </p>
         </div>
         <div
-          className="MuiGrid-grid-xs-6-63 MuiGrid-grid-md-4-89"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-4-89"
         >
           <p
             className="MuiTypography-root-130 MuiTypography-body2-138"
@@ -951,7 +951,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </p>
         </div>
         <div
-          className="MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
         >
           <p
             className="MuiTypography-root-130 MuiTypography-body1-139"
@@ -966,7 +966,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </p>
         </div>
         <div
-          className="MuiGrid-grid-md-1-86"
+          className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
         >
           <p
             className="MuiTypography-root-130 MuiTypography-body1-139"
@@ -980,7 +980,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </p>
         </div>
         <div
-          className="MuiGrid-grid-md-1-86"
+          className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
         >
           <p
             className="MuiTypography-root-130 MuiTypography-body1-139"
@@ -994,7 +994,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </p>
         </div>
         <div
-          className="MuiGrid-grid-md-1-86"
+          className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
         >
           <p
             className="MuiTypography-root-130 MuiTypography-body1-139"
@@ -1008,7 +1008,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </p>
         </div>
         <div
-          className="MuiGrid-grid-md-1-86"
+          className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
         >
           <p
             className="MuiTypography-root-130 MuiTypography-body1-139"
@@ -1023,7 +1023,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
         </div>
       </div>
       <div
-        className="MuiGrid-grid-xs-12-69"
+        className="MuiGrid-item-30 MuiGrid-grid-xs-12-69"
       >
         <hr
           className="MuiDivider-root-267"
@@ -1033,7 +1033,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
         className="MuiGrid-container-29"
       >
         <div
-          className="MuiGrid-grid-xs-4-61 MuiGrid-grid-md-3-88"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-4-61 MuiGrid-grid-md-3-88"
         >
           <p
             className="MuiTypography-root-130 MuiTypography-body2-138"
@@ -1042,7 +1042,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </p>
         </div>
         <div
-          className="MuiGrid-grid-xs-6-63 MuiGrid-grid-md-4-89"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-4-89"
         >
           <p
             className="MuiTypography-root-130 MuiTypography-body2-138"
@@ -1051,7 +1051,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </p>
         </div>
         <div
-          className="MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
         >
           <p
             className="MuiTypography-root-130 MuiTypography-body1-139"
@@ -1066,7 +1066,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </p>
         </div>
         <div
-          className="MuiGrid-grid-md-1-86"
+          className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
         >
           <p
             className="MuiTypography-root-130 MuiTypography-body1-139"
@@ -1080,7 +1080,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </p>
         </div>
         <div
-          className="MuiGrid-grid-md-1-86"
+          className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
         >
           <p
             className="MuiTypography-root-130 MuiTypography-body1-139"
@@ -1094,7 +1094,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </p>
         </div>
         <div
-          className="MuiGrid-grid-md-1-86"
+          className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
         >
           <p
             className="MuiTypography-root-130 MuiTypography-body1-139"
@@ -1108,7 +1108,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </p>
         </div>
         <div
-          className="MuiGrid-grid-md-1-86"
+          className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
         >
           <p
             className="MuiTypography-root-130 MuiTypography-body1-139"
@@ -1123,7 +1123,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
         </div>
       </div>
       <div
-        className="MuiGrid-grid-xs-12-69"
+        className="MuiGrid-item-30 MuiGrid-grid-xs-12-69"
       >
         <hr
           className="MuiDivider-root-267"
@@ -1133,7 +1133,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
         className="MuiGrid-container-29"
       >
         <div
-          className="MuiGrid-grid-xs-4-61 MuiGrid-grid-md-3-88"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-4-61 MuiGrid-grid-md-3-88"
         >
           <p
             className="MuiTypography-root-130 MuiTypography-body1-139"
@@ -1142,7 +1142,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </p>
         </div>
         <div
-          className="MuiGrid-grid-xs-6-63 MuiGrid-grid-md-4-89"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-4-89"
         >
           <p
             className="MuiTypography-root-130 MuiTypography-body2-138"
@@ -1151,7 +1151,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </p>
         </div>
         <div
-          className="MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
         >
           <p
             className="MuiTypography-root-130 MuiTypography-body1-139"
@@ -1170,7 +1170,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
         className="MuiGrid-container-29 Batting-header-317"
       >
         <div
-          className="MuiGrid-grid-xs-4-61 MuiGrid-grid-md-3-88"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-4-61 MuiGrid-grid-md-3-88"
         >
           <h6
             className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
@@ -1179,7 +1179,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </h6>
         </div>
         <div
-          className="MuiGrid-grid-xs-6-63 MuiGrid-grid-md-4-89"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-4-89"
         >
           <h6
             className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
@@ -1188,7 +1188,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </h6>
         </div>
         <div
-          className="MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
         >
           <h6
             className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
@@ -1205,7 +1205,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
       </div>
     </div>
     <div
-      className="MuiGrid-grid-xs-12-69 MuiGrid-grid-lg-3-102"
+      className="MuiGrid-item-30 MuiGrid-grid-xs-12-69 MuiGrid-grid-lg-3-102"
     >
       <div
         className="MuiGrid-container-29 FallOfWickets-header-319"
@@ -1218,7 +1218,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
       </div>
     </div>
     <div
-      className="MuiGrid-container-29 MuiGrid-grid-md-12-97 MuiGrid-grid-lg-8-107"
+      className="MuiGrid-item-30 MuiGrid-grid-md-12-97 MuiGrid-grid-lg-8-107"
     >
       <h5
         className="MuiTypography-root-130 MuiTypography-h5-146"
@@ -1230,10 +1230,10 @@ exports[`InProgress should render correctly for match during an over 1`] = `
         className="MuiGrid-container-29 Bowling-header-321"
       >
         <div
-          className="MuiGrid-grid-xs-6-63 MuiGrid-grid-md-5-90"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-5-90"
         />
         <div
-          className="MuiGrid-grid-xs-2-59"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-2-59"
         >
           <h6
             className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
@@ -1247,7 +1247,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </h6>
         </div>
         <div
-          className="MuiGrid-grid-md-2-87"
+          className="MuiGrid-item-30 MuiGrid-grid-md-2-87"
         >
           <h6
             className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
@@ -1261,7 +1261,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </h6>
         </div>
         <div
-          className="MuiGrid-grid-xs-2-59"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-2-59"
         >
           <h6
             className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
@@ -1275,7 +1275,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </h6>
         </div>
         <div
-          className="MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
         >
           <h6
             className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
@@ -1293,7 +1293,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
         className="MuiGrid-container-29"
       >
         <div
-          className="MuiGrid-grid-xs-6-63 MuiGrid-grid-md-5-90"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-5-90"
         >
           <p
             className="MuiTypography-root-130 MuiTypography-body2-138"
@@ -1302,7 +1302,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </p>
         </div>
         <div
-          className="MuiGrid-grid-xs-2-59"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-2-59"
           style={
             Object {
               "textAlign": "center",
@@ -1316,7 +1316,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </p>
         </div>
         <div
-          className="MuiGrid-grid-md-2-87"
+          className="MuiGrid-item-30 MuiGrid-grid-md-2-87"
           style={
             Object {
               "textAlign": "center",
@@ -1330,7 +1330,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </p>
         </div>
         <div
-          className="MuiGrid-grid-xs-2-59"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-2-59"
           style={
             Object {
               "textAlign": "center",
@@ -1344,7 +1344,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </p>
         </div>
         <div
-          className="MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
           style={
             Object {
               "textAlign": "center",
@@ -1359,7 +1359,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
         </div>
       </div>
       <div
-        className="MuiGrid-grid-xs-12-69"
+        className="MuiGrid-item-30 MuiGrid-grid-xs-12-69"
       >
         <hr
           className="MuiDivider-root-267"
@@ -1378,10 +1378,10 @@ exports[`InProgress should render correctly for match that has not started 1`] =
     className="MuiGrid-container-29"
   >
     <div
-      className="MuiGrid-grid-sm-1-72 MuiGrid-grid-md-2-87"
+      className="MuiGrid-item-30 MuiGrid-grid-sm-1-72 MuiGrid-grid-md-2-87"
     />
     <div
-      className="MuiGrid-grid-xs-12-69 MuiGrid-grid-sm-10-81 MuiGrid-grid-md-8-93"
+      className="MuiGrid-item-30 MuiGrid-grid-xs-12-69 MuiGrid-grid-sm-10-81 MuiGrid-grid-md-8-93"
     >
       <div
         className="MuiToolbar-root-126 MuiToolbar-regular-128"

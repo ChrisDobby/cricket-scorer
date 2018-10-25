@@ -38,8 +38,8 @@ export default class extends React.Component<SelectNewBatterProps, {}> {
     render() {
         return (
             <Grid container>
-                <Grid sm={1} md={2} />
-                <Grid xs={12} sm={10} md={8}>
+                <Grid item sm={1} md={2} />
+                <Grid item xs={12} sm={10} md={8}>
                     <Toolbar disableGutters>
                         <Typography variant="h4" color="inherit" style={{ flexGrow: 1 }}>Select batter</Typography>
                         <Button variant="fab" color="primary" onClick={this.save} disabled={!this.canSave}>

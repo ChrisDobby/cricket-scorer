@@ -2,13 +2,13 @@
 
 exports[`Batting should render correctly when batter has no innings 1`] = `
 <div
-  className="MuiGrid-container-3 MuiGrid-grid-md-12-71 MuiGrid-grid-lg-8-81"
+  className="MuiGrid-item-4 MuiGrid-grid-md-12-71 MuiGrid-grid-lg-8-81"
 >
   <div
     className="MuiGrid-container-3 Batting-header-1"
   >
     <div
-      className="MuiGrid-grid-xs-10-41 MuiGrid-grid-md-7-66"
+      className="MuiGrid-item-4 MuiGrid-grid-xs-10-41 MuiGrid-grid-md-7-66"
     >
       <h6
         className="MuiTypography-root-100 MuiTypography-h6-117 MuiTypography-colorInherit-129"
@@ -17,7 +17,7 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
       </h6>
     </div>
     <div
-      className="MuiGrid-grid-xs-2-33 MuiGrid-grid-md-1-60"
+      className="MuiGrid-item-4 MuiGrid-grid-xs-2-33 MuiGrid-grid-md-1-60"
     >
       <h6
         className="MuiTypography-root-100 MuiTypography-h6-117 MuiTypography-colorInherit-129"
@@ -31,7 +31,7 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
       </h6>
     </div>
     <div
-      className="MuiGrid-grid-md-1-60"
+      className="MuiGrid-item-4 MuiGrid-grid-md-1-60"
     >
       <h6
         className="MuiTypography-root-100 MuiTypography-h6-117 MuiTypography-colorInherit-129"
@@ -45,7 +45,7 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
       </h6>
     </div>
     <div
-      className="MuiGrid-grid-md-1-60"
+      className="MuiGrid-item-4 MuiGrid-grid-md-1-60"
     >
       <h6
         className="MuiTypography-root-100 MuiTypography-h6-117 MuiTypography-colorInherit-129"
@@ -59,7 +59,7 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
       </h6>
     </div>
     <div
-      className="MuiGrid-grid-md-1-60"
+      className="MuiGrid-item-4 MuiGrid-grid-md-1-60"
     >
       <h6
         className="MuiTypography-root-100 MuiTypography-h6-117 MuiTypography-colorInherit-129"
@@ -73,7 +73,7 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
       </h6>
     </div>
     <div
-      className="MuiGrid-grid-md-1-60"
+      className="MuiGrid-item-4 MuiGrid-grid-md-1-60"
     >
       <h6
         className="MuiTypography-root-100 MuiTypography-h6-117 MuiTypography-colorInherit-129"
@@ -91,7 +91,7 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
     className="MuiGrid-container-3"
   >
     <div
-      className="MuiGrid-grid-xs-4-35 MuiGrid-grid-md-3-62"
+      className="MuiGrid-item-4 MuiGrid-grid-xs-4-35 MuiGrid-grid-md-3-62"
     >
       <p
         className="MuiTypography-root-100 MuiTypography-body2-108"
@@ -100,7 +100,7 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
       </p>
     </div>
     <div
-      className="MuiGrid-grid-xs-6-37 MuiGrid-grid-md-4-63"
+      className="MuiGrid-item-4 MuiGrid-grid-xs-6-37 MuiGrid-grid-md-4-63"
     >
       <p
         className="MuiTypography-root-100 MuiTypography-body2-108"
@@ -109,7 +109,7 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
       </p>
     </div>
     <div
-      className="MuiGrid-grid-xs-2-33 MuiGrid-grid-md-1-60"
+      className="MuiGrid-item-4 MuiGrid-grid-xs-2-33 MuiGrid-grid-md-1-60"
     >
       <p
         className="MuiTypography-root-100 MuiTypography-body1-109"
@@ -124,7 +124,7 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
       </p>
     </div>
     <div
-      className="MuiGrid-grid-md-1-60"
+      className="MuiGrid-item-4 MuiGrid-grid-md-1-60"
     >
       <p
         className="MuiTypography-root-100 MuiTypography-body1-109"
@@ -138,7 +138,7 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
       </p>
     </div>
     <div
-      className="MuiGrid-grid-md-1-60"
+      className="MuiGrid-item-4 MuiGrid-grid-md-1-60"
     >
       <p
         className="MuiTypography-root-100 MuiTypography-body1-109"
@@ -152,7 +152,7 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
       </p>
     </div>
     <div
-      className="MuiGrid-grid-md-1-60"
+      className="MuiGrid-item-4 MuiGrid-grid-md-1-60"
     >
       <p
         className="MuiTypography-root-100 MuiTypography-body1-109"
@@ -166,7 +166,7 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
       </p>
     </div>
     <div
-      className="MuiGrid-grid-md-1-60"
+      className="MuiGrid-item-4 MuiGrid-grid-md-1-60"
     >
       <p
         className="MuiTypography-root-100 MuiTypography-body1-109"
@@ -181,7 +181,7 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
     </div>
   </div>
   <div
-    className="MuiGrid-grid-xs-12-43"
+    className="MuiGrid-item-4 MuiGrid-grid-xs-12-43"
   >
     <hr
       className="MuiDivider-root-135"
@@ -191,7 +191,7 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
     className="MuiGrid-container-3"
   >
     <div
-      className="MuiGrid-grid-xs-4-35 MuiGrid-grid-md-3-62"
+      className="MuiGrid-item-4 MuiGrid-grid-xs-4-35 MuiGrid-grid-md-3-62"
     >
       <p
         className="MuiTypography-root-100 MuiTypography-body1-109"
@@ -200,7 +200,7 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
       </p>
     </div>
     <div
-      className="MuiGrid-grid-xs-6-37 MuiGrid-grid-md-4-63"
+      className="MuiGrid-item-4 MuiGrid-grid-xs-6-37 MuiGrid-grid-md-4-63"
     >
       <p
         className="MuiTypography-root-100 MuiTypography-body2-108"
@@ -209,7 +209,7 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
       </p>
     </div>
     <div
-      className="MuiGrid-grid-xs-2-33 MuiGrid-grid-md-1-60"
+      className="MuiGrid-item-4 MuiGrid-grid-xs-2-33 MuiGrid-grid-md-1-60"
     >
       <p
         className="MuiTypography-root-100 MuiTypography-body1-109"
@@ -228,7 +228,7 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
     className="MuiGrid-container-3 Batting-header-1"
   >
     <div
-      className="MuiGrid-grid-xs-4-35 MuiGrid-grid-md-3-62"
+      className="MuiGrid-item-4 MuiGrid-grid-xs-4-35 MuiGrid-grid-md-3-62"
     >
       <h6
         className="MuiTypography-root-100 MuiTypography-h6-117 MuiTypography-colorInherit-129"
@@ -237,7 +237,7 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
       </h6>
     </div>
     <div
-      className="MuiGrid-grid-xs-6-37 MuiGrid-grid-md-4-63"
+      className="MuiGrid-item-4 MuiGrid-grid-xs-6-37 MuiGrid-grid-md-4-63"
     >
       <h6
         className="MuiTypography-root-100 MuiTypography-h6-117 MuiTypography-colorInherit-129"
@@ -246,7 +246,7 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
       </h6>
     </div>
     <div
-      className="MuiGrid-grid-xs-2-33 MuiGrid-grid-md-1-60"
+      className="MuiGrid-item-4 MuiGrid-grid-xs-2-33 MuiGrid-grid-md-1-60"
     >
       <h6
         className="MuiTypography-root-100 MuiTypography-h6-117 MuiTypography-colorInherit-129"

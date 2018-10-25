@@ -169,7 +169,7 @@ class EntryPanel extends React.Component<EntryPanelProps, {}> {
                         />
                     </Grid>
                     <Grid container>
-                        <Grid xs={12}>
+                        <Grid item xs={12}>
                             <Divider style={{ marginTop: '10px', marginBottom: '10px' }} />
                         </Grid>
                     </Grid>

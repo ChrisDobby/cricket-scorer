@@ -11,13 +11,13 @@ interface ExtrasProps { extras: InningsExtras; }
 
 export default ({ extras }: ExtrasProps) => (
     <Grid container>
-        <Grid xs={4} md={3}>
+        <Grid item xs={4} md={3}>
             <Typography variant="body1">Extras</Typography>
         </Grid>
-        <Grid xs={6} md={4}>
+        <Grid item xs={6} md={4}>
             <Typography variant="body2">{extrasLine(extras)}</Typography>
         </Grid>
-        <Grid xs={2} md={1}>
+        <Grid item xs={2} md={1}>
             <Typography  style={styles.runsCell} variant="body1">
                 {extras.byes + extras.legByes + extras.wides + extras.noBalls}
             </Typography>

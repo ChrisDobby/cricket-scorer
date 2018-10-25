@@ -15,49 +15,49 @@ interface BowlingProps {
 }
 
 const Bowling = ({ team, bowlers, classes }: BowlingProps) => (
-    <Grid lg={8} md={12} container>
+    <Grid item lg={8} md={12}>
         <Typography variant="h5">
             {team} bowling
         </Typography>
         <Grid container className={classes.header}>
-            <Grid xs={6} md={5} />
-            <Grid xs={2}>
+            <Grid item xs={6} md={5} />
+            <Grid item xs={2}>
                 <Typography color="inherit" variant="h6" style={styles.centreCell}>Overs</Typography>
             </Grid>
             <Hidden smDown>
-                <Grid md={2}>
+                <Grid item md={2}>
                     <Typography color="inherit" variant="h6" style={styles.centreCell}>Maidens</Typography>
                 </Grid>
             </Hidden>
-            <Grid xs={2}>
+            <Grid item xs={2}>
                 <Typography color="inherit" variant="h6" style={styles.centreCell}>Runs</Typography>
             </Grid>
-            <Grid xs={2} md={1}>
+            <Grid item xs={2} md={1}>
                 <Typography color="inherit" variant="h6" style={styles.centreCell}>Wkts</Typography>
             </Grid>
         </Grid>
         {bowlers.map((bowler, idx) => (
             <React.Fragment key={idx}>
                 <Grid container>
-                    <Grid xs={6} md={5}>
+                    <Grid item xs={6} md={5}>
                         <Typography variant="body2">{bowler.name}</Typography>
                     </Grid>
-                    <Grid xs={2} style={styles.centreCell}>
+                    <Grid item xs={2} style={styles.centreCell}>
                         <Typography variant="body2">{bowler.totalOvers}</Typography>
                     </Grid>
                     <Hidden smDown>
-                        <Grid md={2} style={styles.centreCell}>
+                        <Grid item md={2} style={styles.centreCell}>
                             <Typography variant="body2">{bowler.maidenOvers}</Typography>
                         </Grid>
                     </Hidden>
-                    <Grid xs={2} style={styles.centreCell}>
+                    <Grid item xs={2} style={styles.centreCell}>
                         <Typography variant="body2">{bowler.runs}</Typography>
                     </Grid>
-                    <Grid xs={2} md={1} style={styles.centreCell}>
+                    <Grid item xs={2} md={1} style={styles.centreCell}>
                         <Typography variant="body2">{bowler.wickets}</Typography>
                     </Grid>
                 </Grid>
-                <Grid xs={12}>
+                <Grid item xs={12}>
                     <Divider />
                 </Grid>
             </React.Fragment>
