@@ -26,7 +26,6 @@ const entryContainerStyle: React.CSSProperties = {
     padding: '5px',
 };
 
-
 export default (props: BallEntryProps) => (
     <Grid container>
         <DeliveryHeader batter={props.batter} bowler={props.bowler} />
