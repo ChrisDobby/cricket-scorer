@@ -1,9 +1,14 @@
 import * as React from 'react';
-import Grid from '@material-ui/core/Grid';
+import Hidden from '@material-ui/core/Hidden';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpandMore from '@material-ui/icons/ExpandMore';
 import Typography from '@material-ui/core/Typography';
-import Star from '@material-ui/icons/Star';
-import { Innings, BattingInnings, Batter, Bowler, Extras, Over } from '../../../domain';
-import { CurrentOver } from './CurrentOver';
+import Grid from '@material-ui/core/Grid';
+import { Innings, Batter, Bowler, Over } from '../../../domain';
+import CurrentOver from './CurrentOver';
+import InningsState from './InningsState';
 
 interface CurrentStateProps {
     battingTeam: string;
@@ -13,56 +18,22 @@ interface CurrentStateProps {
     currentOver: Over;
 }
 
-const totalExtras = (extras: Extras): number =>
-    extras.byes + extras.legByes + extras.noBalls + extras.wides + extras.penaltyRuns;
-
 export default ({ battingTeam, innings, batter, bowler, currentOver }: CurrentStateProps) => (
     <React.Fragment>
-        <Grid item xs={6}>
-            <Typography variant="h5">{battingTeam}</Typography>
-        </Grid>
-        <Grid item xs={6}>
-            <Typography variant="h5">{`${innings.score}-${innings.wickets}`}</Typography>
-        </Grid>
-        <Grid item xs={6}>
-            <Typography variant="h5">Overs</Typography>
-        </Grid>
-        <Grid item xs={6}>
-            <Typography variant="h5">{innings.totalOvers}</Typography>
-        </Grid>
-        {innings.batting.batters.filter(batter => batter.innings &&
-            !batter.innings.wicket &&
-            typeof batter.unavailableReason === 'undefined')
-            .map((batter, idx) => ({
-                name: batter.name,
-                innings: batter.innings as BattingInnings,
-                index: idx,
-            }))
-            .map(currentBatter => (
-                <React.Fragment key={currentBatter.index}>
-                    <Grid item xs={6}>
-                        <Typography variant="h5">{currentBatter.name}</Typography>
+        <Hidden xsDown>
+            <InningsState battingTeam={battingTeam} innings={innings} batter={batter} bowler={bowler} />
+        </Hidden>
+        <Hidden smUp>
+            <ExpansionPanel style={{ width: '100%' }}>
+                <ExpansionPanelSummary expandIcon={<ExpandMore />}>
+                    <Typography>{`${battingTeam} ${innings.score}-${innings.wickets}`}</Typography>
+                </ExpansionPanelSummary>
+                <ExpansionPanelDetails>
+                    <Grid container>
+                        <InningsState battingTeam={battingTeam} innings={innings} batter={batter} bowler={bowler} />
                     </Grid>
-                    <Grid item xs={6}>
-                        <Typography variant="h5">
-                            {`${currentBatter.innings.runs}` +
-                                `(${currentBatter.innings.ballsFaced})`}
-                            {currentBatter.name === batter.name && <Star color="primary" />}
-                        </Typography>
-                    </Grid>
-                </React.Fragment>))}
-        <Grid item xs={6}>
-            <Typography variant="h5">{bowler.name}</Typography>
-        </Grid>
-        <Grid item xs={6}>
-            <Typography variant="h5">{`${bowler.totalOvers}-` +
-                `${bowler.maidenOvers}-${bowler.runs}-${bowler.wickets}`}</Typography>
-        </Grid>
-        <Grid item xs={6}>
-            <Typography variant="h5">Extras</Typography>
-        </Grid>
-        <Grid item xs={6}>
-            <Typography variant="h5">{totalExtras(innings.batting.extras)}</Typography>
-        </Grid>
+                </ExpansionPanelDetails>
+            </ExpansionPanel>
+        </Hidden>
         <CurrentOver over={currentOver} />
     </React.Fragment>);

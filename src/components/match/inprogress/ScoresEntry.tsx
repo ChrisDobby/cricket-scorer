@@ -79,14 +79,14 @@ export default ({ deliveryOutcome, hasBoundaries, getScores, action }: ScoresEnt
                             aria-label="Boundary Four"
                             style={style}
                             onClick={executeBoundary(4)}
-                        >{'Boundary 4'}
+                        >{'Bdy 4'}
                         </Button>
                         <Button
                             variant="extendedFab"
                             aria-label="Boundary Six"
                             style={style}
                             onClick={executeBoundary(6)}
-                        >{'Boundary 6'}
+                        >{'Bdy 6'}
                         </Button>
                     </React.Fragment>}
             </Grid>

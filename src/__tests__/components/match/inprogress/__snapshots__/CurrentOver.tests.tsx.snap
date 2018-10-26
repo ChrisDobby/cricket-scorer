@@ -1,7 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CurrentOver should render correctly 1`] = `
-Array [
+<div
+  style={
+    Object {
+      "minHeight": "100px",
+      "paddingBottom": "10px",
+      "paddingTop": "10px",
+    }
+  }
+>
   <div
     className="MuiGrid-container-1"
   >
@@ -10,7 +18,7 @@ Array [
     >
       This over 0 - 3
     </h6>
-  </div>,
+  </div>
   <div
     className="MuiGrid-container-1"
   >
@@ -30,6 +38,6 @@ Array [
     >
       <canvas />
     </div>
-  </div>,
-]
+  </div>
+</div>
 `;

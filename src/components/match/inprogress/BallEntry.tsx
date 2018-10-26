@@ -5,6 +5,7 @@ import EntryPanel from './EntryPanel';
 import DeliveryHeader from '../DeliveryHeader';
 import CurrentState from './CurrentState';
 import OverCompleteAlert from './OverCompleteAlert';
+import EntryContainer from './EntryContainer';
 
 interface BallEntryProps {
     innings: Innings;
@@ -19,27 +20,39 @@ interface BallEntryProps {
     calculateResult: () => MatchResult | undefined;
 }
 
+const entryContainerStyle: React.CSSProperties = {
+    marginTop: '10px',
+    marginBottom: '10px',
+    padding: '5px',
+};
+
+
 export default (props: BallEntryProps) => (
     <Grid container>
         <DeliveryHeader batter={props.batter} bowler={props.bowler} />
         <Grid container>
-            <Grid item xs={12} lg={6} container>
-                <CurrentState
-                    battingTeam={props.battingTeam.name}
-                    innings={props.innings}
-                    batter={props.batter}
-                    bowler={props.bowler}
-                    currentOver={props.currentOver}
-                />
+            <Grid item xs={12} lg={6} style={entryContainerStyle}>
+                <EntryContainer>
+                    <CurrentState
+                        battingTeam={props.battingTeam.name}
+                        innings={props.innings}
+                        batter={props.batter}
+                        bowler={props.bowler}
+                        currentOver={props.currentOver}
+                    />
+                </EntryContainer>
             </Grid>
-            <Grid item xs={12} lg={6} container>
-                <EntryPanel
-                    delivery={props.delivery}
-                    overComplete={props.overComplete}
-                    homeTeam={props.homeTeam}
-                    awayTeam={props.awayTeam}
-                    calculateResult={props.calculateResult}
-                />
+            <Grid item xs={12} lg={6} style={entryContainerStyle}>
+                <EntryContainer>
+                    <EntryPanel
+                        delivery={props.delivery}
+                        overComplete={props.overComplete}
+                        homeTeam={props.homeTeam}
+                        awayTeam={props.awayTeam}
+                        calculateResult={props.calculateResult}
+                    />
+
+                </EntryContainer>
             </Grid>
         </Grid>
         {props.overComplete && <OverCompleteAlert completeOver={props.completeOver} />}

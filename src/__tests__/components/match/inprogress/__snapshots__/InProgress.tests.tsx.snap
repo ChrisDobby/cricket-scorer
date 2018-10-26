@@ -25,515 +25,209 @@ exports[`InProgress should render correctly for match during an over 1`] = `
       className="MuiGrid-container-29"
     >
       <div
-        className="MuiGrid-container-29 MuiGrid-item-30 MuiGrid-grid-xs-12-69 MuiGrid-grid-lg-6-105"
+        className="MuiGrid-item-30 MuiGrid-grid-xs-12-69 MuiGrid-grid-lg-6-105"
+        style={
+          Object {
+            "marginBottom": "10px",
+            "marginTop": "10px",
+            "padding": "5px",
+          }
+        }
       >
         <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
+          className="MuiPaper-root-2 MuiPaper-elevation1-5 MuiPaper-rounded-3"
+          style={
+            Object {
+              "height": "100%",
+              "padding": "10px",
+            }
+          }
         >
-          <h5
-            className="MuiTypography-root-130 MuiTypography-h5-146"
-          >
-            Team 1
-          </h5>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
-        >
-          <h5
-            className="MuiTypography-root-130 MuiTypography-h5-146"
-          >
-            0-0
-          </h5>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
-        >
-          <h5
-            className="MuiTypography-root-130 MuiTypography-h5-146"
-          >
-            Overs
-          </h5>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
-        >
-          <h5
-            className="MuiTypography-root-130 MuiTypography-h5-146"
-          >
-            0
-          </h5>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
-        >
-          <h5
-            className="MuiTypography-root-130 MuiTypography-h5-146"
-          >
-            Player 1
-          </h5>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
-        >
-          <h5
-            className="MuiTypography-root-130 MuiTypography-h5-146"
-          >
-            0(0)
-            <svg
-              aria-hidden="true"
-              className="MuiSvgIcon-root-190 MuiSvgIcon-colorPrimary-191"
-              color={undefined}
-              focusable="false"
-              role="presentation"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M0 0h24v24H0z"
-                fill="none"
-              />
-              <path
-                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-              />
-              <path
-                d="M0 0h24v24H0z"
-                fill="none"
-              />
-            </svg>
-          </h5>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
-        >
-          <h5
-            className="MuiTypography-root-130 MuiTypography-h5-146"
-          >
-            Player 2
-          </h5>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
-        >
-          <h5
-            className="MuiTypography-root-130 MuiTypography-h5-146"
-          >
-            0(0)
-          </h5>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
-        >
-          <h5
-            className="MuiTypography-root-130 MuiTypography-h5-146"
-          >
-            Player 22
-          </h5>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
-        >
-          <h5
-            className="MuiTypography-root-130 MuiTypography-h5-146"
-          >
-            0-0-0-0
-          </h5>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
-        >
-          <h5
-            className="MuiTypography-root-130 MuiTypography-h5-146"
-          >
-            Extras
-          </h5>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
-        >
-          <h5
-            className="MuiTypography-root-130 MuiTypography-h5-146"
-          >
-            0
-          </h5>
-        </div>
-        <div
-          className="MuiGrid-container-29"
-        >
-          <h6
-            className="MuiTypography-root-130 MuiTypography-h6-147"
-          >
-            This over 0 - 0
-          </h6>
-        </div>
-        <div
-          className="MuiGrid-container-29"
-        />
-      </div>
-      <div
-        className="MuiGrid-container-29 MuiGrid-item-30 MuiGrid-grid-xs-12-69 MuiGrid-grid-lg-6-105"
-      >
-        <div>
-          <div
-            className="MuiGrid-container-29"
-          >
-            <button
-              aria-label="Wicket"
-              className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-contained-224 MuiButton-containedPrimary-225 MuiButton-raised-227 MuiButton-raisedPrimary-228"
-              disabled={false}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              style={
-                Object {
-                  "marginRight": "10px",
-                }
-              }
-              tabIndex="0"
-              type="button"
-            >
-              <span
-                className="MuiButton-label-214"
-              >
-                W
-              </span>
-              <span
-                className="MuiTouchRipple-root-323"
-              />
-            </button>
-            <label
-              className="MuiFormControlLabel-root-244"
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
-            >
-              <span
-                className="MuiSwitch-root-248"
-              >
-                <span
-                  className="MuiButtonBase-root-239 MuiIconButton-root-261 MuiSwitchBase-root-257 MuiSwitch-switchBase-251 MuiSwitch-colorSecondary-254"
-                  onBlur={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  role={undefined}
-                  tabIndex={null}
-                >
-                  <span
-                    className="MuiIconButton-label-266"
-                  >
-                    <span
-                      className="MuiSwitch-icon-249"
-                    />
-                    <input
-                      autoFocus={undefined}
-                      checked={false}
-                      className="MuiSwitchBase-input-260"
-                      disabled={undefined}
-                      id={undefined}
-                      name={undefined}
-                      onChange={[Function]}
-                      readOnly={undefined}
-                      required={undefined}
-                      tabIndex={undefined}
-                      type="checkbox"
-                      value={undefined}
-                    />
-                  </span>
-                  <span
-                    className="MuiTouchRipple-root-323"
-                  />
-                </span>
-                <span
-                  className="MuiSwitch-bar-256"
-                />
-              </span>
-              <span
-                className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-247"
-              >
-                No ball
-              </span>
-            </label>
-          </div>
           <div
             className="MuiGrid-container-29"
           >
             <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-12-69"
+              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
             >
-              <hr
-                className="MuiDivider-root-267"
-                style={
-                  Object {
-                    "marginBottom": "10px",
-                    "marginTop": "10px",
-                  }
-                }
-              />
+              <h5
+                className="MuiTypography-root-130 MuiTypography-h5-146"
+              >
+                Team 1
+              </h5>
             </div>
-          </div>
-          <div
-            className="MuiGrid-container-29"
-          >
-            <label
-              className="MuiFormControlLabel-root-244"
-            >
-              <span
-                className="MuiButtonBase-root-239 MuiIconButton-root-261 MuiSwitchBase-root-257 MuiRadio-root-271 MuiRadio-colorSecondary-275 MuiSwitchBase-checked-258 MuiRadio-checked-272"
-                onBlur={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseLeave={[Function]}
-                onMouseUp={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                role={undefined}
-                tabIndex={null}
-              >
-                <span
-                  className="MuiIconButton-label-266"
-                >
-                  <svg
-                    aria-hidden="true"
-                    className="MuiSvgIcon-root-190"
-                    color={undefined}
-                    focusable="false"
-                    role="presentation"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-                    />
-                  </svg>
-                  <input
-                    autoFocus={undefined}
-                    checked={true}
-                    className="MuiSwitchBase-input-260"
-                    disabled={undefined}
-                    id={undefined}
-                    name={undefined}
-                    onChange={[Function]}
-                    readOnly={undefined}
-                    required={undefined}
-                    tabIndex={undefined}
-                    type="radio"
-                    value={undefined}
-                  />
-                </span>
-                <span
-                  className="MuiTouchRipple-root-323"
-                />
-              </span>
-              <span
-                className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-247"
-              >
-                Runs
-              </span>
-            </label>
-            <label
-              className="MuiFormControlLabel-root-244"
-            >
-              <span
-                className="MuiButtonBase-root-239 MuiIconButton-root-261 MuiSwitchBase-root-257 MuiRadio-root-271 MuiRadio-colorSecondary-275"
-                onBlur={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseLeave={[Function]}
-                onMouseUp={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                role={undefined}
-                tabIndex={null}
-              >
-                <span
-                  className="MuiIconButton-label-266"
-                >
-                  <svg
-                    aria-hidden="true"
-                    className="MuiSvgIcon-root-190"
-                    color={undefined}
-                    focusable="false"
-                    role="presentation"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-                    />
-                  </svg>
-                  <input
-                    autoFocus={undefined}
-                    checked={false}
-                    className="MuiSwitchBase-input-260"
-                    disabled={undefined}
-                    id={undefined}
-                    name={undefined}
-                    onChange={[Function]}
-                    readOnly={undefined}
-                    required={undefined}
-                    tabIndex={undefined}
-                    type="radio"
-                    value={undefined}
-                  />
-                </span>
-                <span
-                  className="MuiTouchRipple-root-323"
-                />
-              </span>
-              <span
-                className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-247"
-              >
-                Byes
-              </span>
-            </label>
-            <label
-              className="MuiFormControlLabel-root-244"
-            >
-              <span
-                className="MuiButtonBase-root-239 MuiIconButton-root-261 MuiSwitchBase-root-257 MuiRadio-root-271 MuiRadio-colorSecondary-275"
-                onBlur={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseLeave={[Function]}
-                onMouseUp={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                role={undefined}
-                tabIndex={null}
-              >
-                <span
-                  className="MuiIconButton-label-266"
-                >
-                  <svg
-                    aria-hidden="true"
-                    className="MuiSvgIcon-root-190"
-                    color={undefined}
-                    focusable="false"
-                    role="presentation"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-                    />
-                  </svg>
-                  <input
-                    autoFocus={undefined}
-                    checked={false}
-                    className="MuiSwitchBase-input-260"
-                    disabled={undefined}
-                    id={undefined}
-                    name={undefined}
-                    onChange={[Function]}
-                    readOnly={undefined}
-                    required={undefined}
-                    tabIndex={undefined}
-                    type="radio"
-                    value={undefined}
-                  />
-                </span>
-                <span
-                  className="MuiTouchRipple-root-323"
-                />
-              </span>
-              <span
-                className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-247"
-              >
-                Leg byes
-              </span>
-            </label>
-            <label
-              className="MuiFormControlLabel-root-244"
-            >
-              <span
-                className="MuiButtonBase-root-239 MuiIconButton-root-261 MuiSwitchBase-root-257 MuiRadio-root-271 MuiRadio-colorSecondary-275"
-                onBlur={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseLeave={[Function]}
-                onMouseUp={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                role={undefined}
-                tabIndex={null}
-              >
-                <span
-                  className="MuiIconButton-label-266"
-                >
-                  <svg
-                    aria-hidden="true"
-                    className="MuiSvgIcon-root-190"
-                    color={undefined}
-                    focusable="false"
-                    role="presentation"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-                    />
-                  </svg>
-                  <input
-                    autoFocus={undefined}
-                    checked={false}
-                    className="MuiSwitchBase-input-260"
-                    disabled={undefined}
-                    id={undefined}
-                    name={undefined}
-                    onChange={[Function]}
-                    readOnly={undefined}
-                    required={undefined}
-                    tabIndex={undefined}
-                    type="radio"
-                    value={undefined}
-                  />
-                </span>
-                <span
-                  className="MuiTouchRipple-root-323"
-                />
-              </span>
-              <span
-                className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-247"
-              >
-                Wide
-              </span>
-            </label>
-          </div>
-          <div
-            className="MuiGrid-container-29"
-          >
             <div
-              className="MuiGrid-container-29"
+              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
+            >
+              <h5
+                className="MuiTypography-root-130 MuiTypography-h5-146"
+              >
+                0-0
+              </h5>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
+            >
+              <h5
+                className="MuiTypography-root-130 MuiTypography-h5-146"
+              >
+                Overs
+              </h5>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
+            >
+              <h5
+                className="MuiTypography-root-130 MuiTypography-h5-146"
+              >
+                0
+              </h5>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
+            >
+              <h5
+                className="MuiTypography-root-130 MuiTypography-h5-146"
+              >
+                Player 1
+              </h5>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
+            >
+              <h5
+                className="MuiTypography-root-130 MuiTypography-h5-146"
+              >
+                0(0)
+                <svg
+                  aria-hidden="true"
+                  className="MuiSvgIcon-root-190 MuiSvgIcon-colorPrimary-191"
+                  color={undefined}
+                  focusable="false"
+                  role="presentation"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M0 0h24v24H0z"
+                    fill="none"
+                  />
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
+                  <path
+                    d="M0 0h24v24H0z"
+                    fill="none"
+                  />
+                </svg>
+              </h5>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
+            >
+              <h5
+                className="MuiTypography-root-130 MuiTypography-h5-146"
+              >
+                Player 2
+              </h5>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
+            >
+              <h5
+                className="MuiTypography-root-130 MuiTypography-h5-146"
+              >
+                0(0)
+              </h5>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
+            >
+              <h5
+                className="MuiTypography-root-130 MuiTypography-h5-146"
+              >
+                Player 22
+              </h5>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
+            >
+              <h5
+                className="MuiTypography-root-130 MuiTypography-h5-146"
+              >
+                0-0-0-0
+              </h5>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
+            >
+              <h5
+                className="MuiTypography-root-130 MuiTypography-h5-146"
+              >
+                Extras
+              </h5>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
+            >
+              <h5
+                className="MuiTypography-root-130 MuiTypography-h5-146"
+              >
+                0
+              </h5>
+            </div>
+            <div
+              style={
+                Object {
+                  "minHeight": "100px",
+                  "paddingBottom": "10px",
+                  "paddingTop": "10px",
+                }
+              }
             >
               <div
                 className="MuiGrid-container-29"
               >
+                <h6
+                  className="MuiTypography-root-130 MuiTypography-h6-147"
+                >
+                  This over 0 - 0
+                </h6>
+              </div>
+              <div
+                className="MuiGrid-container-29"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiGrid-item-30 MuiGrid-grid-xs-12-69 MuiGrid-grid-lg-6-105"
+        style={
+          Object {
+            "marginBottom": "10px",
+            "marginTop": "10px",
+            "padding": "5px",
+          }
+        }
+      >
+        <div
+          className="MuiPaper-root-2 MuiPaper-elevation1-5 MuiPaper-rounded-3"
+          style={
+            Object {
+              "height": "100%",
+              "padding": "10px",
+            }
+          }
+        >
+          <div
+            className="MuiGrid-container-29"
+          >
+            <div>
+              <div
+                className="MuiGrid-container-29"
+              >
                 <button
-                  aria-label="Dot ball"
-                  className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-contained-224 MuiButton-raised-227"
+                  aria-label="Wicket"
+                  className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-contained-224 MuiButton-containedPrimary-225 MuiButton-raised-227 MuiButton-raisedPrimary-228"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -548,10 +242,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                   onTouchStart={[Function]}
                   style={
                     Object {
-                      "backgroundColor": "#43a047",
-                      "color": "#ffffff",
-                      "marginBottom": "8px",
-                      "marginRight": "8px",
+                      "marginRight": "10px",
                     }
                   }
                   tabIndex="0"
@@ -560,272 +251,658 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                   <span
                     className="MuiButton-label-214"
                   >
-                    .
+                    W
                   </span>
                   <span
-                    className="MuiTouchRipple-root-323"
+                    className="MuiTouchRipple-root-325"
                   />
                 </button>
-                <button
-                  aria-label="Single"
-                  className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-contained-224 MuiButton-raised-227"
-                  disabled={false}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
+                <label
+                  className="MuiFormControlLabel-root-244"
                   style={
                     Object {
-                      "backgroundColor": "#43a047",
-                      "color": "#ffffff",
-                      "marginBottom": "8px",
-                      "marginRight": "8px",
+                      "float": "right",
                     }
                   }
-                  tabIndex="0"
-                  type="button"
                 >
                   <span
-                    className="MuiButton-label-214"
+                    className="MuiSwitch-root-248"
                   >
-                    1
+                    <span
+                      className="MuiButtonBase-root-239 MuiIconButton-root-261 MuiSwitchBase-root-257 MuiSwitch-switchBase-251 MuiSwitch-colorSecondary-254"
+                      onBlur={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchMove={[Function]}
+                      onTouchStart={[Function]}
+                      role={undefined}
+                      tabIndex={null}
+                    >
+                      <span
+                        className="MuiIconButton-label-266"
+                      >
+                        <span
+                          className="MuiSwitch-icon-249"
+                        />
+                        <input
+                          autoFocus={undefined}
+                          checked={false}
+                          className="MuiSwitchBase-input-260"
+                          disabled={undefined}
+                          id={undefined}
+                          name={undefined}
+                          onChange={[Function]}
+                          readOnly={undefined}
+                          required={undefined}
+                          tabIndex={undefined}
+                          type="checkbox"
+                          value={undefined}
+                        />
+                      </span>
+                      <span
+                        className="MuiTouchRipple-root-325"
+                      />
+                    </span>
+                    <span
+                      className="MuiSwitch-bar-256"
+                    />
                   </span>
                   <span
-                    className="MuiTouchRipple-root-323"
-                  />
-                </button>
-                <button
-                  aria-label="Two"
-                  className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-contained-224 MuiButton-raised-227"
-                  disabled={false}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  style={
-                    Object {
-                      "backgroundColor": "#43a047",
-                      "color": "#ffffff",
-                      "marginBottom": "8px",
-                      "marginRight": "8px",
-                    }
-                  }
-                  tabIndex="0"
-                  type="button"
-                >
-                  <span
-                    className="MuiButton-label-214"
+                    className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-247"
                   >
-                    2
+                    No ball
                   </span>
-                  <span
-                    className="MuiTouchRipple-root-323"
-                  />
-                </button>
-                <button
-                  aria-label="Three"
-                  className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-contained-224 MuiButton-raised-227"
-                  disabled={false}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  style={
-                    Object {
-                      "backgroundColor": "#43a047",
-                      "color": "#ffffff",
-                      "marginBottom": "8px",
-                      "marginRight": "8px",
-                    }
-                  }
-                  tabIndex="0"
-                  type="button"
-                >
-                  <span
-                    className="MuiButton-label-214"
-                  >
-                    3
-                  </span>
-                  <span
-                    className="MuiTouchRipple-root-323"
-                  />
-                </button>
-                <button
-                  aria-label="Four"
-                  className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-contained-224 MuiButton-raised-227"
-                  disabled={false}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  style={
-                    Object {
-                      "backgroundColor": "#43a047",
-                      "color": "#ffffff",
-                      "marginBottom": "8px",
-                      "marginRight": "8px",
-                    }
-                  }
-                  tabIndex="0"
-                  type="button"
-                >
-                  <span
-                    className="MuiButton-label-214"
-                  >
-                    4
-                  </span>
-                  <span
-                    className="MuiTouchRipple-root-323"
-                  />
-                </button>
-                <button
-                  aria-label="Boundary Four"
-                  className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-extendedFab-231 MuiButton-contained-224 MuiButton-raised-227"
-                  disabled={false}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  style={
-                    Object {
-                      "backgroundColor": "#43a047",
-                      "color": "#ffffff",
-                      "marginBottom": "8px",
-                      "marginRight": "8px",
-                    }
-                  }
-                  tabIndex="0"
-                  type="button"
-                >
-                  <span
-                    className="MuiButton-label-214"
-                  >
-                    Boundary 4
-                  </span>
-                  <span
-                    className="MuiTouchRipple-root-323"
-                  />
-                </button>
-                <button
-                  aria-label="Boundary Six"
-                  className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-extendedFab-231 MuiButton-contained-224 MuiButton-raised-227"
-                  disabled={false}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  style={
-                    Object {
-                      "backgroundColor": "#43a047",
-                      "color": "#ffffff",
-                      "marginBottom": "8px",
-                      "marginRight": "8px",
-                    }
-                  }
-                  tabIndex="0"
-                  type="button"
-                >
-                  <span
-                    className="MuiButton-label-214"
-                  >
-                    Boundary 6
-                  </span>
-                  <span
-                    className="MuiTouchRipple-root-323"
-                  />
-                </button>
+                </label>
               </div>
               <div
                 className="MuiGrid-container-29"
               >
                 <div
-                  className="MuiInputBase-root-296 MuiInput-root-283 MuiInput-underline-287"
-                  onClick={[Function]}
+                  className="MuiGrid-item-30 MuiGrid-grid-xs-12-69"
+                >
+                  <hr
+                    className="MuiDivider-root-267"
+                    style={
+                      Object {
+                        "marginBottom": "10px",
+                        "marginTop": "10px",
+                      }
+                    }
+                  />
+                </div>
+              </div>
+              <div
+                className="MuiGrid-container-29"
+              >
+                <div
+                  className="MuiFormGroup-root-271 MuiFormGroup-row-272"
+                  role="radiogroup"
+                >
+                  <label
+                    className="MuiFormControlLabel-root-244"
+                    style={
+                      Object {
+                        "marginRight": "26px",
+                      }
+                    }
+                  >
+                    <span
+                      className="MuiButtonBase-root-239 MuiIconButton-root-261 MuiSwitchBase-root-257 MuiRadio-root-273 MuiRadio-colorSecondary-277 MuiSwitchBase-checked-258 MuiRadio-checked-274"
+                      onBlur={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchMove={[Function]}
+                      onTouchStart={[Function]}
+                      role={undefined}
+                      tabIndex={null}
+                    >
+                      <span
+                        className="MuiIconButton-label-266"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="MuiSvgIcon-root-190"
+                          color={undefined}
+                          focusable="false"
+                          role="presentation"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                          />
+                        </svg>
+                        <input
+                          autoFocus={undefined}
+                          checked={true}
+                          className="MuiSwitchBase-input-260"
+                          disabled={undefined}
+                          id={undefined}
+                          name={undefined}
+                          onChange={[Function]}
+                          readOnly={undefined}
+                          required={undefined}
+                          tabIndex={undefined}
+                          type="radio"
+                          value={undefined}
+                        />
+                      </span>
+                      <span
+                        className="MuiTouchRipple-root-325"
+                      />
+                    </span>
+                    <span
+                      className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-247"
+                    >
+                      ru
+                    </span>
+                  </label>
+                  <label
+                    className="MuiFormControlLabel-root-244"
+                    style={
+                      Object {
+                        "marginRight": "26px",
+                      }
+                    }
+                  >
+                    <span
+                      className="MuiButtonBase-root-239 MuiIconButton-root-261 MuiSwitchBase-root-257 MuiRadio-root-273 MuiRadio-colorSecondary-277"
+                      onBlur={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchMove={[Function]}
+                      onTouchStart={[Function]}
+                      role={undefined}
+                      tabIndex={null}
+                    >
+                      <span
+                        className="MuiIconButton-label-266"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="MuiSvgIcon-root-190"
+                          color={undefined}
+                          focusable="false"
+                          role="presentation"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                          />
+                        </svg>
+                        <input
+                          autoFocus={undefined}
+                          checked={false}
+                          className="MuiSwitchBase-input-260"
+                          disabled={undefined}
+                          id={undefined}
+                          name={undefined}
+                          onChange={[Function]}
+                          readOnly={undefined}
+                          required={undefined}
+                          tabIndex={undefined}
+                          type="radio"
+                          value={undefined}
+                        />
+                      </span>
+                      <span
+                        className="MuiTouchRipple-root-325"
+                      />
+                    </span>
+                    <span
+                      className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-247"
+                    >
+                      b
+                    </span>
+                  </label>
+                  <label
+                    className="MuiFormControlLabel-root-244"
+                    style={
+                      Object {
+                        "marginRight": "26px",
+                      }
+                    }
+                  >
+                    <span
+                      className="MuiButtonBase-root-239 MuiIconButton-root-261 MuiSwitchBase-root-257 MuiRadio-root-273 MuiRadio-colorSecondary-277"
+                      onBlur={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchMove={[Function]}
+                      onTouchStart={[Function]}
+                      role={undefined}
+                      tabIndex={null}
+                    >
+                      <span
+                        className="MuiIconButton-label-266"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="MuiSvgIcon-root-190"
+                          color={undefined}
+                          focusable="false"
+                          role="presentation"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                          />
+                        </svg>
+                        <input
+                          autoFocus={undefined}
+                          checked={false}
+                          className="MuiSwitchBase-input-260"
+                          disabled={undefined}
+                          id={undefined}
+                          name={undefined}
+                          onChange={[Function]}
+                          readOnly={undefined}
+                          required={undefined}
+                          tabIndex={undefined}
+                          type="radio"
+                          value={undefined}
+                        />
+                      </span>
+                      <span
+                        className="MuiTouchRipple-root-325"
+                      />
+                    </span>
+                    <span
+                      className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-247"
+                    >
+                      lb
+                    </span>
+                  </label>
+                  <label
+                    className="MuiFormControlLabel-root-244"
+                    style={
+                      Object {
+                        "marginRight": "26px",
+                      }
+                    }
+                  >
+                    <span
+                      className="MuiButtonBase-root-239 MuiIconButton-root-261 MuiSwitchBase-root-257 MuiRadio-root-273 MuiRadio-colorSecondary-277"
+                      onBlur={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchMove={[Function]}
+                      onTouchStart={[Function]}
+                      role={undefined}
+                      tabIndex={null}
+                    >
+                      <span
+                        className="MuiIconButton-label-266"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="MuiSvgIcon-root-190"
+                          color={undefined}
+                          focusable="false"
+                          role="presentation"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                          />
+                        </svg>
+                        <input
+                          autoFocus={undefined}
+                          checked={false}
+                          className="MuiSwitchBase-input-260"
+                          disabled={undefined}
+                          id={undefined}
+                          name={undefined}
+                          onChange={[Function]}
+                          readOnly={undefined}
+                          required={undefined}
+                          tabIndex={undefined}
+                          type="radio"
+                          value={undefined}
+                        />
+                      </span>
+                      <span
+                        className="MuiTouchRipple-root-325"
+                      />
+                    </span>
+                    <span
+                      className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-247"
+                    >
+                      wd
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <div
+                className="MuiGrid-container-29"
+              >
+                <div
+                  className="MuiGrid-container-29"
                 >
                   <div
-                    className="MuiSelect-root-276"
+                    className="MuiGrid-container-29"
                   >
-                    <div
-                      aria-haspopup="true"
-                      aria-owns={null}
-                      aria-pressed="false"
-                      className="MuiSelect-select-277 MuiSelect-selectMenu-280 MuiInputBase-input-306 MuiInput-input-291"
+                    <button
+                      aria-label="Dot ball"
+                      className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-contained-224 MuiButton-raised-227"
+                      disabled={false}
                       onBlur={[Function]}
                       onClick={[Function]}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
-                      role="button"
-                      tabIndex={0}
+                      onKeyUp={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchMove={[Function]}
+                      onTouchStart={[Function]}
+                      style={
+                        Object {
+                          "backgroundColor": "#43a047",
+                          "color": "#ffffff",
+                          "marginBottom": "8px",
+                          "marginRight": "8px",
+                        }
+                      }
+                      tabIndex="0"
+                      type="button"
                     >
-                      or select a score...
-                    </div>
-                    <input
-                      autoComplete={undefined}
-                      autoFocus={undefined}
-                      defaultValue={undefined}
-                      id={undefined}
-                      name={undefined}
-                      onKeyDown={undefined}
-                      onKeyUp={undefined}
-                      placeholder={undefined}
-                      rows={undefined}
-                      type="hidden"
-                      value={0}
-                    />
-                    <svg
-                      aria-hidden="true"
-                      className="MuiSvgIcon-root-190 MuiSelect-icon-282"
-                      color={undefined}
-                      focusable="false"
-                      role="presentation"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M7 10l5 5 5-5z"
+                      <span
+                        className="MuiButton-label-214"
+                      >
+                        .
+                      </span>
+                      <span
+                        className="MuiTouchRipple-root-325"
                       />
-                    </svg>
+                    </button>
+                    <button
+                      aria-label="Single"
+                      className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-contained-224 MuiButton-raised-227"
+                      disabled={false}
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchMove={[Function]}
+                      onTouchStart={[Function]}
+                      style={
+                        Object {
+                          "backgroundColor": "#43a047",
+                          "color": "#ffffff",
+                          "marginBottom": "8px",
+                          "marginRight": "8px",
+                        }
+                      }
+                      tabIndex="0"
+                      type="button"
+                    >
+                      <span
+                        className="MuiButton-label-214"
+                      >
+                        1
+                      </span>
+                      <span
+                        className="MuiTouchRipple-root-325"
+                      />
+                    </button>
+                    <button
+                      aria-label="Two"
+                      className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-contained-224 MuiButton-raised-227"
+                      disabled={false}
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchMove={[Function]}
+                      onTouchStart={[Function]}
+                      style={
+                        Object {
+                          "backgroundColor": "#43a047",
+                          "color": "#ffffff",
+                          "marginBottom": "8px",
+                          "marginRight": "8px",
+                        }
+                      }
+                      tabIndex="0"
+                      type="button"
+                    >
+                      <span
+                        className="MuiButton-label-214"
+                      >
+                        2
+                      </span>
+                      <span
+                        className="MuiTouchRipple-root-325"
+                      />
+                    </button>
+                    <button
+                      aria-label="Three"
+                      className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-contained-224 MuiButton-raised-227"
+                      disabled={false}
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchMove={[Function]}
+                      onTouchStart={[Function]}
+                      style={
+                        Object {
+                          "backgroundColor": "#43a047",
+                          "color": "#ffffff",
+                          "marginBottom": "8px",
+                          "marginRight": "8px",
+                        }
+                      }
+                      tabIndex="0"
+                      type="button"
+                    >
+                      <span
+                        className="MuiButton-label-214"
+                      >
+                        3
+                      </span>
+                      <span
+                        className="MuiTouchRipple-root-325"
+                      />
+                    </button>
+                    <button
+                      aria-label="Four"
+                      className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-contained-224 MuiButton-raised-227"
+                      disabled={false}
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchMove={[Function]}
+                      onTouchStart={[Function]}
+                      style={
+                        Object {
+                          "backgroundColor": "#43a047",
+                          "color": "#ffffff",
+                          "marginBottom": "8px",
+                          "marginRight": "8px",
+                        }
+                      }
+                      tabIndex="0"
+                      type="button"
+                    >
+                      <span
+                        className="MuiButton-label-214"
+                      >
+                        4
+                      </span>
+                      <span
+                        className="MuiTouchRipple-root-325"
+                      />
+                    </button>
+                    <button
+                      aria-label="Boundary Four"
+                      className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-extendedFab-231 MuiButton-contained-224 MuiButton-raised-227"
+                      disabled={false}
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchMove={[Function]}
+                      onTouchStart={[Function]}
+                      style={
+                        Object {
+                          "backgroundColor": "#43a047",
+                          "color": "#ffffff",
+                          "marginBottom": "8px",
+                          "marginRight": "8px",
+                        }
+                      }
+                      tabIndex="0"
+                      type="button"
+                    >
+                      <span
+                        className="MuiButton-label-214"
+                      >
+                        Bdy 4
+                      </span>
+                      <span
+                        className="MuiTouchRipple-root-325"
+                      />
+                    </button>
+                    <button
+                      aria-label="Boundary Six"
+                      className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-extendedFab-231 MuiButton-contained-224 MuiButton-raised-227"
+                      disabled={false}
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onKeyUp={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchMove={[Function]}
+                      onTouchStart={[Function]}
+                      style={
+                        Object {
+                          "backgroundColor": "#43a047",
+                          "color": "#ffffff",
+                          "marginBottom": "8px",
+                          "marginRight": "8px",
+                        }
+                      }
+                      tabIndex="0"
+                      type="button"
+                    >
+                      <span
+                        className="MuiButton-label-214"
+                      >
+                        Bdy 6
+                      </span>
+                      <span
+                        className="MuiTouchRipple-root-325"
+                      />
+                    </button>
+                  </div>
+                  <div
+                    className="MuiGrid-container-29"
+                  >
+                    <div
+                      className="MuiInputBase-root-298 MuiInput-root-285 MuiInput-underline-289"
+                      onClick={[Function]}
+                    >
+                      <div
+                        className="MuiSelect-root-278"
+                      >
+                        <div
+                          aria-haspopup="true"
+                          aria-owns={null}
+                          aria-pressed="false"
+                          className="MuiSelect-select-279 MuiSelect-selectMenu-282 MuiInputBase-input-308 MuiInput-input-293"
+                          onBlur={[Function]}
+                          onClick={[Function]}
+                          onFocus={[Function]}
+                          onKeyDown={[Function]}
+                          role="button"
+                          tabIndex={0}
+                        >
+                          or select a score...
+                        </div>
+                        <input
+                          autoComplete={undefined}
+                          autoFocus={undefined}
+                          defaultValue={undefined}
+                          id={undefined}
+                          name={undefined}
+                          onKeyDown={undefined}
+                          onKeyUp={undefined}
+                          placeholder={undefined}
+                          rows={undefined}
+                          type="hidden"
+                          value={0}
+                        />
+                        <svg
+                          aria-hidden="true"
+                          className="MuiSvgIcon-root-190 MuiSelect-icon-284"
+                          color={undefined}
+                          focusable="false"
+                          role="presentation"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M7 10l5 5 5-5z"
+                          />
+                        </svg>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -835,535 +912,549 @@ exports[`InProgress should render correctly for match during an over 1`] = `
       </div>
     </div>
   </div>
-  <h5
-    className="MuiTypography-root-130 MuiTypography-h5-146"
-  >
-    Team 1 0-0
-  </h5>
   <div
-    className="MuiGrid-container-29"
+    className="MuiPaper-root-2 MuiPaper-elevation1-5 MuiPaper-rounded-3"
+    style={
+      Object {
+        "height": "100%",
+        "padding": "10px",
+      }
+    }
   >
     <div
-      className="MuiGrid-item-30 MuiGrid-grid-md-12-97 MuiGrid-grid-lg-8-107"
-    >
-      <div
-        className="MuiGrid-container-29 Batting-header-317"
-      >
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-10-67 MuiGrid-grid-md-7-92"
-        >
-          <h6
-            className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
-          >
-            Batsman
-          </h6>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
-        >
-          <h6
-            className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
-            style={
-              Object {
-                "textAlign": "right",
-              }
-            }
-          >
-            Runs
-          </h6>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
-        >
-          <h6
-            className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
-            style={
-              Object {
-                "textAlign": "right",
-              }
-            }
-          >
-            Balls
-          </h6>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
-        >
-          <h6
-            className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
-            style={
-              Object {
-                "textAlign": "right",
-              }
-            }
-          >
-            Mins
-          </h6>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
-        >
-          <h6
-            className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
-            style={
-              Object {
-                "textAlign": "right",
-              }
-            }
-          >
-            4s
-          </h6>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
-        >
-          <h6
-            className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
-            style={
-              Object {
-                "textAlign": "right",
-              }
-            }
-          >
-            6s
-          </h6>
-        </div>
-      </div>
-      <div
-        className="MuiGrid-container-29"
-      >
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-4-61 MuiGrid-grid-md-3-88"
-        >
-          <p
-            className="MuiTypography-root-130 MuiTypography-body2-138"
-          >
-            Player 1
-          </p>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-4-89"
-        >
-          <p
-            className="MuiTypography-root-130 MuiTypography-body2-138"
-          >
-            not out
-          </p>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
-        >
-          <p
-            className="MuiTypography-root-130 MuiTypography-body1-139"
-            style={
-              Object {
-                "fontWeight": "bold",
-                "textAlign": "right",
-              }
-            }
-          >
-            0
-          </p>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
-        >
-          <p
-            className="MuiTypography-root-130 MuiTypography-body1-139"
-            style={
-              Object {
-                "textAlign": "right",
-              }
-            }
-          >
-            0
-          </p>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
-        >
-          <p
-            className="MuiTypography-root-130 MuiTypography-body1-139"
-            style={
-              Object {
-                "textAlign": "right",
-              }
-            }
-          >
-            0
-          </p>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
-        >
-          <p
-            className="MuiTypography-root-130 MuiTypography-body1-139"
-            style={
-              Object {
-                "textAlign": "right",
-              }
-            }
-          >
-            0
-          </p>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
-        >
-          <p
-            className="MuiTypography-root-130 MuiTypography-body1-139"
-            style={
-              Object {
-                "textAlign": "right",
-              }
-            }
-          >
-            0
-          </p>
-        </div>
-      </div>
-      <div
-        className="MuiGrid-item-30 MuiGrid-grid-xs-12-69"
-      >
-        <hr
-          className="MuiDivider-root-267"
-        />
-      </div>
-      <div
-        className="MuiGrid-container-29"
-      >
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-4-61 MuiGrid-grid-md-3-88"
-        >
-          <p
-            className="MuiTypography-root-130 MuiTypography-body2-138"
-          >
-            Player 2
-          </p>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-4-89"
-        >
-          <p
-            className="MuiTypography-root-130 MuiTypography-body2-138"
-          >
-            not out
-          </p>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
-        >
-          <p
-            className="MuiTypography-root-130 MuiTypography-body1-139"
-            style={
-              Object {
-                "fontWeight": "bold",
-                "textAlign": "right",
-              }
-            }
-          >
-            0
-          </p>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
-        >
-          <p
-            className="MuiTypography-root-130 MuiTypography-body1-139"
-            style={
-              Object {
-                "textAlign": "right",
-              }
-            }
-          >
-            0
-          </p>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
-        >
-          <p
-            className="MuiTypography-root-130 MuiTypography-body1-139"
-            style={
-              Object {
-                "textAlign": "right",
-              }
-            }
-          >
-            0
-          </p>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
-        >
-          <p
-            className="MuiTypography-root-130 MuiTypography-body1-139"
-            style={
-              Object {
-                "textAlign": "right",
-              }
-            }
-          >
-            0
-          </p>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
-        >
-          <p
-            className="MuiTypography-root-130 MuiTypography-body1-139"
-            style={
-              Object {
-                "textAlign": "right",
-              }
-            }
-          >
-            0
-          </p>
-        </div>
-      </div>
-      <div
-        className="MuiGrid-item-30 MuiGrid-grid-xs-12-69"
-      >
-        <hr
-          className="MuiDivider-root-267"
-        />
-      </div>
-      <div
-        className="MuiGrid-container-29"
-      >
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-4-61 MuiGrid-grid-md-3-88"
-        >
-          <p
-            className="MuiTypography-root-130 MuiTypography-body1-139"
-          >
-            Extras
-          </p>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-4-89"
-        >
-          <p
-            className="MuiTypography-root-130 MuiTypography-body2-138"
-          >
-            0nb 0wd 0b 0lb
-          </p>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
-        >
-          <p
-            className="MuiTypography-root-130 MuiTypography-body1-139"
-            style={
-              Object {
-                "fontWeight": "bold",
-                "textAlign": "right",
-              }
-            }
-          >
-            0
-          </p>
-        </div>
-      </div>
-      <div
-        className="MuiGrid-container-29 Batting-header-317"
-      >
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-4-61 MuiGrid-grid-md-3-88"
-        >
-          <h6
-            className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
-          >
-            Total
-          </h6>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-4-89"
-        >
-          <h6
-            className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
-          >
-            (0 wickets) (0 overs)
-          </h6>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
-        >
-          <h6
-            className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
-            style={
-              Object {
-                "fontWeight": "bold",
-                "textAlign": "right",
-              }
-            }
-          >
-            0
-          </h6>
-        </div>
-      </div>
-    </div>
-    <div
-      className="MuiGrid-item-30 MuiGrid-grid-xs-12-69 MuiGrid-grid-lg-3-102"
-    >
-      <div
-        className="MuiGrid-container-29 FallOfWickets-header-319"
-      >
-        <h6
-          className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
-        >
-          Fall of wickets
-        </h6>
-      </div>
-    </div>
-    <div
-      className="MuiGrid-item-30 MuiGrid-grid-md-12-97 MuiGrid-grid-lg-8-107"
+      className="MuiGrid-container-29"
     >
       <h5
         className="MuiTypography-root-130 MuiTypography-h5-146"
       >
-        Team 2
-         bowling
+        Team 1 0-0
       </h5>
-      <div
-        className="MuiGrid-container-29 Bowling-header-321"
-      >
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-5-90"
-        />
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-2-59"
-        >
-          <h6
-            className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
-            style={
-              Object {
-                "textAlign": "center",
-              }
-            }
-          >
-            Overs
-          </h6>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-md-2-87"
-        >
-          <h6
-            className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
-            style={
-              Object {
-                "textAlign": "center",
-              }
-            }
-          >
-            Maidens
-          </h6>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-2-59"
-        >
-          <h6
-            className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
-            style={
-              Object {
-                "textAlign": "center",
-              }
-            }
-          >
-            Runs
-          </h6>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
-        >
-          <h6
-            className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
-            style={
-              Object {
-                "textAlign": "center",
-              }
-            }
-          >
-            Wkts
-          </h6>
-        </div>
-      </div>
       <div
         className="MuiGrid-container-29"
       >
         <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-5-90"
+          className="MuiGrid-item-30 MuiGrid-grid-md-12-97 MuiGrid-grid-lg-8-107"
         >
-          <p
-            className="MuiTypography-root-130 MuiTypography-body2-138"
+          <div
+            className="MuiGrid-container-29 Batting-header-319"
           >
-            Player 22
-          </p>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-10-67 MuiGrid-grid-md-7-92"
+            >
+              <h6
+                className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+              >
+                Batsman
+              </h6>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
+            >
+              <h6
+                className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+                style={
+                  Object {
+                    "textAlign": "right",
+                  }
+                }
+              >
+                Runs
+              </h6>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
+            >
+              <h6
+                className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+                style={
+                  Object {
+                    "textAlign": "right",
+                  }
+                }
+              >
+                Balls
+              </h6>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
+            >
+              <h6
+                className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+                style={
+                  Object {
+                    "textAlign": "right",
+                  }
+                }
+              >
+                Mins
+              </h6>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
+            >
+              <h6
+                className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+                style={
+                  Object {
+                    "textAlign": "right",
+                  }
+                }
+              >
+                4s
+              </h6>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
+            >
+              <h6
+                className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+                style={
+                  Object {
+                    "textAlign": "right",
+                  }
+                }
+              >
+                6s
+              </h6>
+            </div>
+          </div>
+          <div
+            className="MuiGrid-container-29"
+          >
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-4-61 MuiGrid-grid-md-3-88"
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body2-138"
+              >
+                Player 1
+              </p>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-4-89"
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body2-138"
+              >
+                not out
+              </p>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body1-139"
+                style={
+                  Object {
+                    "fontWeight": "bold",
+                    "textAlign": "right",
+                  }
+                }
+              >
+                0
+              </p>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body1-139"
+                style={
+                  Object {
+                    "textAlign": "right",
+                  }
+                }
+              >
+                0
+              </p>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body1-139"
+                style={
+                  Object {
+                    "textAlign": "right",
+                  }
+                }
+              >
+                0
+              </p>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body1-139"
+                style={
+                  Object {
+                    "textAlign": "right",
+                  }
+                }
+              >
+                0
+              </p>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body1-139"
+                style={
+                  Object {
+                    "textAlign": "right",
+                  }
+                }
+              >
+                0
+              </p>
+            </div>
+          </div>
+          <div
+            className="MuiGrid-item-30 MuiGrid-grid-xs-12-69"
+          >
+            <hr
+              className="MuiDivider-root-267"
+            />
+          </div>
+          <div
+            className="MuiGrid-container-29"
+          >
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-4-61 MuiGrid-grid-md-3-88"
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body2-138"
+              >
+                Player 2
+              </p>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-4-89"
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body2-138"
+              >
+                not out
+              </p>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body1-139"
+                style={
+                  Object {
+                    "fontWeight": "bold",
+                    "textAlign": "right",
+                  }
+                }
+              >
+                0
+              </p>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body1-139"
+                style={
+                  Object {
+                    "textAlign": "right",
+                  }
+                }
+              >
+                0
+              </p>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body1-139"
+                style={
+                  Object {
+                    "textAlign": "right",
+                  }
+                }
+              >
+                0
+              </p>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body1-139"
+                style={
+                  Object {
+                    "textAlign": "right",
+                  }
+                }
+              >
+                0
+              </p>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body1-139"
+                style={
+                  Object {
+                    "textAlign": "right",
+                  }
+                }
+              >
+                0
+              </p>
+            </div>
+          </div>
+          <div
+            className="MuiGrid-item-30 MuiGrid-grid-xs-12-69"
+          >
+            <hr
+              className="MuiDivider-root-267"
+            />
+          </div>
+          <div
+            className="MuiGrid-container-29"
+          >
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-4-61 MuiGrid-grid-md-3-88"
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body1-139"
+              >
+                Extras
+              </p>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-4-89"
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body2-138"
+              >
+                0nb 0wd 0b 0lb
+              </p>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body1-139"
+                style={
+                  Object {
+                    "fontWeight": "bold",
+                    "textAlign": "right",
+                  }
+                }
+              >
+                0
+              </p>
+            </div>
+          </div>
+          <div
+            className="MuiGrid-container-29 Batting-header-319"
+          >
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-4-61 MuiGrid-grid-md-3-88"
+            >
+              <h6
+                className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+              >
+                Total
+              </h6>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-4-89"
+            >
+              <h6
+                className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+              >
+                (0 wickets) (0 overs)
+              </h6>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
+            >
+              <h6
+                className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+                style={
+                  Object {
+                    "fontWeight": "bold",
+                    "textAlign": "right",
+                  }
+                }
+              >
+                0
+              </h6>
+            </div>
+          </div>
         </div>
         <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-2-59"
-          style={
-            Object {
-              "textAlign": "center",
-            }
-          }
+          className="MuiGrid-item-30 MuiGrid-grid-xs-12-69 MuiGrid-grid-lg-3-102"
         >
-          <p
-            className="MuiTypography-root-130 MuiTypography-body2-138"
+          <div
+            className="MuiGrid-container-29 FallOfWickets-header-321"
           >
-            0
-          </p>
+            <h6
+              className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+            >
+              Fall of wickets
+            </h6>
+          </div>
         </div>
         <div
-          className="MuiGrid-item-30 MuiGrid-grid-md-2-87"
-          style={
-            Object {
-              "textAlign": "center",
-            }
-          }
+          className="MuiGrid-item-30 MuiGrid-grid-md-12-97 MuiGrid-grid-lg-8-107"
         >
-          <p
-            className="MuiTypography-root-130 MuiTypography-body2-138"
+          <h5
+            className="MuiTypography-root-130 MuiTypography-h5-146"
           >
-            0
-          </p>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-2-59"
-          style={
-            Object {
-              "textAlign": "center",
-            }
-          }
-        >
-          <p
-            className="MuiTypography-root-130 MuiTypography-body2-138"
+            Team 2
+             bowling
+          </h5>
+          <div
+            className="MuiGrid-container-29 Bowling-header-323"
           >
-            0
-          </p>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
-          style={
-            Object {
-              "textAlign": "center",
-            }
-          }
-        >
-          <p
-            className="MuiTypography-root-130 MuiTypography-body2-138"
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-5-90"
+            />
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59"
+            >
+              <h6
+                className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+                style={
+                  Object {
+                    "textAlign": "center",
+                  }
+                }
+              >
+                Overs
+              </h6>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-md-2-87"
+            >
+              <h6
+                className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+                style={
+                  Object {
+                    "textAlign": "center",
+                  }
+                }
+              >
+                Maidens
+              </h6>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59"
+            >
+              <h6
+                className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+                style={
+                  Object {
+                    "textAlign": "center",
+                  }
+                }
+              >
+                Runs
+              </h6>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
+            >
+              <h6
+                className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+                style={
+                  Object {
+                    "textAlign": "center",
+                  }
+                }
+              >
+                Wkts
+              </h6>
+            </div>
+          </div>
+          <div
+            className="MuiGrid-container-29"
           >
-            0
-          </p>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-5-90"
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body2-138"
+              >
+                Player 22
+              </p>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59"
+              style={
+                Object {
+                  "textAlign": "center",
+                }
+              }
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body2-138"
+              >
+                0
+              </p>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-md-2-87"
+              style={
+                Object {
+                  "textAlign": "center",
+                }
+              }
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body2-138"
+              >
+                0
+              </p>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59"
+              style={
+                Object {
+                  "textAlign": "center",
+                }
+              }
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body2-138"
+              >
+                0
+              </p>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
+              style={
+                Object {
+                  "textAlign": "center",
+                }
+              }
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body2-138"
+              >
+                0
+              </p>
+            </div>
+          </div>
+          <div
+            className="MuiGrid-item-30 MuiGrid-grid-xs-12-69"
+          >
+            <hr
+              className="MuiDivider-root-267"
+            />
+          </div>
         </div>
-      </div>
-      <div
-        className="MuiGrid-item-30 MuiGrid-grid-xs-12-69"
-      >
-        <hr
-          className="MuiDivider-root-267"
-        />
       </div>
     </div>
   </div>

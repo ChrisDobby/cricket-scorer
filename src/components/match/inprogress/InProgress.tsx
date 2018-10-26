@@ -12,6 +12,7 @@ import Innings from '../../scorecard/Innings';
 import SelectNewBatter from './SelectNewBatter';
 import InningsComplete from './InningsComplete';
 import CompleteMatch from '../CompleteMatch';
+import EntryContainer from './EntryContainer';
 import { bindMatchStorage } from '../../../stores/withMatchStorage';
 import { getTeam } from '../../../match/utilities';
 import calculateResult from '../../../match/calculateResult';
@@ -120,10 +121,12 @@ class InProgress extends React.Component<InProgressProps, {}> {
                                     delivery={this.ballFunctions.delivery}
                                     completeOver={this.ballFunctions.completeOver}
                                 />
-                                <Innings
-                                    innings={this.props.inProgress.currentInnings}
-                                    getTeam={type => getTeam(match, type)}
-                                />
+                                <EntryContainer>
+                                    <Innings
+                                        innings={this.props.inProgress.currentInnings}
+                                        getTeam={type => getTeam(match, type)}
+                                    />
+                                </EntryContainer>
                             </React.Fragment>}
                         {typeof inningsStatus !== 'undefined' && inningsStatus !== domain.InningsStatus.InProgress &&
                             <InningsComplete

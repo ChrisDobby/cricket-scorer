@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactTestRenderer from 'react-test-renderer';
-import { CurrentOver } from '../../../../components/match/inprogress/CurrentOver';
+import CurrentOver from '../../../../components/match/inprogress/CurrentOver';
 import { DeliveryOutcome, EventType } from '../../../../domain';
 
 describe('CurrentOver', () => {

@@ -4,14 +4,20 @@ import Typography from '@material-ui/core/Typography';
 import { Over } from '../../../domain';
 import { DeliveryDisplay } from './DeliveryDisplay';
 
-export interface CurrentOverProps { over: Over; }
+interface CurrentOverProps { over: Over; }
 
-export const CurrentOver = ({ over }: CurrentOverProps) => (
-    <React.Fragment>
+const overContainerStyle: React.CSSProperties = {
+    minHeight: '100px',
+    paddingTop: '10px',
+    paddingBottom: '10px',
+};
+
+export default ({ over }: CurrentOverProps) => (
+    <div style={overContainerStyle}>
         <Grid container>
             <Typography variant="h6">{`This over ${over.wickets} - ${over.bowlingRuns}`}</Typography>
         </Grid>
         <Grid container>
             {over.deliveries.map((delivery, index) => <DeliveryDisplay key={index} outcome={delivery.outcome} />)}
         </Grid>
-    </React.Fragment>);
+    </div>);
