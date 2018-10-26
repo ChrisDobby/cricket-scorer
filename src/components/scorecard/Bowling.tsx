@@ -15,7 +15,7 @@ interface BowlingProps {
 }
 
 const Bowling = ({ team, bowlers, classes }: BowlingProps) => (
-    <Grid item lg={8} md={12}>
+    <Grid item lg={8} md={12} sm={12} xs={12}>
         <Typography variant="h5">
             {team} bowling
         </Typography>

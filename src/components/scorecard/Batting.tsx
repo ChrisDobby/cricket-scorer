@@ -37,7 +37,7 @@ interface BattingProps {
 }
 
 const Batting = ({ batting, score, wickets, totalOvers, classes }: BattingProps) => (
-    <Grid item lg={8} md={12}>
+    <Grid item lg={8} md={12} sm={12} xs={12}>
         <Grid container className={classes.header}>
             <Grid item xs={10} md={7}>
                 <Typography variant="h6" color="inherit">Batsman</Typography>
