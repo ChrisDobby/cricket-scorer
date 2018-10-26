@@ -26,15 +26,15 @@ const entryRow: React.CSSProperties = {
     marginTop: '20px',
 };
 
-const entryComponent: React.CSSProperties = {
-    padding: '4px',
-};
+// const entryComponent: React.CSSProperties = {
+//     padding: '4px',
+// };
 
 export default (props: MatchEntryProps) => (
     <React.Fragment>
-        <Grid container style={entryRow}>
+        <Grid container style={entryRow} spacing={8}>
             <Grid item xs={12} md={4}>
-                <FormControl fullWidth style={entryComponent}>
+                <FormControl fullWidth>
                     <InputLabel htmlFor="matchType">Match type</InputLabel>
                     <Select
                         inputProps={{
@@ -51,7 +51,6 @@ export default (props: MatchEntryProps) => (
             <Grid item xs={12} md={4}>
                 {props.matchType === MatchType.LimitedOvers &&
                     <TextField
-                        style={entryComponent}
                         fullWidth
                         label="Number of overs"
                         value={props.oversPerSide}
@@ -60,7 +59,6 @@ export default (props: MatchEntryProps) => (
                     />}
                 {props.matchType === MatchType.Time &&
                     <TextField
-                        style={entryComponent}
                         fullWidth
                         label="Number of innings per team"
                         value={props.inningsPerSide}
@@ -70,7 +68,6 @@ export default (props: MatchEntryProps) => (
             </Grid>
             <Grid item xs={12} md={4}>
                 <TextField
-                    style={entryComponent}
                     fullWidth
                     label="Number of players"
                     type="number"
@@ -79,10 +76,9 @@ export default (props: MatchEntryProps) => (
                 />
             </Grid>
         </Grid>
-        <Grid container style={entryRow}>
+        <Grid container style={entryRow} spacing={8}>
             <Grid item xs={12} md={6}>
                 <TextField
-                    style={entryComponent}
                     fullWidth
                     label="Runs for no ball"
                     type="number"
@@ -92,7 +88,6 @@ export default (props: MatchEntryProps) => (
             </Grid>
             <Grid item xs={12} md={6}>
                 <TextField
-                    style={entryComponent}
                     fullWidth
                     label="Runs for wide"
                     type="number"

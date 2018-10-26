@@ -4,10 +4,6 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import { TeamType } from '../../../domain';
 
-const entryComponent: React.CSSProperties = {
-    padding: '4px',
-};
-
 interface TeamsEntryProps {
     homeTeam: string;
     awayTeam: string;
@@ -18,10 +14,9 @@ interface TeamsEntryProps {
 }
 
 export default ({ homeTeam, awayTeam, homePlayers, awayPlayers, teamChanged, playerChanged }: TeamsEntryProps) => (
-    <Grid container>
+    <Grid container spacing={8}>
         <Grid item xs={12} md={6}>
             <TextField
-                style={entryComponent}
                 fullWidth
                 label="Home team name"
                 value={homeTeam}
@@ -31,7 +26,6 @@ export default ({ homeTeam, awayTeam, homePlayers, awayPlayers, teamChanged, pla
             {homePlayers.map((player, playerNumber) => (
                 <TextField
                     key={playerNumber}
-                    style={entryComponent}
                     fullWidth
                     label={`Player ${playerNumber + 1}`}
                     value={player}
@@ -41,7 +35,6 @@ export default ({ homeTeam, awayTeam, homePlayers, awayPlayers, teamChanged, pla
         </Grid>
         <Grid item xs={12} md={6}>
             <TextField
-                style={entryComponent}
                 fullWidth
                 label="Away team name"
                 value={awayTeam}
@@ -51,7 +44,6 @@ export default ({ homeTeam, awayTeam, homePlayers, awayPlayers, teamChanged, pla
             {awayPlayers.map((player, playerNumber) => (
                 <TextField
                     key={playerNumber}
-                    style={entryComponent}
                     fullWidth
                     label={`Player ${playerNumber + 1}`}
                     value={player}

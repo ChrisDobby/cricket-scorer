@@ -73,51 +73,56 @@ export default class extends React.PureComponent<CompleteMatchProps> {
                             Select the match result followed by OK or Cancel to not complete the match
                         </DialogContentText>
                     </DialogContent>
-                    <Grid container>
-                        <Grid item xs={12} md={6}>
-                            <FormControl fullWidth>
-                                <InputLabel htmlFor="result">Result</InputLabel>
-                                <Select
-                                    inputProps={{
-                                        id: 'result',
-                                    }}
-                                    value={this.state.result}
-                                    onChange={this.selectResult}
-                                >
-                                    <MenuItem>Select result..</MenuItem>
-                                    <MenuItem value={Result.HomeWin}>{`${this.props.homeTeam} won`}</MenuItem>
-                                    <MenuItem value={Result.AwayWin}>{`${this.props.awayTeam} won`}</MenuItem>
-                                    <MenuItem value={Result.Tie}>Match tied</MenuItem>
-                                    <MenuItem value={Result.Draw}>Match drawn</MenuItem>
-                                    <MenuItem value={Result.Abandoned}>Match abandoned</MenuItem>
-                                </Select>
-                            </FormControl>
+                    <DialogContent>
+                        <Grid container spacing={8}>
+                            <Grid item xs={12} md={6}>
+                                <FormControl fullWidth>
+                                    <InputLabel htmlFor="result">Result</InputLabel>
+                                    <Select
+                                        inputProps={{
+                                            id: 'result',
+                                        }}
+                                        value={this.state.result}
+                                        onChange={this.selectResult}
+                                    >
+                                        <MenuItem>Select result..</MenuItem>
+                                        <MenuItem value={Result.HomeWin}>{`${this.props.homeTeam} won`}</MenuItem>
+                                        <MenuItem value={Result.AwayWin}>{`${this.props.awayTeam} won`}</MenuItem>
+                                        <MenuItem value={Result.Tie}>Match tied</MenuItem>
+                                        <MenuItem value={Result.Draw}>Match drawn</MenuItem>
+                                        <MenuItem value={Result.Abandoned}>Match abandoned</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+                            {(this.state.result === Result.HomeWin || this.state.result === Result.AwayWin) &&
+                                <React.Fragment>
+                                    <Grid item xs={6} md={3}>
+                                        <TextField
+                                            fullWidth
+                                            label="by"
+                                            value={this.state.winMargin}
+                                            type="number"
+                                            onChange={this.marginChange}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={6} md={3}>
+                                        <FormControl fullWidth>
+                                            <InputLabel htmlFor="winBy">&nbsp;</InputLabel>
+                                            <Select
+                                                inputProps={{
+                                                    id: 'winBy',
+                                                }}
+                                                value={typeof this.state.winBy === 'undefined' ? -1 : this.state.winBy}
+                                                onChange={this.selectWinBy}
+                                            >
+                                                <MenuItem value={WinBy.Runs}>runs</MenuItem>
+                                                <MenuItem value={WinBy.Wickets}>wickets</MenuItem>
+                                            </Select>
+                                        </FormControl>
+                                    </Grid>
+                                </React.Fragment>}
                         </Grid>
-                        {(this.state.result === Result.HomeWin || this.state.result === Result.AwayWin) &&
-                            <React.Fragment>
-                                <Grid item xs={6} md={3}>
-                                    <TextField
-                                        fullWidth
-                                        label="by"
-                                        value={this.state.winMargin}
-                                        type="number"
-                                        onChange={this.marginChange}
-                                    />
-                                </Grid>
-                                <Grid item xs={6} md={3}>
-                                    <FormControl fullWidth>
-                                        <Select
-                                            value={this.state.winBy}
-                                            onChange={this.selectWinBy}
-                                        >
-                                            <MenuItem>Select..</MenuItem>
-                                            <MenuItem value={WinBy.Runs}>runs</MenuItem>
-                                            <MenuItem value={WinBy.Wickets}>wickets</MenuItem>
-                                        </Select>
-                                    </FormControl>
-                                </Grid>
-                            </React.Fragment>}
-                    </Grid>
+                    </DialogContent>
                     <DialogActions>
                         <Button
                             onClick={this.complete}

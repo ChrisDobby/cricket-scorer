@@ -17,6 +17,9 @@ interface VerifyCompleteInningsProps {
 export default class extends React.PureComponent<VerifyCompleteInningsProps> {
     state = { status: InningsStatus.Declared };
 
+    statusChanged = (ev: React.ChangeEvent<HTMLSelectElement>) =>
+        this.setState({ status: Number(ev.target.value) })
+
     render() {
         return (
             <div>
@@ -30,13 +33,14 @@ export default class extends React.PureComponent<VerifyCompleteInningsProps> {
                             {'Select the reason for completing the innings followed by ' +
                                 'OK or Cancel to not complete the innings'}
                         </DialogContentText>
-
                     </DialogContent>
-                    <Select value={this.state.status}>
-                        <MenuItem value={InningsStatus.Declared}>Declared</MenuItem>
-                        <MenuItem value={InningsStatus.AllOut}>All out</MenuItem>
-                        <MenuItem value={InningsStatus.OversComplete}>Overs complete</MenuItem>
-                    </Select>
+                    <DialogContent>
+                        <Select value={this.state.status} onChange={this.statusChanged} fullWidth>
+                            <MenuItem value={InningsStatus.Declared}>Declared</MenuItem>
+                            <MenuItem value={InningsStatus.AllOut}>All out</MenuItem>
+                            <MenuItem value={InningsStatus.OversComplete}>Overs complete</MenuItem>
+                        </Select>
+                    </DialogContent>
                     <DialogActions>
                         <Button
                             onClick={() => this.props.complete(this.state.status)}
