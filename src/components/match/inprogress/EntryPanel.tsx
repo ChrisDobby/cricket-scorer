@@ -3,14 +3,13 @@ import { withRouter, RouteComponentProps } from 'react-router-dom';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import Grid from '@material-ui/core/Grid';
-import Radio from '@material-ui/core/Radio';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import { DeliveryOutcome, DeliveryScores, MatchResult, Outcome } from '../../../domain';
 import ScoresEntry from './ScoresEntry';
 import { WarningModal, WarningType } from './WarningModal';
 import DeliveryNotify from './DeliveryNotify';
-import { RadioGroup } from '@material-ui/core';
+import ScoreTypeSelect, { ScoreType } from './ScoreTypeSelect';
 
 type EntryPanelProps = RouteComponentProps<{}> & {
     overComplete: boolean;
@@ -19,13 +18,6 @@ type EntryPanelProps = RouteComponentProps<{}> & {
     awayTeam: string;
     calculateResult: () => MatchResult | undefined;
 };
-
-enum ScoreType {
-    Runs,
-    Byes,
-    LegByes,
-    Wide,
-}
 
 interface EntryPanelState {
     noBall: boolean;
@@ -36,10 +28,6 @@ interface EntryPanelState {
     allRunScores: DeliveryScores | undefined;
     notifyOutcome: Outcome | undefined;
 }
-
-const radioStyle: React.CSSProperties = {
-    marginRight: '26px',
-};
 
 class EntryPanel extends React.Component<EntryPanelProps, {}> {
     state: EntryPanelState = {
@@ -174,44 +162,11 @@ class EntryPanel extends React.Component<EntryPanelProps, {}> {
                         </Grid>
                     </Grid>
                     <Grid container>
-                        <RadioGroup row>
-                            <FormControlLabel
-                                label="ru"
-                                style={radioStyle}
-                                control={
-                                    <Radio
-                                        checked={this.state.scoreType === ScoreType.Runs}
-                                        onChange={() => this.scoreTypeChange(ScoreType.Runs)}
-                                    />}
-                            />
-                            <FormControlLabel
-                                label="b"
-                                style={radioStyle}
-                                control={
-                                    <Radio
-                                        checked={this.state.scoreType === ScoreType.Byes}
-                                        onChange={() => this.scoreTypeChange(ScoreType.Byes)}
-                                    />}
-                            />
-                            <FormControlLabel
-                                label="lb"
-                                style={radioStyle}
-                                control={
-                                    <Radio
-                                        onChange={() => this.scoreTypeChange(ScoreType.LegByes)}
-                                        checked={this.state.scoreType === ScoreType.LegByes}
-                                    />}
-                            />
-                            {!this.state.noBall &&
-                                <FormControlLabel
-                                    label="wd"
-                                    style={radioStyle}
-                                    control={<Radio
-                                        checked={this.state.scoreType === ScoreType.Wide}
-                                        onChange={() => this.scoreTypeChange(ScoreType.Wide)}
-                                    />}
-                                />}
-                        </RadioGroup>
+                        <ScoreTypeSelect
+                            selectedType={this.state.scoreType}
+                            noBall={this.state.noBall}
+                            scoreTypeChange={this.scoreTypeChange}
+                        />
                     </Grid>
                     <Grid container>
                         <ScoresEntry
