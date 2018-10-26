@@ -105,6 +105,7 @@ class InProgress extends React.Component<InProgressProps, {}> {
                         {this.props.inProgress.currentBatter &&
                             this.props.inProgress.currentBowler &&
                             this.props.inProgress.currentOver &&
+                            !this.props.inProgress.newBatterRequired &&
                             <React.Fragment>
                                 <BallEntry
                                     innings={this.props.inProgress.currentInnings}
