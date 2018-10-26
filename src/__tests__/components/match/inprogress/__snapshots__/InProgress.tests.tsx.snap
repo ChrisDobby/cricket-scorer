@@ -254,7 +254,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                     W
                   </span>
                   <span
-                    className="MuiTouchRipple-root-325"
+                    className="MuiTouchRipple-root-318"
                   />
                 </button>
                 <label
@@ -305,7 +305,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                         />
                       </span>
                       <span
-                        className="MuiTouchRipple-root-325"
+                        className="MuiTouchRipple-root-318"
                       />
                     </span>
                     <span
@@ -339,263 +339,258 @@ exports[`InProgress should render correctly for match during an over 1`] = `
               <div
                 className="MuiGrid-container-29"
               >
-                <div
-                  className="MuiFormGroup-root-271 MuiFormGroup-row-272"
-                  role="radiogroup"
+                <label
+                  className="MuiFormControlLabel-root-244"
+                  style={
+                    Object {
+                      "marginRight": "26px",
+                    }
+                  }
                 >
-                  <label
-                    className="MuiFormControlLabel-root-244"
-                    style={
-                      Object {
-                        "marginRight": "26px",
-                      }
-                    }
+                  <span
+                    className="MuiButtonBase-root-239 MuiIconButton-root-261 MuiSwitchBase-root-257 MuiRadio-root-325 MuiRadio-colorSecondary-329 MuiSwitchBase-checked-258 MuiRadio-checked-326"
+                    onBlur={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseUp={[Function]}
+                    onTouchEnd={[Function]}
+                    onTouchMove={[Function]}
+                    onTouchStart={[Function]}
+                    role={undefined}
+                    tabIndex={null}
                   >
                     <span
-                      className="MuiButtonBase-root-239 MuiIconButton-root-261 MuiSwitchBase-root-257 MuiRadio-root-273 MuiRadio-colorSecondary-277 MuiSwitchBase-checked-258 MuiRadio-checked-274"
-                      onBlur={[Function]}
-                      onFocus={[Function]}
-                      onKeyDown={[Function]}
-                      onKeyUp={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      onTouchEnd={[Function]}
-                      onTouchMove={[Function]}
-                      onTouchStart={[Function]}
-                      role={undefined}
-                      tabIndex={null}
+                      className="MuiIconButton-label-266"
                     >
-                      <span
-                        className="MuiIconButton-label-266"
+                      <svg
+                        aria-hidden="true"
+                        className="MuiSvgIcon-root-190"
+                        color={undefined}
+                        focusable="false"
+                        role="presentation"
+                        viewBox="0 0 24 24"
                       >
-                        <svg
-                          aria-hidden="true"
-                          className="MuiSvgIcon-root-190"
-                          color={undefined}
-                          focusable="false"
-                          role="presentation"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-                          />
-                        </svg>
-                        <input
-                          autoFocus={undefined}
-                          checked={true}
-                          className="MuiSwitchBase-input-260"
-                          disabled={undefined}
-                          id={undefined}
-                          name={undefined}
-                          onChange={[Function]}
-                          readOnly={undefined}
-                          required={undefined}
-                          tabIndex={undefined}
-                          type="radio"
-                          value={undefined}
+                        <path
+                          d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
                         />
-                      </span>
-                      <span
-                        className="MuiTouchRipple-root-325"
+                      </svg>
+                      <input
+                        autoFocus={undefined}
+                        checked={true}
+                        className="MuiSwitchBase-input-260"
+                        disabled={undefined}
+                        id={undefined}
+                        name={undefined}
+                        onChange={[Function]}
+                        readOnly={undefined}
+                        required={undefined}
+                        tabIndex={undefined}
+                        type="radio"
+                        value={undefined}
                       />
                     </span>
                     <span
-                      className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-247"
-                    >
-                      ru
-                    </span>
-                  </label>
-                  <label
-                    className="MuiFormControlLabel-root-244"
-                    style={
-                      Object {
-                        "marginRight": "26px",
-                      }
+                      className="MuiTouchRipple-root-318"
+                    />
+                  </span>
+                  <span
+                    className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-247"
+                  >
+                    runs
+                  </span>
+                </label>
+                <label
+                  className="MuiFormControlLabel-root-244"
+                  style={
+                    Object {
+                      "marginRight": "26px",
                     }
+                  }
+                >
+                  <span
+                    className="MuiButtonBase-root-239 MuiIconButton-root-261 MuiSwitchBase-root-257 MuiRadio-root-325 MuiRadio-colorSecondary-329"
+                    onBlur={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseUp={[Function]}
+                    onTouchEnd={[Function]}
+                    onTouchMove={[Function]}
+                    onTouchStart={[Function]}
+                    role={undefined}
+                    tabIndex={null}
                   >
                     <span
-                      className="MuiButtonBase-root-239 MuiIconButton-root-261 MuiSwitchBase-root-257 MuiRadio-root-273 MuiRadio-colorSecondary-277"
-                      onBlur={[Function]}
-                      onFocus={[Function]}
-                      onKeyDown={[Function]}
-                      onKeyUp={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      onTouchEnd={[Function]}
-                      onTouchMove={[Function]}
-                      onTouchStart={[Function]}
-                      role={undefined}
-                      tabIndex={null}
+                      className="MuiIconButton-label-266"
                     >
-                      <span
-                        className="MuiIconButton-label-266"
+                      <svg
+                        aria-hidden="true"
+                        className="MuiSvgIcon-root-190"
+                        color={undefined}
+                        focusable="false"
+                        role="presentation"
+                        viewBox="0 0 24 24"
                       >
-                        <svg
-                          aria-hidden="true"
-                          className="MuiSvgIcon-root-190"
-                          color={undefined}
-                          focusable="false"
-                          role="presentation"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-                          />
-                        </svg>
-                        <input
-                          autoFocus={undefined}
-                          checked={false}
-                          className="MuiSwitchBase-input-260"
-                          disabled={undefined}
-                          id={undefined}
-                          name={undefined}
-                          onChange={[Function]}
-                          readOnly={undefined}
-                          required={undefined}
-                          tabIndex={undefined}
-                          type="radio"
-                          value={undefined}
+                        <path
+                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
                         />
-                      </span>
-                      <span
-                        className="MuiTouchRipple-root-325"
+                      </svg>
+                      <input
+                        autoFocus={undefined}
+                        checked={false}
+                        className="MuiSwitchBase-input-260"
+                        disabled={undefined}
+                        id={undefined}
+                        name={undefined}
+                        onChange={[Function]}
+                        readOnly={undefined}
+                        required={undefined}
+                        tabIndex={undefined}
+                        type="radio"
+                        value={undefined}
                       />
                     </span>
                     <span
-                      className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-247"
-                    >
-                      b
-                    </span>
-                  </label>
-                  <label
-                    className="MuiFormControlLabel-root-244"
-                    style={
-                      Object {
-                        "marginRight": "26px",
-                      }
+                      className="MuiTouchRipple-root-318"
+                    />
+                  </span>
+                  <span
+                    className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-247"
+                  >
+                    byes
+                  </span>
+                </label>
+                <label
+                  className="MuiFormControlLabel-root-244"
+                  style={
+                    Object {
+                      "marginRight": "26px",
                     }
+                  }
+                >
+                  <span
+                    className="MuiButtonBase-root-239 MuiIconButton-root-261 MuiSwitchBase-root-257 MuiRadio-root-325 MuiRadio-colorSecondary-329"
+                    onBlur={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseUp={[Function]}
+                    onTouchEnd={[Function]}
+                    onTouchMove={[Function]}
+                    onTouchStart={[Function]}
+                    role={undefined}
+                    tabIndex={null}
                   >
                     <span
-                      className="MuiButtonBase-root-239 MuiIconButton-root-261 MuiSwitchBase-root-257 MuiRadio-root-273 MuiRadio-colorSecondary-277"
-                      onBlur={[Function]}
-                      onFocus={[Function]}
-                      onKeyDown={[Function]}
-                      onKeyUp={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      onTouchEnd={[Function]}
-                      onTouchMove={[Function]}
-                      onTouchStart={[Function]}
-                      role={undefined}
-                      tabIndex={null}
+                      className="MuiIconButton-label-266"
                     >
-                      <span
-                        className="MuiIconButton-label-266"
+                      <svg
+                        aria-hidden="true"
+                        className="MuiSvgIcon-root-190"
+                        color={undefined}
+                        focusable="false"
+                        role="presentation"
+                        viewBox="0 0 24 24"
                       >
-                        <svg
-                          aria-hidden="true"
-                          className="MuiSvgIcon-root-190"
-                          color={undefined}
-                          focusable="false"
-                          role="presentation"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-                          />
-                        </svg>
-                        <input
-                          autoFocus={undefined}
-                          checked={false}
-                          className="MuiSwitchBase-input-260"
-                          disabled={undefined}
-                          id={undefined}
-                          name={undefined}
-                          onChange={[Function]}
-                          readOnly={undefined}
-                          required={undefined}
-                          tabIndex={undefined}
-                          type="radio"
-                          value={undefined}
+                        <path
+                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
                         />
-                      </span>
-                      <span
-                        className="MuiTouchRipple-root-325"
+                      </svg>
+                      <input
+                        autoFocus={undefined}
+                        checked={false}
+                        className="MuiSwitchBase-input-260"
+                        disabled={undefined}
+                        id={undefined}
+                        name={undefined}
+                        onChange={[Function]}
+                        readOnly={undefined}
+                        required={undefined}
+                        tabIndex={undefined}
+                        type="radio"
+                        value={undefined}
                       />
                     </span>
                     <span
-                      className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-247"
-                    >
-                      lb
-                    </span>
-                  </label>
-                  <label
-                    className="MuiFormControlLabel-root-244"
-                    style={
-                      Object {
-                        "marginRight": "26px",
-                      }
+                      className="MuiTouchRipple-root-318"
+                    />
+                  </span>
+                  <span
+                    className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-247"
+                  >
+                    leg byes
+                  </span>
+                </label>
+                <label
+                  className="MuiFormControlLabel-root-244"
+                  style={
+                    Object {
+                      "marginRight": "26px",
                     }
+                  }
+                >
+                  <span
+                    className="MuiButtonBase-root-239 MuiIconButton-root-261 MuiSwitchBase-root-257 MuiRadio-root-325 MuiRadio-colorSecondary-329"
+                    onBlur={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseUp={[Function]}
+                    onTouchEnd={[Function]}
+                    onTouchMove={[Function]}
+                    onTouchStart={[Function]}
+                    role={undefined}
+                    tabIndex={null}
                   >
                     <span
-                      className="MuiButtonBase-root-239 MuiIconButton-root-261 MuiSwitchBase-root-257 MuiRadio-root-273 MuiRadio-colorSecondary-277"
-                      onBlur={[Function]}
-                      onFocus={[Function]}
-                      onKeyDown={[Function]}
-                      onKeyUp={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      onTouchEnd={[Function]}
-                      onTouchMove={[Function]}
-                      onTouchStart={[Function]}
-                      role={undefined}
-                      tabIndex={null}
+                      className="MuiIconButton-label-266"
                     >
-                      <span
-                        className="MuiIconButton-label-266"
+                      <svg
+                        aria-hidden="true"
+                        className="MuiSvgIcon-root-190"
+                        color={undefined}
+                        focusable="false"
+                        role="presentation"
+                        viewBox="0 0 24 24"
                       >
-                        <svg
-                          aria-hidden="true"
-                          className="MuiSvgIcon-root-190"
-                          color={undefined}
-                          focusable="false"
-                          role="presentation"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-                          />
-                        </svg>
-                        <input
-                          autoFocus={undefined}
-                          checked={false}
-                          className="MuiSwitchBase-input-260"
-                          disabled={undefined}
-                          id={undefined}
-                          name={undefined}
-                          onChange={[Function]}
-                          readOnly={undefined}
-                          required={undefined}
-                          tabIndex={undefined}
-                          type="radio"
-                          value={undefined}
+                        <path
+                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
                         />
-                      </span>
-                      <span
-                        className="MuiTouchRipple-root-325"
+                      </svg>
+                      <input
+                        autoFocus={undefined}
+                        checked={false}
+                        className="MuiSwitchBase-input-260"
+                        disabled={undefined}
+                        id={undefined}
+                        name={undefined}
+                        onChange={[Function]}
+                        readOnly={undefined}
+                        required={undefined}
+                        tabIndex={undefined}
+                        type="radio"
+                        value={undefined}
                       />
                     </span>
                     <span
-                      className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-247"
-                    >
-                      wd
-                    </span>
-                  </label>
-                </div>
+                      className="MuiTouchRipple-root-318"
+                    />
+                  </span>
+                  <span
+                    className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-247"
+                  >
+                    wide
+                  </span>
+                </label>
               </div>
               <div
                 className="MuiGrid-container-29"
@@ -638,7 +633,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                         .
                       </span>
                       <span
-                        className="MuiTouchRipple-root-325"
+                        className="MuiTouchRipple-root-318"
                       />
                     </button>
                     <button
@@ -673,7 +668,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                         1
                       </span>
                       <span
-                        className="MuiTouchRipple-root-325"
+                        className="MuiTouchRipple-root-318"
                       />
                     </button>
                     <button
@@ -708,7 +703,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                         2
                       </span>
                       <span
-                        className="MuiTouchRipple-root-325"
+                        className="MuiTouchRipple-root-318"
                       />
                     </button>
                     <button
@@ -743,7 +738,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                         3
                       </span>
                       <span
-                        className="MuiTouchRipple-root-325"
+                        className="MuiTouchRipple-root-318"
                       />
                     </button>
                     <button
@@ -778,7 +773,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                         4
                       </span>
                       <span
-                        className="MuiTouchRipple-root-325"
+                        className="MuiTouchRipple-root-318"
                       />
                     </button>
                     <button
@@ -813,7 +808,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                         Bdy 4
                       </span>
                       <span
-                        className="MuiTouchRipple-root-325"
+                        className="MuiTouchRipple-root-318"
                       />
                     </button>
                     <button
@@ -848,7 +843,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                         Bdy 6
                       </span>
                       <span
-                        className="MuiTouchRipple-root-325"
+                        className="MuiTouchRipple-root-318"
                       />
                     </button>
                   </div>
@@ -856,17 +851,17 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                     className="MuiGrid-container-29"
                   >
                     <div
-                      className="MuiInputBase-root-298 MuiInput-root-285 MuiInput-underline-289"
+                      className="MuiInputBase-root-291 MuiInput-root-278 MuiInput-underline-282"
                       onClick={[Function]}
                     >
                       <div
-                        className="MuiSelect-root-278"
+                        className="MuiSelect-root-271"
                       >
                         <div
                           aria-haspopup="true"
                           aria-owns={null}
                           aria-pressed="false"
-                          className="MuiSelect-select-279 MuiSelect-selectMenu-282 MuiInputBase-input-308 MuiInput-input-293"
+                          className="MuiSelect-select-272 MuiSelect-selectMenu-275 MuiInputBase-input-301 MuiInput-input-286"
                           onBlur={[Function]}
                           onClick={[Function]}
                           onFocus={[Function]}
@@ -891,7 +886,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                         />
                         <svg
                           aria-hidden="true"
-                          className="MuiSvgIcon-root-190 MuiSelect-icon-284"
+                          className="MuiSvgIcon-root-190 MuiSelect-icon-277"
                           color={undefined}
                           focusable="false"
                           role="presentation"
@@ -933,10 +928,10 @@ exports[`InProgress should render correctly for match during an over 1`] = `
         className="MuiGrid-container-29"
       >
         <div
-          className="MuiGrid-item-30 MuiGrid-grid-md-12-97 MuiGrid-grid-lg-8-107"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-12-69 MuiGrid-grid-sm-12-83 MuiGrid-grid-md-12-97 MuiGrid-grid-lg-8-107"
         >
           <div
-            className="MuiGrid-container-29 Batting-header-319"
+            className="MuiGrid-container-29 Batting-header-312"
           >
             <div
               className="MuiGrid-item-30 MuiGrid-grid-xs-10-67 MuiGrid-grid-md-7-92"
@@ -1256,7 +1251,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
             </div>
           </div>
           <div
-            className="MuiGrid-container-29 Batting-header-319"
+            className="MuiGrid-container-29 Batting-header-312"
           >
             <div
               className="MuiGrid-item-30 MuiGrid-grid-xs-4-61 MuiGrid-grid-md-3-88"
@@ -1297,7 +1292,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           className="MuiGrid-item-30 MuiGrid-grid-xs-12-69 MuiGrid-grid-lg-3-102"
         >
           <div
-            className="MuiGrid-container-29 FallOfWickets-header-321"
+            className="MuiGrid-container-29 FallOfWickets-header-314"
           >
             <h6
               className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
@@ -1307,7 +1302,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           </div>
         </div>
         <div
-          className="MuiGrid-item-30 MuiGrid-grid-md-12-97 MuiGrid-grid-lg-8-107"
+          className="MuiGrid-item-30 MuiGrid-grid-xs-12-69 MuiGrid-grid-sm-12-83 MuiGrid-grid-md-12-97 MuiGrid-grid-lg-8-107"
         >
           <h5
             className="MuiTypography-root-130 MuiTypography-h5-146"
@@ -1316,7 +1311,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
              bowling
           </h5>
           <div
-            className="MuiGrid-container-29 Bowling-header-323"
+            className="MuiGrid-container-29 Bowling-header-316"
           >
             <div
               className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-5-90"
