@@ -1,5 +1,4 @@
 import * as React from 'react';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
 import { withStyles } from '@material-ui/core/styles';
@@ -37,7 +36,7 @@ const styles = (theme: any) => ({
     },
 });
 
-interface ScorecardProps { cricketMatch?: MatchEntity; classes: any; }
+interface ScorecardProps { cricketMatch: MatchEntity; classes: any; }
 
 class Scorecard extends React.Component<ScorecardProps, {}> {
     state = {
@@ -55,9 +54,6 @@ class Scorecard extends React.Component<ScorecardProps, {}> {
     }
 
     render() {
-        if (!this.props.cricketMatch) {
-            return <CircularProgress size={50}/>;
-        }
         return (
             <Paper className={this.props.classes.root} elevation={1}>
                 <MatchHeading
