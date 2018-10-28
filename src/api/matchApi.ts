@@ -2,6 +2,7 @@ import { StoredMatch } from '../domain';
 import api from './api';
 
 const matchRoute = 'match';
+const inProgressQuery = 'inprogress';
 
 const matchApi = (url: string) => {
     const Api = api(3, 1000);
@@ -18,9 +19,13 @@ const matchApi = (url: string) => {
     const getMatch = async (id: string) =>
         await Api.get(`${url}/${matchRoute}/${id}`);
 
+    const getInProgressMatches = async () =>
+        await Api.get(`${url}/${matchRoute}?${inProgressQuery}=true`);
+
     return {
         sendMatch,
         getMatch,
+        getInProgressMatches,
     };
 };
 

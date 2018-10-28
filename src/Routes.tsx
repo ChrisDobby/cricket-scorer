@@ -6,7 +6,7 @@ import Wicket from './containers/match/Wicket';
 import CreateMatch from './containers/match/CreateMatch';
 import StartMatch from './containers/match/StartMatch';
 import App from './App';
-import Home from './components/Home';
+import Home from './containers/Home';
 import Match from './containers/Match';
 import auth0 from './components/auth0';
 
