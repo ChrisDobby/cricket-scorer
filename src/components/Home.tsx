@@ -174,4 +174,3 @@ export default withStyles(styles)(class extends React.PureComponent<any> {
             </div>);
     }
 });
-

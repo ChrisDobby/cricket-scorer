@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import { MemoryRouter } from 'react-router';
 import Routes from '../Routes';
 import Scorecard from '../containers/Scorecard';
-import Home from '../components/Home';
+import Home from '../containers/Home';
 
 describe.skip('Routes', () => {
     it('should render correctly', () => {
