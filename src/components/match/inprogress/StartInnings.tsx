@@ -112,7 +112,7 @@ export default class extends React.Component<StartInningsProps, {}> {
                     </Toolbar>
                     <Stepper activeStep={this.state.activeStep}>
                         {Object.keys(steps).map(key => (
-                            <Step disabled={steps[key](this.props)}>
+                            <Step key={key} disabled={steps[key](this.props)}>
                                 <StepLabel>{key}</StepLabel>
                             </Step>
                         ))}
