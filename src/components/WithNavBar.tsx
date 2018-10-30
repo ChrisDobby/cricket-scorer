@@ -16,6 +16,8 @@ const grow: React.CSSProperties = {
 
 type NavBarOptions = {
     stayWhenLoggingOut?: boolean;
+    title?: string;
+    button?: (props: any) => any;
 };
 
 const WithNavBar = (options: NavBarOptions) => (Component: any) => (props: any) => (
@@ -25,7 +27,12 @@ const WithNavBar = (options: NavBarOptions) => (Component: any) => (props: any) 
         <React.Fragment>
             <AppBar position="sticky">
                 <Toolbar>
-                    <Typography variant="title" color="inherit" style={grow}>Cricket scores live</Typography>
+                    <Typography
+                        variant="title"
+                        color="inherit"
+                        style={grow}
+                    >{options.title || 'Cricket scores live'}
+                    </Typography>
                     {!props.isAuthenticated && status === ONLINE &&
                         <Button color="inherit" onClick={props.login}>Register or login</Button>}
                     {props.isAuthenticated &&
@@ -48,6 +55,7 @@ const WithNavBar = (options: NavBarOptions) => (Component: any) => (props: any) 
                         >
                             <Menu />
                         </IconButton>}
+                    {options.button && options.button(props)}
                 </Toolbar>
             </AppBar>
             <Component {...props} />
