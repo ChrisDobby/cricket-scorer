@@ -11,11 +11,41 @@ import homePageStyles from './homePageStyles';
 
 const createMatchRoute = '/match/create';
 
+interface MatchCentreState {
+    loading: boolean;
+    inProgress: any[];
+}
+
 export default withStyles(homePageStyles)(class extends React.PureComponent<any> {
-    state = {
+    state: MatchCentreState = {
         loading: true,
         inProgress: [],
     };
+
+    get storedMatch() {
+        return typeof this.props.storedMatch === 'undefined'
+            ? undefined
+            : {
+                id: this.props.storedMatch.match.id,
+                date: this.props.storedMatch.match.date,
+                user: this.props.storedMatch.match.user,
+                homeTeam: this.props.storedMatch.match.homeTeam.name,
+                awayTeam: this.props.storedMatch.match.awayTeam.name,
+                status: this.props.storedMatch.match.status,
+            };
+    }
+
+    get availableMatches() {
+        const storedMatch = this.storedMatch;
+        if (typeof storedMatch === 'undefined') { return this.state.inProgress; }
+        const includeStoredMatch = typeof storedMatch.user === 'undefined' || (
+            typeof this.props.userProfile !== 'undefined' &&
+            this.props.userProfile.id === storedMatch.user);
+
+        if (!includeStoredMatch) { return this.state.inProgress; }
+        return this.state.inProgress.filter(m => m.id !== storedMatch.id)
+            .concat(storedMatch);
+    }
 
     async componentDidMount() {
         try {
@@ -61,7 +91,7 @@ export default withStyles(homePageStyles)(class extends React.PureComponent<any>
                 </Typography>}
                 {!this.state.loading &&
                     <Grid container spacing={40}>
-                        {this.state.inProgress.map((match: any) =>
+                        {this.availableMatches.map((match: any) =>
                             <MatchCard
                                 key={match.id}
                                 match={match}
