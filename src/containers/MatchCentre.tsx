@@ -7,4 +7,4 @@ import matchStorage from '../stores/matchStorage';
 const MatchCentre = (props: any) =>
     <MatchCentreComponent {...props} storedMatch={matchStorage(localStorage).getMatch()} />;
 
-export default WithNavBar(WithMatchApi(MatchCentre));
+export default WithNavBar({ stayWhenLoggingOut: true })(WithMatchApi(MatchCentre));

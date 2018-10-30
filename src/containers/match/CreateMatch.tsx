@@ -13,4 +13,4 @@ const CreateMatch = (props: any) => (
     />
 );
 
-export default inject('inProgressMatchStore')(MatchWithNetworkStatus(WithNavBar(CreateMatch)));
+export default inject('inProgressMatchStore')(MatchWithNetworkStatus(WithNavBar({})(CreateMatch)));

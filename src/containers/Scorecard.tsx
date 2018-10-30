@@ -6,7 +6,7 @@ import WithNavBar from '../components/WithNavBar';
 import WithMatchApi from '../components/WithMatchApi';
 import Error from '../components/Error';
 
-export default WithNavBar(WithMatchApi(class extends React.Component<any> {
+export default WithNavBar({ stayWhenLoggingOut: true })(WithMatchApi(class extends React.Component<any> {
     state = {
         match: undefined,
         loading: false,

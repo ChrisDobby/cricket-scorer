@@ -19,4 +19,4 @@ const InProgress = observer((props: any) => (
 ));
 
 export default
-    inject('inProgressMatchStore')(WithMatchActions(WithInProgressMatch(WithMatchDrawer(WithNavBar(InProgress)))));
+    inject('inProgressMatchStore')(WithMatchActions(WithInProgressMatch(WithMatchDrawer(WithNavBar({})(InProgress)))));

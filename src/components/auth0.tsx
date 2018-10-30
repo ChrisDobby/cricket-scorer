@@ -88,11 +88,15 @@ const auth0 = (domain: string, clientId: string) => {
         }
     };
 
+    const afterLogout = (history: any, stay: boolean) =>
+        history.replace(stay ? window.location.pathname : '/');
+
     const WithAuth0 = (Component: any) => (props: any) => (
         <Component
             {...props}
             login={() => login(props.location.pathname)}
-            logout={logout(() => props.history.replace('/'))}
+            logout={(stayOnPage: boolean) =>
+                logout(() => afterLogout(props.history, stayOnPage))()}
             isAuthenticated={isAuthenticated()}
             userProfile={userProfile()}
         />);

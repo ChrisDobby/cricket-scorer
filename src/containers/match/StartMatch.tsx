@@ -26,4 +26,4 @@ class StartMatch extends React.Component<any> {
     }
 }
 
-export default inject('inProgressMatchStore')(WithInProgressMatch(WithNavBar(StartMatch)));
+export default inject('inProgressMatchStore')(WithInProgressMatch(WithNavBar({})(StartMatch)));

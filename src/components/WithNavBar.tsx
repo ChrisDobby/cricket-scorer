@@ -14,7 +14,11 @@ const grow: React.CSSProperties = {
     flexGrow: 1,
 };
 
-const WithNavBar = (Component: any) => (props: any) => (
+type NavBarOptions = {
+    stayWhenLoggingOut?: boolean;
+};
+
+const WithNavBar = (options: NavBarOptions) => (Component: any) => (props: any) => (
     <NetworkStatusContext.Consumer>{({
         status,
     }) =>
@@ -28,7 +32,11 @@ const WithNavBar = (Component: any) => (props: any) => (
                         <React.Fragment>
                             <Avatar src={props.userProfile.picture} />
                             <Typography color="inherit">{props.userProfile.name}</Typography>
-                            <Button color="inherit" onClick={props.logout}>Logout</Button>
+                            <Button
+                                color="inherit"
+                                onClick={() => props.logout(!!options.stayWhenLoggingOut)}
+                            >Logout
+                            </Button>
                         </React.Fragment>}
                     {status === OFFLINE && !props.isAuthenticated &&
                         <SignalWifiOff />}

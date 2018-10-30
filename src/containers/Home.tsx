@@ -5,4 +5,4 @@ import { default as HomeComponent } from '../components/Home';
 
 const Home = (props: any) => <HomeComponent {...props} />;
 
-export default WithNavBar(WithMatchApi(Home));
+export default WithNavBar({})(WithMatchApi(Home));

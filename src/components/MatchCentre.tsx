@@ -16,6 +16,14 @@ interface MatchCentreState {
     inProgress: any[];
 }
 
+const sortMatches = (matches: any[], currentUser: string): any[] =>
+    [...matches].sort((m1, m2) => {
+        if (m1.user === currentUser) { return -1; }
+        if (m2.user === currentUser) { return 1; }
+
+        return 0;
+    });
+
 export default withStyles(homePageStyles)(class extends React.PureComponent<any> {
     state: MatchCentreState = {
         loading: true,
@@ -36,15 +44,20 @@ export default withStyles(homePageStyles)(class extends React.PureComponent<any>
     }
 
     get availableMatches() {
+        const sortedMatches = (matches: any) => (
+            typeof this.props.userProfile === 'undefined'
+                ? matches
+                : sortMatches(matches, this.props.userProfile.id));
+
         const storedMatch = this.storedMatch;
-        if (typeof storedMatch === 'undefined') { return this.state.inProgress; }
+        if (typeof storedMatch === 'undefined') { return sortedMatches(this.state.inProgress); }
         const includeStoredMatch = typeof storedMatch.user === 'undefined' || (
             typeof this.props.userProfile !== 'undefined' &&
             this.props.userProfile.id === storedMatch.user);
 
-        if (!includeStoredMatch) { return this.state.inProgress; }
-        return this.state.inProgress.filter(m => m.id !== storedMatch.id)
-            .concat(storedMatch);
+        if (!includeStoredMatch) { return sortedMatches(this.state.inProgress); }
+        return sortedMatches(this.state.inProgress.filter(m => m.id !== storedMatch.id)
+            .concat(storedMatch));
     }
 
     async componentDidMount() {

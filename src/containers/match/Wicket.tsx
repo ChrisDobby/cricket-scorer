@@ -11,4 +11,4 @@ const Wicket = observer(({ inProgressMatchStore }: WicketProps) => (
     <WicketComponent inProgress={inProgressMatchStore} storeMatch={storeMatch(inProgressMatchStore.setId)} />
 ));
 
-export default inject('inProgressMatchStore')(WithNavBar(Wicket));
+export default inject('inProgressMatchStore')(WithNavBar({})(Wicket));
