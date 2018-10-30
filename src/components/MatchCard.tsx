@@ -11,13 +11,16 @@ type Match = {
     id: string;
     date: string;
     status: string;
+    user: string;
     homeTeam: string;
     awayTeam: string;
 };
 
 interface MatchCardProps {
     match: Match;
+    currentUser: string | undefined;
     showScorecard: () => void;
+    continueScoring: () => void;
 }
 
 const dividerStyle: React.CSSProperties = {
@@ -42,6 +45,10 @@ export default (props: MatchCardProps) => (
                     <Button size="small" color="primary" onClick={props.showScorecard}>
                         Scorecard
                     </Button>
+                    {props.match.user === props.currentUser &&
+                        <Button size="small" color="primary" onClick={props.continueScoring}>
+                            Continue
+                        </Button>}
                 </CardActions>
             </div>
         </Card>

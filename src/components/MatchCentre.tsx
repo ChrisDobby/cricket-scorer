@@ -27,6 +27,7 @@ export default withStyles(homePageStyles)(class extends React.PureComponent<any>
     }
 
     showScorecard = (id: string) => () => this.props.history.push(`/scorecard/${id}`);
+    continueScoring = (id: string) => () => { };
 
     render() {
         return (
@@ -61,7 +62,13 @@ export default withStyles(homePageStyles)(class extends React.PureComponent<any>
                 {!this.state.loading &&
                     <Grid container spacing={40}>
                         {this.state.inProgress.map((match: any) =>
-                            <MatchCard key={match.id} match={match} showScorecard={this.showScorecard(match.id)} />)}
+                            <MatchCard
+                                key={match.id}
+                                match={match}
+                                showScorecard={this.showScorecard(match.id)}
+                                continueScoring={this.continueScoring(match.id)}
+                                currentUser={this.props.userProfile ? this.props.userProfile.id : undefined}
+                            />)}
                     </Grid>}
             </div>);
     }

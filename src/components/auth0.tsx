@@ -37,17 +37,18 @@ const auth0 = (domain: string, clientId: string) => {
         afterLogout();
     };
 
-    const userProfile = (): Profile | undefined => {
-        const userProfile = localStorage.getItem(profileKey);
-        if (!userProfile) { return undefined; }
-        return JSON.parse(userProfile);
-    };
-
     const isAuthenticated = () => {
         const storageExpiresAt = localStorage.getItem(expiresAtKey);
         if (!storageExpiresAt) { return false; }
         const expiresAt = JSON.parse(storageExpiresAt);
         return new Date().getTime() < expiresAt;
+    };
+
+    const userProfile = (): Profile | undefined => {
+        if (!isAuthenticated()) { return undefined; }
+        const userProfile = localStorage.getItem(profileKey);
+        if (!userProfile) { return undefined; }
+        return JSON.parse(userProfile);
     };
 
     const handleAuthentication = (location: any, afterComplete: (path: string | null) => void) => {
