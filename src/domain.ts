@@ -216,6 +216,7 @@ export interface StoredMatch {
     match?: Match;
     currentBatterIndex?: number;
     currentBowlerIndex?: number;
+    version: number;
 }
 
 export interface InProgressMatch {
@@ -232,6 +233,7 @@ export interface InProgressMatch {
     nextBattingTeam?: Team;
     canSelectBattingTeamForInnings: boolean;
     newBatterRequired: boolean;
+    version: number;
     startInnings: (battingTeam: TeamType, batter1Index: number, batter2Index: number) => void;
     newBowler: (playerIndex: number) => void;
     newBatter: (playerIndex: number) => void;

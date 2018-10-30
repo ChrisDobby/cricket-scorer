@@ -6,6 +6,7 @@ describe('matchStoragestoreMatch', () => {
         match: matchWithStartedOver,
         currentBatterIndex: 0,
         currentBowlerIndex: 0,
+        version: 1,
     };
 
     beforeEach(() => jest.clearAllMocks());

@@ -10,13 +10,17 @@ import { getTeam } from '../match/utilities';
 const teamFromType = (match: domain.Match) => (type: domain.TeamType) => getTeam(match, type);
 
 const updateMatchInnings =
-    (match: domain.Match, innings: domain.Innings, config: domain.MatchConfig): domain.Match => ({
-        ...match,
-        status: status(match),
-        innings: [...match.innings.map(inn => !matchInnings(config, teamFromType(match)).isComplete(inn)
-            ? innings
-            : inn)],
-    });
+    (match: domain.Match, innings: domain.Innings, config: domain.MatchConfig, version: number):
+        [domain.Match, number] => [
+            {
+                ...match,
+                status: status(match),
+                innings: [...match.innings.map(inn => !matchInnings(config, teamFromType(match)).isComplete(inn)
+                    ? innings
+                    : inn)],
+            },
+            version + 1,
+        ];
 
 const bowlerOfOver = (innings: domain.Innings, overNumber: number) => {
     const deliveryInOver = innings.events
@@ -41,6 +45,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
     @observable match: domain.Match | undefined;
     @observable currentBatterIndex: number | undefined;
     @observable currentBowlerIndex: number | undefined;
+    version = 0;
 
     get config() {
         return typeof this.match !== 'undefined'
@@ -193,11 +198,14 @@ class InProgressMatchStore implements domain.InProgressMatch {
 
         const [innings, bowlerIndex] = this.matchInnings.newBowler(this.currentInnings, playerIndex);
 
-        this.match = updateMatchInnings(
+        const [match, version] = updateMatchInnings(
             this.match,
             innings,
             this.config,
+            this.version,
         );
+        this.match = match;
+        this.version = version;
 
         this.currentBowlerIndex = bowlerIndex;
     }
@@ -214,11 +222,14 @@ class InProgressMatchStore implements domain.InProgressMatch {
         }
 
         const [innings, batterIndex] = this.matchInnings.newBatter(this.currentInnings, playerIndex);
-        this.match = updateMatchInnings(
+        const [match, version] = updateMatchInnings(
             this.match,
             innings,
             this.config,
+            this.version,
         );
+        this.match = match;
+        this.version = version;
 
         this.currentBatterIndex = batterIndex;
     }
@@ -242,11 +253,14 @@ class InProgressMatchStore implements domain.InProgressMatch {
                 scores,
                 wicket);
 
-        this.match = updateMatchInnings(
+        const [match, version] = updateMatchInnings(
             this.match,
             innings,
             this.config,
+            this.version,
         );
+        this.match = match;
+        this.version = version;
 
         this.currentBatterIndex = batterIndex;
     }
@@ -264,10 +278,13 @@ class InProgressMatchStore implements domain.InProgressMatch {
             howout,
         );
 
-        this.match = updateMatchInnings(
+        const [match, version] = updateMatchInnings(
             this.match,
             updatedInnings,
-            this.config);
+            this.config,
+            this.version);
+        this.match = match;
+        this.version = version;
     }
 
     @action batterUnavailable = (
@@ -283,10 +300,13 @@ class InProgressMatchStore implements domain.InProgressMatch {
             reason,
         );
 
-        this.match = updateMatchInnings(
+        const [match, version] = updateMatchInnings(
             this.match,
             updatedInnings,
-            this.config);
+            this.config,
+            this.version);
+        this.match = match;
+        this.version = version;
     }
 
     @action undoPreviousDelivery = () => {
@@ -298,11 +318,14 @@ class InProgressMatchStore implements domain.InProgressMatch {
         const [innings, batterIndex, bowlerIndex] =
             this.undo(this.currentInnings, Number(this.currentBatterIndex), Number(this.currentBowlerIndex));
 
-        this.match = updateMatchInnings(
+        const [match, version] = updateMatchInnings(
             this.match,
             innings,
             this.config,
+            this.version,
         );
+        this.match = match;
+        this.version = version;
 
         this.currentBatterIndex = batterIndex;
         this.currentBowlerIndex = bowlerIndex;
@@ -317,11 +340,14 @@ class InProgressMatchStore implements domain.InProgressMatch {
         const [innings, batterIndex] =
         this.matchInnings.completeOver(this.currentInnings, this.currentBatter, this.currentBowler);
 
-        this.match = updateMatchInnings(
+        const [match, version] = updateMatchInnings(
             this.match,
             innings,
             this.config,
+            this.version,
         );
+        this.match = match;
+        this.version = version;
 
         this.currentBatterIndex = batterIndex;
         this.currentBowlerIndex = undefined;
