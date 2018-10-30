@@ -8,6 +8,7 @@ import StartMatch from './containers/match/StartMatch';
 import App from './App';
 import Home from './containers/Home';
 import Match from './containers/Match';
+import MatchCentre from './containers/MatchCentre';
 import auth0 from './components/auth0';
 
 const Routes = () => (
@@ -20,7 +21,12 @@ const Routes = () => (
         <Route exact path="/match/start" component={auth0.AuthRequired(StartMatch)}/>
         <Route exact path="/match/inprogress" component={auth0.AuthRequired(InProgress)}/>
         <Route exact path="/match/wicket" component={auth0.AuthRequired(Wicket)} />
-        <Route exact path="/scorecard/:id?" render={props => <Scorecard {...props} id={props.match.params.id} />} />
+        <Route
+            exact
+            path="/scorecard/:id?"
+            component={auth0.WithAuth0((props: any) => <Scorecard {...props} id={props.match.params.id} />)}
+        />
+        <Route exact path="/matchcentre" component={auth0.WithAuth0(MatchCentre)} />
     </div>
 );
 

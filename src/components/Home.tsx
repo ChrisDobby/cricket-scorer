@@ -9,47 +9,11 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import MatchStatus from './MatchStatus';
 import aboutText from './aboutText';
+import homePageStyles from './homePageStyles';
 
 const Logo = require('../../images/icon_512.png');
 
-const styles = (theme: any) => ({
-    rootStyle: {
-        marginLeft: theme.spacing.unit * 3,
-        marginRight: theme.spacing.unit * 3,
-        [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
-            width: 1100,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-        },
-    },
-    paperStyle: {
-        backgroundColor: theme.palette.primary.main,
-        color: theme.palette.primary.contrastText,
-        marginBottom: theme.spacing.unit * 4,
-    },
-    mainContentStyle: {
-        padding: `${theme.spacing.unit * 6}px`,
-        [theme.breakpoints.up('md')]: {
-            paddingRight: 0,
-        },
-    },
-    toolbar: theme.mixins.toolbar,
-    logoStyle: {
-        maxHeight: '200px',
-        margin: '30px',
-    },
-    linkStyle: {
-        color: theme.palette.primary.contrastText,
-    },
-    cardStyle: {
-        display: 'flex',
-    },
-    cardDetailsStyle: {
-        flex: 1,
-    },
-});
-
-export default withStyles(styles)(class extends React.PureComponent<any> {
+export default withStyles(homePageStyles)(class extends React.PureComponent<any> {
     state = { inProgressMatches: [] };
 
     async componentDidMount() {
