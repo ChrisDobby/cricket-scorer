@@ -6,6 +6,7 @@ import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
+import * as dateformat from 'dateformat';
 
 type Match = {
     id: string;
@@ -33,6 +34,9 @@ export default (props: MatchCardProps) => (
         <Card style={{ display: 'flex' }}>
             <div style={{ flex: 1 }}>
                 <CardContent>
+                    <Typography variant="subtitle1" color="textSecondary">
+                        {dateformat(props.match.date, 'dd-mmm-yyyy')}
+                    </Typography>
                     <Typography component="h2" variant="h5" color="primary" style={{ minHeight: '80px' }}>
                         {`${props.match.homeTeam} v ${props.match.awayTeam}`}
                     </Typography>

@@ -117,6 +117,10 @@
   version "0.22.7"
   resolved "https://registry.yarnpkg.com/@types/cheerio/-/cheerio-0.22.7.tgz#4a92eafedfb2b9f4437d3a4410006d81114c66ce"
 
+"@types/dateformat@^1.0.1":
+  version "1.0.1"
+  resolved "http://registry.npmjs.org/@types/dateformat/-/dateformat-1.0.1.tgz#2e5b235c8c55652c4fec284506d2a36fe65fe87e"
+
 "@types/enzyme-adapter-react-16@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@types/enzyme-adapter-react-16/-/enzyme-adapter-react-16-1.0.2.tgz#15ae37c64d6221a6f4b3a4aacc357cf773859de4"
@@ -2223,7 +2227,7 @@ date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
 
-dateformat@^3.0.2:
+dateformat@^3.0.2, dateformat@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-3.0.3.tgz#a6e37499a4d9a9cf85ef5872044d62901c9889ae"
 
