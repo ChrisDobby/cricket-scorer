@@ -35,6 +35,7 @@ export default withStyles(homePageStyles)(class extends React.PureComponent<any>
                 homeTeam: this.props.storedMatch.match.homeTeam.name,
                 awayTeam: this.props.storedMatch.match.awayTeam.name,
                 status: this.props.storedMatch.match.status,
+                version: this.props.storedMatch.version,
             };
     }
 
@@ -51,8 +52,12 @@ export default withStyles(homePageStyles)(class extends React.PureComponent<any>
             this.props.userProfile.id === storedMatch.user);
 
         if (!includeStoredMatch) { return sortedMatches(this.state.inProgress); }
-        return sortedMatches(this.state.inProgress.filter(m => m.id !== storedMatch.id)
-            .concat(storedMatch));
+        const storedMatchFromInProgress = this.state.inProgress.find(m => m.id === storedMatch.id);
+        return sortedMatches(
+            typeof storedMatchFromInProgress === 'undefined' || storedMatchFromInProgress.version <= storedMatch.version
+                ? this.state.inProgress.filter(m => m.id !== storedMatch.id)
+                    .concat(storedMatch)
+                : this.state.inProgress);
     }
 
     async componentDidMount() {
@@ -64,7 +69,18 @@ export default withStyles(homePageStyles)(class extends React.PureComponent<any>
         }
     }
 
-    showScorecard = (id: string) => () => this.props.history.push(`/scorecard/${id}`);
+    showScorecard = (id: string) => () => {
+        const storedMatch = this.storedMatch;
+        const inProgress = this.state.inProgress.find(ip => ip.id === id);
+        if (typeof inProgress === 'undefined' ||
+            (typeof storedMatch !== 'undefined' && storedMatch.id === id && storedMatch.version > inProgress.version)) {
+            this.props.history.push('/scorecard');
+            return;
+        }
+
+        this.props.history.push(`/scorecard/${id}`);
+    }
+
     continueScoring = (id: string) => () => { };
 
     render() {
