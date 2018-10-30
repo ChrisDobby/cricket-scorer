@@ -54,10 +54,14 @@ export default withStyles(homePageStyles)(class extends React.PureComponent<any>
                     <div style={{ width: '100%', textAlign: 'center' }}>
                         <CircularProgress size={50} />
                     </div>}
+                {!this.state.loading && this.state.inProgress.length === 0 &&
+                    <Typography variant="h5" color="primary">
+                        There are no matches currently in progress
+                </Typography>}
                 {!this.state.loading &&
                     <Grid container spacing={40}>
-                    {this.state.inProgress.map((match: any) =>
-                        <MatchCard key={match.id} match={match} showScorecard={this.showScorecard(match.id)} />)}
+                        {this.state.inProgress.map((match: any) =>
+                            <MatchCard key={match.id} match={match} showScorecard={this.showScorecard(match.id)} />)}
                     </Grid>}
             </div>);
     }
