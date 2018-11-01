@@ -213,14 +213,14 @@ export interface Match {
 }
 
 export interface StoredMatch {
-    match?: Match;
+    match: Match;
     currentBatterIndex?: number;
     currentBowlerIndex?: number;
     version: number;
 }
 
 export interface InProgressMatch {
-    match?: Match;
+    match: Match;
     currentInnings?: Innings;
     currentBatter?: Batter;
     currentBowler?: Bowler;

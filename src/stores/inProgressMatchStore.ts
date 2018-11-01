@@ -33,24 +33,14 @@ const bowlerOfOver = (innings: domain.Innings, overNumber: number) => {
         : innings.bowlers[deliveryInOver.bowlerIndex];
 };
 
-const defaultConfig = {
-    playersPerSide: 11,
-    type: domain.MatchType.Time,
-    inningsPerSide: 1,
-    runsForNoBall: 1,
-    runsForWide: 1,
-};
-
 class InProgressMatchStore implements domain.InProgressMatch {
-    @observable match: domain.Match | undefined;
+    @observable match: domain.Match;
     @observable currentBatterIndex: number | undefined;
     @observable currentBowlerIndex: number | undefined;
     version = 0;
 
     get config() {
-        return typeof this.match !== 'undefined'
-            ? this.match.config
-            : defaultConfig;
+        return this.match.config;
     }
 
     get matchInnings() {
@@ -62,9 +52,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
     }
 
     @computed get currentInnings() {
-        return typeof this.match === 'undefined'
-            ? undefined
-            : this.match.innings.find(inn => !this.matchInnings.isComplete(inn));
+        return this.match.innings.find(inn => !this.matchInnings.isComplete(inn));
     }
 
     @computed get currentOver() {
@@ -102,8 +90,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
     }
 
     @computed get previousBowler() {
-        if (typeof this.match === 'undefined' ||
-            typeof this.currentInnings === 'undefined' ||
+        if (typeof this.currentInnings === 'undefined' ||
             this.currentInnings.completedOvers === 0) {
             return undefined;
         }
@@ -112,8 +99,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
     }
 
     @computed get previousBowlerFromEnd() {
-        if (typeof this.match === 'undefined' ||
-            typeof this.currentInnings === 'undefined' ||
+        if (typeof this.currentInnings === 'undefined' ||
             this.currentInnings.completedOvers <= 1) {
             return undefined;
         }
@@ -122,8 +108,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
     }
 
     @computed get provisionalInningsStatus() {
-        if (typeof this.match === 'undefined' ||
-            typeof this.currentInnings === 'undefined') {
+        if (typeof this.currentInnings === 'undefined') {
             return undefined;
         }
 
@@ -131,17 +116,16 @@ class InProgressMatchStore implements domain.InProgressMatch {
     }
 
     @computed get provisionalMatchComplete() {
-        return typeof this.match !== 'undefined' && complete.isComplete(this.match);
+        return complete.isComplete(this.match);
     }
 
     @computed get canSelectBattingTeamForInnings() {
-        return typeof this.match !== 'undefined' &&
-            this.match.config.type === domain.MatchType.Time &&
+        return this.match.config.type === domain.MatchType.Time &&
             this.match.config.inningsPerSide > 1;
     }
 
     @computed get nextBattingTeam() {
-        if (typeof this.match === 'undefined' || typeof this.match.toss === 'undefined') {
+        if (typeof this.match.toss === 'undefined') {
             return undefined;
         }
 
@@ -155,8 +139,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
     }
 
     @computed get newBatterRequired() {
-        if (typeof this.match === 'undefined' ||
-        typeof this.currentInnings === 'undefined') { return false; }
+        if (typeof this.currentInnings === 'undefined') { return false; }
 
         return this.currentInnings.batting.batters
             .filter(batter => batter.innings &&
@@ -165,8 +148,6 @@ class InProgressMatchStore implements domain.InProgressMatch {
     }
 
     @action startMatch = (tossWonBy: domain.TeamType, battingFirst: domain.TeamType) => {
-        if (typeof this.match === 'undefined') { return; }
-
         this.match = {
             ...this.match,
             toss: { tossWonBy, battingFirst },
@@ -176,8 +157,6 @@ class InProgressMatchStore implements domain.InProgressMatch {
     }
 
     @action startInnings = (battingTeam: domain.TeamType, batter1Index: number, batter2Index: number) => {
-        if (typeof this.match === 'undefined') { return; }
-
         const innings = this.matchInnings.newInnings(battingTeam, batter1Index, batter2Index);
         this.match = {
             ...this.match,
@@ -188,8 +167,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
     }
 
     @action newBowler = (playerIndex: number) => {
-        if (typeof this.match === 'undefined' ||
-            typeof this.currentInnings === 'undefined') { return; }
+        if (typeof this.currentInnings === 'undefined') { return; }
 
         if (typeof this.previousBowler !== 'undefined' &&
             this.previousBowler.playerIndex === playerIndex) {
@@ -211,8 +189,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
     }
 
     @action newBatter = (playerIndex: number) => {
-        if (typeof this.match === 'undefined' ||
-            typeof this.currentInnings === 'undefined') { return; }
+        if (typeof this.currentInnings === 'undefined') { return; }
 
         if (this.currentInnings.batting.batters.filter(batter =>
             typeof batter.innings !== 'undefined' &&
@@ -239,8 +216,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
         scores: domain.DeliveryScores,
         wicket: domain.DeliveryWicket | undefined = undefined,
     ) => {
-        if (typeof this.match === 'undefined' ||
-            typeof this.currentInnings === 'undefined' ||
+        if (typeof this.currentInnings === 'undefined' ||
             typeof this.currentBatter === 'undefined' ||
             typeof this.currentBowler === 'undefined') { return; }
 
@@ -268,8 +244,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
     @action nonDeliveryWicket = (
         howout: domain.Howout,
     ) => {
-        if (typeof this.match === 'undefined' ||
-            typeof this.currentInnings === 'undefined' ||
+        if (typeof this.currentInnings === 'undefined' ||
             typeof this.currentBatter === 'undefined') { return; }
 
         const updatedInnings = this.matchInnings.nonDeliveryWicket(
@@ -290,8 +265,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
     @action batterUnavailable = (
         reason: domain.UnavailableReason,
     ) => {
-        if (typeof this.match === 'undefined' ||
-            typeof this.currentInnings === 'undefined' ||
+        if (typeof this.currentInnings === 'undefined' ||
             typeof this.currentBatter === 'undefined') { return; }
 
         const updatedInnings = this.matchInnings.batterUnavailable(
@@ -310,8 +284,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
     }
 
     @action undoPreviousDelivery = () => {
-        if (typeof this.match === 'undefined' ||
-            typeof this.currentInnings === 'undefined' ||
+        if (typeof this.currentInnings === 'undefined' ||
             typeof this.currentBatter === 'undefined' ||
             typeof this.currentBowler === 'undefined') { return; }
 
@@ -332,8 +305,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
     }
 
     @action completeOver = () => {
-        if (typeof this.match === 'undefined' ||
-            typeof this.currentInnings === 'undefined' ||
+        if (typeof this.currentInnings === 'undefined' ||
             typeof this.currentBatter === 'undefined' ||
             typeof this.currentBowler === 'undefined') { return; }
 
@@ -354,16 +326,14 @@ class InProgressMatchStore implements domain.InProgressMatch {
     }
 
     @action flipBatters = () => {
-        if (typeof this.match === 'undefined' ||
-            typeof this.currentInnings === 'undefined' ||
+        if (typeof this.currentInnings === 'undefined' ||
             typeof this.currentBatter === 'undefined') { return; }
 
         this.currentBatterIndex = this.matchInnings.flipBatters(this.currentInnings, this.currentBatter);
     }
 
     @action completeInnings = (status: domain.InningsStatus) => {
-        if (typeof this.match === 'undefined' ||
-            typeof this.currentInnings === 'undefined') {
+        if (typeof this.currentInnings === 'undefined') {
             return;
         }
 
@@ -374,7 +344,6 @@ class InProgressMatchStore implements domain.InProgressMatch {
     }
 
     @action completeMatch = (result: domain.MatchResult) => {
-        if (typeof this.match === 'undefined') { return; }
         const [res, status] = complete.status(this.match, result);
 
         this.match = {
@@ -393,9 +362,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
     }
 
     @action setId = (id: string) => {
-        if (typeof this.match !== 'undefined') {
-            this.match.id = id;
-        }
+        this.match.id = id;
     }
 }
 
