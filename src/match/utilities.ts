@@ -21,6 +21,16 @@ export const isMaidenOver = (deliveries: domain.Delivery[]) =>
         (typeof delivery.outcome.scores.runs === 'undefined' || delivery.outcome.scores.runs === 0))
         .length === deliveries.length;
 
+export const getFallOfWicket = (innings: domain.Innings, batter: string) => ({
+    batter,
+    score: innings.score,
+    partnership: innings.fallOfWickets.length === 0
+        ? innings.score
+        : innings.score -
+        innings.fallOfWickets[innings.fallOfWickets.length - 1].score,
+    wicket: innings.wickets,
+});
+
 export const updateInningsFromDelivery = (
     getDeliveries: () => domain.Event[],
     updateExtras: (extras: domain.Extras, deliveryOutcome: domain.Outcome, config: domain.MatchConfig) => domain.Extras,
@@ -47,6 +57,13 @@ export const updateInningsFromDelivery = (
             wicket: getBattingWicket(),
         };
     };
+
+    const addFallOfWicket = (inningsToAddTo: domain.Innings) => ({
+        ...inningsToAddTo,
+        fallOfWickets: deliveries.wickets(deliveryOutcome) === 0
+            ? inningsToAddTo.fallOfWickets
+            : [...inningsToAddTo.fallOfWickets, getFallOfWicket(inningsToAddTo, batter.name)],
+    });
 
     const updatedDeliveries = getDeliveries();
     const currentOver = latestOver(updatedDeliveries, innings.completedOvers);
@@ -86,7 +103,7 @@ export const updateInningsFromDelivery = (
         wickets: update(innings.wickets, deliveries.wickets(deliveryOutcome)),
     };
 
-    return updatedInnings;
+    return addFallOfWicket(updatedInnings);
 };
 
 export const flipBatters = (innings: domain.Innings, batter: domain.Batter) => {

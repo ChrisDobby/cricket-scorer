@@ -190,7 +190,7 @@ const innings = (
             batsmanIndex: innings.batting.batters.indexOf(batter),
         } as domain.Event;
 
-        return [addEvent(
+        const updatedInnings = addEvent(
             innings,
             event,
             1,
@@ -204,7 +204,16 @@ const innings = (
                         wicket: { time, howOut: howout },
                     },
             }),
-        ),
+        );
+
+        return [
+            {
+                ...updatedInnings,
+                fallOfWickets: [
+                    ...updatedInnings.fallOfWickets,
+                    utilities.getFallOfWicket(updatedInnings, batter.name),
+                ],
+            },
             event,
         ];
     };

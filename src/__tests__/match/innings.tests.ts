@@ -351,6 +351,33 @@ describe('innings', () => {
             expect(wicket.bowler).toBe('A bowler');
             expect(wicket.fielder).toBe('A fielder');
         });
+
+        it('should add the wicket to the fall of wickets', () => {
+            const fallOfWickets = updatedInnings.fallOfWickets;
+
+            expect(fallOfWickets).toHaveLength(1);
+            const [fow] = fallOfWickets;
+            expect(fow.wicket).toBe(1);
+            expect(fow.batter).toEqual(matches.inningsWithStartedOver.batting.batters[0].name);
+            expect(fow.score).toBe(updatedInnings.score);
+            expect(fow.partnership).toBe(updatedInnings.score);
+        });
+
+        it('should calculate fall of wicket partnership from the previous wicket', () => {
+            const [inningsWithFow] = Innings.delivery(
+                {
+                    ...matches.inningsWithStartedOver,
+                    fallOfWickets: [{ score: 2, wicket: 1, batter: '', partnership: 10 }],
+                },
+                matches.inningsWithStartedOver.batting.batters[0],
+                matches.inningsWithStartedOver.bowlers[0],
+                domain.DeliveryOutcome.Valid,
+                {},
+            );
+
+            expect(inningsWithFow.fallOfWickets).toHaveLength(2);
+            expect(inningsWithFow.fallOfWickets[1].partnership).toBe(inningsWithFow.score - 2);
+        });
     });
 
     describe('completeOver', () => {
@@ -504,6 +531,17 @@ describe('innings', () => {
             const wicket = batterInnings.wicket as domain.Wicket;
 
             expect(wicket.howOut).toBe(domain.Howout.TimedOut);
+        });
+
+        it('should add the wicket to the fall of wickets', () => {
+            const fallOfWickets = updatedInnings.fallOfWickets;
+
+            expect(fallOfWickets).toHaveLength(1);
+            const [fow] = fallOfWickets;
+            expect(fow.wicket).toBe(1);
+            expect(fow.batter).toEqual(updatedInnings.batting.batters[0].name);
+            expect(fow.score).toBe(updatedInnings.score);
+            expect(fow.partnership).toBe(updatedInnings.score);
         });
     });
 
