@@ -18,7 +18,12 @@ const api = (addBearerToken: any) => (defaultRetries: number, retryWaitMilliseco
         }
     };
 
-    const responseData = (response: any) => response.json();
+    const responseData = (response: any) => {
+        if (!response.ok) {
+            throw new Error(response.status);
+        }
+        return response.json();
+    };
 
     const get = async (route: string) => {
         const response = await tryFetch(() => fetch(route), undefined);

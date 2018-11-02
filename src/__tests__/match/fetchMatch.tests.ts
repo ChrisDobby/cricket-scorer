@@ -21,9 +21,11 @@ describe('fetchMatch', () => {
     const getMatchWithLaterVersion = jest.fn(() => ({ ...match, version: 4 }));
     const getMatchWithDifferentId = jest.fn(() => match2);
     const getFromApi = jest.fn(() => Promise.resolve(match));
+    const getFromApiWith404 = jest.fn(() => Promise.reject(new Error('404')));
     const sendToApi = jest.fn(() => Promise.resolve());
 
     const api = { getMatch: getFromApi, sendMatch: sendToApi };
+    const apiWith404FromGet = { getMatch: getFromApiWith404, sendMatch: sendToApi };
     const storeWithNoMatch = { storeMatch, getMatch: getNoMatch };
     const storeWithEarlierVersion = { storeMatch, getMatch: getMatchWithEarlierVersion };
     const storeWithSameVersion = { storeMatch, getMatch: getMatchWithSameVersion };
@@ -96,6 +98,17 @@ describe('fetchMatch', () => {
         return new Promise(resolve => setImmediate(resolve))
             .then(() => {
                 expect(storeMatch).toHaveBeenCalledWith(match);
+            });
+    });
+
+    it('should send the stored match to the api if trying to fetch a match with the same id and get a 404', () => {
+        const fetch = fetchMatch(apiWith404FromGet, storeWithDifferentMatch);
+        fetch(matchId);
+
+        return new Promise((resolve, reject) => setImmediate(resolve, reject))
+            .then(() => {
+                expect(sendToApi).toHaveBeenCalledWith(match2);
+                expect(storeMatch).not.toHaveBeenCalled();
             });
     });
 });
