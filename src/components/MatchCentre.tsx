@@ -32,7 +32,7 @@ export default withStyles(homePageStyles)(class extends React.PureComponent<any>
     };
 
     get storedMatch() {
-        return typeof this.props.storedMatch === 'undefined'
+        return !this.props.storedMatch
             ? undefined
             : {
                 id: this.props.storedMatch.match.id,

@@ -29,14 +29,14 @@ export default (
         const storedMatch = store.getMatch();
         const apiMatch = await getApiMatchOrDefaultToStore(api, id);
 
-        if (typeof storedMatch !== 'undefined' &&
+        if (storedMatch &&
             (typeof apiMatch === 'undefined' ||
                 storedMatch.match.id !== apiMatch.match.id)) {
             await api.sendMatch(storedMatch);
         }
 
         if (typeof apiMatch !== 'undefined' && (
-            typeof storedMatch === 'undefined' ||
+            !storedMatch ||
             storedMatch.match.id !== apiMatch.match.id ||
             storedMatch.version < apiMatch.version)) {
             store.storeMatch(apiMatch);
