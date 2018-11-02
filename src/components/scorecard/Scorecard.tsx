@@ -36,7 +36,7 @@ const styles = (theme: any) => ({
     },
 });
 
-interface ScorecardProps { cricketMatch: MatchEntity; classes: any; }
+interface ScorecardProps { cricketMatch: MatchEntity; lastEvent: string | undefined; classes: any; }
 
 class Scorecard extends React.Component<ScorecardProps, {}> {
     state = {
@@ -61,6 +61,7 @@ class Scorecard extends React.Component<ScorecardProps, {}> {
                     awayTeam={this.props.cricketMatch.awayTeam.name}
                     date={this.props.cricketMatch.date}
                     matchStatus={this.props.cricketMatch.status}
+                    lastEvent={this.props.lastEvent}
                 />
                 <Divider />
                 <Tabs

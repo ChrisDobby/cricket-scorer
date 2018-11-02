@@ -9,6 +9,7 @@ import Progress from '../components/Progress';
 export default WithNavBar({ stayWhenLoggingOut: true })(WithMatchApi(class extends React.Component<any> {
     state = {
         match: undefined,
+        lastEvent: undefined,
         loading: false,
         loadError: false,
     };
@@ -17,7 +18,7 @@ export default WithNavBar({ stayWhenLoggingOut: true })(WithMatchApi(class exten
         this.setState({ loading: true, loadError: false });
         try {
             const result = await this.props.matchApi.getMatch(this.props.id);
-            this.setState({ match: result.match, loading: false });
+            this.setState({ match: result.match, lastEvent: result.lastEvent, loading: false });
         } catch (e) {
             this.setState({ loading: false, loadError: true });
         }
@@ -38,7 +39,7 @@ export default WithNavBar({ stayWhenLoggingOut: true })(WithMatchApi(class exten
 
     render() {
         if (typeof this.state.match !== 'undefined') {
-            return <Scorecard cricketMatch={this.state.match} />;
+            return <Scorecard cricketMatch={this.state.match} lastEvent={this.state.lastEvent} />;
         }
 
         if (this.state.loading) {

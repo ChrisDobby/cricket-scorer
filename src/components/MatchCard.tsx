@@ -15,6 +15,7 @@ type Match = {
     user: string;
     homeTeam: string;
     awayTeam: string;
+    lastEvent: string;
 };
 
 interface MatchCardProps {
@@ -41,8 +42,11 @@ export default (props: MatchCardProps) => (
                         {`${props.match.homeTeam} v ${props.match.awayTeam}`}
                     </Typography>
                     <Divider style={dividerStyle} />
-                    <Typography component="h2" variant="h6">
+                    <Typography component="h2" variant="h6" style={{ minHeight: '40px' }}>
                         {props.match.status}
+                    </Typography>
+                    <Typography component="h2" variant="body1" color="textSecondary" style={{ minHeight: '20px' }}>
+                        {props.match.lastEvent}
                     </Typography>
                 </CardContent>
                 <CardActions>
