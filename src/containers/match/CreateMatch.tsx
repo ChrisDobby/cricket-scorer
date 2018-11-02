@@ -4,6 +4,7 @@ import NewMatch from '../../components/match/create/NewMatch';
 import WithNavBar from '../../components/WithNavBar';
 import storeMatch from '../../storeMatch';
 import MatchWithNetworkStatus from '../../components/match/MatchWithNetworkStatus';
+import WithInProgressStore from '../../components/WithInProgressStore';
 
 const CreateMatch = (props: any) => (
     <NewMatch
@@ -13,4 +14,5 @@ const CreateMatch = (props: any) => (
     />
 );
 
-export default inject('inProgressMatchStore')(MatchWithNetworkStatus(WithNavBar({})(CreateMatch)));
+export default
+    WithInProgressStore()(inject('inProgressMatchStore')(MatchWithNetworkStatus(WithNavBar({})(CreateMatch))));

@@ -364,6 +364,13 @@ class InProgressMatchStore implements domain.InProgressMatch {
     @action setId = (id: string) => {
         this.match.id = id;
     }
+
+    @action setFromStoredMatch = (storedMatch: domain.StoredMatch) => {
+        this.match = storedMatch.match;
+        this.version = storedMatch.version;
+        this.currentBatterIndex = storedMatch.currentBatterIndex;
+        this.currentBowlerIndex = storedMatch.currentBowlerIndex;
+    }
 }
 
 const inProgressMatch = new InProgressMatchStore();

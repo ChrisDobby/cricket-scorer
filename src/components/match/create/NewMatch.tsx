@@ -9,7 +9,10 @@ import { bindMatchStorage } from '../../../stores/withMatchStorage';
 
 const create = (username: string, inProgress: InProgressMatchStore, complete: () => void) => (data: any) => {
     const match = createMatch({ ...data, username });
-    inProgress.match = match;
+    inProgress.setFromStoredMatch({
+        match,
+        version: 0,
+    });
     complete();
 };
 

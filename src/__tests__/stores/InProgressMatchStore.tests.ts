@@ -574,4 +574,23 @@ describe('inProgressMatchStore', () => {
             expect(inProgressMatchStore.newBatterRequired).toBeTruthy();
         });
     });
+
+    describe('setFromStoredMatch', () => {
+        it('should set the inprogress details from the supplied stored match', () => {
+            const storeToUpdate = new InProgressMatchStore();
+            const storedMatch = {
+                match: matches.blankMatch,
+                currentBatterIndex: 1,
+                currentBowlerIndex: 2,
+                version: 999,
+            };
+
+            storeToUpdate.setFromStoredMatch(storedMatch);
+
+            expect(storeToUpdate.match).toEqual(storedMatch.match);
+            expect(storeToUpdate.currentBatterIndex).toBe(storedMatch.currentBatterIndex);
+            expect(storeToUpdate.currentBowlerIndex).toBe(storedMatch.currentBowlerIndex);
+            expect(storeToUpdate.version).toBe(storedMatch.version);
+        });
+    });
 });

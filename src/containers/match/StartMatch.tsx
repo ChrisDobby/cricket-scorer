@@ -3,6 +3,7 @@ import { inject } from 'mobx-react';
 import { default as StartMatchComponent } from '../../components/match/start/StartMatch';
 import storeMatch from '../../storeMatch';
 import WithInProgressMatch from '../../components/WithInProgressMatch';
+import WithInProgressStore from '../../components/WithInProgressStore';
 import WithNavBar from '../../components/WithNavBar';
 
 class StartMatch extends React.Component<any> {
@@ -26,4 +27,4 @@ class StartMatch extends React.Component<any> {
     }
 }
 
-export default inject('inProgressMatchStore')(WithInProgressMatch(WithNavBar({})(StartMatch)));
+export default WithInProgressStore()(inject('inProgressMatchStore')(WithInProgressMatch(WithNavBar({})(StartMatch))));

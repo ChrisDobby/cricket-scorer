@@ -245,6 +245,7 @@ export interface InProgressMatch {
     completeMatch: (result: MatchResult) => void;
     nonDeliveryWicket: (howout: Howout) => void;
     batterUnavailable: (reason: UnavailableReason) => void;
+    setFromStoredMatch: (storedMatch: StoredMatch | undefined) => void;
 }
 
 export const howOutDescription = (wicket?: Wicket): string => {

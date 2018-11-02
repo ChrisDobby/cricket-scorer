@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { inject } from 'mobx-react';
+import WithInProgressStore from '../components/WithInProgressStore';
 
 class Match extends React.Component<any> {
     componentDidMount() {
@@ -26,4 +27,4 @@ class Match extends React.Component<any> {
     }
 }
 
-export default inject('inProgressMatchStore')(Match);
+export default WithInProgressStore()(inject('inProgressMatchStore')(Match));
