@@ -48,7 +48,6 @@ describe('eventDescription', () => {
             { howOut: Howout.Bowled, bowler: bowlerName, time: 1 },
         );
 
-
         expect(description).toBe(`${batsmanName} - bowled ${bowlerName}`);
     });
 

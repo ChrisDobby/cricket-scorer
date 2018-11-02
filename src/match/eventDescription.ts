@@ -18,7 +18,6 @@ export default (match: domain.Match, innings: domain.Innings, event: domain.Even
         return `${batter} - ${domain.howOutDescription(wicket)}`;
     };
 
-
     switch (event.type) {
     case domain.EventType.Delivery:
         return deliveryDescription(event as domain.Delivery);
