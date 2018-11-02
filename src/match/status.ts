@@ -35,9 +35,9 @@ export default (match: Match) => {
         return `${leaders.name} lead by ${leaders.by}`;
     };
 
-    const tossResult = () => (
+    const startDescription = () => (
         typeof match.toss === 'undefined'
-            ? ''
+            ? 'Not started'
             : `Toss won by ${getTeam(match, match.toss.tossWonBy).name}, ` +
             `${getTeam(match, match.toss.battingFirst).name} to bat first`);
 
@@ -47,7 +47,7 @@ export default (match: Match) => {
     };
 
     if (match.complete) { return match.status; }
-    if (match.innings.length === 0) { return tossResult(); }
+    if (match.innings.length === 0) { return startDescription(); }
     const score = currentInningsScore();
     if (match.innings.length === 1) { return score; }
     if (match.config.inningsPerSide === 1) {

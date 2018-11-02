@@ -143,8 +143,8 @@ describe('status', () => {
         expect(status(match)).toBe(`${matches.blankMatch.homeTeam.name} 40-0, the scores are level`);
     });
 
-    it('should return nothing if the match has not started and the toss not taken place', () => {
-        expect(status(matches.blankMatch)).toBe('');
+    it('should return no started status if the match has not started and the toss not taken place', () => {
+        expect(status(matches.blankMatch)).toBe('Not started');
     });
 
     it('should return the toss if the match has not started and the toss has taken place', () => {
