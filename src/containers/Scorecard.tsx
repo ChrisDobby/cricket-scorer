@@ -1,10 +1,10 @@
 import * as React from 'react';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import Scorecard from '../components/scorecard/Scorecard';
 import matchStorage from '../stores/matchStorage';
 import WithNavBar from '../components/WithNavBar';
 import WithMatchApi from '../components/WithMatchApi';
 import Error from '../components/Error';
+import Progress from '../components/Progress';
 
 export default WithNavBar({ stayWhenLoggingOut: true })(WithMatchApi(class extends React.Component<any> {
     state = {
@@ -34,19 +34,24 @@ export default WithNavBar({ stayWhenLoggingOut: true })(WithMatchApi(class exten
         }
     }
 
+    loadErrorClosed = () => this.setState({ loadError: false });
+
     render() {
         if (typeof this.state.match !== 'undefined') {
             return <Scorecard cricketMatch={this.state.match} />;
         }
 
         if (this.state.loading) {
-            return <CircularProgress size={50}/>;
+            return <Progress />;
         }
 
         if (this.state.loadError) {
-            return <div><Error message="Error loading match. Refresh to try again." /></div>;
+            return (
+                <div>
+                    <Error message="Error loading match. Refresh to try again." onClose={this.loadErrorClosed} />
+                </div>);
         }
 
-        return <div><Error message="No match found" /></div>;
+        return <div><Error message="No match found" onClose={() => { }} /></div>;
     }
 }));

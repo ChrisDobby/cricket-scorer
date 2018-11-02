@@ -3,7 +3,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import Progress from './Progress';
 
 interface LoadingDialogProps {
     message: string;
@@ -22,9 +22,7 @@ export default (props: LoadingDialogProps) => (
                 </DialogContentText>
             </DialogContent>
             <DialogContent>
-                <div style={{ width: '100%', textAlign: 'center' }}>
-                    <CircularProgress size={50} />
-                </div>
+                <Progress />
             </DialogContent>
         </Dialog>
     </div>);

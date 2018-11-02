@@ -2,11 +2,11 @@ import * as React from 'react';
 import Grid from '@material-ui/core/Grid';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Typography from '@material-ui/core/Typography';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import MatchCard from './MatchCard';
 import homePageStyles from './homePageStyles';
 import Error from './Error';
 import LoadingDialog from './LoadingDialog';
+import Progress from './Progress';
 
 interface MatchCentreState {
     loading: boolean;
@@ -99,15 +99,14 @@ export default withStyles(homePageStyles)(class extends React.PureComponent<any>
         }
     }
 
+    closeError = () => this.setState({ fetchError: false });
+
     render() {
         return (
             <>
                 <div className={this.props.classes.rootStyle}>
                     <div className={this.props.classes.toolbar} />
-                    {this.state.loading &&
-                        <div style={{ width: '100%', textAlign: 'center' }}>
-                            <CircularProgress size={50} />
-                        </div>}
+                    {this.state.loading && <Progress />}
                     {!this.state.loading && this.state.inProgress.length === 0 &&
                         <Typography variant="h5" color="primary">
                             There are no matches currently in progress
@@ -125,7 +124,10 @@ export default withStyles(homePageStyles)(class extends React.PureComponent<any>
                         </Grid>}
                 </div>
                 {this.state.fetchError &&
-                    <Error message={'There was an error getting the match to continue scoring.  Please try again.'} />}
+                    <Error
+                        message={'There was an error reading the match.  Please try again.'}
+                        onClose={this.closeError}
+                    />}
                 {this.state.fetchingMatch &&
                     <LoadingDialog message={'Fetching match to continue scoring...'} />}
             </>);
