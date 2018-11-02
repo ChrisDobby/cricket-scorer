@@ -120,7 +120,7 @@ const innings = (
         deliveryOutcome: domain.DeliveryOutcome,
         scores: domain.DeliveryScores,
         wicket: domain.DeliveryWicket | undefined = undefined,
-    ): [domain.Innings, number] => {
+    ): [domain.Innings, number, domain.Event] => {
         const time = (new Date()).getTime();
         const outcome = {
             deliveryOutcome,
@@ -128,18 +128,20 @@ const innings = (
             wicket,
         };
 
+        const event = {
+            time,
+            outcome,
+            type: domain.EventType.Delivery,
+            overNumber: innings.completedOvers + 1,
+            batsmanIndex: innings.batting.batters.indexOf(batter),
+            bowlerIndex: innings.bowlers.indexOf(bowler),
+        } as domain.Event;
+
         return [
             addDeliveryToInnings(
                 [
                     ...innings.events,
-                    {
-                        time,
-                        outcome,
-                        type: domain.EventType.Delivery,
-                        overNumber: innings.completedOvers + 1,
-                        batsmanIndex: innings.batting.batters.indexOf(batter),
-                        bowlerIndex: innings.bowlers.indexOf(bowler),
-                    } as domain.Event,
+                    event,
                 ],
                 deliveries.battingWicket(outcome, time, bowler.name, getTeam(innings.bowlingTeam).players),
             )(
@@ -150,6 +152,7 @@ const innings = (
                 config,
             ),
             newBatsmanIndex(innings, batter, deliveries.runsFromBatter({ deliveryOutcome, scores })),
+            event,
         ];
     };
 
@@ -178,17 +181,18 @@ const innings = (
         innings: domain.Innings,
         batter: domain.Batter,
         howout: domain.Howout,
-    ): domain.Innings => {
+    ): [domain.Innings, domain.Event] => {
         const time = (new Date()).getTime();
+        const event = {
+            time,
+            out: howout,
+            type: domain.EventType.NonDeliveryWicket,
+            batsmanIndex: innings.batting.batters.indexOf(batter),
+        } as domain.Event;
 
-        return addEvent(
+        return [addEvent(
             innings,
-            {
-                time,
-                out: howout,
-                type: domain.EventType.NonDeliveryWicket,
-                batsmanIndex: innings.batting.batters.indexOf(batter),
-            } as domain.Event,
+            event,
             1,
             batter,
             b => ({
@@ -200,7 +204,9 @@ const innings = (
                         wicket: { time, howOut: howout },
                     },
             }),
-        );
+        ),
+            event,
+        ];
     };
 
     const batterUnavailable = (

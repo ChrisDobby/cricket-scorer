@@ -7,6 +7,7 @@ const matchStorage = (key:string) => (storage: any) => {
             currentBatterIndex: matchToStore.currentBatterIndex,
             currentBowlerIndex: matchToStore.currentBowlerIndex,
             version: matchToStore.version,
+            lastEvent: matchToStore.lastEvent,
         }));
 
     const getMatch = () => {

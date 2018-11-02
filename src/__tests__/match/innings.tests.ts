@@ -482,7 +482,7 @@ describe('innings', () => {
     });
 
     describe('nonDeliveryWicket', () => {
-        const updatedInnings = Innings.nonDeliveryWicket(
+        const [updatedInnings] = Innings.nonDeliveryWicket(
             matches.inningsWithStartedOver,
             matches.inningsWithStartedOver.batting.batters[0],
             domain.Howout.TimedOut,

@@ -19,6 +19,7 @@ const apiStorage = (
             currentBatterIndex: inProgressMatch.currentBatterIndex,
             currentBowlerIndex: inProgressMatch.currentBowlerIndex,
             version: inProgressMatch.version,
+            lastEvent: inProgressMatch.lastEvent,
         });
 
         const sendMatch = async () => {

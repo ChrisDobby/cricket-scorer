@@ -4,6 +4,7 @@ import { default as matchInnings } from '../match/innings';
 import undo from '../match/undo';
 import * as over from '../match/over';
 import status from '../match/status';
+import eventDescription from '../match/eventDescription';
 import complete from '../match/complete';
 import { getTeam } from '../match/utilities';
 
@@ -38,6 +39,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
     @observable currentBatterIndex: number | undefined;
     @observable currentBowlerIndex: number | undefined;
     version = 0;
+    lastEvent: string | undefined = undefined;
 
     get config() {
         return this.match.config;
@@ -220,7 +222,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
             typeof this.currentBatter === 'undefined' ||
             typeof this.currentBowler === 'undefined') { return; }
 
-        const [innings, batterIndex] =
+        const [innings, batterIndex, event] =
             this.matchInnings.delivery(
                 this.currentInnings,
                 this.currentBatter,
@@ -239,6 +241,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
         this.version = version;
 
         this.currentBatterIndex = batterIndex;
+        this.updateLastEvent(event, this.currentInnings);
     }
 
     @action nonDeliveryWicket = (
@@ -247,7 +250,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
         if (typeof this.currentInnings === 'undefined' ||
             typeof this.currentBatter === 'undefined') { return; }
 
-        const updatedInnings = this.matchInnings.nonDeliveryWicket(
+        const [updatedInnings, event] = this.matchInnings.nonDeliveryWicket(
             this.currentInnings,
             this.currentBatter,
             howout,
@@ -260,6 +263,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
             this.version);
         this.match = match;
         this.version = version;
+        this.updateLastEvent(event, this.currentInnings);
     }
 
     @action batterUnavailable = (
@@ -370,6 +374,13 @@ class InProgressMatchStore implements domain.InProgressMatch {
         this.version = storedMatch.version;
         this.currentBatterIndex = storedMatch.currentBatterIndex;
         this.currentBowlerIndex = storedMatch.currentBowlerIndex;
+    }
+
+    updateLastEvent = (event: domain.Event, innings: domain.Innings, wicket?: domain.Wicket) => {
+        const description = eventDescription(this.match, innings, event, wicket);
+        if (typeof description !== 'undefined') {
+            this.lastEvent = description;
+        }
     }
 }
 

@@ -42,6 +42,7 @@ export default withStyles(homePageStyles)(class extends React.PureComponent<any>
                 awayTeam: this.props.storedMatch.match.awayTeam.name,
                 status: this.props.storedMatch.match.status,
                 version: this.props.storedMatch.version,
+                lastEvent: this.props.storedMatch.lastEvent,
             };
     }
 
