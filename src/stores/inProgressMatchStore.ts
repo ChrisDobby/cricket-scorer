@@ -12,16 +12,19 @@ const teamFromType = (match: domain.Match) => (type: domain.TeamType) => getTeam
 
 const updateMatchInnings =
     (match: domain.Match, innings: domain.Innings, config: domain.MatchConfig, version: number):
-        [domain.Match, number] => [
-            {
-                ...match,
-                status: status(match),
-                innings: [...match.innings.map(inn => !matchInnings(config, teamFromType(match)).isComplete(inn)
-                    ? innings
-                    : inn)],
-            },
+        [domain.Match, number] => {
+        const updatedMatch = {
+            ...match,
+            innings: [...match.innings.map(inn => !matchInnings(config, teamFromType(match)).isComplete(inn)
+                ? innings
+                : inn)],
+        };
+
+        return [
+            { ...updatedMatch, status: status(updatedMatch) },
             version + 1,
         ];
+    };
 
 const bowlerOfOver = (innings: domain.Innings, overNumber: number) => {
     const deliveryInOver = innings.events
@@ -242,6 +245,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
 
         this.currentBatterIndex = batterIndex;
         this.updateLastEvent(event, this.currentInnings);
+        console.log(this.match.status);
     }
 
     @action nonDeliveryWicket = (
