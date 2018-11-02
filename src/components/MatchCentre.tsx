@@ -5,10 +5,14 @@ import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import MatchCard from './MatchCard';
 import homePageStyles from './homePageStyles';
+import Error from './Error';
+import LoadingDialog from './LoadingDialog';
 
 interface MatchCentreState {
     loading: boolean;
     inProgress: any[];
+    fetchingMatch: boolean;
+    fetchError: boolean;
 }
 
 const sortMatches = (matches: any[], currentUser: string): any[] =>
@@ -22,6 +26,8 @@ const sortMatches = (matches: any[], currentUser: string): any[] =>
 export default withStyles(homePageStyles)(class extends React.PureComponent<any> {
     state: MatchCentreState = {
         loading: true,
+        fetchingMatch: false,
+        fetchError: false,
         inProgress: [],
     };
 
@@ -81,31 +87,47 @@ export default withStyles(homePageStyles)(class extends React.PureComponent<any>
         this.props.history.push(`/scorecard/${id}`);
     }
 
-    continueScoring = (id: string) => () => { };
+    continueScoring = (id: string) => async () => {
+        try {
+            this.setState({ fetchingMatch: true, fetchError: false });
+            await this.props.fetchMatch(id);
+            this.setState({ fetchingMatch: false });
+            this.props.history.push('/match/inprogress');
+        } catch (e) {
+            this.setState({ fetchingMatch: false, fetchError: true });
+            console.error(e);
+        }
+    }
 
     render() {
         return (
-            <div className={this.props.classes.rootStyle}>
-                <div className={this.props.classes.toolbar} />
-                {this.state.loading &&
-                    <div style={{ width: '100%', textAlign: 'center' }}>
-                        <CircularProgress size={50} />
-                    </div>}
-                {!this.state.loading && this.state.inProgress.length === 0 &&
-                    <Typography variant="h5" color="primary">
-                        There are no matches currently in progress
+            <>
+                <div className={this.props.classes.rootStyle}>
+                    <div className={this.props.classes.toolbar} />
+                    {this.state.loading &&
+                        <div style={{ width: '100%', textAlign: 'center' }}>
+                            <CircularProgress size={50} />
+                        </div>}
+                    {!this.state.loading && this.state.inProgress.length === 0 &&
+                        <Typography variant="h5" color="primary">
+                            There are no matches currently in progress
                 </Typography>}
-                {!this.state.loading &&
-                    <Grid container spacing={40}>
-                        {this.availableMatches.map((match: any) =>
-                            <MatchCard
-                                key={match.id}
-                                match={match}
-                                showScorecard={this.showScorecard(match.id)}
-                                continueScoring={this.continueScoring(match.id)}
-                                currentUser={this.props.userProfile ? this.props.userProfile.id : undefined}
-                            />)}
-                    </Grid>}
-            </div>);
+                    {!this.state.loading &&
+                        <Grid container spacing={40}>
+                            {this.availableMatches.map((match: any) =>
+                                <MatchCard
+                                    key={match.id}
+                                    match={match}
+                                    showScorecard={this.showScorecard(match.id)}
+                                    continueScoring={this.continueScoring(match.id)}
+                                    currentUser={this.props.userProfile ? this.props.userProfile.id : undefined}
+                                />)}
+                        </Grid>}
+                </div>
+                {this.state.fetchError &&
+                    <Error message={'There was an error getting the match to continue scoring.  Please try again.'} />}
+                {this.state.fetchingMatch &&
+                    <LoadingDialog message={'Fetching match to continue scoring...'} />}
+            </>);
     }
 });
