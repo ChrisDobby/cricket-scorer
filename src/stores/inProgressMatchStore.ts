@@ -162,7 +162,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
     }
 
     @action startInnings = (battingTeam: domain.TeamType, batter1Index: number, batter2Index: number) => {
-        const innings = this.matchInnings.newInnings(battingTeam, batter1Index, batter2Index);
+        const innings = this.matchInnings.create(battingTeam, batter1Index, batter2Index);
         this.match = {
             ...this.match,
             innings: [...this.match.innings, innings],
