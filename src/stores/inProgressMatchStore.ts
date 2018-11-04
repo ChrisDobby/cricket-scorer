@@ -53,7 +53,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
     }
 
     get undo() {
-        return undo(this.config);
+        return undo(this.matchInnings.rebuild);
     }
 
     @computed get currentInnings() {

@@ -250,6 +250,11 @@ export interface InProgressMatch {
     setFromStoredMatch: (storedMatch: StoredMatch | undefined) => void;
 }
 
+export interface RebuiltInnings {
+    innings: Innings;
+    batterIndex: number;
+}
+
 export const howOutDescription = (wicket?: Wicket): string => {
     const description = (wkt: Wicket): string => {
         switch (wkt.howOut) {

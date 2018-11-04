@@ -1,10 +1,5 @@
 import * as domain from '../../domain';
 
-interface RebuiltInnings {
-    innings: domain.Innings;
-    batterIndex: number;
-}
-
 const newInnings = (innings: domain.Innings): domain.Innings => ({
     battingTeam: innings.battingTeam,
     bowlingTeam: innings.bowlingTeam,
@@ -95,7 +90,7 @@ export default (
         reason: domain.UnavailableReason,
     ) => domain.Innings,
 ) => {
-    const eventReducer = (inningsAndBatter: RebuiltInnings, event: domain.Event): RebuiltInnings => {
+    const eventReducer = (inningsAndBatter: domain.RebuiltInnings, event: domain.Event): domain.RebuiltInnings => {
         switch (event.type) {
         case domain.EventType.Delivery:
             const deliveryEvent = event as domain.Delivery;
@@ -135,7 +130,7 @@ export default (
         }
     };
 
-    return (innings: domain.Innings, batterIndex: number, events: domain.Event[]): RebuiltInnings =>
+    return (innings: domain.Innings, batterIndex: number, events: domain.Event[]): domain.RebuiltInnings =>
         events.reduce(
             eventReducer,
             { batterIndex, innings: newInnings(innings) },
