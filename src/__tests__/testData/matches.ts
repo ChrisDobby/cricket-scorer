@@ -103,17 +103,31 @@ export const inningsWithStartedOver = {
                     sixes: 0,
                 },
             },
+            {
+                name: blankMatch.homeTeam.players[2],
+                playerIndex: 2,
+            },
         ],
     },
-    bowlers: [{
-        playerIndex: 10,
-        name: blankMatch.awayTeam.players[10],
-        completedOvers: 0,
-        totalOvers: '0',
-        maidenOvers: 0,
-        runs: 0,
-        wickets: 0,
-    }],
+    bowlers: [
+        {
+            playerIndex: 10,
+            name: blankMatch.awayTeam.players[10],
+            completedOvers: 0,
+            totalOvers: '0',
+            maidenOvers: 0,
+            runs: 0,
+            wickets: 0,
+        },
+        {
+            playerIndex: 9,
+            name: blankMatch.awayTeam.players[9],
+            completedOvers: 0,
+            totalOvers: '0',
+            maidenOvers: 0,
+            runs: 0,
+            wickets: 0,
+        }],
 };
 
 export const inningsWithOverReadyToComplete = {
