@@ -1,5 +1,10 @@
 import * as domain from '../../domain';
 
+interface RebuiltInnings {
+    innings: domain.Innings;
+    batterIndex: number;
+}
+
 const newInnings = (innings: domain.Innings): domain.Innings => ({
     battingTeam: innings.battingTeam,
     bowlingTeam: innings.bowlingTeam,
@@ -90,42 +95,49 @@ export default (
         reason: domain.UnavailableReason,
     ) => domain.Innings,
 ) => {
-    const eventReducer = (innings: domain.Innings, event: domain.Event): domain.Innings => {
+    const eventReducer = (inningsAndBatter: RebuiltInnings, event: domain.Event): RebuiltInnings => {
         switch (event.type) {
         case domain.EventType.Delivery:
             const deliveryEvent = event as domain.Delivery;
             const updatedInnings = updateCompletedOvers(
-                addBatterIfRequired(innings, deliveryEvent.batsmanIndex, deliveryEvent.time),
+                addBatterIfRequired(inningsAndBatter.innings, deliveryEvent.batsmanIndex, deliveryEvent.time),
                 deliveryEvent.overNumber,
             );
-            return delivery(
+            const added = delivery(
                 updatedInnings,
                 updatedInnings.batting.batters[deliveryEvent.batsmanIndex],
                 updatedInnings.bowlers[deliveryEvent.bowlerIndex],
                 deliveryEvent.outcome.deliveryOutcome,
                 deliveryEvent.outcome.scores,
                 deliveryEvent.outcome.wicket,
-            )[0];
-        case domain.EventType.NonDeliveryWicket:
-            return nonDeliveryWicket(
-                innings,
-                innings.batting.batters[(event as domain.NonDeliveryWicket).batsmanIndex],
-                (event as domain.NonDeliveryWicket).out,
-                )[0];
-        case domain.EventType.BatterUnavailable:
-            return batterUnavailable(
-                innings,
-                innings.batting.batters[(event as domain.BatterUnavailable).batsmanIndex],
-                (event as domain.BatterUnavailable).reason,
             );
+            return { innings: added[0], batterIndex: added[1] };
+        case domain.EventType.NonDeliveryWicket:
+            return {
+                innings: nonDeliveryWicket(
+                    inningsAndBatter.innings,
+                    inningsAndBatter.innings.batting.batters[(event as domain.NonDeliveryWicket).batsmanIndex],
+                    (event as domain.NonDeliveryWicket).out,
+                )[0],
+                batterIndex: inningsAndBatter.batterIndex,
+            };
+        case domain.EventType.BatterUnavailable:
+            return {
+                innings: batterUnavailable(
+                    inningsAndBatter.innings,
+                    inningsAndBatter.innings.batting.batters[(event as domain.BatterUnavailable).batsmanIndex],
+                    (event as domain.BatterUnavailable).reason,
+                ),
+                batterIndex: inningsAndBatter.batterIndex,
+            };
         default:
-            return innings;
+            return inningsAndBatter;
         }
     };
 
-    return (innings: domain.Innings, events: domain.Event[]): domain.Innings =>
+    return (innings: domain.Innings, batterIndex: number, events: domain.Event[]): RebuiltInnings =>
         events.reduce(
             eventReducer,
-            newInnings(innings),
+            { batterIndex, innings: newInnings(innings) },
         );
 };

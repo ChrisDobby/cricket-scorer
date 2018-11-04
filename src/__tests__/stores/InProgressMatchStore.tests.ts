@@ -529,7 +529,7 @@ describe('inProgressMatchStore', () => {
                     innings: {
                         ...matches.inningsWithStartedOver.batting.batters[1].innings,
                         wicket: { time: 1, howOut: domain.Howout.Bowled },
-                    },
+                    } as domain.BattingInnings | undefined,
                 },
             ];
 

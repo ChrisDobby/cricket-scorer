@@ -63,16 +63,16 @@ describe('rebuild', () => {
         status: domain.InningsStatus.InProgress,
     };
 
-    const delivery = jest.fn(() => [matches.inningsWithAllDeliveriesInCompletedOver]);
+    const delivery = jest.fn(() => [matches.inningsWithAllDeliveriesInCompletedOver, 999]);
     const nonDeliveryWicket = jest.fn(() => [matches.inningsWithAllDeliveriesInCompletedOver]);
     const batterUnavailable = jest.fn(() => matches.inningsWithAllDeliveriesInCompletedOver);
 
     const Rebuild = rebuild(delivery, nonDeliveryWicket, batterUnavailable);
 
     it('should create a new innings with no events', () => {
-        const newInnings = Rebuild(matches.inningsWithStartedOver, []);
+        const newInnings = Rebuild(matches.inningsWithStartedOver, 0, []);
 
-        expect(newInnings).toEqual(createdInnings);
+        expect(newInnings.innings).toEqual(createdInnings);
     });
 
     it('should add delivery events', () => {
@@ -93,7 +93,7 @@ describe('rebuild', () => {
             outcome: { scores: {}, deliveryOutcome: domain.DeliveryOutcome.Valid },
         };
 
-        const newInnings = Rebuild(matches.inningsWithStartedOver, [delivery1, delivery2]);
+        const newInnings = Rebuild(matches.inningsWithStartedOver, 0, [delivery1, delivery2]);
 
         expect(delivery).toHaveBeenCalledWith(
             createdInnings,
@@ -111,7 +111,10 @@ describe('rebuild', () => {
             delivery2.outcome.scores,
             undefined,
         );
-        expect(newInnings).toEqual(matches.inningsWithAllDeliveriesInCompletedOver);
+        expect(newInnings).toEqual({
+            innings: matches.inningsWithAllDeliveriesInCompletedOver,
+            batterIndex: 999,
+        });
     });
 
     it('should add non delivery wicket events', () => {
@@ -122,14 +125,17 @@ describe('rebuild', () => {
             out: domain.Howout.TimedOut,
         };
 
-        const newInnings = Rebuild(matches.inningsWithStartedOver, [nonWicket]);
+        const newInnings = Rebuild(matches.inningsWithStartedOver, 9, [nonWicket]);
 
         expect(nonDeliveryWicket).toHaveBeenCalledWith(
             createdInnings,
             createdInnings.batting.batters[nonWicket.batsmanIndex],
             nonWicket.out,
         );
-        expect(newInnings).toEqual(matches.inningsWithAllDeliveriesInCompletedOver);
+        expect(newInnings).toEqual({
+            innings: matches.inningsWithAllDeliveriesInCompletedOver,
+            batterIndex: 9,
+        });
     });
 
     it('should add batter unavailable events', () => {
@@ -140,14 +146,17 @@ describe('rebuild', () => {
             reason: domain.UnavailableReason.Absent,
         };
 
-        const newInnings = Rebuild(matches.inningsWithStartedOver, [unavailable]);
+        const newInnings = Rebuild(matches.inningsWithStartedOver, 9, [unavailable]);
 
         expect(batterUnavailable).toHaveBeenCalledWith(
             createdInnings,
             createdInnings.batting.batters[unavailable.batsmanIndex],
             unavailable.reason,
         );
-        expect(newInnings).toEqual(matches.inningsWithAllDeliveriesInCompletedOver);
+        expect(newInnings).toEqual({
+            innings: matches.inningsWithAllDeliveriesInCompletedOver,
+            batterIndex: 9,
+        });
     });
 
     it('should create a new innings if the specified batter has no innings', () => {
@@ -179,7 +188,7 @@ describe('rebuild', () => {
             },
         };
 
-        Rebuild(matches.inningsWithStartedOver, [deliveryToNumber3]);
+        Rebuild(matches.inningsWithStartedOver, 0, [deliveryToNumber3]);
 
         expect(delivery).toHaveBeenCalledWith(
             createdInningsWithNumber3Bat,
@@ -205,7 +214,7 @@ describe('rebuild', () => {
             completedOvers: 1,
         };
 
-        Rebuild(matches.inningsWithStartedOver, [deliveryForOver2]);
+        Rebuild(matches.inningsWithStartedOver, 0, [deliveryForOver2]);
 
         expect(delivery).toHaveBeenCalledWith(
             createdInningsWith1CompletedOver,
