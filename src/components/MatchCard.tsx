@@ -23,6 +23,7 @@ interface MatchCardProps {
     currentUser: string | undefined;
     showScorecard: () => void;
     continueScoring: () => void;
+    removeMatch: () => void;
 }
 
 const dividerStyle: React.CSSProperties = {
@@ -54,9 +55,14 @@ export default (props: MatchCardProps) => (
                         Scorecard
                     </Button>
                     {props.match.user === props.currentUser &&
-                        <Button size="small" color="primary" onClick={props.continueScoring}>
-                            Continue
-                        </Button>}
+                        <>
+                            <Button size="small" color="primary" onClick={props.continueScoring}>
+                                Continue
+                            </Button>
+                            <Button size="small" color="secondary" onClick={props.removeMatch}>
+                                Remove
+                            </Button>
+                        </>}
                 </CardActions>
             </div>
         </Card>

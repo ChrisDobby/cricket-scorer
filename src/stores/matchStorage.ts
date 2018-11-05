@@ -18,9 +18,12 @@ const matchStorage = (key:string) => (storage: any) => {
             : JSON.parse(item) as StoredMatch;
     };
 
+    const removeMatch = () => storage.removeItem(key);
+
     return {
         storeMatch,
         getMatch,
+        removeMatch,
     };
 };
 

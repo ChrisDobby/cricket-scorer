@@ -50,4 +50,17 @@ describe('matchStoragestoreMatch', () => {
             expect(match).toEqual(matchToStore);
         });
     });
+
+    describe('removeMatch', () => {
+        const storage = {
+            removeItem: jest.fn(),
+        };
+
+        it('should remove the item with the key from storage', () => {
+            const store = matchStorage(storage);
+            store.removeMatch();
+
+            expect(storage.removeItem).toHaveBeenCalledWith('__inProgress__');
+        });
+    });
 });

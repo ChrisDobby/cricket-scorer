@@ -30,6 +30,24 @@ const api = (addBearerToken: any) => (defaultRetries: number, retryWaitMilliseco
         return responseData(response);
     };
 
+    const remove = async (route: string) => {
+        const response = await tryFetch(
+            () => fetch(
+                route,
+                {
+                    method: 'DELETE',
+                    headers: addBearerToken({
+                        'Content-Type': 'application/json',
+                    }),
+                },
+            ),
+            undefined);
+
+        if (!response.ok) {
+            throw new Error(response.status);
+        }
+    };
+
     const sendData = async (route: string, data: any, method: string) => {
         const response = await tryFetch(
             () =>
@@ -53,6 +71,7 @@ const api = (addBearerToken: any) => (defaultRetries: number, retryWaitMilliseco
         get,
         post,
         put,
+        remove,
     };
 };
 

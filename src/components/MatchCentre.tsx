@@ -7,12 +7,15 @@ import homePageStyles from './homePageStyles';
 import Error from './Error';
 import LoadingDialog from './LoadingDialog';
 import Progress from './Progress';
+import RemoveDialog from './RemoveDialog';
 
 interface MatchCentreState {
     loading: boolean;
     inProgress: any[];
     fetchingMatch: boolean;
     fetchError: boolean;
+    confirmRemoveId: string | undefined;
+    removeError: boolean;
 }
 
 const sortMatches = (matches: any[], currentUser: string): any[] =>
@@ -29,6 +32,8 @@ export default withStyles(homePageStyles)(class extends React.PureComponent<any>
         fetchingMatch: false,
         fetchError: false,
         inProgress: [],
+        confirmRemoveId: undefined,
+        removeError: false,
     };
 
     get storedMatch() {
@@ -100,7 +105,27 @@ export default withStyles(homePageStyles)(class extends React.PureComponent<any>
         }
     }
 
-    closeError = () => this.setState({ fetchError: false });
+    removeMatch = (id: string) => () => this.setState({ removeError: false, confirmRemoveId: id });
+    clearRemoveMatch = () => this.setState({ removeError: false, confirmRemoveId: undefined });
+
+    confirmRemoveMatch = (id: string) => async () => {
+        this.clearRemoveMatch();
+        try {
+            if (this.storedMatch && this.storedMatch.id === id) {
+                this.props.removeStoredMatch();
+            }
+
+            await this.props.matchApi.removeMatch(id);
+            this.setState({
+                inProgress: [...this.state.inProgress.filter(ip => ip.id !== id)],
+            });
+        } catch (e) {
+            this.setState({ removeError: true });
+            console.error(e);
+        }
+    }
+
+    closeError = (type: string) => this.setState({ [type]: false });
 
     render() {
         return (
@@ -120,6 +145,7 @@ export default withStyles(homePageStyles)(class extends React.PureComponent<any>
                                     match={match}
                                     showScorecard={this.showScorecard(match.id)}
                                     continueScoring={this.continueScoring(match.id)}
+                                    removeMatch={this.removeMatch(match.id)}
                                     currentUser={this.props.userProfile ? this.props.userProfile.id : undefined}
                                 />)}
                         </Grid>}
@@ -127,10 +153,21 @@ export default withStyles(homePageStyles)(class extends React.PureComponent<any>
                 {this.state.fetchError &&
                     <Error
                         message={'There was an error reading the match.  Please try again.'}
-                        onClose={this.closeError}
+                        onClose={() => this.closeError('fetchError')}
+                    />}
+                {this.state.removeError &&
+                    <Error
+                        message={'There was an error removing the match.  Please try again.'}
+                        onClose={() => this.closeError('removeError')}
                     />}
                 {this.state.fetchingMatch &&
                     <LoadingDialog message={'Fetching match to continue scoring...'} />}
+                {this.state.confirmRemoveId &&
+                    <RemoveDialog
+                        match={this.availableMatches.find((m: any) => m.id === this.state.confirmRemoveId)}
+                        onYes={this.confirmRemoveMatch(this.state.confirmRemoveId)}
+                        onNo={this.clearRemoveMatch}
+                    />}
             </>);
     }
 });

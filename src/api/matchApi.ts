@@ -22,10 +22,14 @@ const matchApi = (url: string) => {
     const getInProgressMatches = async () =>
         await Api.get(`${url}/${matchRoute}?${inProgressQuery}=true`);
 
+    const removeMatch = async (id: string) =>
+        await Api.remove(`${url}/${matchRoute}/${id}`);
+
     return {
         sendMatch,
         getMatch,
         getInProgressMatches,
+        removeMatch,
     };
 };
 

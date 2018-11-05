@@ -11,6 +11,7 @@ const MatchCentre = WithMatchApi((props: any) => (
     <MatchCentreComponent
         {...props}
         storedMatch={matchStorage(localStorage).getMatch()}
+        removeStoredMatch={matchStorage(localStorage).removeMatch}
         fetchMatch={fetchMatch(props.matchApi, matchStorage(localStorage))}
     />));
 
