@@ -97,6 +97,7 @@ describe('rebuild', () => {
 
         expect(delivery).toHaveBeenCalledWith(
             createdInnings,
+            delivery1.time,
             createdInnings.batting.batters[delivery1.batsmanIndex],
             createdInnings.bowlers[delivery1.bowlerIndex],
             delivery1.outcome.deliveryOutcome,
@@ -105,6 +106,7 @@ describe('rebuild', () => {
         );
         expect(delivery).toHaveBeenCalledWith(
             matches.inningsWithAllDeliveriesInCompletedOver,
+            delivery2.time,
             matches.inningsWithAllDeliveriesInCompletedOver.batting.batters[delivery2.batsmanIndex],
             matches.inningsWithAllDeliveriesInCompletedOver.bowlers[delivery2.bowlerIndex],
             delivery2.outcome.deliveryOutcome,
@@ -129,6 +131,7 @@ describe('rebuild', () => {
 
         expect(nonDeliveryWicket).toHaveBeenCalledWith(
             createdInnings,
+            nonWicket.time,
             createdInnings.batting.batters[nonWicket.batsmanIndex],
             nonWicket.out,
         );
@@ -150,6 +153,7 @@ describe('rebuild', () => {
 
         expect(batterUnavailable).toHaveBeenCalledWith(
             createdInnings,
+            unavailable.time,
             createdInnings.batting.batters[unavailable.batsmanIndex],
             unavailable.reason,
         );
@@ -192,6 +196,7 @@ describe('rebuild', () => {
 
         expect(delivery).toHaveBeenCalledWith(
             createdInningsWithNumber3Bat,
+            deliveryToNumber3.time,
             createdInningsWithNumber3Bat.batting.batters[deliveryToNumber3.batsmanIndex],
             createdInningsWithNumber3Bat.bowlers[deliveryToNumber3.bowlerIndex],
             deliveryToNumber3.outcome.deliveryOutcome,
@@ -218,6 +223,7 @@ describe('rebuild', () => {
 
         expect(delivery).toHaveBeenCalledWith(
             createdInningsWith1CompletedOver,
+            deliveryForOver2.time,
             createdInningsWith1CompletedOver.batting.batters[deliveryForOver2.batsmanIndex],
             createdInningsWith1CompletedOver.bowlers[deliveryForOver2.bowlerIndex],
             deliveryForOver2.outcome.deliveryOutcome,

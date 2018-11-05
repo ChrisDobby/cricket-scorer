@@ -228,6 +228,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
         const [innings, batterIndex, event] =
             this.matchInnings.delivery(
                 this.currentInnings,
+                (new Date()).getTime(),
                 this.currentBatter,
                 this.currentBowler,
                 deliveryOutcome,
@@ -256,6 +257,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
 
         const [updatedInnings, event] = this.matchInnings.nonDeliveryWicket(
             this.currentInnings,
+            (new Date()).getTime(),
             this.currentBatter,
             howout,
         );
@@ -278,6 +280,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
 
         const updatedInnings = this.matchInnings.batterUnavailable(
             this.currentInnings,
+            (new Date()).getTime(),
             this.currentBatter,
             reason,
         );

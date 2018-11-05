@@ -5,6 +5,7 @@ import * as matches from '../../testData/matches';
 describe('batterUnavailable', () => {
     const updatedInnings = batterUnavailable(
         matches.inningsWithStartedOver,
+        1,
         matches.inningsWithStartedOver.batting.batters[0],
         domain.UnavailableReason.Retired,
     );

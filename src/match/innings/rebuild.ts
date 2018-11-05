@@ -74,6 +74,7 @@ const updateCompletedOvers = (innings: domain.Innings, deliveryOverNumber: numbe
 export default (
     delivery: (
         innings: domain.Innings,
+        time: number,
         batter: domain.Batter,
         bowler: domain.Bowler,
         deliveryOutcome: domain.DeliveryOutcome,
@@ -81,11 +82,13 @@ export default (
         wicket: domain.DeliveryWicket | undefined) => [domain.Innings, number, domain.Event],
     nonDeliveryWicket: (
         innings: domain.Innings,
+        time: number,
         batter: domain.Batter,
         howout: domain.Howout,
     ) => [domain.Innings, domain.Event],
     batterUnavailable: (
         innings: domain.Innings,
+        time: number,
         batter: domain.Batter,
         reason: domain.UnavailableReason,
     ) => domain.Innings,
@@ -100,6 +103,7 @@ export default (
             );
             const added = delivery(
                 updatedInnings,
+                event.time,
                 updatedInnings.batting.batters[deliveryEvent.batsmanIndex],
                 updatedInnings.bowlers[deliveryEvent.bowlerIndex],
                 deliveryEvent.outcome.deliveryOutcome,
@@ -111,6 +115,7 @@ export default (
             return {
                 innings: nonDeliveryWicket(
                     inningsAndBatter.innings,
+                    event.time,
                     inningsAndBatter.innings.batting.batters[(event as domain.NonDeliveryWicket).batsmanIndex],
                     (event as domain.NonDeliveryWicket).out,
                 )[0],
@@ -120,6 +125,7 @@ export default (
             return {
                 innings: batterUnavailable(
                     inningsAndBatter.innings,
+                    event.time,
                     inningsAndBatter.innings.batting.batters[(event as domain.BatterUnavailable).batsmanIndex],
                     (event as domain.BatterUnavailable).reason,
                 ),

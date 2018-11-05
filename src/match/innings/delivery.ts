@@ -82,13 +82,14 @@ const newBatsmanIndex = (innings: domain.Innings, batter: domain.Batter, runs: n
 
 export default (config: domain.MatchConfig, getTeam: (type: domain.TeamType) => domain.Team) => (
     innings: domain.Innings,
+    time: number,
     batter: domain.Batter,
     bowler: domain.Bowler,
     deliveryOutcome: domain.DeliveryOutcome,
     scores: domain.DeliveryScores,
     wicket: domain.DeliveryWicket | undefined = undefined,
 ): [domain.Innings, number, domain.Event] => {
-    const time = (new Date()).getTime();
+//    const time = (new Date()).getTime();
     const outcome = {
         deliveryOutcome,
         scores,

@@ -61,6 +61,7 @@ describe('delivery', () => {
     const Delivery = delivery(config, type => getTeam(matches.blankMatch, type));
     const [updatedInnings, updatedBatterIndex] = Delivery(
         matches.inningsWithStartedOver,
+        1,
         matches.inningsWithStartedOver.batting.batters[0],
         matches.inningsWithStartedOver.bowlers[0],
         domain.DeliveryOutcome.Valid,
@@ -69,6 +70,7 @@ describe('delivery', () => {
 
     const [inningsAfterWide] = Delivery(
         matches.inningsWithStartedOver,
+        1,
         matches.inningsWithStartedOver.batting.batters[0],
         matches.inningsWithStartedOver.bowlers[0],
         domain.DeliveryOutcome.Wide,
@@ -134,6 +136,7 @@ describe('delivery', () => {
     it('should return the other in batter when odd no of runs scored', () => {
         const [, batterIndex] = Delivery(
             matches.inningsWithStartedOver,
+            1,
             matches.inningsWithStartedOver.batting.batters[0],
             matches.inningsWithStartedOver.bowlers[0],
             domain.DeliveryOutcome.Valid,
@@ -146,6 +149,7 @@ describe('delivery', () => {
     it('should update the total overs for the innings after the first over', () => {
         const [innings] = Delivery(
             matches.inningsWithAllDeliveriesInCompletedOver,
+            1,
             matches.inningsWithAllDeliveriesInCompletedOver.batting.batters[0],
             matches.inningsWithAllDeliveriesInCompletedOver.bowlers[0],
             domain.DeliveryOutcome.Valid,
@@ -207,6 +211,7 @@ describe('delivery', () => {
                 ...matches.inningsWithStartedOver,
                 fallOfWickets: [{ score: 2, wicket: 1, batter: '', partnership: 10 }],
             },
+            1,
             matches.inningsWithStartedOver.batting.batters[0],
             matches.inningsWithStartedOver.bowlers[0],
             domain.DeliveryOutcome.Valid,

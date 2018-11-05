@@ -5,6 +5,7 @@ import * as matches from '../../testData/matches';
 describe('nonDeliveryWicket', () => {
     const [updatedInnings] = nonDeliveryWicket(
         matches.inningsWithStartedOver,
+        1,
         matches.inningsWithStartedOver.batting.batters[0],
         domain.Howout.TimedOut,
     );

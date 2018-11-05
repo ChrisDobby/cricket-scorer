@@ -4,10 +4,11 @@ import getFallOfWicket from './getFallOfWicket';
 
 export default (
     innings: Innings,
+    time: number,
     batter: Batter,
     howout: Howout,
 ): [Innings, Event] => {
-    const time = (new Date()).getTime();
+//    const time = (new Date()).getTime();
     const event = {
         time,
         out: howout,
