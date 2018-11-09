@@ -10,8 +10,6 @@ import Progress from './Progress';
 import RemoveDialog from './RemoveDialog';
 
 interface MatchCentreState {
-    loading: boolean;
-    inProgress: any[];
     fetchingMatch: boolean;
     fetchError: boolean;
     confirmRemoveId: string | undefined;
@@ -28,10 +26,8 @@ const sortMatches = (matches: any[], currentUser: string): any[] =>
 
 export default withStyles(homePageStyles)(class extends React.PureComponent<any> {
     state: MatchCentreState = {
-        loading: true,
         fetchingMatch: false,
         fetchError: false,
-        inProgress: [],
         confirmRemoveId: undefined,
         removeError: false,
     };
@@ -58,32 +54,23 @@ export default withStyles(homePageStyles)(class extends React.PureComponent<any>
                 : sortMatches(matches, this.props.userProfile.id));
 
         const storedMatch = this.storedMatch;
-        if (typeof storedMatch === 'undefined') { return sortedMatches(this.state.inProgress); }
+        if (typeof storedMatch === 'undefined') { return sortedMatches(this.props.inProgressMatches); }
         const includeStoredMatch = typeof storedMatch.user === 'undefined' || (
             typeof this.props.userProfile !== 'undefined' &&
             this.props.userProfile.id === storedMatch.user);
 
-        if (!includeStoredMatch) { return sortedMatches(this.state.inProgress); }
-        const storedMatchFromInProgress = this.state.inProgress.find(m => m.id === storedMatch.id);
+        if (!includeStoredMatch) { return sortedMatches(this.props.inProgressMatches); }
+        const storedMatchFromInProgress = this.props.inProgressMatches.find((m: any) => m.id === storedMatch.id);
         return sortedMatches(
             typeof storedMatchFromInProgress === 'undefined' || storedMatchFromInProgress.version <= storedMatch.version
-                ? this.state.inProgress.filter(m => m.id !== storedMatch.id)
+                ? this.props.inProgressMatches.filter((m: any) => m.id !== storedMatch.id)
                     .concat(storedMatch)
-                : this.state.inProgress);
-    }
-
-    async componentDidMount() {
-        try {
-            const inProgress = await this.props.matchApi.getInProgressMatches();
-            this.setState({ inProgress, loading: false });
-        } catch (e) {
-            this.setState({ inProgress: [], loading: false });
-        }
+                : this.props.inProgressMatches);
     }
 
     showScorecard = (id: string) => () => {
         const storedMatch = this.storedMatch;
-        const inProgress = this.state.inProgress.find(ip => ip.id === id);
+        const inProgress = this.props.inProgressMatches.find((ip: any) => ip.id === id);
         if (typeof inProgress === 'undefined' ||
             (typeof storedMatch !== 'undefined' && storedMatch.id === id && storedMatch.version > inProgress.version)) {
             this.props.history.push('/scorecard');
@@ -116,9 +103,6 @@ export default withStyles(homePageStyles)(class extends React.PureComponent<any>
             }
 
             await this.props.matchApi.removeMatch(id);
-            this.setState({
-                inProgress: [...this.state.inProgress.filter(ip => ip.id !== id)],
-            });
         } catch (e) {
             this.setState({ removeError: true });
             console.error(e);
@@ -132,12 +116,12 @@ export default withStyles(homePageStyles)(class extends React.PureComponent<any>
             <>
                 <div className={this.props.classes.rootStyle}>
                     <div className={this.props.classes.toolbar} />
-                    {this.state.loading && <Progress />}
-                    {!this.state.loading && this.state.inProgress.length === 0 &&
+                    {this.props.loadingMatches && <Progress />}
+                    {!this.props.loadingMatches && this.props.inProgressMatches.length === 0 &&
                         <Typography variant="h5" color="primary">
                             There are no matches currently in progress
                 </Typography>}
-                    {!this.state.loading &&
+                    {!this.props.loadingMatches &&
                         <Grid container spacing={40}>
                             {this.availableMatches.map((match: any) =>
                                 <MatchCard
