@@ -5,6 +5,7 @@ import matchApi from '../api/matchApi';
 const updatesNamespace = '/matchupdates';
 const matchIdsMsg = 'matchids';
 const matchUpdatesMsg = 'matchupdates';
+const newMatchMsg = 'newmatch';
 const reconnectMsg = 'reconnect';
 
 const WithInProgressMatches = (url: string) => (Component: any) => class extends React.Component<any> {
@@ -31,12 +32,19 @@ const WithInProgressMatches = (url: string) => (Component: any) => class extends
         }),
     })
 
+    addMatch = (match: any) => {
+        const allMatches = [...this.state.inProgressMatches, match];
+        this.setState({ inProgressMatches: allMatches });
+        this.sendSubscription(allMatches);
+    }
+
     subscribeToMatches = (matches: any[]) => {
         if (matches.length === 0) { return; }
         this.socket = io(`${url}${updatesNamespace}`);
 
         this.socket.on(matchUpdatesMsg, this.updateMatches);
         this.socket.on(reconnectMsg, () => this.sendSubscription(matches));
+        this.socket.on(newMatchMsg, this.addMatch);
         this.sendSubscription(matches);
     }
 
