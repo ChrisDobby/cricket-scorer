@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { Bowler } from '../../domain';
 import * as styles from './styles';
 import * as globalStyles from '../styles';
+import TextUpdateNotify from '../TextUpdateNotify';
 
 interface BowlingProps {
     team: string;
@@ -43,18 +44,26 @@ const Bowling = ({ team, bowlers, classes }: BowlingProps) => (
                         <Typography variant="body2">{bowler.name}</Typography>
                     </Grid>
                     <Grid item xs={2} style={styles.centreCell}>
-                        <Typography variant="body2">{bowler.totalOvers}</Typography>
+                        <Typography variant="body2">
+                            <TextUpdateNotify text={bowler.totalOvers} />
+                        </Typography>
                     </Grid>
                     <Hidden smDown>
                         <Grid item md={2} style={styles.centreCell}>
-                            <Typography variant="body2">{bowler.maidenOvers}</Typography>
+                            <Typography variant="body2">
+                                <TextUpdateNotify text={bowler.maidenOvers.toString()} />
+                            </Typography>
                         </Grid>
                     </Hidden>
                     <Grid item xs={2} style={styles.centreCell}>
-                        <Typography variant="body2">{bowler.runs}</Typography>
+                        <Typography variant="body2">
+                            <TextUpdateNotify text={bowler.runs.toString()} />
+                        </Typography>
                     </Grid>
                     <Grid item xs={2} md={1} style={styles.centreCell}>
-                        <Typography variant="body2">{bowler.wickets}</Typography>
+                        <Typography variant="body2">
+                            <TextUpdateNotify text={bowler.wickets.toString()} />
+                        </Typography>
                     </Grid>
                 </Grid>
                 <Grid item xs={12}>

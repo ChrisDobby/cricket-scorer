@@ -32,22 +32,22 @@ export default WithNavBar({ stayWhenLoggingOut: true })(WithMatchApi(class exten
         this.setState({ loading: true, loadError: false });
         try {
             const result = await this.props.matchApi.getMatch(this.props.id);
-            this.subscribeToUpdates(this.props.id);
             this.setState({ match: result.match, lastEvent: result.lastEvent, loading: false });
         } catch (e) {
             this.setState({ loading: false, loadError: true });
         }
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         if (typeof this.props.id !== 'undefined') {
-            this.loadMatch();
+            await this.loadMatch();
         } else {
             const storedMatch = matchStorage(localStorage).getMatch();
             if (storedMatch) {
                 this.setState({ match: storedMatch.match });
             }
         }
+        this.subscribeToUpdates(this.props.id);
     }
 
     componentWillUnmount() {

@@ -32,10 +32,6 @@ const dividerStyle: React.CSSProperties = {
     marginBottom: '8px',
 };
 
-const textNotifyProps = {
-    highlightBackgroundColour: '#9b34ee',
-};
-
 export default (props: MatchCardProps) => (
     <Grid item xs={12} sm={6} md={4}>
         <Card style={{ display: 'flex' }}>
@@ -49,10 +45,10 @@ export default (props: MatchCardProps) => (
                     </Typography>
                     <Divider style={dividerStyle} />
                     <Typography component="h2" variant="h6" style={{ minHeight: '40px' }}>
-                        <TextUpdateNotify {...textNotifyProps} text={props.match.status} />
+                        <TextUpdateNotify text={props.match.status} />
                     </Typography>
                     <Typography component="h2" variant="body1" color="textSecondary" style={{ minHeight: '20px' }}>
-                        <TextUpdateNotify {...textNotifyProps} text={props.match.lastEvent} />
+                        <TextUpdateNotify text={props.match.lastEvent} />
                     </Typography>
                 </CardContent>
                 <CardActions>

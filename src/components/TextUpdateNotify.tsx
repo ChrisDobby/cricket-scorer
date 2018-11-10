@@ -1,10 +1,11 @@
 import * as React from 'react';
 
 interface TextUpdateNotifyProps {
-    text: string;
-    highlightBackgroundColour: string;
+    text: string | undefined;
+    highlightBackgroundColour?: string;
 }
 
+const defaultColour = '#9b34ee';
 const textStyle: React.CSSProperties = {
     transition: 'background-color 1s',
 };
@@ -15,17 +16,12 @@ export default class extends React.PureComponent<TextUpdateNotifyProps> {
     showUpdate = () => {
         if (!this.textComponent) { return; }
 
-        const original = {
-            backgroundColor: this.textComponent.style.backgroundColor,
-            fontWeight: this.textComponent.style.fontWeight,
-        };
-        this.textComponent.style.backgroundColor = this.props.highlightBackgroundColour;
-        this.textComponent.style.fontWeight = '700';
+        const originalColor = this.textComponent.style.backgroundColor;
+        this.textComponent.style.backgroundColor = this.props.highlightBackgroundColour || defaultColour;
         setTimeout(
             () => {
                 if (this.textComponent) {
-                    this.textComponent.style.backgroundColor = original.backgroundColor;
-                    this.textComponent.style.fontWeight = original.fontWeight;
+                    this.textComponent.style.backgroundColor = originalColor;
                 }
             },
             1000);

@@ -9,6 +9,7 @@ import { Batting as InningsBatting, BattingInnings, howOutDescription, unavailab
     from '../../domain';
 import * as styles from './styles';
 import * as globalStyles from '../styles';
+import TextUpdateNotify from '../TextUpdateNotify';
 
 const smallExtraDetailText = (innings?: BattingInnings): string =>
     innings
@@ -25,8 +26,9 @@ const howOut = (batter: Batter): string => {
 
 interface InningsItemProps { batter: Batter; }
 const Howout = (props: InningsItemProps) => (
-    <Grid item xs={6} md={4}><Typography variant="body2">{howOut(props.batter)}</Typography></Grid>
-);
+    <Grid item xs={6} md={4}><Typography variant="body2">
+        <TextUpdateNotify text={howOut(props.batter)} />
+    </Typography></Grid>);
 
 interface BattingProps {
     batting: InningsBatting;
@@ -75,7 +77,7 @@ const Batting = ({ batting, score, wickets, totalOvers, classes }: BattingProps)
                     <Howout batter={batter} />
                     <Grid item xs={2} md={1}>
                         <Typography variant="body1" style={styles.runsCell}>
-                            {batter.innings ? batter.innings.runs.toString() : ''}
+                            <TextUpdateNotify text={batter.innings ? batter.innings.runs.toString() : ''} />
                         </Typography>
                     </Grid>
                     <Hidden smDown>
@@ -83,7 +85,7 @@ const Batting = ({ batting, score, wickets, totalOvers, classes }: BattingProps)
                             <Typography
                                 variant="body1"
                                 style={styles.numberCell}
-                            >{batter.innings ? batter.innings.ballsFaced.toString() : ''}
+                            ><TextUpdateNotify text={batter.innings ? batter.innings.ballsFaced.toString() : ''} />
                             </Typography>
                         </Grid>
                     </Hidden>
@@ -92,7 +94,7 @@ const Batting = ({ batting, score, wickets, totalOvers, classes }: BattingProps)
                             <Typography
                                 variant="body1"
                                 style={styles.numberCell}
-                            >{batter.innings ? '0' : ''}
+                            ><TextUpdateNotify text={batter.innings ? '0' : ''} />
                             </Typography>
                         </Grid>
                     </Hidden>
@@ -101,7 +103,7 @@ const Batting = ({ batting, score, wickets, totalOvers, classes }: BattingProps)
                             <Typography
                                 variant="body1"
                                 style={styles.numberCell}
-                            >{batter.innings ? batter.innings.fours.toString() : ''}
+                            ><TextUpdateNotify text={batter.innings ? batter.innings.fours.toString() : ''} />
                             </Typography>
                         </Grid>
                     </Hidden>
@@ -110,7 +112,7 @@ const Batting = ({ batting, score, wickets, totalOvers, classes }: BattingProps)
                             <Typography
                                 variant="body1"
                                 style={styles.numberCell}
-                            >{batter.innings ? batter.innings.sixes.toString() : ''}
+                            ><TextUpdateNotify text={batter.innings ? batter.innings.sixes.toString() : ''} />
                             </Typography>
                         </Grid>
                     </Hidden>
@@ -118,7 +120,7 @@ const Batting = ({ batting, score, wickets, totalOvers, classes }: BattingProps)
                     <Hidden mdUp>
                         <Grid item xs={8}>
                             <Typography variant="caption">
-                                {smallExtraDetailText(batter.innings)}
+                            <TextUpdateNotify text={smallExtraDetailText(batter.innings)} />
                             </Typography>
                         </Grid>
                     </Hidden>
@@ -132,10 +134,14 @@ const Batting = ({ batting, score, wickets, totalOvers, classes }: BattingProps)
                 <Typography variant="h6" color="inherit">Total</Typography>
             </Grid>
             <Grid item xs={6} md={4}>
-                <Typography variant="h6" color="inherit">{`(${wickets} wickets) (${totalOvers} overs)`}</Typography>
+                <Typography variant="h6" color="inherit">
+                    <TextUpdateNotify text={`(${wickets} wickets) (${totalOvers} overs)`} />
+                </Typography>
             </Grid>
             <Grid item xs={2} md={1}>
-                <Typography variant="h6" color="inherit" style={styles.runsCell}>{score}</Typography>
+                <Typography variant="h6" color="inherit" style={styles.runsCell}>
+                    <TextUpdateNotify text={score.toString()} />
+                </Typography>
             </Grid>
         </Grid>
     </Grid>);
