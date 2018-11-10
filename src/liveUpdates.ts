@@ -31,7 +31,6 @@ const eventStrings = {
 
 const reconnectMsg = 'reconnect';
 
-
 interface EventAction {
     event: EventType;
     action: (data: any) => void;
