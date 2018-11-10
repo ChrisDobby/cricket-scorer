@@ -1,23 +1,14 @@
 import * as React from 'react';
-import * as io from 'socket.io-client';
 import matchApi from '../api/matchApi';
+import liveUpdates, { UpdateType, EventType } from '../liveUpdates';
 
-const updatesNamespace = '/matchupdates';
-const matchIdsMsg = 'matchids';
-const matchUpdatesMsg = 'matchupdates';
-const newMatchMsg = 'newmatch';
-const reconnectMsg = 'reconnect';
-
-const WithInProgressMatches = (url: string) => (Component: any) => class extends React.Component<any> {
-    socket: SocketIOClient.Socket | undefined = undefined;
+const WithInProgressMatches = (updates: any) => (Component: any) => class extends React.Component<any> {
+    disconnect: (() => void) | undefined = undefined;
 
     state = {
         inProgressMatches: [],
         loadingMatches: false,
     };
-
-    sendSubscription = (matches: any[]) => (this.socket as SocketIOClient.Socket)
-        .emit(matchIdsMsg, matches.map(match => match.id))
 
     updateMatches = (updates: any) => this.setState({
         inProgressMatches: this.state.inProgressMatches.map((match: any) => {
@@ -35,17 +26,15 @@ const WithInProgressMatches = (url: string) => (Component: any) => class extends
     addMatch = (match: any) => {
         const allMatches = [...this.state.inProgressMatches, match];
         this.setState({ inProgressMatches: allMatches });
-        this.sendSubscription(allMatches);
     }
 
     subscribeToMatches = (matches: any[]) => {
-        if (matches.length === 0) { return; }
-        this.socket = io(`${url}${updatesNamespace}`);
-
-        this.socket.on(matchUpdatesMsg, this.updateMatches);
-        this.socket.on(reconnectMsg, () => this.sendSubscription(matches));
-        this.socket.on(newMatchMsg, this.addMatch);
-        this.sendSubscription(matches);
+        this.disconnect = updates(
+            () => matches.map(match => match.id),
+            [
+                { event: EventType.MatchUpdates, action: this.updateMatches },
+                { event: EventType.NewMatch, action: this.addMatch, resubscribe: true },
+            ]);
     }
 
     async componentDidMount() {
@@ -60,8 +49,8 @@ const WithInProgressMatches = (url: string) => (Component: any) => class extends
     }
 
     componentWillUnmount() {
-        if (typeof this.socket !== 'undefined') {
-            this.socket.disconnect();
+        if (typeof this.disconnect !== 'undefined') {
+            this.disconnect();
         }
     }
 
@@ -70,4 +59,4 @@ const WithInProgressMatches = (url: string) => (Component: any) => class extends
     }
 };
 
-export default WithInProgressMatches(process.env.API_URL as string);
+export default WithInProgressMatches(liveUpdates(process.env.API_URL as string, UpdateType.AllUpdates));

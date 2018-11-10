@@ -5,8 +5,13 @@ import WithNavBar from '../components/WithNavBar';
 import WithMatchApi from '../components/WithMatchApi';
 import Error from '../components/Error';
 import Progress from '../components/Progress';
+import liveUpdates, { UpdateType, EventType } from '../liveUpdates';
+
+const updates = liveUpdates(process.env.API_URL as string, UpdateType.Scorecard);
 
 export default WithNavBar({ stayWhenLoggingOut: true })(WithMatchApi(class extends React.Component<any> {
+    disconnect: (() => void) | undefined = undefined;
+
     state = {
         match: undefined,
         lastEvent: undefined,
@@ -14,10 +19,20 @@ export default WithNavBar({ stayWhenLoggingOut: true })(WithMatchApi(class exten
         loadError: false,
     };
 
+    updateScorecard = (match: any) => this.setState({ match });
+
+    subscribeToUpdates = (id: string) =>
+        this.disconnect = updates(
+            () => id,
+            [
+                { event: EventType.ScorecardUpdate, action: this.updateScorecard },
+            ])
+
     loadMatch = async () => {
         this.setState({ loading: true, loadError: false });
         try {
             const result = await this.props.matchApi.getMatch(this.props.id);
+            this.subscribeToUpdates(this.props.id);
             this.setState({ match: result.match, lastEvent: result.lastEvent, loading: false });
         } catch (e) {
             this.setState({ loading: false, loadError: true });
@@ -32,6 +47,12 @@ export default WithNavBar({ stayWhenLoggingOut: true })(WithMatchApi(class exten
             if (storedMatch) {
                 this.setState({ match: storedMatch.match });
             }
+        }
+    }
+
+    componentWillUnmount() {
+        if (typeof this.disconnect !== 'undefined') {
+            this.disconnect();
         }
     }
 
