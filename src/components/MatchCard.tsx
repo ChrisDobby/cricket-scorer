@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import * as dateformat from 'dateformat';
+import TextUpdateNotify from './TextUpdateNotify';
 
 type Match = {
     id: string;
@@ -31,6 +32,10 @@ const dividerStyle: React.CSSProperties = {
     marginBottom: '8px',
 };
 
+const textNotifyProps = {
+    highlightBackgroundColour: '#9b34ee',
+};
+
 export default (props: MatchCardProps) => (
     <Grid item xs={12} sm={6} md={4}>
         <Card style={{ display: 'flex' }}>
@@ -44,10 +49,10 @@ export default (props: MatchCardProps) => (
                     </Typography>
                     <Divider style={dividerStyle} />
                     <Typography component="h2" variant="h6" style={{ minHeight: '40px' }}>
-                        {props.match.status}
+                        <TextUpdateNotify {...textNotifyProps} text={props.match.status} />
                     </Typography>
                     <Typography component="h2" variant="body1" color="textSecondary" style={{ minHeight: '20px' }}>
-                        {props.match.lastEvent}
+                        <TextUpdateNotify {...textNotifyProps} text={props.match.lastEvent} />
                     </Typography>
                 </CardContent>
                 <CardActions>
