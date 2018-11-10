@@ -6,6 +6,20 @@ jest.mock('../../match/delivery', () => ({
     notificationDescription: () => 'Delivery description',
 }));
 
+jest.mock('../../match/utilities', () => {
+    const domain = require('../../domain');
+    return {
+        latestOver: () => [{
+            time: (new Date()).getTime(),
+            type: domain.EventType.Delivery,
+            bowlerIndex: 0,
+            batsmanIndex: 0,
+            overNumber: 1,
+            outcome: { scores: { byes: 2 }, deliveryOutcome: domain.DeliveryOutcome.Valid },
+        }],
+    };
+});
+
 describe('eventDescription', () => {
     const bowlerName = matches.inningsWithStartedOver.bowlers[0].name;
     const batsmanName = matches.inningsWithStartedOver.batting.batters[0].name;
@@ -27,7 +41,7 @@ describe('eventDescription', () => {
             } as Delivery,
         );
 
-        expect(description).toBe(`${bowlerName} to ${batsmanName} - delivery description`);
+        expect(description).toBe(`0.1: ${bowlerName} to ${batsmanName} - delivery description`);
     });
 
     it('should return description for delivery with wicket', () => {

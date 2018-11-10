@@ -105,7 +105,15 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
       <p
         className="MuiTypography-root-100 MuiTypography-body2-108"
       >
-        
+        <span
+          style={
+            Object {
+              "transition": "background-color 1s",
+            }
+          }
+        >
+          
+        </span>
       </p>
     </div>
     <div
@@ -120,7 +128,15 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
           }
         }
       >
-        
+        <span
+          style={
+            Object {
+              "transition": "background-color 1s",
+            }
+          }
+        >
+          
+        </span>
       </p>
     </div>
     <div
@@ -134,7 +150,15 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
           }
         }
       >
-        
+        <span
+          style={
+            Object {
+              "transition": "background-color 1s",
+            }
+          }
+        >
+          
+        </span>
       </p>
     </div>
     <div
@@ -148,7 +172,15 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
           }
         }
       >
-        
+        <span
+          style={
+            Object {
+              "transition": "background-color 1s",
+            }
+          }
+        >
+          
+        </span>
       </p>
     </div>
     <div
@@ -162,7 +194,15 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
           }
         }
       >
-        
+        <span
+          style={
+            Object {
+              "transition": "background-color 1s",
+            }
+          }
+        >
+          
+        </span>
       </p>
     </div>
     <div
@@ -176,7 +216,15 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
           }
         }
       >
-        
+        <span
+          style={
+            Object {
+              "transition": "background-color 1s",
+            }
+          }
+        >
+          
+        </span>
       </p>
     </div>
   </div>
@@ -205,7 +253,15 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
       <p
         className="MuiTypography-root-100 MuiTypography-body2-108"
       >
-        0nb 0wd 0b 0lb
+        <span
+          style={
+            Object {
+              "transition": "background-color 1s",
+            }
+          }
+        >
+          0nb 0wd 0b 0lb
+        </span>
       </p>
     </div>
     <div
@@ -220,7 +276,15 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
           }
         }
       >
-        0
+        <span
+          style={
+            Object {
+              "transition": "background-color 1s",
+            }
+          }
+        >
+          0
+        </span>
       </p>
     </div>
   </div>
@@ -242,7 +306,15 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
       <h6
         className="MuiTypography-root-100 MuiTypography-h6-117 MuiTypography-colorInherit-129"
       >
-        (1 wickets) (20 overs)
+        <span
+          style={
+            Object {
+              "transition": "background-color 1s",
+            }
+          }
+        >
+          (1 wickets) (20 overs)
+        </span>
       </h6>
     </div>
     <div
@@ -257,7 +329,15 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
           }
         }
       >
-        100
+        <span
+          style={
+            Object {
+              "transition": "background-color 1s",
+            }
+          }
+        >
+          100
+        </span>
       </h6>
     </div>
   </div>

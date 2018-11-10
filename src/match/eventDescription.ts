@@ -1,5 +1,6 @@
 import * as domain from '../domain';
 import { notificationDescription } from './delivery';
+import { latestOver } from './utilities';
 
 export default (match: domain.Match, innings: domain.Innings, event: domain.Event, wicket?: domain.Wicket) => {
     const deliveryDescription = (delivery: domain.Delivery) => {
@@ -10,7 +11,8 @@ export default (match: domain.Match, innings: domain.Innings, event: domain.Even
             return  `${batter} - ${domain.howOutDescription(wicket)}`;
         }
 
-        return `${bowler} to ${batter} - ${notificationDescription(delivery.outcome).toLowerCase()}`;
+        const id = `${innings.completedOvers}.${latestOver(innings.events, innings.completedOvers).length}`;
+        return `${id}: ${bowler} to ${batter} - ${notificationDescription(delivery.outcome).toLowerCase()}`;
     };
 
     const nonDeliveryWicketDescription = (nonDelivery: domain.NonDeliveryWicket) => {
