@@ -28,9 +28,9 @@ const WithInProgressMatches = (updates: any) => (Component: any) => class extend
         this.setState({ inProgressMatches: allMatches });
     }
 
-    subscribeToMatches = (matches: any[]) => {
+    subscribeToMatches = () => {
         this.disconnect = updates(
-            () => matches.map(match => match.id),
+            () => this.state.inProgressMatches.map((match: any) => match.id),
             [
                 { event: EventType.MatchUpdates, action: this.updateMatches },
                 { event: EventType.NewMatch, action: this.addMatch, resubscribe: true },
@@ -41,8 +41,8 @@ const WithInProgressMatches = (updates: any) => (Component: any) => class extend
         try {
             this.setState({ loadingMatches: true });
             const inProgressMatches = await matchApi.getInProgressMatches();
-            this.subscribeToMatches(inProgressMatches);
             this.setState({ inProgressMatches, loadingMatches: false });
+            this.subscribeToMatches();
         } catch (e) {
             this.setState({ inProgressMatches: [], loadingMatches: false });
         }
