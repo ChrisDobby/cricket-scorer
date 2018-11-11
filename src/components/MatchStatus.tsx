@@ -10,7 +10,6 @@ interface MatchStatusProps {
 
 export default class extends React.PureComponent<MatchStatusProps> {
     state = {
-        showing: false,
         currentIndex: 0,
     };
 
@@ -32,13 +31,7 @@ export default class extends React.PureComponent<MatchStatusProps> {
     }
 
     show = () => {
-        this.setState({ showing: true });
-        setTimeout(this.hide, 4000);
-    }
-
-    hide = () => {
-        this.setState({ showing: false });
-        setTimeout(this.showNext, 1000);
+        setTimeout(this.showNext, 4000);
     }
 
     showCurrentScorecard = () => this.props.showScorecard(this.props.inProgressMatches[this.state.currentIndex].id);
@@ -47,7 +40,7 @@ export default class extends React.PureComponent<MatchStatusProps> {
         if (this.props.inProgressMatches.length === 0) { return null; }
 
         return (
-            <Fade in={this.state.showing}>
+            <Fade in={true}>
                 <SnackbarContent
                     message={this.props.inProgressMatches[this.state.currentIndex].status}
                     action={<Button color="secondary" size="small" onClick={this.showCurrentScorecard}>
