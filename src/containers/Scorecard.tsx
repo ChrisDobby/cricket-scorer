@@ -19,7 +19,7 @@ export default WithNavBar({ stayWhenLoggingOut: true })(WithMatchApi(class exten
         loadError: false,
     };
 
-    updateScorecard = (match: any) => this.setState({ match });
+    updateScorecard = (item: any) => this.setState({ match: item.match, lastEvent: item.lastEvent });
 
     subscribeToUpdates = (id: string) =>
         this.disconnect = updates(
@@ -47,6 +47,7 @@ export default WithNavBar({ stayWhenLoggingOut: true })(WithMatchApi(class exten
                 this.setState({ match: storedMatch.match });
             }
         }
+
         this.subscribeToUpdates(this.props.id);
     }
 
