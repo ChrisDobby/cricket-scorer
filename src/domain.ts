@@ -320,7 +320,7 @@ export const howouts = (currentBatter: Batter) => (batter: Batter) =>
     Object.keys(Howout)
         .filter(key => !isNaN(Number(Howout[key])))
         .map(key => Howout[key])
-        .filter(howout => batter === currentBatter ||
+        .filter(howout => batter.playerIndex === currentBatter.playerIndex ||
             nonStrikerHowouts.find(how => how === howout) !== undefined);
 
 export const howoutRequiresFielder = (howout: Howout) =>
