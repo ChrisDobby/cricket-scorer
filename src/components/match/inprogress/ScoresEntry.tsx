@@ -15,6 +15,10 @@ const buttonStyle = (deliveryOutcome: DeliveryOutcome): React.CSSProperties => (
     color: '#ffffff',
 });
 
+const boundary = (score: number) => (
+    <span style={{ fontSize: '70%' }}>boundary<br /><span style={{ fontSize: '200%' }}>{score}</span></span>
+);
+
 interface ScoresEntryProps {
     deliveryOutcome: DeliveryOutcome;
     hasBoundaries: boolean;
@@ -66,33 +70,25 @@ export default ({ deliveryOutcome, hasBoundaries, getScores, action }: ScoresEnt
                 >{'3'}
                 </Button>
                 <Button
-                    variant="fab"
-                    aria-label="Four"
+                    variant="extendedFab"
+                    aria-label="Boundary Four"
                     style={style}
-                    onClick={execute(4)}
-                >{'4'}
+                    onClick={executeBoundary(4)}
+                >{boundary(4)}
                 </Button>
                 {hasBoundaries &&
-                    <React.Fragment>
-                        <Button
-                            variant="extendedFab"
-                            aria-label="Boundary Four"
-                            style={style}
-                            onClick={executeBoundary(4)}
-                        >{'Bdy 4'}
-                        </Button>
-                        <Button
-                            variant="extendedFab"
-                            aria-label="Boundary Six"
-                            style={style}
-                            onClick={executeBoundary(6)}
-                        >{'Bdy 6'}
-                        </Button>
-                    </React.Fragment>}
+                    <Button
+                        variant="extendedFab"
+                        aria-label="Boundary Six"
+                        style={style}
+                        onClick={executeBoundary(6)}
+                    >{boundary(6)}
+                    </Button>}
             </Grid>
             <Grid container>
                 <Select value={0} onChange={ev => executeNonStandard(Number(ev.target.value), execute)}>
                     <MenuItem value={0}>or select a score...</MenuItem>
+                    <MenuItem value={4}>4</MenuItem>
                     <MenuItem value={5}>5</MenuItem>
                     <MenuItem value={6}>6</MenuItem>
                     <MenuItem value={7}>7</MenuItem>

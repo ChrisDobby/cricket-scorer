@@ -8,6 +8,7 @@ import { Bowler } from '../../domain';
 import * as styles from './styles';
 import * as globalStyles from '../styles';
 import TextUpdateNotify from '../TextUpdateNotify';
+import HeaderText from './HeaderText';
 
 interface BowlingProps {
     team: string;
@@ -23,18 +24,18 @@ const Bowling = ({ team, bowlers, classes }: BowlingProps) => (
         <Grid container className={classes.header}>
             <Grid item xs={6} md={5} />
             <Grid item xs={2}>
-                <Typography color="inherit" variant="h6" style={styles.centreCell}>Overs</Typography>
+                <HeaderText style={styles.centreCell}>Overs</HeaderText>
             </Grid>
             <Hidden smDown>
                 <Grid item md={2}>
-                    <Typography color="inherit" variant="h6" style={styles.centreCell}>Maidens</Typography>
+                    <HeaderText style={styles.centreCell}>Maidens</HeaderText>
                 </Grid>
             </Hidden>
             <Grid item xs={2}>
-                <Typography color="inherit" variant="h6" style={styles.centreCell}>Runs</Typography>
+                <HeaderText style={styles.centreCell}>Runs</HeaderText>
             </Grid>
             <Grid item xs={2} md={1}>
-                <Typography color="inherit" variant="h6" style={styles.centreCell}>Wkts</Typography>
+                <HeaderText style={styles.centreCell}>Wkts</HeaderText>
             </Grid>
         </Grid>
         {bowlers.map((bowler, idx) => (

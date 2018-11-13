@@ -6,13 +6,14 @@ import Divider from '@material-ui/core/Divider';
 import { FallOfWicket } from '../../domain';
 import * as styles from './styles';
 import * as globalStyles from '../styles';
+import HeaderText from './HeaderText';
 
 interface FallOfWicketsProps { fallOfWickets: FallOfWicket[]; classes: any; }
 
 const FallOfWickets = ({ fallOfWickets, classes }: FallOfWicketsProps) => (
     <Grid item xs={12} lg={3}>
         <Grid container className={classes.header}>
-            <Typography variant="h6" color="inherit">Fall of wickets</Typography>
+            <HeaderText>Fall of wickets</HeaderText>
         </Grid>
         {fallOfWickets.map(fow => (
             <React.Fragment key={fow.wicket}>

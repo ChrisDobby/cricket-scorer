@@ -76,7 +76,13 @@ export default (Component: any) => class extends React.PureComponent<any> {
         return (
             <React.Fragment>
                 <Component {...this.props} openDrawer={this.openDrawer} />
-                <MatchDrawer isOpen={this.state.open} close={this.closeDrawer} options={this.items} />
+                <MatchDrawer
+                    isOpen={this.state.open}
+                    close={this.closeDrawer}
+                    open={this.openDrawer}
+                    options={this.items}
+                    history={this.props.history}
+                />
                 {this.state.overNotCompleteWarning &&
                     <OverNotCompleteWarning yes={this.warningYes} no={this.warningNo} />}
                 {this.state.inningsCompleteVerify &&

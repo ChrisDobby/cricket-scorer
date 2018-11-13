@@ -11,7 +11,7 @@ import MatchStatus from './MatchStatus';
 import aboutText from './aboutText';
 import homePageStyles from './homePageStyles';
 
-const Logo = require('../../images/icon_512.png');
+const Logo = require('../../images/icon_192.png');
 
 export default withStyles(homePageStyles)((props: any) => {
     const showScorecard = (id: string) => props.history.push(`/scorecard/${id}`);

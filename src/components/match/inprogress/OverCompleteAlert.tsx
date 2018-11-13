@@ -13,7 +13,7 @@ export default ({ completeOver }: OverCompleteAlertProps) => (
     <Snackbar
         open={true}
         TransitionComponent={(props: any) => <Slide direction="down" {...props} />}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
     >
         <SnackbarContent
             style={{ backgroundColor: amber[700] }}

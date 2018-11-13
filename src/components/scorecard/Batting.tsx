@@ -10,6 +10,7 @@ import { Batting as InningsBatting, BattingInnings, howOutDescription, unavailab
 import * as styles from './styles';
 import * as globalStyles from '../styles';
 import TextUpdateNotify from '../TextUpdateNotify';
+import HeaderText from './HeaderText';
 
 const smallExtraDetailText = (innings?: BattingInnings): string =>
     innings
@@ -42,29 +43,29 @@ const Batting = ({ batting, score, wickets, totalOvers, classes }: BattingProps)
     <Grid item lg={8} md={12} sm={12} xs={12}>
         <Grid container className={classes.header}>
             <Grid item xs={10} md={7}>
-                <Typography variant="h6" color="inherit">Batsman</Typography>
+                <HeaderText>Batsman</HeaderText>
             </Grid>
             <Grid item xs={2} md={1}>
-                <Typography variant="h6" color="inherit" style={styles.numberCell}>Runs</Typography>
+                <HeaderText style={styles.numberCell}>Runs</HeaderText>
             </Grid>
             <Hidden smDown>
                 <Grid item md={1}>
-                    <Typography variant="h6" color="inherit" style={styles.numberCell}>Balls</Typography>
+                    <HeaderText style={styles.numberCell}>Balls</HeaderText>
                 </Grid>
             </Hidden>
             <Hidden smDown>
                 <Grid item xs={false} md={1}>
-                    <Typography variant="h6" color="inherit" style={styles.numberCell}>Mins</Typography>
+                    <HeaderText style={styles.numberCell}>Mins</HeaderText>
                 </Grid>
             </Hidden>
             <Hidden smDown>
                 <Grid item xs={false} md={1}>
-                    <Typography variant="h6" color="inherit" style={styles.numberCell}>4s</Typography>
+                    <HeaderText style={styles.numberCell}>4s</HeaderText>
                 </Grid>
             </Hidden>
             <Hidden smDown>
                 <Grid item xs={false} md={1}>
-                    <Typography variant="h6" color="inherit" style={styles.numberCell}>6s</Typography>
+                    <HeaderText style={styles.numberCell}>6s</HeaderText>
                 </Grid>
             </Hidden>
         </Grid>
@@ -120,7 +121,7 @@ const Batting = ({ batting, score, wickets, totalOvers, classes }: BattingProps)
                     <Hidden mdUp>
                         <Grid item xs={8}>
                             <Typography variant="caption">
-                            <TextUpdateNotify text={smallExtraDetailText(batter.innings)} />
+                                <TextUpdateNotify text={smallExtraDetailText(batter.innings)} />
                             </Typography>
                         </Grid>
                     </Hidden>
@@ -131,17 +132,17 @@ const Batting = ({ batting, score, wickets, totalOvers, classes }: BattingProps)
         <Extras extras={batting.extras} />
         <Grid container className={classes.header}>
             <Grid item xs={4} md={3}>
-                <Typography variant="h6" color="inherit">Total</Typography>
+                <HeaderText>Total</HeaderText>
             </Grid>
-            <Grid item xs={6} md={4}>
-                <Typography variant="h6" color="inherit">
-                    <TextUpdateNotify text={`(${wickets} wickets) (${totalOvers} overs)`} />
-                </Typography>
+            <Grid item md={4}>
+                <HeaderText>
+                    <TextUpdateNotify text={`for ${wickets} (${totalOvers} overs)`} />
+                </HeaderText>
             </Grid>
             <Grid item xs={2} md={1}>
-                <Typography variant="h6" color="inherit" style={styles.runsCell}>
+                <HeaderText style={styles.runsCell}>
                     <TextUpdateNotify text={score.toString()} />
-                </Typography>
+                </HeaderText>
             </Grid>
         </Grid>
     </Grid>);
