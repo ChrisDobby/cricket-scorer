@@ -5,7 +5,9 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
+import Badge from '@material-ui/core/Badge';
 import SignalWifiOff from '@material-ui/icons/SignalWifiOff';
+import NotificationImportant from '@material-ui/icons/NotificationImportant';
 import Menu from '@material-ui/icons/Menu';
 import NetworkStatusContext from '../context/NetworkStatusContext';
 import { ONLINE, OFFLINE } from '../context/networkStatus';
@@ -35,6 +37,16 @@ const WithNavBar = (options: NavBarOptions) => (Component: any) => (props: any) 
                     </Typography>
                     {!props.isAuthenticated && status === ONLINE &&
                         <Button color="inherit" onClick={props.login}>Register or login</Button>}
+                    {props.outOfDateMatches && props.outOfDateMatches.length > 0 &&
+                        <IconButton>
+                            <Badge
+                                badgeContent={props.outOfDateMatches.length}
+                                color="secondary"
+                                onClick={props.outOfDateSelected}
+                            >
+                                <NotificationImportant style={{ color: '#ffffff' }} />
+                            </Badge>
+                        </IconButton>}
                     {props.isAuthenticated &&
                         <React.Fragment>
                             <Avatar src={props.userProfile.picture} />

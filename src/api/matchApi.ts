@@ -3,6 +3,8 @@ import api from './api';
 
 const matchRoute = 'match';
 const inProgressQuery = 'inprogress';
+const expectedCompleteQuery = 'expectedcomplete';
+const userQuery = 'user';
 
 const matchApi = (url: string) => {
     const Api = api(3, 1000);
@@ -22,6 +24,9 @@ const matchApi = (url: string) => {
     const getInProgressMatches = async () =>
         await Api.get(`${url}/${matchRoute}?${inProgressQuery}=true`);
 
+    const getOutOfDateMatches = async (user: string) =>
+        await Api.get(`${url}/${matchRoute}?${userQuery}=${user}&${expectedCompleteQuery}=true`);
+
     const removeMatch = async (id: string) =>
         await Api.remove(`${url}/${matchRoute}/${id}`);
 
@@ -29,6 +34,7 @@ const matchApi = (url: string) => {
         sendMatch,
         getMatch,
         getInProgressMatches,
+        getOutOfDateMatches,
         removeMatch,
     };
 };

@@ -7,6 +7,7 @@ import WithInProgressMatches from '../components/WithInProgressMatches';
 import { default as MatchCentreComponent } from '../components/MatchCentre';
 import matchStorage from '../stores/matchStorage';
 import fetchMatch from '../match/fetchMatch';
+import WithOutOfDateMatches from '../components/WithOutOfDateMatches';
 
 const MatchCentre = WithInProgressMatches(WithMatchApi((props: any) => (
     <MatchCentreComponent
@@ -27,5 +28,6 @@ const getAddButton = (props: any) => (
         <Add />
     </Button>);
 
-export default
-    WithNavBar({ stayWhenLoggingOut: true, title: 'Matches', button: getAddButton })(MatchCentre);
+export default WithOutOfDateMatches(
+    WithNavBar({ stayWhenLoggingOut: true, title: 'Matches', button: getAddButton })(MatchCentre),
+);
