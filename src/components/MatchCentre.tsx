@@ -112,18 +112,19 @@ export default withStyles(homePageStyles)(class extends React.PureComponent<any>
     closeError = (type: string) => this.setState({ [type]: false });
 
     render() {
+        const availableMatches = this.props.loadingMatches ? [] : this.availableMatches;
         return (
             <>
                 <div className={this.props.classes.rootStyle}>
                     <div className={this.props.classes.toolbar} />
                     {this.props.loadingMatches && <Progress />}
-                    {!this.props.loadingMatches && this.props.inProgressMatches.length === 0 &&
+                    {!this.props.loadingMatches && availableMatches.length === 0 &&
                         <Typography variant="h5" color="primary">
                             There are no matches currently in progress
                 </Typography>}
                     {!this.props.loadingMatches &&
                         <Grid container spacing={40}>
-                            {this.availableMatches.map((match: any) =>
+                            {availableMatches.map((match: any) =>
                                 <MatchCard
                                     key={match.id}
                                     match={match}
