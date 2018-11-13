@@ -24,7 +24,7 @@ export default (props: OutOfDateDialogProps) => (
             <DialogContent>
                 <DialogContentText>
                     {`You have ${props.matches.length} matches that are out of date.  ` +
-                        `Choose what to do with them`}
+                        'Choose what to do with them'}
                 </DialogContentText>
                 <DialogContentText color="secondary">
                     Note if you remove a match it will be permanently removed
