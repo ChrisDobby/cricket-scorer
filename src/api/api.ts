@@ -48,7 +48,7 @@ const api = (addBearerToken: any) => (defaultRetries: number, retryWaitMilliseco
         }
     };
 
-    const sendData = async (route: string, data: any, method: string) => {
+    const sendData = async (route: string, data: any, method: string, getResponse: (res: any) => any) => {
         const response = await tryFetch(
             () =>
                 fetch(
@@ -61,11 +61,12 @@ const api = (addBearerToken: any) => (defaultRetries: number, retryWaitMilliseco
                         }),
                     }),
             undefined);
-        return responseData(response);
+        return getResponse(response);
     };
 
-    const post = async (route: string, data: any) => sendData(route, data, 'POST');
-    const put = async (route: string, data: any) => sendData(route, data, 'PUT');
+    const post = async (route: string, data: any) => sendData(route, data, 'POST', responseData);
+    const put = async (route: string, data: any) =>
+        sendData(route, data, 'PUT', () => new Promise(resolve => resolve(data)));
 
     return {
         get,
