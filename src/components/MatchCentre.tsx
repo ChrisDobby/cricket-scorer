@@ -33,7 +33,7 @@ export default withStyles(homePageStyles)(class extends React.PureComponent<any>
     };
 
     get storedMatch() {
-        return !this.props.storedMatch
+        return !this.props.storedMatch || this.props.storedMatch.match.complete
             ? undefined
             : {
                 id: this.props.storedMatch.match.id,
