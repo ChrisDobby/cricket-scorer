@@ -246,7 +246,6 @@ class InProgressMatchStore implements domain.InProgressMatch {
 
         this.currentBatterIndex = batterIndex;
         this.updateLastEvent(event, this.currentInnings);
-        console.log(this.match.status);
     }
 
     @action nonDeliveryWicket = (

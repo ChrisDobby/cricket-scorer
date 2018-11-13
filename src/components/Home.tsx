@@ -14,9 +14,17 @@ import homePageStyles from './homePageStyles';
 const Logo = require('../../images/icon_192.png');
 
 export default withStyles(homePageStyles)((props: any) => {
+    const canContinueCurrentMatch =
+        props.isAuthenticated &&
+        typeof props.storedMatch !== 'undefined' &&
+        props.userProfile.id === props.storedMatch.match.user;
     const showScorecard = (id: string) => props.history.push(`/scorecard/${id}`);
     const goToMatchCentre = () => props.history.push('/matchcentre');
     const goToCreateMatch = () => props.history.push('/match/create');
+    const continueScoring = async () => {
+        await props.fetchMatch(props.storedMatch.match.id);
+        props.history.push('/match/inprogress');
+    };
 
     return (
         <div className={props.classes.rootStyle}>
@@ -84,12 +92,22 @@ export default withStyles(homePageStyles)((props: any) => {
                                     <Typography variant="subtitle1" color="textSecondary">
                                         {`There are ${props.inProgressMatches.length} matches in progress`}
                                     </Typography>}
+                                {canContinueCurrentMatch &&
+                                    <React.Fragment>
+                                        <Typography variant="subtitle1" color="textSecondary">
+                                            {`You were scoring the match ${props.storedMatch.match.homeTeam.name}` +
+                                                ` v ${props.storedMatch.match.awayTeam.name}`}
+                                        </Typography>
+                                        <Button color="secondary" onClick={continueScoring}>
+                                            Continue scoring
+                                        </Button>
+                                    </React.Fragment>}
                                 <Typography variant="subtitle1">
                                     To see all of the current and past matches
                                     </Typography>
                                 <Button color="secondary" onClick={goToMatchCentre}>
                                     Go to the Match Centre
-                                    </Button>
+                                </Button>
                                 <Typography variant="subtitle1">
                                     To start scoring a new match
                                     </Typography>

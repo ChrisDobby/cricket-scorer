@@ -9,6 +9,7 @@ import liveUpdates, { UpdateType, EventType } from '../liveUpdates';
 import WithOutOfDateMatches from '../components/WithOutOfDateMatches';
 
 const updates = liveUpdates(process.env.API_URL as string, UpdateType.Scorecard);
+const matchUser = (match: any) => match.user;
 
 export default WithOutOfDateMatches(
     WithNavBar({ stayWhenLoggingOut: true })(WithMatchApi(class extends React.Component<any> {
@@ -19,6 +20,8 @@ export default WithOutOfDateMatches(
             lastEvent: undefined,
             loading: false,
             loadError: false,
+            continueError: false,
+            fetchingMatch: false,
         };
 
         updateScorecard = (item: any) => this.setState({ match: item.match, lastEvent: item.lastEvent });
@@ -60,10 +63,43 @@ export default WithOutOfDateMatches(
         }
 
         loadErrorClosed = () => this.setState({ loadError: false });
+        continueErrorClosed = () => this.setState({ continueError: false });
+
+        continueScoring = async () => {
+            try {
+                this.setState({ fetchingMatch: true, continueError: false });
+                await this.props.fetchMatch(this.props.id);
+                this.setState({ fetchingMatch: false });
+                this.props.history.push('/match/inprogress');
+            } catch (e) {
+                this.setState({ fetchingMatch: false, continueError: true });
+            }
+        }
+
+        get canContinue() {
+            return this.props.isAuthenticated &&
+                typeof this.state.match !== 'undefined' &&
+                matchUser(this.state.match) === this.props.userProfile.id;
+        }
 
         render() {
             if (typeof this.state.match !== 'undefined') {
-                return <Scorecard cricketMatch={this.state.match} lastEvent={this.state.lastEvent} />;
+                return (
+                    <>
+                        <Scorecard
+                            cricketMatch={this.state.match}
+                            lastEvent={this.state.lastEvent}
+                            canContinue={this.canContinue}
+                            continue={this.continueScoring}
+                        />
+                        {this.state.continueError &&
+                            <div>
+                            <Error
+                                message="Error continuing game.  Please try again"
+                                onClose={this.continueErrorClosed}
+                            />
+                        </div>}
+                    </>);
             }
 
             if (this.state.loading) {

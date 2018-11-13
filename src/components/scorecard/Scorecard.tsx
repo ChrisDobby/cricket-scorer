@@ -9,6 +9,8 @@ import { Match as MatchEntity } from '../../domain';
 import Innings from './Innings';
 import MatchHeading from './MatchHeading';
 import { getTeam } from '../../match/utilities';
+import { Button } from '@material-ui/core';
+import { textCentre } from './styles';
 
 const inningsNumberDescription = (innings: number): string => {
     const numberDescription = (): string => {
@@ -36,7 +38,13 @@ const styles = (theme: any) => ({
     },
 });
 
-interface ScorecardProps { cricketMatch: MatchEntity; lastEvent: string | undefined; classes: any; }
+interface ScorecardProps {
+    cricketMatch: MatchEntity;
+    lastEvent: string | undefined;
+    classes: any;
+    canContinue: boolean;
+    continue: () => void;
+}
 
 class Scorecard extends React.Component<ScorecardProps, {}> {
     state = {
@@ -63,6 +71,12 @@ class Scorecard extends React.Component<ScorecardProps, {}> {
                     matchStatus={this.props.cricketMatch.status}
                     lastEvent={this.props.lastEvent}
                 />
+                {this.props.canContinue &&
+                    <div style={textCentre}>
+                        <Button color="secondary" onClick={this.props.continue}>
+                            Continue scoring
+                        </Button>
+                    </div>}
                 <Divider />
                 <Tabs
                     value={this.state.selectedInningsIndex}
