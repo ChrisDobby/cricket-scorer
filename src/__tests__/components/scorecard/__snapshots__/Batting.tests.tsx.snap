@@ -11,7 +11,8 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
       className="MuiGrid-item-4 MuiGrid-grid-xs-10-41 MuiGrid-grid-md-7-66"
     >
       <h6
-        className="MuiTypography-root-100 MuiTypography-h6-117 MuiTypography-colorInherit-129"
+        className="MuiTypography-root-100 MuiTypography-subtitle1-118 MuiTypography-colorInherit-129"
+        style={undefined}
       >
         Batsman
       </h6>
@@ -20,7 +21,7 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
       className="MuiGrid-item-4 MuiGrid-grid-xs-2-33 MuiGrid-grid-md-1-60"
     >
       <h6
-        className="MuiTypography-root-100 MuiTypography-h6-117 MuiTypography-colorInherit-129"
+        className="MuiTypography-root-100 MuiTypography-subtitle1-118 MuiTypography-colorInherit-129"
         style={
           Object {
             "textAlign": "right",
@@ -34,7 +35,7 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
       className="MuiGrid-item-4 MuiGrid-grid-md-1-60"
     >
       <h6
-        className="MuiTypography-root-100 MuiTypography-h6-117 MuiTypography-colorInherit-129"
+        className="MuiTypography-root-100 MuiTypography-subtitle1-118 MuiTypography-colorInherit-129"
         style={
           Object {
             "textAlign": "right",
@@ -48,7 +49,7 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
       className="MuiGrid-item-4 MuiGrid-grid-md-1-60"
     >
       <h6
-        className="MuiTypography-root-100 MuiTypography-h6-117 MuiTypography-colorInherit-129"
+        className="MuiTypography-root-100 MuiTypography-subtitle1-118 MuiTypography-colorInherit-129"
         style={
           Object {
             "textAlign": "right",
@@ -62,7 +63,7 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
       className="MuiGrid-item-4 MuiGrid-grid-md-1-60"
     >
       <h6
-        className="MuiTypography-root-100 MuiTypography-h6-117 MuiTypography-colorInherit-129"
+        className="MuiTypography-root-100 MuiTypography-subtitle1-118 MuiTypography-colorInherit-129"
         style={
           Object {
             "textAlign": "right",
@@ -76,7 +77,7 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
       className="MuiGrid-item-4 MuiGrid-grid-md-1-60"
     >
       <h6
-        className="MuiTypography-root-100 MuiTypography-h6-117 MuiTypography-colorInherit-129"
+        className="MuiTypography-root-100 MuiTypography-subtitle1-118 MuiTypography-colorInherit-129"
         style={
           Object {
             "textAlign": "right",
@@ -295,16 +296,18 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
       className="MuiGrid-item-4 MuiGrid-grid-xs-4-35 MuiGrid-grid-md-3-62"
     >
       <h6
-        className="MuiTypography-root-100 MuiTypography-h6-117 MuiTypography-colorInherit-129"
+        className="MuiTypography-root-100 MuiTypography-subtitle1-118 MuiTypography-colorInherit-129"
+        style={undefined}
       >
         Total
       </h6>
     </div>
     <div
-      className="MuiGrid-item-4 MuiGrid-grid-xs-6-37 MuiGrid-grid-md-4-63"
+      className="MuiGrid-item-4 MuiGrid-grid-md-4-63"
     >
       <h6
-        className="MuiTypography-root-100 MuiTypography-h6-117 MuiTypography-colorInherit-129"
+        className="MuiTypography-root-100 MuiTypography-subtitle1-118 MuiTypography-colorInherit-129"
+        style={undefined}
       >
         <span
           style={
@@ -313,7 +316,7 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
             }
           }
         >
-          (1 wickets) (20 overs)
+          for 1 (20 overs)
         </span>
       </h6>
     </div>
@@ -321,7 +324,7 @@ exports[`Batting should render correctly when batter has no innings 1`] = `
       className="MuiGrid-item-4 MuiGrid-grid-xs-2-33 MuiGrid-grid-md-1-60"
     >
       <h6
-        className="MuiTypography-root-100 MuiTypography-h6-117 MuiTypography-colorInherit-129"
+        className="MuiTypography-root-100 MuiTypography-subtitle1-118 MuiTypography-colorInherit-129"
         style={
           Object {
             "fontWeight": "bold",
