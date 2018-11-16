@@ -593,4 +593,31 @@ describe('inProgressMatchStore', () => {
             expect(storeToUpdate.version).toBe(storedMatch.version);
         });
     });
+
+    describe('changeOrder', () => {
+        const newBattingOrder = [2, 1, 0];
+        const newBowlingOrder = [4, 9];
+        it('should update the players in the batting order', () => {
+            const storeToUpdate = getMatchStore(matches.matchWithStartedOver);
+            storeToUpdate.changeOrders(newBattingOrder, newBowlingOrder);
+
+            expect(storeToUpdate.match.innings[0].batting.batters.map(b => b.playerIndex))
+                .toEqual(newBattingOrder);
+        });
+
+        it('should update the players in the bowling order', () => {
+            const storeToUpdate = getMatchStore(matches.matchWithStartedOver);
+            storeToUpdate.changeOrders(newBattingOrder, newBowlingOrder);
+
+            expect(storeToUpdate.match.innings[0].bowlers.map(b => b.playerIndex))
+                .toEqual(newBowlingOrder);
+        });
+
+        it('should do nothing if no current innings', () => {
+            const storeToUpdate = getMatchStore(matches.blankMatch);
+            storeToUpdate.changeOrders(newBattingOrder, newBowlingOrder);
+
+            expect(storeToUpdate.match).toEqual(matches.blankMatch);
+        });
+    });
 });

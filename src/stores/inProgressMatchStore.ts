@@ -7,6 +7,7 @@ import status from '../match/status';
 import eventDescription from '../match/eventDescription';
 import complete from '../match/complete';
 import { getTeam } from '../match/utilities';
+import editPlayers from '../match/innings/editPlayers';
 
 const teamFromType = (match: domain.Match) => (type: domain.TeamType) => getTeam(match, type);
 
@@ -380,6 +381,21 @@ class InProgressMatchStore implements domain.InProgressMatch {
         this.version = storedMatch.version;
         this.currentBatterIndex = storedMatch.currentBatterIndex;
         this.currentBowlerIndex = storedMatch.currentBowlerIndex;
+    }
+
+    @action changeOrders = (battingOrder: number[], bowlingOrder: number[]) => {
+        if (typeof this.currentInnings === 'undefined') { return; }
+        const inningsWithBatting = editPlayers.changeBatting(this.match, this.currentInnings, battingOrder);
+        const innings = editPlayers.changeBowling(this.match, inningsWithBatting, bowlingOrder);
+        const [match, version] = updateMatchInnings(
+            this.match,
+            innings,
+            this.config,
+            this.version,
+        );
+
+        this.match = match;
+        this.version = version;
     }
 
     updateLastEvent = (event: domain.Event, innings: domain.Innings, wicket?: domain.Wicket) => {

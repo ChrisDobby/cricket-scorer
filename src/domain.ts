@@ -248,6 +248,7 @@ export interface InProgressMatch {
     nonDeliveryWicket: (howout: Howout) => void;
     batterUnavailable: (reason: UnavailableReason) => void;
     setFromStoredMatch: (storedMatch: StoredMatch | undefined) => void;
+    changeOrders: (battingOrder: number[], bowlingOrder: number[]) => void;
 }
 
 export interface RebuiltInnings {
