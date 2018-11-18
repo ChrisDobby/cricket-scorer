@@ -1,12 +1,10 @@
 import * as React from 'react';
 import Typography from '@material-ui/core/Typography';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import { default as SaveIcon } from '@material-ui/icons/Save';
+import EditForm from '../EditForm';
 import { Batter, Bowler, BattingInnings, unavailablDescription, howOutDescription } from '../../../domain';
 import * as globalStyles from '../../styles';
 import { withStyles } from '@material-ui/core';
@@ -122,73 +120,73 @@ class PlayersForm extends React.PureComponent<PlayerFormProps> {
     render() {
         return (
             <>
-                <Toolbar disableGutters>
-                    <Typography variant="h4" color="inherit" style={{ flexGrow: 1 }}>Change players</Typography>
-                    <Button variant="fab" color="primary" disabled={!this.valid} onClick={this.save}>
-                        <SaveIcon />
-                    </Button>
-                </Toolbar>
-                <Grid container className={this.props.classes.header}>
-                    <Typography
-                        style={headerTextStyle}
-                        color="inherit"
-                        variant="h6"
-                    >Batting
-                    </Typography>
-                </Grid>
+                <EditForm
+                    heading="Change players"
+                    save={this.save}
+                    canSave={() => this.valid}
+                >
+                    <Grid container className={this.props.classes.header}>
+                        <Typography
+                            style={headerTextStyle}
+                            color="inherit"
+                            variant="h6"
+                        >Batting
+                        </Typography>
+                    </Grid>
 
-                {this.state.batters.map((batter, idx) => (
-                    <Grid style={playerContainerStyle} container key={idx}>
-                        <Grid item xs={12} md={6} style={{ paddingRight: '20px' }}>
-                            <Select
-                                value={batter.playerIndex}
-                                fullWidth
-                                error={this.state.battingOrderErrors
-                                    .find(e => e === batter.playerIndex) === batter.playerIndex}
-                                onChange={ev => this.selectBatter(idx, Number(ev.target.value))}
-                            >
-                                {this.props.battingTeam.map((playerName, playerIndex) => (
-                                    <MenuItem key={playerIndex} value={playerIndex}>{playerName}</MenuItem>
-                                ))}
-                            </Select>
-                        </Grid>
-                        <Grid style={descriptionStyle} item xs={10} md={5}>
-                            <Typography variant="subtitle1">{howOut(batter)}</Typography>
-                        </Grid>
-                        <Grid style={descriptionNumberStyle} item xs={2} md={1}>
-                            <Typography variant="subtitle1">{runs(batter)}</Typography>
-                        </Grid>
-                        <Grid style={playerDividerStyle} item xs={12}><Divider /></Grid>
-                    </Grid>))}
-                <Grid container className={this.props.classes.header}>
-                    <Typography
-                        style={headerTextStyle}
-                        color="inherit"
-                        variant="h6"
-                    >Bowling
-                    </Typography>
-                </Grid>
+                    {this.state.batters.map((batter, idx) => (
+                        <Grid style={playerContainerStyle} container key={idx}>
+                            <Grid item xs={12} md={6} style={{ paddingRight: '20px' }}>
+                                <Select
+                                    value={batter.playerIndex}
+                                    fullWidth
+                                    error={this.state.battingOrderErrors
+                                        .find(e => e === batter.playerIndex) === batter.playerIndex}
+                                    onChange={ev => this.selectBatter(idx, Number(ev.target.value))}
+                                >
+                                    {this.props.battingTeam.map((playerName, playerIndex) => (
+                                        <MenuItem key={playerIndex} value={playerIndex}>{playerName}</MenuItem>
+                                    ))}
+                                </Select>
+                            </Grid>
+                            <Grid style={descriptionStyle} item xs={10} md={5}>
+                                <Typography variant="subtitle1">{howOut(batter)}</Typography>
+                            </Grid>
+                            <Grid style={descriptionNumberStyle} item xs={2} md={1}>
+                                <Typography variant="subtitle1">{runs(batter)}</Typography>
+                            </Grid>
+                            <Grid style={playerDividerStyle} item xs={12}><Divider /></Grid>
+                        </Grid>))}
+                    <Grid container className={this.props.classes.header}>
+                        <Typography
+                            style={headerTextStyle}
+                            color="inherit"
+                            variant="h6"
+                        >Bowling
+                        </Typography>
+                    </Grid>
 
-                {this.state.bowlers.map((bowler, idx) => (
-                    <Grid style={playerContainerStyle} container key={idx}>
-                        <Grid item xs={12} md={6} style={{ paddingRight: '20px' }}>
-                            <Select
-                                value={bowler.playerIndex}
-                                onChange={ev => this.selectBowler(idx, Number(ev.target.value))}
-                                error={this.state.bowlingOrderErrors
-                                    .find(e => e === bowler.playerIndex) === bowler.playerIndex}
-                                fullWidth
-                            >
-                                {this.props.bowlingTeam.map((playerName, playerIndex) => (
-                                    <MenuItem key={playerIndex} value={playerIndex}>{playerName}</MenuItem>
-                                ))}
-                            </Select>
-                        </Grid>
-                        <Grid style={descriptionStyle} item xs={12} md={6}>
-                            <Typography variant="subtitle1">{bowlingFigures(bowler)}</Typography>
-                        </Grid>
-                        <Grid style={playerDividerStyle} item xs={12}><Divider /></Grid>
-                    </Grid>))}
+                    {this.state.bowlers.map((bowler, idx) => (
+                        <Grid style={playerContainerStyle} container key={idx}>
+                            <Grid item xs={12} md={6} style={{ paddingRight: '20px' }}>
+                                <Select
+                                    value={bowler.playerIndex}
+                                    onChange={ev => this.selectBowler(idx, Number(ev.target.value))}
+                                    error={this.state.bowlingOrderErrors
+                                        .find(e => e === bowler.playerIndex) === bowler.playerIndex}
+                                    fullWidth
+                                >
+                                    {this.props.bowlingTeam.map((playerName, playerIndex) => (
+                                        <MenuItem key={playerIndex} value={playerIndex}>{playerName}</MenuItem>
+                                    ))}
+                                </Select>
+                            </Grid>
+                            <Grid style={descriptionStyle} item xs={12} md={6}>
+                                <Typography variant="subtitle1">{bowlingFigures(bowler)}</Typography>
+                            </Grid>
+                            <Grid style={playerDividerStyle} item xs={12}><Divider /></Grid>
+                        </Grid>))}
+                </EditForm>
             </>);
     }
 }

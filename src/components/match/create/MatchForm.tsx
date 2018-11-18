@@ -1,10 +1,8 @@
 import * as React from 'react';
 import Typography from '@material-ui/core/Typography';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
-import { default as SaveIcon } from '@material-ui/icons/Save';
 import { MatchType, TeamType } from '../../../domain';
+import EditForm from '../EditForm';
 import TeamsEntry from './TeamsEntry';
 import MatchEntry from './MatchEntry';
 import SaveWarning from './SaveWarning';
@@ -97,13 +95,11 @@ class MatchForm extends React.PureComponent<MatchFormProps> {
     render() {
         return (
             <React.Fragment>
-                <form>
-                    <Toolbar disableGutters>
-                        <Typography variant="h4" color="inherit" style={{ flexGrow: 1 }}>New match</Typography>
-                        <Button variant="fab" color="primary" onClick={this.save} disabled={!this.canSave()}>
-                            <SaveIcon />
-                        </Button>
-                    </Toolbar>
+                <EditForm
+                    heading="New match"
+                    save={this.save}
+                    canSave={this.canSave}
+                >
                     <MatchEntry
                         {...this.state}
                         matchTypeSelected={this.matchTypeSelected}
@@ -123,7 +119,7 @@ class MatchForm extends React.PureComponent<MatchFormProps> {
                         playerChanged={this.playerChanged}
                         teamChanged={this.teamChanged}
                     />
-                </form>
+                </EditForm>
                 {(this.state.saveWarnings.homePlayersMissing > 0 || this.state.saveWarnings.awayPlayersMissing > 0) &&
                     <SaveWarning
                         homePlayersMissing={this.state.saveWarnings.homePlayersMissing}

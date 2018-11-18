@@ -1,11 +1,8 @@
 import * as React from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
-import { default as SaveIcon } from '@material-ui/icons/Save';
+import EditForm from '../EditForm';
 import * as domain from '../../../domain';
 import DeliveryHeader from '../DeliveryHeader';
 import Entry from './Entry';
@@ -183,40 +180,40 @@ class Wicket extends React.Component<WicketProps, {}> {
 
         return (
             <Paper className={this.props.classes.root}>
-                <Toolbar disableGutters>
-                    <Typography variant="h4" color="inherit" style={{ flexGrow: 1 }}>Wicket</Typography>
-                    <Button variant="fab" color="primary" onClick={this.save} disabled={!this.canSave}>
-                        <SaveIcon />
-                    </Button>
-                </Toolbar>
+                <EditForm
+                    heading="Wicket"
+                    save={this.save}
+                    canSave={() => this.canSave}
+                >
+                    <DeliveryHeader
+                        batter={this.props.inProgress.currentBatter}
+                        bowler={this.props.inProgress.currentBowler}
+                    />
+                    <Entry
+                        batters={this.batters}
+                        bowler={this.props.inProgress.currentBowler}
+                        fielders={this.fielders}
+                        batterIndex={this.state.batterIndex}
+                        howout={this.state.howout}
+                        fielderIndex={this.state.fielderIndex}
+                        crossed={this.state.crossed}
+                        scores={this.state.scores}
+                        batterChange={this.batterChange}
+                        howoutChange={this.howoutChange}
+                        fielderChange={this.fielderChange}
+                        crossedChange={this.crossedChange}
+                        scoresChange={this.scoresChange}
+                        deliveryOutcomeChange={this.deliveryOutcomeChange}
+                        availableHowouts={this.availableHowouts}
+                        fielderRequired={this.fielderRequired}
+                        couldCross={this.couldCross}
+                        couldScoreRuns={this.couldScoreRuns}
+                        couldBeNoBall={this.couldBeNoBall}
+                        couldBeWide={this.couldBeWide}
+                        deliveryOutcome={this.state.deliveryOutcome}
+                    />
 
-                <DeliveryHeader
-                    batter={this.props.inProgress.currentBatter}
-                    bowler={this.props.inProgress.currentBowler}
-                />
-                <Entry
-                    batters={this.batters}
-                    bowler={this.props.inProgress.currentBowler}
-                    fielders={this.fielders}
-                    batterIndex={this.state.batterIndex}
-                    howout={this.state.howout}
-                    fielderIndex={this.state.fielderIndex}
-                    crossed={this.state.crossed}
-                    scores={this.state.scores}
-                    batterChange={this.batterChange}
-                    howoutChange={this.howoutChange}
-                    fielderChange={this.fielderChange}
-                    crossedChange={this.crossedChange}
-                    scoresChange={this.scoresChange}
-                    deliveryOutcomeChange={this.deliveryOutcomeChange}
-                    availableHowouts={this.availableHowouts}
-                    fielderRequired={this.fielderRequired}
-                    couldCross={this.couldCross}
-                    couldScoreRuns={this.couldScoreRuns}
-                    couldBeNoBall={this.couldBeNoBall}
-                    couldBeWide={this.couldBeWide}
-                    deliveryOutcome={this.state.deliveryOutcome}
-                />
+                </EditForm>
             </Paper>);
     }
 }
