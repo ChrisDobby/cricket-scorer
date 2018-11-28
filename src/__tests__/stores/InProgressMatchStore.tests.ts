@@ -245,6 +245,52 @@ describe('inProgressMatchStore', () => {
         });
     });
 
+    describe('rolledBackInnings', () => {
+        it('should return undefined if no current innings', () => {
+            const inProgressMatchStore = getMatchStore(matches.blankMatch);
+            const rolledBack = inProgressMatchStore.rolledBackInnings(2);
+
+            expect(rolledBack).toBeUndefined();
+        });
+
+        it('should return undefined if no over has been started', () => {
+            const inProgressMatchStore = getMatchStore(matches.matchWithStartedInnings);
+            const rolledBack = inProgressMatchStore.rolledBackInnings(2);
+
+            expect(rolledBack).toBeUndefined();
+        });
+
+        it('should roll back to the index', () => {
+            const inProgressMatchStore = getMatchStore(matches.matchWithOverReadyToComplete);
+            const rolledBack = inProgressMatchStore.rolledBackInnings(2);
+
+            expect((rolledBack as domain.Innings).events).toHaveLength(3);
+        });
+    });
+
+    describe('rollback', () => {
+        it('should do nothing if no current innings', () => {
+            const inProgressMatchStore = getMatchStore(matches.blankMatch);
+            inProgressMatchStore.rollback(2);
+
+            expect(inProgressMatchStore.match).toEqual(matches.blankMatch);
+        });
+
+        it('should do nothing if no over has been started', () => {
+            const inProgressMatchStore = getMatchStore(matches.matchWithStartedInnings);
+            inProgressMatchStore.rollback(2);
+
+            expect(inProgressMatchStore.match).toEqual(matches.matchWithStartedInnings);
+        });
+
+        it('should roll the current innings back', () => {
+            const inProgressMatchStore = getMatchStore(matches.matchWithOverReadyToComplete);
+            inProgressMatchStore.rollback(2);
+
+            expect(inProgressMatchStore.match.innings[0].events).toHaveLength(3);
+        });
+    });
+
     describe('completeOver', () => {
         it('should do nothing if no innings has been started', () => {
             const inProgressMatchStore = getMatchStore(matches.blankMatch);

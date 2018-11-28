@@ -6,6 +6,7 @@ import Wicket from './containers/match/Wicket';
 import CreateMatch from './containers/match/CreateMatch';
 import StartMatch from './containers/match/StartMatch';
 import EditPlayers from './containers/match/EditPlayers';
+import EditEvents from './containers/match/EditEvents';
 import App from './App';
 import Home from './containers/Home';
 import Match from './containers/Match';
@@ -23,6 +24,7 @@ const Routes = () => (
         <Route exact path="/match/inprogress" component={auth0.AuthRequired(InProgress)}/>
         <Route exact path="/match/wicket" component={auth0.AuthRequired(Wicket)} />
         <Route exact path="/match/editplayers" component={auth0.AuthRequired(EditPlayers)} />
+        <Route exact path="/match/editevents" component={auth0.AuthRequired(EditEvents)} />
         <Route
             exact
             path="/scorecard/:id?"

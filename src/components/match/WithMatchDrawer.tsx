@@ -56,6 +56,7 @@ export default (Component: any) => class extends React.PureComponent<any> {
         { text: 'Undo previous', icon: <Undo />, action: this.props.undoPreviousDelivery },
         { text: 'Change ends', icon: <SwapHoriz />, action: this.props.changeEnds },
         { text: 'Change players', icon: <Edit />, action: () => this.props.history.push('/match/editplayers') },
+        { text: 'Edit innings', icon: <Edit />, action: () => this.props.history.push('/match/editevents') },
         {
             text: 'Retired',
             icon: <ArrowRightAlt />,

@@ -10,9 +10,11 @@ import calculateStatus from './calculateStatus';
 import nonDeliveryWicket from './nonDeliveryWicket';
 import batterUnavailable from './batterUnavailable';
 import rebuild from './rebuild';
+import rollback from './rollback';
 
 export default (config: MatchConfig, getTeam: (type: TeamType) => Team) => {
     const Delivery = delivery(config, getTeam);
+    const rebuildInnings = rebuild(Delivery, nonDeliveryWicket, batterUnavailable);
 
     return {
         completeOver,
@@ -25,6 +27,7 @@ export default (config: MatchConfig, getTeam: (type: TeamType) => Team) => {
         newBatter: newBatter(getTeam),
         delivery: Delivery,
         calculateStatus: calculateStatus(getTeam),
-        rebuild: rebuild(Delivery, nonDeliveryWicket, batterUnavailable),
+        rebuild: rebuildInnings,
+        rollback: rollback(rebuildInnings),
     };
 };

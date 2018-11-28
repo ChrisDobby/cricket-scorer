@@ -6,7 +6,6 @@ import { getTeam } from '../../../match/utilities';
 import { bindMatchStorage } from '../../../stores/withMatchStorage';
 
 interface PlayersProps {
-    classes: any;
     inProgress: InProgressMatch;
     storeMatch: any;
     history: any;
@@ -20,7 +19,7 @@ const update = (inProgress: InProgressMatch, storeMatch: any, complete: () => vo
         },
     );
 
-export default ({ classes, inProgress, storeMatch, history }: PlayersProps) => {
+export default ({ inProgress, storeMatch, history }: PlayersProps) => {
     if (typeof inProgress.currentInnings === 'undefined') {
         return null;
     }

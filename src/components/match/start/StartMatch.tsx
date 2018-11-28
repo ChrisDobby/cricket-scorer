@@ -12,7 +12,7 @@ const start = (inProgress: any, storeMatch: any, complete: () => void) =>
         },
     );
 
-export default ({ inProgress, storeMatch, history, classes }: any) => (
+export default ({ inProgress, storeMatch, history }: any) => (
     <EditContainer>
         <StartForm
             homeTeam={inProgress.match.homeTeam}

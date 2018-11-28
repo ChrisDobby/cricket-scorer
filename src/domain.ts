@@ -249,6 +249,8 @@ export interface InProgressMatch {
     batterUnavailable: (reason: UnavailableReason) => void;
     setFromStoredMatch: (storedMatch: StoredMatch | undefined) => void;
     changeOrders: (battingOrder: number[], bowlingOrder: number[]) => void;
+    rolledBackInnings: (eventIndex: number) => Innings | undefined;
+    rollback: (eventIndex: number) => void;
 }
 
 export interface RebuiltInnings {

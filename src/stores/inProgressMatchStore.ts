@@ -398,11 +398,38 @@ class InProgressMatchStore implements domain.InProgressMatch {
         this.version = version;
     }
 
+    @action rollback = (eventIndex: number) => {
+        const rolledback = this.getRollback(eventIndex);
+        if (typeof rolledback === 'undefined') { return; }
+
+        const [match, version] = updateMatchInnings(
+            this.match,
+            rolledback[0],
+            this.config,
+            this.version,
+        );
+
+        this.match = match;
+        this.version = version;
+        this.currentBatterIndex = rolledback[1];
+        this.currentBowlerIndex = rolledback[2];
+    }
+
+    private getRollback = (eventIndex: number): [domain.Innings, number, number] | undefined => {
+        if (typeof this.currentInnings === 'undefined' || this.currentInnings.events.length === 0) { return undefined; }
+        return this.matchInnings.rollback(this.currentInnings, eventIndex);
+    }
+
     updateLastEvent = (event: domain.Event, innings: domain.Innings, wicket?: domain.Wicket) => {
         const description = eventDescription(this.match, innings, event, wicket);
         if (typeof description !== 'undefined') {
             this.lastEvent = description;
         }
+    }
+
+    rolledBackInnings = (eventIndex: number): domain.Innings | undefined => {
+        const rolledback = this.getRollback(eventIndex);
+        return typeof rolledback === 'undefined' ? undefined : rolledback[0];
     }
 }
 
