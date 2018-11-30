@@ -88,19 +88,6 @@ const auth0 = (domain: string, clientId: string) => {
         }
     };
 
-    const afterLogout = (history: any, stay: boolean) =>
-        history.replace(stay ? window.location.pathname : '/');
-
-    const WithAuth0 = (Component: any) => (props: any) => (
-        <Component
-            {...props}
-            login={() => login(props.location.pathname)}
-            logout={(stayOnPage: boolean) =>
-                logout(() => afterLogout(props.history, stayOnPage))()}
-            isAuthenticated={isAuthenticated()}
-            userProfile={userProfile()}
-        />);
-
     const WithNetworkStatus = (Component: any) => (props: any) => (
         <NetworkStatusContext.Consumer>{({
             status,
@@ -109,6 +96,20 @@ const auth0 = (domain: string, clientId: string) => {
             <Component {...props} status={status} offlineUser={offlineUser} />
         }
         </NetworkStatusContext.Consumer>);
+
+    const afterLogout = (history: any, stay: boolean) =>
+        history.replace(stay ? window.location.pathname : '/');
+
+    const WithAuth0 = (Component: any) => WithNetworkStatus((props: any) => (
+        <Component
+            {...props}
+            login={() => login(props.location.pathname)}
+            logout={(stayOnPage: boolean) =>
+                logout(() => afterLogout(props.history, stayOnPage))()}
+            isAuthenticated={isAuthenticated()}
+            canAuthenticate={props.status !== OFFLINE}
+            userProfile={userProfile()}
+        />));
 
     const AuthRequired = (Component: any) => WithNetworkStatus(WithAuth0(class extends React.PureComponent<any> {
         get loginRequired() {
