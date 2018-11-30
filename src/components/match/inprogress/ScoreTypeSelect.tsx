@@ -11,7 +11,7 @@ export enum ScoreType {
 }
 
 const radioStyle: React.CSSProperties = {
-    marginRight: '26px',
+    marginRight: '22px',
 };
 
 interface ScoreTypeSelectProps {
@@ -30,12 +30,12 @@ const items = [
 export default (props: ScoreTypeSelectProps) => (
     <>
         <Hidden smUp>
-            {items.map(item =>
+            {items.map((item, idx) =>
                 <React.Fragment key={item.scoreType}>
                     {(!props.noBall || item.availableForNoBall) &&
                         <FormControlLabel
                             label={item.xsLabel}
-                            style={radioStyle}
+                            style={idx < items.length - 1 ? radioStyle : {}}
                             control={
                                 <Radio
                                     checked={props.selectedType === item.scoreType}
