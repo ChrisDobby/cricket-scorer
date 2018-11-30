@@ -11,6 +11,7 @@ import nonDeliveryWicket from './nonDeliveryWicket';
 import batterUnavailable from './batterUnavailable';
 import rebuild from './rebuild';
 import rollback from './rollback';
+import editOvers from './editOvers';
 
 export default (config: MatchConfig, getTeam: (type: TeamType) => Team) => {
     const Delivery = delivery(config, getTeam);
@@ -22,6 +23,7 @@ export default (config: MatchConfig, getTeam: (type: TeamType) => Team) => {
         isComplete,
         nonDeliveryWicket,
         batterUnavailable,
+        editOvers,
         create: create(getTeam),
         newBowler: newBowler(getTeam),
         newBatter: newBatter(getTeam),

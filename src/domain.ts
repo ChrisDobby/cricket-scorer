@@ -171,6 +171,7 @@ export interface Innings {
     batting: Batting;
     bowlers: Bowler[];
     fallOfWickets: FallOfWicket[];
+    maximumOvers?: number;
 }
 
 export interface Team {
@@ -236,7 +237,7 @@ export interface InProgressMatch {
     newBatterRequired: boolean;
     version: number;
     lastEvent?: string;
-    startInnings: (battingTeam: TeamType, batter1Index: number, batter2Index: number) => void;
+    startInnings: (battingTeam: TeamType, batter1Index: number, batter2Index: number, overs?: number) => void;
     newBowler: (playerIndex: number) => void;
     newBatter: (playerIndex: number) => void;
     delivery: (deliveryOutcome: DeliveryOutcome, scores: DeliveryScores, wicket: DeliveryWicket | undefined) => void;
@@ -251,6 +252,7 @@ export interface InProgressMatch {
     changeOrders: (battingOrder: number[], bowlingOrder: number[]) => void;
     rolledBackInnings: (eventIndex: number) => Innings | undefined;
     rollback: (eventIndex: number) => void;
+    updateOvers: (overs: number) => void;
 }
 
 export interface RebuiltInnings {

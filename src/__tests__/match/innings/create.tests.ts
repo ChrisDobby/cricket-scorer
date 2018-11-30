@@ -128,4 +128,10 @@ describe('create', () => {
         expect(batters[9].name).toBe(awayTeam.players[9]);
         expect(batters[10].name).toBe(awayTeam.players[10]);
     });
+
+    it('should set the maximum overs if specified', () => {
+        const inningsWithOvers = Create(domain.TeamType.HomeTeam, 0, 1, 50);
+
+        expect(inningsWithOvers.maximumOvers).toBe(50);
+    });
 });

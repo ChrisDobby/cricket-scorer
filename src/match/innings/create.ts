@@ -25,6 +25,7 @@ export default (getTeam: (type: TeamType) => Team) => (
     battingTeam: TeamType,
     batsman1Index: number,
     batsman2Index: number,
+    overs?: number,
 ): Innings => ({
     battingTeam,
     bowlingTeam: battingTeam === TeamType.HomeTeam ? TeamType.AwayTeam : TeamType.HomeTeam,
@@ -32,6 +33,7 @@ export default (getTeam: (type: TeamType) => Team) => (
     wickets: 0,
     completedOvers: 0,
     totalOvers: '0',
+    maximumOvers: overs,
     events: [],
     batting: {
         extras: {

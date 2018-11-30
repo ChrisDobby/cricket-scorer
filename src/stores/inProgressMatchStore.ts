@@ -162,15 +162,16 @@ class InProgressMatchStore implements domain.InProgressMatch {
         this.match.status = status(this.match);
     }
 
-    @action startInnings = (battingTeam: domain.TeamType, batter1Index: number, batter2Index: number) => {
-        const innings = this.matchInnings.create(battingTeam, batter1Index, batter2Index);
-        this.match = {
-            ...this.match,
-            innings: [...this.match.innings, innings],
-        };
+    @action startInnings =
+        (battingTeam: domain.TeamType, batter1Index: number, batter2Index: number, overs?: number) => {
+            const innings = this.matchInnings.create(battingTeam, batter1Index, batter2Index, overs);
+            this.match = {
+                ...this.match,
+                innings: [...this.match.innings, innings],
+            };
 
-        this.currentBatterIndex = 0;
-    }
+            this.currentBatterIndex = 0;
+        }
 
     @action newBowler = (playerIndex: number) => {
         if (typeof this.currentInnings === 'undefined') { return; }
@@ -345,6 +346,11 @@ class InProgressMatchStore implements domain.InProgressMatch {
         this.updateMatch(rolledback[0]);
         this.currentBatterIndex = rolledback[1];
         this.currentBowlerIndex = rolledback[2];
+    }
+
+    @action updateOvers = (overs: number) => {
+        if (typeof this.currentInnings === 'undefined') { return; }
+        this.updateMatch(this.matchInnings.editOvers(this.currentInnings, overs));
     }
 
     private getRollback = (eventIndex: number): [domain.Innings, number, number] | undefined => {

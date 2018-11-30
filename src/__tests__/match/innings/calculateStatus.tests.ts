@@ -29,7 +29,8 @@ describe('calculateStatus', () => {
     it('should return overs complete for a limited overs match when all the overs have been completed', () => {
         const completdOversInnings = {
             ...matches.startedInnings,
-            completedOvers: 50,
+            completedOvers: 40,
+            maximumOvers: 40,
         };
 
         expect(CalculateStatus(fiftyOverMatch, completdOversInnings))

@@ -9,21 +9,22 @@ import StepLabel from '@material-ui/core/StepLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
+import TextField from '@material-ui/core/TextField';
 import { Team, TeamType } from '../../../domain';
 import BatterSelector, { PlayerPosition } from './BatterSelector';
 
 interface StartInningsProps {
     teams: Team[];
-    startInnings: (t: TeamType, b1: number, b2: number) => void;
+    startInnings: (t: TeamType, b1: number, b2: number, overs?: number) => void;
     defaultBattingTeam?: Team;
     canChangeBattingTeam: boolean;
+    maximumOvers?: number;
 }
 
-const steps = {
-    ['Select batting team']: (props: StartInningsProps) => !props.canChangeBattingTeam,
-    ['Select number 1']: () => false,
-    ['Select number 2']: () => false,
-};
+const battingTeamIndex = 0;
+const batter1Index = 1;
+const batter2Index = 2;
+const oversIndex = 3;
 
 export default class extends React.Component<StartInningsProps, {}> {
     state = {
@@ -35,7 +36,25 @@ export default class extends React.Component<StartInningsProps, {}> {
             ? this.props.defaultBattingTeam.players
             : Array<string>(),
         activeStep: this.props.canChangeBattingTeam ? 0 : 1,
+        maximumOvers: this.props.maximumOvers,
     };
+
+    get steps() {
+        const defaultSteps = {
+            ['Select batting team']: !this.props.canChangeBattingTeam,
+            ['Select number 1']: false,
+            ['Select number 2']: false,
+        };
+
+        if (typeof this.props.maximumOvers !== 'undefined') {
+            return {
+                ...defaultSteps,
+                ['Maximum overs']: false,
+            };
+        }
+
+        return defaultSteps;
+    }
 
     teamRadioChanged = (teamIndex: number): void => {
         this.setState({
@@ -57,6 +76,8 @@ export default class extends React.Component<StartInningsProps, {}> {
         });
     }
 
+    oversChanged = (overs: number) => this.setState({ maximumOvers: overs });
+
     selectedOpenerIndex = (position: number): number | undefined => {
         const player = this.state.playerPositions.find(pp => pp.position === position);
         return player ? player.playerIndex : undefined;
@@ -73,6 +94,7 @@ export default class extends React.Component<StartInningsProps, {}> {
             this.state.selectedTeamIndex === 0 ? TeamType.HomeTeam : TeamType.AwayTeam,
             batter1Index,
             batter2Index,
+            this.state.maximumOvers,
         );
     }
 
@@ -83,16 +105,29 @@ export default class extends React.Component<StartInningsProps, {}> {
     }
 
     moveNext = () => {
-        if (this.state.activeStep === 2) {
+        if (this.state.activeStep === this.finishIndex) {
             this.save();
         } else {
             this.setState({ activeStep: this.state.activeStep + 1 });
         }
     }
 
+    get finishIndex() {
+        return typeof this.props.maximumOvers === 'undefined' ? batter2Index : oversIndex;
+    }
+
     get nextOrFinishEnabled(): boolean {
-        return this.state.activeStep === 0 ||
-            !!this.state.playerPositions.find(pp => pp.position === this.state.activeStep);
+        switch (this.state.activeStep) {
+        case battingTeamIndex:
+            return true;
+        case batter1Index:
+        case batter2Index:
+            return !!this.state.playerPositions.find(pp => pp.position === this.state.activeStep);
+        case oversIndex:
+            return typeof this.state.maximumOvers !== 'undefined';
+        default:
+            return false;
+        }
     }
 
     get backEnabled(): boolean {
@@ -100,7 +135,12 @@ export default class extends React.Component<StartInningsProps, {}> {
             this.props.canChangeBattingTeam || this.state.activeStep > 1);
     }
 
+    get nextButtonText(): string {
+        return this.state.activeStep < this.finishIndex ? 'Next' : 'Start innings';
+    }
+
     render() {
+        const steps = this.steps;
         return (
             <Grid container>
                 <Grid item sm={1} md={2} />
@@ -112,7 +152,7 @@ export default class extends React.Component<StartInningsProps, {}> {
                     </Toolbar>
                     <Stepper activeStep={this.state.activeStep}>
                         {Object.keys(steps).map(key => (
-                            <Step key={key} disabled={steps[key](this.props)}>
+                            <Step key={key} disabled={steps[key]}>
                                 <StepLabel>{key}</StepLabel>
                             </Step>
                         ))}
@@ -130,13 +170,22 @@ export default class extends React.Component<StartInningsProps, {}> {
                                 />
                             ))}
                         </FormControl>}
-                    {this.state.activeStep > 0 &&
+                    {(this.state.activeStep === 1 || this.state.activeStep === 2) &&
                         <BatterSelector
                             players={this.state.players}
                             playerSelected={playerIndex => this.openerSelected(playerIndex, this.state.activeStep)}
                             notAllowedPlayers={this.state.playerPositions
                                 .filter(pp => pp.position !== this.state.activeStep).map(pp => pp.playerIndex)}
                             selectedPlayerIndex={this.selectedOpenerIndex(this.state.activeStep)}
+                        />}
+                    {this.state.activeStep === 3 &&
+                        <TextField
+                            style={{ marginBottom: '20px' }}
+                            fullWidth
+                            label="Number of overs"
+                            value={this.state.maximumOvers}
+                            type="number"
+                            onChange={ev => this.oversChanged(Number(ev.target.value))}
                         />}
                     <div>
                         <Button
@@ -151,7 +200,7 @@ export default class extends React.Component<StartInningsProps, {}> {
                             disabled={!this.nextOrFinishEnabled}
                             onClick={this.moveNext}
                         >
-                            {this.state.activeStep <= 1 ? 'Next' : 'Start innings'}
+                            {this.nextButtonText}
                         </Button>
                     </div>
                 </Grid>

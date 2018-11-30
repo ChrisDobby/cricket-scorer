@@ -147,6 +147,13 @@ describe('inProgressMatchStore', () => {
 
             expect(inProgressMatchStore.match.innings).toHaveLength(1);
         });
+
+        it('should set the overs for the new innings if specified', () => {
+            const inProgressMatchStore = getMatchStore(matches.blankMatch);
+            inProgressMatchStore.startInnings(domain.TeamType.HomeTeam, 0, 1, 40);
+
+            expect(inProgressMatchStore.match.innings[0].maximumOvers).toBe(40);
+        });
     });
 
     describe('newBowler', () => {
@@ -664,6 +671,22 @@ describe('inProgressMatchStore', () => {
             storeToUpdate.changeOrders(newBattingOrder, newBowlingOrder);
 
             expect(storeToUpdate.match).toEqual(matches.blankMatch);
+        });
+    });
+
+    describe('updateOvers', () => {
+        it('should do nothing if no current innings', () => {
+            const storeToUpdate = getMatchStore(matches.blankMatch);
+            storeToUpdate.updateOvers(45);
+
+            expect(storeToUpdate.match).toEqual(matches.blankMatch);
+        });
+
+        it('should update the overs for the current innings', () => {
+            const storeToUpdate = getMatchStore(matches.matchWithStartedInnings);
+            storeToUpdate.updateOvers(45);
+
+            expect(storeToUpdate.match.innings[0].maximumOvers).toBe(45);
         });
     });
 });

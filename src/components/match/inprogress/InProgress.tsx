@@ -86,6 +86,7 @@ class InProgress extends React.Component<InProgressProps, {}> {
                         startInnings={this.bindStorage(this.props.inProgress.startInnings)}
                         defaultBattingTeam={this.props.inProgress.nextBattingTeam}
                         canChangeBattingTeam={this.props.inProgress.canSelectBattingTeamForInnings}
+                        maximumOvers={this.props.inProgress.match.config.oversPerSide}
                     />}
                 {this.props.inProgress.currentInnings && !this.props.inProgress.currentBowler &&
                     inningsStatus === domain.InningsStatus.InProgress &&
