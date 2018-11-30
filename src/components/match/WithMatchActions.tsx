@@ -13,6 +13,7 @@ const actionProps = (inProgressMatchStore: InProgressMatchStore) => {
         completeInnings: inProgressMatchStore.completeInnings,
         completeMatch: inProgressMatchStore.completeMatch,
         batterUnavailable: inProgressMatchStore.batterUnavailable,
+        updateOvers: inProgressMatchStore.updateOvers,
     });
 };
 

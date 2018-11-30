@@ -9,8 +9,11 @@ import MatchDrawer from './MatchDrawer';
 import OverNotCompleteWarning from './OverNotCompleteWarning';
 import VerifyCompleteInnings from './VerifyCompleteInnings';
 import CompleteMatch from './CompleteMatch';
-import { UnavailableReason, InningsStatus, MatchResult } from '../../domain';
+import UpdateOvers from './UpdateOvers';
+import { UnavailableReason, InningsStatus, MatchResult, MatchType } from '../../domain';
 import calculateResult from '../../match/calculateResult';
+
+const allowedOption = { allowed: true };
 
 export default (Component: any) => class extends React.PureComponent<any> {
     state = {
@@ -18,6 +21,7 @@ export default (Component: any) => class extends React.PureComponent<any> {
         overNotCompleteWarning: false,
         inningsCompleteVerify: false,
         matchCompleteVerify: false,
+        changeOvers: false,
     };
 
     completeOver = () => {
@@ -52,24 +56,49 @@ export default (Component: any) => class extends React.PureComponent<any> {
     }
     cancelCompleteMatch = () => this.setState({ matchCompleteVerify: false });
 
+    askChangeOvers = () => this.setState({ changeOvers: true, open: false });
+    changeOvers = (overs: number) => {
+        this.setState({ changeOvers: false });
+        this.props.updateOvers(overs);
+    }
+    cancelChangeOvers = () => this.setState({ changeOvers: false });
+
     items = [
-        { text: 'Undo previous', icon: <Undo />, action: this.props.undoPreviousDelivery },
-        { text: 'Change ends', icon: <SwapHoriz />, action: this.props.changeEnds },
-        { text: 'Change players', icon: <Edit />, action: () => this.props.history.push('/match/editplayers') },
-        { text: 'Edit innings', icon: <Edit />, action: () => this.props.history.push('/match/editevents') },
+        { ...allowedOption, text: 'Undo previous', icon: <Undo />, action: this.props.undoPreviousDelivery },
+        { ...allowedOption, text: 'Change ends', icon: <SwapHoriz />, action: this.props.changeEnds },
         {
+            ...allowedOption,
+            text: 'Change players',
+            icon: <Edit />,
+            action: () => this.props.history.push('/match/editplayers'),
+        },
+        {
+            text: 'Change overs',
+            icon: <Edit />,
+            action: this.askChangeOvers,
+            allowed: this.props.inProgressMatchStore.match.config.type === MatchType.LimitedOvers,
+        },
+        {
+            ...allowedOption,
+            text: 'Edit innings',
+            icon: <Edit />,
+            action: () => this.props.history.push('/match/editevents'),
+        },
+        {
+            ...allowedOption,
             text: 'Retired',
             icon: <ArrowRightAlt />,
             action: () => this.props.batterUnavailable(UnavailableReason.Retired),
         },
         {
+            ...allowedOption,
             text: 'Absent',
             icon: <ArrowRightAlt />,
             action: () => this.props.batterUnavailable(UnavailableReason.Absent),
         },
-        { text: 'Complete over', icon: <Done />, action: this.completeOver },
-        { text: 'Complete innings', icon: <Done />, action: this.verifyCompleteInnings },
-        { text: 'Complete match', icon: <DoneAll />, action: this.verifyCompleteMatch },
+        { ...allowedOption, text: 'Complete over', icon: <Done />, action: this.completeOver },
+        { ...allowedOption, text: 'Complete innings', icon: <Done />, action: this.verifyCompleteInnings },
+        { ...allowedOption, text: 'Complete match', icon: <DoneAll />, action: this.verifyCompleteMatch },
     ];
 
     openDrawer = () => this.setState({ open: true });
@@ -83,7 +112,7 @@ export default (Component: any) => class extends React.PureComponent<any> {
                     isOpen={this.state.open}
                     close={this.closeDrawer}
                     open={this.openDrawer}
-                    options={this.items}
+                    options={this.items.filter(i => i.allowed)}
                     history={this.props.history}
                 />
                 {this.state.overNotCompleteWarning &&
@@ -98,6 +127,12 @@ export default (Component: any) => class extends React.PureComponent<any> {
                         cancel={this.cancelCompleteMatch}
                         calculateResult={() => calculateResult(this.props.inProgressMatchStore.match)}
                         undoPrevious={this.props.undoPreviousDelivery}
+                    />}
+                {this.state.changeOvers && typeof this.props.inProgressMatchStore.currentInnings !== 'undefined' &&
+                    <UpdateOvers
+                        update={this.changeOvers}
+                        cancel={this.cancelChangeOvers}
+                        overs={this.props.inProgressMatchStore.currentInnings.maximumOvers}
                     />}
             </React.Fragment>);
     }
