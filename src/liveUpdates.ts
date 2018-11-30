@@ -1,4 +1,4 @@
-import * as io from 'socket.io-client';
+import createSocket from './createSocket';
 
 export enum UpdateType {
     AllUpdates,
@@ -29,12 +29,7 @@ const eventStrings = {
     [EventType.ScorecardUpdate]: 'scorecardupdate',
 };
 
-const connectMsg = 'connect';
 const reconnectMsg = 'reconnect';
-const disconnectMsg = 'disconnect';
-
-const networkConnectedEvent = 'connected';
-const networkdisconnectedEvent = 'disconnected';
 
 interface EventAction {
     event: EventType;
@@ -42,34 +37,29 @@ interface EventAction {
     resubscribe?: boolean;
 }
 
-const publish = (event: string, data?: any) => {
-    if (window['subscriptions']) {
-        window['subscriptions'].publish(event, data);
-    }
-};
+export default (url: string, updateType: UpdateType) => {
+    const socket = createSocket(`${url}${namespaces[updateType]}`);
 
-export default (url: string, updateType: UpdateType) => (
-    subscribeTo: () => string[] | string,
-    eventActions: EventAction[]) => {
-    const socket = io(`${url}${namespaces[updateType]}`);
-    socket.on(connectMsg, () => publish(networkConnectedEvent));
-    socket.on(disconnectMsg, () => publish(networkdisconnectedEvent));
+    return (
+        subscribeTo: () => string[] | string,
+        eventActions: EventAction[]) => {
 
-    const subscription = () => socket.emit(
-        subscribeStrings[updateType],
-        subscribeTo());
+        const subscription = () => socket.emit(
+            subscribeStrings[updateType],
+            subscribeTo());
 
-    socket.on(reconnectMsg, subscription);
+        socket.on(reconnectMsg, subscription);
 
-    eventActions.forEach(({ event, action, resubscribe }) =>
-        socket.on(eventStrings[event], (data: any) => {
-            action(data);
-            if (resubscribe) {
-                subscription();
-            }
-        }));
+        eventActions.forEach(({ event, action, resubscribe }) =>
+            socket.on(eventStrings[event], (data: any) => {
+                action(data);
+                if (resubscribe) {
+                    subscription();
+                }
+            }));
 
-    subscription();
+        subscription();
 
-    return () => socket.disconnect();
+        return () => socket.disconnect();
+    };
 };
