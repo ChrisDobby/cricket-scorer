@@ -22,7 +22,10 @@ export default withStyles(homePageStyles)((props: any) => {
     const goToMatchCentre = () => props.history.push('/matchcentre');
     const goToCreateMatch = () => props.history.push('/match/create');
     const continueScoring = async () => {
-        await props.fetchMatch(props.storedMatch.match.id);
+        if (typeof props.storedMatch.match.id !== 'undefined') {
+            await props.fetchMatch(props.storedMatch.match.id);
+        }
+
         props.history.push('/match/inprogress');
     };
 
