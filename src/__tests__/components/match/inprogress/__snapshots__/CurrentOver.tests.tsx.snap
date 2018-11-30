@@ -36,7 +36,10 @@ exports[`CurrentOver should render correctly 1`] = `
         }
       }
     >
-      <canvas />
+      <canvas
+        height={30}
+        width={30}
+      />
     </div>
   </div>
 </div>

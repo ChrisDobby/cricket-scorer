@@ -15,7 +15,10 @@ exports[`DeliveryDisplay should render correctly for no ball 1`] = `
     }
   }
 >
-  <canvas />
+  <canvas
+    height={30}
+    width={30}
+  />
 </div>
 `;
 
@@ -34,7 +37,10 @@ exports[`DeliveryDisplay should render correctly for valid delivery 1`] = `
     }
   }
 >
-  <canvas />
+  <canvas
+    height={30}
+    width={30}
+  />
 </div>
 `;
 
@@ -53,6 +59,9 @@ exports[`DeliveryDisplay should render correctly for wide 1`] = `
     }
   }
 >
-  <canvas />
+  <canvas
+    height={30}
+    width={30}
+  />
 </div>
 `;

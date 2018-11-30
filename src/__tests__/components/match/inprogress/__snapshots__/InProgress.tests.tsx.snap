@@ -1484,20 +1484,20 @@ exports[`InProgress should render correctly for match that has not started 1`] =
         </h4>
       </div>
       <div
-        className="MuiPaper-root-2 MuiPaper-elevation0-4 MuiStepper-root-165 MuiStepper-horizontal-166"
+        className="MuiPaper-root-2 MuiPaper-elevation0-4 MuiStepper-root-198 MuiStepper-horizontal-199"
       >
         <div
-          className="MuiStep-root-169 MuiStep-horizontal-170 MuiStep-completed-173"
+          className="MuiStep-root-202 MuiStep-horizontal-203 MuiStep-completed-206"
         >
           <span
-            className="MuiStepLabel-root-174 MuiStepLabel-horizontal-175 MuiStepLabel-disabled-181"
+            className="MuiStepLabel-root-207 MuiStepLabel-horizontal-208 MuiStepLabel-disabled-214"
           >
             <span
-              className="MuiStepLabel-iconContainer-182"
+              className="MuiStepLabel-iconContainer-215"
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-190 MuiStepIcon-root-185 MuiStepIcon-completed-188"
+                className="MuiSvgIcon-root-223 MuiStepIcon-root-218 MuiStepIcon-completed-221"
                 color={undefined}
                 focusable="false"
                 role="presentation"
@@ -1509,10 +1509,10 @@ exports[`InProgress should render correctly for match that has not started 1`] =
               </svg>
             </span>
             <span
-              className="MuiStepLabel-labelContainer-184"
+              className="MuiStepLabel-labelContainer-217"
             >
               <span
-                className="MuiTypography-root-130 MuiTypography-body1-139 MuiStepLabel-label-177 MuiStepLabel-completed-179"
+                className="MuiTypography-root-130 MuiTypography-body1-139 MuiStepLabel-label-210 MuiStepLabel-completed-212"
               >
                 Select batting team
               </span>
@@ -1520,24 +1520,24 @@ exports[`InProgress should render correctly for match that has not started 1`] =
           </span>
         </div>
         <div
-          className="MuiStepConnector-root-199 MuiStepConnector-horizontal-200 MuiStepConnector-active-203"
+          className="MuiStepConnector-root-232 MuiStepConnector-horizontal-233 MuiStepConnector-active-236"
         >
           <span
-            className="MuiStepConnector-line-206 MuiStepConnector-lineHorizontal-207"
+            className="MuiStepConnector-line-239 MuiStepConnector-lineHorizontal-240"
           />
         </div>
         <div
-          className="MuiStep-root-169 MuiStep-horizontal-170"
+          className="MuiStep-root-202 MuiStep-horizontal-203"
         >
           <span
-            className="MuiStepLabel-root-174 MuiStepLabel-horizontal-175"
+            className="MuiStepLabel-root-207 MuiStepLabel-horizontal-208"
           >
             <span
-              className="MuiStepLabel-iconContainer-182"
+              className="MuiStepLabel-iconContainer-215"
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-190 MuiStepIcon-root-185 MuiStepIcon-active-187"
+                className="MuiSvgIcon-root-223 MuiStepIcon-root-218 MuiStepIcon-active-220"
                 color={undefined}
                 focusable="false"
                 role="presentation"
@@ -1549,7 +1549,7 @@ exports[`InProgress should render correctly for match that has not started 1`] =
                   r="12"
                 />
                 <text
-                  className="MuiStepIcon-text-186"
+                  className="MuiStepIcon-text-219"
                   textAnchor="middle"
                   x="12"
                   y="16"
@@ -1559,10 +1559,10 @@ exports[`InProgress should render correctly for match that has not started 1`] =
               </svg>
             </span>
             <span
-              className="MuiStepLabel-labelContainer-184"
+              className="MuiStepLabel-labelContainer-217"
             >
               <span
-                className="MuiTypography-root-130 MuiTypography-body1-139 MuiStepLabel-label-177 MuiStepLabel-active-178"
+                className="MuiTypography-root-130 MuiTypography-body1-139 MuiStepLabel-label-210 MuiStepLabel-active-211"
               >
                 Select number 1
               </span>
@@ -1570,24 +1570,24 @@ exports[`InProgress should render correctly for match that has not started 1`] =
           </span>
         </div>
         <div
-          className="MuiStepConnector-root-199 MuiStepConnector-horizontal-200 MuiStepConnector-disabled-205"
+          className="MuiStepConnector-root-232 MuiStepConnector-horizontal-233 MuiStepConnector-disabled-238"
         >
           <span
-            className="MuiStepConnector-line-206 MuiStepConnector-lineHorizontal-207"
+            className="MuiStepConnector-line-239 MuiStepConnector-lineHorizontal-240"
           />
         </div>
         <div
-          className="MuiStep-root-169 MuiStep-horizontal-170"
+          className="MuiStep-root-202 MuiStep-horizontal-203"
         >
           <span
-            className="MuiStepLabel-root-174 MuiStepLabel-horizontal-175"
+            className="MuiStepLabel-root-207 MuiStepLabel-horizontal-208"
           >
             <span
-              className="MuiStepLabel-iconContainer-182"
+              className="MuiStepLabel-iconContainer-215"
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-190 MuiStepIcon-root-185"
+                className="MuiSvgIcon-root-223 MuiStepIcon-root-218"
                 color={undefined}
                 focusable="false"
                 role="presentation"
@@ -1599,7 +1599,7 @@ exports[`InProgress should render correctly for match that has not started 1`] =
                   r="12"
                 />
                 <text
-                  className="MuiStepIcon-text-186"
+                  className="MuiStepIcon-text-219"
                   textAnchor="middle"
                   x="12"
                   y="16"
@@ -1609,10 +1609,10 @@ exports[`InProgress should render correctly for match that has not started 1`] =
               </svg>
             </span>
             <span
-              className="MuiStepLabel-labelContainer-184"
+              className="MuiStepLabel-labelContainer-217"
             >
               <span
-                className="MuiTypography-root-130 MuiTypography-body1-139 MuiStepLabel-label-177"
+                className="MuiTypography-root-130 MuiTypography-body1-139 MuiStepLabel-label-210"
               >
                 Select number 2
               </span>
@@ -1621,11 +1621,11 @@ exports[`InProgress should render correctly for match that has not started 1`] =
         </div>
       </div>
       <ul
-        className="MuiList-root-209 MuiList-padding-210"
+        className="MuiList-root-165 MuiList-padding-166"
       />
       <div>
         <button
-          className="MuiButtonBase-root-239 MuiButtonBase-disabled-240 MuiButton-root-213 MuiButton-text-215 MuiButton-flat-218 MuiButton-disabled-233"
+          className="MuiButtonBase-root-195 MuiButtonBase-disabled-196 MuiButton-root-169 MuiButton-text-171 MuiButton-flat-174 MuiButton-disabled-189"
           disabled={true}
           onBlur={[Function]}
           onClick={[Function]}
@@ -1642,13 +1642,13 @@ exports[`InProgress should render correctly for match that has not started 1`] =
           type="button"
         >
           <span
-            className="MuiButton-label-214"
+            className="MuiButton-label-170"
           >
             Back
           </span>
         </button>
         <button
-          className="MuiButtonBase-root-239 MuiButtonBase-disabled-240 MuiButton-root-213 MuiButton-contained-224 MuiButton-containedPrimary-225 MuiButton-raised-227 MuiButton-raisedPrimary-228 MuiButton-disabled-233"
+          className="MuiButtonBase-root-195 MuiButtonBase-disabled-196 MuiButton-root-169 MuiButton-contained-180 MuiButton-containedPrimary-181 MuiButton-raised-183 MuiButton-raisedPrimary-184 MuiButton-disabled-189"
           disabled={true}
           onBlur={[Function]}
           onClick={[Function]}
@@ -1665,7 +1665,7 @@ exports[`InProgress should render correctly for match that has not started 1`] =
           type="button"
         >
           <span
-            className="MuiButton-label-214"
+            className="MuiButton-label-170"
           >
             Next
           </span>
