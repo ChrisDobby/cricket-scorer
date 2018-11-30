@@ -1,6 +1,7 @@
 import * as React from 'react';
 import matchApi from '../api/matchApi';
 import liveUpdates, { UpdateType, EventType } from '../liveUpdates';
+import { ONLINE } from '../context/networkStatus';
 
 const WithInProgressMatches = (updates: any) => (Component: any) => class extends React.Component<any> {
     disconnect: (() => void) | undefined = undefined;
@@ -37,7 +38,7 @@ const WithInProgressMatches = (updates: any) => (Component: any) => class extend
             ]);
     }
 
-    async componentDidMount() {
+    getMatches = async () => {
         try {
             this.setState({ loadingMatches: true });
             const inProgressMatches = await matchApi.getInProgressMatches();
@@ -46,6 +47,16 @@ const WithInProgressMatches = (updates: any) => (Component: any) => class extend
         } catch (e) {
             this.setState({ inProgressMatches: [], loadingMatches: false });
         }
+    }
+
+    componentDidUpdate(prevProps: any, prevState: any) {
+        if (prevProps.status !== this.props.status && this.props.status === ONLINE) {
+            this.getMatches();
+        }
+    }
+
+    async componentDidMount() {
+        this.getMatches();
     }
 
     componentWillUnmount() {
