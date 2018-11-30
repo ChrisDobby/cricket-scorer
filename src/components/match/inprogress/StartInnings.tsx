@@ -10,6 +10,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import TextField from '@material-ui/core/TextField';
+import Hidden from '@material-ui/core/Hidden';
 import { Team, TeamType } from '../../../domain';
 import BatterSelector, { PlayerPosition } from './BatterSelector';
 
@@ -150,13 +151,24 @@ export default class extends React.Component<StartInningsProps, {}> {
                             {Object.keys(steps)[this.state.activeStep]}
                         </Typography>
                     </Toolbar>
-                    <Stepper activeStep={this.state.activeStep}>
-                        {Object.keys(steps).map(key => (
-                            <Step key={key} disabled={steps[key]}>
-                                <StepLabel>{key}</StepLabel>
-                            </Step>
-                        ))}
-                    </Stepper>
+                    <Hidden xsDown>
+                        <Stepper activeStep={this.state.activeStep}>
+                            {Object.keys(steps).map(key => (
+                                <Step key={key} disabled={steps[key]}>
+                                    <StepLabel>{key}</StepLabel>
+                                </Step>
+                            ))}
+                        </Stepper>
+                    </Hidden>
+                    <Hidden smUp>
+                        <Stepper activeStep={this.state.activeStep} orientation="vertical">
+                            {Object.keys(steps).map(key => (
+                                <Step key={key} disabled={steps[key]}>
+                                    <StepLabel>{key}</StepLabel>
+                                </Step>
+                            ))}
+                        </Stepper>
+                    </Hidden>
                     {this.state.activeStep === 0 &&
                         <FormControl>
                             {this.props.teams.map((team, index) => (
