@@ -19,21 +19,43 @@ export default class NetworkStatusProvider extends React.PureComponent {
         info: undefined,
     };
 
+    apiConnected: boolean = true;
+
     componentDidMount() {
         window.addEventListener('online', this.networkStatusChange, false);
         window.addEventListener('offline', this.networkStatusChange, false);
+        window['subscriptions'].subscribe('connected', this.connected);
+        window['subscriptions'].subscribe('disconnected', this.disconnected);
     }
 
     componentWillUnmount() {
         window.removeEventListener('online', this.networkStatusChange);
         window.removeEventListener('offline', this.networkStatusChange);
+        window['subscriptions'].subscribe('connected', this.connected);
+        window['subscriptions'].subscribe('disconnected', this.disconnected);
     }
 
-    networkStatusChange = () =>
+    connected = () => {
+        if (!this.apiConnected) {
+            this.apiConnected = true;
+            this.networkStatusChange();
+        }
+    }
+
+    disconnected = () => {
+        if (this.apiConnected) {
+            this.apiConnected = false;
+            this.networkStatusChange();
+        }
+    }
+
+    networkStatusChange = () => {
+        const connected = navigator.onLine && this.apiConnected;
         this.setState({
-            status: getStatus(),
-            info: `Network is ${navigator.onLine ? 'online' : 'offline'}`,
-        })
+            status: connected ? ONLINE : OFFLINE,
+            info: `Network is ${connected ? 'online' : 'offline'}`,
+        });
+    }
 
     clearInfo = () => this.setState({ info: undefined });
 
