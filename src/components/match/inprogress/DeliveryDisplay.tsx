@@ -43,7 +43,7 @@ export class DeliveryDisplay extends React.Component<DeliveryDisplayProps, {}> {
                     ? noBallDisplayStyle
                     : validDisplayStyle}
             >
-                <canvas ref={this.getCanvas} />
+                <canvas width={30} height={30} ref={this.getCanvas} />
             </div>
         );
     }
