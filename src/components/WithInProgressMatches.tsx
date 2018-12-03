@@ -5,6 +5,7 @@ import { ONLINE } from '../context/networkStatus';
 
 const WithInProgressMatches = (updates: any) => (Component: any) => class extends React.Component<any> {
     disconnect: (() => void) | undefined = undefined;
+    retryTimer: any = undefined;
 
     state = {
         inProgressMatches: [],
@@ -38,20 +39,39 @@ const WithInProgressMatches = (updates: any) => (Component: any) => class extend
             ]);
     }
 
+    clearRetry = () => {
+        if (typeof this.retryTimer !== 'undefined') {
+            clearTimeout(this.retryTimer);
+            this.retryTimer = undefined;
+        }
+    }
+
+    setRetry = () => {
+        if (typeof this.retryTimer === 'undefined') {
+            this.retryTimer = setTimeout(this.getMatches, 60000);
+        }
+    }
+
     getMatches = async () => {
         try {
+            this.clearRetry();
             this.setState({ loadingMatches: true });
             const inProgressMatches = await matchApi.getInProgressMatches();
             this.setState({ inProgressMatches, loadingMatches: false });
             this.subscribeToMatches();
         } catch (e) {
             this.setState({ inProgressMatches: [], loadingMatches: false });
+            this.setRetry();
         }
     }
 
     componentDidUpdate(prevProps: any, prevState: any) {
-        if (prevProps.status !== this.props.status && this.props.status === ONLINE) {
+        if (prevProps.status === this.props.status) { return; }
+
+        if (this.props.status === ONLINE) {
             this.getMatches();
+        } else {
+            this.setRetry();
         }
     }
 

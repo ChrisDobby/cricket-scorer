@@ -37,29 +37,26 @@ interface EventAction {
     resubscribe?: boolean;
 }
 
-export default (url: string, updateType: UpdateType) => {
+export default (url: string, updateType: UpdateType) => (
+    subscribeTo: () => string[] | string,
+    eventActions: EventAction[]) => {
     const socket = createSocket(`${url}${namespaces[updateType]}`);
 
-    return (
-        subscribeTo: () => string[] | string,
-        eventActions: EventAction[]) => {
+    const subscription = () => socket.emit(
+        subscribeStrings[updateType],
+        subscribeTo());
 
-        const subscription = () => socket.emit(
-            subscribeStrings[updateType],
-            subscribeTo());
+    socket.on(reconnectMsg, subscription);
 
-        socket.on(reconnectMsg, subscription);
+    eventActions.forEach(({ event, action, resubscribe }) =>
+        socket.on(eventStrings[event], (data: any) => {
+            action(data);
+            if (resubscribe) {
+                subscription();
+            }
+        }));
 
-        eventActions.forEach(({ event, action, resubscribe }) =>
-            socket.on(eventStrings[event], (data: any) => {
-                action(data);
-                if (resubscribe) {
-                    subscription();
-                }
-            }));
+    subscription();
 
-        subscription();
-
-        return () => socket.disconnect();
-    };
+    return () => socket.disconnect();
 };

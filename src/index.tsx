@@ -6,12 +6,14 @@ import Routes from './Routes';
 import registerServiceWorker from './registerServiceWorker';
 import NetworkStatusProvider from './context/NetworkStatusProvider';
 import globalPubsub from './globalPubsub';
+import connectedFetch from './connectedFetch';
 
 configure({ enforceActions: true });
 
 if (process.env.NODE_ENV === 'production') { registerServiceWorker(); }
 
 window['subscriptions'] = globalPubsub();
+connectedFetch();
 
 ReactDOM.render(
     <NetworkStatusProvider>

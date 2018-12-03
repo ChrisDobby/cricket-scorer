@@ -20,6 +20,8 @@ export default class NetworkStatusProvider extends React.PureComponent {
     };
 
     apiConnected: boolean = true;
+    connectedTimer: any = undefined;
+    disconnectedTimer: any = undefined;
 
     componentDidMount() {
         window.addEventListener('online', this.networkStatusChange, false);
@@ -35,17 +37,34 @@ export default class NetworkStatusProvider extends React.PureComponent {
         window['subscriptions'].subscribe('disconnected', this.disconnected);
     }
 
+    clearTimer = (timer: any) => {
+        if (typeof timer !== 'undefined') {
+            clearTimeout(timer);
+        }
+    }
+
+    setTimer = (handler: () => void) => setTimeout(handler, 5000);
+
     connected = () => {
-        if (!this.apiConnected) {
-            this.apiConnected = true;
-            this.networkStatusChange();
+        this.clearTimer(this.disconnectedTimer);
+        this.disconnectedTimer = undefined;
+        if (typeof this.connectedTimer === 'undefined' &&
+            !this.apiConnected) {
+            this.connectedTimer = this.setTimer(() => {
+                this.apiConnected = true;
+                this.networkStatusChange();
+            });
         }
     }
 
     disconnected = () => {
-        if (this.apiConnected) {
-            this.apiConnected = false;
-            this.networkStatusChange();
+        this.clearTimer(this.connectedTimer);
+        this.connectedTimer = undefined;
+        if (typeof this.disconnectedTimer === 'undefined' && this.apiConnected) {
+            this.disconnectedTimer = this.setTimer(() => {
+                this.apiConnected = false;
+                this.networkStatusChange();
+            });
         }
     }
 
