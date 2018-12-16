@@ -2,6 +2,7 @@ import * as React from 'react';
 import { WebAuth, Auth0DecodedHash } from 'auth0-js';
 import NetworkStatusContext from '../context/NetworkStatusContext';
 import { OFFLINE } from '../context/networkStatus';
+import { Profile } from '../domain';
 
 const auth0 = (domain: string, clientId: string) => {
     const accessTokenKey = 'access_token';
@@ -10,11 +11,6 @@ const auth0 = (domain: string, clientId: string) => {
     const profileKey = 'user_profile';
     const returnPathKey = 'return_path';
 
-    interface Profile {
-        id: string;
-        name: string;
-        picture?: string;
-    }
 
     const auth = new WebAuth({
         domain,
@@ -168,7 +164,6 @@ const auth0 = (domain: string, clientId: string) => {
         AuthRequired,
         addBearerToken,
         isAuthenticated,
-        userProfile,
         login,
         Auth: AuthCallback,
     };

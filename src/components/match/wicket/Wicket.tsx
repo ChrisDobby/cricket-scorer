@@ -25,6 +25,7 @@ type WicketProps = RouteComponentProps<{}> & {
     storeMatch: (m: domain.InProgressMatch) => void;
     history: any;
     classes: any;
+    userProfile: domain.Profile;
 };
 
 interface WicketState {
@@ -37,7 +38,7 @@ interface WicketState {
 }
 
 class Wicket extends React.Component<WicketProps, {}> {
-    bindStorage = bindMatchStorage(this.props.storeMatch, () => this.props.inProgress);
+    bindStorage = bindMatchStorage(this.props.storeMatch, () => this.props.inProgress, () => this.props.userProfile.id);
     delivery = this.bindStorage(this.props.inProgress.delivery);
     nonDeliveryWicket = this.bindStorage(this.props.inProgress.nonDeliveryWicket);
 

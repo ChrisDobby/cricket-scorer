@@ -1,7 +1,7 @@
 import * as React from 'react';
 import EditContainer from '../EditContainer';
 import EventsForm from './EventsForm';
-import { InProgressMatch } from '../../../domain';
+import { InProgressMatch, Profile } from '../../../domain';
 import { getTeam } from '../../../match/utilities';
 import { bindMatchStorage } from '../../../stores/withMatchStorage';
 
@@ -9,17 +9,18 @@ interface EventsProps {
     inProgress: InProgressMatch;
     storeMatch: any;
     history: any;
+    userProfile: Profile;
 }
 
-const rollback = (inProgress: InProgressMatch, storeMatch: any, complete: () => void) =>
-    bindMatchStorage(storeMatch, () => inProgress)(
+const rollback = (inProgress: InProgressMatch, storeMatch: any, complete: () => void, getUserId: () => string) =>
+    bindMatchStorage(storeMatch, () => inProgress, getUserId)(
         (eventIndex: number) => {
             inProgress.rollback(eventIndex);
             complete();
         },
     );
 
-export default ({ inProgress, storeMatch, history }: EventsProps) => {
+export default ({ inProgress, storeMatch, history, userProfile }: EventsProps) => {
     if (typeof inProgress.currentInnings === 'undefined') {
         return null;
     }
@@ -32,7 +33,8 @@ export default ({ inProgress, storeMatch, history }: EventsProps) => {
                 battingPlayers={getTeam(inProgress.match, inProgress.currentInnings.battingTeam).players}
                 bowlingPlayers={getTeam(inProgress.match, inProgress.currentInnings.bowlingTeam).players}
                 rolledBackInnings={inProgress.rolledBackInnings}
-                rollback={rollback(inProgress, storeMatch, () => history.replace('/match/inprogress'))}
+                rollback={rollback(
+                    inProgress, storeMatch, () => history.replace('/match/inprogress'), () => userProfile.id)}
             />
         </EditContainer>);
 };

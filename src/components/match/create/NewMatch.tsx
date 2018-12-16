@@ -17,7 +17,7 @@ const create = (username: string, inProgress: InProgressMatchStore, complete: ()
 export default ({ userProfile, storeMatch, history, inProgress }: any) => (
     <EditContainer>
         <MatchForm
-            createMatch={bindMatchStorage(storeMatch, () => inProgress)(
+            createMatch={bindMatchStorage(storeMatch, () => inProgress, () => userProfile.id)(
                 create(userProfile.id, inProgress, () => history.replace('/match/start')),
             )}
         />

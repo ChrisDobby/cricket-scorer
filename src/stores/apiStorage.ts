@@ -6,15 +6,13 @@ const apiStorage = (
     api: any,
     isOnline: () => boolean,
     isAuthenticated: () => boolean,
-    userProfile: () => any | undefined,
 ) => {
     let matchToStore: StoredMatch | undefined = undefined;
     let sending = false;
     return (setId: (id: string) => void) => {
-        const storedMatch = (inProgressMatch: any, userProfile: any) => ({
+        const storedMatch = (inProgressMatch: any) => ({
             match: {
                 ...inProgressMatch.match,
-                user: userProfile ? userProfile.id : inProgressMatch.match.user,
             },
             currentBatterIndex: inProgressMatch.currentBatterIndex,
             currentBowlerIndex: inProgressMatch.currentBowlerIndex,
@@ -37,7 +35,7 @@ const apiStorage = (
 
         const storeMatch = async (inProgressMatch: any) => {
             if (!isOnline() || !isAuthenticated()) { return; }
-            matchToStore = storedMatch(inProgressMatch, userProfile());
+            matchToStore = storedMatch(inProgressMatch);
             if (!sending) {
                 try {
                     sending = true;
@@ -55,4 +53,4 @@ const apiStorage = (
     };
 };
 
-export default apiStorage(matchApi, () => navigator.onLine, auth0.isAuthenticated, auth0.userProfile);
+export default apiStorage(matchApi, () => navigator.onLine, auth0.isAuthenticated);

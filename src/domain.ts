@@ -1,3 +1,9 @@
+export interface Profile {
+    id: string;
+    name: string;
+    picture?: string;
+}
+
 export enum Howout {
     Bowled,
     Lbw,

@@ -31,11 +31,12 @@ type InProgressProps = RouteComponentProps<{}> & {
     storeMatch: (m: domain.InProgressMatch) => void;
     history: History;
     classes: any;
+    userProfile: domain.Profile;
 };
 
 @observer
 class InProgress extends React.Component<InProgressProps, {}> {
-    bindStorage = bindMatchStorage(this.props.storeMatch, () => this.props.inProgress);
+    bindStorage = bindMatchStorage(this.props.storeMatch, () => this.props.inProgress, () => this.props.userProfile.id);
     ballFunctions = this.bindStorage({
         delivery: this.props.inProgress.delivery,
         completeOver: this.props.inProgress.completeOver,

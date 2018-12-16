@@ -3,8 +3,8 @@ import { InProgressMatchStore } from '../../stores/inProgressMatchStore';
 import storeMatch from '../../storeMatch';
 import { bindMatchStorage } from '../../stores/withMatchStorage';
 
-const actionProps = (inProgressMatchStore: InProgressMatchStore) => {
-    const bindStorage = bindMatchStorage(storeMatch(inProgressMatchStore.setId), () => inProgressMatchStore);
+const actionProps = (inProgressMatchStore: InProgressMatchStore, getUserId: () => string) => {
+    const bindStorage = bindMatchStorage(storeMatch(inProgressMatchStore.setId), () => inProgressMatchStore, getUserId);
     return bindStorage({
         delivery: inProgressMatchStore.delivery,
         undoPreviousDelivery: inProgressMatchStore.undoPreviousDelivery,
@@ -19,5 +19,5 @@ const actionProps = (inProgressMatchStore: InProgressMatchStore) => {
 
 export default (Component: any) => (props: any) => {
     return (
-        <Component {...props} {...actionProps(props.inProgressMatchStore)} />);
+        <Component {...props} {...actionProps(props.inProgressMatchStore, () => props.userProfile.id)} />);
 };
