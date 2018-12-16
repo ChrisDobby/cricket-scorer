@@ -10,19 +10,20 @@ import { Link } from 'react-router-dom';
 import MatchStatus from './MatchStatus';
 import aboutText from './aboutText';
 import homePageStyles from './homePageStyles';
+import { OFFLINE, ONLINE } from '../context/networkStatus';
 
 const Logo = require('../../images/icon_192.png');
 
 export default withStyles(homePageStyles)((props: any) => {
-    const canContinueCurrentMatch =
-        props.isAuthenticated &&
-        typeof props.storedMatch !== 'undefined' &&
-        props.userProfile.id === props.storedMatch.match.user;
+    const canContinueCurrentMatch = typeof props.storedMatch !== 'undefined' &&
+        ((props.storedMatch.match.user === props.offlineUser.id) ||
+            (props.isAuthenticated && props.userProfile.id === props.storedMatch.match.user) ||
+            (props.status === OFFLINE));
     const showScorecard = (id: string) => props.history.push(`/scorecard/${id}`);
     const goToMatchCentre = () => props.history.push('/matchcentre');
     const goToCreateMatch = () => props.history.push('/match/create');
     const continueScoring = async () => {
-        if (typeof props.storedMatch.match.id !== 'undefined') {
+        if (typeof props.storedMatch.match.id !== 'undefined' && props.status === ONLINE) {
             await props.fetchMatch(props.storedMatch.match.id);
         }
 
