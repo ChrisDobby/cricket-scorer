@@ -11,7 +11,6 @@ const auth0 = (domain: string, clientId: string) => {
     const profileKey = 'user_profile';
     const returnPathKey = 'return_path';
 
-
     const auth = new WebAuth({
         domain,
         clientID: clientId,
