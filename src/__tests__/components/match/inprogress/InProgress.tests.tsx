@@ -120,7 +120,7 @@ describe('InProgress', () => {
         expect(inProgress.toJSON()).toMatchSnapshot();
     });
 
-    it.skip('should render correctly for match during an over', () => {
+    it('should render correctly for match during an over', () => {
         const inProgress = ReactTestRenderer.create(
             <StaticRouter context={{}}>
                 <InProgress

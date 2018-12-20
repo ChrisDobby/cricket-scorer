@@ -100,7 +100,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                 0(0)
                 <svg
                   aria-hidden="true"
-                  className="MuiSvgIcon-root-190 MuiSvgIcon-colorPrimary-191"
+                  className="MuiSvgIcon-root-223 MuiSvgIcon-colorPrimary-224"
                   color={undefined}
                   focusable="false"
                   role="presentation"
@@ -227,7 +227,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
               >
                 <button
                   aria-label="Wicket"
-                  className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-contained-224 MuiButton-containedPrimary-225 MuiButton-raised-227 MuiButton-raisedPrimary-228"
+                  className="MuiButtonBase-root-195 MuiButton-root-169 MuiButton-fab-186 MuiButton-contained-180 MuiButton-containedPrimary-181 MuiButton-raised-183 MuiButton-raisedPrimary-184"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -249,12 +249,12 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                   type="button"
                 >
                   <span
-                    className="MuiButton-label-214"
+                    className="MuiButton-label-170"
                   >
                     W
                   </span>
                   <span
-                    className="MuiTouchRipple-root-318"
+                    className="MuiTouchRipple-root-320"
                   />
                 </button>
                 <label
@@ -266,10 +266,10 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                   }
                 >
                   <span
-                    className="MuiSwitch-root-248"
+                    className="MuiSwitch-root-250"
                   >
                     <span
-                      className="MuiButtonBase-root-239 MuiIconButton-root-261 MuiSwitchBase-root-257 MuiSwitch-switchBase-251 MuiSwitch-colorSecondary-254"
+                      className="MuiButtonBase-root-195 MuiIconButton-root-263 MuiPrivateSwitchBase-root-259 MuiSwitch-switchBase-253 MuiSwitch-colorSecondary-256"
                       onBlur={[Function]}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
@@ -284,15 +284,15 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                       tabIndex={null}
                     >
                       <span
-                        className="MuiIconButton-label-266"
+                        className="MuiIconButton-label-268"
                       >
                         <span
-                          className="MuiSwitch-icon-249"
+                          className="MuiSwitch-icon-251"
                         />
                         <input
                           autoFocus={undefined}
                           checked={false}
-                          className="MuiSwitchBase-input-260"
+                          className="MuiPrivateSwitchBase-input-262"
                           disabled={undefined}
                           id={undefined}
                           name={undefined}
@@ -305,15 +305,15 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                         />
                       </span>
                       <span
-                        className="MuiTouchRipple-root-318"
+                        className="MuiTouchRipple-root-320"
                       />
                     </span>
                     <span
-                      className="MuiSwitch-bar-256"
+                      className="MuiSwitch-bar-258"
                     />
                   </span>
                   <span
-                    className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-247"
+                    className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-249"
                   >
                     No ball
                   </span>
@@ -326,7 +326,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                   className="MuiGrid-item-30 MuiGrid-grid-xs-12-69"
                 >
                   <hr
-                    className="MuiDivider-root-267"
+                    className="MuiDivider-root-269"
                     style={
                       Object {
                         "marginBottom": "10px",
@@ -343,12 +343,12 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                   className="MuiFormControlLabel-root-244"
                   style={
                     Object {
-                      "marginRight": "26px",
+                      "marginRight": "22px",
                     }
                   }
                 >
                   <span
-                    className="MuiButtonBase-root-239 MuiIconButton-root-261 MuiSwitchBase-root-257 MuiRadio-root-325 MuiRadio-colorSecondary-329 MuiSwitchBase-checked-258 MuiRadio-checked-326"
+                    className="MuiButtonBase-root-195 MuiIconButton-root-263 MuiPrivateSwitchBase-root-259 MuiRadio-root-327 MuiRadio-colorSecondary-331 MuiPrivateSwitchBase-checked-260 MuiRadio-checked-328"
                     onBlur={[Function]}
                     onFocus={[Function]}
                     onKeyDown={[Function]}
@@ -363,11 +363,11 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                     tabIndex={null}
                   >
                     <span
-                      className="MuiIconButton-label-266"
+                      className="MuiIconButton-label-268"
                     >
                       <svg
                         aria-hidden="true"
-                        className="MuiSvgIcon-root-190"
+                        className="MuiSvgIcon-root-223"
                         color={undefined}
                         focusable="false"
                         role="presentation"
@@ -380,7 +380,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                       <input
                         autoFocus={undefined}
                         checked={true}
-                        className="MuiSwitchBase-input-260"
+                        className="MuiPrivateSwitchBase-input-262"
                         disabled={undefined}
                         id={undefined}
                         name={undefined}
@@ -393,11 +393,11 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                       />
                     </span>
                     <span
-                      className="MuiTouchRipple-root-318"
+                      className="MuiTouchRipple-root-320"
                     />
                   </span>
                   <span
-                    className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-247"
+                    className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-249"
                   >
                     runs
                   </span>
@@ -406,12 +406,12 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                   className="MuiFormControlLabel-root-244"
                   style={
                     Object {
-                      "marginRight": "26px",
+                      "marginRight": "22px",
                     }
                   }
                 >
                   <span
-                    className="MuiButtonBase-root-239 MuiIconButton-root-261 MuiSwitchBase-root-257 MuiRadio-root-325 MuiRadio-colorSecondary-329"
+                    className="MuiButtonBase-root-195 MuiIconButton-root-263 MuiPrivateSwitchBase-root-259 MuiRadio-root-327 MuiRadio-colorSecondary-331"
                     onBlur={[Function]}
                     onFocus={[Function]}
                     onKeyDown={[Function]}
@@ -426,11 +426,11 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                     tabIndex={null}
                   >
                     <span
-                      className="MuiIconButton-label-266"
+                      className="MuiIconButton-label-268"
                     >
                       <svg
                         aria-hidden="true"
-                        className="MuiSvgIcon-root-190"
+                        className="MuiSvgIcon-root-223"
                         color={undefined}
                         focusable="false"
                         role="presentation"
@@ -443,7 +443,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                       <input
                         autoFocus={undefined}
                         checked={false}
-                        className="MuiSwitchBase-input-260"
+                        className="MuiPrivateSwitchBase-input-262"
                         disabled={undefined}
                         id={undefined}
                         name={undefined}
@@ -456,11 +456,11 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                       />
                     </span>
                     <span
-                      className="MuiTouchRipple-root-318"
+                      className="MuiTouchRipple-root-320"
                     />
                   </span>
                   <span
-                    className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-247"
+                    className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-249"
                   >
                     byes
                   </span>
@@ -469,12 +469,12 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                   className="MuiFormControlLabel-root-244"
                   style={
                     Object {
-                      "marginRight": "26px",
+                      "marginRight": "22px",
                     }
                   }
                 >
                   <span
-                    className="MuiButtonBase-root-239 MuiIconButton-root-261 MuiSwitchBase-root-257 MuiRadio-root-325 MuiRadio-colorSecondary-329"
+                    className="MuiButtonBase-root-195 MuiIconButton-root-263 MuiPrivateSwitchBase-root-259 MuiRadio-root-327 MuiRadio-colorSecondary-331"
                     onBlur={[Function]}
                     onFocus={[Function]}
                     onKeyDown={[Function]}
@@ -489,11 +489,11 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                     tabIndex={null}
                   >
                     <span
-                      className="MuiIconButton-label-266"
+                      className="MuiIconButton-label-268"
                     >
                       <svg
                         aria-hidden="true"
-                        className="MuiSvgIcon-root-190"
+                        className="MuiSvgIcon-root-223"
                         color={undefined}
                         focusable="false"
                         role="presentation"
@@ -506,7 +506,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                       <input
                         autoFocus={undefined}
                         checked={false}
-                        className="MuiSwitchBase-input-260"
+                        className="MuiPrivateSwitchBase-input-262"
                         disabled={undefined}
                         id={undefined}
                         name={undefined}
@@ -519,11 +519,11 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                       />
                     </span>
                     <span
-                      className="MuiTouchRipple-root-318"
+                      className="MuiTouchRipple-root-320"
                     />
                   </span>
                   <span
-                    className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-247"
+                    className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-249"
                   >
                     leg byes
                   </span>
@@ -532,12 +532,12 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                   className="MuiFormControlLabel-root-244"
                   style={
                     Object {
-                      "marginRight": "26px",
+                      "marginRight": "22px",
                     }
                   }
                 >
                   <span
-                    className="MuiButtonBase-root-239 MuiIconButton-root-261 MuiSwitchBase-root-257 MuiRadio-root-325 MuiRadio-colorSecondary-329"
+                    className="MuiButtonBase-root-195 MuiIconButton-root-263 MuiPrivateSwitchBase-root-259 MuiRadio-root-327 MuiRadio-colorSecondary-331"
                     onBlur={[Function]}
                     onFocus={[Function]}
                     onKeyDown={[Function]}
@@ -552,11 +552,11 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                     tabIndex={null}
                   >
                     <span
-                      className="MuiIconButton-label-266"
+                      className="MuiIconButton-label-268"
                     >
                       <svg
                         aria-hidden="true"
-                        className="MuiSvgIcon-root-190"
+                        className="MuiSvgIcon-root-223"
                         color={undefined}
                         focusable="false"
                         role="presentation"
@@ -569,7 +569,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                       <input
                         autoFocus={undefined}
                         checked={false}
-                        className="MuiSwitchBase-input-260"
+                        className="MuiPrivateSwitchBase-input-262"
                         disabled={undefined}
                         id={undefined}
                         name={undefined}
@@ -582,11 +582,11 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                       />
                     </span>
                     <span
-                      className="MuiTouchRipple-root-318"
+                      className="MuiTouchRipple-root-320"
                     />
                   </span>
                   <span
-                    className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-247"
+                    className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-249"
                   >
                     wide
                   </span>
@@ -603,7 +603,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                   >
                     <button
                       aria-label="Dot ball"
-                      className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-contained-224 MuiButton-raised-227"
+                      className="MuiButtonBase-root-195 MuiButton-root-169 MuiButton-fab-186 MuiButton-contained-180 MuiButton-raised-183"
                       disabled={false}
                       onBlur={[Function]}
                       onClick={[Function]}
@@ -628,17 +628,17 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                       type="button"
                     >
                       <span
-                        className="MuiButton-label-214"
+                        className="MuiButton-label-170"
                       >
                         .
                       </span>
                       <span
-                        className="MuiTouchRipple-root-318"
+                        className="MuiTouchRipple-root-320"
                       />
                     </button>
                     <button
                       aria-label="Single"
-                      className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-contained-224 MuiButton-raised-227"
+                      className="MuiButtonBase-root-195 MuiButton-root-169 MuiButton-fab-186 MuiButton-contained-180 MuiButton-raised-183"
                       disabled={false}
                       onBlur={[Function]}
                       onClick={[Function]}
@@ -663,17 +663,17 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                       type="button"
                     >
                       <span
-                        className="MuiButton-label-214"
+                        className="MuiButton-label-170"
                       >
                         1
                       </span>
                       <span
-                        className="MuiTouchRipple-root-318"
+                        className="MuiTouchRipple-root-320"
                       />
                     </button>
                     <button
                       aria-label="Two"
-                      className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-contained-224 MuiButton-raised-227"
+                      className="MuiButtonBase-root-195 MuiButton-root-169 MuiButton-fab-186 MuiButton-contained-180 MuiButton-raised-183"
                       disabled={false}
                       onBlur={[Function]}
                       onClick={[Function]}
@@ -698,17 +698,17 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                       type="button"
                     >
                       <span
-                        className="MuiButton-label-214"
+                        className="MuiButton-label-170"
                       >
                         2
                       </span>
                       <span
-                        className="MuiTouchRipple-root-318"
+                        className="MuiTouchRipple-root-320"
                       />
                     </button>
                     <button
                       aria-label="Three"
-                      className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-contained-224 MuiButton-raised-227"
+                      className="MuiButtonBase-root-195 MuiButton-root-169 MuiButton-fab-186 MuiButton-contained-180 MuiButton-raised-183"
                       disabled={false}
                       onBlur={[Function]}
                       onClick={[Function]}
@@ -733,52 +733,17 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                       type="button"
                     >
                       <span
-                        className="MuiButton-label-214"
+                        className="MuiButton-label-170"
                       >
                         3
                       </span>
                       <span
-                        className="MuiTouchRipple-root-318"
-                      />
-                    </button>
-                    <button
-                      aria-label="Four"
-                      className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-contained-224 MuiButton-raised-227"
-                      disabled={false}
-                      onBlur={[Function]}
-                      onClick={[Function]}
-                      onFocus={[Function]}
-                      onKeyDown={[Function]}
-                      onKeyUp={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      onTouchEnd={[Function]}
-                      onTouchMove={[Function]}
-                      onTouchStart={[Function]}
-                      style={
-                        Object {
-                          "backgroundColor": "#43a047",
-                          "color": "#ffffff",
-                          "marginBottom": "8px",
-                          "marginRight": "8px",
-                        }
-                      }
-                      tabIndex="0"
-                      type="button"
-                    >
-                      <span
-                        className="MuiButton-label-214"
-                      >
-                        4
-                      </span>
-                      <span
-                        className="MuiTouchRipple-root-318"
+                        className="MuiTouchRipple-root-320"
                       />
                     </button>
                     <button
                       aria-label="Boundary Four"
-                      className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-extendedFab-231 MuiButton-contained-224 MuiButton-raised-227"
+                      className="MuiButtonBase-root-195 MuiButton-root-169 MuiButton-fab-186 MuiButton-extendedFab-187 MuiButton-contained-180 MuiButton-raised-183"
                       disabled={false}
                       onBlur={[Function]}
                       onClick={[Function]}
@@ -803,17 +768,35 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                       type="button"
                     >
                       <span
-                        className="MuiButton-label-214"
+                        className="MuiButton-label-170"
                       >
-                        Bdy 4
+                        <span
+                          style={
+                            Object {
+                              "fontSize": "70%",
+                            }
+                          }
+                        >
+                          boundary
+                          <br />
+                          <span
+                            style={
+                              Object {
+                                "fontSize": "200%",
+                              }
+                            }
+                          >
+                            4
+                          </span>
+                        </span>
                       </span>
                       <span
-                        className="MuiTouchRipple-root-318"
+                        className="MuiTouchRipple-root-320"
                       />
                     </button>
                     <button
                       aria-label="Boundary Six"
-                      className="MuiButtonBase-root-239 MuiButton-root-213 MuiButton-fab-230 MuiButton-extendedFab-231 MuiButton-contained-224 MuiButton-raised-227"
+                      className="MuiButtonBase-root-195 MuiButton-root-169 MuiButton-fab-186 MuiButton-extendedFab-187 MuiButton-contained-180 MuiButton-raised-183"
                       disabled={false}
                       onBlur={[Function]}
                       onClick={[Function]}
@@ -838,12 +821,30 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                       type="button"
                     >
                       <span
-                        className="MuiButton-label-214"
+                        className="MuiButton-label-170"
                       >
-                        Bdy 6
+                        <span
+                          style={
+                            Object {
+                              "fontSize": "70%",
+                            }
+                          }
+                        >
+                          boundary
+                          <br />
+                          <span
+                            style={
+                              Object {
+                                "fontSize": "200%",
+                              }
+                            }
+                          >
+                            6
+                          </span>
+                        </span>
                       </span>
                       <span
-                        className="MuiTouchRipple-root-318"
+                        className="MuiTouchRipple-root-320"
                       />
                     </button>
                   </div>
@@ -851,17 +852,17 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                     className="MuiGrid-container-29"
                   >
                     <div
-                      className="MuiInputBase-root-291 MuiInput-root-278 MuiInput-underline-282"
+                      className="MuiInputBase-root-293 MuiInput-root-280 MuiInput-underline-284"
                       onClick={[Function]}
                     >
                       <div
-                        className="MuiSelect-root-271"
+                        className="MuiSelect-root-273"
                       >
                         <div
                           aria-haspopup="true"
-                          aria-owns={null}
+                          aria-owns={undefined}
                           aria-pressed="false"
-                          className="MuiSelect-select-272 MuiSelect-selectMenu-275 MuiInputBase-input-301 MuiInput-input-286"
+                          className="MuiSelect-select-274 MuiSelect-selectMenu-277 MuiInputBase-input-303 MuiInput-input-288"
                           onBlur={[Function]}
                           onClick={[Function]}
                           onFocus={[Function]}
@@ -886,7 +887,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                         />
                         <svg
                           aria-hidden="true"
-                          className="MuiSvgIcon-root-190 MuiSelect-icon-277"
+                          className="MuiSvgIcon-root-223 MuiSelect-icon-279"
                           color={undefined}
                           focusable="false"
                           role="presentation"
@@ -922,7 +923,15 @@ exports[`InProgress should render correctly for match during an over 1`] = `
       <h5
         className="MuiTypography-root-130 MuiTypography-h5-146"
       >
-        Team 1 0-0
+        <span
+          style={
+            Object {
+              "transition": "background-color 1s",
+            }
+          }
+        >
+          Team 1 0-0
+        </span>
       </h5>
       <div
         className="MuiGrid-container-29"
@@ -931,13 +940,14 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           className="MuiGrid-item-30 MuiGrid-grid-xs-12-69 MuiGrid-grid-sm-12-83 MuiGrid-grid-md-12-97 MuiGrid-grid-lg-8-107"
         >
           <div
-            className="MuiGrid-container-29 Batting-header-312"
+            className="MuiGrid-container-29 Batting-header-314"
           >
             <div
               className="MuiGrid-item-30 MuiGrid-grid-xs-10-67 MuiGrid-grid-md-7-92"
             >
               <h6
-                className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+                className="MuiTypography-root-130 MuiTypography-subtitle1-148 MuiTypography-colorInherit-159"
+                style={undefined}
               >
                 Batsman
               </h6>
@@ -946,7 +956,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
               className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
             >
               <h6
-                className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+                className="MuiTypography-root-130 MuiTypography-subtitle1-148 MuiTypography-colorInherit-159"
                 style={
                   Object {
                     "textAlign": "right",
@@ -960,7 +970,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
               className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
             >
               <h6
-                className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+                className="MuiTypography-root-130 MuiTypography-subtitle1-148 MuiTypography-colorInherit-159"
                 style={
                   Object {
                     "textAlign": "right",
@@ -974,7 +984,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
               className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
             >
               <h6
-                className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+                className="MuiTypography-root-130 MuiTypography-subtitle1-148 MuiTypography-colorInherit-159"
                 style={
                   Object {
                     "textAlign": "right",
@@ -988,7 +998,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
               className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
             >
               <h6
-                className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+                className="MuiTypography-root-130 MuiTypography-subtitle1-148 MuiTypography-colorInherit-159"
                 style={
                   Object {
                     "textAlign": "right",
@@ -1002,7 +1012,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
               className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
             >
               <h6
-                className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+                className="MuiTypography-root-130 MuiTypography-subtitle1-148 MuiTypography-colorInherit-159"
                 style={
                   Object {
                     "textAlign": "right",
@@ -1031,7 +1041,15 @@ exports[`InProgress should render correctly for match during an over 1`] = `
               <p
                 className="MuiTypography-root-130 MuiTypography-body2-138"
               >
-                not out
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  not out
+                </span>
               </p>
             </div>
             <div
@@ -1046,7 +1064,15 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                   }
                 }
               >
-                0
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  0
+                </span>
               </p>
             </div>
             <div
@@ -1060,7 +1086,15 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                   }
                 }
               >
-                0
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  0
+                </span>
               </p>
             </div>
             <div
@@ -1074,7 +1108,15 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                   }
                 }
               >
-                0
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  0
+                </span>
               </p>
             </div>
             <div
@@ -1088,7 +1130,15 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                   }
                 }
               >
-                0
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  0
+                </span>
               </p>
             </div>
             <div
@@ -1102,7 +1152,15 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                   }
                 }
               >
-                0
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  0
+                </span>
               </p>
             </div>
           </div>
@@ -1110,7 +1168,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
             className="MuiGrid-item-30 MuiGrid-grid-xs-12-69"
           >
             <hr
-              className="MuiDivider-root-267"
+              className="MuiDivider-root-269"
             />
           </div>
           <div
@@ -1131,7 +1189,15 @@ exports[`InProgress should render correctly for match during an over 1`] = `
               <p
                 className="MuiTypography-root-130 MuiTypography-body2-138"
               >
-                not out
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  not out
+                </span>
               </p>
             </div>
             <div
@@ -1146,7 +1212,15 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                   }
                 }
               >
-                0
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  0
+                </span>
               </p>
             </div>
             <div
@@ -1160,7 +1234,15 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                   }
                 }
               >
-                0
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  0
+                </span>
               </p>
             </div>
             <div
@@ -1174,7 +1256,15 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                   }
                 }
               >
-                0
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  0
+                </span>
               </p>
             </div>
             <div
@@ -1188,7 +1278,15 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                   }
                 }
               >
-                0
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  0
+                </span>
               </p>
             </div>
             <div
@@ -1202,7 +1300,15 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                   }
                 }
               >
-                0
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  0
+                </span>
               </p>
             </div>
           </div>
@@ -1210,7 +1316,155 @@ exports[`InProgress should render correctly for match during an over 1`] = `
             className="MuiGrid-item-30 MuiGrid-grid-xs-12-69"
           >
             <hr
-              className="MuiDivider-root-267"
+              className="MuiDivider-root-269"
+            />
+          </div>
+          <div
+            className="MuiGrid-container-29"
+          >
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-4-61 MuiGrid-grid-md-3-88"
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body2-138"
+              >
+                Player 3
+              </p>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-4-89"
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body2-138"
+              >
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  
+                </span>
+              </p>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body1-139"
+                style={
+                  Object {
+                    "fontWeight": "bold",
+                    "textAlign": "right",
+                  }
+                }
+              >
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  
+                </span>
+              </p>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body1-139"
+                style={
+                  Object {
+                    "textAlign": "right",
+                  }
+                }
+              >
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  
+                </span>
+              </p>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body1-139"
+                style={
+                  Object {
+                    "textAlign": "right",
+                  }
+                }
+              >
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  
+                </span>
+              </p>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body1-139"
+                style={
+                  Object {
+                    "textAlign": "right",
+                  }
+                }
+              >
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  
+                </span>
+              </p>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body1-139"
+                style={
+                  Object {
+                    "textAlign": "right",
+                  }
+                }
+              >
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  
+                </span>
+              </p>
+            </div>
+          </div>
+          <div
+            className="MuiGrid-item-30 MuiGrid-grid-xs-12-69"
+          >
+            <hr
+              className="MuiDivider-root-269"
             />
           </div>
           <div
@@ -1231,7 +1485,15 @@ exports[`InProgress should render correctly for match during an over 1`] = `
               <p
                 className="MuiTypography-root-130 MuiTypography-body2-138"
               >
-                0nb 0wd 0b 0lb
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  0nb 0wd 0b 0lb
+                </span>
               </p>
             </div>
             <div
@@ -1246,36 +1508,54 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                   }
                 }
               >
-                0
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  0
+                </span>
               </p>
             </div>
           </div>
           <div
-            className="MuiGrid-container-29 Batting-header-312"
+            className="MuiGrid-container-29 Batting-header-314"
           >
             <div
               className="MuiGrid-item-30 MuiGrid-grid-xs-4-61 MuiGrid-grid-md-3-88"
             >
               <h6
-                className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+                className="MuiTypography-root-130 MuiTypography-subtitle1-148 MuiTypography-colorInherit-159"
+                style={undefined}
               >
                 Total
               </h6>
             </div>
             <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-4-89"
+              className="MuiGrid-item-30 MuiGrid-grid-md-4-89"
             >
               <h6
-                className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+                className="MuiTypography-root-130 MuiTypography-subtitle1-148 MuiTypography-colorInherit-159"
+                style={undefined}
               >
-                (0 wickets) (0 overs)
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  for 0 (0 overs)
+                </span>
               </h6>
             </div>
             <div
               className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
             >
               <h6
-                className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+                className="MuiTypography-root-130 MuiTypography-subtitle1-148 MuiTypography-colorInherit-159"
                 style={
                   Object {
                     "fontWeight": "bold",
@@ -1283,7 +1563,15 @@ exports[`InProgress should render correctly for match during an over 1`] = `
                   }
                 }
               >
-                0
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  0
+                </span>
               </h6>
             </div>
           </div>
@@ -1292,10 +1580,11 @@ exports[`InProgress should render correctly for match during an over 1`] = `
           className="MuiGrid-item-30 MuiGrid-grid-xs-12-69 MuiGrid-grid-lg-3-102"
         >
           <div
-            className="MuiGrid-container-29 FallOfWickets-header-314"
+            className="MuiGrid-container-29 FallOfWickets-header-316"
           >
             <h6
-              className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+              className="MuiTypography-root-130 MuiTypography-subtitle1-148 MuiTypography-colorInherit-159"
+              style={undefined}
             >
               Fall of wickets
             </h6>
@@ -1311,7 +1600,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
              bowling
           </h5>
           <div
-            className="MuiGrid-container-29 Bowling-header-316"
+            className="MuiGrid-container-29 Bowling-header-318"
           >
             <div
               className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-5-90"
@@ -1320,7 +1609,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
               className="MuiGrid-item-30 MuiGrid-grid-xs-2-59"
             >
               <h6
-                className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+                className="MuiTypography-root-130 MuiTypography-subtitle1-148 MuiTypography-colorInherit-159"
                 style={
                   Object {
                     "textAlign": "center",
@@ -1334,7 +1623,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
               className="MuiGrid-item-30 MuiGrid-grid-md-2-87"
             >
               <h6
-                className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+                className="MuiTypography-root-130 MuiTypography-subtitle1-148 MuiTypography-colorInherit-159"
                 style={
                   Object {
                     "textAlign": "center",
@@ -1348,7 +1637,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
               className="MuiGrid-item-30 MuiGrid-grid-xs-2-59"
             >
               <h6
-                className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+                className="MuiTypography-root-130 MuiTypography-subtitle1-148 MuiTypography-colorInherit-159"
                 style={
                   Object {
                     "textAlign": "center",
@@ -1362,7 +1651,7 @@ exports[`InProgress should render correctly for match during an over 1`] = `
               className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
             >
               <h6
-                className="MuiTypography-root-130 MuiTypography-h6-147 MuiTypography-colorInherit-159"
+                className="MuiTypography-root-130 MuiTypography-subtitle1-148 MuiTypography-colorInherit-159"
                 style={
                   Object {
                     "textAlign": "center",
@@ -1396,7 +1685,15 @@ exports[`InProgress should render correctly for match during an over 1`] = `
               <p
                 className="MuiTypography-root-130 MuiTypography-body2-138"
               >
-                0
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  0
+                </span>
               </p>
             </div>
             <div
@@ -1410,7 +1707,15 @@ exports[`InProgress should render correctly for match during an over 1`] = `
               <p
                 className="MuiTypography-root-130 MuiTypography-body2-138"
               >
-                0
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  0
+                </span>
               </p>
             </div>
             <div
@@ -1424,7 +1729,15 @@ exports[`InProgress should render correctly for match during an over 1`] = `
               <p
                 className="MuiTypography-root-130 MuiTypography-body2-138"
               >
-                0
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  0
+                </span>
               </p>
             </div>
             <div
@@ -1438,7 +1751,15 @@ exports[`InProgress should render correctly for match during an over 1`] = `
               <p
                 className="MuiTypography-root-130 MuiTypography-body2-138"
               >
-                0
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  0
+                </span>
               </p>
             </div>
           </div>
@@ -1446,7 +1767,115 @@ exports[`InProgress should render correctly for match during an over 1`] = `
             className="MuiGrid-item-30 MuiGrid-grid-xs-12-69"
           >
             <hr
-              className="MuiDivider-root-267"
+              className="MuiDivider-root-269"
+            />
+          </div>
+          <div
+            className="MuiGrid-container-29"
+          >
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-5-90"
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body2-138"
+              >
+                Player 21
+              </p>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59"
+              style={
+                Object {
+                  "textAlign": "center",
+                }
+              }
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body2-138"
+              >
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  0
+                </span>
+              </p>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-md-2-87"
+              style={
+                Object {
+                  "textAlign": "center",
+                }
+              }
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body2-138"
+              >
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  0
+                </span>
+              </p>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59"
+              style={
+                Object {
+                  "textAlign": "center",
+                }
+              }
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body2-138"
+              >
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  0
+                </span>
+              </p>
+            </div>
+            <div
+              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
+              style={
+                Object {
+                  "textAlign": "center",
+                }
+              }
+            >
+              <p
+                className="MuiTypography-root-130 MuiTypography-body2-138"
+              >
+                <span
+                  style={
+                    Object {
+                      "transition": "background-color 1s",
+                    }
+                  }
+                >
+                  0
+                </span>
+              </p>
+            </div>
+          </div>
+          <div
+            className="MuiGrid-item-30 MuiGrid-grid-xs-12-69"
+          >
+            <hr
+              className="MuiDivider-root-269"
             />
           </div>
         </div>
