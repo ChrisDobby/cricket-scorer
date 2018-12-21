@@ -1,25 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`WithNavBar should render correctly 1`] = `
-Array [
+<div>
   <header
-    className="MuiPaper-root-10 MuiPaper-elevation4-16 MuiAppBar-root-1 MuiAppBar-positionSticky-4 MuiAppBar-colorPrimary-8"
+    class="MuiPaper-root-10 MuiPaper-elevation4-16 MuiAppBar-root-1 MuiAppBar-positionSticky-4 MuiAppBar-colorPrimary-8"
   >
     <div
-      className="MuiToolbar-root-37 MuiToolbar-regular-39 MuiToolbar-gutters-38"
+      class="MuiToolbar-root-37 MuiToolbar-regular-39 MuiToolbar-gutters-38"
     >
       <h2
-        className="MuiTypography-root-41 MuiTypography-title-47 MuiTypography-colorInherit-70"
-        style={
-          Object {
-            "flexGrow": 1,
-          }
-        }
+        class="MuiTypography-root-41 MuiTypography-title-47 MuiTypography-colorInherit-70"
       >
         Cricket scores live
       </h2>
     </div>
-  </header>,
-  <div />,
-]
+  </header>
+  <div />
+</div>
 `;

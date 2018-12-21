@@ -73,6 +73,7 @@ describe('complete', () => {
         const abandonedResult = { result: Result.Abandoned };
         const drawResult = { result: Result.Draw };
         const tiedResult = { result: Result.Tie };
+        const unknownResult = { result: 99999 };
         const winResult = {
             result: Result.HomeWin,
             winMargin: '10',
@@ -119,6 +120,18 @@ describe('complete', () => {
             const [, status] = complete.status(matches.blankMatch, { ...winResult, winBy: WinBy.Runs });
 
             expect(status).toBe(`${matches.blankMatch.homeTeam.name} won by 10 runs`);
+        });
+
+        it('should return status for unknown result', () => {
+            const [, status] = complete.status(matches.blankMatch, unknownResult);
+
+            expect(status).toBe('');
+        });
+
+        it('should return status for win by unknown type', () => {
+            const [, status] = complete.status(matches.blankMatch, { ...winResult, winBy: undefined });
+
+            expect(status).toBe(`${matches.blankMatch.homeTeam.name} won by 10 `);
         });
     });
 });

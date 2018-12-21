@@ -689,4 +689,30 @@ describe('inProgressMatchStore', () => {
             expect(storeToUpdate.match.innings[0].maximumOvers).toBe(45);
         });
     });
+
+    describe('batterUnavailable', () => {
+        it('should do nothing if no current innings', () => {
+            const storeToUpdate = getMatchStore(matches.blankMatch);
+            storeToUpdate.batterUnavailable(domain.UnavailableReason.Absent);
+
+            expect(storeToUpdate.match).toEqual(matches.blankMatch);
+        });
+
+        it('should do nothing if no current batter', () => {
+            const storeToUpdate = getMatchStore(matches.matchWithStartedInnings);
+            storeToUpdate.batterUnavailable(domain.UnavailableReason.Absent);
+
+            expect(storeToUpdate.match).toEqual(matches.matchWithStartedInnings);
+        });
+    });
+
+    describe('setId', () => {
+        it('should set the match id', () => {
+            const newId = '1234567890';
+            const storeToUpdate = getMatchStore(matches.blankMatch);
+            storeToUpdate.setId(newId);
+
+            expect(storeToUpdate.match.id).toBe(newId);
+        });
+    });
 });

@@ -9,3 +9,5 @@ export default (setId: (id: string) => void) => storeMatch([
     matchStorage(localStorage).storeMatch,
     apiStorage(setId).storeMatch,
 ]);
+
+export { storeMatch };

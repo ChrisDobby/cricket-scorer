@@ -79,4 +79,18 @@ describe('eventDescription', () => {
 
         expect(description).toBe(`${batsmanName} - timed out`);
     });
+
+    it('should return undefined for unknown event', () => {
+        const description = eventDescription(
+            matches.blankMatch,
+            matches.inningsWithStartedOver,
+            {
+                time: 0,
+                type: 99999,
+            },
+            { howOut: Howout.TimedOut, time: 1 },
+        );
+
+        expect(description).toBeUndefined();
+    });
 });

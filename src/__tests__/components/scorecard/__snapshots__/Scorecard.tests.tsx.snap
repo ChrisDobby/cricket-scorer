@@ -1,1944 +1,2101 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Scorecard should render correctly when match available 1`] = `
-<div
-  style={
-    Object {
-      "display": "flex",
-      "flexDirection": "column",
-      "height": "100%",
-    }
-  }
->
-  <div>
+exports[`Scorecard should render correctly 1`] = `
+<div>
+  <div
+    class="MuiPaper-root-2 MuiPaper-elevation1-5 MuiPaper-rounded-3 Scorecard-root-1"
+  >
     <div
-      className="col-12"
+      style="text-align: center;"
+    >
+      <h6
+        class="MuiTypography-root-29 MuiTypography-h6-46"
+      >
+        28-Apr-2018
+      </h6>
+      <h5
+        class="MuiTypography-root-29 MuiTypography-h5-45"
+      >
+        Cleckheaton v Baildon
+      </h5>
+      <h6
+        class="MuiTypography-root-29 MuiTypography-h6-46"
+      >
+        <span>
+          Baildon won by 8 runs
+        </span>
+      </h6>
+      <p
+        class="MuiTypography-root-29 MuiTypography-body1-38 MuiTypography-colorTextSecondary-62"
+      >
+        <span />
+      </p>
+    </div>
+    <hr
+      class="MuiDivider-root-64"
+    />
+    <div
+      class="MuiTabs-root-68"
     >
       <div
-        className="row"
-        style={
-          Object {
-            "backgroundColor": "rgb(233, 236, 239)",
-            "paddingTop": "4px",
-            "textAlign": "center",
-          }
-        }
+        class="MuiTabs-flexContainer-69"
       >
         <div
-          className="col-12"
+          class="MuiTabs-scroller-71 MuiTabs-fixed-72"
+          role="tablist"
+          style="margin-bottom: 0px;"
         >
-          <h5>
-            28-Apr-2018
-          </h5>
-        </div>
-        <div
-          className="col-12"
-        >
-          <h4>
-            Cleckheaton v Baildon
-          </h4>
-        </div>
-        <div
-          className="col-12"
-        >
-          <h6>
-            Baildon won by 8 runs
-          </h6>
+          <div
+            class="MuiTabs-flexContainer-69 MuiTabs-centered-70"
+          >
+            <button
+              aria-selected="false"
+              class="MuiButtonBase-root-89 MuiTab-root-77 MuiTab-textColorPrimary-80"
+              role="tab"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiTab-wrapper-85"
+              >
+                <span
+                  class="MuiTab-labelContainer-86"
+                >
+                  <span
+                    class="MuiTab-label-87"
+                  >
+                    1st innings
+                  </span>
+                </span>
+              </span>
+              <span
+                class="MuiTouchRipple-root-198"
+              />
+            </button>
+            <button
+              aria-selected="true"
+              class="MuiButtonBase-root-89 MuiTab-root-77 MuiTab-textColorPrimary-80 MuiTab-selected-82"
+              role="tab"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiTab-wrapper-85"
+              >
+                <span
+                  class="MuiTab-labelContainer-86"
+                >
+                  <span
+                    class="MuiTab-label-87"
+                  >
+                    2nd innings
+                  </span>
+                </span>
+              </span>
+              <span
+                class="MuiTouchRipple-root-198"
+              />
+            </button>
+          </div>
+          <span
+            class="MuiPrivateTabIndicator-root-92 MuiPrivateTabIndicator-colorPrimary-93 MuiTabs-indicator-76"
+            style="left: 0px; width: 0px;"
+          />
         </div>
       </div>
     </div>
-  </div>
-  <div
-    style={
-      Object {
-        "marginBottom": "4px",
-        "marginTop": "4px",
-        "textAlign": "center",
-      }
-    }
-  >
-    <button
-      className="btn btn-primary"
-      disabled={false}
-      onClick={[Function]}
-      style={
-        Object {
-          "marginLeft": "8px",
-          "marginRight": "8px",
-        }
-      }
+    <div
+      style="overflow-x: hidden;"
     >
-      1st innings
-    </button>
-    <button
-      className="btn btn-primary"
-      disabled={true}
-      onClick={[Function]}
-      style={
-        Object {
-          "marginLeft": "8px",
-          "marginRight": "8px",
-        }
-      }
-    >
-      2nd innings
-    </button>
-  </div>
-  <div
-    style={
-      Object {
-        "flex": "1",
-        "overflowX": "hidden",
-        "overflowY": "auto",
-      }
-    }
-  >
-    <div>
       <div
-        className="row"
+        class="react-swipeable-view-container"
+        style="direction: ltr; display: flex;"
       >
         <div
-          className="col-12"
-          style={
-            Object {
-              "textAlign": "center",
-            }
-          }
+          aria-hidden="false"
+          data-swipeable="true"
+          style="width: 100%; overflow: auto;"
         >
-          <h5>
-            Cleckheaton 122 all out
+          <h5
+            class="MuiTypography-root-29 MuiTypography-h5-45"
+          >
+            <span>
+              Cleckheaton 122 all out
+            </span>
           </h5>
-        </div>
-      </div>
-      <div
-        className="row"
-      >
-        <div
-          className="col-xl-8 col-lg-12"
-        >
           <div
-            style={
-              Object {
-                "marginBottom": "10px",
-                "padding": "20px",
-                "width": "100%",
-              }
-            }
+            class="MuiGrid-container-95"
           >
             <div
-              className="row"
-              style={
-                Object {
-                  "backgroundColor": "rgb(233, 236, 239)",
-                  "paddingTop": "4px",
-                }
-              }
+              class="MuiGrid-item-96 MuiGrid-grid-xs-12-135 MuiGrid-grid-sm-12-149 MuiGrid-grid-md-12-163 MuiGrid-grid-lg-8-173"
             >
               <div
-                className="col-10 col-md-7"
+                class="MuiGrid-container-95 Batting-header-192"
               >
-                <h6>
-                  Batsman
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-10-133 MuiGrid-grid-md-7-158"
+                >
+                  <h6
+                    class="MuiTypography-root-29 MuiTypography-subtitle1-47 MuiTypography-colorInherit-58"
+                  >
+                    Batsman
+                  </h6>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125 MuiGrid-grid-md-1-152"
+                >
+                  <h6
+                    class="MuiTypography-root-29 MuiTypography-subtitle1-47 MuiTypography-colorInherit-58"
+                    style="text-align: right;"
+                  >
+                    Runs
+                  </h6>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <h6
+                    class="MuiTypography-root-29 MuiTypography-subtitle1-47 MuiTypography-colorInherit-58"
+                    style="text-align: right;"
+                  >
+                    Balls
+                  </h6>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <h6
+                    class="MuiTypography-root-29 MuiTypography-subtitle1-47 MuiTypography-colorInherit-58"
+                    style="text-align: right;"
+                  >
+                    Mins
+                  </h6>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <h6
+                    class="MuiTypography-root-29 MuiTypography-subtitle1-47 MuiTypography-colorInherit-58"
+                    style="text-align: right;"
+                  >
+                    4s
+                  </h6>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <h6
+                    class="MuiTypography-root-29 MuiTypography-subtitle1-47 MuiTypography-colorInherit-58"
+                    style="text-align: right;"
+                  >
+                    6s
+                  </h6>
+                </div>
+              </div>
+              <div
+                class="MuiGrid-container-95"
+              >
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-4-127 MuiGrid-grid-md-3-154"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    Chris Dobson
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-6-129 MuiGrid-grid-md-4-155"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    <span>
+                      lbw D Metcalfe
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right; font-weight: bold;"
+                  >
+                    <span>
+                      3
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      11
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+              </div>
+              <div
+                class="MuiGrid-item-96 MuiGrid-grid-xs-12-135"
+              >
+                <hr
+                  class="MuiDivider-root-64"
+                />
+              </div>
+              <div
+                class="MuiGrid-container-95"
+              >
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-4-127 MuiGrid-grid-md-3-154"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    Richard Noble
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-6-129 MuiGrid-grid-md-4-155"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    <span>
+                      ct T Hopwood b A Sayed
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right; font-weight: bold;"
+                  >
+                    <span>
+                      40
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      49
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      6
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+              </div>
+              <div
+                class="MuiGrid-item-96 MuiGrid-grid-xs-12-135"
+              >
+                <hr
+                  class="MuiDivider-root-64"
+                />
+              </div>
+              <div
+                class="MuiGrid-container-95"
+              >
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-4-127 MuiGrid-grid-md-3-154"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    Ethan Lee
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-6-129 MuiGrid-grid-md-4-155"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    <span>
+                      ct R Todd b D Hunt
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right; font-weight: bold;"
+                  >
+                    <span>
+                      2
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      13
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+              </div>
+              <div
+                class="MuiGrid-item-96 MuiGrid-grid-xs-12-135"
+              >
+                <hr
+                  class="MuiDivider-root-64"
+                />
+              </div>
+              <div
+                class="MuiGrid-container-95"
+              >
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-4-127 MuiGrid-grid-md-3-154"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    Shahid Rehman
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-6-129 MuiGrid-grid-md-4-155"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    <span>
+                      run out
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right; font-weight: bold;"
+                  >
+                    <span>
+                      1
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      3
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+              </div>
+              <div
+                class="MuiGrid-item-96 MuiGrid-grid-xs-12-135"
+              >
+                <hr
+                  class="MuiDivider-root-64"
+                />
+              </div>
+              <div
+                class="MuiGrid-container-95"
+              >
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-4-127 MuiGrid-grid-md-3-154"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    Zahir Shah
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-6-129 MuiGrid-grid-md-4-155"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    <span>
+                      lbw D Hunt
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right; font-weight: bold;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      1
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+              </div>
+              <div
+                class="MuiGrid-item-96 MuiGrid-grid-xs-12-135"
+              >
+                <hr
+                  class="MuiDivider-root-64"
+                />
+              </div>
+              <div
+                class="MuiGrid-container-95"
+              >
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-4-127 MuiGrid-grid-md-3-154"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    Elliott Hallas
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-6-129 MuiGrid-grid-md-4-155"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    <span>
+                      bowled A Sayed
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right; font-weight: bold;"
+                  >
+                    <span>
+                      35
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      46
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      2
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      3
+                    </span>
+                  </p>
+                </div>
+              </div>
+              <div
+                class="MuiGrid-item-96 MuiGrid-grid-xs-12-135"
+              >
+                <hr
+                  class="MuiDivider-root-64"
+                />
+              </div>
+              <div
+                class="MuiGrid-container-95"
+              >
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-4-127 MuiGrid-grid-md-3-154"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    Craig Blackburn
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-6-129 MuiGrid-grid-md-4-155"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    <span>
+                      ct A Sayed b J Abbott
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right; font-weight: bold;"
+                  >
+                    <span>
+                      19
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      22
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      1
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+              </div>
+              <div
+                class="MuiGrid-item-96 MuiGrid-grid-xs-12-135"
+              >
+                <hr
+                  class="MuiDivider-root-64"
+                />
+              </div>
+              <div
+                class="MuiGrid-container-95"
+              >
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-4-127 MuiGrid-grid-md-3-154"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    Bilal Butt
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-6-129 MuiGrid-grid-md-4-155"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    <span>
+                      run out (A Sayed)
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right; font-weight: bold;"
+                  >
+                    <span>
+                      4
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      31
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+              </div>
+              <div
+                class="MuiGrid-item-96 MuiGrid-grid-xs-12-135"
+              >
+                <hr
+                  class="MuiDivider-root-64"
+                />
+              </div>
+              <div
+                class="MuiGrid-container-95"
+              >
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-4-127 MuiGrid-grid-md-3-154"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    Alex Midgley
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-6-129 MuiGrid-grid-md-4-155"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    <span>
+                      not out
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right; font-weight: bold;"
+                  >
+                    <span>
+                      4
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      20
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+              </div>
+              <div
+                class="MuiGrid-item-96 MuiGrid-grid-xs-12-135"
+              >
+                <hr
+                  class="MuiDivider-root-64"
+                />
+              </div>
+              <div
+                class="MuiGrid-container-95"
+              >
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-4-127 MuiGrid-grid-md-3-154"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    Atta Rehman
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-6-129 MuiGrid-grid-md-4-155"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    <span>
+                      lbw J Abbott
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right; font-weight: bold;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      1
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+              </div>
+              <div
+                class="MuiGrid-item-96 MuiGrid-grid-xs-12-135"
+              >
+                <hr
+                  class="MuiDivider-root-64"
+                />
+              </div>
+              <div
+                class="MuiGrid-container-95"
+              >
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-4-127 MuiGrid-grid-md-3-154"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    Sam Bailey
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-6-129 MuiGrid-grid-md-4-155"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    <span>
+                      ct J Butterfield b D Hunt
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right; font-weight: bold;"
+                  >
+                    <span>
+                      4
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      10
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+              </div>
+              <div
+                class="MuiGrid-item-96 MuiGrid-grid-xs-12-135"
+              >
+                <hr
+                  class="MuiDivider-root-64"
+                />
+              </div>
+              <div
+                class="MuiGrid-container-95"
+              >
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-4-127 MuiGrid-grid-md-3-154"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                  >
+                    Extras
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-6-129 MuiGrid-grid-md-4-155"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    <span>
+                      1nb 9wd 3b 0lb
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125 MuiGrid-grid-md-1-152"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right; font-weight: bold;"
+                  >
+                    <span>
+                      13
+                    </span>
+                  </p>
+                </div>
+              </div>
+              <div
+                class="MuiGrid-container-95 Batting-header-192"
+              >
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-4-127 MuiGrid-grid-md-3-154"
+                >
+                  <h6
+                    class="MuiTypography-root-29 MuiTypography-subtitle1-47 MuiTypography-colorInherit-58"
+                  >
+                    Total
+                  </h6>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-4-155"
+                >
+                  <h6
+                    class="MuiTypography-root-29 MuiTypography-subtitle1-47 MuiTypography-colorInherit-58"
+                  >
+                    <span>
+                      for 10 (34.2 overs)
+                    </span>
+                  </h6>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125 MuiGrid-grid-md-1-152"
+                >
+                  <h6
+                    class="MuiTypography-root-29 MuiTypography-subtitle1-47 MuiTypography-colorInherit-58"
+                    style="text-align: right; font-weight: bold;"
+                  >
+                    <span>
+                      122
+                    </span>
+                  </h6>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-item-96 MuiGrid-grid-xs-12-135 MuiGrid-grid-lg-3-168"
+            >
+              <div
+                class="MuiGrid-container-95 FallOfWickets-header-194"
+              >
+                <h6
+                  class="MuiTypography-root-29 MuiTypography-subtitle1-47 MuiTypography-colorInherit-58"
+                >
+                  Fall of wickets
                 </h6>
               </div>
               <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
+                class="MuiGrid-container-95"
               >
-                <h6>
-                  Runs
-                </h6>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-1-124"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                  >
+                    1
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-6-129"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                  >
+                    C Dobson
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    9
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    9
+                  </p>
+                </div>
               </div>
               <div
-                className="col-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
+                class="MuiGrid-item-96 MuiGrid-grid-xs-12-135"
               >
-                <h6>
-                  Balls
-                </h6>
+                <hr
+                  class="MuiDivider-root-64"
+                />
               </div>
               <div
-                className="col-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
+                class="MuiGrid-container-95"
               >
-                <h6>
-                  Mins
-                </h6>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-1-124"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                  >
+                    2
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-6-129"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                  >
+                    E Lee
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    19
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    10
+                  </p>
+                </div>
               </div>
               <div
-                className="col-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
+                class="MuiGrid-item-96 MuiGrid-grid-xs-12-135"
               >
-                <h6>
-                  4s
-                </h6>
+                <hr
+                  class="MuiDivider-root-64"
+                />
               </div>
               <div
-                className="col-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
+                class="MuiGrid-container-95"
               >
-                <h6>
-                  6s
-                </h6>
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-4 col-md-3"
-              >
-                Chris Dobson
-              </div>
-              <div
-                className="col-6 col-md-4"
-              >
-                lbw D Metcalfe
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                3
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-1-124"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                  >
+                    3
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-6-129"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                  >
+                    S Rehman
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    20
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    1
+                  </p>
+                </div>
               </div>
               <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
+                class="MuiGrid-item-96 MuiGrid-grid-xs-12-135"
               >
-                11
+                <hr
+                  class="MuiDivider-root-64"
+                />
               </div>
               <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
+                class="MuiGrid-container-95"
               >
-                0
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-1-124"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                  >
+                    4
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-6-129"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                  >
+                    Z Shah
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    20
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    0
+                  </p>
+                </div>
               </div>
               <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
+                class="MuiGrid-item-96 MuiGrid-grid-xs-12-135"
               >
-                0
+                <hr
+                  class="MuiDivider-root-64"
+                />
               </div>
               <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
+                class="MuiGrid-container-95"
               >
-                0
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-1-124"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                  >
+                    5
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-6-129"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                  >
+                    R Noble
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    86
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    66
+                  </p>
+                </div>
               </div>
               <div
-                className="d-block d-md-none col-4"
-              />
-              <div
-                className="d-block d-md-none col-8"
-                style={
-                  Object {
-                    "fontSize": "10px",
-                  }
-                }
+                class="MuiGrid-item-96 MuiGrid-grid-xs-12-135"
               >
-                11 balls, 0 4s, 0 6s
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-4 col-md-3"
-              >
-                Richard Noble
+                <hr
+                  class="MuiDivider-root-64"
+                />
               </div>
               <div
-                className="col-6 col-md-4"
+                class="MuiGrid-container-95"
               >
-                ct T Hopwood b A Sayed
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-1-124"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                  >
+                    6
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-6-129"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                  >
+                    E Hallas
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    89
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    3
+                  </p>
+                </div>
               </div>
               <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
+                class="MuiGrid-item-96 MuiGrid-grid-xs-12-135"
               >
-                40
+                <hr
+                  class="MuiDivider-root-64"
+                />
               </div>
               <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
+                class="MuiGrid-container-95"
               >
-                49
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-1-124"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                  >
+                    7
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-6-129"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                  >
+                    B Butt
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    113
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    24
+                  </p>
+                </div>
               </div>
               <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
+                class="MuiGrid-item-96 MuiGrid-grid-xs-12-135"
               >
-                0
+                <hr
+                  class="MuiDivider-root-64"
+                />
               </div>
               <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
+                class="MuiGrid-container-95"
               >
-                6
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-1-124"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                  >
+                    8
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-6-129"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                  >
+                    C Blackburn
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    114
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    1
+                  </p>
+                </div>
               </div>
               <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
+                class="MuiGrid-item-96 MuiGrid-grid-xs-12-135"
               >
-                0
+                <hr
+                  class="MuiDivider-root-64"
+                />
               </div>
               <div
-                className="d-block d-md-none col-4"
-              />
-              <div
-                className="d-block d-md-none col-8"
-                style={
-                  Object {
-                    "fontSize": "10px",
-                  }
-                }
+                class="MuiGrid-container-95"
               >
-                49 balls, 6 4s, 0 6s
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-4 col-md-3"
-              >
-                Ethan Lee
-              </div>
-              <div
-                className="col-6 col-md-4"
-              >
-                ct R Todd b D Hunt
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                2
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-1-124"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                  >
+                    9
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-6-129"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                  >
+                    A Rehman
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    114
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    0
+                  </p>
+                </div>
               </div>
               <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
+                class="MuiGrid-item-96 MuiGrid-grid-xs-12-135"
               >
-                13
+                <hr
+                  class="MuiDivider-root-64"
+                />
               </div>
               <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
+                class="MuiGrid-container-95"
               >
-                0
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-1-124"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                  >
+                    10
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-6-129"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                  >
+                    S Bailey
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    122
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body1-38"
+                    style="text-align: right;"
+                  >
+                    8
+                  </p>
+                </div>
               </div>
               <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
+                class="MuiGrid-item-96 MuiGrid-grid-xs-12-135"
               >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="d-block d-md-none col-4"
-              />
-              <div
-                className="d-block d-md-none col-8"
-                style={
-                  Object {
-                    "fontSize": "10px",
-                  }
-                }
-              >
-                13 balls, 0 4s, 0 6s
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-4 col-md-3"
-              >
-                Shahid Rehman
-              </div>
-              <div
-                className="col-6 col-md-4"
-              >
-                run out
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                1
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                3
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="d-block d-md-none col-4"
-              />
-              <div
-                className="d-block d-md-none col-8"
-                style={
-                  Object {
-                    "fontSize": "10px",
-                  }
-                }
-              >
-                3 balls, 0 4s, 0 6s
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-4 col-md-3"
-              >
-                Zahir Shah
-              </div>
-              <div
-                className="col-6 col-md-4"
-              >
-                lbw D Hunt
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                1
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="d-block d-md-none col-4"
-              />
-              <div
-                className="d-block d-md-none col-8"
-                style={
-                  Object {
-                    "fontSize": "10px",
-                  }
-                }
-              >
-                1 balls, 0 4s, 0 6s
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-4 col-md-3"
-              >
-                Elliott Hallas
-              </div>
-              <div
-                className="col-6 col-md-4"
-              >
-                bowled A Sayed
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                35
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                46
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                2
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                3
-              </div>
-              <div
-                className="d-block d-md-none col-4"
-              />
-              <div
-                className="d-block d-md-none col-8"
-                style={
-                  Object {
-                    "fontSize": "10px",
-                  }
-                }
-              >
-                46 balls, 2 4s, 3 6s
+                <hr
+                  class="MuiDivider-root-64"
+                />
               </div>
             </div>
             <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
+              class="MuiGrid-item-96 MuiGrid-grid-xs-12-135 MuiGrid-grid-sm-12-149 MuiGrid-grid-md-12-163 MuiGrid-grid-lg-8-173"
             >
-              <div
-                className="col-4 col-md-3"
+              <h5
+                class="MuiTypography-root-29 MuiTypography-h5-45"
               >
-                Craig Blackburn
-              </div>
-              <div
-                className="col-6 col-md-4"
-              >
-                ct A Sayed b J Abbott
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                19
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                22
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                1
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="d-block d-md-none col-4"
-              />
-              <div
-                className="d-block d-md-none col-8"
-                style={
-                  Object {
-                    "fontSize": "10px",
-                  }
-                }
-              >
-                22 balls, 1 4s, 0 6s
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-4 col-md-3"
-              >
-                Bilal Butt
-              </div>
-              <div
-                className="col-6 col-md-4"
-              >
-                run out (A Sayed)
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                4
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                31
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="d-block d-md-none col-4"
-              />
-              <div
-                className="d-block d-md-none col-8"
-                style={
-                  Object {
-                    "fontSize": "10px",
-                  }
-                }
-              >
-                31 balls, 0 4s, 0 6s
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-4 col-md-3"
-              >
-                Alex Midgley
-              </div>
-              <div
-                className="col-6 col-md-4"
-              >
-                not out
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                4
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                20
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="d-block d-md-none col-4"
-              />
-              <div
-                className="d-block d-md-none col-8"
-                style={
-                  Object {
-                    "fontSize": "10px",
-                  }
-                }
-              >
-                20 balls, 0 4s, 0 6s
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-4 col-md-3"
-              >
-                Atta Rehman
-              </div>
-              <div
-                className="col-6 col-md-4"
-              >
-                lbw J Abbott
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                1
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="d-block d-md-none col-4"
-              />
-              <div
-                className="d-block d-md-none col-8"
-                style={
-                  Object {
-                    "fontSize": "10px",
-                  }
-                }
-              >
-                1 balls, 0 4s, 0 6s
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-4 col-md-3"
-              >
-                Sam Bailey
-              </div>
-              <div
-                className="col-6 col-md-4"
-              >
-                ct J Butterfield b D Hunt
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                4
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                10
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2 col-md-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="d-block d-md-none col-4"
-              />
-              <div
-                className="d-block d-md-none col-8"
-                style={
-                  Object {
-                    "fontSize": "10px",
-                  }
-                }
-              >
-                10 balls, 0 4s, 0 6s
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-4 col-md-3"
-              >
-                Extras
-              </div>
-              <div
-                className="col-6 col-md-4"
-              >
-                1nb 9wd 3b 0lb
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                13
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "backgroundColor": "rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "paddingBottom": "4px",
-                  "paddingTop": "4px",
-                }
-              }
-            >
-              <div
-                className="col-4 col-md-3"
-              >
-                Total
-              </div>
-              <div
-                className="col-6 col-md-4"
-              >
-                (10 wickets) (34.2 overs)
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                122
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="col-xl-4 col-lg-12"
-        >
-          <div
-            style={
-              Object {
-                "marginBottom": "10px",
-                "padding": "20px",
-                "width": "100%",
-              }
-            }
-          >
-            <div
-              className="row"
-              style={
-                Object {
-                  "backgroundColor": "rgb(233, 236, 239)",
-                  "paddingLeft": "8px",
-                  "paddingTop": "4px",
-                }
-              }
-            >
-              <h6>
-                Fall of wickets
-              </h6>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-1"
-              >
-                1
-              </div>
-              <div
-                className="col-6"
-              >
-                C Dobson
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                9
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                9
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-1"
-              >
-                2
-              </div>
-              <div
-                className="col-6"
-              >
-                E Lee
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                19
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                10
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-1"
-              >
-                3
-              </div>
-              <div
-                className="col-6"
-              >
-                S Rehman
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                20
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                1
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-1"
-              >
-                4
-              </div>
-              <div
-                className="col-6"
-              >
-                Z Shah
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                20
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-1"
-              >
-                5
-              </div>
-              <div
-                className="col-6"
-              >
-                R Noble
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                86
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                66
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-1"
-              >
-                6
-              </div>
-              <div
-                className="col-6"
-              >
-                E Hallas
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                89
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                3
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-1"
-              >
-                7
-              </div>
-              <div
-                className="col-6"
-              >
-                B Butt
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                113
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                24
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-1"
-              >
-                8
-              </div>
-              <div
-                className="col-6"
-              >
-                C Blackburn
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                114
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                1
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-1"
-              >
-                9
-              </div>
-              <div
-                className="col-6"
-              >
-                A Rehman
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                114
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
-            >
-              <div
-                className="col-1"
-              >
-                10
-              </div>
-              <div
-                className="col-6"
-              >
-                S Bailey
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                122
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                8
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="col-xl-8 col-lg-12"
-        >
-          <div
-            style={
-              Object {
-                "marginBottom": "10px",
-                "padding": "20px",
-                "width": "100%",
-              }
-            }
-          >
-            <div
-              className="row"
-            >
-              <h6>
                 Baildon
                  bowling
-              </h6>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "backgroundColor": "rgb(233, 236, 239)",
-                  "paddingTop": "4px",
-                }
-              }
-            >
+              </h5>
               <div
-                className="col-6 col-md-5"
-              />
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
+                class="MuiGrid-container-95 Bowling-header-196"
               >
-                <h6>
-                  Overs
-                </h6>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-6-129 MuiGrid-grid-md-5-156"
+                />
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                >
+                  <h6
+                    class="MuiTypography-root-29 MuiTypography-subtitle1-47 MuiTypography-colorInherit-58"
+                    style="text-align: center;"
+                  >
+                    Overs
+                  </h6>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-2-153"
+                >
+                  <h6
+                    class="MuiTypography-root-29 MuiTypography-subtitle1-47 MuiTypography-colorInherit-58"
+                    style="text-align: center;"
+                  >
+                    Maidens
+                  </h6>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                >
+                  <h6
+                    class="MuiTypography-root-29 MuiTypography-subtitle1-47 MuiTypography-colorInherit-58"
+                    style="text-align: center;"
+                  >
+                    Runs
+                  </h6>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125 MuiGrid-grid-md-1-152"
+                >
+                  <h6
+                    class="MuiTypography-root-29 MuiTypography-subtitle1-47 MuiTypography-colorInherit-58"
+                    style="text-align: center;"
+                  >
+                    Wkts
+                  </h6>
+                </div>
               </div>
               <div
-                className="col-2 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
+                class="MuiGrid-container-95"
               >
-                <h6>
-                  Maidens
-                </h6>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-6-129 MuiGrid-grid-md-5-156"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    D Hunt
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                  style="text-align: center;"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    <span>
+                      10.2
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-2-153"
+                  style="text-align: center;"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    <span>
+                      1
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                  style="text-align: center;"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    <span>
+                      46
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125 MuiGrid-grid-md-1-152"
+                  style="text-align: center;"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    <span>
+                      3
+                    </span>
+                  </p>
+                </div>
               </div>
               <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
+                class="MuiGrid-item-96 MuiGrid-grid-xs-12-135"
               >
-                <h6>
-                  Runs
-                </h6>
+                <hr
+                  class="MuiDivider-root-64"
+                />
               </div>
               <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
+                class="MuiGrid-container-95"
               >
-                <h6>
-                  Wkts
-                </h6>
-              </div>
-            </div>
-            <div
-              className="row"
-            >
-              <div
-                className="col-6 col-md-5"
-              >
-                D Hunt
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                10.2
-              </div>
-              <div
-                className="col-2 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                1
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                46
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                3
-              </div>
-            </div>
-            <div
-              className="row"
-            >
-              <div
-                className="col-6 col-md-5"
-              >
-                D Metcalfe
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-6-129 MuiGrid-grid-md-5-156"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    D Metcalfe
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                  style="text-align: center;"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    <span>
+                      6
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-2-153"
+                  style="text-align: center;"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    <span>
+                      3
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                  style="text-align: center;"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    <span>
+                      17
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125 MuiGrid-grid-md-1-152"
+                  style="text-align: center;"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    <span>
+                      1
+                    </span>
+                  </p>
+                </div>
               </div>
               <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
+                class="MuiGrid-item-96 MuiGrid-grid-xs-12-135"
               >
-                6
+                <hr
+                  class="MuiDivider-root-64"
+                />
               </div>
               <div
-                className="col-2 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
+                class="MuiGrid-container-95"
               >
-                3
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-6-129 MuiGrid-grid-md-5-156"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    J Abbott
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                  style="text-align: center;"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    <span>
+                      11
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-2-153"
+                  style="text-align: center;"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    <span>
+                      3
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                  style="text-align: center;"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    <span>
+                      16
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125 MuiGrid-grid-md-1-152"
+                  style="text-align: center;"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    <span>
+                      2
+                    </span>
+                  </p>
+                </div>
               </div>
               <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
+                class="MuiGrid-item-96 MuiGrid-grid-xs-12-135"
               >
-                17
+                <hr
+                  class="MuiDivider-root-64"
+                />
               </div>
               <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
+                class="MuiGrid-container-95"
               >
-                1
-              </div>
-            </div>
-            <div
-              className="row"
-            >
-              <div
-                className="col-6 col-md-5"
-              >
-                J Abbott
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                11
-              </div>
-              <div
-                className="col-2 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                3
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                16
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                2
-              </div>
-            </div>
-            <div
-              className="row"
-            >
-              <div
-                className="col-6 col-md-5"
-              >
-                A Sayed
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-6-129 MuiGrid-grid-md-5-156"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    A Sayed
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                  style="text-align: center;"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    <span>
+                      7
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-md-2-153"
+                  style="text-align: center;"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125"
+                  style="text-align: center;"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    <span>
+                      38
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-96 MuiGrid-grid-xs-2-125 MuiGrid-grid-md-1-152"
+                  style="text-align: center;"
+                >
+                  <p
+                    class="MuiTypography-root-29 MuiTypography-body2-37"
+                  >
+                    <span>
+                      2
+                    </span>
+                  </p>
+                </div>
               </div>
               <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
+                class="MuiGrid-item-96 MuiGrid-grid-xs-12-135"
               >
-                7
-              </div>
-              <div
-                className="col-2 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                0
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                38
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                2
+                <hr
+                  class="MuiDivider-root-64"
+                />
               </div>
             </div>
           </div>
@@ -1950,408 +2107,386 @@ exports[`Scorecard should render correctly when match available 1`] = `
 `;
 
 exports[`Scorecard should render correctly when match has four innings 1`] = `
-<div
-  style={
-    Object {
-      "display": "flex",
-      "flexDirection": "column",
-      "height": "100%",
-    }
-  }
->
-  <div>
+<div>
+  <div
+    class="MuiPaper-root-206 MuiPaper-elevation1-209 MuiPaper-rounded-207 Scorecard-root-205"
+  >
     <div
-      className="col-12"
+      style="text-align: center;"
+    >
+      <h6
+        class="MuiTypography-root-233 MuiTypography-h6-250"
+      >
+        28-Apr-2018
+      </h6>
+      <h5
+        class="MuiTypography-root-233 MuiTypography-h5-249"
+      >
+        Cleckheaton v Baildon
+      </h5>
+      <h6
+        class="MuiTypography-root-233 MuiTypography-h6-250"
+      >
+        <span>
+          Baildon won by 8 runs
+        </span>
+      </h6>
+      <p
+        class="MuiTypography-root-233 MuiTypography-body1-242 MuiTypography-colorTextSecondary-266"
+      >
+        <span />
+      </p>
+    </div>
+    <hr
+      class="MuiDivider-root-268"
+    />
+    <div
+      class="MuiTabs-root-272"
     >
       <div
-        className="row"
-        style={
-          Object {
-            "backgroundColor": "rgb(233, 236, 239)",
-            "paddingTop": "4px",
-            "textAlign": "center",
-          }
-        }
+        class="MuiTabs-flexContainer-273"
       >
         <div
-          className="col-12"
+          class="MuiTabs-scroller-275 MuiTabs-fixed-276"
+          role="tablist"
+          style="margin-bottom: 0px;"
         >
-          <h5>
-            28-Apr-2018
-          </h5>
-        </div>
-        <div
-          className="col-12"
-        >
-          <h4>
-            Cleckheaton v Baildon
-          </h4>
-        </div>
-        <div
-          className="col-12"
-        >
-          <h6>
-            Baildon won by 8 runs
-          </h6>
+          <div
+            class="MuiTabs-flexContainer-273 MuiTabs-centered-274"
+          >
+            <button
+              aria-selected="false"
+              class="MuiButtonBase-root-293 MuiTab-root-281 MuiTab-textColorPrimary-284"
+              role="tab"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiTab-wrapper-289"
+              >
+                <span
+                  class="MuiTab-labelContainer-290"
+                >
+                  <span
+                    class="MuiTab-label-291"
+                  >
+                    1st innings
+                  </span>
+                </span>
+              </span>
+              <span
+                class="MuiTouchRipple-root-402"
+              />
+            </button>
+            <button
+              aria-selected="false"
+              class="MuiButtonBase-root-293 MuiTab-root-281 MuiTab-textColorPrimary-284"
+              role="tab"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiTab-wrapper-289"
+              >
+                <span
+                  class="MuiTab-labelContainer-290"
+                >
+                  <span
+                    class="MuiTab-label-291"
+                  >
+                    2nd innings
+                  </span>
+                </span>
+              </span>
+              <span
+                class="MuiTouchRipple-root-402"
+              />
+            </button>
+            <button
+              aria-selected="false"
+              class="MuiButtonBase-root-293 MuiTab-root-281 MuiTab-textColorPrimary-284"
+              role="tab"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiTab-wrapper-289"
+              >
+                <span
+                  class="MuiTab-labelContainer-290"
+                >
+                  <span
+                    class="MuiTab-label-291"
+                  >
+                    3rd innings
+                  </span>
+                </span>
+              </span>
+              <span
+                class="MuiTouchRipple-root-402"
+              />
+            </button>
+            <button
+              aria-selected="true"
+              class="MuiButtonBase-root-293 MuiTab-root-281 MuiTab-textColorPrimary-284 MuiTab-selected-286"
+              role="tab"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiTab-wrapper-289"
+              >
+                <span
+                  class="MuiTab-labelContainer-290"
+                >
+                  <span
+                    class="MuiTab-label-291"
+                  >
+                    4th innings
+                  </span>
+                </span>
+              </span>
+              <span
+                class="MuiTouchRipple-root-402"
+              />
+            </button>
+          </div>
+          <span
+            class="MuiPrivateTabIndicator-root-296 MuiPrivateTabIndicator-colorPrimary-297 MuiTabs-indicator-280"
+            style="left: 0px; width: 0px;"
+          />
         </div>
       </div>
     </div>
-  </div>
-  <div
-    style={
-      Object {
-        "marginBottom": "4px",
-        "marginTop": "4px",
-        "textAlign": "center",
-      }
-    }
-  >
-    <button
-      className="btn btn-primary"
-      disabled={false}
-      onClick={[Function]}
-      style={
-        Object {
-          "marginLeft": "8px",
-          "marginRight": "8px",
-        }
-      }
+    <div
+      style="overflow-x: hidden;"
     >
-      1st innings
-    </button>
-    <button
-      className="btn btn-primary"
-      disabled={false}
-      onClick={[Function]}
-      style={
-        Object {
-          "marginLeft": "8px",
-          "marginRight": "8px",
-        }
-      }
-    >
-      2nd innings
-    </button>
-    <button
-      className="btn btn-primary"
-      disabled={false}
-      onClick={[Function]}
-      style={
-        Object {
-          "marginLeft": "8px",
-          "marginRight": "8px",
-        }
-      }
-    >
-      3rd innings
-    </button>
-    <button
-      className="btn btn-primary"
-      disabled={true}
-      onClick={[Function]}
-      style={
-        Object {
-          "marginLeft": "8px",
-          "marginRight": "8px",
-        }
-      }
-    >
-      4th innings
-    </button>
-  </div>
-  <div
-    style={
-      Object {
-        "flex": "1",
-        "overflowX": "hidden",
-        "overflowY": "auto",
-      }
-    }
-  >
-    <div>
       <div
-        className="row"
+        class="react-swipeable-view-container"
+        style="direction: ltr; display: flex;"
       >
         <div
-          className="col-12"
-          style={
-            Object {
-              "textAlign": "center",
-            }
-          }
+          aria-hidden="false"
+          data-swipeable="true"
+          style="width: 100%; overflow: auto;"
         >
-          <h5>
-            Baildon 0-0
+          <h5
+            class="MuiTypography-root-233 MuiTypography-h5-249"
+          >
+            <span>
+              Baildon 0-0
+            </span>
           </h5>
-        </div>
-      </div>
-      <div
-        className="row"
-      >
-        <div
-          className="col-xl-8 col-lg-12"
-        >
           <div
-            style={
-              Object {
-                "marginBottom": "10px",
-                "padding": "20px",
-                "width": "100%",
-              }
-            }
+            class="MuiGrid-container-299"
           >
             <div
-              className="row"
-              style={
-                Object {
-                  "backgroundColor": "rgb(233, 236, 239)",
-                  "paddingTop": "4px",
-                }
-              }
+              class="MuiGrid-item-300 MuiGrid-grid-xs-12-339 MuiGrid-grid-sm-12-353 MuiGrid-grid-md-12-367 MuiGrid-grid-lg-8-377"
             >
               <div
-                className="col-10 col-md-7"
+                class="MuiGrid-container-299 Batting-header-396"
               >
-                <h6>
-                  Batsman
-                </h6>
+                <div
+                  class="MuiGrid-item-300 MuiGrid-grid-xs-10-337 MuiGrid-grid-md-7-362"
+                >
+                  <h6
+                    class="MuiTypography-root-233 MuiTypography-subtitle1-251 MuiTypography-colorInherit-262"
+                  >
+                    Batsman
+                  </h6>
+                </div>
+                <div
+                  class="MuiGrid-item-300 MuiGrid-grid-xs-2-329 MuiGrid-grid-md-1-356"
+                >
+                  <h6
+                    class="MuiTypography-root-233 MuiTypography-subtitle1-251 MuiTypography-colorInherit-262"
+                    style="text-align: right;"
+                  >
+                    Runs
+                  </h6>
+                </div>
+                <div
+                  class="MuiGrid-item-300 MuiGrid-grid-md-1-356"
+                >
+                  <h6
+                    class="MuiTypography-root-233 MuiTypography-subtitle1-251 MuiTypography-colorInherit-262"
+                    style="text-align: right;"
+                  >
+                    Balls
+                  </h6>
+                </div>
+                <div
+                  class="MuiGrid-item-300 MuiGrid-grid-md-1-356"
+                >
+                  <h6
+                    class="MuiTypography-root-233 MuiTypography-subtitle1-251 MuiTypography-colorInherit-262"
+                    style="text-align: right;"
+                  >
+                    Mins
+                  </h6>
+                </div>
+                <div
+                  class="MuiGrid-item-300 MuiGrid-grid-md-1-356"
+                >
+                  <h6
+                    class="MuiTypography-root-233 MuiTypography-subtitle1-251 MuiTypography-colorInherit-262"
+                    style="text-align: right;"
+                  >
+                    4s
+                  </h6>
+                </div>
+                <div
+                  class="MuiGrid-item-300 MuiGrid-grid-md-1-356"
+                >
+                  <h6
+                    class="MuiTypography-root-233 MuiTypography-subtitle1-251 MuiTypography-colorInherit-262"
+                    style="text-align: right;"
+                  >
+                    6s
+                  </h6>
+                </div>
               </div>
               <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
+                class="MuiGrid-container-299"
               >
-                <h6>
-                  Runs
-                </h6>
+                <div
+                  class="MuiGrid-item-300 MuiGrid-grid-xs-4-331 MuiGrid-grid-md-3-358"
+                >
+                  <p
+                    class="MuiTypography-root-233 MuiTypography-body1-242"
+                  >
+                    Extras
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-300 MuiGrid-grid-xs-6-333 MuiGrid-grid-md-4-359"
+                >
+                  <p
+                    class="MuiTypography-root-233 MuiTypography-body2-241"
+                  >
+                    <span>
+                      0nb 0wd 0b 0lb
+                    </span>
+                  </p>
+                </div>
+                <div
+                  class="MuiGrid-item-300 MuiGrid-grid-xs-2-329 MuiGrid-grid-md-1-356"
+                >
+                  <p
+                    class="MuiTypography-root-233 MuiTypography-body1-242"
+                    style="text-align: right; font-weight: bold;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </p>
+                </div>
               </div>
               <div
-                className="col-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
+                class="MuiGrid-container-299 Batting-header-396"
               >
-                <h6>
-                  Balls
-                </h6>
+                <div
+                  class="MuiGrid-item-300 MuiGrid-grid-xs-4-331 MuiGrid-grid-md-3-358"
+                >
+                  <h6
+                    class="MuiTypography-root-233 MuiTypography-subtitle1-251 MuiTypography-colorInherit-262"
+                  >
+                    Total
+                  </h6>
+                </div>
+                <div
+                  class="MuiGrid-item-300 MuiGrid-grid-md-4-359"
+                >
+                  <h6
+                    class="MuiTypography-root-233 MuiTypography-subtitle1-251 MuiTypography-colorInherit-262"
+                  >
+                    <span>
+                      for 0 (0 overs)
+                    </span>
+                  </h6>
+                </div>
+                <div
+                  class="MuiGrid-item-300 MuiGrid-grid-xs-2-329 MuiGrid-grid-md-1-356"
+                >
+                  <h6
+                    class="MuiTypography-root-233 MuiTypography-subtitle1-251 MuiTypography-colorInherit-262"
+                    style="text-align: right; font-weight: bold;"
+                  >
+                    <span>
+                      0
+                    </span>
+                  </h6>
+                </div>
               </div>
+            </div>
+            <div
+              class="MuiGrid-item-300 MuiGrid-grid-xs-12-339 MuiGrid-grid-lg-3-372"
+            >
               <div
-                className="col-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
+                class="MuiGrid-container-299 FallOfWickets-header-398"
               >
-                <h6>
-                  Mins
-                </h6>
-              </div>
-              <div
-                className="col-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                <h6>
-                  4s
-                </h6>
-              </div>
-              <div
-                className="col-1 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                <h6>
-                  6s
+                <h6
+                  class="MuiTypography-root-233 MuiTypography-subtitle1-251 MuiTypography-colorInherit-262"
+                >
+                  Fall of wickets
                 </h6>
               </div>
             </div>
             <div
-              className="row"
-              style={
-                Object {
-                  "borderBottom": "1px solid rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "marginTop": "8px",
-                  "paddingBottom": "4px",
-                }
-              }
+              class="MuiGrid-item-300 MuiGrid-grid-xs-12-339 MuiGrid-grid-sm-12-353 MuiGrid-grid-md-12-367 MuiGrid-grid-lg-8-377"
             >
-              <div
-                className="col-4 col-md-3"
+              <h5
+                class="MuiTypography-root-233 MuiTypography-h5-249"
               >
-                Extras
-              </div>
-              <div
-                className="col-6 col-md-4"
-              >
-                0nb 0wd 0b 0lb
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "backgroundColor": "rgb(233, 236, 239)",
-                  "fontSize": "14px",
-                  "paddingBottom": "4px",
-                  "paddingTop": "4px",
-                }
-              }
-            >
-              <div
-                className="col-4 col-md-3"
-              >
-                Total
-              </div>
-              <div
-                className="col-6 col-md-4"
-              >
-                (0 wickets) (0 overs)
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                0
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="col-xl-4 col-lg-12"
-        >
-          <div
-            style={
-              Object {
-                "marginBottom": "10px",
-                "padding": "20px",
-                "width": "100%",
-              }
-            }
-          >
-            <div
-              className="row"
-              style={
-                Object {
-                  "backgroundColor": "rgb(233, 236, 239)",
-                  "paddingLeft": "8px",
-                  "paddingTop": "4px",
-                }
-              }
-            >
-              <h6>
-                Fall of wickets
-              </h6>
-            </div>
-          </div>
-        </div>
-        <div
-          className="col-xl-8 col-lg-12"
-        >
-          <div
-            style={
-              Object {
-                "marginBottom": "10px",
-                "padding": "20px",
-                "width": "100%",
-              }
-            }
-          >
-            <div
-              className="row"
-            >
-              <h6>
                 Cleckheaton
                  bowling
-              </h6>
-            </div>
-            <div
-              className="row"
-              style={
-                Object {
-                  "backgroundColor": "rgb(233, 236, 239)",
-                  "paddingTop": "4px",
-                }
-              }
-            >
+              </h5>
               <div
-                className="col-6 col-md-5"
-              />
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
+                class="MuiGrid-container-299 Bowling-header-400"
               >
-                <h6>
-                  Overs
-                </h6>
-              </div>
-              <div
-                className="col-2 d-none d-md-block"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                <h6>
-                  Maidens
-                </h6>
-              </div>
-              <div
-                className="col-2"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                <h6>
-                  Runs
-                </h6>
-              </div>
-              <div
-                className="col-2 col-md-1"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                <h6>
-                  Wkts
-                </h6>
+                <div
+                  class="MuiGrid-item-300 MuiGrid-grid-xs-6-333 MuiGrid-grid-md-5-360"
+                />
+                <div
+                  class="MuiGrid-item-300 MuiGrid-grid-xs-2-329"
+                >
+                  <h6
+                    class="MuiTypography-root-233 MuiTypography-subtitle1-251 MuiTypography-colorInherit-262"
+                    style="text-align: center;"
+                  >
+                    Overs
+                  </h6>
+                </div>
+                <div
+                  class="MuiGrid-item-300 MuiGrid-grid-md-2-357"
+                >
+                  <h6
+                    class="MuiTypography-root-233 MuiTypography-subtitle1-251 MuiTypography-colorInherit-262"
+                    style="text-align: center;"
+                  >
+                    Maidens
+                  </h6>
+                </div>
+                <div
+                  class="MuiGrid-item-300 MuiGrid-grid-xs-2-329"
+                >
+                  <h6
+                    class="MuiTypography-root-233 MuiTypography-subtitle1-251 MuiTypography-colorInherit-262"
+                    style="text-align: center;"
+                  >
+                    Runs
+                  </h6>
+                </div>
+                <div
+                  class="MuiGrid-item-300 MuiGrid-grid-xs-2-329 MuiGrid-grid-md-1-356"
+                >
+                  <h6
+                    class="MuiTypography-root-233 MuiTypography-subtitle1-251 MuiTypography-colorInherit-262"
+                    style="text-align: center;"
+                  >
+                    Wkts
+                  </h6>
+                </div>
               </div>
             </div>
           </div>
@@ -2359,33 +2494,5 @@ exports[`Scorecard should render correctly when match has four innings 1`] = `
       </div>
     </div>
   </div>
-</div>
-`;
-
-exports[`Scorecard should render correctly when no match available 1`] = `
-<div
-  className="MuiCircularProgress-root-2 MuiCircularProgress-colorPrimary-5 MuiCircularProgress-indeterminate-4"
-  role="progressbar"
-  style={
-    Object {
-      "height": 50,
-      "width": 50,
-    }
-  }
->
-  <svg
-    className="MuiCircularProgress-svg-7"
-    viewBox="22 22 44 44"
-  >
-    <circle
-      className="MuiCircularProgress-circle-8 MuiCircularProgress-circleIndeterminate-10"
-      cx={44}
-      cy={44}
-      fill="none"
-      r={20.2}
-      strokeWidth={3.6}
-      style={Object {}}
-    />
-  </svg>
 </div>
 `;

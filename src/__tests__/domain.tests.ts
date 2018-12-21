@@ -132,6 +132,12 @@ describe('domain', () => {
 
             expect(description).toBe('absent');
         });
+
+        it('should return nothing for unknown reason', () => {
+            const description = domain.unavailablDescription(9999);
+
+            expect(description).toBe('');
+        });
     });
 
     describe('oversDescription', () => {

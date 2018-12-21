@@ -1,67 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DeliveryDisplay should render correctly for no ball 1`] = `
-<div
-  style={
-    Object {
-      "backgroundColor": "#dc3545",
-      "borderRadius": "4px",
-      "color": "#ffffff",
-      "display": "inline-block",
-      "fontSize": "14px",
-      "height": "30px",
-      "marginRight": "4px",
-      "width": "30px",
-    }
-  }
->
-  <canvas
-    height={30}
-    width={30}
-  />
+<div>
+  <div
+    style="width: 30px; height: 30px; margin-right: 4px; color: rgb(255, 255, 255); display: inline-block; border-radius: 4px; font-size: 14px; background-color: rgb(220, 53, 69);"
+  >
+    <canvas
+      height="30"
+      width="30"
+    />
+  </div>
 </div>
 `;
 
 exports[`DeliveryDisplay should render correctly for valid delivery 1`] = `
-<div
-  style={
-    Object {
-      "backgroundColor": "#28a745",
-      "borderRadius": "4px",
-      "color": "#ffffff",
-      "display": "inline-block",
-      "fontSize": "14px",
-      "height": "30px",
-      "marginRight": "4px",
-      "width": "30px",
-    }
-  }
->
-  <canvas
-    height={30}
-    width={30}
-  />
+<div>
+  <div
+    style="width: 30px; height: 30px; margin-right: 4px; color: rgb(255, 255, 255); display: inline-block; border-radius: 4px; font-size: 14px; background-color: rgb(40, 167, 69);"
+  >
+    <canvas
+      height="30"
+      width="30"
+    />
+  </div>
 </div>
 `;
 
 exports[`DeliveryDisplay should render correctly for wide 1`] = `
-<div
-  style={
-    Object {
-      "backgroundColor": "#dc3545",
-      "borderRadius": "4px",
-      "color": "#ffffff",
-      "display": "inline-block",
-      "fontSize": "14px",
-      "height": "30px",
-      "marginRight": "4px",
-      "width": "30px",
-    }
-  }
->
-  <canvas
-    height={30}
-    width={30}
-  />
+<div>
+  <div
+    style="width: 30px; height: 30px; margin-right: 4px; color: rgb(255, 255, 255); display: inline-block; border-radius: 4px; font-size: 14px; background-color: rgb(220, 53, 69);"
+  >
+    <canvas
+      height="30"
+      width="30"
+    />
+  </div>
 </div>
 `;

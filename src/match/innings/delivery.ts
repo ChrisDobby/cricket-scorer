@@ -89,7 +89,6 @@ export default (config: domain.MatchConfig, getTeam: (type: domain.TeamType) => 
     scores: domain.DeliveryScores,
     wicket: domain.DeliveryWicket | undefined = undefined,
 ): [domain.Innings, number, domain.Event] => {
-//    const time = (new Date()).getTime();
     const outcome = {
         deliveryOutcome,
         scores,

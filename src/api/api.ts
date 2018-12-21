@@ -13,8 +13,7 @@ const api = (addBearerToken: any) => (defaultRetries: number, retryWaitMilliseco
 
             return response;
         } catch (err) {
-            if (!availableRetries) { throw err; }
-            return retryAfterWait(availableRetries - 1);
+            throw err;
         }
     };
 

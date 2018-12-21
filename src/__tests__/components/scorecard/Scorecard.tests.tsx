@@ -1,28 +1,21 @@
 import * as React from 'react';
-import { shallow } from 'enzyme';
-import * as ReactTestRenderer from 'react-test-renderer';
+import { render, cleanup } from 'react-testing-library';
 import Scorecard from '../../../components/scorecard/Scorecard';
 import { Innings, InningsStatus, TeamType } from '../../../domain';
 import { match } from '../../testData/testMatch';
 
-describe.skip('Scorecard', () => {
-    it('should change selected innings when button clicked', () => {
-        const scorecard = shallow(<Scorecard cricketMatch={match} />);
-        scorecard.find('button').at(0).simulate('click');
+describe('Scorecard', () => {
+    beforeEach(cleanup);
+    // it('should change selected innings when button clicked', () => {
+    //     const scorecard = shallow(<Scorecard cricketMatch={match} />);
+    //     scorecard.find('button').at(0).simulate('click');
 
-        expect(scorecard.state().selectedInningsIndex).toBe(0);
-    });
+    //     expect(scorecard.state().selectedInningsIndex).toBe(0);
+    // });
 
-    it('should render correctly when no match available', () => {
-        const scorecard = ReactTestRenderer.create(<Scorecard />);
-
-        expect(scorecard.toJSON()).toMatchSnapshot();
-    });
-
-    it('should render correctly when match available', () => {
-        const scorecard = ReactTestRenderer.create(<Scorecard cricketMatch={match} />);
-
-        expect(scorecard.toJSON()).toMatchSnapshot();
+    it('should render correctly', () => {
+        const { container } = render(<Scorecard cricketMatch={match} />);
+        expect(container).toMatchSnapshot();
     });
 
     it('should render correctly when match has four innings', () => {
@@ -75,8 +68,7 @@ describe.skip('Scorecard', () => {
             innings: [...match.innings, thirdInnings, fourthInnings],
         };
 
-        const scorecard = ReactTestRenderer.create(<Scorecard cricketMatch={fourInningsMatch} />);
-
-        expect(scorecard.toJSON()).toMatchSnapshot();
+        const { container } = render(<Scorecard cricketMatch={fourInningsMatch} />);
+        expect(container).toMatchSnapshot();
     });
 });

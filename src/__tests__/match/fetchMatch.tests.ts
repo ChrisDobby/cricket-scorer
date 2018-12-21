@@ -22,10 +22,12 @@ describe('fetchMatch', () => {
     const getMatchWithDifferentId = jest.fn(() => match2);
     const getFromApi = jest.fn(() => Promise.resolve(match));
     const getFromApiWith404 = jest.fn(() => Promise.reject(new Error('404')));
+    const getFromApiWith500 = jest.fn(() => Promise.reject(new Error('500')));
     const sendToApi = jest.fn(() => Promise.resolve());
 
     const api = { getMatch: getFromApi, sendMatch: sendToApi };
     const apiWith404FromGet = { getMatch: getFromApiWith404, sendMatch: sendToApi };
+    const apiWith500FromGet = { getMatch: getFromApiWith500, sendMatch: sendToApi };
     const storeWithNoMatch = { storeMatch, getMatch: getNoMatch };
     const storeWithEarlierVersion = { storeMatch, getMatch: getMatchWithEarlierVersion };
     const storeWithSameVersion = { storeMatch, getMatch: getMatchWithSameVersion };
@@ -110,5 +112,18 @@ describe('fetchMatch', () => {
                 expect(sendToApi).toHaveBeenCalledWith(match2);
                 expect(storeMatch).not.toHaveBeenCalled();
             });
+    });
+
+    it('should throw an error if fetch returns different error status to 404', async () => {
+        const fetch = fetchMatch(apiWith500FromGet, storeWithDifferentMatch);
+
+        let error;
+        try {
+            await fetch(matchId);
+        } catch (e) {
+            error = e.message;
+        }
+
+        expect(error).toEqual('500');
     });
 });

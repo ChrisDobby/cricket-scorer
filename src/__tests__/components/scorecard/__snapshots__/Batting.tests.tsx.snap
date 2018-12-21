@@ -1,347 +1,223 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Batting should render correctly when batter has no innings 1`] = `
-<div
-  className="MuiGrid-item-4 MuiGrid-grid-xs-12-43 MuiGrid-grid-sm-12-57 MuiGrid-grid-md-12-71 MuiGrid-grid-lg-8-81"
->
+<div>
   <div
-    className="MuiGrid-container-3 Batting-header-1"
+    class="MuiGrid-item-4 MuiGrid-grid-xs-12-43 MuiGrid-grid-sm-12-57 MuiGrid-grid-md-12-71 MuiGrid-grid-lg-8-81"
   >
     <div
-      className="MuiGrid-item-4 MuiGrid-grid-xs-10-41 MuiGrid-grid-md-7-66"
+      class="MuiGrid-container-3 Batting-header-1"
     >
-      <h6
-        className="MuiTypography-root-100 MuiTypography-subtitle1-118 MuiTypography-colorInherit-129"
-        style={undefined}
+      <div
+        class="MuiGrid-item-4 MuiGrid-grid-xs-10-41 MuiGrid-grid-md-7-66"
       >
-        Batsman
-      </h6>
-    </div>
-    <div
-      className="MuiGrid-item-4 MuiGrid-grid-xs-2-33 MuiGrid-grid-md-1-60"
-    >
-      <h6
-        className="MuiTypography-root-100 MuiTypography-subtitle1-118 MuiTypography-colorInherit-129"
-        style={
-          Object {
-            "textAlign": "right",
-          }
-        }
-      >
-        Runs
-      </h6>
-    </div>
-    <div
-      className="MuiGrid-item-4 MuiGrid-grid-md-1-60"
-    >
-      <h6
-        className="MuiTypography-root-100 MuiTypography-subtitle1-118 MuiTypography-colorInherit-129"
-        style={
-          Object {
-            "textAlign": "right",
-          }
-        }
-      >
-        Balls
-      </h6>
-    </div>
-    <div
-      className="MuiGrid-item-4 MuiGrid-grid-md-1-60"
-    >
-      <h6
-        className="MuiTypography-root-100 MuiTypography-subtitle1-118 MuiTypography-colorInherit-129"
-        style={
-          Object {
-            "textAlign": "right",
-          }
-        }
-      >
-        Mins
-      </h6>
-    </div>
-    <div
-      className="MuiGrid-item-4 MuiGrid-grid-md-1-60"
-    >
-      <h6
-        className="MuiTypography-root-100 MuiTypography-subtitle1-118 MuiTypography-colorInherit-129"
-        style={
-          Object {
-            "textAlign": "right",
-          }
-        }
-      >
-        4s
-      </h6>
-    </div>
-    <div
-      className="MuiGrid-item-4 MuiGrid-grid-md-1-60"
-    >
-      <h6
-        className="MuiTypography-root-100 MuiTypography-subtitle1-118 MuiTypography-colorInherit-129"
-        style={
-          Object {
-            "textAlign": "right",
-          }
-        }
-      >
-        6s
-      </h6>
-    </div>
-  </div>
-  <div
-    className="MuiGrid-container-3"
-  >
-    <div
-      className="MuiGrid-item-4 MuiGrid-grid-xs-4-35 MuiGrid-grid-md-3-62"
-    >
-      <p
-        className="MuiTypography-root-100 MuiTypography-body2-108"
-      >
-        A Player
-      </p>
-    </div>
-    <div
-      className="MuiGrid-item-4 MuiGrid-grid-xs-6-37 MuiGrid-grid-md-4-63"
-    >
-      <p
-        className="MuiTypography-root-100 MuiTypography-body2-108"
-      >
-        <span
-          style={
-            Object {
-              "transition": "background-color 1s",
-            }
-          }
+        <h6
+          class="MuiTypography-root-100 MuiTypography-subtitle1-118 MuiTypography-colorInherit-129"
         >
-          
-        </span>
-      </p>
-    </div>
-    <div
-      className="MuiGrid-item-4 MuiGrid-grid-xs-2-33 MuiGrid-grid-md-1-60"
-    >
-      <p
-        className="MuiTypography-root-100 MuiTypography-body1-109"
-        style={
-          Object {
-            "fontWeight": "bold",
-            "textAlign": "right",
-          }
-        }
+          Batsman
+        </h6>
+      </div>
+      <div
+        class="MuiGrid-item-4 MuiGrid-grid-xs-2-33 MuiGrid-grid-md-1-60"
       >
-        <span
-          style={
-            Object {
-              "transition": "background-color 1s",
-            }
-          }
+        <h6
+          class="MuiTypography-root-100 MuiTypography-subtitle1-118 MuiTypography-colorInherit-129"
+          style="text-align: right;"
         >
-          
-        </span>
-      </p>
-    </div>
-    <div
-      className="MuiGrid-item-4 MuiGrid-grid-md-1-60"
-    >
-      <p
-        className="MuiTypography-root-100 MuiTypography-body1-109"
-        style={
-          Object {
-            "textAlign": "right",
-          }
-        }
+          Runs
+        </h6>
+      </div>
+      <div
+        class="MuiGrid-item-4 MuiGrid-grid-md-1-60"
       >
-        <span
-          style={
-            Object {
-              "transition": "background-color 1s",
-            }
-          }
+        <h6
+          class="MuiTypography-root-100 MuiTypography-subtitle1-118 MuiTypography-colorInherit-129"
+          style="text-align: right;"
         >
-          
-        </span>
-      </p>
-    </div>
-    <div
-      className="MuiGrid-item-4 MuiGrid-grid-md-1-60"
-    >
-      <p
-        className="MuiTypography-root-100 MuiTypography-body1-109"
-        style={
-          Object {
-            "textAlign": "right",
-          }
-        }
+          Balls
+        </h6>
+      </div>
+      <div
+        class="MuiGrid-item-4 MuiGrid-grid-md-1-60"
       >
-        <span
-          style={
-            Object {
-              "transition": "background-color 1s",
-            }
-          }
+        <h6
+          class="MuiTypography-root-100 MuiTypography-subtitle1-118 MuiTypography-colorInherit-129"
+          style="text-align: right;"
         >
-          
-        </span>
-      </p>
-    </div>
-    <div
-      className="MuiGrid-item-4 MuiGrid-grid-md-1-60"
-    >
-      <p
-        className="MuiTypography-root-100 MuiTypography-body1-109"
-        style={
-          Object {
-            "textAlign": "right",
-          }
-        }
+          Mins
+        </h6>
+      </div>
+      <div
+        class="MuiGrid-item-4 MuiGrid-grid-md-1-60"
       >
-        <span
-          style={
-            Object {
-              "transition": "background-color 1s",
-            }
-          }
+        <h6
+          class="MuiTypography-root-100 MuiTypography-subtitle1-118 MuiTypography-colorInherit-129"
+          style="text-align: right;"
         >
-          
-        </span>
-      </p>
-    </div>
-    <div
-      className="MuiGrid-item-4 MuiGrid-grid-md-1-60"
-    >
-      <p
-        className="MuiTypography-root-100 MuiTypography-body1-109"
-        style={
-          Object {
-            "textAlign": "right",
-          }
-        }
+          4s
+        </h6>
+      </div>
+      <div
+        class="MuiGrid-item-4 MuiGrid-grid-md-1-60"
       >
-        <span
-          style={
-            Object {
-              "transition": "background-color 1s",
-            }
-          }
+        <h6
+          class="MuiTypography-root-100 MuiTypography-subtitle1-118 MuiTypography-colorInherit-129"
+          style="text-align: right;"
         >
-          
-        </span>
-      </p>
-    </div>
-  </div>
-  <div
-    className="MuiGrid-item-4 MuiGrid-grid-xs-12-43"
-  >
-    <hr
-      className="MuiDivider-root-135"
-    />
-  </div>
-  <div
-    className="MuiGrid-container-3"
-  >
-    <div
-      className="MuiGrid-item-4 MuiGrid-grid-xs-4-35 MuiGrid-grid-md-3-62"
-    >
-      <p
-        className="MuiTypography-root-100 MuiTypography-body1-109"
-      >
-        Extras
-      </p>
+          6s
+        </h6>
+      </div>
     </div>
     <div
-      className="MuiGrid-item-4 MuiGrid-grid-xs-6-37 MuiGrid-grid-md-4-63"
+      class="MuiGrid-container-3"
     >
-      <p
-        className="MuiTypography-root-100 MuiTypography-body2-108"
+      <div
+        class="MuiGrid-item-4 MuiGrid-grid-xs-4-35 MuiGrid-grid-md-3-62"
       >
-        <span
-          style={
-            Object {
-              "transition": "background-color 1s",
-            }
-          }
+        <p
+          class="MuiTypography-root-100 MuiTypography-body2-108"
         >
-          0nb 0wd 0b 0lb
-        </span>
-      </p>
-    </div>
-    <div
-      className="MuiGrid-item-4 MuiGrid-grid-xs-2-33 MuiGrid-grid-md-1-60"
-    >
-      <p
-        className="MuiTypography-root-100 MuiTypography-body1-109"
-        style={
-          Object {
-            "fontWeight": "bold",
-            "textAlign": "right",
-          }
-        }
+          A Player
+        </p>
+      </div>
+      <div
+        class="MuiGrid-item-4 MuiGrid-grid-xs-6-37 MuiGrid-grid-md-4-63"
       >
-        <span
-          style={
-            Object {
-              "transition": "background-color 1s",
-            }
-          }
+        <p
+          class="MuiTypography-root-100 MuiTypography-body2-108"
         >
-          0
-        </span>
-      </p>
-    </div>
-  </div>
-  <div
-    className="MuiGrid-container-3 Batting-header-1"
-  >
-    <div
-      className="MuiGrid-item-4 MuiGrid-grid-xs-4-35 MuiGrid-grid-md-3-62"
-    >
-      <h6
-        className="MuiTypography-root-100 MuiTypography-subtitle1-118 MuiTypography-colorInherit-129"
-        style={undefined}
+          <span />
+        </p>
+      </div>
+      <div
+        class="MuiGrid-item-4 MuiGrid-grid-xs-2-33 MuiGrid-grid-md-1-60"
       >
-        Total
-      </h6>
-    </div>
-    <div
-      className="MuiGrid-item-4 MuiGrid-grid-md-4-63"
-    >
-      <h6
-        className="MuiTypography-root-100 MuiTypography-subtitle1-118 MuiTypography-colorInherit-129"
-        style={undefined}
-      >
-        <span
-          style={
-            Object {
-              "transition": "background-color 1s",
-            }
-          }
+        <p
+          class="MuiTypography-root-100 MuiTypography-body1-109"
+          style="text-align: right; font-weight: bold;"
         >
-          for 1 (20 overs)
-        </span>
-      </h6>
+          <span />
+        </p>
+      </div>
+      <div
+        class="MuiGrid-item-4 MuiGrid-grid-md-1-60"
+      >
+        <p
+          class="MuiTypography-root-100 MuiTypography-body1-109"
+          style="text-align: right;"
+        >
+          <span />
+        </p>
+      </div>
+      <div
+        class="MuiGrid-item-4 MuiGrid-grid-md-1-60"
+      >
+        <p
+          class="MuiTypography-root-100 MuiTypography-body1-109"
+          style="text-align: right;"
+        >
+          <span />
+        </p>
+      </div>
+      <div
+        class="MuiGrid-item-4 MuiGrid-grid-md-1-60"
+      >
+        <p
+          class="MuiTypography-root-100 MuiTypography-body1-109"
+          style="text-align: right;"
+        >
+          <span />
+        </p>
+      </div>
+      <div
+        class="MuiGrid-item-4 MuiGrid-grid-md-1-60"
+      >
+        <p
+          class="MuiTypography-root-100 MuiTypography-body1-109"
+          style="text-align: right;"
+        >
+          <span />
+        </p>
+      </div>
     </div>
     <div
-      className="MuiGrid-item-4 MuiGrid-grid-xs-2-33 MuiGrid-grid-md-1-60"
+      class="MuiGrid-item-4 MuiGrid-grid-xs-12-43"
     >
-      <h6
-        className="MuiTypography-root-100 MuiTypography-subtitle1-118 MuiTypography-colorInherit-129"
-        style={
-          Object {
-            "fontWeight": "bold",
-            "textAlign": "right",
-          }
-        }
+      <hr
+        class="MuiDivider-root-135"
+      />
+    </div>
+    <div
+      class="MuiGrid-container-3"
+    >
+      <div
+        class="MuiGrid-item-4 MuiGrid-grid-xs-4-35 MuiGrid-grid-md-3-62"
       >
-        <span
-          style={
-            Object {
-              "transition": "background-color 1s",
-            }
-          }
+        <p
+          class="MuiTypography-root-100 MuiTypography-body1-109"
         >
-          100
-        </span>
-      </h6>
+          Extras
+        </p>
+      </div>
+      <div
+        class="MuiGrid-item-4 MuiGrid-grid-xs-6-37 MuiGrid-grid-md-4-63"
+      >
+        <p
+          class="MuiTypography-root-100 MuiTypography-body2-108"
+        >
+          <span>
+            0nb 0wd 0b 0lb
+          </span>
+        </p>
+      </div>
+      <div
+        class="MuiGrid-item-4 MuiGrid-grid-xs-2-33 MuiGrid-grid-md-1-60"
+      >
+        <p
+          class="MuiTypography-root-100 MuiTypography-body1-109"
+          style="text-align: right; font-weight: bold;"
+        >
+          <span>
+            0
+          </span>
+        </p>
+      </div>
+    </div>
+    <div
+      class="MuiGrid-container-3 Batting-header-1"
+    >
+      <div
+        class="MuiGrid-item-4 MuiGrid-grid-xs-4-35 MuiGrid-grid-md-3-62"
+      >
+        <h6
+          class="MuiTypography-root-100 MuiTypography-subtitle1-118 MuiTypography-colorInherit-129"
+        >
+          Total
+        </h6>
+      </div>
+      <div
+        class="MuiGrid-item-4 MuiGrid-grid-md-4-63"
+      >
+        <h6
+          class="MuiTypography-root-100 MuiTypography-subtitle1-118 MuiTypography-colorInherit-129"
+        >
+          <span>
+            for 1 (20 overs)
+          </span>
+        </h6>
+      </div>
+      <div
+        class="MuiGrid-item-4 MuiGrid-grid-xs-2-33 MuiGrid-grid-md-1-60"
+      >
+        <h6
+          class="MuiTypography-root-100 MuiTypography-subtitle1-118 MuiTypography-colorInherit-129"
+          style="text-align: right; font-weight: bold;"
+        >
+          <span>
+            100
+          </span>
+        </h6>
+      </div>
     </div>
   </div>
 </div>

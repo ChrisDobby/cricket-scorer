@@ -24,6 +24,25 @@ describe('calculateResult', () => {
         },
     ];
 
+    const singleInningsBattingSecondScoresMoreAwayTeamBattingFirst = [
+        {
+            ...matches.startedInnings,
+            battingTeam: TeamType.AwayTeam,
+            bowlingTeam: TeamType.HomeTeam,
+            score: 200,
+            wickets: 10,
+            status: InningsStatus.AllOut,
+        },
+        {
+            ...matches.startedInnings,
+            battingTeam: TeamType.HomeTeam,
+            bowlingTeam: TeamType.AwayTeam,
+            score: 201,
+            wickets: 7,
+            status: InningsStatus.InProgress,
+        },
+    ];
+
     const singleInningsBattingFirstScoresMore = [
         {
             ...matches.startedInnings,
@@ -37,6 +56,25 @@ describe('calculateResult', () => {
             ...matches.startedInnings,
             battingTeam: TeamType.AwayTeam,
             bowlingTeam: TeamType.HomeTeam,
+            score: 190,
+            wickets: 7,
+            status: InningsStatus.InProgress,
+        },
+    ];
+
+    const singleInningsBattingFirstScoresMoreAwayTeamBattingFirst = [
+        {
+            ...matches.startedInnings,
+            battingTeam: TeamType.AwayTeam,
+            bowlingTeam: TeamType.HomeTeam,
+            score: 200,
+            wickets: 10,
+            status: InningsStatus.AllOut,
+        },
+        {
+            ...matches.startedInnings,
+            battingTeam: TeamType.HomeTeam,
+            bowlingTeam: TeamType.AwayTeam,
             score: 190,
             wickets: 7,
             status: InningsStatus.InProgress,
@@ -72,6 +110,11 @@ describe('calculateResult', () => {
         innings: singleInningsBattingSecondScoresMore,
     };
 
+    const singleInningsMatchBattingSecondScoresMoreAwayBattingFirst = {
+        ...matches.blankMatch,
+        innings: singleInningsBattingSecondScoresMoreAwayTeamBattingFirst,
+    };
+
     const singleInningsMatchBattingFirstScoresMore = {
         ...matches.blankMatch,
         innings: singleInningsBattingFirstScoresMore,
@@ -91,6 +134,12 @@ describe('calculateResult', () => {
         ...matches.blankMatch,
         config: limitedOversConfig,
         innings: singleInningsBattingFirstScoresMore,
+    };
+
+    const limitedOversMatchBattingFirstScoresMoreAwayBattingFirst = {
+        ...matches.blankMatch,
+        config: limitedOversConfig,
+        innings: singleInningsBattingFirstScoresMoreAwayTeamBattingFirst,
     };
 
     it('should return abandoned result when no innings have been started', () => {
@@ -113,6 +162,14 @@ describe('calculateResult', () => {
         expect(matchResult.winMargin).toBe('3');
     });
 
+    it('should return a win result for a single innings game when home team batting second scored more runs', () => {
+        const matchResult = calculateResult(singleInningsMatchBattingSecondScoresMoreAwayBattingFirst) as MatchResult;
+
+        expect(matchResult.result).toBe(Result.HomeWin);
+        expect(matchResult.winBy).toBe(WinBy.Wickets);
+        expect(matchResult.winMargin).toBe('3');
+    });
+
     it('should return a draw result for a single innings timed game when team batting first scored more runs', () => {
         const matchResult = calculateResult(singleInningsMatchBattingFirstScoresMore) as MatchResult;
 
@@ -131,6 +188,14 @@ describe('calculateResult', () => {
         const matchResult = calculateResult(limitedOversMatchBattingFirstScoresMore) as MatchResult;
 
         expect(matchResult.result).toBe(Result.HomeWin);
+        expect(matchResult.winBy).toBe(WinBy.Runs);
+        expect(matchResult.winMargin).toBe('10');
+    });
+
+    it('should return win result for a limited overs game away batting 1st scores more', () => {
+        const matchResult = calculateResult(limitedOversMatchBattingFirstScoresMoreAwayBattingFirst) as MatchResult;
+
+        expect(matchResult.result).toBe(Result.AwayWin);
         expect(matchResult.winBy).toBe(WinBy.Runs);
         expect(matchResult.winMargin).toBe('10');
     });

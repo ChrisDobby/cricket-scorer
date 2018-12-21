@@ -1,34 +1,30 @@
 import { StoredMatch } from '../domain';
-import api from './api';
 
 const matchRoute = 'match';
 const inProgressQuery = 'inprogress';
 const expectedCompleteQuery = 'expectedcomplete';
 const userQuery = 'user';
 
-const matchApi = (url: string) => {
-    const Api = api(3, 1000);
-
+const matchApi = (url: string) => (api: any) => {
     const sendMatch = async (storedMatch: StoredMatch) => {
-        if (typeof storedMatch.match === 'undefined') { return undefined; }
         if (typeof storedMatch.match.id !== 'undefined') {
-            return await Api.put(`${url}/${matchRoute}/${storedMatch.match.id}`, storedMatch);
+            return await api.put(`${url}/${matchRoute}/${storedMatch.match.id}`, storedMatch);
         }
 
-        return await Api.post(`${url}/${matchRoute}`, storedMatch);
+        return await api.post(`${url}/${matchRoute}`, storedMatch);
     };
 
     const getMatch = async (id: string) =>
-        await Api.get(`${url}/${matchRoute}/${id}`);
+        await api.get(`${url}/${matchRoute}/${id}`);
 
     const getInProgressMatches = async () =>
-        await Api.get(`${url}/${matchRoute}?${inProgressQuery}=true`);
+        await api.get(`${url}/${matchRoute}?${inProgressQuery}=true`);
 
     const getOutOfDateMatches = async (user: string) =>
-        await Api.get(`${url}/${matchRoute}?${userQuery}=${user}&${expectedCompleteQuery}=true`);
+        await api.get(`${url}/${matchRoute}?${userQuery}=${user}&${expectedCompleteQuery}=true`);
 
     const removeMatch = async (id: string) =>
-        await Api.remove(`${url}/${matchRoute}/${id}`);
+        await api.remove(`${url}/${matchRoute}/${id}`);
 
     return {
         sendMatch,

@@ -163,6 +163,19 @@ describe('rebuild', () => {
         });
     });
 
+    it('should do nothing for an unknown event', () => {
+        const unknown = {
+            time: (new Date()).getTime(),
+            type: 99999,
+        };
+
+        const newInnings = Rebuild(matches.inningsWithStartedOver, 9, [unknown]);
+        expect(newInnings).toEqual({
+            innings: matches.inningsWithStartedOver,
+            batterIndex: 9,
+        });
+    });
+
     it('should create a new innings if the specified batter has no innings', () => {
         const deliveryToNumber3 = {
             time: (new Date()).getTime(),

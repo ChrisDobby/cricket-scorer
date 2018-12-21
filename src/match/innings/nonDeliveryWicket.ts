@@ -1,4 +1,4 @@
-import { Innings, Batter, Howout, Event, EventType } from '../../domain';
+import { Innings, Batter, Howout, Event, EventType, BattingInnings } from '../../domain';
 import addEvent from './addEvent';
 import getFallOfWicket from './getFallOfWicket';
 
@@ -8,7 +8,6 @@ export default (
     batter: Batter,
     howout: Howout,
 ): [Innings, Event] => {
-//    const time = (new Date()).getTime();
     const event = {
         time,
         out: howout,
@@ -23,12 +22,10 @@ export default (
         batter,
         b => ({
             ...b,
-            innings: typeof b.innings === 'undefined'
-                ? b.innings
-                : {
-                    ...b.innings,
-                    wicket: { time, howOut: howout },
-                },
+            innings: {
+                ...(b.innings as BattingInnings),
+                wicket: { time, howOut: howout },
+            },
         }),
     );
 

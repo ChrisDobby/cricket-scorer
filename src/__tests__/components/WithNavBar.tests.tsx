@@ -1,13 +1,14 @@
 import * as React from 'react';
-import * as ReactTestRenderer from 'react-test-renderer';
+import { render, cleanup } from 'react-testing-library';
 import WithNavBar from '../../components/WithNavBar';
 
 describe('WithNavBar', () => {
+    beforeEach(cleanup);
     const TestComponent = () => <div />;
     it('should render correctly', () => {
         const TestComponentWithNavBar = WithNavBar({})(TestComponent);
-        const withNavBar = ReactTestRenderer.create(<TestComponentWithNavBar />);
+        const { container } = render(<TestComponentWithNavBar />);
 
-        expect(withNavBar.toJSON()).toMatchSnapshot();
+        expect(container).toMatchSnapshot();
     });
 });

@@ -1,902 +1,576 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InProgress should render correctly for match during an over 1`] = `
-<div
-  className="MuiPaper-root-2 MuiPaper-elevation2-6 MuiPaper-rounded-3 withRouter-InProgress--root-1"
->
+<div>
   <div
-    className="MuiGrid-container-29"
+    class="MuiPaper-root-355 MuiPaper-elevation2-359 MuiPaper-rounded-356 withRouter-InProgress--root-354"
   >
     <div
-      className="MuiGrid-container-29 DeliveryHeader-header-242"
-    >
-      <h5
-        className="MuiTypography-root-130 MuiTypography-h5-146 MuiTypography-colorInherit-159"
-        style={
-          Object {
-            "marginLeft": "20px",
-          }
-        }
-      >
-        Player 22 to Player 1
-      </h5>
-    </div>
-    <div
-      className="MuiGrid-container-29"
+      class="MuiGrid-container-382"
     >
       <div
-        className="MuiGrid-item-30 MuiGrid-grid-xs-12-69 MuiGrid-grid-lg-6-105"
-        style={
-          Object {
-            "marginBottom": "10px",
-            "marginTop": "10px",
-            "padding": "5px",
-          }
-        }
+        class="MuiGrid-container-382 DeliveryHeader-header-479"
+      >
+        <h5
+          class="MuiTypography-root-481 MuiTypography-h5-497 MuiTypography-colorInherit-510"
+          style="margin-left: 20px;"
+        >
+          Player 22 to Player 1
+        </h5>
+      </div>
+      <div
+        class="MuiGrid-container-382"
       >
         <div
-          className="MuiPaper-root-2 MuiPaper-elevation1-5 MuiPaper-rounded-3"
-          style={
-            Object {
-              "height": "100%",
-              "padding": "10px",
-            }
-          }
+          class="MuiGrid-item-383 MuiGrid-grid-xs-12-422 MuiGrid-grid-lg-6-458"
+          style="margin-top: 10px; margin-bottom: 10px; padding: 5px;"
         >
           <div
-            className="MuiGrid-container-29"
+            class="MuiPaper-root-355 MuiPaper-elevation1-358 MuiPaper-rounded-356"
+            style="padding: 10px; height: 100%;"
           >
             <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
-            >
-              <h5
-                className="MuiTypography-root-130 MuiTypography-h5-146"
-              >
-                Team 1
-              </h5>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
-            >
-              <h5
-                className="MuiTypography-root-130 MuiTypography-h5-146"
-              >
-                0-0
-              </h5>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
-            >
-              <h5
-                className="MuiTypography-root-130 MuiTypography-h5-146"
-              >
-                Overs
-              </h5>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
-            >
-              <h5
-                className="MuiTypography-root-130 MuiTypography-h5-146"
-              >
-                0
-              </h5>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
-            >
-              <h5
-                className="MuiTypography-root-130 MuiTypography-h5-146"
-              >
-                Player 1
-              </h5>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
-            >
-              <h5
-                className="MuiTypography-root-130 MuiTypography-h5-146"
-              >
-                0(0)
-                <svg
-                  aria-hidden="true"
-                  className="MuiSvgIcon-root-223 MuiSvgIcon-colorPrimary-224"
-                  color={undefined}
-                  focusable="false"
-                  role="presentation"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M0 0h24v24H0z"
-                    fill="none"
-                  />
-                  <path
-                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-                  />
-                  <path
-                    d="M0 0h24v24H0z"
-                    fill="none"
-                  />
-                </svg>
-              </h5>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
-            >
-              <h5
-                className="MuiTypography-root-130 MuiTypography-h5-146"
-              >
-                Player 2
-              </h5>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
-            >
-              <h5
-                className="MuiTypography-root-130 MuiTypography-h5-146"
-              >
-                0(0)
-              </h5>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
-            >
-              <h5
-                className="MuiTypography-root-130 MuiTypography-h5-146"
-              >
-                Player 22
-              </h5>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
-            >
-              <h5
-                className="MuiTypography-root-130 MuiTypography-h5-146"
-              >
-                0-0-0-0
-              </h5>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
-            >
-              <h5
-                className="MuiTypography-root-130 MuiTypography-h5-146"
-              >
-                Extras
-              </h5>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63"
-            >
-              <h5
-                className="MuiTypography-root-130 MuiTypography-h5-146"
-              >
-                0
-              </h5>
-            </div>
-            <div
-              style={
-                Object {
-                  "minHeight": "100px",
-                  "paddingBottom": "10px",
-                  "paddingTop": "10px",
-                }
-              }
+              class="MuiGrid-container-382"
             >
               <div
-                className="MuiGrid-container-29"
+                class="MuiGrid-item-383 MuiGrid-grid-xs-6-416"
               >
-                <h6
-                  className="MuiTypography-root-130 MuiTypography-h6-147"
+                <h5
+                  class="MuiTypography-root-481 MuiTypography-h5-497"
                 >
-                  This over 0 - 0
-                </h6>
+                  Team 1
+                </h5>
               </div>
               <div
-                className="MuiGrid-container-29"
-              />
+                class="MuiGrid-item-383 MuiGrid-grid-xs-6-416"
+              >
+                <h5
+                  class="MuiTypography-root-481 MuiTypography-h5-497"
+                >
+                  0-0
+                </h5>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-6-416"
+              >
+                <h5
+                  class="MuiTypography-root-481 MuiTypography-h5-497"
+                >
+                  Overs
+                </h5>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-6-416"
+              >
+                <h5
+                  class="MuiTypography-root-481 MuiTypography-h5-497"
+                >
+                  0
+                </h5>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-6-416"
+              >
+                <h5
+                  class="MuiTypography-root-481 MuiTypography-h5-497"
+                >
+                  Player 1
+                </h5>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-6-416"
+              >
+                <h5
+                  class="MuiTypography-root-481 MuiTypography-h5-497"
+                >
+                  0(0)
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root-611 MuiSvgIcon-colorPrimary-612"
+                    focusable="false"
+                    role="presentation"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M0 0h24v24H0z"
+                      fill="none"
+                    />
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                    />
+                    <path
+                      d="M0 0h24v24H0z"
+                      fill="none"
+                    />
+                  </svg>
+                </h5>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-6-416"
+              >
+                <h5
+                  class="MuiTypography-root-481 MuiTypography-h5-497"
+                >
+                  Player 2
+                </h5>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-6-416"
+              >
+                <h5
+                  class="MuiTypography-root-481 MuiTypography-h5-497"
+                >
+                  0(0)
+                </h5>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-6-416"
+              >
+                <h5
+                  class="MuiTypography-root-481 MuiTypography-h5-497"
+                >
+                  Player 22
+                </h5>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-6-416"
+              >
+                <h5
+                  class="MuiTypography-root-481 MuiTypography-h5-497"
+                >
+                  0-0-0-0
+                </h5>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-6-416"
+              >
+                <h5
+                  class="MuiTypography-root-481 MuiTypography-h5-497"
+                >
+                  Extras
+                </h5>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-6-416"
+              >
+                <h5
+                  class="MuiTypography-root-481 MuiTypography-h5-497"
+                >
+                  0
+                </h5>
+              </div>
+              <div
+                style="min-height: 100px; padding-top: 10px; padding-bottom: 10px;"
+              >
+                <div
+                  class="MuiGrid-container-382"
+                >
+                  <h6
+                    class="MuiTypography-root-481 MuiTypography-h6-498"
+                  >
+                    This over 0 - 0
+                  </h6>
+                </div>
+                <div
+                  class="MuiGrid-container-382"
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div
-        className="MuiGrid-item-30 MuiGrid-grid-xs-12-69 MuiGrid-grid-lg-6-105"
-        style={
-          Object {
-            "marginBottom": "10px",
-            "marginTop": "10px",
-            "padding": "5px",
-          }
-        }
-      >
         <div
-          className="MuiPaper-root-2 MuiPaper-elevation1-5 MuiPaper-rounded-3"
-          style={
-            Object {
-              "height": "100%",
-              "padding": "10px",
-            }
-          }
+          class="MuiGrid-item-383 MuiGrid-grid-xs-12-422 MuiGrid-grid-lg-6-458"
+          style="margin-top: 10px; margin-bottom: 10px; padding: 5px;"
         >
           <div
-            className="MuiGrid-container-29"
+            class="MuiPaper-root-355 MuiPaper-elevation1-358 MuiPaper-rounded-356"
+            style="padding: 10px; height: 100%;"
           >
-            <div>
-              <div
-                className="MuiGrid-container-29"
-              >
-                <button
-                  aria-label="Wicket"
-                  className="MuiButtonBase-root-195 MuiButton-root-169 MuiButton-fab-186 MuiButton-contained-180 MuiButton-containedPrimary-181 MuiButton-raised-183 MuiButton-raisedPrimary-184"
-                  disabled={false}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  style={
-                    Object {
-                      "marginRight": "10px",
-                    }
-                  }
-                  tabIndex="0"
-                  type="button"
+            <div
+              class="MuiGrid-container-382"
+            >
+              <div>
+                <div
+                  class="MuiGrid-container-382"
                 >
-                  <span
-                    className="MuiButton-label-170"
-                  >
-                    W
-                  </span>
-                  <span
-                    className="MuiTouchRipple-root-320"
-                  />
-                </button>
-                <label
-                  className="MuiFormControlLabel-root-244"
-                  style={
-                    Object {
-                      "float": "right",
-                    }
-                  }
-                >
-                  <span
-                    className="MuiSwitch-root-250"
+                  <button
+                    aria-label="Wicket"
+                    class="MuiButtonBase-root-542 MuiButton-root-516 MuiButton-fab-533 MuiButton-contained-527 MuiButton-containedPrimary-528 MuiButton-raised-530 MuiButton-raisedPrimary-531"
+                    style="margin-right: 10px;"
+                    tabindex="0"
+                    type="button"
                   >
                     <span
-                      className="MuiButtonBase-root-195 MuiIconButton-root-263 MuiPrivateSwitchBase-root-259 MuiSwitch-switchBase-253 MuiSwitch-colorSecondary-256"
-                      onBlur={[Function]}
-                      onFocus={[Function]}
-                      onKeyDown={[Function]}
-                      onKeyUp={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      onTouchEnd={[Function]}
-                      onTouchMove={[Function]}
-                      onTouchStart={[Function]}
-                      role={undefined}
-                      tabIndex={null}
+                      class="MuiButton-label-517"
+                    >
+                      W
+                    </span>
+                    <span
+                      class="MuiTouchRipple-root-630"
+                    />
+                  </button>
+                  <label
+                    class="MuiFormControlLabel-root-545"
+                    style="float: right;"
+                  >
+                    <span
+                      class="MuiSwitch-root-551"
                     >
                       <span
-                        className="MuiIconButton-label-268"
+                        class="MuiButtonBase-root-542 MuiIconButton-root-564 MuiPrivateSwitchBase-root-560 MuiSwitch-switchBase-554 MuiSwitch-colorSecondary-557"
                       >
                         <span
-                          className="MuiSwitch-icon-251"
-                        />
-                        <input
-                          autoFocus={undefined}
-                          checked={false}
-                          className="MuiPrivateSwitchBase-input-262"
-                          disabled={undefined}
-                          id={undefined}
-                          name={undefined}
-                          onChange={[Function]}
-                          readOnly={undefined}
-                          required={undefined}
-                          tabIndex={undefined}
-                          type="checkbox"
-                          value={undefined}
+                          class="MuiIconButton-label-569"
+                        >
+                          <span
+                            class="MuiSwitch-icon-552"
+                          />
+                          <input
+                            class="MuiPrivateSwitchBase-input-563"
+                            type="checkbox"
+                            value=""
+                          />
+                        </span>
+                        <span
+                          class="MuiTouchRipple-root-630"
                         />
                       </span>
                       <span
-                        className="MuiTouchRipple-root-320"
+                        class="MuiSwitch-bar-559"
                       />
                     </span>
                     <span
-                      className="MuiSwitch-bar-258"
-                    />
-                  </span>
-                  <span
-                    className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-249"
-                  >
-                    No ball
-                  </span>
-                </label>
-              </div>
-              <div
-                className="MuiGrid-container-29"
-              >
-                <div
-                  className="MuiGrid-item-30 MuiGrid-grid-xs-12-69"
-                >
-                  <hr
-                    className="MuiDivider-root-269"
-                    style={
-                      Object {
-                        "marginBottom": "10px",
-                        "marginTop": "10px",
-                      }
-                    }
-                  />
+                      class="MuiTypography-root-481 MuiTypography-body1-490 MuiFormControlLabel-label-550"
+                    >
+                      No ball
+                    </span>
+                  </label>
                 </div>
-              </div>
-              <div
-                className="MuiGrid-container-29"
-              >
-                <label
-                  className="MuiFormControlLabel-root-244"
-                  style={
-                    Object {
-                      "marginRight": "22px",
-                    }
-                  }
-                >
-                  <span
-                    className="MuiButtonBase-root-195 MuiIconButton-root-263 MuiPrivateSwitchBase-root-259 MuiRadio-root-327 MuiRadio-colorSecondary-331 MuiPrivateSwitchBase-checked-260 MuiRadio-checked-328"
-                    onBlur={[Function]}
-                    onFocus={[Function]}
-                    onKeyDown={[Function]}
-                    onKeyUp={[Function]}
-                    onMouseDown={[Function]}
-                    onMouseLeave={[Function]}
-                    onMouseUp={[Function]}
-                    onTouchEnd={[Function]}
-                    onTouchMove={[Function]}
-                    onTouchStart={[Function]}
-                    role={undefined}
-                    tabIndex={null}
-                  >
-                    <span
-                      className="MuiIconButton-label-268"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        className="MuiSvgIcon-root-223"
-                        color={undefined}
-                        focusable="false"
-                        role="presentation"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-                        />
-                      </svg>
-                      <input
-                        autoFocus={undefined}
-                        checked={true}
-                        className="MuiPrivateSwitchBase-input-262"
-                        disabled={undefined}
-                        id={undefined}
-                        name={undefined}
-                        onChange={[Function]}
-                        readOnly={undefined}
-                        required={undefined}
-                        tabIndex={undefined}
-                        type="radio"
-                        value={undefined}
-                      />
-                    </span>
-                    <span
-                      className="MuiTouchRipple-root-320"
-                    />
-                  </span>
-                  <span
-                    className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-249"
-                  >
-                    runs
-                  </span>
-                </label>
-                <label
-                  className="MuiFormControlLabel-root-244"
-                  style={
-                    Object {
-                      "marginRight": "22px",
-                    }
-                  }
-                >
-                  <span
-                    className="MuiButtonBase-root-195 MuiIconButton-root-263 MuiPrivateSwitchBase-root-259 MuiRadio-root-327 MuiRadio-colorSecondary-331"
-                    onBlur={[Function]}
-                    onFocus={[Function]}
-                    onKeyDown={[Function]}
-                    onKeyUp={[Function]}
-                    onMouseDown={[Function]}
-                    onMouseLeave={[Function]}
-                    onMouseUp={[Function]}
-                    onTouchEnd={[Function]}
-                    onTouchMove={[Function]}
-                    onTouchStart={[Function]}
-                    role={undefined}
-                    tabIndex={null}
-                  >
-                    <span
-                      className="MuiIconButton-label-268"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        className="MuiSvgIcon-root-223"
-                        color={undefined}
-                        focusable="false"
-                        role="presentation"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-                        />
-                      </svg>
-                      <input
-                        autoFocus={undefined}
-                        checked={false}
-                        className="MuiPrivateSwitchBase-input-262"
-                        disabled={undefined}
-                        id={undefined}
-                        name={undefined}
-                        onChange={[Function]}
-                        readOnly={undefined}
-                        required={undefined}
-                        tabIndex={undefined}
-                        type="radio"
-                        value={undefined}
-                      />
-                    </span>
-                    <span
-                      className="MuiTouchRipple-root-320"
-                    />
-                  </span>
-                  <span
-                    className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-249"
-                  >
-                    byes
-                  </span>
-                </label>
-                <label
-                  className="MuiFormControlLabel-root-244"
-                  style={
-                    Object {
-                      "marginRight": "22px",
-                    }
-                  }
-                >
-                  <span
-                    className="MuiButtonBase-root-195 MuiIconButton-root-263 MuiPrivateSwitchBase-root-259 MuiRadio-root-327 MuiRadio-colorSecondary-331"
-                    onBlur={[Function]}
-                    onFocus={[Function]}
-                    onKeyDown={[Function]}
-                    onKeyUp={[Function]}
-                    onMouseDown={[Function]}
-                    onMouseLeave={[Function]}
-                    onMouseUp={[Function]}
-                    onTouchEnd={[Function]}
-                    onTouchMove={[Function]}
-                    onTouchStart={[Function]}
-                    role={undefined}
-                    tabIndex={null}
-                  >
-                    <span
-                      className="MuiIconButton-label-268"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        className="MuiSvgIcon-root-223"
-                        color={undefined}
-                        focusable="false"
-                        role="presentation"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-                        />
-                      </svg>
-                      <input
-                        autoFocus={undefined}
-                        checked={false}
-                        className="MuiPrivateSwitchBase-input-262"
-                        disabled={undefined}
-                        id={undefined}
-                        name={undefined}
-                        onChange={[Function]}
-                        readOnly={undefined}
-                        required={undefined}
-                        tabIndex={undefined}
-                        type="radio"
-                        value={undefined}
-                      />
-                    </span>
-                    <span
-                      className="MuiTouchRipple-root-320"
-                    />
-                  </span>
-                  <span
-                    className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-249"
-                  >
-                    leg byes
-                  </span>
-                </label>
-                <label
-                  className="MuiFormControlLabel-root-244"
-                  style={
-                    Object {
-                      "marginRight": "22px",
-                    }
-                  }
-                >
-                  <span
-                    className="MuiButtonBase-root-195 MuiIconButton-root-263 MuiPrivateSwitchBase-root-259 MuiRadio-root-327 MuiRadio-colorSecondary-331"
-                    onBlur={[Function]}
-                    onFocus={[Function]}
-                    onKeyDown={[Function]}
-                    onKeyUp={[Function]}
-                    onMouseDown={[Function]}
-                    onMouseLeave={[Function]}
-                    onMouseUp={[Function]}
-                    onTouchEnd={[Function]}
-                    onTouchMove={[Function]}
-                    onTouchStart={[Function]}
-                    role={undefined}
-                    tabIndex={null}
-                  >
-                    <span
-                      className="MuiIconButton-label-268"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        className="MuiSvgIcon-root-223"
-                        color={undefined}
-                        focusable="false"
-                        role="presentation"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-                        />
-                      </svg>
-                      <input
-                        autoFocus={undefined}
-                        checked={false}
-                        className="MuiPrivateSwitchBase-input-262"
-                        disabled={undefined}
-                        id={undefined}
-                        name={undefined}
-                        onChange={[Function]}
-                        readOnly={undefined}
-                        required={undefined}
-                        tabIndex={undefined}
-                        type="radio"
-                        value={undefined}
-                      />
-                    </span>
-                    <span
-                      className="MuiTouchRipple-root-320"
-                    />
-                  </span>
-                  <span
-                    className="MuiTypography-root-130 MuiTypography-body1-139 MuiFormControlLabel-label-249"
-                  >
-                    wide
-                  </span>
-                </label>
-              </div>
-              <div
-                className="MuiGrid-container-29"
-              >
                 <div
-                  className="MuiGrid-container-29"
+                  class="MuiGrid-container-382"
                 >
                   <div
-                    className="MuiGrid-container-29"
+                    class="MuiGrid-item-383 MuiGrid-grid-xs-12-422"
                   >
-                    <button
-                      aria-label="Dot ball"
-                      className="MuiButtonBase-root-195 MuiButton-root-169 MuiButton-fab-186 MuiButton-contained-180 MuiButton-raised-183"
-                      disabled={false}
-                      onBlur={[Function]}
-                      onClick={[Function]}
-                      onFocus={[Function]}
-                      onKeyDown={[Function]}
-                      onKeyUp={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      onTouchEnd={[Function]}
-                      onTouchMove={[Function]}
-                      onTouchStart={[Function]}
-                      style={
-                        Object {
-                          "backgroundColor": "#43a047",
-                          "color": "#ffffff",
-                          "marginBottom": "8px",
-                          "marginRight": "8px",
-                        }
-                      }
-                      tabIndex="0"
-                      type="button"
-                    >
-                      <span
-                        className="MuiButton-label-170"
-                      >
-                        .
-                      </span>
-                      <span
-                        className="MuiTouchRipple-root-320"
-                      />
-                    </button>
-                    <button
-                      aria-label="Single"
-                      className="MuiButtonBase-root-195 MuiButton-root-169 MuiButton-fab-186 MuiButton-contained-180 MuiButton-raised-183"
-                      disabled={false}
-                      onBlur={[Function]}
-                      onClick={[Function]}
-                      onFocus={[Function]}
-                      onKeyDown={[Function]}
-                      onKeyUp={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      onTouchEnd={[Function]}
-                      onTouchMove={[Function]}
-                      onTouchStart={[Function]}
-                      style={
-                        Object {
-                          "backgroundColor": "#43a047",
-                          "color": "#ffffff",
-                          "marginBottom": "8px",
-                          "marginRight": "8px",
-                        }
-                      }
-                      tabIndex="0"
-                      type="button"
-                    >
-                      <span
-                        className="MuiButton-label-170"
-                      >
-                        1
-                      </span>
-                      <span
-                        className="MuiTouchRipple-root-320"
-                      />
-                    </button>
-                    <button
-                      aria-label="Two"
-                      className="MuiButtonBase-root-195 MuiButton-root-169 MuiButton-fab-186 MuiButton-contained-180 MuiButton-raised-183"
-                      disabled={false}
-                      onBlur={[Function]}
-                      onClick={[Function]}
-                      onFocus={[Function]}
-                      onKeyDown={[Function]}
-                      onKeyUp={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      onTouchEnd={[Function]}
-                      onTouchMove={[Function]}
-                      onTouchStart={[Function]}
-                      style={
-                        Object {
-                          "backgroundColor": "#43a047",
-                          "color": "#ffffff",
-                          "marginBottom": "8px",
-                          "marginRight": "8px",
-                        }
-                      }
-                      tabIndex="0"
-                      type="button"
-                    >
-                      <span
-                        className="MuiButton-label-170"
-                      >
-                        2
-                      </span>
-                      <span
-                        className="MuiTouchRipple-root-320"
-                      />
-                    </button>
-                    <button
-                      aria-label="Three"
-                      className="MuiButtonBase-root-195 MuiButton-root-169 MuiButton-fab-186 MuiButton-contained-180 MuiButton-raised-183"
-                      disabled={false}
-                      onBlur={[Function]}
-                      onClick={[Function]}
-                      onFocus={[Function]}
-                      onKeyDown={[Function]}
-                      onKeyUp={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      onTouchEnd={[Function]}
-                      onTouchMove={[Function]}
-                      onTouchStart={[Function]}
-                      style={
-                        Object {
-                          "backgroundColor": "#43a047",
-                          "color": "#ffffff",
-                          "marginBottom": "8px",
-                          "marginRight": "8px",
-                        }
-                      }
-                      tabIndex="0"
-                      type="button"
-                    >
-                      <span
-                        className="MuiButton-label-170"
-                      >
-                        3
-                      </span>
-                      <span
-                        className="MuiTouchRipple-root-320"
-                      />
-                    </button>
-                    <button
-                      aria-label="Boundary Four"
-                      className="MuiButtonBase-root-195 MuiButton-root-169 MuiButton-fab-186 MuiButton-extendedFab-187 MuiButton-contained-180 MuiButton-raised-183"
-                      disabled={false}
-                      onBlur={[Function]}
-                      onClick={[Function]}
-                      onFocus={[Function]}
-                      onKeyDown={[Function]}
-                      onKeyUp={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      onTouchEnd={[Function]}
-                      onTouchMove={[Function]}
-                      onTouchStart={[Function]}
-                      style={
-                        Object {
-                          "backgroundColor": "#43a047",
-                          "color": "#ffffff",
-                          "marginBottom": "8px",
-                          "marginRight": "8px",
-                        }
-                      }
-                      tabIndex="0"
-                      type="button"
-                    >
-                      <span
-                        className="MuiButton-label-170"
-                      >
-                        <span
-                          style={
-                            Object {
-                              "fontSize": "70%",
-                            }
-                          }
-                        >
-                          boundary
-                          <br />
-                          <span
-                            style={
-                              Object {
-                                "fontSize": "200%",
-                              }
-                            }
-                          >
-                            4
-                          </span>
-                        </span>
-                      </span>
-                      <span
-                        className="MuiTouchRipple-root-320"
-                      />
-                    </button>
-                    <button
-                      aria-label="Boundary Six"
-                      className="MuiButtonBase-root-195 MuiButton-root-169 MuiButton-fab-186 MuiButton-extendedFab-187 MuiButton-contained-180 MuiButton-raised-183"
-                      disabled={false}
-                      onBlur={[Function]}
-                      onClick={[Function]}
-                      onFocus={[Function]}
-                      onKeyDown={[Function]}
-                      onKeyUp={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      onTouchEnd={[Function]}
-                      onTouchMove={[Function]}
-                      onTouchStart={[Function]}
-                      style={
-                        Object {
-                          "backgroundColor": "#43a047",
-                          "color": "#ffffff",
-                          "marginBottom": "8px",
-                          "marginRight": "8px",
-                        }
-                      }
-                      tabIndex="0"
-                      type="button"
-                    >
-                      <span
-                        className="MuiButton-label-170"
-                      >
-                        <span
-                          style={
-                            Object {
-                              "fontSize": "70%",
-                            }
-                          }
-                        >
-                          boundary
-                          <br />
-                          <span
-                            style={
-                              Object {
-                                "fontSize": "200%",
-                              }
-                            }
-                          >
-                            6
-                          </span>
-                        </span>
-                      </span>
-                      <span
-                        className="MuiTouchRipple-root-320"
-                      />
-                    </button>
+                    <hr
+                      class="MuiDivider-root-570"
+                      style="margin-top: 10px; margin-bottom: 10px;"
+                    />
                   </div>
-                  <div
-                    className="MuiGrid-container-29"
+                </div>
+                <div
+                  class="MuiGrid-container-382"
+                >
+                  <label
+                    class="MuiFormControlLabel-root-545"
+                    style="margin-right: 22px;"
                   >
-                    <div
-                      className="MuiInputBase-root-293 MuiInput-root-280 MuiInput-underline-284"
-                      onClick={[Function]}
+                    <span
+                      class="MuiButtonBase-root-542 MuiIconButton-root-564 MuiPrivateSwitchBase-root-560 MuiRadio-root-637 MuiRadio-colorSecondary-641 MuiPrivateSwitchBase-checked-561 MuiRadio-checked-638"
                     >
-                      <div
-                        className="MuiSelect-root-273"
+                      <span
+                        class="MuiIconButton-label-569"
                       >
-                        <div
-                          aria-haspopup="true"
-                          aria-owns={undefined}
-                          aria-pressed="false"
-                          className="MuiSelect-select-274 MuiSelect-selectMenu-277 MuiInputBase-input-303 MuiInput-input-288"
-                          onBlur={[Function]}
-                          onClick={[Function]}
-                          onFocus={[Function]}
-                          onKeyDown={[Function]}
-                          role="button"
-                          tabIndex={0}
-                        >
-                          or select a score...
-                        </div>
-                        <input
-                          autoComplete={undefined}
-                          autoFocus={undefined}
-                          defaultValue={undefined}
-                          id={undefined}
-                          name={undefined}
-                          onKeyDown={undefined}
-                          onKeyUp={undefined}
-                          placeholder={undefined}
-                          rows={undefined}
-                          type="hidden"
-                          value={0}
-                        />
                         <svg
                           aria-hidden="true"
-                          className="MuiSvgIcon-root-223 MuiSelect-icon-279"
-                          color={undefined}
+                          class="MuiSvgIcon-root-611"
                           focusable="false"
                           role="presentation"
                           viewBox="0 0 24 24"
                         >
                           <path
-                            d="M7 10l5 5 5-5z"
+                            d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
                           />
                         </svg>
+                        <input
+                          checked=""
+                          class="MuiPrivateSwitchBase-input-563"
+                          type="radio"
+                          value=""
+                        />
+                      </span>
+                      <span
+                        class="MuiTouchRipple-root-630"
+                      />
+                    </span>
+                    <span
+                      class="MuiTypography-root-481 MuiTypography-body1-490 MuiFormControlLabel-label-550"
+                    >
+                      runs
+                    </span>
+                  </label>
+                  <label
+                    class="MuiFormControlLabel-root-545"
+                    style="margin-right: 22px;"
+                  >
+                    <span
+                      class="MuiButtonBase-root-542 MuiIconButton-root-564 MuiPrivateSwitchBase-root-560 MuiRadio-root-637 MuiRadio-colorSecondary-641"
+                    >
+                      <span
+                        class="MuiIconButton-label-569"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root-611"
+                          focusable="false"
+                          role="presentation"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                          />
+                        </svg>
+                        <input
+                          class="MuiPrivateSwitchBase-input-563"
+                          type="radio"
+                          value=""
+                        />
+                      </span>
+                      <span
+                        class="MuiTouchRipple-root-630"
+                      />
+                    </span>
+                    <span
+                      class="MuiTypography-root-481 MuiTypography-body1-490 MuiFormControlLabel-label-550"
+                    >
+                      byes
+                    </span>
+                  </label>
+                  <label
+                    class="MuiFormControlLabel-root-545"
+                    style="margin-right: 22px;"
+                  >
+                    <span
+                      class="MuiButtonBase-root-542 MuiIconButton-root-564 MuiPrivateSwitchBase-root-560 MuiRadio-root-637 MuiRadio-colorSecondary-641"
+                    >
+                      <span
+                        class="MuiIconButton-label-569"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root-611"
+                          focusable="false"
+                          role="presentation"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                          />
+                        </svg>
+                        <input
+                          class="MuiPrivateSwitchBase-input-563"
+                          type="radio"
+                          value=""
+                        />
+                      </span>
+                      <span
+                        class="MuiTouchRipple-root-630"
+                      />
+                    </span>
+                    <span
+                      class="MuiTypography-root-481 MuiTypography-body1-490 MuiFormControlLabel-label-550"
+                    >
+                      leg byes
+                    </span>
+                  </label>
+                  <label
+                    class="MuiFormControlLabel-root-545"
+                    style="margin-right: 22px;"
+                  >
+                    <span
+                      class="MuiButtonBase-root-542 MuiIconButton-root-564 MuiPrivateSwitchBase-root-560 MuiRadio-root-637 MuiRadio-colorSecondary-641"
+                    >
+                      <span
+                        class="MuiIconButton-label-569"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root-611"
+                          focusable="false"
+                          role="presentation"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                          />
+                        </svg>
+                        <input
+                          class="MuiPrivateSwitchBase-input-563"
+                          type="radio"
+                          value=""
+                        />
+                      </span>
+                      <span
+                        class="MuiTouchRipple-root-630"
+                      />
+                    </span>
+                    <span
+                      class="MuiTypography-root-481 MuiTypography-body1-490 MuiFormControlLabel-label-550"
+                    >
+                      wide
+                    </span>
+                  </label>
+                </div>
+                <div
+                  class="MuiGrid-container-382"
+                >
+                  <div
+                    class="MuiGrid-container-382"
+                  >
+                    <div
+                      class="MuiGrid-container-382"
+                    >
+                      <button
+                        aria-label="Dot ball"
+                        class="MuiButtonBase-root-542 MuiButton-root-516 MuiButton-fab-533 MuiButton-contained-527 MuiButton-raised-530"
+                        style="background-color: rgb(67, 160, 71); margin-right: 8px; margin-bottom: 8px; color: rgb(255, 255, 255);"
+                        tabindex="0"
+                        type="button"
+                      >
+                        <span
+                          class="MuiButton-label-517"
+                        >
+                          .
+                        </span>
+                        <span
+                          class="MuiTouchRipple-root-630"
+                        />
+                      </button>
+                      <button
+                        aria-label="Single"
+                        class="MuiButtonBase-root-542 MuiButton-root-516 MuiButton-fab-533 MuiButton-contained-527 MuiButton-raised-530"
+                        style="background-color: rgb(67, 160, 71); margin-right: 8px; margin-bottom: 8px; color: rgb(255, 255, 255);"
+                        tabindex="0"
+                        type="button"
+                      >
+                        <span
+                          class="MuiButton-label-517"
+                        >
+                          1
+                        </span>
+                        <span
+                          class="MuiTouchRipple-root-630"
+                        />
+                      </button>
+                      <button
+                        aria-label="Two"
+                        class="MuiButtonBase-root-542 MuiButton-root-516 MuiButton-fab-533 MuiButton-contained-527 MuiButton-raised-530"
+                        style="background-color: rgb(67, 160, 71); margin-right: 8px; margin-bottom: 8px; color: rgb(255, 255, 255);"
+                        tabindex="0"
+                        type="button"
+                      >
+                        <span
+                          class="MuiButton-label-517"
+                        >
+                          2
+                        </span>
+                        <span
+                          class="MuiTouchRipple-root-630"
+                        />
+                      </button>
+                      <button
+                        aria-label="Three"
+                        class="MuiButtonBase-root-542 MuiButton-root-516 MuiButton-fab-533 MuiButton-contained-527 MuiButton-raised-530"
+                        style="background-color: rgb(67, 160, 71); margin-right: 8px; margin-bottom: 8px; color: rgb(255, 255, 255);"
+                        tabindex="0"
+                        type="button"
+                      >
+                        <span
+                          class="MuiButton-label-517"
+                        >
+                          3
+                        </span>
+                        <span
+                          class="MuiTouchRipple-root-630"
+                        />
+                      </button>
+                      <button
+                        aria-label="Boundary Four"
+                        class="MuiButtonBase-root-542 MuiButton-root-516 MuiButton-fab-533 MuiButton-extendedFab-534 MuiButton-contained-527 MuiButton-raised-530"
+                        style="background-color: rgb(67, 160, 71); margin-right: 8px; margin-bottom: 8px; color: rgb(255, 255, 255);"
+                        tabindex="0"
+                        type="button"
+                      >
+                        <span
+                          class="MuiButton-label-517"
+                        >
+                          <span
+                            style="font-size: 70%;"
+                          >
+                            boundary
+                            <br />
+                            <span
+                              style="font-size: 200%;"
+                            >
+                              4
+                            </span>
+                          </span>
+                        </span>
+                        <span
+                          class="MuiTouchRipple-root-630"
+                        />
+                      </button>
+                      <button
+                        aria-label="Boundary Six"
+                        class="MuiButtonBase-root-542 MuiButton-root-516 MuiButton-fab-533 MuiButton-extendedFab-534 MuiButton-contained-527 MuiButton-raised-530"
+                        style="background-color: rgb(67, 160, 71); margin-right: 8px; margin-bottom: 8px; color: rgb(255, 255, 255);"
+                        tabindex="0"
+                        type="button"
+                      >
+                        <span
+                          class="MuiButton-label-517"
+                        >
+                          <span
+                            style="font-size: 70%;"
+                          >
+                            boundary
+                            <br />
+                            <span
+                              style="font-size: 200%;"
+                            >
+                              6
+                            </span>
+                          </span>
+                        </span>
+                        <span
+                          class="MuiTouchRipple-root-630"
+                        />
+                      </button>
+                    </div>
+                    <div
+                      class="MuiGrid-container-382"
+                    >
+                      <div
+                        class="MuiInputBase-root-594 MuiInput-root-581 MuiInput-underline-585"
+                      >
+                        <div
+                          class="MuiSelect-root-574"
+                        >
+                          <div
+                            aria-haspopup="true"
+                            aria-pressed="false"
+                            class="MuiSelect-select-575 MuiSelect-selectMenu-578 MuiInputBase-input-604 MuiInput-input-589"
+                            role="button"
+                            tabindex="0"
+                          >
+                            or select a score...
+                          </div>
+                          <input
+                            type="hidden"
+                            value="0"
+                          />
+                          <svg
+                            aria-hidden="true"
+                            class="MuiSvgIcon-root-611 MuiSelect-icon-580"
+                            focusable="false"
+                            role="presentation"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M7 10l5 5 5-5z"
+                            />
+                          </svg>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -907,976 +581,628 @@ exports[`InProgress should render correctly for match during an over 1`] = `
         </div>
       </div>
     </div>
-  </div>
-  <div
-    className="MuiPaper-root-2 MuiPaper-elevation1-5 MuiPaper-rounded-3"
-    style={
-      Object {
-        "height": "100%",
-        "padding": "10px",
-      }
-    }
-  >
     <div
-      className="MuiGrid-container-29"
+      class="MuiPaper-root-355 MuiPaper-elevation1-358 MuiPaper-rounded-356"
+      style="padding: 10px; height: 100%;"
     >
-      <h5
-        className="MuiTypography-root-130 MuiTypography-h5-146"
-      >
-        <span
-          style={
-            Object {
-              "transition": "background-color 1s",
-            }
-          }
-        >
-          Team 1 0-0
-        </span>
-      </h5>
       <div
-        className="MuiGrid-container-29"
+        class="MuiGrid-container-382"
       >
+        <h5
+          class="MuiTypography-root-481 MuiTypography-h5-497"
+        >
+          <span>
+            Team 1 0-0
+          </span>
+        </h5>
         <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-12-69 MuiGrid-grid-sm-12-83 MuiGrid-grid-md-12-97 MuiGrid-grid-lg-8-107"
+          class="MuiGrid-container-382"
         >
           <div
-            className="MuiGrid-container-29 Batting-header-314"
+            class="MuiGrid-item-383 MuiGrid-grid-xs-12-422 MuiGrid-grid-sm-12-436 MuiGrid-grid-md-12-450 MuiGrid-grid-lg-8-460"
           >
             <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-10-67 MuiGrid-grid-md-7-92"
+              class="MuiGrid-container-382 Batting-header-624"
             >
-              <h6
-                className="MuiTypography-root-130 MuiTypography-subtitle1-148 MuiTypography-colorInherit-159"
-                style={undefined}
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-10-420 MuiGrid-grid-md-7-445"
               >
-                Batsman
-              </h6>
+                <h6
+                  class="MuiTypography-root-481 MuiTypography-subtitle1-499 MuiTypography-colorInherit-510"
+                >
+                  Batsman
+                </h6>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-2-412 MuiGrid-grid-md-1-439"
+              >
+                <h6
+                  class="MuiTypography-root-481 MuiTypography-subtitle1-499 MuiTypography-colorInherit-510"
+                  style="text-align: right;"
+                >
+                  Runs
+                </h6>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-md-1-439"
+              >
+                <h6
+                  class="MuiTypography-root-481 MuiTypography-subtitle1-499 MuiTypography-colorInherit-510"
+                  style="text-align: right;"
+                >
+                  Balls
+                </h6>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-md-1-439"
+              >
+                <h6
+                  class="MuiTypography-root-481 MuiTypography-subtitle1-499 MuiTypography-colorInherit-510"
+                  style="text-align: right;"
+                >
+                  Mins
+                </h6>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-md-1-439"
+              >
+                <h6
+                  class="MuiTypography-root-481 MuiTypography-subtitle1-499 MuiTypography-colorInherit-510"
+                  style="text-align: right;"
+                >
+                  4s
+                </h6>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-md-1-439"
+              >
+                <h6
+                  class="MuiTypography-root-481 MuiTypography-subtitle1-499 MuiTypography-colorInherit-510"
+                  style="text-align: right;"
+                >
+                  6s
+                </h6>
+              </div>
             </div>
             <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
+              class="MuiGrid-container-382"
             >
-              <h6
-                className="MuiTypography-root-130 MuiTypography-subtitle1-148 MuiTypography-colorInherit-159"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-4-414 MuiGrid-grid-md-3-441"
               >
-                Runs
-              </h6>
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body2-489"
+                >
+                  Player 1
+                </p>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-6-416 MuiGrid-grid-md-4-442"
+              >
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body2-489"
+                >
+                  <span>
+                    not out
+                  </span>
+                </p>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-2-412 MuiGrid-grid-md-1-439"
+              >
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body1-490"
+                  style="text-align: right; font-weight: bold;"
+                >
+                  <span>
+                    0
+                  </span>
+                </p>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-md-1-439"
+              >
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body1-490"
+                  style="text-align: right;"
+                >
+                  <span>
+                    0
+                  </span>
+                </p>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-md-1-439"
+              >
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body1-490"
+                  style="text-align: right;"
+                >
+                  <span>
+                    0
+                  </span>
+                </p>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-md-1-439"
+              >
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body1-490"
+                  style="text-align: right;"
+                >
+                  <span>
+                    0
+                  </span>
+                </p>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-md-1-439"
+              >
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body1-490"
+                  style="text-align: right;"
+                >
+                  <span>
+                    0
+                  </span>
+                </p>
+              </div>
             </div>
             <div
-              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
+              class="MuiGrid-item-383 MuiGrid-grid-xs-12-422"
             >
-              <h6
-                className="MuiTypography-root-130 MuiTypography-subtitle1-148 MuiTypography-colorInherit-159"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                Balls
-              </h6>
+              <hr
+                class="MuiDivider-root-570"
+              />
             </div>
             <div
-              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
+              class="MuiGrid-container-382"
             >
-              <h6
-                className="MuiTypography-root-130 MuiTypography-subtitle1-148 MuiTypography-colorInherit-159"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-4-414 MuiGrid-grid-md-3-441"
               >
-                Mins
-              </h6>
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body2-489"
+                >
+                  Player 2
+                </p>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-6-416 MuiGrid-grid-md-4-442"
+              >
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body2-489"
+                >
+                  <span>
+                    not out
+                  </span>
+                </p>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-2-412 MuiGrid-grid-md-1-439"
+              >
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body1-490"
+                  style="text-align: right; font-weight: bold;"
+                >
+                  <span>
+                    0
+                  </span>
+                </p>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-md-1-439"
+              >
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body1-490"
+                  style="text-align: right;"
+                >
+                  <span>
+                    0
+                  </span>
+                </p>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-md-1-439"
+              >
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body1-490"
+                  style="text-align: right;"
+                >
+                  <span>
+                    0
+                  </span>
+                </p>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-md-1-439"
+              >
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body1-490"
+                  style="text-align: right;"
+                >
+                  <span>
+                    0
+                  </span>
+                </p>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-md-1-439"
+              >
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body1-490"
+                  style="text-align: right;"
+                >
+                  <span>
+                    0
+                  </span>
+                </p>
+              </div>
             </div>
             <div
-              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
+              class="MuiGrid-item-383 MuiGrid-grid-xs-12-422"
             >
-              <h6
-                className="MuiTypography-root-130 MuiTypography-subtitle1-148 MuiTypography-colorInherit-159"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                4s
-              </h6>
+              <hr
+                class="MuiDivider-root-570"
+              />
             </div>
             <div
-              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
+              class="MuiGrid-container-382"
             >
-              <h6
-                className="MuiTypography-root-130 MuiTypography-subtitle1-148 MuiTypography-colorInherit-159"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-4-414 MuiGrid-grid-md-3-441"
               >
-                6s
-              </h6>
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body2-489"
+                >
+                  Player 3
+                </p>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-6-416 MuiGrid-grid-md-4-442"
+              >
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body2-489"
+                >
+                  <span />
+                </p>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-2-412 MuiGrid-grid-md-1-439"
+              >
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body1-490"
+                  style="text-align: right; font-weight: bold;"
+                >
+                  <span />
+                </p>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-md-1-439"
+              >
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body1-490"
+                  style="text-align: right;"
+                >
+                  <span />
+                </p>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-md-1-439"
+              >
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body1-490"
+                  style="text-align: right;"
+                >
+                  <span />
+                </p>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-md-1-439"
+              >
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body1-490"
+                  style="text-align: right;"
+                >
+                  <span />
+                </p>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-md-1-439"
+              >
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body1-490"
+                  style="text-align: right;"
+                >
+                  <span />
+                </p>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-item-383 MuiGrid-grid-xs-12-422"
+            >
+              <hr
+                class="MuiDivider-root-570"
+              />
+            </div>
+            <div
+              class="MuiGrid-container-382"
+            >
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-4-414 MuiGrid-grid-md-3-441"
+              >
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body1-490"
+                >
+                  Extras
+                </p>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-6-416 MuiGrid-grid-md-4-442"
+              >
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body2-489"
+                >
+                  <span>
+                    0nb 0wd 0b 0lb
+                  </span>
+                </p>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-2-412 MuiGrid-grid-md-1-439"
+              >
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body1-490"
+                  style="text-align: right; font-weight: bold;"
+                >
+                  <span>
+                    0
+                  </span>
+                </p>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-container-382 Batting-header-624"
+            >
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-4-414 MuiGrid-grid-md-3-441"
+              >
+                <h6
+                  class="MuiTypography-root-481 MuiTypography-subtitle1-499 MuiTypography-colorInherit-510"
+                >
+                  Total
+                </h6>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-md-4-442"
+              >
+                <h6
+                  class="MuiTypography-root-481 MuiTypography-subtitle1-499 MuiTypography-colorInherit-510"
+                >
+                  <span>
+                    for 0 (0 overs)
+                  </span>
+                </h6>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-2-412 MuiGrid-grid-md-1-439"
+              >
+                <h6
+                  class="MuiTypography-root-481 MuiTypography-subtitle1-499 MuiTypography-colorInherit-510"
+                  style="text-align: right; font-weight: bold;"
+                >
+                  <span>
+                    0
+                  </span>
+                </h6>
+              </div>
             </div>
           </div>
           <div
-            className="MuiGrid-container-29"
+            class="MuiGrid-item-383 MuiGrid-grid-xs-12-422 MuiGrid-grid-lg-3-455"
           >
             <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-4-61 MuiGrid-grid-md-3-88"
-            >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body2-138"
-              >
-                Player 1
-              </p>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-4-89"
-            >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body2-138"
-              >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
-                >
-                  not out
-                </span>
-              </p>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
-            >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body1-139"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
-                >
-                  0
-                </span>
-              </p>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
-            >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body1-139"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
-                >
-                  0
-                </span>
-              </p>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
-            >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body1-139"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
-                >
-                  0
-                </span>
-              </p>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
-            >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body1-139"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
-                >
-                  0
-                </span>
-              </p>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
-            >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body1-139"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
-                >
-                  0
-                </span>
-              </p>
-            </div>
-          </div>
-          <div
-            className="MuiGrid-item-30 MuiGrid-grid-xs-12-69"
-          >
-            <hr
-              className="MuiDivider-root-269"
-            />
-          </div>
-          <div
-            className="MuiGrid-container-29"
-          >
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-4-61 MuiGrid-grid-md-3-88"
-            >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body2-138"
-              >
-                Player 2
-              </p>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-4-89"
-            >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body2-138"
-              >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
-                >
-                  not out
-                </span>
-              </p>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
-            >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body1-139"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
-                >
-                  0
-                </span>
-              </p>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
-            >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body1-139"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
-                >
-                  0
-                </span>
-              </p>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
-            >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body1-139"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
-                >
-                  0
-                </span>
-              </p>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
-            >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body1-139"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
-                >
-                  0
-                </span>
-              </p>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
-            >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body1-139"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
-                >
-                  0
-                </span>
-              </p>
-            </div>
-          </div>
-          <div
-            className="MuiGrid-item-30 MuiGrid-grid-xs-12-69"
-          >
-            <hr
-              className="MuiDivider-root-269"
-            />
-          </div>
-          <div
-            className="MuiGrid-container-29"
-          >
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-4-61 MuiGrid-grid-md-3-88"
-            >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body2-138"
-              >
-                Player 3
-              </p>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-4-89"
-            >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body2-138"
-              >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
-                >
-                  
-                </span>
-              </p>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
-            >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body1-139"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
-                >
-                  
-                </span>
-              </p>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
-            >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body1-139"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
-                >
-                  
-                </span>
-              </p>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
-            >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body1-139"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
-                >
-                  
-                </span>
-              </p>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
-            >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body1-139"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
-                >
-                  
-                </span>
-              </p>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-md-1-86"
-            >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body1-139"
-                style={
-                  Object {
-                    "textAlign": "right",
-                  }
-                }
-              >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
-                >
-                  
-                </span>
-              </p>
-            </div>
-          </div>
-          <div
-            className="MuiGrid-item-30 MuiGrid-grid-xs-12-69"
-          >
-            <hr
-              className="MuiDivider-root-269"
-            />
-          </div>
-          <div
-            className="MuiGrid-container-29"
-          >
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-4-61 MuiGrid-grid-md-3-88"
-            >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body1-139"
-              >
-                Extras
-              </p>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-4-89"
-            >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body2-138"
-              >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
-                >
-                  0nb 0wd 0b 0lb
-                </span>
-              </p>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
-            >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body1-139"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
-                >
-                  0
-                </span>
-              </p>
-            </div>
-          </div>
-          <div
-            className="MuiGrid-container-29 Batting-header-314"
-          >
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-4-61 MuiGrid-grid-md-3-88"
+              class="MuiGrid-container-382 FallOfWickets-header-626"
             >
               <h6
-                className="MuiTypography-root-130 MuiTypography-subtitle1-148 MuiTypography-colorInherit-159"
-                style={undefined}
+                class="MuiTypography-root-481 MuiTypography-subtitle1-499 MuiTypography-colorInherit-510"
               >
-                Total
-              </h6>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-md-4-89"
-            >
-              <h6
-                className="MuiTypography-root-130 MuiTypography-subtitle1-148 MuiTypography-colorInherit-159"
-                style={undefined}
-              >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
-                >
-                  for 0 (0 overs)
-                </span>
-              </h6>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
-            >
-              <h6
-                className="MuiTypography-root-130 MuiTypography-subtitle1-148 MuiTypography-colorInherit-159"
-                style={
-                  Object {
-                    "fontWeight": "bold",
-                    "textAlign": "right",
-                  }
-                }
-              >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
-                >
-                  0
-                </span>
-              </h6>
-            </div>
-          </div>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-12-69 MuiGrid-grid-lg-3-102"
-        >
-          <div
-            className="MuiGrid-container-29 FallOfWickets-header-316"
-          >
-            <h6
-              className="MuiTypography-root-130 MuiTypography-subtitle1-148 MuiTypography-colorInherit-159"
-              style={undefined}
-            >
-              Fall of wickets
-            </h6>
-          </div>
-        </div>
-        <div
-          className="MuiGrid-item-30 MuiGrid-grid-xs-12-69 MuiGrid-grid-sm-12-83 MuiGrid-grid-md-12-97 MuiGrid-grid-lg-8-107"
-        >
-          <h5
-            className="MuiTypography-root-130 MuiTypography-h5-146"
-          >
-            Team 2
-             bowling
-          </h5>
-          <div
-            className="MuiGrid-container-29 Bowling-header-318"
-          >
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-5-90"
-            />
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59"
-            >
-              <h6
-                className="MuiTypography-root-130 MuiTypography-subtitle1-148 MuiTypography-colorInherit-159"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                Overs
-              </h6>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-md-2-87"
-            >
-              <h6
-                className="MuiTypography-root-130 MuiTypography-subtitle1-148 MuiTypography-colorInherit-159"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                Maidens
-              </h6>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59"
-            >
-              <h6
-                className="MuiTypography-root-130 MuiTypography-subtitle1-148 MuiTypography-colorInherit-159"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                Runs
-              </h6>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
-            >
-              <h6
-                className="MuiTypography-root-130 MuiTypography-subtitle1-148 MuiTypography-colorInherit-159"
-                style={
-                  Object {
-                    "textAlign": "center",
-                  }
-                }
-              >
-                Wkts
+                Fall of wickets
               </h6>
             </div>
           </div>
           <div
-            className="MuiGrid-container-29"
+            class="MuiGrid-item-383 MuiGrid-grid-xs-12-422 MuiGrid-grid-sm-12-436 MuiGrid-grid-md-12-450 MuiGrid-grid-lg-8-460"
           >
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-5-90"
+            <h5
+              class="MuiTypography-root-481 MuiTypography-h5-497"
             >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body2-138"
-              >
-                Player 22
-              </p>
-            </div>
+              Team 2
+               bowling
+            </h5>
             <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59"
-              style={
-                Object {
-                  "textAlign": "center",
-                }
-              }
+              class="MuiGrid-container-382 Bowling-header-628"
             >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body2-138"
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-6-416 MuiGrid-grid-md-5-443"
+              />
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-2-412"
               >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
+                <h6
+                  class="MuiTypography-root-481 MuiTypography-subtitle1-499 MuiTypography-colorInherit-510"
+                  style="text-align: center;"
                 >
-                  0
-                </span>
-              </p>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-md-2-87"
-              style={
-                Object {
-                  "textAlign": "center",
-                }
-              }
-            >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body2-138"
+                  Overs
+                </h6>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-md-2-440"
               >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
+                <h6
+                  class="MuiTypography-root-481 MuiTypography-subtitle1-499 MuiTypography-colorInherit-510"
+                  style="text-align: center;"
                 >
-                  0
-                </span>
-              </p>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59"
-              style={
-                Object {
-                  "textAlign": "center",
-                }
-              }
-            >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body2-138"
+                  Maidens
+                </h6>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-2-412"
               >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
+                <h6
+                  class="MuiTypography-root-481 MuiTypography-subtitle1-499 MuiTypography-colorInherit-510"
+                  style="text-align: center;"
                 >
-                  0
-                </span>
-              </p>
-            </div>
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
-              style={
-                Object {
-                  "textAlign": "center",
-                }
-              }
-            >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body2-138"
+                  Runs
+                </h6>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-2-412 MuiGrid-grid-md-1-439"
               >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
+                <h6
+                  class="MuiTypography-root-481 MuiTypography-subtitle1-499 MuiTypography-colorInherit-510"
+                  style="text-align: center;"
                 >
-                  0
-                </span>
-              </p>
-            </div>
-          </div>
-          <div
-            className="MuiGrid-item-30 MuiGrid-grid-xs-12-69"
-          >
-            <hr
-              className="MuiDivider-root-269"
-            />
-          </div>
-          <div
-            className="MuiGrid-container-29"
-          >
-            <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-6-63 MuiGrid-grid-md-5-90"
-            >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body2-138"
-              >
-                Player 21
-              </p>
+                  Wkts
+                </h6>
+              </div>
             </div>
             <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59"
-              style={
-                Object {
-                  "textAlign": "center",
-                }
-              }
+              class="MuiGrid-container-382"
             >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body2-138"
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-6-416 MuiGrid-grid-md-5-443"
               >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body2-489"
                 >
-                  0
-                </span>
-              </p>
+                  Player 22
+                </p>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-2-412"
+                style="text-align: center;"
+              >
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body2-489"
+                >
+                  <span>
+                    0
+                  </span>
+                </p>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-md-2-440"
+                style="text-align: center;"
+              >
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body2-489"
+                >
+                  <span>
+                    0
+                  </span>
+                </p>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-2-412"
+                style="text-align: center;"
+              >
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body2-489"
+                >
+                  <span>
+                    0
+                  </span>
+                </p>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-2-412 MuiGrid-grid-md-1-439"
+                style="text-align: center;"
+              >
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body2-489"
+                >
+                  <span>
+                    0
+                  </span>
+                </p>
+              </div>
             </div>
             <div
-              className="MuiGrid-item-30 MuiGrid-grid-md-2-87"
-              style={
-                Object {
-                  "textAlign": "center",
-                }
-              }
+              class="MuiGrid-item-383 MuiGrid-grid-xs-12-422"
             >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body2-138"
-              >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
-                >
-                  0
-                </span>
-              </p>
+              <hr
+                class="MuiDivider-root-570"
+              />
             </div>
             <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59"
-              style={
-                Object {
-                  "textAlign": "center",
-                }
-              }
+              class="MuiGrid-container-382"
             >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body2-138"
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-6-416 MuiGrid-grid-md-5-443"
               >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body2-489"
                 >
-                  0
-                </span>
-              </p>
+                  Player 21
+                </p>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-2-412"
+                style="text-align: center;"
+              >
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body2-489"
+                >
+                  <span>
+                    0
+                  </span>
+                </p>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-md-2-440"
+                style="text-align: center;"
+              >
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body2-489"
+                >
+                  <span>
+                    0
+                  </span>
+                </p>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-2-412"
+                style="text-align: center;"
+              >
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body2-489"
+                >
+                  <span>
+                    0
+                  </span>
+                </p>
+              </div>
+              <div
+                class="MuiGrid-item-383 MuiGrid-grid-xs-2-412 MuiGrid-grid-md-1-439"
+                style="text-align: center;"
+              >
+                <p
+                  class="MuiTypography-root-481 MuiTypography-body2-489"
+                >
+                  <span>
+                    0
+                  </span>
+                </p>
+              </div>
             </div>
             <div
-              className="MuiGrid-item-30 MuiGrid-grid-xs-2-59 MuiGrid-grid-md-1-86"
-              style={
-                Object {
-                  "textAlign": "center",
-                }
-              }
+              class="MuiGrid-item-383 MuiGrid-grid-xs-12-422"
             >
-              <p
-                className="MuiTypography-root-130 MuiTypography-body2-138"
-              >
-                <span
-                  style={
-                    Object {
-                      "transition": "background-color 1s",
-                    }
-                  }
-                >
-                  0
-                </span>
-              </p>
+              <hr
+                class="MuiDivider-root-570"
+              />
             </div>
-          </div>
-          <div
-            className="MuiGrid-item-30 MuiGrid-grid-xs-12-69"
-          >
-            <hr
-              className="MuiDivider-root-269"
-            />
           </div>
         </div>
       </div>
@@ -1886,219 +1212,191 @@ exports[`InProgress should render correctly for match during an over 1`] = `
 `;
 
 exports[`InProgress should render correctly for match that has not started 1`] = `
-<div
-  className="MuiPaper-root-2 MuiPaper-elevation2-6 MuiPaper-rounded-3 withRouter-InProgress--root-1"
->
+<div>
   <div
-    className="MuiGrid-container-29"
+    class="MuiPaper-root-30 MuiPaper-elevation2-34 MuiPaper-rounded-31 withRouter-InProgress--root-29"
   >
     <div
-      className="MuiGrid-item-30 MuiGrid-grid-sm-1-72 MuiGrid-grid-md-2-87"
-    />
-    <div
-      className="MuiGrid-item-30 MuiGrid-grid-xs-12-69 MuiGrid-grid-sm-10-81 MuiGrid-grid-md-8-93"
+      class="MuiGrid-container-57"
     >
       <div
-        className="MuiToolbar-root-126 MuiToolbar-regular-128"
-      >
-        <h4
-          className="MuiTypography-root-130 MuiTypography-h4-145 MuiTypography-colorInherit-159"
-          style={
-            Object {
-              "flexGrow": 1,
-            }
-          }
-        >
-          Select number 1
-        </h4>
-      </div>
-      <div
-        className="MuiPaper-root-2 MuiPaper-elevation0-4 MuiStepper-root-198 MuiStepper-horizontal-199"
-      >
-        <div
-          className="MuiStep-root-202 MuiStep-horizontal-203 MuiStep-completed-206"
-        >
-          <span
-            className="MuiStepLabel-root-207 MuiStepLabel-horizontal-208 MuiStepLabel-disabled-214"
-          >
-            <span
-              className="MuiStepLabel-iconContainer-215"
-            >
-              <svg
-                aria-hidden="true"
-                className="MuiSvgIcon-root-223 MuiStepIcon-root-218 MuiStepIcon-completed-221"
-                color={undefined}
-                focusable="false"
-                role="presentation"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm-2 17l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z"
-                />
-              </svg>
-            </span>
-            <span
-              className="MuiStepLabel-labelContainer-217"
-            >
-              <span
-                className="MuiTypography-root-130 MuiTypography-body1-139 MuiStepLabel-label-210 MuiStepLabel-completed-212"
-              >
-                Select batting team
-              </span>
-            </span>
-          </span>
-        </div>
-        <div
-          className="MuiStepConnector-root-232 MuiStepConnector-horizontal-233 MuiStepConnector-active-236"
-        >
-          <span
-            className="MuiStepConnector-line-239 MuiStepConnector-lineHorizontal-240"
-          />
-        </div>
-        <div
-          className="MuiStep-root-202 MuiStep-horizontal-203"
-        >
-          <span
-            className="MuiStepLabel-root-207 MuiStepLabel-horizontal-208"
-          >
-            <span
-              className="MuiStepLabel-iconContainer-215"
-            >
-              <svg
-                aria-hidden="true"
-                className="MuiSvgIcon-root-223 MuiStepIcon-root-218 MuiStepIcon-active-220"
-                color={undefined}
-                focusable="false"
-                role="presentation"
-                viewBox="0 0 24 24"
-              >
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="12"
-                />
-                <text
-                  className="MuiStepIcon-text-219"
-                  textAnchor="middle"
-                  x="12"
-                  y="16"
-                >
-                  2
-                </text>
-              </svg>
-            </span>
-            <span
-              className="MuiStepLabel-labelContainer-217"
-            >
-              <span
-                className="MuiTypography-root-130 MuiTypography-body1-139 MuiStepLabel-label-210 MuiStepLabel-active-211"
-              >
-                Select number 1
-              </span>
-            </span>
-          </span>
-        </div>
-        <div
-          className="MuiStepConnector-root-232 MuiStepConnector-horizontal-233 MuiStepConnector-disabled-238"
-        >
-          <span
-            className="MuiStepConnector-line-239 MuiStepConnector-lineHorizontal-240"
-          />
-        </div>
-        <div
-          className="MuiStep-root-202 MuiStep-horizontal-203"
-        >
-          <span
-            className="MuiStepLabel-root-207 MuiStepLabel-horizontal-208"
-          >
-            <span
-              className="MuiStepLabel-iconContainer-215"
-            >
-              <svg
-                aria-hidden="true"
-                className="MuiSvgIcon-root-223 MuiStepIcon-root-218"
-                color={undefined}
-                focusable="false"
-                role="presentation"
-                viewBox="0 0 24 24"
-              >
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="12"
-                />
-                <text
-                  className="MuiStepIcon-text-219"
-                  textAnchor="middle"
-                  x="12"
-                  y="16"
-                >
-                  3
-                </text>
-              </svg>
-            </span>
-            <span
-              className="MuiStepLabel-labelContainer-217"
-            >
-              <span
-                className="MuiTypography-root-130 MuiTypography-body1-139 MuiStepLabel-label-210"
-              >
-                Select number 2
-              </span>
-            </span>
-          </span>
-        </div>
-      </div>
-      <ul
-        className="MuiList-root-165 MuiList-padding-166"
+        class="MuiGrid-item-58 MuiGrid-grid-sm-1-100 MuiGrid-grid-md-2-115"
       />
-      <div>
-        <button
-          className="MuiButtonBase-root-195 MuiButtonBase-disabled-196 MuiButton-root-169 MuiButton-text-171 MuiButton-flat-174 MuiButton-disabled-189"
-          disabled={true}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex="-1"
-          type="button"
+      <div
+        class="MuiGrid-item-58 MuiGrid-grid-xs-12-97 MuiGrid-grid-sm-10-109 MuiGrid-grid-md-8-121"
+      >
+        <div
+          class="MuiToolbar-root-154 MuiToolbar-regular-156"
         >
-          <span
-            className="MuiButton-label-170"
+          <h4
+            class="MuiTypography-root-158 MuiTypography-h4-173 MuiTypography-colorInherit-187"
           >
-            Back
-          </span>
-        </button>
-        <button
-          className="MuiButtonBase-root-195 MuiButtonBase-disabled-196 MuiButton-root-169 MuiButton-contained-180 MuiButton-containedPrimary-181 MuiButton-raised-183 MuiButton-raisedPrimary-184 MuiButton-disabled-189"
-          disabled={true}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex="-1"
-          type="button"
+            Select number 1
+          </h4>
+        </div>
+        <div
+          class="MuiPaper-root-30 MuiPaper-elevation0-32 MuiStepper-root-226 MuiStepper-horizontal-227"
         >
-          <span
-            className="MuiButton-label-170"
+          <div
+            class="MuiStep-root-230 MuiStep-horizontal-231 MuiStep-completed-234"
           >
-            Next
-          </span>
-        </button>
+            <span
+              class="MuiStepLabel-root-235 MuiStepLabel-horizontal-236 MuiStepLabel-disabled-242"
+            >
+              <span
+                class="MuiStepLabel-iconContainer-243"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root-251 MuiStepIcon-root-246 MuiStepIcon-completed-249"
+                  focusable="false"
+                  role="presentation"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm-2 17l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiStepLabel-labelContainer-245"
+              >
+                <span
+                  class="MuiTypography-root-158 MuiTypography-body1-167 MuiStepLabel-label-238 MuiStepLabel-completed-240"
+                >
+                  Select batting team
+                </span>
+              </span>
+            </span>
+          </div>
+          <div
+            class="MuiStepConnector-root-260 MuiStepConnector-horizontal-261 MuiStepConnector-active-264"
+          >
+            <span
+              class="MuiStepConnector-line-267 MuiStepConnector-lineHorizontal-268"
+            />
+          </div>
+          <div
+            class="MuiStep-root-230 MuiStep-horizontal-231"
+          >
+            <span
+              class="MuiStepLabel-root-235 MuiStepLabel-horizontal-236"
+            >
+              <span
+                class="MuiStepLabel-iconContainer-243"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root-251 MuiStepIcon-root-246 MuiStepIcon-active-248"
+                  focusable="false"
+                  role="presentation"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="12"
+                  />
+                  <text
+                    class="MuiStepIcon-text-247"
+                    text-anchor="middle"
+                    x="12"
+                    y="16"
+                  >
+                    2
+                  </text>
+                </svg>
+              </span>
+              <span
+                class="MuiStepLabel-labelContainer-245"
+              >
+                <span
+                  class="MuiTypography-root-158 MuiTypography-body1-167 MuiStepLabel-label-238 MuiStepLabel-active-239"
+                >
+                  Select number 1
+                </span>
+              </span>
+            </span>
+          </div>
+          <div
+            class="MuiStepConnector-root-260 MuiStepConnector-horizontal-261 MuiStepConnector-disabled-266"
+          >
+            <span
+              class="MuiStepConnector-line-267 MuiStepConnector-lineHorizontal-268"
+            />
+          </div>
+          <div
+            class="MuiStep-root-230 MuiStep-horizontal-231"
+          >
+            <span
+              class="MuiStepLabel-root-235 MuiStepLabel-horizontal-236"
+            >
+              <span
+                class="MuiStepLabel-iconContainer-243"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root-251 MuiStepIcon-root-246"
+                  focusable="false"
+                  role="presentation"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="12"
+                  />
+                  <text
+                    class="MuiStepIcon-text-247"
+                    text-anchor="middle"
+                    x="12"
+                    y="16"
+                  >
+                    3
+                  </text>
+                </svg>
+              </span>
+              <span
+                class="MuiStepLabel-labelContainer-245"
+              >
+                <span
+                  class="MuiTypography-root-158 MuiTypography-body1-167 MuiStepLabel-label-238"
+                >
+                  Select number 2
+                </span>
+              </span>
+            </span>
+          </div>
+        </div>
+        <ul
+          class="MuiList-root-193 MuiList-padding-194"
+        />
+        <div>
+          <button
+            class="MuiButtonBase-root-223 MuiButtonBase-disabled-224 MuiButton-root-197 MuiButton-text-199 MuiButton-flat-202 MuiButton-disabled-217"
+            disabled=""
+            tabindex="-1"
+            type="button"
+          >
+            <span
+              class="MuiButton-label-198"
+            >
+              Back
+            </span>
+          </button>
+          <button
+            class="MuiButtonBase-root-223 MuiButtonBase-disabled-224 MuiButton-root-197 MuiButton-contained-208 MuiButton-containedPrimary-209 MuiButton-raised-211 MuiButton-raisedPrimary-212 MuiButton-disabled-217"
+            disabled=""
+            tabindex="-1"
+            type="button"
+          >
+            <span
+              class="MuiButton-label-198"
+            >
+              Next
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -2106,25 +1404,33 @@ exports[`InProgress should render correctly for match that has not started 1`] =
 `;
 
 exports[`InProgress should render correctly for match with started innings 1`] = `
-<div
-  className="MuiPaper-root-2 MuiPaper-elevation2-6 MuiPaper-rounded-3 withRouter-InProgress--root-1"
-/>
+<div>
+  <div
+    class="MuiPaper-root-271 MuiPaper-elevation2-275 MuiPaper-rounded-272 withRouter-InProgress--root-270"
+  />
+</div>
 `;
 
 exports[`InProgress should render correctly when no match 1`] = `
-<div
-  className="MuiPaper-root-2 MuiPaper-elevation2-6 MuiPaper-rounded-3 withRouter-InProgress--root-1"
-/>
+<div>
+  <div
+    class="MuiPaper-root-2 MuiPaper-elevation2-6 MuiPaper-rounded-3 withRouter-InProgress--root-1"
+  />
+</div>
 `;
 
 exports[`InProgress should render correctly when there is a previous bowler 1`] = `
-<div
-  className="MuiPaper-root-2 MuiPaper-elevation2-6 MuiPaper-rounded-3 withRouter-InProgress--root-1"
-/>
+<div>
+  <div
+    class="MuiPaper-root-299 MuiPaper-elevation2-303 MuiPaper-rounded-300 withRouter-InProgress--root-298"
+  />
+</div>
 `;
 
 exports[`InProgress should render correctly when there is a previous bowler from the current end 1`] = `
-<div
-  className="MuiPaper-root-2 MuiPaper-elevation2-6 MuiPaper-rounded-3 withRouter-InProgress--root-1"
-/>
+<div>
+  <div
+    class="MuiPaper-root-327 MuiPaper-elevation2-331 MuiPaper-rounded-328 withRouter-InProgress--root-326"
+  />
+</div>
 `;

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import matchApi from '../api/matchApi';
 import liveUpdates, { UpdateType, EventType } from '../liveUpdates';
 import { ONLINE } from '../context/networkStatus';
+import WithMatchApi from './WithMatchApi';
 
-const WithInProgressMatches = (updates: any) => (Component: any) => class extends React.Component<any> {
+const WithInProgressMatches = (updates: any) => (Component: any) => WithMatchApi(class extends React.Component<any> {
     disconnect: (() => void) | undefined = undefined;
     retryTimer: any = undefined;
 
@@ -56,7 +56,7 @@ const WithInProgressMatches = (updates: any) => (Component: any) => class extend
         try {
             this.clearRetry();
             this.setState({ loadingMatches: true });
-            const inProgressMatches = await matchApi.getInProgressMatches();
+            const inProgressMatches = await this.props.matchApi.getInProgressMatches();
             this.setState({ inProgressMatches, loadingMatches: false });
             this.subscribeToMatches();
         } catch (e) {
@@ -88,6 +88,6 @@ const WithInProgressMatches = (updates: any) => (Component: any) => class extend
     render() {
         return <Component {...this.props} {...this.state} />;
     }
-};
+});
 
 export default WithInProgressMatches(liveUpdates(process.env.API_URL as string, UpdateType.AllUpdates));

@@ -1,4 +1,5 @@
 import matchApi from '../api/matchApi';
+import api from '../api/api';
 import { StoredMatch } from '../domain';
 import auth0 from '../components/auth0';
 
@@ -53,4 +54,4 @@ const apiStorage = (
     };
 };
 
-export default apiStorage(matchApi, () => navigator.onLine, auth0.isAuthenticated);
+export default apiStorage(matchApi(api(3, 1000)), () => navigator.onLine, auth0.isAuthenticated);

@@ -1,8 +1,9 @@
 import * as React from 'react';
-import * as ReactTestRenderer from 'react-test-renderer';
+import { render, cleanup } from 'react-testing-library';
 import Batting from '../../../components/scorecard/Batting';
 
 describe('Batting', () => {
+    beforeEach(cleanup);
     const batting = {
         extras: {
             byes: 0,
@@ -25,9 +26,9 @@ describe('Batting', () => {
             ],
         };
 
-        const battingView = ReactTestRenderer
-            .create(<Batting batting={battingWithNoInnings} score={100} wickets={1} totalOvers={'20'} />);
+        const { container } =
+            render(<Batting batting={battingWithNoInnings} score={100} wickets={1} totalOvers={'20'} />);
 
-        expect(battingView.toJSON()).toMatchSnapshot();
+        expect(container).toMatchSnapshot();
     });
 });

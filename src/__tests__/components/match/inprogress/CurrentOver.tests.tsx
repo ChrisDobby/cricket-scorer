@@ -1,9 +1,10 @@
 import * as React from 'react';
-import * as ReactTestRenderer from 'react-test-renderer';
+import { render, cleanup } from 'react-testing-library';
 import CurrentOver from '../../../../components/match/inprogress/CurrentOver';
 import { DeliveryOutcome, EventType } from '../../../../domain';
 
 describe('CurrentOver', () => {
+    beforeEach(cleanup);
     const over = {
         deliveries: [{
             time: (new Date()).getTime(),
@@ -21,8 +22,7 @@ describe('CurrentOver', () => {
     };
 
     it('should render correctly', () => {
-        const currentOver = ReactTestRenderer.create(<CurrentOver over={over} />);
-
-        expect(currentOver.toJSON()).toMatchSnapshot();
+        const { container } = render(<CurrentOver over={over} />);
+        expect(container).toMatchSnapshot();
     });
 });
