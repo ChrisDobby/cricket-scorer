@@ -38,6 +38,7 @@ module.exports = {
             staticFileGlobs: ['index.html'],
             staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
             mergeStaticsConfig: true,
+            navigateFallback: 'https://cricket-scores-live.herokuapp.com//index.html'
         }),
         new webpack.DefinePlugin({
             'process.env.AUTH0_DOMAIN': JSON.stringify(process.env.AUTH0_DOMAIN || 'chrisdobby.eu.auth0.com'),
