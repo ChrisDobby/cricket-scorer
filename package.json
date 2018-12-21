@@ -29,6 +29,7 @@
   "homepage": "https://github.com/ChrisDobby/cricket-scorer#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "cheerio": "^1.0.0-rc.2",
     "compression": "^1.7.3",
     "duplicate-package-checker-webpack-plugin": "^3.0.0",
     "jest": "^22.4.3",
