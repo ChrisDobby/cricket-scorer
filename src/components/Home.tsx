@@ -15,7 +15,7 @@ import { OFFLINE, ONLINE } from '../context/networkStatus';
 const Logo = require('../../images/icon_192.png');
 
 export default withStyles(homePageStyles)((props: any) => {
-    const canContinueCurrentMatch = typeof props.storedMatch !== 'undefined' &&
+    const canContinueCurrentMatch = props.storedMatch &&
         ((props.storedMatch.match.user === props.offlineUser.id) ||
             (props.isAuthenticated && props.userProfile.id === props.storedMatch.match.user) ||
             (props.status === OFFLINE));
