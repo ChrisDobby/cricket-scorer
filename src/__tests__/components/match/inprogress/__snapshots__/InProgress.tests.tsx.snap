@@ -1411,14 +1411,6 @@ exports[`InProgress should render correctly for match with started innings 1`] =
 </div>
 `;
 
-exports[`InProgress should render correctly when no match 1`] = `
-<div>
-  <div
-    class="MuiPaper-root-2 MuiPaper-elevation2-6 MuiPaper-rounded-3 withRouter-InProgress--root-1"
-  />
-</div>
-`;
-
 exports[`InProgress should render correctly when there is a previous bowler 1`] = `
 <div>
   <div

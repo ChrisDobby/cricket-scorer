@@ -5,11 +5,19 @@ import { default as WicketComponent } from '../../components/match/wicket/Wicket
 import storeMatch from '../../storeMatch';
 import WithNavBar from '../../components/WithNavBar';
 import WithInProgressStore from '../../components/WithInProgressStore';
+import { Profile } from '../../domain';
 
-interface WicketProps { inProgressMatchStore: InProgressMatchStore; }
+interface WicketProps {
+    inProgressMatchStore: InProgressMatchStore;
+    userProfile: Profile;
+}
 
-const Wicket = observer(({ inProgressMatchStore }: WicketProps) => (
-    <WicketComponent inProgress={inProgressMatchStore} storeMatch={storeMatch(inProgressMatchStore.setId)} />
+const Wicket = observer(({ inProgressMatchStore, userProfile }: WicketProps) => (
+    <WicketComponent
+        inProgress={inProgressMatchStore}
+        storeMatch={storeMatch(inProgressMatchStore.setId)}
+        userProfile={userProfile}
+    />
 ));
 
 export default WithInProgressStore()(inject('inProgressMatchStore')(WithNavBar({})(Wicket)));

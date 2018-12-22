@@ -7,6 +7,7 @@ import Error from '../components/Error';
 import Progress from '../components/Progress';
 import liveUpdates, { UpdateType, EventType } from '../liveUpdates';
 import WithOutOfDateMatches from '../components/WithOutOfDateMatches';
+import { Match } from '../domain';
 
 const updates = liveUpdates(process.env.API_URL as string, UpdateType.Scorecard);
 const matchUser = (match: any) => match.user;
@@ -87,7 +88,7 @@ export default WithOutOfDateMatches(
                 return (
                     <>
                         <Scorecard
-                            cricketMatch={this.state.match}
+                            cricketMatch={(this.state.match as any) as Match}
                             lastEvent={this.state.lastEvent}
                             canContinue={this.canContinue}
                             continue={this.continueScoring}

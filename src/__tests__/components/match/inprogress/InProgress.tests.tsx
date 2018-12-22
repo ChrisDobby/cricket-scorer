@@ -7,8 +7,8 @@ import { blankMatch, matchWithStartedInnings, matchWithOverReadyToComplete } fro
 describe.skip('InProgress', () => {
     beforeEach(cleanup);
 
-    const noMatchProgress = {
-        match: undefined,
+    const userProfile = { id: 'TestUser', name: 'a test user' };
+    const defaultProgress = {
         currentInnings: undefined,
         currentBatter: undefined,
         currentBowler: undefined,
@@ -30,10 +30,16 @@ describe.skip('InProgress', () => {
         completeMatch: jest.fn(),
         nonDeliveryWicket: jest.fn(),
         batterUnavailable: jest.fn(),
+        setFromStoredMatch: jest.fn(),
+        changeOrders: jest.fn(),
+        rolledBackInnings: jest.fn(),
+        rollback: jest.fn(),
+        updateOvers: jest.fn(),
+        version: 1,
     };
 
     const notStartedMatchProgress = {
-        ...noMatchProgress,
+        ...defaultProgress,
         match: blankMatch,
     };
 
@@ -58,21 +64,13 @@ describe.skip('InProgress', () => {
 
     const storeMatch = jest.fn();
 
-    it('should render correctly when no match', () => {
-        const { container } = render(
-            <StaticRouter context={{}}>
-                <InProgress inProgress={noMatchProgress} storeMatch={storeMatch} />
-            </StaticRouter>);
-
-        expect(container).toMatchSnapshot();
-    });
-
     it('should render correctly for match that has not started', () => {
         const { container } = render(
             <StaticRouter context={{}}>
                 <InProgress
                     inProgress={notStartedMatchProgress}
                     storeMatch={storeMatch}
+                    userProfile={userProfile}
                 />
             </StaticRouter>);
 
@@ -85,6 +83,7 @@ describe.skip('InProgress', () => {
                 <InProgress
                     inProgress={matchWithStartedInningsProgress}
                     storeMatch={storeMatch}
+                    userProfile={userProfile}
                 />
             </StaticRouter>);
 
@@ -99,7 +98,7 @@ describe.skip('InProgress', () => {
 
         const { container } = render(
             <StaticRouter context={{}}>
-                <InProgress inProgress={withPreviousBowler} storeMatch={storeMatch} />
+                <InProgress inProgress={withPreviousBowler} storeMatch={storeMatch} userProfile={userProfile} />
             </StaticRouter>);
 
         expect(container).toMatchSnapshot();
@@ -116,6 +115,7 @@ describe.skip('InProgress', () => {
                 <InProgress
                     inProgress={withPreviousBowlerFromEnd}
                     storeMatch={storeMatch}
+                    userProfile={userProfile}
                 />
             </StaticRouter>);
 
@@ -128,6 +128,7 @@ describe.skip('InProgress', () => {
                 <InProgress
                     inProgress={matchDuringOverProgress}
                     storeMatch={storeMatch}
+                    userProfile={userProfile}
                 />
             </StaticRouter>);
 

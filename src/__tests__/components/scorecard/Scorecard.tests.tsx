@@ -8,7 +8,13 @@ describe.skip('Scorecard', () => {
     beforeEach(cleanup);
 
     it('should render correctly', () => {
-        const { container } = render(<Scorecard cricketMatch={match} />);
+        const { container } = render((
+            <Scorecard
+                cricketMatch={match}
+                canContinue={false}
+                continue={jest.fn()}
+                lastEvent={undefined}
+            />));
         expect(container).toMatchSnapshot();
     });
 
@@ -62,7 +68,14 @@ describe.skip('Scorecard', () => {
             innings: [...match.innings, thirdInnings, fourthInnings],
         };
 
-        const { container } = render(<Scorecard cricketMatch={fourInningsMatch} />);
+        const { container } = render((
+            <Scorecard
+                cricketMatch={fourInningsMatch}
+                canContinue={false}
+                continue={jest.fn()}
+                lastEvent={undefined}
+            />
+        ));
         expect(container).toMatchSnapshot();
     });
 });
