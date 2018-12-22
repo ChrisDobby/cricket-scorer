@@ -42,7 +42,7 @@ export default withStyles(homePageStyles)((props: any) => {
             <Paper className={props.classes.paperStyle}>
                 <Grid container>
                     <Grid item sm={6} style={{ textAlign: 'center' }}>
-                        <img src={Logo} className={props.classes.logoStyle} />
+                        <img src={Logo} alt="cricket scores live" className={props.classes.logoStyle} />
                     </Grid>
                     <Grid item sm={6}>
                         <div className={props.classes.mainContentStyle}>
