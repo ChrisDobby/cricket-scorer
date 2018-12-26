@@ -1,7 +1,4 @@
 import * as React from 'react';
-import Snackbar from '@material-ui/core/Snackbar';
-import SnackbarContent from '@material-ui/core/SnackbarContent';
-import Slide from '@material-ui/core/Slide';
 import amber from '@material-ui/core/colors/amber';
 import NetworkStatusContext from './NetworkStatusContext';
 import { ONLINE, OFFLINE } from './networkStatus';
@@ -12,6 +9,10 @@ const getStatus = () => {
     }
     return OFFLINE;
 };
+
+const Snackbar = React.lazy(() => import('@material-ui/core/Snackbar'));
+const SnackbarContent = React.lazy(() => import('@material-ui/core/SnackbarContent'));
+const Slide = React.lazy(() => import('@material-ui/core/Slide'));
 
 export default class NetworkStatusProvider extends React.PureComponent {
     state = {
