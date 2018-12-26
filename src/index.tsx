@@ -16,10 +16,12 @@ window['subscriptions'] = globalPubsub();
 connectedFetch();
 
 ReactDOM.render(
-    <NetworkStatusProvider>
-        <BrowserRouter>
-            <Routes />
-        </BrowserRouter>
-    </NetworkStatusProvider>,
+    <React.Suspense fallback={<div />}>
+        <NetworkStatusProvider>
+            <BrowserRouter>
+                <Routes />
+            </BrowserRouter>
+        </NetworkStatusProvider>
+    </React.Suspense>,
     document.getElementById('react-app'),
 );

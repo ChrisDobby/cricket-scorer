@@ -15,7 +15,6 @@ const Wicket = React.lazy(() => import('./containers/match/Wicket'));
 const InProgress = React.lazy(() => import('./containers/match/InProgress'));
 
 const Routes = () => (
-    <React.Suspense fallback={<div />}>
         <div style={{ userSelect: 'none' }}>
             <Route path="/" component={App} />
             <Route exact path="/" component={auth0.WithAuth0(Home)} />
@@ -34,7 +33,6 @@ const Routes = () => (
             />
             <Route exact path="/matchcentre" component={auth0.WithAuth0(MatchCentre)} />
         </div>
-    </React.Suspense>
 );
 
 export default Routes;
