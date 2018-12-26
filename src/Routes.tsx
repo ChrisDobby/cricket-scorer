@@ -32,7 +32,7 @@ const Routes = () => (
                 path="/scorecard/:id?"
                 component={auth0.WithAuth0((props: any) => <Scorecard {...props} id={props.match.params.id} />)}
             />
-            <Route exact path="/matchcentre" component={auth0.AuthRequired(MatchCentre)} />
+            <Route exact path="/matchcentre" component={auth0.WithAuth0(MatchCentre)} />
         </div>
     </React.Suspense>
 );
