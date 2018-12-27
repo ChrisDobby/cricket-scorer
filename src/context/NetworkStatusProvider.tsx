@@ -1,6 +1,6 @@
 import * as React from 'react';
-import amber from '@material-ui/core/colors/amber';
 import NetworkStatusContext from './NetworkStatusContext';
+import NetworkStatusDisplay from '../components/NetworkStatusDisplay';
 import { ONLINE, OFFLINE } from './networkStatus';
 
 const getStatus = () => {
@@ -9,10 +9,6 @@ const getStatus = () => {
     }
     return OFFLINE;
 };
-
-const Snackbar = React.lazy(() => import('@material-ui/core/Snackbar'));
-const SnackbarContent = React.lazy(() => import('@material-ui/core/SnackbarContent'));
-const Slide = React.lazy(() => import('@material-ui/core/Slide'));
 
 export default class NetworkStatusProvider extends React.PureComponent {
     state = {
@@ -91,18 +87,7 @@ export default class NetworkStatusProvider extends React.PureComponent {
             >
                 {this.props.children}
                 {this.state.info &&
-                    <Snackbar
-                        open={true}
-                        onClose={this.clearInfo}
-                        TransitionComponent={(props: any) => <Slide direction="down" {...props} />}
-                        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-                        autoHideDuration={3000}
-                    >
-                        <SnackbarContent
-                            style={{ backgroundColor: amber[700] }}
-                            message={this.state.info}
-                        />
-                    </Snackbar>}
+                    <NetworkStatusDisplay close={this.clearInfo} message={(this.state.info as any) as string} />}
             </NetworkStatusContext.Provider>);
     }
 }

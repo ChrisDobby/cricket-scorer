@@ -1,7 +1,4 @@
-import * as React from 'react';
 import { WebAuth, Auth0DecodedHash } from 'auth0-js';
-import NetworkStatusContext from '../context/NetworkStatusContext';
-import { OFFLINE } from '../context/networkStatus';
 import { Profile } from '../domain';
 
 const auth0 = (domain: string, clientId: string) => {
@@ -83,74 +80,6 @@ const auth0 = (domain: string, clientId: string) => {
         }
     };
 
-    const WithNetworkStatus = (Component: any) => (props: any) => (
-        <NetworkStatusContext.Consumer>{({
-            status,
-            offlineUser,
-        }) =>
-            <Component {...props} status={status} offlineUser={offlineUser} />
-        }
-        </NetworkStatusContext.Consumer>);
-
-    const afterLogout = (history: any, stay: boolean) =>
-        history.replace(stay ? window.location.pathname : '/');
-
-    const WithAuth0 = (Component: any) => WithNetworkStatus((props: any) => (
-        <Component
-            {...props}
-            login={() => login(props.location.pathname)}
-            logout={(stayOnPage: boolean) =>
-                logout(() => afterLogout(props.history, stayOnPage))()}
-            isAuthenticated={isAuthenticated()}
-            canAuthenticate={props.status !== OFFLINE}
-            userProfile={userProfile()}
-        />));
-
-    const AuthRequired = (Component: any) => WithNetworkStatus(WithAuth0(class extends React.PureComponent<any> {
-        get loginRequired() {
-            return this.props.status !== OFFLINE && !this.props.isAuthenticated;
-        }
-
-        loginIfRequired = () => {
-            if (this.loginRequired) {
-                this.props.login(this.props.location.pathname);
-            }
-        }
-
-        componentDidMount() {
-            this.loginIfRequired();
-        }
-
-        componentDidUpdate() {
-            this.loginIfRequired();
-        }
-
-        render() {
-            if (this.loginRequired) {
-                return <div />;
-            }
-
-            return (
-                <Component
-                    {...this.props}
-                    userProfile={!this.props.isAuthenticated ? this.props.offlineUser : this.props.userProfile}
-                />);
-        }
-    }));
-
-    class AuthCallback extends React.PureComponent<any> {
-        componentDidMount() {
-            handleAuthentication(
-                this.props.location,
-                path => this.props.history.replace(path ? path : '/'),
-            );
-        }
-
-        render() {
-            return <div />;
-        }
-    }
-
     const addBearerToken = (headers: any) => {
         return ({
             ...headers,
@@ -159,12 +88,12 @@ const auth0 = (domain: string, clientId: string) => {
     };
 
     return {
-        WithAuth0,
-        AuthRequired,
+        handleAuthentication,
         addBearerToken,
         isAuthenticated,
         login,
-        Auth: AuthCallback,
+        logout,
+        userProfile,
     };
 };
 
