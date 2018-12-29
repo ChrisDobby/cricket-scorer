@@ -13,7 +13,7 @@ import { IconButton } from '@material-ui/core';
 type OptionButton = {
     text: string;
     icon: any;
-    action: any;
+    action: () => void;
 };
 
 type MatchDrawerProps = {

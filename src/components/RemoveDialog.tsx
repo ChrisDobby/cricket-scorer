@@ -6,10 +6,10 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogActions from '@material-ui/core/DialogActions';
 import Button from '@material-ui/core/Button';
 import * as dateformat from 'dateformat';
-import { Match } from '../domain';
+import { PersistedMatch } from '../domain';
 
 interface RemoveDialogProps {
-    match: Match;
+    match: PersistedMatch;
     onYes: () => void;
     onNo: () => void;
 }

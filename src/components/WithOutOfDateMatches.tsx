@@ -3,8 +3,28 @@ import OutOfDateDialog from './OutOfDateDialog';
 import matchStorage from '../stores/matchStorage';
 import fetchMatch from '../match/fetchMatch';
 import WithMatchApi from './WithMatchApi';
+import { Profile, StoredMatch, PersistedMatch } from '../domain';
+export interface OutOfDateMatch extends PersistedMatch {
+    removed: boolean;
+    removeError: boolean;
+    continueError: boolean;
+}
 
-export default (Component: any) => WithMatchApi(class extends React.PureComponent<any> {
+interface MatchApi {
+    getMatch: (id: string) => Promise<any>;
+    sendMatch: (match: StoredMatch) => Promise<any>;
+    removeMatch: (id: string) => Promise<void>;
+    getOutOfDateMatches: (id: string) => Promise<PersistedMatch>;
+}
+
+interface WithOutOfDateMatchesProps {
+    isAuthenticated: boolean;
+    userProfile: Profile;
+    matchApi: MatchApi;
+    history: any;
+}
+
+export default (Component: any) => WithMatchApi(class extends React.PureComponent<WithOutOfDateMatchesProps> {
     state = {
         outOfDateMatches: [],
         showingDialog: false,
@@ -26,7 +46,7 @@ export default (Component: any) => WithMatchApi(class extends React.PureComponen
         this.udpateMatches();
     }
 
-    componentDidUpdate(prevProps: any) {
+    componentDidUpdate(prevProps: WithOutOfDateMatchesProps) {
         if (prevProps.isAuthenticated === this.props.isAuthenticated) {
             return;
         }
@@ -36,7 +56,7 @@ export default (Component: any) => WithMatchApi(class extends React.PureComponen
     hideDialog = () => {
         this.setState({
             showingDialog: false,
-            outOfDateMatches: [...this.state.outOfDateMatches.filter((m: any) => !m.removed)],
+            outOfDateMatches: [...this.state.outOfDateMatches.filter((m: OutOfDateMatch) => !m.removed)],
         });
     }
 
@@ -46,7 +66,7 @@ export default (Component: any) => WithMatchApi(class extends React.PureComponen
             await this.props.matchApi.removeMatch(id);
             this.setState({
                 outOfDateMatches: [
-                    ...this.state.outOfDateMatches.map((m: any) => m.id !== id
+                    ...this.state.outOfDateMatches.map((m: OutOfDateMatch) => m.id !== id
                         ? m
                         : { ...m, removed: true, removeError: false }),
                 ],
@@ -55,7 +75,7 @@ export default (Component: any) => WithMatchApi(class extends React.PureComponen
         } catch (e) {
             this.setState({
                 outOfDateMatches: [
-                    ...this.state.outOfDateMatches.map((m: any) => m.id !== id
+                    ...this.state.outOfDateMatches.map((m: OutOfDateMatch) => m.id !== id
                         ? m
                         : { ...m, removeError: true }),
                 ],
@@ -72,7 +92,7 @@ export default (Component: any) => WithMatchApi(class extends React.PureComponen
         } catch (e) {
             this.setState({
                 outOfDateMatches: [
-                    ...this.state.outOfDateMatches.map((m: any) => m.id !== id
+                    ...this.state.outOfDateMatches.map((m: OutOfDateMatch) => m.id !== id
                         ? m
                         : { ...m, fetchError: true }),
                 ],

@@ -9,19 +9,10 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import * as dateformat from 'dateformat';
 import TextUpdateNotify from './TextUpdateNotify';
-
-type Match = {
-    id: string;
-    date: string;
-    status: string;
-    user: string;
-    homeTeam: string;
-    awayTeam: string;
-    lastEvent: string;
-};
+import { PersistedMatch, CurrentEditingMatch } from '../domain';
 
 interface MatchCardProps {
-    match: Match;
+    match: PersistedMatch | CurrentEditingMatch;
     currentUser: string | undefined;
     showScorecard: () => void;
     continueScoring: () => void;

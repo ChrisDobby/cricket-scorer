@@ -2,7 +2,7 @@ import * as React from 'react';
 
 interface AuthCallbackProps {
     history: any;
-    location: any;
+    location: Location;
 }
 
 export default class extends React.Component<AuthCallbackProps> {

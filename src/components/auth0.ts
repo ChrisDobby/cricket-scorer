@@ -43,7 +43,7 @@ const auth0 = (domain: string, clientId: string) => {
         return JSON.parse(userProfile);
     };
 
-    const handleAuthentication = (location: any, afterComplete: (path: string | null) => void) => {
+    const handleAuthentication = (location: Location, afterComplete: (path: string | null) => void) => {
         const setSession = (hash: Auth0DecodedHash) => {
             if (!hash.expiresIn || !hash.accessToken || !hash.idToken) { return; }
             const expiresAt = JSON.stringify((hash.expiresIn * 1000) + new Date().getTime());

@@ -1,8 +1,18 @@
 import * as React from 'react';
 import WithAuth from './WithAuth';
 import { OFFLINE } from '../context/networkStatus';
+import { Profile } from '../domain';
 
-export default (Component: any) => WithAuth(class extends React.PureComponent<any> {
+interface WithRequireAuthProps {
+    isAuthenticated: boolean;
+    login: (ret?: string) => void;
+    userProfile: Profile | undefined;
+    offlineUser: Profile;
+    status: string;
+    location: Location;
+}
+
+export default (Component: any) => WithAuth(class extends React.PureComponent<WithRequireAuthProps> {
     get loginRequired() {
         return this.props.status !== OFFLINE && !this.props.isAuthenticated;
     }

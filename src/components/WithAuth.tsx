@@ -5,7 +5,7 @@ import { Profile } from '../domain';
 
 interface WithAuthProps {
     history: any;
-    location: any;
+    location: Location;
 }
 
 interface Auth0 {

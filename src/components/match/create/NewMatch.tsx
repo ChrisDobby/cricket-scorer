@@ -2,10 +2,17 @@ import * as React from 'react';
 import EditContainer from '../EditContainer';
 import MatchForm from './MatchForm';
 import { default as createMatch } from '../../../match/create';
-import { InProgressMatchStore } from '../../../stores/inProgressMatchStore';
 import { bindMatchStorage } from '../../../stores/withMatchStorage';
+import { Profile, InProgressMatch } from '../../../domain';
 
-const create = (username: string, inProgress: InProgressMatchStore, complete: () => void) => (data: any) => {
+interface NewMatchProps {
+    userProfile: Profile;
+    storeMatch: (match: InProgressMatch) => void;
+    history: any;
+    inProgress: InProgressMatch;
+}
+
+const create = (username: string, inProgress: InProgressMatch, complete: () => void) => (data: any) => {
     const match = createMatch({ ...data, username });
     inProgress.setFromStoredMatch({
         match,
@@ -14,7 +21,7 @@ const create = (username: string, inProgress: InProgressMatchStore, complete: ()
     complete();
 };
 
-export default ({ userProfile, storeMatch, history, inProgress }: any) => (
+export default ({ userProfile, storeMatch, history, inProgress }: NewMatchProps) => (
     <EditContainer>
         <MatchForm
             createMatch={bindMatchStorage(storeMatch, () => inProgress, () => userProfile.id)(

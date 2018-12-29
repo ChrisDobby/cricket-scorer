@@ -11,6 +11,7 @@ import NotificationImportant from '@material-ui/icons/NotificationImportant';
 import Menu from '@material-ui/icons/Menu';
 import NetworkStatusContext from '../context/NetworkStatusContext';
 import { ONLINE, OFFLINE } from '../context/networkStatus';
+import { PersistedMatch, Profile } from '../domain';
 
 const grow: React.CSSProperties = {
     flexGrow: 1,
@@ -22,7 +23,17 @@ type NavBarOptions = {
     button?: (props: any) => any;
 };
 
-const WithNavBar = (options: NavBarOptions) => (Component: any) => (props: any) => (
+interface WithNavBarProps {
+    isAuthenticated: boolean;
+    login: () => void;
+    logout: (stay: boolean) => void;
+    userProfile: Profile;
+    outOfDateMatches: PersistedMatch[];
+    outOfDateSelected: () => void;
+    openDrawer?: () => void;
+}
+
+const WithNavBar = (options: NavBarOptions) => (Component: any) => (props: WithNavBarProps) => (
     <NetworkStatusContext.Consumer>{({
         status,
     }) =>

@@ -6,9 +6,17 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import * as dateformat from 'dateformat';
 import { notificationDescription } from '../../../match/delivery';
+import { Outcome } from '../../../domain';
+
+export interface CardEvent {
+    time: number;
+    batter: string;
+    bowler: string;
+    outcome: Outcome;
+}
 
 interface EventCardProps {
-    event: any;
+    event: CardEvent;
     rollback: () => void;
 }
 

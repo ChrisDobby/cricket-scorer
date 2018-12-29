@@ -10,12 +10,24 @@ import OverNotCompleteWarning from './OverNotCompleteWarning';
 import VerifyCompleteInnings from './VerifyCompleteInnings';
 import CompleteMatch from './CompleteMatch';
 import UpdateOvers from './UpdateOvers';
-import { UnavailableReason, InningsStatus, MatchResult, MatchType } from '../../domain';
+import { UnavailableReason, InningsStatus, MatchResult, MatchType, InProgressMatch } from '../../domain';
 import calculateResult from '../../match/calculateResult';
 
 const allowedOption = { allowed: true };
 
-export default (Component: any) => class extends React.PureComponent<any> {
+interface WithMatchDrawerProps {
+    inProgressMatchStore: InProgressMatch;
+    completeOver: () => void;
+    completeInnings: (status: InningsStatus) => void;
+    completeMatch: (result: MatchResult) => void;
+    updateOvers: (overs: number) => void;
+    batterUnavailable: (reason: UnavailableReason) => void;
+    undoPreviousDelivery: () => void;
+    changeEnds: () => void;
+    history: any;
+}
+
+export default (Component: any) => class extends React.PureComponent<WithMatchDrawerProps> {
     state = {
         open: false,
         overNotCompleteWarning: false,
@@ -128,7 +140,9 @@ export default (Component: any) => class extends React.PureComponent<any> {
                         calculateResult={() => calculateResult(this.props.inProgressMatchStore.match)}
                         undoPrevious={this.props.undoPreviousDelivery}
                     />}
-                {this.state.changeOvers && typeof this.props.inProgressMatchStore.currentInnings !== 'undefined' &&
+                {this.state.changeOvers &&
+                    typeof this.props.inProgressMatchStore.currentInnings !== 'undefined' &&
+                    typeof this.props.inProgressMatchStore.currentInnings.maximumOvers !== 'undefined' &&
                     <UpdateOvers
                         update={this.changeOvers}
                         cancel={this.cancelChangeOvers}

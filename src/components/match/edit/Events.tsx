@@ -7,12 +7,17 @@ import { bindMatchStorage } from '../../../stores/withMatchStorage';
 
 interface EventsProps {
     inProgress: InProgressMatch;
-    storeMatch: any;
+    storeMatch: (match: InProgressMatch) => void;
     history: any;
     userProfile: Profile;
 }
 
-const rollback = (inProgress: InProgressMatch, storeMatch: any, complete: () => void, getUserId: () => string) =>
+const rollback = (
+    inProgress: InProgressMatch,
+    storeMatch: (match: InProgressMatch) => void,
+    complete: () => void,
+    getUserId: () => string,
+) =>
     bindMatchStorage(storeMatch, () => inProgress, getUserId)(
         (eventIndex: number) => {
             inProgress.rollback(eventIndex);

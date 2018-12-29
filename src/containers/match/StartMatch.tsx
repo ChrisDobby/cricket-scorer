@@ -5,8 +5,16 @@ import storeMatch from '../../storeMatch';
 import WithInProgressMatch from '../../components/WithInProgressMatch';
 import WithInProgressStore from '../../components/WithInProgressStore';
 import WithNavBar from '../../components/WithNavBar';
+import { InProgressMatchStore } from '../../stores/inProgressMatchStore';
+import { Profile } from '../../domain';
 
-class StartMatch extends React.Component<any> {
+interface StartMatchProps {
+    inProgressMatchStore: InProgressMatchStore;
+    history: any;
+    userProfile: Profile;
+}
+
+class StartMatch extends React.Component<StartMatchProps> {
     componentDidMount() {
         if (typeof this.props.inProgressMatchStore.match === 'undefined') { return; }
         if (this.props.inProgressMatchStore.match.complete) {

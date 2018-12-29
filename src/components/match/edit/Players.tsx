@@ -7,12 +7,16 @@ import { bindMatchStorage } from '../../../stores/withMatchStorage';
 
 interface PlayersProps {
     inProgress: InProgressMatch;
-    storeMatch: any;
+    storeMatch: (match: InProgressMatch) => void;
     history: any;
     userProfile: Profile;
 }
 
-const update = (inProgress: InProgressMatch, storeMatch: any, complete: () => void, getUserId: () => string) =>
+const update = (
+    inProgress: InProgressMatch,
+    storeMatch: (match: InProgressMatch) => void,
+    complete: () => void,
+    getUserId: () => string) =>
     bindMatchStorage(storeMatch, () => inProgress, getUserId)(
         (battingOrder: number[], bowlingOrder: number[]) => {
             inProgress.changeOrders(battingOrder, bowlingOrder);

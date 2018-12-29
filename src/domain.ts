@@ -227,6 +227,24 @@ export interface StoredMatch {
     lastEvent?: string;
 }
 
+interface MatchBeingScored {
+    date: string;
+    status: string;
+    user: string;
+    homeTeam: string;
+    awayTeam: string;
+    lastEvent: string | undefined;
+    version: number;
+}
+
+export interface PersistedMatch extends MatchBeingScored {
+    id: string;
+}
+
+export interface CurrentEditingMatch extends MatchBeingScored {
+    id: string | undefined;
+}
+
 export interface InProgressMatch {
     match: Match;
     currentInnings?: Innings;
@@ -243,6 +261,7 @@ export interface InProgressMatch {
     newBatterRequired: boolean;
     version: number;
     lastEvent?: string;
+    startMatch: (tossWonBy: TeamType, battingFirst: TeamType) => void;
     startInnings: (battingTeam: TeamType, batter1Index: number, batter2Index: number, overs?: number) => void;
     newBowler: (playerIndex: number) => void;
     newBatter: (playerIndex: number) => void;

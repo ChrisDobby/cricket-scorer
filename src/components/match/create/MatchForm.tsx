@@ -7,22 +7,36 @@ import TeamsEntry from './TeamsEntry';
 import MatchEntry from './MatchEntry';
 import SaveWarning from './SaveWarning';
 
+interface MatchData {
+    matchType: MatchType;
+    oversPerSide: number;
+    playersPerSide: number;
+    inningsPerSide: number;
+    runsPerNoBall: number;
+    runsPerWide: number;
+    homeTeam: string;
+    awayTeam: string;
+    homePlayers: number[];
+    awayPlayers: number[];
+}
 interface MatchFormProps {
-    createMatch: (matchData: any) => void;
+    createMatch: (matchData: MatchData) => void;
 }
 
 class MatchForm extends React.PureComponent<MatchFormProps> {
     state = {
-        matchType: MatchType.LimitedOvers,
-        oversPerSide: 50,
-        playersPerSide: 11,
-        inningsPerSide: 1,
-        runsPerNoBall: 1,
-        runsPerWide: 1,
-        homeTeam: '',
-        awayTeam: '',
-        homePlayers: Array(11).fill(''),
-        awayPlayers: Array(11).fill(''),
+        matchData: {
+            matchType: MatchType.LimitedOvers,
+            oversPerSide: 50,
+            playersPerSide: 11,
+            inningsPerSide: 1,
+            runsPerNoBall: 1,
+            runsPerWide: 1,
+            homeTeam: '',
+            awayTeam: '',
+            homePlayers: Array(11).fill(''),
+            awayPlayers: Array(11).fill(''),
+        },
         saveWarnings: { homePlayersMissing: 0, awayPlayersMissing: 0 },
     };
 
@@ -39,10 +53,12 @@ class MatchForm extends React.PureComponent<MatchFormProps> {
     playersChanged = (players: number) =>
         this.setState({
             playersPerSide: players,
-            homePlayers: this.state.homePlayers.filter((_, idx) => idx < players)
-                .concat(players > this.state.playersPerSide ? Array(players - this.state.playersPerSide).fill('') : []),
-            awayPlayers: this.state.awayPlayers.filter((_, idx) => idx < players)
-                .concat(players > this.state.playersPerSide ? Array(players - this.state.playersPerSide).fill('') : []),
+            homePlayers: this.state.matchData.homePlayers.filter((_, idx) => idx < players)
+                .concat(players > this.state.matchData.playersPerSide
+                    ? Array(players - this.state.matchData.playersPerSide).fill('') : []),
+            awayPlayers: this.state.matchData.awayPlayers.filter((_, idx) => idx < players)
+                .concat(players > this.state.matchData.playersPerSide
+                    ? Array(players - this.state.matchData.playersPerSide).fill('') : []),
         })
     teamChanged = (team: TeamType, name: string) => {
         if (team === TeamType.HomeTeam) {
@@ -61,25 +77,25 @@ class MatchForm extends React.PureComponent<MatchFormProps> {
     }
 
     canSave = () =>
-        ((this.state.matchType === MatchType.LimitedOvers && this.state.oversPerSide > 0) ||
-            (this.state.matchType === MatchType.Time && this.state.inningsPerSide > 0)) &&
-        this.state.playersPerSide > 0 &&
-        this.state.runsPerNoBall > 0 &&
-        this.state.runsPerWide > 0 &&
-        !!this.state.homeTeam &&
-        !!this.state.awayTeam &&
-        this.state.homePlayers.filter(player => player).length > 0 &&
-        this.state.awayPlayers.filter(player => player).length > 0
+        ((this.state.matchData.matchType === MatchType.LimitedOvers && this.state.matchData.oversPerSide > 0) ||
+            (this.state.matchData.matchType === MatchType.Time && this.state.matchData.inningsPerSide > 0)) &&
+        this.state.matchData.playersPerSide > 0 &&
+        this.state.matchData.runsPerNoBall > 0 &&
+        this.state.matchData.runsPerWide > 0 &&
+        !!this.state.matchData.homeTeam &&
+        !!this.state.matchData.awayTeam &&
+        this.state.matchData.homePlayers.filter(player => player).length > 0 &&
+        this.state.matchData.awayPlayers.filter(player => player).length > 0
 
     saveConfirmed = () => {
         this.setState({ saveWarnings: { homePlayersMissing: 0, awayPlayersMissing: 0 } });
-        this.props.createMatch({ ...this.state });
+        this.props.createMatch(this.state.matchData);
     }
 
     save = () => {
         if (!this.canSave()) { return; }
-        const unknownHomePlayers = this.state.homePlayers.filter(player => !player).length;
-        const unknownAwayPlayers = this.state.awayPlayers.filter(player => !player).length;
+        const unknownHomePlayers = this.state.matchData.homePlayers.filter(player => !player).length;
+        const unknownAwayPlayers = this.state.matchData.awayPlayers.filter(player => !player).length;
         if (unknownHomePlayers > 0 || unknownAwayPlayers > 0) {
             this.setState({
                 saveWarnings: { homePlayersMissing: unknownHomePlayers, awayPlayersMissing: unknownAwayPlayers },
@@ -101,7 +117,7 @@ class MatchForm extends React.PureComponent<MatchFormProps> {
                     canSave={this.canSave}
                 >
                     <MatchEntry
-                        {...this.state}
+                        {...this.state.matchData}
                         matchTypeSelected={this.matchTypeSelected}
                         oversChanged={this.oversChanged}
                         inningsChanged={this.inningsChanged}
@@ -112,10 +128,10 @@ class MatchForm extends React.PureComponent<MatchFormProps> {
                     <Divider style={{ marginTop: '10px', marginBottom: '10px' }} />
                     <Typography variant="h5">Teams</Typography>
                     <TeamsEntry
-                        homeTeam={this.state.homeTeam}
-                        awayTeam={this.state.awayTeam}
-                        homePlayers={this.state.homePlayers}
-                        awayPlayers={this.state.awayPlayers}
+                        homeTeam={this.state.matchData.homeTeam}
+                        awayTeam={this.state.matchData.awayTeam}
+                        homePlayers={this.state.matchData.homePlayers}
+                        awayPlayers={this.state.matchData.awayPlayers}
                         playerChanged={this.playerChanged}
                         teamChanged={this.teamChanged}
                     />

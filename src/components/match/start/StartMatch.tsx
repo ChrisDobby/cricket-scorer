@@ -2,17 +2,28 @@ import * as React from 'react';
 import EditContainer from '../EditContainer';
 import StartForm from './StartForm';
 import { bindMatchStorage } from '../../../stores/withMatchStorage';
-import { Team } from '../../../domain';
+import { InProgressMatch, TeamType, Profile } from '../../../domain';
 
-const start = (inProgress: any, storeMatch: any, complete: () => void, getUserId: () => string) =>
+interface StartMatchProps {
+    inProgress: InProgressMatch;
+    storeMatch: (match: InProgressMatch) => void;
+    history: any;
+    userProfile: Profile;
+}
+
+const start = (
+    inProgress: InProgressMatch,
+    storeMatch: (match: InProgressMatch) => void,
+    complete: () => void,
+    getUserId: () => string) =>
     bindMatchStorage(storeMatch, () => inProgress, getUserId)(
-        (tossWonBy: Team, battingFirst: Team) => {
+        (tossWonBy: TeamType, battingFirst: TeamType) => {
             inProgress.startMatch(tossWonBy, battingFirst);
             complete();
         },
     );
 
-export default ({ inProgress, storeMatch, history, userProfile }: any) => (
+export default ({ inProgress, storeMatch, history, userProfile }: StartMatchProps) => (
     <EditContainer>
         <StartForm
             homeTeam={inProgress.match.homeTeam}

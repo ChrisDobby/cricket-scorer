@@ -26,10 +26,6 @@ const entryRow: React.CSSProperties = {
     marginTop: '20px',
 };
 
-// const entryComponent: React.CSSProperties = {
-//     padding: '4px',
-// };
-
 export default (props: MatchEntryProps) => (
     <React.Fragment>
         <Grid container style={entryRow} spacing={8}>

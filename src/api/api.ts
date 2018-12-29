@@ -1,8 +1,8 @@
 import auth0 from '../components/auth0';
 
-const api = (addBearerToken: any) => (defaultRetries: number, retryWaitMilliseconds: number) => {
-    const tryFetch = async (fetchPromise: any, retries: number | undefined) => {
-        const retryAfterWait = (retryCount: number): any => new Promise(resolve =>
+const api = (addBearerToken: (headers: any) => Headers) => (defaultRetries: number, retryWaitMilliseconds: number) => {
+    const tryFetch = async (fetchPromise: () => Promise<Response>, retries: number | undefined) => {
+        const retryAfterWait = (retryCount: number): Promise<Response> => new Promise(resolve =>
             setTimeout(resolve, retryWaitMilliseconds, tryFetch(fetchPromise, retryCount)));
 
         const availableRetries = typeof retries === 'undefined' ? defaultRetries : Number(retries);
@@ -17,9 +17,9 @@ const api = (addBearerToken: any) => (defaultRetries: number, retryWaitMilliseco
         }
     };
 
-    const responseData = (response: any) => {
+    const responseData = (response: Response) => {
         if (!response.ok) {
-            throw new Error(response.status);
+            throw new Error(response.status.toString());
         }
         return response.json();
     };
@@ -43,11 +43,11 @@ const api = (addBearerToken: any) => (defaultRetries: number, retryWaitMilliseco
             undefined);
 
         if (!response.ok) {
-            throw new Error(response.status);
+            throw new Error(response.status.toString());
         }
     };
 
-    const sendData = async (route: string, data: any, method: string, getResponse: (res: any) => any) => {
+    const sendData = async (route: string, data: any, method: string, getResponse: (res: Response) => any) => {
         const response = await tryFetch(
             () =>
                 fetch(

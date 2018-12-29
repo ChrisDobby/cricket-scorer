@@ -8,7 +8,7 @@ interface EditFormProps {
     heading: string;
     save: () => void;
     canSave: () => boolean;
-    children: any;
+    children: React.ReactNode;
 }
 
 export default ({ heading, save, canSave, children }: EditFormProps) => (

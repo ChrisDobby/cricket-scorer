@@ -85,7 +85,7 @@ export default class extends React.Component<StartInningsProps, {}> {
     }
 
     save = () => {
-        const getPlayerIndex = (player: any) => player.playerIndex;
+        const getPlayerIndex = (player: PlayerPosition | undefined) => player ? player.playerIndex : -1;
         const batter1Index = getPlayerIndex(this.state.playerPositions
             .find(playerPos => playerPos.position === 1));
         const batter2Index = getPlayerIndex(this.state.playerPositions

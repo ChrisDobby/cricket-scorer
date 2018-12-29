@@ -8,15 +8,28 @@ import Error from './Error';
 import LoadingDialog from './LoadingDialog';
 import Progress from './Progress';
 import RemoveDialog from './RemoveDialog';
+import { StoredMatch, Profile, PersistedMatch, CurrentEditingMatch } from '../domain';
 
 interface MatchCentreState {
     fetchingMatch: boolean;
     fetchError: boolean;
-    confirmRemoveId: string | undefined;
+    confirmRemoveMatch: PersistedMatch | undefined;
     removeError: boolean;
 }
 
-const sortMatches = (matches: any[], currentUser: string): any[] =>
+interface MatchCentreProps {
+    storedMatch: StoredMatch | undefined;
+    userProfile: Profile;
+    inProgressMatches: (PersistedMatch | CurrentEditingMatch)[];
+    fetchMatch: (id: string) => Promise<void>;
+    loadingMatches: boolean;
+    removeStoredMatch: () => void;
+    removeMatch: (id: string) => Promise<void>;
+    history: any;
+    classes: any;
+}
+
+const sortMatches = (matches: (PersistedMatch | CurrentEditingMatch)[], currentUser: string): CurrentEditingMatch[] =>
     [...matches].sort((m1, m2) => {
         if (m1.user === currentUser) { return -1; }
         if (m2.user === currentUser) { return 1; }
@@ -24,15 +37,15 @@ const sortMatches = (matches: any[], currentUser: string): any[] =>
         return 0;
     });
 
-export default withStyles(homePageStyles)(class extends React.PureComponent<any> {
+export default withStyles(homePageStyles)(class extends React.PureComponent<MatchCentreProps> {
     state: MatchCentreState = {
         fetchingMatch: false,
         fetchError: false,
-        confirmRemoveId: undefined,
+        confirmRemoveMatch: undefined,
         removeError: false,
     };
 
-    get storedMatch() {
+    get storedMatch(): CurrentEditingMatch | undefined {
         return !this.props.storedMatch || this.props.storedMatch.match.complete
             ? undefined
             : {
@@ -48,7 +61,7 @@ export default withStyles(homePageStyles)(class extends React.PureComponent<any>
     }
 
     get availableMatches() {
-        const sortedMatches = (matches: any) => (
+        const sortedMatches = (matches: (PersistedMatch | CurrentEditingMatch)[]) => (
             typeof this.props.userProfile === 'undefined'
                 ? matches
                 : sortMatches(matches, this.props.userProfile.id));
@@ -60,17 +73,18 @@ export default withStyles(homePageStyles)(class extends React.PureComponent<any>
             this.props.userProfile.id === storedMatch.user);
 
         if (!includeStoredMatch) { return sortedMatches(this.props.inProgressMatches); }
-        const storedMatchFromInProgress = this.props.inProgressMatches.find((m: any) => m.id === storedMatch.id);
+        const storedMatchFromInProgress = this.props.inProgressMatches
+            .find((m: PersistedMatch) => m.id === storedMatch.id);
         return sortedMatches(
             typeof storedMatchFromInProgress === 'undefined' || storedMatchFromInProgress.version <= storedMatch.version
-                ? this.props.inProgressMatches.filter((m: any) => m.id !== storedMatch.id)
+                ? this.props.inProgressMatches.filter((m: PersistedMatch) => m.id !== storedMatch.id)
                     .concat(storedMatch)
                 : this.props.inProgressMatches);
     }
 
-    showScorecard = (id: string) => () => {
+    showScorecard = (id: string | undefined) => () => {
         const storedMatch = this.storedMatch;
-        const inProgress = this.props.inProgressMatches.find((ip: any) => ip.id === id);
+        const inProgress = this.props.inProgressMatches.find((ip: PersistedMatch) => ip.id === id);
         if (typeof inProgress === 'undefined' ||
             (typeof storedMatch !== 'undefined' && storedMatch.id === id && storedMatch.version > inProgress.version)) {
             this.props.history.push('/scorecard');
@@ -80,7 +94,8 @@ export default withStyles(homePageStyles)(class extends React.PureComponent<any>
         this.props.history.push(`/scorecard/${id}`);
     }
 
-    continueScoring = (id: string) => async () => {
+    continueScoring = (id: string | undefined) => async () => {
+        if (!id) { return; }
         try {
             this.setState({ fetchingMatch: true, fetchError: false });
             await this.props.fetchMatch(id);
@@ -92,8 +107,17 @@ export default withStyles(homePageStyles)(class extends React.PureComponent<any>
         }
     }
 
-    removeMatch = (id: string) => () => this.setState({ removeError: false, confirmRemoveId: id });
-    clearRemoveMatch = () => this.setState({ removeError: false, confirmRemoveId: undefined });
+    removeMatch = (id: string | undefined) => () => {
+        if (id) {
+            this.setState({
+                removeError: false,
+                confirmRemoveMatch: this.availableMatches
+                    .find((m: PersistedMatch) => m.id === id),
+            });
+        }
+    }
+
+    clearRemoveMatch = () => this.setState({ removeError: false, confirmRemoveMatch: undefined });
 
     confirmRemoveMatch = (id: string) => async () => {
         this.clearRemoveMatch();
@@ -102,7 +126,7 @@ export default withStyles(homePageStyles)(class extends React.PureComponent<any>
                 this.props.removeStoredMatch();
             }
 
-            await this.props.matchApi.removeMatch(id);
+            await this.props.removeMatch(id);
         } catch (e) {
             this.setState({ removeError: true });
             console.error(e);
@@ -124,7 +148,7 @@ export default withStyles(homePageStyles)(class extends React.PureComponent<any>
                 </Typography>}
                     {!this.props.loadingMatches &&
                         <Grid container spacing={40}>
-                            {availableMatches.map((match: any) =>
+                            {availableMatches.map((match: CurrentEditingMatch) =>
                                 <MatchCard
                                     key={match.id}
                                     match={match}
@@ -147,10 +171,10 @@ export default withStyles(homePageStyles)(class extends React.PureComponent<any>
                     />}
                 {this.state.fetchingMatch &&
                     <LoadingDialog message={'Fetching match to continue scoring...'} />}
-                {this.state.confirmRemoveId &&
+                {this.state.confirmRemoveMatch &&
                     <RemoveDialog
-                        match={this.availableMatches.find((m: any) => m.id === this.state.confirmRemoveId)}
-                        onYes={this.confirmRemoveMatch(this.state.confirmRemoveId)}
+                        match={this.state.confirmRemoveMatch}
+                        onYes={this.confirmRemoveMatch(this.state.confirmRemoveMatch.id)}
                         onNo={this.clearRemoveMatch}
                     />}
             </>);

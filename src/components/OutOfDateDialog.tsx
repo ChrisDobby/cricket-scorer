@@ -8,9 +8,11 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 import * as dateformat from 'dateformat';
+import { OutOfDateMatch } from './WithOutOfDateMatches';
+
 
 interface OutOfDateDialogProps {
-    matches: any[];
+    matches: OutOfDateMatch[];
     disabled: boolean;
     remove: (id: string) => void;
     continue: (id: string) => void;

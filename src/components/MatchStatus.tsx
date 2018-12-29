@@ -2,9 +2,10 @@ import * as React from 'react';
 import Fade from '@material-ui/core/Fade';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import Button from '@material-ui/core/Button';
+import { PersistedMatch } from '../domain';
 
 interface MatchStatusProps {
-    inProgressMatches: any[];
+    inProgressMatches: PersistedMatch[];
     showScorecard: (id: string) => void;
 }
 

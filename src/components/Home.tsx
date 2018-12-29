@@ -11,10 +11,24 @@ import MatchStatus from './MatchStatus';
 import aboutText from './aboutText';
 import homePageStyles from './homePageStyles';
 import { OFFLINE, ONLINE } from '../context/networkStatus';
+import { StoredMatch, Profile, PersistedMatch } from '../domain';
 
 const Logo = require('../../images/icon_192.png');
 
-export default withStyles(homePageStyles)((props: any) => {
+interface HomeProps {
+    storedMatch: StoredMatch;
+    offlineUser: Profile;
+    userProfile: Profile;
+    isAuthenticated: boolean;
+    canAuthenticate: boolean;
+    status: string;
+    history: any;
+    classes: any;
+    fetchMatch: (id: string) => Promise<void>;
+    inProgressMatches: PersistedMatch[];
+}
+
+export default withStyles(homePageStyles)((props: HomeProps) => {
     const canContinueCurrentMatch = props.storedMatch &&
         ((props.storedMatch.match.user === props.offlineUser.id) ||
             (props.isAuthenticated && props.userProfile.id === props.storedMatch.match.user) ||

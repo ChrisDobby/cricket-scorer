@@ -4,8 +4,14 @@ import MatchOnlineWarning from './MatchOnlineWarning';
 import { ONLINE, OFFLINE } from '../../context/networkStatus';
 import auth0 from '../auth0';
 
+interface WithNetworkStatusProps {
+    isAuthenticated: boolean;
+    networkStatus: string;
+    location: Location;
+}
+
 const MatchWithNetworkStatus = (login: (path: string) => void) =>
-    (Component: any) => WithNetworkStatus(class extends React.PureComponent<any> {
+    (Component: any) => WithNetworkStatus(class extends React.PureComponent<WithNetworkStatusProps> {
         state = { showingOnlineWarning: false };
 
         componentDidUpdate(prevProps: any, prevState: any) {

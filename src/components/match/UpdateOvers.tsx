@@ -19,7 +19,6 @@ export default class extends React.PureComponent<UpdateOversProps> {
         this.setState({ overs: Number(ev.target.value) })
 
     render() {
-        console.log(this.props.overs);
         return (
             <div>
                 <Dialog

@@ -19,6 +19,7 @@ describe.skip('InProgress', () => {
         canSelectBattingTeamForInnings: false,
         provisionalMatchComplete: false,
         newBatterRequired: false,
+        startMatch: jest.fn(),
         startInnings: jest.fn(),
         newBowler: jest.fn(),
         newBatter: jest.fn(),

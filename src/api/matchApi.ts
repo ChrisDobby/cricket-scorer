@@ -1,4 +1,4 @@
-import { StoredMatch } from '../domain';
+import { StoredMatch, PersistedMatch } from '../domain';
 
 const matchRoute = 'match';
 const inProgressQuery = 'inprogress';
@@ -17,10 +17,10 @@ const matchApi = (url: string) => (api: any) => {
     const getMatch = async (id: string) =>
         await api.get(`${url}/${matchRoute}/${id}`);
 
-    const getInProgressMatches = async () =>
+    const getInProgressMatches: () => Promise<PersistedMatch> = async () =>
         await api.get(`${url}/${matchRoute}?${inProgressQuery}=true`);
 
-    const getOutOfDateMatches = async (user: string) =>
+    const getOutOfDateMatches: (user: string) => Promise<PersistedMatch> = async (user: string) =>
         await api.get(`${url}/${matchRoute}?${userQuery}=${user}&${expectedCompleteQuery}=true`);
 
     const removeMatch = async (id: string) =>

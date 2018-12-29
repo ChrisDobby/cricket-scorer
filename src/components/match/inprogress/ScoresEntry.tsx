@@ -26,7 +26,7 @@ interface ScoresEntryProps {
     action: (deliveryOutcome: DeliveryOutcome, scores: DeliveryScores) => void;
 }
 
-const executeNonStandard = (score: number, execute: any) => {
+const executeNonStandard = (score: number, execute: (score: number) => () => void) => {
     if (score >= 5) {
         execute(score)();
     }

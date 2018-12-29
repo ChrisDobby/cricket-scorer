@@ -1,6 +1,12 @@
 import * as React from 'react';
+import { InProgressMatch } from '../domain';
 
-export default (Component: any) => class extends React.PureComponent<any> {
+interface WithInProgressMatchProps {
+    inProgressMatchStore: InProgressMatch;
+    history: any;
+}
+
+export default (Component: any) => class extends React.PureComponent<WithInProgressMatchProps> {
     componentDidMount() {
         if (typeof this.props.inProgressMatchStore === 'undefined' ||
             typeof this.props.inProgressMatchStore.match === 'undefined') {
