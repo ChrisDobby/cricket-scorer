@@ -15,50 +15,48 @@ interface Auth0 {
     userProfile: () => Profile | undefined;
 }
 
-interface WithAuthState {
-    auth0?: Auth0;
-}
+export default (Component: any) => (props: WithAuthProps) => {
+    const [auth0, setAuth0] = React.useState(undefined as Auth0 | undefined);
 
-export default (Component: any) => class extends React.Component<WithAuthProps, WithAuthState> {
-    state = {
-        auth0: undefined,
-    };
+    React.useEffect(
+        () => {
+            const loadAuth0 = async () => {
+                const auth0 = await import('./auth0');
+                setAuth0(auth0.default);
+            };
 
-    async componentDidMount() {
-        const auth0 = await import('./auth0');
-        this.setState({ auth0: auth0.default });
-    }
+            loadAuth0();
+        },
+        []);
 
-    afterLogout = (stay: boolean) =>
-        this.props.history.replace(stay ? window.location.pathname : '/')
+    const afterLogout = (stay: boolean) =>
+        props.history.replace(stay ? window.location.pathname : '/');
 
-    render() {
-        return (
-            <NetworkStatusContext.Consumer>{({
-                status,
-                offlineUser,
-            }) =>
-                <>
-                    {this.state.auth0 &&
-                        <Component
-                            {...this.props}
-                            status={status}
-                            offlineUser={offlineUser}
-                            login={() => (this.state.auth0 as any as Auth0).login(this.props.location.pathname)}
-                            logout={(stayOnPage: boolean) =>
-                                (this.state.auth0 as any as Auth0).logout(() => this.afterLogout(stayOnPage))()}
-                            isAuthenticated={(this.state.auth0 as any as Auth0).isAuthenticated()}
-                            canAuthenticate={status !== OFFLINE}
-                            userProfile={(this.state.auth0 as any as Auth0).userProfile()}
-                        />}
-                    {!this.state.auth0 &&
-                        <Component
-                            {...this.props}
-                            status={status}
-                            offlineUser={offlineUser}
-                        />}
-                </>
-            }
-            </NetworkStatusContext.Consumer>);
-    }
+    return (
+        <NetworkStatusContext.Consumer>{({
+            status,
+            offlineUser,
+        }) =>
+            <>
+                {auth0 &&
+                    <Component
+                        {...props}
+                        status={status}
+                        offlineUser={offlineUser}
+                        login={() => auth0.login(props.location.pathname)}
+                        logout={(stayOnPage: boolean) =>
+                            auth0.logout(() => afterLogout(stayOnPage))()}
+                        isAuthenticated={auth0.isAuthenticated()}
+                        canAuthenticate={status !== OFFLINE}
+                        userProfile={auth0.userProfile()}
+                    />}
+                {!auth0 &&
+                    <Component
+                        {...props}
+                        status={status}
+                        offlineUser={offlineUser}
+                    />}
+            </>
+        }
+        </NetworkStatusContext.Consumer>);
 };

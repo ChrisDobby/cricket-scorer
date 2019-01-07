@@ -5,7 +5,7 @@ import WithMatchApi from './WithMatchApi';
 import { PersistedMatch } from '../domain';
 
 interface MatchApi {
-    getInProgressMatches: () => Promise<PersistedMatch>;
+    getInProgressMatches: () => Promise<PersistedMatch[]>;
 }
 
 interface Update {
@@ -20,17 +20,15 @@ interface WithInProgressMatchesProps {
 }
 
 const WithInProgressMatches = (updates: any) => (Component: any) =>
-    WithMatchApi(class extends React.Component<WithInProgressMatchesProps> {
-        disconnect: (() => void) | undefined = undefined;
-        retryTimer: NodeJS.Timer | undefined = undefined;
+    WithMatchApi((props: WithInProgressMatchesProps) => {
+        const [inProgressMatches, setInProgressMatches] = React.useState([] as PersistedMatch[]);
+        const [loadingMatches, setLoadingMatches] = React.useState(false);
 
-        state = {
-            inProgressMatches: [],
-            loadingMatches: false,
-        };
+        let retryTimer: any = undefined;
+        let disconnect: (() => void) | undefined = undefined;
 
-        updateMatches = (updates: Update[]) => this.setState({
-            inProgressMatches: this.state.inProgressMatches.map((match: PersistedMatch) => {
+        const updateMatches = (updates: Update[]) => setInProgressMatches(
+            inProgressMatches.map((match) => {
                 const updated = updates.find((update: Update) => update.id === match.id);
                 return typeof updated === 'undefined'
                     ? match
@@ -39,72 +37,65 @@ const WithInProgressMatches = (updates: any) => (Component: any) =>
                         status: updated.status,
                         lastEvent: updated.lastEvent,
                     };
-            }),
-        })
+            }));
 
-        addMatch = (match: PersistedMatch) => {
-            const allMatches = [...this.state.inProgressMatches, match];
-            this.setState({ inProgressMatches: allMatches });
-        }
+        const addMatch = (match: PersistedMatch) => setInProgressMatches([...inProgressMatches, match]);
 
-        subscribeToMatches = () => {
-            this.disconnect = updates(
-                () => this.state.inProgressMatches.map((match: PersistedMatch) => match.id),
+        const subscribeToMatches = () => {
+            disconnect = updates(
+                () => inProgressMatches.map(match => match.id),
                 [
-                    { event: EventType.MatchUpdates, action: this.updateMatches },
-                    { event: EventType.NewMatch, action: this.addMatch, resubscribe: true },
+                    { event: EventType.MatchUpdates, action: updateMatches },
+                    { event: EventType.NewMatch, action: addMatch, resubscribe: true },
                 ]);
-        }
+        };
 
-        clearRetry = () => {
-            if (typeof this.retryTimer !== 'undefined') {
-                clearTimeout(this.retryTimer);
-                this.retryTimer = undefined;
+        const clearRetry = () => {
+            if (typeof retryTimer !== 'undefined') {
+                clearTimeout(retryTimer);
+                retryTimer = undefined;
             }
-        }
+        };
 
-        setRetry = () => {
-            if (typeof this.retryTimer === 'undefined') {
-                this.retryTimer = setTimeout(this.getMatches, 60000);
-            }
-        }
-
-        getMatches = async () => {
+        const getMatches = async () => {
             try {
-                this.clearRetry();
-                this.setState({ loadingMatches: true });
-                const inProgressMatches = await this.props.matchApi.getInProgressMatches();
-                this.setState({ inProgressMatches, loadingMatches: false });
-                this.subscribeToMatches();
+                clearRetry();
+                setLoadingMatches(true);
+                const inProgressMatches = await props.matchApi.getInProgressMatches();
+                setInProgressMatches(inProgressMatches);
+                setLoadingMatches(false);
+                subscribeToMatches();
             } catch (e) {
-                this.setState({ inProgressMatches: [], loadingMatches: false });
-                this.setRetry();
+                setInProgressMatches([]);
+                setLoadingMatches(false);
+                setRetry();
             }
-        }
+        };
 
-        componentDidUpdate(prevProps: WithInProgressMatchesProps) {
-            if (prevProps.status === this.props.status) { return; }
-
-            if (this.props.status === ONLINE) {
-                this.getMatches();
-            } else {
-                this.setRetry();
+        const setRetry = () => {
+            if (typeof retryTimer === 'undefined') {
+                retryTimer = setTimeout(getMatches, 60000);
             }
-        }
+        };
 
-        async componentDidMount() {
-            this.getMatches();
-        }
+        React.useEffect(
+            () => {
+                if (props.status === ONLINE) {
+                    getMatches();
+                } else {
+                    setRetry();
+                }
 
-        componentWillUnmount() {
-            if (typeof this.disconnect !== 'undefined') {
-                this.disconnect();
-            }
-        }
+                return () => {
+                    if (typeof disconnect !== 'undefined') {
+                        disconnect();
+                    }
+                };
 
-        render() {
-            return <Component {...this.props} {...this.state} />;
-        }
+            },
+            [props.status]);
+
+        return <Component {...props} inProgressMatches={inProgressMatches} loadingMatches={loadingMatches} />;
     });
 
 export default WithInProgressMatches(liveUpdates(process.env.API_URL as string, UpdateType.AllUpdates));

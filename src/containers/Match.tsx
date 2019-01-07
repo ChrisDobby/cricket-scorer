@@ -1,30 +1,35 @@
 import * as React from 'react';
 import { inject } from 'mobx-react';
 import WithInProgressStore from '../components/WithInProgressStore';
+import { InProgressMatch } from '../domain';
 
-class Match extends React.Component<any> {
-    componentDidMount() {
-        if (typeof this.props.inProgressMatchStore === 'undefined' ||
-            typeof this.props.inProgressMatchStore.match === 'undefined') {
-            this.props.history.replace('/match/create');
-            return;
-        }
-
-        if (typeof this.props.inProgressMatchStore.match.toss === 'undefined') {
-            this.props.history.replace('/match/start');
-            return;
-        }
-
-        if (!this.props.inProgressMatchStore.match.complete) {
-            this.props.history.replace('/match/inprogress');
-            return;
-        }
-
-        this.props.history.replace('/scorecard');
-    }
-    render() {
-        return null;
-    }
+interface MatchProps {
+    inProgressMatchStore: InProgressMatch;
+    history: any;
 }
+
+const Match = (props: MatchProps) => {
+    React.useEffect(() => {
+        if (typeof props.inProgressMatchStore === 'undefined' ||
+            typeof props.inProgressMatchStore.match === 'undefined') {
+            props.history.replace('/match/create');
+            return;
+        }
+
+        if (typeof props.inProgressMatchStore.match.toss === 'undefined') {
+            props.history.replace('/match/start');
+            return;
+        }
+
+        if (!props.inProgressMatchStore.match.complete) {
+            props.history.replace('/match/inprogress');
+            return;
+        }
+
+        props.history.replace('/scorecard');
+    });
+
+    return null;
+};
 
 export default WithInProgressStore()(inject('inProgressMatchStore')(Match));

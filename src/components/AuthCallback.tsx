@@ -5,16 +5,15 @@ interface AuthCallbackProps {
     location: Location;
 }
 
-export default class extends React.Component<AuthCallbackProps> {
-    async componentDidMount() {
-        const auth0 = await import('./auth0');
-        auth0.default.handleAuthentication(
-            this.props.location,
-            path => this.props.history.replace(path ? path : '/'),
-        );
-    }
+export default (props: AuthCallbackProps) => {
+    React.useEffect(() => {
+        import('./auth0')
+            .then(auth0 =>
+                auth0.default.handleAuthentication(
+                    props.location,
+                    path => props.history.replace(path ? path : '/'),
+                ));
+    });
 
-    render() {
-        return <div />;
-    }
-}
+    return <div />;
+};

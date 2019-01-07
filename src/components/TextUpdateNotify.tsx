@@ -10,30 +10,27 @@ const textStyle: React.CSSProperties = {
     transition: 'background-color 1s',
 };
 
-export default class extends React.PureComponent<TextUpdateNotifyProps> {
-    textComponent: HTMLSpanElement | null | undefined = undefined;
+export default (props: TextUpdateNotifyProps) => {
+    const [initialised, setInitialised] = React.useState(false);
+    const textComponent = React.useRef(null as HTMLSpanElement | null);
 
-    showUpdate = () => {
-        if (!this.textComponent) { return; }
+    React.useEffect(
+        () => {
+            if (!initialised || !textComponent.current) {
+                setInitialised(true);
+                return;
+            }
+            const originalColor = textComponent.current.style.backgroundColor;
+            textComponent.current.style.backgroundColor = props.highlightBackgroundColour || defaultColour;
+            setTimeout(
+                () => {
+                    if (textComponent.current) {
+                        textComponent.current.style.backgroundColor = originalColor;
+                    }
+                },
+                1000);
+        },
+        [props.text]);
 
-        const originalColor = this.textComponent.style.backgroundColor;
-        this.textComponent.style.backgroundColor = this.props.highlightBackgroundColour || defaultColour;
-        setTimeout(
-            () => {
-                if (this.textComponent) {
-                    this.textComponent.style.backgroundColor = originalColor;
-                }
-            },
-            1000);
-    }
-
-    componentDidUpdate(prevProps: TextUpdateNotifyProps) {
-        if (this.props.text !== prevProps.text) {
-            this.showUpdate();
-        }
-    }
-
-    render() {
-        return <span style={textStyle} ref={c => this.textComponent = c}>{this.props.text}</span>;
-    }
-}
+    return <span style={textStyle} ref={textComponent}>{props.text}</span>;
+};

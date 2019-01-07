@@ -23,120 +23,106 @@ interface CompleteMatchProps {
     undoPrevious: () => void;
 }
 
-export default class extends React.PureComponent<CompleteMatchProps> {
-    state = {
-        result: undefined,
-        winBy: undefined,
-        winMargin: undefined,
-    };
+export default (props: CompleteMatchProps) => {
+    const defaultResult = props.calculateResult();
+    const [result, setResult] = React.useState(defaultResult ? defaultResult.result : undefined);
+    const [winBy, setWinBy] = React.useState(defaultResult ? defaultResult.winBy : undefined);
+    const [winMargin, setWinMargin] = React.useState(defaultResult ? defaultResult.winMargin : undefined);
 
-    componentDidMount() {
-        const defaultResult = this.props.calculateResult();
-        if (typeof defaultResult !== 'undefined') {
-            this.setState({ ...defaultResult });
-        }
-    }
+    const selectResult = (ev: React.ChangeEvent<HTMLSelectElement>) =>
+        setResult(typeof ev.target.value !== 'undefined' ? Number(ev.target.value) : undefined);
+    const selectWinBy = (ev: React.ChangeEvent<HTMLSelectElement>) =>
+        setWinBy(typeof ev.target.value !== 'undefined' ? Number(ev.target.value) : undefined);
+    const marginChange = (ev: React.ChangeEvent<HTMLInputElement>) =>
+        setWinMargin(ev.target.value);
+    const complete = () =>
+        props.complete({
+            winBy,
+            winMargin,
+            result: Number(result),
+        });
 
-    selectResult = (ev: React.ChangeEvent<HTMLSelectElement>) =>
-        this.setState({
-            result: typeof ev.target.value !== 'undefined' ? Number(ev.target.value) : undefined,
-        })
-    selectWinBy = (ev: React.ChangeEvent<HTMLSelectElement>) =>
-        this.setState({
-            winBy: typeof ev.target.value !== 'undefined' ? Number(ev.target.value) : undefined,
-        })
-    marginChange = (ev: React.ChangeEvent<HTMLInputElement>) =>
-        this.setState({ winMargin: ev.target.value })
-    complete = () =>
-        this.props.complete({
-            result: Number(this.state.result),
-            winBy: this.state.winBy,
-            winMargin: this.state.winMargin,
-        })
+    const formComplete = () =>
+        result === Result.Abandoned ||
+        result === Result.Draw ||
+        result === Result.Tie ||
+        (typeof winBy !== 'undefined' && winMargin);
 
-    formComplete = () =>
-        this.state.result === Result.Abandoned ||
-        this.state.result === Result.Draw ||
-        this.state.result === Result.Tie ||
-        (typeof this.state.winBy !== 'undefined' && this.state.winMargin)
-
-    render() {
-        return (
-            <div>
-                <Dialog
-                    open={true}
-                    aria-labelledby="complete-match-title"
-                >
-                    <DialogTitle id="complete-match-title">Complete match</DialogTitle>
-                    <DialogContent>
-                        <DialogContentText>
-                            Select the match result followed by OK or Cancel to not complete the match
-                        </DialogContentText>
-                    </DialogContent>
-                    <DialogContent>
-                        <Grid container spacing={8}>
-                            <Grid item xs={12} md={6}>
-                                <FormControl fullWidth>
-                                    <InputLabel htmlFor="result">Result</InputLabel>
-                                    <Select
-                                        inputProps={{
-                                            id: 'result',
-                                        }}
-                                        value={this.state.result}
-                                        onChange={this.selectResult}
-                                    >
-                                        <MenuItem>Select result..</MenuItem>
-                                        <MenuItem value={Result.HomeWin}>{`${this.props.homeTeam} won`}</MenuItem>
-                                        <MenuItem value={Result.AwayWin}>{`${this.props.awayTeam} won`}</MenuItem>
-                                        <MenuItem value={Result.Tie}>Match tied</MenuItem>
-                                        <MenuItem value={Result.Draw}>Match drawn</MenuItem>
-                                        <MenuItem value={Result.Abandoned}>Match abandoned</MenuItem>
-                                    </Select>
-                                </FormControl>
-                            </Grid>
-                            {(this.state.result === Result.HomeWin || this.state.result === Result.AwayWin) &&
-                                <React.Fragment>
-                                    <Grid item xs={6} md={3}>
-                                        <TextField
-                                            fullWidth
-                                            label="by"
-                                            value={this.state.winMargin}
-                                            type="number"
-                                            onChange={this.marginChange}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={6} md={3}>
-                                        <FormControl fullWidth>
-                                            <InputLabel htmlFor="winBy">&nbsp;</InputLabel>
-                                            <Select
-                                                inputProps={{
-                                                    id: 'winBy',
-                                                }}
-                                                value={typeof this.state.winBy === 'undefined' ? -1 : this.state.winBy}
-                                                onChange={this.selectWinBy}
-                                            >
-                                                <MenuItem value={WinBy.Runs}>runs</MenuItem>
-                                                <MenuItem value={WinBy.Wickets}>wickets</MenuItem>
-                                            </Select>
-                                        </FormControl>
-                                    </Grid>
-                                </React.Fragment>}
+    return (
+        <div>
+            <Dialog
+                open={true}
+                aria-labelledby="complete-match-title"
+            >
+                <DialogTitle id="complete-match-title">Complete match</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        Select the match result followed by OK or Cancel to not complete the match
+                    </DialogContentText>
+                </DialogContent>
+                <DialogContent>
+                    <Grid container spacing={8}>
+                        <Grid item xs={12} md={6}>
+                            <FormControl fullWidth>
+                                <InputLabel htmlFor="result">Result</InputLabel>
+                                <Select
+                                    inputProps={{
+                                        id: 'result',
+                                    }}
+                                    value={result as number | undefined}
+                                    onChange={selectResult}
+                                >
+                                    <MenuItem>Select result..</MenuItem>
+                                    <MenuItem value={Result.HomeWin}>{`${props.homeTeam} won`}</MenuItem>
+                                    <MenuItem value={Result.AwayWin}>{`${props.awayTeam} won`}</MenuItem>
+                                    <MenuItem value={Result.Tie}>Match tied</MenuItem>
+                                    <MenuItem value={Result.Draw}>Match drawn</MenuItem>
+                                    <MenuItem value={Result.Abandoned}>Match abandoned</MenuItem>
+                                </Select>
+                            </FormControl>
                         </Grid>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button
-                            onClick={this.complete}
-                            color="primary"
-                            autoFocus
-                            disabled={!this.formComplete()}
-                        >OK
-                        </Button>
-                        {!this.props.disallowCancel &&
-                            <Button onClick={this.props.cancel} color="primary">Cancel</Button>}
-                        {this.props.disallowCancel &&
-                            <Button onClick={this.props.undoPrevious} color="primary">Undo previous</Button>}
-                    </DialogActions>
-                </Dialog>
-            </div>);
-    }
-}
+                        {(result === Result.HomeWin || result === Result.AwayWin) &&
+                            <>
+                                <Grid item xs={6} md={3}>
+                                    <TextField
+                                        fullWidth
+                                        label="by"
+                                        value={winMargin}
+                                        type="number"
+                                        onChange={marginChange}
+                                    />
+                                </Grid>
+                                <Grid item xs={6} md={3}>
+                                    <FormControl fullWidth>
+                                        <InputLabel htmlFor="winBy">&nbsp;</InputLabel>
+                                        <Select
+                                            inputProps={{
+                                                id: 'winBy',
+                                            }}
+                                            value={typeof winBy === 'undefined' ? -1 : winBy}
+                                            onChange={selectWinBy}
+                                        >
+                                            <MenuItem value={WinBy.Runs}>runs</MenuItem>
+                                            <MenuItem value={WinBy.Wickets}>wickets</MenuItem>
+                                        </Select>
+                                    </FormControl>
+                                </Grid>
+                            </>}
+                    </Grid>
+                </DialogContent>
+                <DialogActions>
+                    <Button
+                        onClick={complete}
+                        color="primary"
+                        autoFocus
+                        disabled={!formComplete()}
+                    >OK
+                    </Button>
+                    {!props.disallowCancel &&
+                        <Button onClick={props.cancel} color="primary">Cancel</Button>}
+                    {props.disallowCancel &&
+                        <Button onClick={props.undoPrevious} color="primary">Undo previous</Button>}
+                </DialogActions>
+            </Dialog>
+        </div>);
+};

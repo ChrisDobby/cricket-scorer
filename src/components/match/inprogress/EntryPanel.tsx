@@ -19,181 +19,144 @@ type EntryPanelProps = RouteComponentProps<{}> & {
     calculateResult: () => MatchResult | undefined;
 };
 
-interface EntryPanelState {
-    noBall: boolean;
-    scoreType: ScoreType;
-    allRunFourWarning: boolean;
-    allRunSixWarning: boolean;
-    allRunDeliveryOutcome: DeliveryOutcome | undefined;
-    allRunScores: DeliveryScores | undefined;
-    notifyOutcome: Outcome | undefined;
-}
+export default withRouter((props: EntryPanelProps) => {
+    const [noBall, setNoBall] = React.useState(false);
+    const [scoreType, setScoreType] = React.useState(ScoreType.Runs);
+    const [allRunFourWarning, setAllRunFourWarning] = React.useState(false);
+    const [allRunSixWarning, setAllRunSixWarning] = React.useState(false);
+    const [allRunDeliveryOutcome, setAllRunDeliveryOutcome] = React.useState(undefined as DeliveryOutcome | undefined);
+    const [allRunScores, setAllRunScores] = React.useState(undefined as DeliveryScores | undefined);
+    const [notifyOutcome, setNotifyOutcome] = React.useState(undefined as Outcome | undefined);
 
-class EntryPanel extends React.Component<EntryPanelProps, {}> {
-    state: EntryPanelState = {
-        noBall: false,
-        scoreType: ScoreType.Runs,
-        allRunFourWarning: false,
-        allRunSixWarning: false,
-        allRunDeliveryOutcome: undefined,
-        allRunScores: undefined,
-        notifyOutcome: undefined,
+    const noBallPressed = () => {
+        setNoBall(true);
+        setScoreType(scoreType === ScoreType.Wide ? ScoreType.Runs : scoreType);
     };
 
-    notifyDelivery = (deliveryOutcome: DeliveryOutcome, scores: DeliveryScores) =>
-        this.setState({
-            notifyOutcome: {
-                deliveryOutcome,
-                scores,
-            },
-        })
+    const legalBallPressed = () => setNoBall(false);
+    const getHasBoundaries = () => scoreType === ScoreType.Runs;
+    const getScore = (field: string) => (score: number) => ({
+        [field]: score,
+    });
+    const getScoresFunc = () => {
+        switch (scoreType) {
+        case ScoreType.Byes:
+            return getScore('byes');
+        case ScoreType.LegByes:
+            return getScore('legByes');
+        case ScoreType.Wide:
+            return getScore('wides');
+        default:
+            return getScore('runs');
+        }
+    };
 
-    notificationClosed = () => this.setState({ notifyOutcome: undefined });
+    const getDeliveryOutcome = (): DeliveryOutcome => {
+        if (noBall) { return DeliveryOutcome.Noball; }
+        if (scoreType === ScoreType.Wide) { return DeliveryOutcome.Wide; }
+        return DeliveryOutcome.Valid;
+    };
 
-    noBallPressed = () => {
-        this.setState({
-            noBall: true,
-            scoreType: this.state.scoreType === ScoreType.Wide ? ScoreType.Runs : this.state.scoreType,
+    const notifyDelivery = (deliveryOutcome: DeliveryOutcome, scores: DeliveryScores) =>
+        setNotifyOutcome({
+            deliveryOutcome,
+            scores,
         });
-    }
 
-    legalBallPressed = () => this.setState({ noBall: false });
+    const addDelivery = (deliveryOutcome: DeliveryOutcome, scores: DeliveryScores) => {
+        props.delivery(deliveryOutcome, scores);
+        notifyDelivery(deliveryOutcome, scores);
+        setNoBall(false);
+    };
 
-    scoreTypeChange = (scoreType: ScoreType) => this.setState({ scoreType });
-
-    addDelivery = (deliveryOutcome: DeliveryOutcome, scores: DeliveryScores) => {
-        this.props.delivery(deliveryOutcome, scores);
-        this.notifyDelivery(deliveryOutcome, scores);
-        this.setState({ noBall: false });
-    }
-
-    delivery = (deliveryOutcome: DeliveryOutcome, scores: DeliveryScores) => {
+    const delivery = (deliveryOutcome: DeliveryOutcome, scores: DeliveryScores) => {
         if (typeof scores.runs !== 'undefined' && (scores.runs === 4 || scores.runs === 6)) {
-            this.setState({
-                allRunFourWarning: scores.runs === 4,
-                allRunSixWarning: scores.runs === 6,
-                allRunDeliveryOutcome: deliveryOutcome,
-                allRunScores: scores,
-            });
+            setAllRunFourWarning(scores.runs === 4);
+            setAllRunSixWarning(scores.runs === 6);
+            setAllRunDeliveryOutcome(deliveryOutcome);
+            setAllRunScores(scores);
             return;
         }
 
-        this.addDelivery(deliveryOutcome, scores);
-    }
+        addDelivery(deliveryOutcome, scores);
+    };
 
-    warningNo = () => {
-        this.clearWarnings();
-    }
+    const clearWarnings = () => {
+        setAllRunFourWarning(false);
+        setAllRunSixWarning(false);
+        setAllRunDeliveryOutcome(undefined);
+        setAllRunScores(undefined);
+    };
 
-    clearWarnings = () => {
-        this.setState({
-            allRunFourWarning: false,
-            allRunSixWarning: false,
-            allRunDeliveryOutcome: undefined,
-            allRunScores: undefined,
-        });
-    }
-
-    allRunWarningYes = () => {
-        if (typeof this.state.allRunDeliveryOutcome !== 'undefined' &&
-            typeof this.state.allRunScores !== 'undefined') {
-            this.addDelivery(
-                this.state.allRunDeliveryOutcome,
-                this.state.allRunScores);
+    const allRunWarningYes = () => {
+        if (typeof allRunDeliveryOutcome !== 'undefined' &&
+            typeof allRunScores !== 'undefined') {
+            addDelivery(
+                allRunDeliveryOutcome,
+                allRunScores);
         }
 
-        this.clearWarnings();
-    }
+        clearWarnings();
+    };
 
-    getScore = (field: string) => (score: number) => ({
-        [field]: score,
-    })
-
-    get scoresFunc() {
-        switch (this.state.scoreType) {
-        case ScoreType.Byes:
-            return this.getScore('byes');
-        case ScoreType.LegByes:
-            return this.getScore('legByes');
-        case ScoreType.Wide:
-            return this.getScore('wides');
-        default:
-            return this.getScore('runs');
-        }
-    }
-
-    get hasBoundaries() {
-        return this.state.scoreType === ScoreType.Runs;
-    }
-
-    get deliveryOutcome(): DeliveryOutcome {
-        if (this.state.noBall) { return DeliveryOutcome.Noball; }
-        if (this.state.scoreType === ScoreType.Wide) { return DeliveryOutcome.Wide; }
-        return DeliveryOutcome.Valid;
-    }
-
-    render() {
-        return (
-            <React.Fragment>
-                <div>
-                    <Grid container>
-                        <Button
-                            style={{ marginRight: '10px' }}
-                            variant="fab"
-                            aria-label="Wicket"
-                            color="primary"
-                            onClick={() => this.props.history.push('/match/wicket')}
-                        >{'W'}
-                        </Button>
-                        <FormControlLabel
-                            style={{ float: 'right' }}
-                            label="No ball"
-                            control={
-                                <Switch
-                                    color="secondary"
-                                    checked={this.state.noBall}
-                                    onChange={ev => ev.target.checked ? this.noBallPressed() : this.legalBallPressed()}
-                                />}
-                        />
+    return (
+        <>
+            <div>
+                <Grid container>
+                    <Button
+                        style={{ marginRight: '10px' }}
+                        variant="fab"
+                        aria-label="Wicket"
+                        color="primary"
+                        onClick={() => props.history.push('/match/wicket')}
+                    >{'W'}
+                    </Button>
+                    <FormControlLabel
+                        style={{ float: 'right' }}
+                        label="No ball"
+                        control={
+                            <Switch
+                                color="secondary"
+                                checked={noBall}
+                                onChange={ev => ev.target.checked ? noBallPressed() : legalBallPressed()}
+                            />}
+                    />
+                </Grid>
+                <Grid container>
+                    <Grid item xs={12}>
+                        <Divider style={{ marginTop: '10px', marginBottom: '10px' }} />
                     </Grid>
-                    <Grid container>
-                        <Grid item xs={12}>
-                            <Divider style={{ marginTop: '10px', marginBottom: '10px' }} />
-                        </Grid>
-                    </Grid>
-                    <Grid container>
-                        <ScoreTypeSelect
-                            selectedType={this.state.scoreType}
-                            noBall={this.state.noBall}
-                            scoreTypeChange={this.scoreTypeChange}
-                        />
-                    </Grid>
-                    <Grid container>
-                        <ScoresEntry
-                            deliveryOutcome={this.deliveryOutcome}
-                            getScores={this.scoresFunc}
-                            action={this.delivery}
-                            hasBoundaries={this.hasBoundaries}
-                        />
-                    </Grid>
-                </div>
-                {this.state.allRunFourWarning &&
-                    <WarningModal
-                        warningType={WarningType.AllRunFourWarning}
-                        onYes={this.allRunWarningYes}
-                        onNo={this.warningNo}
-                    />}
-                {this.state.allRunSixWarning &&
-                    <WarningModal
-                        warningType={WarningType.AllRunSixWarning}
-                        onYes={this.allRunWarningYes}
-                        onNo={this.warningNo}
-                    />}
+                </Grid>
+                <Grid container>
+                    <ScoreTypeSelect
+                        selectedType={scoreType}
+                        noBall={noBall}
+                        scoreTypeChange={setScoreType}
+                    />
+                </Grid>
+                <Grid container>
+                    <ScoresEntry
+                        deliveryOutcome={getDeliveryOutcome()}
+                        getScores={getScoresFunc()}
+                        action={delivery}
+                        hasBoundaries={getHasBoundaries()}
+                    />
+                </Grid>
+            </div>
+            {allRunFourWarning &&
+                <WarningModal
+                    warningType={WarningType.AllRunFourWarning}
+                    onYes={allRunWarningYes}
+                    onNo={clearWarnings}
+                />}
+            {allRunSixWarning &&
+                <WarningModal
+                    warningType={WarningType.AllRunSixWarning}
+                    onYes={allRunWarningYes}
+                    onNo={clearWarnings}
+                />}
 
-                {this.state.notifyOutcome &&
-                    <DeliveryNotify outcome={this.state.notifyOutcome} onClose={this.notificationClosed} />}
-            </React.Fragment>);
-    }
-}
-
-export default withRouter(EntryPanel);
+            {notifyOutcome &&
+                <DeliveryNotify outcome={notifyOutcome} onClose={() => setNotifyOutcome(undefined)} />}
+        </>);
+});

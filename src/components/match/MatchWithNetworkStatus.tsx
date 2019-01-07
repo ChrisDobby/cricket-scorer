@@ -1,7 +1,7 @@
 import * as React from 'react';
 import WithNetworkStatus from '../WithNetworkStatus';
 import MatchOnlineWarning from './MatchOnlineWarning';
-import { ONLINE, OFFLINE } from '../../context/networkStatus';
+import { OFFLINE } from '../../context/networkStatus';
 import auth0 from '../auth0';
 
 interface WithNetworkStatusProps {
@@ -11,37 +11,27 @@ interface WithNetworkStatusProps {
 }
 
 const MatchWithNetworkStatus = (login: (path: string) => void) =>
-    (Component: any) => WithNetworkStatus(class extends React.PureComponent<WithNetworkStatusProps> {
-        state = { showingOnlineWarning: false };
+    (Component: any) => WithNetworkStatus((props: WithNetworkStatusProps) => {
+        const [showingOnlineWarning, setShowingOnlineWarning] = React.useState(false);
+        const doLogin = () => {
+            setShowingOnlineWarning(false);
+            login(props.location.pathname);
+        };
 
-        componentDidUpdate(prevProps: any, prevState: any) {
-            if (prevState.showingOnlineWarning ||
-                this.state.showingOnlineWarning ||
-                this.props.isAuthenticated) {
-                return;
-            }
-            if (prevProps.networkStatus === OFFLINE && this.props.networkStatus === ONLINE) {
-                this.setState({ showingOnlineWaring: true });
-            }
-        }
+        React.useEffect(
+            () => {
+                if (showingOnlineWarning || props.isAuthenticated || props.networkStatus === OFFLINE) { return; }
+                setShowingOnlineWarning(true);
+            },
+            [props.networkStatus]);
 
-        doNotLogin = () => {
-            this.setState({ showingOnlineWarning: false });
-        }
+        return (
+            <>
+                <Component {...props} />
+                {showingOnlineWarning &&
+                    <MatchOnlineWarning login={doLogin} doNotLogin={() => setShowingOnlineWarning(false)} />}
+            </>);
 
-        login = () => {
-            this.setState({ showingOnlineWarning: false });
-            login(this.props.location.pathname);
-        }
-
-        render() {
-            return (
-                <React.Fragment>
-                    <Component {...this.props} />
-                    {this.state.showingOnlineWarning &&
-                        <MatchOnlineWarning login={this.login} doNotLogin={this.doNotLogin} />}
-                </React.Fragment>);
-        }
     });
 
 export default MatchWithNetworkStatus(auth0.login);

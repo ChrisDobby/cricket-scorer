@@ -19,7 +19,7 @@ interface CurrentStateProps {
 }
 
 export default ({ battingTeam, innings, batter, bowler, currentOver }: CurrentStateProps) => (
-    <React.Fragment>
+    <>
         <Hidden xsDown>
             <InningsState battingTeam={battingTeam} innings={innings} batter={batter} bowler={bowler} />
         </Hidden>
@@ -36,4 +36,4 @@ export default ({ battingTeam, innings, batter, bowler, currentOver }: CurrentSt
             </ExpansionPanel>
         </Hidden>
         <CurrentOver over={currentOver} />
-    </React.Fragment>);
+    </>);

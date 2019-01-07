@@ -6,20 +6,20 @@ interface WithInProgressMatchProps {
     history: any;
 }
 
-export default (Component: any) => class extends React.PureComponent<WithInProgressMatchProps> {
-    componentDidMount() {
-        if (typeof this.props.inProgressMatchStore === 'undefined' ||
-            typeof this.props.inProgressMatchStore.match === 'undefined') {
-            this.props.history.replace('/match/create');
-        }
+export default (Component: any) => (props: WithInProgressMatchProps) => {
+    React.useEffect(
+        () => {
+            if (typeof props.inProgressMatchStore === 'undefined' ||
+                typeof props.inProgressMatchStore.match === 'undefined') {
+                props.history.replace('/match/create');
+            }
+        },
+        []);
+
+    if (typeof props.inProgressMatchStore === 'undefined' ||
+        typeof props.inProgressMatchStore.match === 'undefined') {
+        return null;
     }
 
-    render() {
-        if (typeof this.props.inProgressMatchStore === 'undefined' ||
-            typeof this.props.inProgressMatchStore.match === 'undefined') {
-            return null;
-        }
-
-        return <Component {...this.props} />;
-    }
+    return <Component {...props} />;
 };

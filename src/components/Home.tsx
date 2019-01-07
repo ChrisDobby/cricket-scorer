@@ -71,7 +71,7 @@ export default withStyles(homePageStyles)((props: HomeProps) => {
                                         </Link>
                                 </Typography>}
                             {props.inProgressMatches.length > 0 &&
-                                <React.Fragment>
+                                <>
                                     <Typography variant="h5" color="inherit">
                                         {`There are ${props.inProgressMatches.length} matches in progress`}
                                     </Typography>
@@ -81,7 +81,7 @@ export default withStyles(homePageStyles)((props: HomeProps) => {
                                             Match Centre
                                             </Link>
                                     </Typography>
-                                </React.Fragment>}
+                                </>}
                         </div>
                     </Grid>
                 </Grid>
@@ -111,7 +111,7 @@ export default withStyles(homePageStyles)((props: HomeProps) => {
                                         {`There are ${props.inProgressMatches.length} matches in progress`}
                                     </Typography>}
                                 {canContinueCurrentMatch &&
-                                    <React.Fragment>
+                                    <>
                                         <Typography variant="subtitle1" color="textSecondary">
                                             {`You were scoring the match ${props.storedMatch.match.homeTeam.name}` +
                                                 ` v ${props.storedMatch.match.awayTeam.name}`}
@@ -119,7 +119,7 @@ export default withStyles(homePageStyles)((props: HomeProps) => {
                                         <Button color="secondary" onClick={continueScoring}>
                                             Continue scoring
                                         </Button>
-                                    </React.Fragment>}
+                                    </>}
                                 <Typography variant="subtitle1">
                                     To see all of the current and past matches
                                     </Typography>

@@ -22,29 +22,28 @@ const noBallDisplayStyle: React.CSSProperties = {
     backgroundColor: '#dc3545',
 };
 
-export interface DeliveryDisplayProps { outcome: Outcome; }
+interface DeliveryDisplayProps { outcome: Outcome; }
 
-export class DeliveryDisplay extends React.Component<DeliveryDisplayProps, {}> {
-    symbolCanvas: HTMLCanvasElement | undefined;
+export default (props: DeliveryDisplayProps) => {
+    const symbolCanvas = React.useRef(null as HTMLCanvasElement | null);
 
-    getCanvas = (canvas: HTMLCanvasElement) => {
-        this.symbolCanvas = canvas;
-    }
+    React.useEffect(
+        () => {
+            if (symbolCanvas.current) {
+                deliveryDrawCanvas.drawOutcome(symbolCanvas.current, props.outcome);
+            }
+        },
+        [],
+    );
 
-    componentDidMount() {
-        deliveryDrawCanvas.drawOutcome(this.symbolCanvas, this.props.outcome);
-    }
-
-    render() {
-        return (
-            <div
-                style={this.props.outcome.deliveryOutcome === DeliveryOutcome.Noball ||
-                    this.props.outcome.deliveryOutcome === DeliveryOutcome.Wide
-                    ? noBallDisplayStyle
-                    : validDisplayStyle}
-            >
-                <canvas width={30} height={30} ref={this.getCanvas} />
-            </div>
-        );
-    }
-}
+    return (
+        <div
+            style={props.outcome.deliveryOutcome === DeliveryOutcome.Noball ||
+                props.outcome.deliveryOutcome === DeliveryOutcome.Wide
+                ? noBallDisplayStyle
+                : validDisplayStyle}
+        >
+            <canvas width={30} height={30} ref={symbolCanvas} />
+        </div>
+    );
+};

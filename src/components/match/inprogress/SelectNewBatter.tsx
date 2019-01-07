@@ -13,46 +13,38 @@ interface SelectNewBatterProps {
     batterSelected: (playerIndex: number) => void;
 }
 
-export default class extends React.Component<SelectNewBatterProps, {}> {
-    state = {
-        playerPositions: Array<PlayerPosition>(),
+export default (props: SelectNewBatterProps) => {
+    const [playerPositions, setPlayerPositions] = React.useState(Array<PlayerPosition>());
+
+    const playerSelected = (playerIndex: number, position: number) =>
+        setPlayerPositions([{ playerIndex, position }]);
+
+    const save = () => {
+        props.batterSelected(playerPositions[0].playerIndex);
     };
 
-    playerSelected = (playerIndex: number, position: number) => {
-        this.setState({
-            playerPositions: [{ playerIndex, position }],
-        });
-    }
+    const canSave = () => playerPositions.length === 1;
 
-    save = () => {
-        this.props.batterSelected(this.state.playerPositions[0].playerIndex);
-    }
+    const availablePosition = (): number => props.batting.batters
+        .map((batter, index) => ({ batter, position: index + 1 }))
+        .filter(batterPos => typeof batterPos.batter.innings === 'undefined')[0].position;
 
-    get canSave() { return this.state.playerPositions.length === 1; }
-
-    get availablePosition(): number {
-        return this.props.batting.batters.map((batter, index) => ({ batter, position: index + 1 }))
-            .filter(batterPos => typeof batterPos.batter.innings === 'undefined')[0].position;
-    }
-
-    render() {
-        return (
-            <Grid container>
-                <Grid item sm={1} md={2} />
-                <Grid item xs={12} sm={10} md={8}>
-                    <Toolbar disableGutters>
-                        <Typography variant="h4" color="inherit" style={{ flexGrow: 1 }}>Select batter</Typography>
-                        <Button variant="fab" color="primary" onClick={this.save} disabled={!this.canSave}>
-                            <SaveIcon />
-                        </Button>
-                    </Toolbar>
-                    <BatterSelector
-                        players={this.props.players}
-                        notAllowedPlayers={this.props.batting.batters
-                            .filter(batter => batter.innings).map(batter => batter.playerIndex)}
-                        playerSelected={index => this.playerSelected(index, this.availablePosition)}
-                    />
-                </Grid>
-            </Grid>);
-    }
-}
+    return (
+        <Grid container>
+            <Grid item sm={1} md={2} />
+            <Grid item xs={12} sm={10} md={8}>
+                <Toolbar disableGutters>
+                    <Typography variant="h4" color="inherit" style={{ flexGrow: 1 }}>Select batter</Typography>
+                    <Button variant="fab" color="primary" onClick={save} disabled={!canSave()}>
+                        <SaveIcon />
+                    </Button>
+                </Toolbar>
+                <BatterSelector
+                    players={props.players}
+                    notAllowedPlayers={props.batting.batters
+                        .filter(batter => batter.innings).map(batter => batter.playerIndex)}
+                    playerSelected={index => playerSelected(index, availablePosition())}
+                />
+            </Grid>
+        </Grid>);
+};

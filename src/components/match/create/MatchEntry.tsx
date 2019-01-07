@@ -27,7 +27,7 @@ const entryRow: React.CSSProperties = {
 };
 
 export default (props: MatchEntryProps) => (
-    <React.Fragment>
+    <>
         <Grid container style={entryRow} spacing={8}>
             <Grid item xs={12} md={4}>
                 <FormControl fullWidth>
@@ -92,4 +92,4 @@ export default (props: MatchEntryProps) => (
                 />
             </Grid>
         </Grid>
-    </React.Fragment>);
+    </>);

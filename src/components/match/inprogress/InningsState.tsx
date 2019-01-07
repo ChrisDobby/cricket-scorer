@@ -15,7 +15,7 @@ const totalExtras = (extras: Extras): number =>
     extras.byes + extras.legByes + extras.noBalls + extras.wides + extras.penaltyRuns;
 
 export default ({ battingTeam, innings, batter, bowler }: InningsStateProps) => (
-    <React.Fragment>
+    <>
         <Grid item xs={6}>
             <Typography variant="h5">{battingTeam}</Typography>
         </Grid>
@@ -62,4 +62,4 @@ export default ({ battingTeam, innings, batter, bowler }: InningsStateProps) => 
         <Grid item xs={6}>
             <Typography variant="h5">{totalExtras(innings.batting.extras)}</Typography>
         </Grid>
-    </React.Fragment>);
+    </>);

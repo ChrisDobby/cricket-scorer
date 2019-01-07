@@ -13,7 +13,7 @@ interface InningsProps {
 }
 
 export default ({ innings, getTeam }: InningsProps) => (
-    <React.Fragment>
+    <>
         <TeamTotal innings={innings} getTeam={getTeam} />
         <Grid container>
             <Batting
@@ -26,4 +26,4 @@ export default ({ innings, getTeam }: InningsProps) => (
             <FallOfWickets fallOfWickets={innings.fallOfWickets} />
             <Bowling team={getTeam(innings.bowlingTeam).name} bowlers={innings.bowlers} />
         </Grid>
-    </React.Fragment>);
+    </>);

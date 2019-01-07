@@ -13,6 +13,28 @@ exports[`WithNavBar should render correctly 1`] = `
       >
         Cricket scores live
       </h2>
+      <div
+        class="MuiAvatar-root-76"
+      />
+      <p
+        class="MuiTypography-root-41 MuiTypography-body1-50 MuiTypography-colorInherit-70"
+      >
+        test
+      </p>
+      <button
+        class="MuiButtonBase-root-105 MuiButton-root-79 MuiButton-text-81 MuiButton-flat-84 MuiButton-colorInherit-100"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label-80"
+        >
+          Logout
+        </span>
+        <span
+          class="MuiTouchRipple-root-108"
+        />
+      </button>
     </div>
   </header>
   <div />

@@ -28,195 +28,139 @@ type WicketProps = RouteComponentProps<{}> & {
     userProfile: domain.Profile;
 };
 
-interface WicketState {
-    batterIndex: number;
-    fielderIndex?: number;
-    howout?: domain.Howout;
-    crossed: boolean;
-    scores: domain.DeliveryScores;
-    deliveryOutcome: domain.DeliveryOutcome;
-}
+const Wicket = (props: WicketProps) => {
+    const [batterIndex, setBatterIndex] = React.useState(0);
+    const [fielderIndex, setFielderIndex] = React.useState(undefined as number | undefined);
+    const [crossed, setCrossed] = React.useState(false);
+    const [scores, setScores] = React.useState({} as domain.DeliveryScores);
+    const [deliveryOutcome, setDeliveryOutcome] = React.useState(domain.DeliveryOutcome.Valid);
+    const [howout, setHowout] = React.useState(undefined as domain.Howout | undefined);
 
-class Wicket extends React.Component<WicketProps, {}> {
-    bindStorage = bindMatchStorage(this.props.storeMatch, () => this.props.inProgress, () => this.props.userProfile.id);
-    delivery = this.bindStorage(this.props.inProgress.delivery);
-    nonDeliveryWicket = this.bindStorage(this.props.inProgress.nonDeliveryWicket);
+    const bindStorage = bindMatchStorage(props.storeMatch, () => props.inProgress, () => props.userProfile.id);
+    const delivery = bindStorage(props.inProgress.delivery);
+    const nonDeliveryWicket = bindStorage(props.inProgress.nonDeliveryWicket);
 
-    getHowouts =
-        typeof this.props.inProgress.currentBatter === 'undefined'
+    const getHowouts =
+        typeof props.inProgress.currentBatter === 'undefined'
             ? () => []
-            : domain.howouts(this.props.inProgress.currentBatter);
+            : domain.howouts(props.inProgress.currentBatter);
 
-    state: WicketState = {
-        batterIndex: 0,
-        crossed: false,
-        scores: {},
-        deliveryOutcome: domain.DeliveryOutcome.Valid,
-    };
-
-    batterChange = (batterIndex: number) => {
-        this.setState({
-            batterIndex,
-            howout: undefined,
-            fielderIndex: undefined,
-            crossed: false,
-            runs: undefined,
-        });
-    }
-
-    howoutChange = (howout: domain.Howout | undefined) =>
-        this.setState({
-            howout,
-            fielderIndex: undefined,
-            crossed: false,
-            deliveryOutcome: domain.DeliveryOutcome.Valid,
-        })
-
-    fielderChange = (fielderIndex: number) =>
-        this.setState({
-            fielderIndex: Number.isNaN(fielderIndex) ? undefined : fielderIndex,
-        })
-
-    crossedChange = (crossed: boolean) =>
-        this.setState({
-            crossed,
-        })
-
-    scoresChange = (scores: domain.DeliveryScores) =>
-        this.setState({ scores })
-
-    deliveryOutcomeChange = (deliveryOutcome: domain.DeliveryOutcome) =>
-        this.setState({ deliveryOutcome })
-
-    save = () => {
-        nonDeliveryHowouts.find(h => h === this.state.howout)
-            ? this.nonDeliveryWicket(this.state.howout)
-            : this.delivery(
-                this.state.deliveryOutcome,
-                this.state.scores,
-                this.deliveryWicket,
-            );
-
-        this.props.history.push('/match/inprogress');
-    }
-
-    get canSave() {
-        return typeof this.state.howout !== 'undefined' &&
-            ((domain.howoutRequiresFielder(this.state.howout) && typeof this.state.fielderIndex !== 'undefined') ||
-                (!domain.howoutRequiresFielder(this.state.howout) && typeof this.state.fielderIndex === 'undefined'));
-    }
-
-    get batters(): domain.Batter[] {
-        if (typeof this.props.inProgress.currentInnings === 'undefined' ||
-            typeof this.props.inProgress.currentBatter === 'undefined') {
+    const batters = (): domain.Batter[] => {
+        if (typeof props.inProgress.currentInnings === 'undefined' ||
+            typeof props.inProgress.currentBatter === 'undefined') {
             return [];
         }
 
         return [
-            this.props.inProgress.currentBatter,
-            ...this.props.inProgress.currentInnings.batting.batters.filter(batter =>
-                batter !== this.props.inProgress.currentBatter &&
+            props.inProgress.currentBatter,
+            ...props.inProgress.currentInnings.batting.batters.filter(batter =>
+                batter !== props.inProgress.currentBatter &&
                 typeof batter.innings !== 'undefined'
                 && typeof batter.innings.wicket === 'undefined'),
         ];
-    }
+    };
 
-    get fielders() {
-        return typeof this.props.inProgress.currentInnings === 'undefined'
-            ? []
-            : getTeam(
-                this.props.inProgress.match as domain.Match,
-                this.props.inProgress.currentInnings.bowlingTeam).players;
-    }
+    const fielders = () => typeof props.inProgress.currentInnings === 'undefined'
+        ? []
+        : getTeam(
+            props.inProgress.match as domain.Match,
+            props.inProgress.currentInnings.bowlingTeam).players;
 
-    get availableHowouts() {
-        return this.getHowouts(this.batters[this.state.batterIndex]);
-    }
-
-    get fielderRequired() {
-        return typeof this.state.howout !== 'undefined' &&
-            domain.howoutRequiresFielder(this.state.howout);
-    }
-
-    get couldCross() {
-        return typeof this.state.howout !== 'undefined' &&
-            domain.howoutBattersCouldCross(this.state.howout);
-    }
-
-    get couldScoreRuns() {
-        return typeof this.state.howout !== 'undefined' &&
-            domain.howoutCouldScoreRuns(this.state.howout);
-    }
-
-    get couldBeNoBall() {
-        return typeof this.state.howout !== 'undefined' &&
-            domain.howoutCouldBeNoBall(this.state.howout);
-    }
-
-    get couldBeWide() {
-        return typeof this.state.howout !== 'undefined' &&
-            domain.howoutCouldBeWide(this.state.howout);
-    }
-
-    get deliveryWicket(): domain.DeliveryWicket | undefined {
-        if (typeof this.state.howout === 'undefined') {
+    const deliveryWicket = (): domain.DeliveryWicket | undefined => {
+        if (typeof howout === 'undefined') {
             return undefined;
         }
 
         return {
-            howOut: this.state.howout,
-            fielderIndex: this.state.fielderIndex,
-            changedEnds: this.state.crossed,
+            fielderIndex,
+            howOut: howout,
+            changedEnds: crossed,
         };
-    }
+    };
 
-    render() {
-        if (typeof this.props.inProgress.currentBatter === 'undefined' ||
-            typeof this.props.inProgress.currentBowler === 'undefined') {
-            return (
-                <div className="alert alert-danger" role="alert">
-                    No current delivery
-                </div>);
-        }
+    const fielderRequired = () => typeof howout !== 'undefined' && domain.howoutRequiresFielder(howout);
+    const couldCross = () => typeof howout !== 'undefined' && domain.howoutBattersCouldCross(howout);
+    const couldScoreRuns = () => typeof howout !== 'undefined' && domain.howoutCouldScoreRuns(howout);
+    const couldBeNoBall = () => typeof howout !== 'undefined' && domain.howoutCouldBeNoBall(howout);
+    const couldBeWide = () => typeof howout !== 'undefined' && domain.howoutCouldBeWide(howout);
 
+    const save = () => {
+        nonDeliveryHowouts.find(h => h === howout)
+            ? nonDeliveryWicket(howout)
+            : delivery(
+                deliveryOutcome,
+                scores,
+                deliveryWicket(),
+            );
+
+        props.history.push('/match/inprogress');
+    };
+
+    const canSave = () => typeof howout !== 'undefined' &&
+        ((domain.howoutRequiresFielder(howout) && typeof fielderIndex !== 'undefined') ||
+            (!domain.howoutRequiresFielder(howout) && typeof fielderIndex === 'undefined'));
+
+    const batterChange = (batterIndex: number) => {
+        setBatterIndex(batterIndex);
+        setHowout(undefined);
+        setFielderIndex(undefined);
+        setCrossed(false);
+    };
+
+    const howoutChange = (howout: domain.Howout | undefined) => {
+        setHowout(howout);
+        setFielderIndex(undefined);
+        setCrossed(false);
+        setDeliveryOutcome(domain.DeliveryOutcome.Valid);
+    };
+
+    const fielderChange = (fielderIndex: number) =>
+        setFielderIndex(Number.isNaN(fielderIndex) ? undefined : fielderIndex);
+
+    if (typeof props.inProgress.currentBatter === 'undefined' ||
+        typeof props.inProgress.currentBowler === 'undefined') {
         return (
-            <Paper className={this.props.classes.root}>
-                <EditForm
-                    heading="Wicket"
-                    save={this.save}
-                    canSave={() => this.canSave}
-                >
-                    <DeliveryHeader
-                        batter={this.props.inProgress.currentBatter}
-                        bowler={this.props.inProgress.currentBowler}
-                    />
-                    <Entry
-                        batters={this.batters}
-                        bowler={this.props.inProgress.currentBowler}
-                        fielders={this.fielders}
-                        batterIndex={this.state.batterIndex}
-                        howout={this.state.howout}
-                        fielderIndex={this.state.fielderIndex}
-                        crossed={this.state.crossed}
-                        scores={this.state.scores}
-                        batterChange={this.batterChange}
-                        howoutChange={this.howoutChange}
-                        fielderChange={this.fielderChange}
-                        crossedChange={this.crossedChange}
-                        scoresChange={this.scoresChange}
-                        deliveryOutcomeChange={this.deliveryOutcomeChange}
-                        availableHowouts={this.availableHowouts}
-                        fielderRequired={this.fielderRequired}
-                        couldCross={this.couldCross}
-                        couldScoreRuns={this.couldScoreRuns}
-                        couldBeNoBall={this.couldBeNoBall}
-                        couldBeWide={this.couldBeWide}
-                        deliveryOutcome={this.state.deliveryOutcome}
-                    />
-
-                </EditForm>
-            </Paper>);
+            <div className="alert alert-danger" role="alert">
+                No current delivery
+                </div>);
     }
-}
+
+    return (
+        <Paper className={props.classes.root}>
+            <EditForm
+                heading="Wicket"
+                save={save}
+                canSave={canSave}
+            >
+                <DeliveryHeader
+                    batter={props.inProgress.currentBatter}
+                    bowler={props.inProgress.currentBowler}
+                />
+                <Entry
+                    batters={batters()}
+                    bowler={props.inProgress.currentBowler}
+                    fielders={fielders()}
+                    batterIndex={batterIndex}
+                    howout={howout}
+                    fielderIndex={fielderIndex}
+                    crossed={crossed}
+                    scores={scores}
+                    batterChange={batterChange}
+                    howoutChange={howoutChange}
+                    fielderChange={fielderChange}
+                    crossedChange={setCrossed}
+                    scoresChange={setScores}
+                    deliveryOutcomeChange={setDeliveryOutcome}
+                    availableHowouts={getHowouts(batters()[batterIndex])}
+                    fielderRequired={fielderRequired()}
+                    couldCross={couldCross()}
+                    couldScoreRuns={couldScoreRuns()}
+                    couldBeNoBall={couldBeNoBall()}
+                    couldBeWide={couldBeWide()}
+                    deliveryOutcome={deliveryOutcome}
+                />
+            </EditForm>
+        </Paper>);
+};
 
 export default withStyles(styles)(withRouter(Wicket));

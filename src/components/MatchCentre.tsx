@@ -10,17 +10,11 @@ import Progress from './Progress';
 import RemoveDialog from './RemoveDialog';
 import { StoredMatch, Profile, PersistedMatch, CurrentEditingMatch } from '../domain';
 
-interface MatchCentreState {
-    fetchingMatch: boolean;
-    fetchError: boolean;
-    confirmRemoveMatch: PersistedMatch | undefined;
-    removeError: boolean;
-}
-
 interface MatchCentreProps {
     storedMatch: StoredMatch | undefined;
     userProfile: Profile;
-    inProgressMatches: (PersistedMatch | CurrentEditingMatch)[];
+    inProgressMatches: PersistedMatch[];
+    outOfDateMatches: PersistedMatch[];
     fetchMatch: (id: string) => Promise<void>;
     loadingMatches: boolean;
     removeStoredMatch: () => void;
@@ -37,146 +31,141 @@ const sortMatches = (matches: (PersistedMatch | CurrentEditingMatch)[], currentU
         return 0;
     });
 
-export default withStyles(homePageStyles)(class extends React.PureComponent<MatchCentreProps> {
-    state: MatchCentreState = {
-        fetchingMatch: false,
-        fetchError: false,
-        confirmRemoveMatch: undefined,
-        removeError: false,
-    };
+export default withStyles(homePageStyles)((props: MatchCentreProps) => {
+    const [fetchingMatch, setFetching] = React.useState(false);
+    const [fetchError, setFetchError] = React.useState(false);
+    const [removeError, setRemoveError] = React.useState(false);
+    const [confirmRemoveMatch, setConfirmRemoveMatch] =
+        React.useState((undefined as PersistedMatch | undefined));
 
-    get storedMatch(): CurrentEditingMatch | undefined {
-        return !this.props.storedMatch || this.props.storedMatch.match.complete
-            ? undefined
-            : {
-                id: this.props.storedMatch.match.id,
-                date: this.props.storedMatch.match.date,
-                user: this.props.storedMatch.match.user,
-                homeTeam: this.props.storedMatch.match.homeTeam.name,
-                awayTeam: this.props.storedMatch.match.awayTeam.name,
-                status: this.props.storedMatch.match.status,
-                version: this.props.storedMatch.version,
-                lastEvent: this.props.storedMatch.lastEvent,
-            };
-    }
-
-    get availableMatches() {
+    const getAvailableMatches = () => {
         const sortedMatches = (matches: (PersistedMatch | CurrentEditingMatch)[]) => (
-            typeof this.props.userProfile === 'undefined'
+            typeof props.userProfile === 'undefined'
                 ? matches
-                : sortMatches(matches, this.props.userProfile.id));
+                : sortMatches(matches, props.userProfile.id));
 
-        const storedMatch = this.storedMatch;
-        if (typeof storedMatch === 'undefined') { return sortedMatches(this.props.inProgressMatches); }
-        const includeStoredMatch = typeof storedMatch.user === 'undefined' || (
-            typeof this.props.userProfile !== 'undefined' &&
-            this.props.userProfile.id === storedMatch.user);
+        if (typeof storedMatch === 'undefined') { return sortedMatches(props.inProgressMatches); }
+        const includeStoredMatch = (typeof storedMatch.user === 'undefined' || (
+            typeof props.userProfile !== 'undefined' &&
+            props.userProfile.id === storedMatch.user)) &&
+            !props.outOfDateMatches.map(match => match.id).find(id => id === storedMatch.id);
 
-        if (!includeStoredMatch) { return sortedMatches(this.props.inProgressMatches); }
-        const storedMatchFromInProgress = this.props.inProgressMatches
+        if (!includeStoredMatch) { return sortedMatches(props.inProgressMatches); }
+        const storedMatchFromInProgress = props.inProgressMatches
             .find((m: PersistedMatch) => m.id === storedMatch.id);
         return sortedMatches(
             typeof storedMatchFromInProgress === 'undefined' || storedMatchFromInProgress.version <= storedMatch.version
-                ? this.props.inProgressMatches.filter((m: PersistedMatch) => m.id !== storedMatch.id)
+                ? (props.inProgressMatches
+                    .filter((m: PersistedMatch) => m.id !== storedMatch.id) as (PersistedMatch | CurrentEditingMatch)[])
                     .concat(storedMatch)
-                : this.props.inProgressMatches);
-    }
+                : props.inProgressMatches);
+    };
 
-    showScorecard = (id: string | undefined) => () => {
-        const storedMatch = this.storedMatch;
-        const inProgress = this.props.inProgressMatches.find((ip: PersistedMatch) => ip.id === id);
+    const showScorecard = (id: string | undefined) => () => {
+        const inProgress = props.inProgressMatches.find((ip: PersistedMatch) => ip.id === id);
         if (typeof inProgress === 'undefined' ||
             (typeof storedMatch !== 'undefined' && storedMatch.id === id && storedMatch.version > inProgress.version)) {
-            this.props.history.push('/scorecard');
+            props.history.push('/scorecard');
             return;
         }
 
-        this.props.history.push(`/scorecard/${id}`);
-    }
+        props.history.push(`/scorecard/${id}`);
+    };
 
-    continueScoring = (id: string | undefined) => async () => {
+    const continueScoring = (id: string | undefined) => async () => {
         if (!id) { return; }
         try {
-            this.setState({ fetchingMatch: true, fetchError: false });
-            await this.props.fetchMatch(id);
-            this.setState({ fetchingMatch: false });
-            this.props.history.push('/match/inprogress');
+            setFetching(true);
+            setFetchError(false);
+            await props.fetchMatch(id);
+            setFetching(false);
+            props.history.push('/match/inprogress');
         } catch (e) {
-            this.setState({ fetchingMatch: false, fetchError: true });
-            console.error(e);
+            setFetching(false);
+            setFetchError(true);
         }
-    }
+    };
 
-    removeMatch = (id: string | undefined) => () => {
+    const removeMatch = (id: string | undefined) => () => {
         if (id) {
-            this.setState({
-                removeError: false,
-                confirmRemoveMatch: this.availableMatches
-                    .find((m: PersistedMatch) => m.id === id),
-            });
+            setRemoveError(false);
+            setConfirmRemoveMatch(props.inProgressMatches.find((m: PersistedMatch) => m.id === id));
         }
-    }
+    };
 
-    clearRemoveMatch = () => this.setState({ removeError: false, confirmRemoveMatch: undefined });
+    const clearRemoveMatch = () => {
+        setRemoveError(false);
+        setConfirmRemoveMatch(undefined);
+    };
 
-    confirmRemoveMatch = (id: string) => async () => {
-        this.clearRemoveMatch();
+    const confirmRemove = (id: string) => async () => {
+        clearRemoveMatch();
         try {
-            if (this.storedMatch && this.storedMatch.id === id) {
-                this.props.removeStoredMatch();
+            if (storedMatch && storedMatch.id === id) {
+                props.removeStoredMatch();
             }
 
-            await this.props.removeMatch(id);
+            await props.removeMatch(id);
         } catch (e) {
-            this.setState({ removeError: true });
+            setRemoveError(true);
             console.error(e);
         }
-    }
+    };
 
-    closeError = (type: string) => this.setState({ [type]: false });
+    const storedMatch: CurrentEditingMatch | undefined =
+        !props.storedMatch || props.storedMatch.match.complete
+            ? undefined
+            : {
+                id: props.storedMatch.match.id,
+                date: props.storedMatch.match.date,
+                user: props.storedMatch.match.user,
+                homeTeam: props.storedMatch.match.homeTeam.name,
+                awayTeam: props.storedMatch.match.awayTeam.name,
+                status: props.storedMatch.match.status,
+                version: props.storedMatch.version,
+                lastEvent: props.storedMatch.lastEvent,
+            };
 
-    render() {
-        const availableMatches = this.props.loadingMatches ? [] : this.availableMatches;
-        return (
-            <>
-                <div className={this.props.classes.rootStyle}>
-                    <div className={this.props.classes.toolbar} />
-                    {this.props.loadingMatches && <Progress />}
-                    {!this.props.loadingMatches && availableMatches.length === 0 &&
-                        <Typography variant="h5" color="primary">
-                            There are no matches currently in progress
-                </Typography>}
-                    {!this.props.loadingMatches &&
-                        <Grid container spacing={40}>
-                            {availableMatches.map((match: CurrentEditingMatch) =>
-                                <MatchCard
-                                    key={match.id}
-                                    match={match}
-                                    showScorecard={this.showScorecard(match.id)}
-                                    continueScoring={this.continueScoring(match.id)}
-                                    removeMatch={this.removeMatch(match.id)}
-                                    currentUser={this.props.userProfile ? this.props.userProfile.id : undefined}
-                                />)}
-                        </Grid>}
-                </div>
-                {this.state.fetchError &&
-                    <Error
-                        message={'There was an error reading the match.  Please try again.'}
-                        onClose={() => this.closeError('fetchError')}
-                    />}
-                {this.state.removeError &&
-                    <Error
-                        message={'There was an error removing the match.  Please try again.'}
-                        onClose={() => this.closeError('removeError')}
-                    />}
-                {this.state.fetchingMatch &&
-                    <LoadingDialog message={'Fetching match to continue scoring...'} />}
-                {this.state.confirmRemoveMatch &&
-                    <RemoveDialog
-                        match={this.state.confirmRemoveMatch}
-                        onYes={this.confirmRemoveMatch(this.state.confirmRemoveMatch.id)}
-                        onNo={this.clearRemoveMatch}
-                    />}
-            </>);
-    }
+    const availableMatches = props.loadingMatches ? [] : getAvailableMatches();
+    return (
+        <>
+            <div className={props.classes.rootStyle}>
+                <div className={props.classes.toolbar} />
+                {props.loadingMatches && <Progress />}
+                {!props.loadingMatches && availableMatches.length === 0 &&
+                    <Typography variant="h5" color="primary">
+                        There are no matches currently in progress
+            </Typography>}
+                {!props.loadingMatches &&
+                    <Grid container spacing={40}>
+                        {availableMatches.map((match: CurrentEditingMatch) =>
+                            <MatchCard
+                                key={match.id}
+                                match={match}
+                                showScorecard={showScorecard(match.id)}
+                                continueScoring={continueScoring(match.id)}
+                                removeMatch={removeMatch(match.id)}
+                                currentUser={props.userProfile ? props.userProfile.id : undefined}
+                            />)}
+                    </Grid>}
+            </div>
+            {fetchError &&
+                <Error
+                    message={'There was an error reading the match.  Please try again.'}
+                    onClose={() => setFetchError(false)}
+                />}
+            {removeError &&
+                <Error
+                    message={'There was an error removing the match.  Please try again.'}
+                    onClose={() => setRemoveError(false)}
+                />}
+            {fetchingMatch &&
+                <LoadingDialog message={'Fetching match to continue scoring...'} />}
+            {confirmRemoveMatch &&
+                <RemoveDialog
+                    match={confirmRemoveMatch}
+                    onYes={confirmRemove(confirmRemoveMatch.id)}
+                    onNo={clearRemoveMatch}
+                />}
+        </>);
 });

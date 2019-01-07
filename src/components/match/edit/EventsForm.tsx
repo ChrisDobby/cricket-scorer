@@ -14,35 +14,26 @@ interface EventsFormProps {
     rollback: (index: number) => void;
 }
 
-interface EventsFormState {
-    events: Event[];
-    rollbackToInnings: Innings | undefined;
-    rollbackToIndex: number | undefined;
-}
+export default (props: EventsFormProps) => {
+    const [rollbackToInnings, setRollbackToInnings] = React.useState(undefined as Innings | undefined);
+    const [rollbackToIndex, setRollbackToIndex] = React.useState(undefined as number | undefined);
 
-export default class extends React.PureComponent<EventsFormProps> {
-    state: EventsFormState = {
-        events: this.props.innings.events,
-        rollbackToInnings: undefined,
-        rollbackToIndex: undefined,
-    };
-
-    createDeliveryEvent = (delivery: Delivery, index: number) => {
+    const createDeliveryEvent = (delivery: Delivery, index: number) => {
         return {
             ...delivery,
             index,
-            batter: this.props.battingPlayers[this.props.innings.batting.batters[delivery.batsmanIndex].playerIndex],
-            bowler: this.props.bowlingPlayers[this.props.innings.bowlers[delivery.bowlerIndex].playerIndex],
+            batter: props.battingPlayers[props.innings.batting.batters[delivery.batsmanIndex].playerIndex],
+            bowler: props.bowlingPlayers[props.innings.bowlers[delivery.bowlerIndex].playerIndex],
         };
-    }
+    };
 
-    addDelivery = (delivery: Delivery, index: number, obj: any) => {
+    const addDelivery = (delivery: Delivery, index: number, obj: any) => {
         if (!Object.keys(obj).find(key => key === delivery.overNumber.toString())) {
             return {
                 ...obj,
                 [delivery.overNumber.toString()]: {
-                    bowler: this.props.bowlingPlayers[this.props.innings.bowlers[delivery.bowlerIndex].playerIndex],
-                    events: [this.createDeliveryEvent(delivery, index)],
+                    bowler: props.bowlingPlayers[props.innings.bowlers[delivery.bowlerIndex].playerIndex],
+                    events: [createDeliveryEvent(delivery, index)],
                 },
             };
         }
@@ -51,12 +42,12 @@ export default class extends React.PureComponent<EventsFormProps> {
             ...obj,
             [delivery.overNumber.toString()]: {
                 ...obj[delivery.overNumber.toString()],
-                events: [...obj[delivery.overNumber.toString()].events, this.createDeliveryEvent(delivery, index)],
+                events: [...obj[delivery.overNumber.toString()].events, createDeliveryEvent(delivery, index)],
             },
         };
-    }
+    };
 
-    addNonDelivery = (event: Event, index: number, obj: any) => {
+    const addNonDelivery = (event: Event, index: number, obj: any) => {
         const lastKey = Object.keys(obj)[Object.keys(obj).length - 1];
         return {
             ...obj,
@@ -65,61 +56,62 @@ export default class extends React.PureComponent<EventsFormProps> {
                 events: [...obj[lastKey].events, { ...event, index }],
             },
         };
-    }
+    };
 
-    confirmRollback = (index: number) =>
-        this.setState({ rollbackToInnings: this.props.rolledBackInnings(index), rollbackToIndex: index })
+    const confirmRollback = (index: number) => {
+        setRollbackToInnings(props.rolledBackInnings(index));
+        setRollbackToIndex(index);
+    };
 
-    cancelRollback = () => this.setState({ rollbackToInnings: undefined, rollbackToIndex: undefined });
+    const cancelRollback = () => {
+        setRollbackToInnings(undefined);
+        setRollbackToIndex(undefined);
+    };
 
-    doRollback = () => {
-        if (this.state.rollbackToIndex) {
-            this.props.rollback(this.state.rollbackToIndex);
+    const doRollback = () => {
+        if (rollbackToIndex) {
+            props.rollback(rollbackToIndex);
         }
 
-        this.setState({ rollbackToInnings: undefined, rollbackToIndex: undefined });
-    }
+        setRollbackToInnings(undefined);
+        setRollbackToIndex(undefined);
+    };
 
-    get overs() {
-        return this.state.events.reduce(
-            (overs, event, idx) => {
-                if (event.type === EventType.Delivery) {
-                    return this.addDelivery(event as Delivery, idx, overs);
-                }
+    const getOvers = () => props.innings.events.reduce(
+        (overs, event, idx) => {
+            if (event.type === EventType.Delivery) {
+                return addDelivery(event as Delivery, idx, overs);
+            }
 
-                return this.addNonDelivery(event, idx, overs);
-            },
-            {});
-    }
+            return addNonDelivery(event, idx, overs);
+        },
+        {});
 
-    render() {
-        const overs = this.overs;
-
-        return (
-            <React.Fragment>
-                <EditForm
-                    heading="Edit innings"
-                    save={() => { }}
-                    canSave={() => true}
-                >
-                    <Grid container spacing={8}>
-                        {Object.keys(overs).map(key => (
-                            <Over
-                                key={key}
-                                overNumber={Number(key)}
-                                detail={overs[key]}
-                                config={this.props.config}
-                                rollback={this.confirmRollback}
-                            />
-                        ))}
-                    </Grid>
-                </EditForm>
-                {this.state.rollbackToInnings &&
-                    <RollbackWarning
-                        yes={this.doRollback}
-                        no={this.cancelRollback}
-                        rebuiltInnings={this.state.rollbackToInnings as Innings}
-                    />}
-            </React.Fragment>);
-    }
-}
+    const overs = getOvers();
+    return (
+        <>
+            <EditForm
+                heading="Edit innings"
+                save={() => { }}
+                canSave={() => true}
+            >
+                <Grid container spacing={8}>
+                    {Object.keys(overs).map(key => (
+                        <Over
+                            key={key}
+                            overNumber={Number(key)}
+                            detail={overs[key]}
+                            config={props.config}
+                            rollback={confirmRollback}
+                        />
+                    ))}
+                </Grid>
+            </EditForm>
+            {rollbackToInnings &&
+                <RollbackWarning
+                    yes={doRollback}
+                    no={cancelRollback}
+                    rebuiltInnings={rollbackToInnings as Innings}
+                />}
+        </>);
+};

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render, cleanup } from 'react-testing-library';
-import { DeliveryDisplay } from '../../../../components/match/inprogress/DeliveryDisplay';
+import DeliveryDisplay from '../../../../components/match/inprogress/DeliveryDisplay';
 import { DeliveryOutcome } from '../../../../domain';
 
 describe('DeliveryDisplay', () => {

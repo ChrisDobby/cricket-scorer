@@ -2,7 +2,7 @@ import * as React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { Over } from '../../../domain';
-import { DeliveryDisplay } from './DeliveryDisplay';
+import DeliveryDisplay from './DeliveryDisplay';
 
 interface CurrentOverProps { over: Over; }
 

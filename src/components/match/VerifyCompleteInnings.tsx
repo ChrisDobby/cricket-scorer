@@ -14,43 +14,38 @@ interface VerifyCompleteInningsProps {
     cancel: () => void;
 }
 
-export default class extends React.PureComponent<VerifyCompleteInningsProps> {
-    state = { status: InningsStatus.Declared };
+export default (props: VerifyCompleteInningsProps) => {
+    const [status, setStatus] = React.useState(InningsStatus.Declared);
 
-    statusChanged = (ev: React.ChangeEvent<HTMLSelectElement>) =>
-        this.setState({ status: Number(ev.target.value) })
-
-    render() {
-        return (
-            <div>
-                <Dialog
-                    open={true}
-                    aria-labelledby="complete-innings-title"
-                >
-                    <DialogTitle id="complete-innings-title">Complete innings</DialogTitle>
-                    <DialogContent>
-                        <DialogContentText>
-                            {'Select the reason for completing the innings followed by ' +
-                                'OK or Cancel to not complete the innings'}
-                        </DialogContentText>
-                    </DialogContent>
-                    <DialogContent>
-                        <Select value={this.state.status} onChange={this.statusChanged} fullWidth>
-                            <MenuItem value={InningsStatus.Declared}>Declared</MenuItem>
-                            <MenuItem value={InningsStatus.AllOut}>All out</MenuItem>
-                            <MenuItem value={InningsStatus.OversComplete}>Overs complete</MenuItem>
-                        </Select>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button
-                            onClick={() => this.props.complete(this.state.status)}
-                            color="primary"
-                            autoFocus
-                        >OK
-                        </Button>
-                        <Button onClick={this.props.cancel} color="primary">Cancel</Button>
-                    </DialogActions>
-                </Dialog>
-            </div>);
-    }
-}
+    return (
+        <div>
+            <Dialog
+                open={true}
+                aria-labelledby="complete-innings-title"
+            >
+                <DialogTitle id="complete-innings-title">Complete innings</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        {'Select the reason for completing the innings followed by ' +
+                            'OK or Cancel to not complete the innings'}
+                    </DialogContentText>
+                </DialogContent>
+                <DialogContent>
+                    <Select value={status} onChange={ev => setStatus(Number(ev.target.value))} fullWidth>
+                        <MenuItem value={InningsStatus.Declared}>Declared</MenuItem>
+                        <MenuItem value={InningsStatus.AllOut}>All out</MenuItem>
+                        <MenuItem value={InningsStatus.OversComplete}>Overs complete</MenuItem>
+                    </Select>
+                </DialogContent>
+                <DialogActions>
+                    <Button
+                        onClick={() => props.complete(status)}
+                        color="primary"
+                        autoFocus
+                    >OK
+                    </Button>
+                    <Button onClick={props.cancel} color="primary">Cancel</Button>
+                </DialogActions>
+            </Dialog>
+        </div>);
+};

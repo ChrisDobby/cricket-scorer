@@ -14,7 +14,7 @@ interface MatchApi {
     getMatch: (id: string) => Promise<any>;
     sendMatch: (match: StoredMatch) => Promise<any>;
     removeMatch: (id: string) => Promise<void>;
-    getOutOfDateMatches: (id: string) => Promise<PersistedMatch>;
+    getOutOfDateMatches: (id: string) => Promise<PersistedMatch[]>;
 }
 
 interface WithOutOfDateMatchesProps {
@@ -24,99 +24,76 @@ interface WithOutOfDateMatchesProps {
     history: any;
 }
 
-export default (Component: any) => WithMatchApi(class extends React.PureComponent<WithOutOfDateMatchesProps> {
-    state = {
-        outOfDateMatches: [],
-        showingDialog: false,
-        waiting: false,
+export default (Component: any) => WithMatchApi((props: WithOutOfDateMatchesProps) => {
+    const [outOfDateMatches, setOutOfDateMatches] = React.useState([] as OutOfDateMatch[]);
+    const [showingDialog, setShowingDialog] = React.useState(false);
+    const [waiting, setWaiting] = React.useState(false);
+
+    const getMatch = fetchMatch(props.matchApi, matchStorage(localStorage));
+    const showDialog = () => setShowingDialog(true);
+    const hideDialog = () => {
+        setShowingDialog(false);
+        setOutOfDateMatches(outOfDateMatches.filter((m: OutOfDateMatch) => !m.removed));
     };
 
-    getMatch = fetchMatch(this.props.matchApi, matchStorage(localStorage));
+    const removeMatch = async (id: string) => {
+        setWaiting(true);
+        try {
+            await props.matchApi.removeMatch(id);
+            setOutOfDateMatches(outOfDateMatches.map((m: OutOfDateMatch) => m.id !== id
+                ? m
+                : { ...m, removed: true, removeError: false }));
+            setWaiting(false);
+        } catch (e) {
+            setOutOfDateMatches(outOfDateMatches.map((m: OutOfDateMatch) => m.id !== id
+                ? m
+                : { ...m, removeError: true }));
+            setWaiting(false);
+        }
+    };
 
-    udpateMatches = async () => {
-        if (this.props.isAuthenticated) {
-            const matches = await this.props.matchApi.getOutOfDateMatches(this.props.userProfile.id);
-            this.setState({ outOfDateMatches: matches });
+    const continueMatch = async (id: string) => {
+        try {
+            setWaiting(true);
+            await getMatch(id);
+            props.history.push('/match/inprogress');
+        } catch (e) {
+            setOutOfDateMatches(outOfDateMatches.map((m: OutOfDateMatch) => m.id !== id
+                ? m
+                : { ...m, fetchError: true }));
+            setWaiting(false);
+        }
+    };
+
+    const updateMatches = async () => {
+        if (props.isAuthenticated) {
+            const matches = await props.matchApi.getOutOfDateMatches(props.userProfile.id);
+            setOutOfDateMatches(matches as OutOfDateMatch[]);
         } else {
-            this.setState({ outOfDateMatches: [] });
+            setOutOfDateMatches([]);
         }
-    }
+    };
 
-    async componentDidMount() {
-        this.udpateMatches();
-    }
+    React.useEffect(
+        () => {
+            updateMatches();
+        },
+        [props.isAuthenticated]);
 
-    componentDidUpdate(prevProps: WithOutOfDateMatchesProps) {
-        if (prevProps.isAuthenticated === this.props.isAuthenticated) {
-            return;
-        }
-    }
-
-    showDialog = () => this.setState({ showingDialog: true });
-    hideDialog = () => {
-        this.setState({
-            showingDialog: false,
-            outOfDateMatches: [...this.state.outOfDateMatches.filter((m: OutOfDateMatch) => !m.removed)],
-        });
-    }
-
-    removeMatch = async (id: string) => {
-        this.setState({ waiting: true });
-        try {
-            await this.props.matchApi.removeMatch(id);
-            this.setState({
-                outOfDateMatches: [
-                    ...this.state.outOfDateMatches.map((m: OutOfDateMatch) => m.id !== id
-                        ? m
-                        : { ...m, removed: true, removeError: false }),
-                ],
-                waiting: false,
-            });
-        } catch (e) {
-            this.setState({
-                outOfDateMatches: [
-                    ...this.state.outOfDateMatches.map((m: OutOfDateMatch) => m.id !== id
-                        ? m
-                        : { ...m, removeError: true }),
-                ],
-                waiting: false,
-            });
-        }
-    }
-
-    continueMatch = async (id: string) => {
-        try {
-            this.setState({ waiting: true });
-            await this.getMatch(id);
-            this.props.history.push('/match/inprogress');
-        } catch (e) {
-            this.setState({
-                outOfDateMatches: [
-                    ...this.state.outOfDateMatches.map((m: OutOfDateMatch) => m.id !== id
-                        ? m
-                        : { ...m, fetchError: true }),
-                ],
-                waiting: false,
-            });
-        }
-    }
-
-    render() {
-        return (
-            <React.Fragment>
-                <Component
-                    {...this.props}
-                    outOfDateMatches={this.state.outOfDateMatches}
-                    outOfDateSelected={this.showDialog}
-                />
-                {this.state.showingDialog &&
-                    <OutOfDateDialog
-                        matches={this.state.outOfDateMatches}
-                        close={this.hideDialog}
-                        remove={this.removeMatch}
-                        continue={this.continueMatch}
-                        disabled={this.state.waiting}
-                    />}
-            </React.Fragment>);
-    }
+    return (
+        <>
+            <Component
+                {...props}
+                outOfDateMatches={outOfDateMatches}
+                outOfDateSelected={showDialog}
+            />
+            {showingDialog &&
+                <OutOfDateDialog
+                    matches={outOfDateMatches}
+                    close={hideDialog}
+                    remove={removeMatch}
+                    continue={continueMatch}
+                    disabled={waiting}
+                />}
+        </>);
 });

@@ -27,127 +27,124 @@ interface WithMatchDrawerProps {
     history: any;
 }
 
-export default (Component: any) => class extends React.PureComponent<WithMatchDrawerProps> {
-    state = {
-        open: false,
-        overNotCompleteWarning: false,
-        inningsCompleteVerify: false,
-        matchCompleteVerify: false,
-        changeOvers: false,
+export default (Component: any) => (props: WithMatchDrawerProps) => {
+    const [open, setOpen] = React.useState(false);
+    const [overNotCompleteWarning, setOverNotCompleteWarning] = React.useState(false);
+    const [inningsCompleteVerify, setInningsCompleteVerify] = React.useState(false);
+    const [matchCompleteVerify, setMatchCompleteVerify] = React.useState(false);
+    const [changeOvers, setChangeOvers] = React.useState(false);
+
+    const openDrawer = () => setOpen(true);
+    const closeDrawer = () => setOpen(false);
+
+    const warningYes = () => {
+        props.completeOver();
+        setOverNotCompleteWarning(false);
     };
 
-    completeOver = () => {
-        if (this.props.inProgressMatchStore.currentOverComplete) {
-            this.props.completeOver();
+    const warningNo = () => {
+        setOverNotCompleteWarning(false);
+    };
+
+    const completeInnings = (status: InningsStatus) => {
+        setInningsCompleteVerify(false);
+        props.completeInnings(status);
+    };
+    const cancelCompleteInnings = () => setInningsCompleteVerify(false);
+
+    const completeMatch = (result: MatchResult) => {
+        setMatchCompleteVerify(false);
+        props.completeMatch(result);
+    };
+    const cancelCompleteMatch = () => setMatchCompleteVerify(false);
+
+    const askChangeOvers = () => {
+        setChangeOvers(true);
+        setOpen(false);
+    };
+    const updateOvers = (overs: number) => {
+        setChangeOvers(false);
+        props.updateOvers(overs);
+    };
+    const cancelChangeOvers = () => setChangeOvers(false);
+
+    const completeOver = () => {
+        if (props.inProgressMatchStore.currentOverComplete) {
+            props.completeOver();
             return;
         }
 
-        this.setState({ overNotCompleteWarning: true });
-    }
+        setOverNotCompleteWarning(true);
+    };
 
-    warningYes = () => {
-        this.props.completeOver();
-        this.setState({ overNotCompleteWarning: false });
-    }
-
-    warningNo = () => {
-        this.setState({ overNotCompleteWarning: false });
-    }
-
-    verifyCompleteInnings = () => this.setState({ inningsCompleteVerify: true });
-    completeInnings = (status: InningsStatus) => {
-        this.setState({ inningsCompleteVerify: false });
-        this.props.completeInnings(status);
-    }
-    cancelCompleteInnings = () => this.setState({ inningsCompleteVerify: false });
-
-    verifyCompleteMatch = () => this.setState({ matchCompleteVerify: true });
-    completeMatch = (result: MatchResult) => {
-        this.setState({ matchCompleteVerify: false });
-        this.props.completeMatch(result);
-    }
-    cancelCompleteMatch = () => this.setState({ matchCompleteVerify: false });
-
-    askChangeOvers = () => this.setState({ changeOvers: true, open: false });
-    changeOvers = (overs: number) => {
-        this.setState({ changeOvers: false });
-        this.props.updateOvers(overs);
-    }
-    cancelChangeOvers = () => this.setState({ changeOvers: false });
-
-    items = [
-        { ...allowedOption, text: 'Undo previous', icon: <Undo />, action: this.props.undoPreviousDelivery },
-        { ...allowedOption, text: 'Change ends', icon: <SwapHoriz />, action: this.props.changeEnds },
+    const items = [
+        { ...allowedOption, text: 'Undo previous', icon: <Undo />, action: props.undoPreviousDelivery },
+        { ...allowedOption, text: 'Change ends', icon: <SwapHoriz />, action: props.changeEnds },
         {
             ...allowedOption,
             text: 'Change players',
             icon: <Edit />,
-            action: () => this.props.history.push('/match/editplayers'),
+            action: () => props.history.push('/match/editplayers'),
         },
         {
             text: 'Change overs',
             icon: <Edit />,
-            action: this.askChangeOvers,
-            allowed: this.props.inProgressMatchStore.match.config.type === MatchType.LimitedOvers,
+            action: askChangeOvers,
+            allowed: props.inProgressMatchStore.match.config.type === MatchType.LimitedOvers,
         },
         {
             ...allowedOption,
             text: 'Edit innings',
             icon: <Edit />,
-            action: () => this.props.history.push('/match/editevents'),
+            action: () => props.history.push('/match/editevents'),
         },
         {
             ...allowedOption,
             text: 'Retired',
             icon: <ArrowRightAlt />,
-            action: () => this.props.batterUnavailable(UnavailableReason.Retired),
+            action: () => props.batterUnavailable(UnavailableReason.Retired),
         },
         {
             ...allowedOption,
             text: 'Absent',
             icon: <ArrowRightAlt />,
-            action: () => this.props.batterUnavailable(UnavailableReason.Absent),
+            action: () => props.batterUnavailable(UnavailableReason.Absent),
         },
-        { ...allowedOption, text: 'Complete over', icon: <Done />, action: this.completeOver },
-        { ...allowedOption, text: 'Complete innings', icon: <Done />, action: this.verifyCompleteInnings },
-        { ...allowedOption, text: 'Complete match', icon: <DoneAll />, action: this.verifyCompleteMatch },
+        { ...allowedOption, text: 'Complete over', icon: <Done />, action: completeOver },
+        { ...allowedOption, text: 'Complete innings', icon: <Done />, action: () => setInningsCompleteVerify(true) },
+        { ...allowedOption, text: 'Complete match', icon: <DoneAll />, action: () => setMatchCompleteVerify(true) },
     ];
 
-    openDrawer = () => this.setState({ open: true });
-    closeDrawer = () => this.setState({ open: false });
-
-    render() {
-        return (
-            <React.Fragment>
-                <Component {...this.props} openDrawer={this.openDrawer} />
-                <MatchDrawer
-                    isOpen={this.state.open}
-                    close={this.closeDrawer}
-                    open={this.openDrawer}
-                    options={this.items.filter(i => i.allowed)}
-                    history={this.props.history}
-                />
-                {this.state.overNotCompleteWarning &&
-                    <OverNotCompleteWarning yes={this.warningYes} no={this.warningNo} />}
-                {this.state.inningsCompleteVerify &&
-                    <VerifyCompleteInnings complete={this.completeInnings} cancel={this.cancelCompleteInnings} />}
-                {this.state.matchCompleteVerify &&
-                    <CompleteMatch
-                        homeTeam={this.props.inProgressMatchStore.match.homeTeam.name}
-                        awayTeam={this.props.inProgressMatchStore.match.awayTeam.name}
-                        complete={this.completeMatch}
-                        cancel={this.cancelCompleteMatch}
-                        calculateResult={() => calculateResult(this.props.inProgressMatchStore.match)}
-                        undoPrevious={this.props.undoPreviousDelivery}
-                    />}
-                {this.state.changeOvers &&
-                    typeof this.props.inProgressMatchStore.currentInnings !== 'undefined' &&
-                    typeof this.props.inProgressMatchStore.currentInnings.maximumOvers !== 'undefined' &&
-                    <UpdateOvers
-                        update={this.changeOvers}
-                        cancel={this.cancelChangeOvers}
-                        overs={this.props.inProgressMatchStore.currentInnings.maximumOvers}
-                    />}
-            </React.Fragment>);
-    }
+    return (
+        <>
+            <Component {...props} openDrawer={openDrawer} />
+            <MatchDrawer
+                isOpen={open}
+                close={closeDrawer}
+                open={openDrawer}
+                options={items.filter(i => i.allowed)}
+                history={props.history}
+            />
+            {overNotCompleteWarning &&
+                <OverNotCompleteWarning yes={warningYes} no={warningNo} />}
+            {inningsCompleteVerify &&
+                <VerifyCompleteInnings complete={completeInnings} cancel={cancelCompleteInnings} />}
+            {matchCompleteVerify &&
+                <CompleteMatch
+                    homeTeam={props.inProgressMatchStore.match.homeTeam.name}
+                    awayTeam={props.inProgressMatchStore.match.awayTeam.name}
+                    complete={completeMatch}
+                    cancel={cancelCompleteMatch}
+                    calculateResult={() => calculateResult(props.inProgressMatchStore.match)}
+                    undoPrevious={props.undoPreviousDelivery}
+                />}
+            {changeOvers &&
+                typeof props.inProgressMatchStore.currentInnings !== 'undefined' &&
+                typeof props.inProgressMatchStore.currentInnings.maximumOvers !== 'undefined' &&
+                <UpdateOvers
+                    update={updateOvers}
+                    cancel={cancelChangeOvers}
+                    overs={props.inProgressMatchStore.currentInnings.maximumOvers}
+                />}
+        </>);
 };

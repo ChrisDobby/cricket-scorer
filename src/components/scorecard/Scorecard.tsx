@@ -46,63 +46,50 @@ interface ScorecardProps {
     continue: () => void;
 }
 
-class Scorecard extends React.Component<ScorecardProps, {}> {
-    state = {
-        selectedInningsIndex: this.props.cricketMatch && this.props.cricketMatch.innings.length > 0
-            ? this.props.cricketMatch.innings.length - 1
-            : -1,
-    };
+export default withStyles(styles)((props: ScorecardProps) => {
+    const [selectedInningsIndex, setSelectedInnings] = React.useState(
+        props.cricketMatch && props.cricketMatch.innings.length > 0
+            ? props.cricketMatch.innings.length - 1
+            : -1);
 
-    inningsSelected = (event: any, index: number) => {
-        this.changeIndex(index);
-    }
-
-    changeIndex = (index: number) => {
-        this.setState({ selectedInningsIndex: index });
-    }
-
-    render() {
-        return (
-            <Paper className={this.props.classes.root} elevation={1}>
-                <MatchHeading
-                    homeTeam={this.props.cricketMatch.homeTeam.name}
-                    awayTeam={this.props.cricketMatch.awayTeam.name}
-                    date={this.props.cricketMatch.date}
-                    matchStatus={this.props.cricketMatch.status}
-                    lastEvent={this.props.lastEvent}
-                />
-                {this.props.canContinue &&
-                    <div style={textCentre}>
-                        <Button color="secondary" onClick={this.props.continue}>
-                            Continue scoring
-                        </Button>
-                    </div>}
-                <Divider />
-                <Tabs
-                    value={this.state.selectedInningsIndex}
-                    onChange={this.inningsSelected}
-                    indicatorColor="primary"
-                    textColor="primary"
-                    centered
-                >
-                    {this.props.cricketMatch.innings.map((_, index) => (
-                        <Tab key={index} label={inningsNumberDescription(index + 1)} />
-                    ))}
-                </Tabs>
-                <ReactSwipeableViews
-                    index={this.state.selectedInningsIndex}
-                    onChangeIndex={this.changeIndex}
-                >
-                    {this.props.cricketMatch.innings.map((inn, idx) => (
-                        <Innings
-                            key={idx}
-                            innings={inn}
-                            getTeam={type => getTeam(this.props.cricketMatch as MatchEntity, type)}
-                        />
-                    ))}
-                </ReactSwipeableViews>
-            </Paper>);
-    }
-}
-
-export default withStyles(styles)(Scorecard);
+    return (
+        <Paper className={props.classes.root} elevation={1}>
+            <MatchHeading
+                homeTeam={props.cricketMatch.homeTeam.name}
+                awayTeam={props.cricketMatch.awayTeam.name}
+                date={props.cricketMatch.date}
+                matchStatus={props.cricketMatch.status}
+                lastEvent={props.lastEvent}
+            />
+            {props.canContinue &&
+                <div style={textCentre}>
+                    <Button color="secondary" onClick={props.continue}>
+                        Continue scoring
+                            </Button>
+                </div>}
+            <Divider />
+            <Tabs
+                value={selectedInningsIndex}
+                onChange={(event, index) => setSelectedInnings(index)}
+                indicatorColor="primary"
+                textColor="primary"
+                centered
+            >
+                {props.cricketMatch.innings.map((_, index) => (
+                    <Tab key={index} label={inningsNumberDescription(index + 1)} />
+                ))}
+            </Tabs>
+            <ReactSwipeableViews
+                index={selectedInningsIndex}
+                onChangeIndex={setSelectedInnings}
+            >
+                {props.cricketMatch.innings.map((inn, idx) => (
+                    <Innings
+                        key={idx}
+                        innings={inn}
+                        getTeam={type => getTeam(props.cricketMatch, type)}
+                    />
+                ))}
+            </ReactSwipeableViews>
+        </Paper>);
+});

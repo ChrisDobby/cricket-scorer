@@ -124,7 +124,7 @@ export default (props: EntryProps) => (
                     />}
             />}
         {props.couldScoreRuns &&
-            <React.Fragment>
+            <>
                 <FormControl fullWidth style={entryRowStyle}>
                     <InputLabel htmlFor="runs">Runs</InputLabel>
                     <SelectScore
@@ -149,7 +149,7 @@ export default (props: EntryProps) => (
                         changed={scoreChange(props.scores, props.scoresChange)}
                     />
                 </FormControl>
-            </React.Fragment>}
+            </>}
         {props.couldBeNoBall &&
             <FormControlLabel
                 style={entryRowStyle}

@@ -9,46 +9,42 @@ interface MatchStatusProps {
     showScorecard: (id: string) => void;
 }
 
-export default class extends React.PureComponent<MatchStatusProps> {
-    state = {
-        currentIndex: 0,
-    };
-
-    componentDidMount() {
-        if (this.props.inProgressMatches.length === 0) { return; }
-
-        this.setState({ currentIndex: 0 });
-        this.show();
-    }
-
-    showNext = () => {
-        if (this.state.currentIndex >= this.props.inProgressMatches.length - 1) {
-            this.setState({ currentIndex: 0 });
+export default (props: MatchStatusProps) => {
+    const [currentIndex, setIndex] = React.useState(0);
+    const [initialised, setInitialised] = React.useState(false);
+    const showCurrentScorecard = () => props.showScorecard(props.inProgressMatches[currentIndex].id);
+    const showNext = () => {
+        if (currentIndex >= props.inProgressMatches.length - 1) {
+            setIndex(0);
         } else {
-            this.setState({ currentIndex: this.state.currentIndex + 1 });
+            setIndex(currentIndex + 1);
         }
 
-        this.show();
-    }
+        show();
+    };
 
-    show = () => {
-        setTimeout(this.showNext, 4000);
-    }
+    const show = () => {
+        setTimeout(showNext, 4000);
+    };
 
-    showCurrentScorecard = () => this.props.showScorecard(this.props.inProgressMatches[this.state.currentIndex].id);
+    React.useEffect(() => {
+        if (initialised || props.inProgressMatches.length === 0) { return; }
 
-    render() {
-        if (this.props.inProgressMatches.length === 0) { return null; }
+        setIndex(0);
+        setInitialised(true);
+        show();
+    });
 
-        return (
-            <Fade in={true}>
-                <SnackbarContent
-                    message={this.props.inProgressMatches[this.state.currentIndex].status}
-                    action={<Button color="secondary" size="small" onClick={this.showCurrentScorecard}>
-                        View scorecard
-                        </Button>}
-                />
-            </Fade>
-        );
-    }
-}
+    if (props.inProgressMatches.length === 0) { return null; }
+
+    return (
+        <Fade in={true}>
+            <SnackbarContent
+                message={props.inProgressMatches[currentIndex].status}
+                action={<Button color="secondary" size="small" onClick={showCurrentScorecard}>
+                    View scorecard
+                    </Button>}
+            />
+        </Fade>
+    );
+};

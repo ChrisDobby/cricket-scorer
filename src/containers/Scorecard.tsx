@@ -1,119 +1,129 @@
 import * as React from 'react';
 import Scorecard from '../components/scorecard/Scorecard';
 import matchStorage from '../stores/matchStorage';
+import fetchMatch from '../match/fetchMatch';
 import WithNavBar from '../components/WithNavBar';
 import WithMatchApi from '../components/WithMatchApi';
 import Error from '../components/Error';
 import Progress from '../components/Progress';
 import liveUpdates, { UpdateType, EventType } from '../liveUpdates';
 import WithOutOfDateMatches from '../components/WithOutOfDateMatches';
-import { Match } from '../domain';
+import { Match, Profile, StoredMatch } from '../domain';
 
 const updates = liveUpdates(process.env.API_URL as string, UpdateType.Scorecard);
 const matchUser = (match: any) => match.user;
 
-export default WithOutOfDateMatches(
-    WithNavBar({ stayWhenLoggingOut: true })(WithMatchApi(class extends React.Component<any> {
-        disconnect: (() => void) | undefined = undefined;
+interface MatchApi {
+    getMatch: (id: string) => Promise<StoredMatch>;
+    sendMatch: (storedMatch: StoredMatch) => Promise<any>;
+}
 
-        state = {
-            match: undefined,
-            lastEvent: undefined,
-            loading: false,
-            loadError: false,
-            continueError: false,
-            fetchingMatch: false,
+interface ScorecardProps {
+    isAuthenticated: boolean;
+    userProfile: Profile;
+    id: string | undefined;
+    matchApi: MatchApi;
+    history: any;
+}
+
+export default WithOutOfDateMatches(
+    WithNavBar({ stayWhenLoggingOut: true })(WithMatchApi((props: ScorecardProps) => {
+        const [match, setMatch] = React.useState(undefined as Match | undefined);
+        const [lastEvent, setLastEvent] = React.useState(undefined as string | undefined);
+        const [loading, setLoading] = React.useState(false);
+        const [loadError, setLoadError] = React.useState(false);
+        const [continueError, setContinueError] = React.useState(false);
+
+        const fetch = fetchMatch(props.matchApi, matchStorage(localStorage));
+        const canContinue = () =>
+            props.isAuthenticated &&
+            typeof match !== 'undefined' &&
+            matchUser(match) === props.userProfile.id;
+
+        const continueScoring = async () => {
+            try {
+                setContinueError(false);
+                await fetch(props.id);
+                props.history.push('/match/inprogress');
+            } catch (e) {
+                setContinueError(true);
+            }
         };
 
-        updateScorecard = (item: any) => this.setState({ match: item.match, lastEvent: item.lastEvent });
-
-        subscribeToUpdates = (id: string) =>
-            this.disconnect = updates(
-                () => id,
-                [
-                    { event: EventType.ScorecardUpdate, action: this.updateScorecard },
-                ])
-
-        loadMatch = async () => {
-            this.setState({ loading: true, loadError: false });
+        const loadMatch = async () => {
+            if (!props.id) { return; }
+            setLoading(true);
+            setLoadError(false);
             try {
-                const result = await this.props.matchApi.getMatch(this.props.id);
-                this.setState({ match: result.match, lastEvent: result.lastEvent, loading: false });
+                const result = await props.matchApi.getMatch(props.id);
+                setMatch(result.match);
+                setLastEvent(result.lastEvent);
+                setLoading(false);
             } catch (e) {
-                this.setState({ loading: false, loadError: true });
+                setLoading(false);
+                setLoadError(true);
             }
-        }
+        };
 
-        async componentDidMount() {
-            if (typeof this.props.id !== 'undefined') {
-                await this.loadMatch();
-            } else {
-                const storedMatch = matchStorage(localStorage).getMatch();
-                if (storedMatch) {
-                    this.setState({ match: storedMatch.match });
+        const updateScorecard = (item: any) => {
+            setMatch(item.match);
+            setLastEvent(item.lastEvent);
+        };
+
+        React.useEffect(
+            () => {
+                if (typeof props.id !== 'undefined') {
+                    loadMatch();
+                } else {
+                    const storedMatch = matchStorage(localStorage).getMatch();
+                    if (storedMatch) {
+                        setMatch(storedMatch.match);
+                    }
                 }
-            }
 
-            this.subscribeToUpdates(this.props.id);
-        }
+                const disconnect = updates(
+                    () => props.id || [],
+                    [
+                        { event: EventType.ScorecardUpdate, action: updateScorecard },
+                    ]);
 
-        componentWillUnmount() {
-            if (typeof this.disconnect !== 'undefined') {
-                this.disconnect();
-            }
-        }
+                return () => {
+                    if (typeof disconnect !== 'undefined') {
+                        disconnect();
+                    }
+                };
+            },
+            []);
 
-        loadErrorClosed = () => this.setState({ loadError: false });
-        continueErrorClosed = () => this.setState({ continueError: false });
-
-        continueScoring = async () => {
-            try {
-                this.setState({ fetchingMatch: true, continueError: false });
-                await this.props.fetchMatch(this.props.id);
-                this.setState({ fetchingMatch: false });
-                this.props.history.push('/match/inprogress');
-            } catch (e) {
-                this.setState({ fetchingMatch: false, continueError: true });
-            }
-        }
-
-        get canContinue() {
-            return this.props.isAuthenticated &&
-                typeof this.state.match !== 'undefined' &&
-                matchUser(this.state.match) === this.props.userProfile.id;
-        }
-
-        render() {
-            if (typeof this.state.match !== 'undefined') {
-                return (
-                    <>
-                        <Scorecard
-                            cricketMatch={(this.state.match as any) as Match}
-                            lastEvent={this.state.lastEvent}
-                            canContinue={this.canContinue}
-                            continue={this.continueScoring}
-                        />
-                        {this.state.continueError &&
-                            <div>
+        if (typeof match !== 'undefined') {
+            return (
+                <>
+                    <Scorecard
+                        cricketMatch={match as Match}
+                        lastEvent={lastEvent}
+                        canContinue={canContinue()}
+                        continue={continueScoring}
+                    />
+                    {continueError &&
+                        <div>
                             <Error
                                 message="Error continuing game.  Please try again"
-                                onClose={this.continueErrorClosed}
+                                onClose={() => setContinueError(false)}
                             />
                         </div>}
-                    </>);
-            }
-
-            if (this.state.loading) {
-                return <Progress />;
-            }
-
-            if (this.state.loadError) {
-                return (
-                    <div>
-                        <Error message="Error loading match. Refresh to try again." onClose={this.loadErrorClosed} />
-                    </div>);
-            }
-
-            return <div><Error message="No match found" onClose={() => { }} /></div>;
+                </>);
         }
+
+        if (loading) {
+            return <Progress />;
+        }
+
+        if (loadError) {
+            return (
+                <div>
+                    <Error message="Error loading match. Refresh to try again." onClose={() => setLoadError(false)} />
+                </div>);
+        }
+
+        return <div><Error message="No match found" onClose={() => { }} /></div>;
     })));

@@ -15,6 +15,7 @@ const MatchCentre = WithInProgressMatches(WithMatchApi((props: any) => (
         storedMatch={matchStorage(localStorage).getMatch()}
         removeStoredMatch={matchStorage(localStorage).removeMatch}
         fetchMatch={fetchMatch(props.matchApi, matchStorage(localStorage))}
+        removeMatch={props.matchApi.removeMatch}
     />)));
 
 const createMatchRoute = '/match/create';

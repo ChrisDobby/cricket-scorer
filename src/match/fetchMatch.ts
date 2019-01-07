@@ -25,9 +25,9 @@ const getApiMatchOrDefaultToStore =
 
 export default (
     api: Api,
-    store: MatchStore) => async (id: string) => {
+    store: MatchStore) => async (id: string | undefined) => {
         const storedMatch = store.getMatch();
-        const apiMatch = await getApiMatchOrDefaultToStore(api, id);
+        const apiMatch = id ? await getApiMatchOrDefaultToStore(api, id) : undefined;
 
         if (storedMatch &&
             (typeof apiMatch === 'undefined' ||

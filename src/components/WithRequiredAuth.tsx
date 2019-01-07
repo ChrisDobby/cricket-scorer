@@ -12,42 +12,31 @@ interface WithRequireAuthProps {
     location: Location;
 }
 
-export default (Component: any) => WithAuth(class extends React.PureComponent<WithRequireAuthProps> {
-    get loginRequired() {
-        return this.props.status !== OFFLINE && !this.props.isAuthenticated;
-    }
-
-    loginIfRequired = () => {
-        if (!this.props.login) {
+export default (Component: any) => WithAuth((props: WithRequireAuthProps) => {
+    const isLoginRequired = () => props.status !== OFFLINE && !props.isAuthenticated;
+    const loginIfRequired = () => {
+        if (!props.login) {
             return;
         }
 
-        if (this.loginRequired) {
-            this.props.login(this.props.location.pathname);
+        if (isLoginRequired()) {
+            props.login(props.location.pathname);
         }
+    };
+
+    React.useEffect(loginIfRequired);
+
+    if (!props.login) {
+        return <div />;
     }
 
-    componentDidMount() {
-        this.loginIfRequired();
+    if (isLoginRequired()) {
+        return <div />;
     }
 
-    componentDidUpdate() {
-        this.loginIfRequired();
-    }
-
-    render() {
-        if (!this.props.login) {
-            return <div />;
-        }
-
-        if (this.loginRequired) {
-            return <div />;
-        }
-
-        return (
-            <Component
-                {...this.props}
-                userProfile={!this.props.isAuthenticated ? this.props.offlineUser : this.props.userProfile}
-            />);
-    }
+    return (
+        <Component
+            {...props}
+            userProfile={!props.isAuthenticated ? props.offlineUser : props.userProfile}
+        />);
 });

@@ -16,57 +16,45 @@ interface SelectBowlerProps {
     selectBowler: (b: number) => void;
 }
 
-export default class extends React.Component<SelectBowlerProps, {}> {
-    state = {
-        selectedPlayerIndex: typeof this.props.initiallySelected === 'undefined'
+export default (props: SelectBowlerProps) => {
+    const [selectedPlayerIndex, setSelectedPlayerIndex] = React.useState(
+        typeof props.initiallySelected === 'undefined'
             ? -1
-            : this.props.initiallySelected,
+            : props.initiallySelected);
+
+    const canSave = () => selectedPlayerIndex >= 0;
+    const save = () => {
+        if (selectedPlayerIndex >= 0) {
+            props.selectBowler(selectedPlayerIndex);
+        }
     };
 
-    save = () => {
-        if (this.state.selectedPlayerIndex >= 0) {
-            this.props.selectBowler(this.state.selectedPlayerIndex);
-        }
-    }
-
-    selectBowler = (playerIndex: number) => {
-        this.setState({
-            selectedPlayerIndex: playerIndex,
-        });
-    }
-
-    get canSave() {
-        return this.state.selectedPlayerIndex >= 0;
-    }
-
-    render() {
-        return (
-            <Grid container>
-                <Grid item sm={1} md={2} />
-                <Grid item xs={12} sm={10} md={8}>
-                    <Toolbar disableGutters>
-                        <Typography variant="h4" color="inherit" style={{ flexGrow: 1 }}>Select bowler</Typography>
-                        <Button variant="fab" color="primary" onClick={this.save} disabled={!this.canSave}>
-                            <SaveIcon />
-                        </Button>
-                    </Toolbar>
-                    <List>
-                        {this.props.bowlingTeam.players.map((player, index) => (
-                            <ListItem
-                                disabled={this.props.disallowedPlayers.indexOf(index) >= 0}
-                                selected={index === this.state.selectedPlayerIndex}
-                                key={index}
-                                role={undefined}
-                                dense
-                                button
-                                color="primary"
-                                onClick={() => this.selectBowler(index)}
-                            >
-                                <ListItemText primary={player} />
-                            </ListItem>
-                        ))}
-                    </List>
-                </Grid>
-            </Grid>);
-    }
-}
+    return (
+        <Grid container>
+            <Grid item sm={1} md={2} />
+            <Grid item xs={12} sm={10} md={8}>
+                <Toolbar disableGutters>
+                    <Typography variant="h4" color="inherit" style={{ flexGrow: 1 }}>Select bowler</Typography>
+                    <Button variant="fab" color="primary" onClick={save} disabled={!canSave()}>
+                        <SaveIcon />
+                    </Button>
+                </Toolbar>
+                <List>
+                    {props.bowlingTeam.players.map((player, index) => (
+                        <ListItem
+                            disabled={props.disallowedPlayers.indexOf(index) >= 0}
+                            selected={index === selectedPlayerIndex}
+                            key={index}
+                            role={undefined}
+                            dense
+                            button
+                            color="primary"
+                            onClick={() => setSelectedPlayerIndex(index)}
+                        >
+                            <ListItemText primary={player} />
+                        </ListItem>
+                    ))}
+                </List>
+            </Grid>
+        </Grid>);
+};

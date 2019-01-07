@@ -56,7 +56,7 @@ export default (props: OutOfDateDialogProps) => (
                         <Grid item md={6} sm={12}>
                             <DialogActions>
                                 {!props.disabled && !match.removed &&
-                                    <React.Fragment>
+                                    <>
                                         <Button
                                             color="primary"
                                             onClick={() => props.remove(match.id)}
@@ -67,7 +67,7 @@ export default (props: OutOfDateDialogProps) => (
                                             onClick={() => props.continue(match.id)}
                                         >Continue
                                         </Button>
-                                    </React.Fragment>}
+                                    </>}
                                 {!props.disabled && match.removed &&
                                     <DialogContentText color="secondary">Removed</DialogContentText>}
                             </DialogActions>

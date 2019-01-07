@@ -23,128 +23,111 @@ interface MatchFormProps {
     createMatch: (matchData: MatchData) => void;
 }
 
-class MatchForm extends React.PureComponent<MatchFormProps> {
-    state = {
-        matchData: {
-            matchType: MatchType.LimitedOvers,
-            oversPerSide: 50,
-            playersPerSide: 11,
-            inningsPerSide: 1,
-            runsPerNoBall: 1,
-            runsPerWide: 1,
-            homeTeam: '',
-            awayTeam: '',
-            homePlayers: Array(11).fill(''),
-            awayPlayers: Array(11).fill(''),
-        },
-        saveWarnings: { homePlayersMissing: 0, awayPlayersMissing: 0 },
-    };
+export default (props: MatchFormProps) => {
+    const [matchData, setMatchData] = React.useState({
+        matchType: MatchType.LimitedOvers,
+        oversPerSide: 50,
+        playersPerSide: 11,
+        inningsPerSide: 1,
+        runsPerNoBall: 1,
+        runsPerWide: 1,
+        homeTeam: '',
+        awayTeam: '',
+        homePlayers: Array(11).fill(''),
+        awayPlayers: Array(11).fill(''),
+    });
+    const [saveWarnings, setSaveWarnings] = React.useState({ homePlayersMissing: 0, awayPlayersMissing: 0 });
 
-    matchTypeSelected = (matchType: MatchType) =>
-        this.setState({ matchType })
-    oversChanged = (overs: number) =>
-        this.setState({ oversPerSide: overs })
-    inningsChanged = (innings: number) =>
-        this.setState({ inningsPerSide: innings })
-    noBallRunsChanged = (runs: number) =>
-        this.setState({ runsPerNoBall: runs })
-    wideRunsChanged = (wides: number) =>
-        this.setState({ runsPerWide: wides })
-    playersChanged = (players: number) =>
-        this.setState({
+    const playersChanged = (players: number) =>
+        setMatchData({
+            ...matchData,
             playersPerSide: players,
-            homePlayers: this.state.matchData.homePlayers.filter((_, idx) => idx < players)
-                .concat(players > this.state.matchData.playersPerSide
-                    ? Array(players - this.state.matchData.playersPerSide).fill('') : []),
-            awayPlayers: this.state.matchData.awayPlayers.filter((_, idx) => idx < players)
-                .concat(players > this.state.matchData.playersPerSide
-                    ? Array(players - this.state.matchData.playersPerSide).fill('') : []),
-        })
-    teamChanged = (team: TeamType, name: string) => {
+            homePlayers: matchData.homePlayers.filter((_, idx) => idx < players)
+                .concat(players > matchData.playersPerSide
+                    ? Array(players - matchData.playersPerSide).fill('') : []),
+            awayPlayers: matchData.awayPlayers.filter((_, idx) => idx < players)
+                .concat(players > matchData.playersPerSide
+                    ? Array(players - matchData.playersPerSide).fill('') : []),
+        });
+
+    const teamChanged = (team: TeamType, name: string) => {
         if (team === TeamType.HomeTeam) {
-            this.setState({ homeTeam: name });
+            setMatchData({ ...matchData, homeTeam: name });
         }
         if (team === TeamType.AwayTeam) {
-            this.setState({ awayTeam: name });
+            setMatchData({ ...matchData, awayTeam: name });
         }
-    }
+    };
 
-    playerChanged = (team: TeamType, playerNumber: number, name: string) => {
+    const playerChanged = (team: TeamType, playerNumber: number, name: string) => {
         const playerArray = team === TeamType.HomeTeam ? 'homePlayers' : 'awayPlayers';
-        this.setState({
-            [playerArray]: Object.assign([], this.state[playerArray], { [playerNumber]: name }),
+        setMatchData({
+            ...matchData,
+            [playerArray]: Object.assign([], matchData[playerArray], { [playerNumber]: name }),
         });
-    }
+    };
 
-    canSave = () =>
-        ((this.state.matchData.matchType === MatchType.LimitedOvers && this.state.matchData.oversPerSide > 0) ||
-            (this.state.matchData.matchType === MatchType.Time && this.state.matchData.inningsPerSide > 0)) &&
-        this.state.matchData.playersPerSide > 0 &&
-        this.state.matchData.runsPerNoBall > 0 &&
-        this.state.matchData.runsPerWide > 0 &&
-        !!this.state.matchData.homeTeam &&
-        !!this.state.matchData.awayTeam &&
-        this.state.matchData.homePlayers.filter(player => player).length > 0 &&
-        this.state.matchData.awayPlayers.filter(player => player).length > 0
+    const canSave = () =>
+        ((matchData.matchType === MatchType.LimitedOvers && matchData.oversPerSide > 0) ||
+            (matchData.matchType === MatchType.Time && matchData.inningsPerSide > 0)) &&
+            matchData.playersPerSide > 0 &&
+            matchData.runsPerNoBall > 0 &&
+            matchData.runsPerWide > 0 &&
+        !!matchData.homeTeam &&
+        !!matchData.awayTeam &&
+        matchData.homePlayers.filter(player => player).length > 0 &&
+        matchData.awayPlayers.filter(player => player).length > 0;
 
-    saveConfirmed = () => {
-        this.setState({ saveWarnings: { homePlayersMissing: 0, awayPlayersMissing: 0 } });
-        this.props.createMatch(this.state.matchData);
-    }
+    const saveConfirmed = () => {
+        setSaveWarnings({ homePlayersMissing: 0, awayPlayersMissing: 0 });
+        props.createMatch(matchData);
+    };
 
-    save = () => {
-        if (!this.canSave()) { return; }
-        const unknownHomePlayers = this.state.matchData.homePlayers.filter(player => !player).length;
-        const unknownAwayPlayers = this.state.matchData.awayPlayers.filter(player => !player).length;
+    const save = () => {
+        if (!canSave()) { return; }
+        const unknownHomePlayers = matchData.homePlayers.filter(player => !player).length;
+        const unknownAwayPlayers = matchData.awayPlayers.filter(player => !player).length;
         if (unknownHomePlayers > 0 || unknownAwayPlayers > 0) {
-            this.setState({
-                saveWarnings: { homePlayersMissing: unknownHomePlayers, awayPlayersMissing: unknownAwayPlayers },
-            });
+            setSaveWarnings({ homePlayersMissing: unknownHomePlayers, awayPlayersMissing: unknownAwayPlayers });
             return;
         }
 
-        this.saveConfirmed();
-    }
+        saveConfirmed();
+    };
 
-    continueEditing = () => this.setState({ saveWarnings: { homePlayersMissing: 0, awayPlayersMissing: 0 } });
-
-    render() {
-        return (
-            <React.Fragment>
-                <EditForm
-                    heading="New match"
-                    save={this.save}
-                    canSave={this.canSave}
-                >
-                    <MatchEntry
-                        {...this.state.matchData}
-                        matchTypeSelected={this.matchTypeSelected}
-                        oversChanged={this.oversChanged}
-                        inningsChanged={this.inningsChanged}
-                        noBallRunsChanged={this.noBallRunsChanged}
-                        wideRunsChanged={this.wideRunsChanged}
-                        playersChanged={this.playersChanged}
-                    />
-                    <Divider style={{ marginTop: '10px', marginBottom: '10px' }} />
-                    <Typography variant="h5">Teams</Typography>
-                    <TeamsEntry
-                        homeTeam={this.state.matchData.homeTeam}
-                        awayTeam={this.state.matchData.awayTeam}
-                        homePlayers={this.state.matchData.homePlayers}
-                        awayPlayers={this.state.matchData.awayPlayers}
-                        playerChanged={this.playerChanged}
-                        teamChanged={this.teamChanged}
-                    />
-                </EditForm>
-                {(this.state.saveWarnings.homePlayersMissing > 0 || this.state.saveWarnings.awayPlayersMissing > 0) &&
-                    <SaveWarning
-                        homePlayersMissing={this.state.saveWarnings.homePlayersMissing}
-                        awayPlayersMissing={this.state.saveWarnings.awayPlayersMissing}
-                        save={this.saveConfirmed}
-                        cancel={this.continueEditing}
-                    />}
-            </React.Fragment >);
-    }
-}
-
-export default MatchForm;
+    return (
+        <>
+            <EditForm
+                heading="New match"
+                save={save}
+                canSave={canSave}
+            >
+                <MatchEntry
+                    {...matchData}
+                    matchTypeSelected={matchType => setMatchData({ ...matchData, matchType })}
+                    oversChanged={oversPerSide => setMatchData({ ...matchData, oversPerSide })}
+                    inningsChanged={inningsPerSide => setMatchData({ ...matchData, inningsPerSide })}
+                    noBallRunsChanged={runsPerNoBall => setMatchData({ ...matchData, runsPerNoBall })}
+                    wideRunsChanged={runsPerWide => setMatchData({ ...matchData, runsPerWide })}
+                    playersChanged={playersChanged}
+                />
+                <Divider style={{ marginTop: '10px', marginBottom: '10px' }} />
+                <Typography variant="h5">Teams</Typography>
+                <TeamsEntry
+                    homeTeam={matchData.homeTeam}
+                    awayTeam={matchData.awayTeam}
+                    homePlayers={matchData.homePlayers}
+                    awayPlayers={matchData.awayPlayers}
+                    playerChanged={playerChanged}
+                    teamChanged={teamChanged}
+                />
+            </EditForm>
+            {(saveWarnings.homePlayersMissing > 0 || saveWarnings.awayPlayersMissing > 0) &&
+                <SaveWarning
+                    homePlayersMissing={saveWarnings.homePlayersMissing}
+                    awayPlayersMissing={saveWarnings.awayPlayersMissing}
+                    save={saveConfirmed}
+                    cancel={() => setSaveWarnings({ homePlayersMissing: 0, awayPlayersMissing: 0 })}
+                />}
+        </ >);
+};

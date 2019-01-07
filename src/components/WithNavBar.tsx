@@ -37,7 +37,7 @@ const WithNavBar = (options: NavBarOptions) => (Component: any) => (props: WithN
     <NetworkStatusContext.Consumer>{({
         status,
     }) =>
-        <React.Fragment>
+        <>
             <AppBar position="sticky">
                 <Toolbar>
                     <Typography
@@ -59,7 +59,7 @@ const WithNavBar = (options: NavBarOptions) => (Component: any) => (props: WithN
                             </Badge>
                         </IconButton>}
                     {props.isAuthenticated &&
-                        <React.Fragment>
+                        <>
                             <Avatar src={props.userProfile.picture} />
                             <Typography color="inherit">{props.userProfile.name}</Typography>
                             <Button
@@ -67,7 +67,7 @@ const WithNavBar = (options: NavBarOptions) => (Component: any) => (props: WithN
                                 onClick={() => props.logout(!!options.stayWhenLoggingOut)}
                             >Logout
                             </Button>
-                        </React.Fragment>}
+                        </>}
                     {status === OFFLINE && !props.isAuthenticated &&
                         <SignalWifiOff />}
                     {props.openDrawer &&
@@ -82,7 +82,7 @@ const WithNavBar = (options: NavBarOptions) => (Component: any) => (props: WithN
                 </Toolbar>
             </AppBar>
             <Component {...props} />
-        </React.Fragment>}
+        </>}
     </NetworkStatusContext.Consumer>);
 
 export default WithNavBar;

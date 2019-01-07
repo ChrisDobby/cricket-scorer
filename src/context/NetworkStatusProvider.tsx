@@ -10,84 +10,78 @@ const getStatus = () => {
     return OFFLINE;
 };
 
-export default class NetworkStatusProvider extends React.PureComponent {
-    state = {
-        status: getStatus(),
-        info: undefined,
+export default (props: any) => {
+    const [status, setStatus] = React.useState(getStatus());
+    const [info, setInfo] = React.useState(undefined as string | undefined);
+
+    let apiConnected = true;
+    let connectedTimer: any | undefined;
+    let disconnectedTimer: any | undefined;
+
+    const networkStatusChange = () => {
+        const connected = navigator.onLine && apiConnected;
+        setStatus(connected ? ONLINE : OFFLINE);
+        setInfo(`Network is ${connected ? 'online' : 'offline'}`);
     };
 
-    apiConnected: boolean = true;
-    connectedTimer: any = undefined;
-    disconnectedTimer: any = undefined;
-
-    componentDidMount() {
-        window.addEventListener('online', this.networkStatusChange, false);
-        window.addEventListener('offline', this.networkStatusChange, false);
-        window['subscriptions'].subscribe('connected', this.connected);
-        window['subscriptions'].subscribe('disconnected', this.disconnected);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('online', this.networkStatusChange);
-        window.removeEventListener('offline', this.networkStatusChange);
-        window['subscriptions'].subscribe('connected', this.connected);
-        window['subscriptions'].subscribe('disconnected', this.disconnected);
-    }
-
-    clearTimer = (timer: any) => {
+    const clearTimer = (timer: any) => {
         if (typeof timer !== 'undefined') {
             clearTimeout(timer);
         }
-    }
+    };
 
-    setTimer = (handler: () => void) => setTimeout(handler, 5000);
+    const setTimer = (handler: () => void) => setTimeout(handler, 5000);
 
-    connected = () => {
-        this.clearTimer(this.disconnectedTimer);
-        this.disconnectedTimer = undefined;
-        if (typeof this.connectedTimer === 'undefined' &&
-            !this.apiConnected) {
-            this.connectedTimer = this.setTimer(() => {
-                this.apiConnected = true;
-                this.networkStatusChange();
+    const connected = () => {
+        clearTimer(disconnectedTimer);
+        disconnectedTimer = undefined;
+        if (typeof connectedTimer === 'undefined' &&
+            !apiConnected) {
+            connectedTimer = setTimer(() => {
+                apiConnected = true;
+                networkStatusChange();
             });
         }
-    }
+    };
 
-    disconnected = () => {
-        this.clearTimer(this.connectedTimer);
-        this.connectedTimer = undefined;
-        if (typeof this.disconnectedTimer === 'undefined' && this.apiConnected) {
-            this.disconnectedTimer = this.setTimer(() => {
-                this.apiConnected = false;
-                this.networkStatusChange();
+    const disconnected = () => {
+        clearTimer(connectedTimer);
+        connectedTimer = undefined;
+        if (typeof disconnectedTimer === 'undefined' && apiConnected) {
+            disconnectedTimer = setTimer(() => {
+                apiConnected = false;
+                networkStatusChange();
             });
         }
-    }
+    };
 
-    networkStatusChange = () => {
-        const connected = navigator.onLine && this.apiConnected;
-        this.setState({
-            status: connected ? ONLINE : OFFLINE,
-            info: `Network is ${connected ? 'online' : 'offline'}`,
-        });
-    }
+    React.useEffect(
+        () => {
+            window.addEventListener('online', networkStatusChange, false);
+            window.addEventListener('offline', networkStatusChange, false);
+            window['subscriptions'].subscribe('connected', connected);
+            window['subscriptions'].subscribe('disconnected', disconnected);
 
-    clearInfo = () => this.setState({ info: undefined });
+            return () => {
+                window.removeEventListener('online', networkStatusChange);
+                window.removeEventListener('offline', networkStatusChange);
+                window['subscriptions'].subscribe('connected', connected);
+                window['subscriptions'].subscribe('disconnected', disconnected);
+            };
+        },
+        []);
 
-    render() {
-        return (
-            <NetworkStatusContext.Provider
-                value={{
-                    status: this.state.status,
-                    offlineUser: {
-                        id: '__OFFLINE__',
-                    },
-                }}
-            >
-                {this.props.children}
-                {this.state.info &&
-                    <NetworkStatusDisplay close={this.clearInfo} message={(this.state.info as any) as string} />}
-            </NetworkStatusContext.Provider>);
-    }
-}
+    return (
+        <NetworkStatusContext.Provider
+            value={{
+                status,
+                offlineUser: {
+                    id: '__OFFLINE__',
+                },
+            }}
+        >
+            {props.children}
+            {info &&
+                <NetworkStatusDisplay close={() => setInfo(undefined)} message={info} />}
+        </NetworkStatusContext.Provider>);
+};

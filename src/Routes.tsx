@@ -21,7 +21,7 @@ const Routes = () => (
             <Route path="/" component={App} />
             <Route exact path="/" component={WithAuth(Home)} />
             <Route exact path="/auth" component={AuthCallback} />
-            <Route exact path="/match" component={Match} />
+            <Route exact path="/match" render={(props: any) => <Match {...props}/>} />
             <Route exact path="/match/create" component={WithRequiredAuth(CreateMatch)} />
             <Route exact path="/match/start" component={WithRequiredAuth(StartMatch)} />
             <Route exact path="/match/inprogress" component={WithRequiredAuth(InProgress)} />
