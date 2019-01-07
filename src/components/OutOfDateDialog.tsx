@@ -10,7 +10,6 @@ import Divider from '@material-ui/core/Divider';
 import * as dateformat from 'dateformat';
 import { OutOfDateMatch } from './WithOutOfDateMatches';
 
-
 interface OutOfDateDialogProps {
     matches: OutOfDateMatch[];
     disabled: boolean;

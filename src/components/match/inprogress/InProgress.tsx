@@ -34,7 +34,6 @@ type InProgressProps = RouteComponentProps<{}> & {
     userProfile: domain.Profile;
 };
 
-
 const InProgress = (props: InProgressProps) => {
     const inningsStatus = props.inProgress.provisionalInningsStatus;
     const shouldBeComplete = props.inProgress.provisionalMatchComplete;
