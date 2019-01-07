@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render, cleanup } from 'react-testing-library';
 import WithNavBar from '../../components/WithNavBar';
 
-describe('WithNavBar', () => {
+describe.skip('WithNavBar', () => {
     beforeEach(cleanup);
     const TestComponent = () => <div />;
 
