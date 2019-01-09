@@ -7,6 +7,7 @@ const publish = (event: string, data?: any) => {
 };
 
 export default (url: string) => {
+    const clientDisconnect = 'io client disconnect';
     const connectMsg = 'connect';
     const disconnectMsg = 'disconnect';
     const connectErrorMsg = 'connect_error';
@@ -15,7 +16,11 @@ export default (url: string) => {
 
     const socket = io(url);
     socket.on(connectMsg, () => publish(networkConnectedEvent));
-    socket.on(disconnectMsg, () => publish(networkdisconnectedEvent));
+    socket.on(disconnectMsg, (reason: string) => {
+        if (reason !== clientDisconnect) {
+            publish(networkdisconnectedEvent);
+        }
+    });
     socket.on(connectErrorMsg, () => publish(networkdisconnectedEvent));
 
     return socket;
