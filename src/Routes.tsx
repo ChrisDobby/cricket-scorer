@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { Route } from 'react-router-dom';
-import App from './App';
+import { Switch, Route, withRouter } from 'react-router-dom';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import WithAuth from './components/WithAuth';
 import WithRequiredAuth from './components/WithRequiredAuth';
 import AuthCallback from './components/AuthCallback';
+import './routes.css';
 
 const Home = React.lazy(() => import('./containers/Home'));
 const Scorecard = React.lazy(() => import('./containers/Scorecard'));
@@ -16,25 +18,40 @@ const EditEvents = React.lazy(() => import('./containers/match/EditEvents'));
 const Wicket = React.lazy(() => import('./containers/match/Wicket'));
 const InProgress = React.lazy(() => import('./containers/match/InProgress'));
 
-const Routes = () => (
-        <div style={{ userSelect: 'none' }}>
-            <Route path="/" component={App} />
-            <Route exact path="/" component={WithAuth(Home)} />
-            <Route exact path="/auth" component={AuthCallback} />
-            <Route exact path="/match" render={(props: any) => <Match {...props}/>} />
-            <Route exact path="/match/create" component={WithRequiredAuth(CreateMatch)} />
-            <Route exact path="/match/start" component={WithRequiredAuth(StartMatch)} />
-            <Route exact path="/match/inprogress" component={WithRequiredAuth(InProgress)} />
-            <Route exact path="/match/wicket" component={WithRequiredAuth(Wicket)} />
-            <Route exact path="/match/editplayers" component={WithRequiredAuth(EditPlayers)} />
-            <Route exact path="/match/editevents" component={WithRequiredAuth(EditEvents)} />
-            <Route
-                exact
-                path="/scorecard/:id?"
-                component={WithAuth((props: any) => <Scorecard {...props} id={props.match.params.id} />)}
-            />
-            <Route exact path="/matchcentre" component={WithAuth(MatchCentre)} />
-        </div>
+const Routes = ({ location }: { location: any }) => (
+    <div style={{ userSelect: 'none' }}>
+        <CssBaseline />
+        <TransitionGroup className="transition-group">
+            <CSSTransition
+                key={location.key}
+                timeout={{ enter: 300, exit: 300 }}
+                classNames={'fade'}
+            >
+                <section className="route-section">
+                    <React.Suspense fallback={<div />}>
+                        <Switch location={location}>
+                            <Route exact path="/" component={WithAuth(Home)} />
+                            <Route exact path="/auth" component={AuthCallback} />
+                            <Route exact path="/match" render={(props: any) => <Match {...props} />} />
+                            <Route exact path="/match/create" component={WithRequiredAuth(CreateMatch)} />
+                            <Route exact path="/match/start" component={WithRequiredAuth(StartMatch)} />
+                            <Route exact path="/match/inprogress" component={WithRequiredAuth(InProgress)} />
+                            <Route exact path="/match/wicket" component={WithRequiredAuth(Wicket)} />
+                            <Route exact path="/match/editplayers" component={WithRequiredAuth(EditPlayers)} />
+                            <Route exact path="/match/editevents" component={WithRequiredAuth(EditEvents)} />
+                            <Route
+                                exact
+                                path="/scorecard/:id?"
+                                component={WithAuth((props: any) =>
+                                    <Scorecard {...props} id={props.match.params.id} />)}
+                            />
+                            <Route exact path="/matchcentre" component={WithAuth(MatchCentre)} />
+                        </Switch>
+                    </React.Suspense>
+                </section>
+            </CSSTransition>
+        </TransitionGroup>
+    </div>
 );
 
-export default Routes;
+export default withRouter(Routes);
