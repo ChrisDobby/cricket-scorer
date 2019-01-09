@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const path = require('path');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const Visualizer = require('webpack-visualizer-plugin');
@@ -49,17 +48,6 @@ module.exports = {
             filename: '../stats.html',
         }),
     ],
-    optimization: {
-        minimizer: [
-            new UglifyJSPlugin({
-                uglifyOptions: {
-                    compress: true,
-                    ecma: 6,
-                    output: { comments: false },
-                },
-                sourceMap: false,
-            })],
-    },
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
         extensions: [".ts", ".tsx", ".js", ".json"]
