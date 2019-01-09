@@ -1,7 +1,8 @@
 import * as React from 'react';
+import { History } from 'history';
 
 interface AuthCallbackProps {
-    history: any;
+    history: History;
     location: Location;
 }
 

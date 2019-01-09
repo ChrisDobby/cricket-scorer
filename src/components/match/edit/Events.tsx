@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { History } from 'history';
 import EditContainer from '../EditContainer';
 import EventsForm from './EventsForm';
 import { InProgressMatch, Profile } from '../../../domain';
@@ -8,7 +9,7 @@ import { bindMatchStorage } from '../../../stores/withMatchStorage';
 interface EventsProps {
     inProgress: InProgressMatch;
     storeMatch: (match: InProgressMatch) => void;
-    history: any;
+    history: History;
     userProfile: Profile;
 }
 

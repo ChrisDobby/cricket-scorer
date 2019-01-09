@@ -9,6 +9,7 @@ import ChevronRight from '@material-ui/icons/ChevronRight';
 import { withStyles } from '@material-ui/core/styles';
 import { themedStyles } from '../styles';
 import { IconButton } from '@material-ui/core';
+import { History } from 'history';
 
 type OptionButton = {
     text: string;
@@ -22,7 +23,7 @@ type MatchDrawerProps = {
     close: () => void;
     open: () => void;
     classes: any;
-    history: any;
+    history: History;
 };
 
 export default withStyles(themedStyles)((props: MatchDrawerProps) => (

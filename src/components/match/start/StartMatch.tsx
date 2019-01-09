@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { History } from 'history';
 import EditContainer from '../EditContainer';
 import StartForm from './StartForm';
 import { bindMatchStorage } from '../../../stores/withMatchStorage';
@@ -7,7 +8,7 @@ import { InProgressMatch, TeamType, Profile } from '../../../domain';
 interface StartMatchProps {
     inProgress: InProgressMatch;
     storeMatch: (match: InProgressMatch) => void;
-    history: any;
+    history: History;
     userProfile: Profile;
 }
 

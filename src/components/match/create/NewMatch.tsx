@@ -1,12 +1,12 @@
 import * as React from 'react';
 import EditContainer from '../EditContainer';
 import MatchForm from './MatchForm';
+import { History } from 'history';
 import { default as createMatch } from '../../../match/create';
 import { bindMatchStorage } from '../../../stores/withMatchStorage';
 import { Profile, InProgressMatch, StoredMatch } from '../../../domain';
 import { OFFLINE } from '../../../context/networkStatus';
 import OverwriteWarningDialog from './OverwriteWarningDialog';
-import { History } from 'history';
 
 interface NewMatchProps {
     userProfile: Profile;

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { History } from 'history';
 import Scorecard from '../components/scorecard/Scorecard';
 import matchStorage from '../stores/matchStorage';
 import fetchMatch from '../match/fetchMatch';
@@ -23,7 +24,7 @@ interface ScorecardProps {
     userProfile: Profile;
     id: string | undefined;
     matchApi: MatchApi;
-    history: any;
+    history: History;
 }
 
 export default WithOutOfDateMatches(

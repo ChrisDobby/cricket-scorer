@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { History } from 'history';
 import OutOfDateDialog from './OutOfDateDialog';
 import matchStorage from '../stores/matchStorage';
 import fetchMatch from '../match/fetchMatch';
@@ -21,7 +22,7 @@ interface WithOutOfDateMatchesProps {
     isAuthenticated: boolean;
     userProfile: Profile;
     matchApi: MatchApi;
-    history: any;
+    history: History;
 }
 
 export default (Component: any) => WithMatchApi((props: WithOutOfDateMatchesProps) => {

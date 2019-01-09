@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
+import { History } from 'history';
 import { Link } from 'react-router-dom';
 import MatchStatus from './MatchStatus';
 import aboutText from './aboutText';
@@ -22,7 +23,7 @@ interface HomeProps {
     isAuthenticated: boolean;
     canAuthenticate: boolean;
     status: string;
-    history: any;
+    history: History;
     classes: any;
     fetchMatch: (id: string) => Promise<void>;
     inProgressMatches: PersistedMatch[];

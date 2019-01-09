@@ -1,10 +1,11 @@
 import * as React from 'react';
+import { History } from 'history';
 import NetworkStatusContext from '../context/NetworkStatusContext';
 import { OFFLINE } from '../context/networkStatus';
 import { Profile } from '../domain';
 
 interface WithAuthProps {
-    history: any;
+    history: History;
     location: Location;
 }
 

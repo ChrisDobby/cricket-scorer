@@ -2,6 +2,7 @@ import * as React from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
+import { History } from 'history';
 import EditForm from '../EditForm';
 import * as domain from '../../../domain';
 import DeliveryHeader from '../DeliveryHeader';
@@ -23,7 +24,7 @@ const nonDeliveryHowouts = [domain.Howout.TimedOut];
 type WicketProps = RouteComponentProps<{}> & {
     inProgress: domain.InProgressMatch;
     storeMatch: (m: domain.InProgressMatch) => void;
-    history: any;
+    history: History;
     classes: any;
     userProfile: domain.Profile;
 };

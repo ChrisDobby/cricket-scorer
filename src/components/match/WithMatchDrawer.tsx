@@ -5,6 +5,7 @@ import ArrowRightAlt from '@material-ui/icons/ArrowRightAlt';
 import Done from '@material-ui/icons/Done';
 import DoneAll from '@material-ui/icons/DoneAll';
 import Edit from '@material-ui/icons/Edit';
+import { History } from 'history';
 import MatchDrawer from './MatchDrawer';
 import OverNotCompleteWarning from './OverNotCompleteWarning';
 import VerifyCompleteInnings from './VerifyCompleteInnings';
@@ -24,7 +25,7 @@ interface WithMatchDrawerProps {
     batterUnavailable: (reason: UnavailableReason) => void;
     undoPreviousDelivery: () => void;
     changeEnds: () => void;
-    history: any;
+    history: History;
 }
 
 export default (Component: any) => (props: WithMatchDrawerProps) => {

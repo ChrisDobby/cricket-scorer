@@ -1,9 +1,10 @@
 import * as React from 'react';
+import { History } from 'history';
 import { InProgressMatch } from '../domain';
 
 interface WithInProgressMatchProps {
     inProgressMatchStore: InProgressMatch;
-    history: any;
+    history: History;
 }
 
 export default (Component: any) => (props: WithInProgressMatchProps) => {

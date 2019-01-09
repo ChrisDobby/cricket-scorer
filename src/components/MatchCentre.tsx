@@ -2,6 +2,7 @@ import * as React from 'react';
 import Grid from '@material-ui/core/Grid';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Typography from '@material-ui/core/Typography';
+import { History } from 'history';
 import MatchCard from './MatchCard';
 import homePageStyles from './homePageStyles';
 import Error from './Error';
@@ -19,7 +20,7 @@ interface MatchCentreProps {
     loadingMatches: boolean;
     removeStoredMatch: () => void;
     removeMatch: (id: string) => Promise<void>;
-    history: any;
+    history: History;
     classes: any;
 }
 

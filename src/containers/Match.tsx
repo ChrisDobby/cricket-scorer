@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { inject } from 'mobx-react';
+import { History } from 'history';
 import WithInProgressStore from '../components/WithInProgressStore';
 import { InProgressMatch } from '../domain';
 
 interface MatchProps {
     inProgressMatchStore: InProgressMatch;
-    history: any;
+    history: History;
 }
 
 const Match = (props: MatchProps) => {

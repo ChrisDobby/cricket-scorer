@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { inject } from 'mobx-react';
+import { History } from 'history';
 import { default as StartMatchComponent } from '../../components/match/start/StartMatch';
 import storeMatch from '../../storeMatch';
 import WithInProgressMatch from '../../components/WithInProgressMatch';
@@ -10,7 +11,7 @@ import { Profile } from '../../domain';
 
 interface StartMatchProps {
     inProgressMatchStore: InProgressMatchStore;
-    history: any;
+    history: History;
     userProfile: Profile;
 }
 
