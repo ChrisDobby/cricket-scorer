@@ -48,7 +48,9 @@ export default withStyles(homePageStyles)((props: MatchCentreProps) => {
         const includeStoredMatch = (typeof storedMatch.user === 'undefined' || (
             typeof props.userProfile !== 'undefined' &&
             props.userProfile.id === storedMatch.user)) &&
-            !props.outOfDateMatches.map(match => match.id).find(id => id === storedMatch.id);
+            !props.outOfDateMatches.map(match => match.id).find(id => id === storedMatch.id) &&
+            (typeof storedMatch.id === 'undefined' ||
+                !!props.inProgressMatches.find(match => match.id === storedMatch.id));
 
         if (!includeStoredMatch) { return sortedMatches(props.inProgressMatches); }
         const storedMatchFromInProgress = props.inProgressMatches
