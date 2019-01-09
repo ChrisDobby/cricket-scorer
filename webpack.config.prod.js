@@ -15,9 +15,6 @@ module.exports = {
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
     },
-
-    // Enable sourcemaps for debugging webpack's output.
-    devtool: "source-map",
     plugins: [
         new webpack.LoaderOptionsPlugin({
             minimize: false,
