@@ -11,6 +11,7 @@ interface EventsProps {
     storeMatch: (match: InProgressMatch) => void;
     history: History;
     userProfile: Profile;
+    setPageOptions: () => void;
 }
 
 const rollback = (
@@ -26,7 +27,9 @@ const rollback = (
         },
     );
 
-export default ({ inProgress, storeMatch, history, userProfile }: EventsProps) => {
+export default ({ inProgress, storeMatch, history, userProfile, setPageOptions }: EventsProps) => {
+    React.useEffect(setPageOptions, []);
+
     if (typeof inProgress.currentInnings === 'undefined') {
         return null;
     }

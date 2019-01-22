@@ -1,25 +1,14 @@
 import * as React from 'react';
 import Button from '@material-ui/core/Button';
 import Add from '@material-ui/icons/Add';
-import WithNavBar from '../components/WithNavBar';
 import WithMatchApi from '../components/WithMatchApi';
 import WithInProgressMatches from '../components/WithInProgressMatches';
 import { default as MatchCentreComponent } from '../components/MatchCentre';
 import matchStorage from '../stores/matchStorage';
 import fetchMatch from '../match/fetchMatch';
-import WithOutOfDateMatches from '../components/WithOutOfDateMatches';
-
-const MatchCentre = WithInProgressMatches(WithMatchApi((props: any) => (
-    <MatchCentreComponent
-        {...props}
-        storedMatch={matchStorage(localStorage).getMatch()}
-        removeStoredMatch={matchStorage(localStorage).removeMatch}
-        fetchMatch={fetchMatch(props.matchApi, matchStorage(localStorage))}
-        removeMatch={props.matchApi.removeMatch}
-    />)));
+import PageContext from '../context/PageContext';
 
 const createMatchRoute = '/match/create';
-
 const getAddButton = (props: any) => (
     <Button
         variant="fab"
@@ -29,6 +18,14 @@ const getAddButton = (props: any) => (
         <Add />
     </Button>);
 
-export default WithOutOfDateMatches(
-    WithNavBar({ stayWhenLoggingOut: true, title: 'Matches', button: getAddButton })(MatchCentre),
-);
+export default WithInProgressMatches(WithMatchApi((props: any) => (
+    <PageContext.Consumer>{({ setOptions }) =>
+        <MatchCentreComponent
+            {...props}
+            storedMatch={matchStorage(localStorage).getMatch()}
+            removeStoredMatch={matchStorage(localStorage).removeMatch}
+            fetchMatch={fetchMatch(props.matchApi, matchStorage(localStorage))}
+            removeMatch={props.matchApi.removeMatch}
+            setPageOptions={() => setOptions({ stayWhenLoggingOut: true, title: 'Matches', button: getAddButton })}
+        />}
+    </PageContext.Consumer>)));

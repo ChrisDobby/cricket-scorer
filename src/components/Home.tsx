@@ -27,9 +27,11 @@ interface HomeProps {
     classes: any;
     fetchMatch: (id: string) => Promise<void>;
     inProgressMatches: PersistedMatch[];
+    setPageOptions: () => void;
 }
 
 export default withStyles(homePageStyles)((props: HomeProps) => {
+    React.useEffect(props.setPageOptions, []);
     const canContinueCurrentMatch = props.storedMatch &&
         ((props.storedMatch.match.user === props.offlineUser.id) ||
             (props.isAuthenticated && props.userProfile.id === props.storedMatch.match.user) ||

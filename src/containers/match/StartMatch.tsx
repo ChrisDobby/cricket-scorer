@@ -5,9 +5,9 @@ import { default as StartMatchComponent } from '../../components/match/start/Sta
 import storeMatch from '../../storeMatch';
 import WithInProgressMatch from '../../components/WithInProgressMatch';
 import WithInProgressStore from '../../components/WithInProgressStore';
-import WithNavBar from '../../components/WithNavBar';
 import { InProgressMatchStore } from '../../stores/inProgressMatchStore';
 import { Profile } from '../../domain';
+import PageContext from '../../context/PageContext';
 
 interface StartMatchProps {
     inProgressMatchStore: InProgressMatchStore;
@@ -27,11 +27,14 @@ const StartMatch = (props: StartMatchProps) => {
     });
 
     return (
-        <StartMatchComponent
-            inProgress={props.inProgressMatchStore}
-            storeMatch={storeMatch(props.inProgressMatchStore.setId)}
-            {...props}
-        />);
+        <PageContext.Consumer>{({ setOptions }) =>
+            <StartMatchComponent
+                inProgress={props.inProgressMatchStore}
+                storeMatch={storeMatch(props.inProgressMatchStore.setId)}
+                setPageOptions={setOptions}
+                {...props}
+            />}
+        </PageContext.Consumer>);
 };
 
-export default WithInProgressStore()(inject('inProgressMatchStore')(WithInProgressMatch(WithNavBar({})(StartMatch))));
+export default WithInProgressStore()(inject('inProgressMatchStore')(WithInProgressMatch(StartMatch)));

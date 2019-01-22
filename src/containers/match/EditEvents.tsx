@@ -3,17 +3,19 @@ import { inject, observer } from 'mobx-react';
 import storeMatch from '../../storeMatch';
 import WithInProgressMatch from '../../components/WithInProgressMatch';
 import WithInProgressStore from '../../components/WithInProgressStore';
-import WithNavBar from '../../components/WithNavBar';
 import Events from '../../components/match/edit/Events';
+import PageContext from '../../context/PageContext';
 
 const InProgress = observer((props: any) => (
-    <Events
-        {...props}
-        inProgress={props.inProgressMatchStore}
-        storeMatch={storeMatch(props.inProgressMatchStore.setId)}
-    />
-));
+    <PageContext.Consumer>{({ setOptions }) =>
+        <Events
+            {...props}
+            inProgress={props.inProgressMatchStore}
+            storeMatch={storeMatch(props.inProgressMatchStore.setId)}
+            setPageOptions={setOptions}
+        />}
+    </PageContext.Consumer>));
 
 export default WithInProgressStore()(
     inject('inProgressMatchStore')(
-        WithInProgressMatch(WithNavBar({})(InProgress))));
+        WithInProgressMatch(InProgress)));

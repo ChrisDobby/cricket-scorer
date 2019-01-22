@@ -4,20 +4,22 @@ import { default as InProgressComponent } from '../../components/match/inprogres
 import storeMatch from '../../storeMatch';
 import WithInProgressStore from '../../components/WithInProgressStore';
 import WithInProgressMatch from '../../components/WithInProgressMatch';
-import WithNavBar from '../../components/WithNavBar';
 import WithMatchDrawer from '../../components/match/WithMatchDrawer';
 import WithMatchActions from '../../components/match/WithMatchActions';
+import PageContext from '../../context/PageContext';
 
 const InProgress = observer((props: any) => (
-    <InProgressComponent
-        {...props}
-        inProgress={props.inProgressMatchStore}
-        storeMatch={storeMatch(props.inProgressMatchStore.setId)}
-    />
-));
+    <PageContext.Consumer>{({ setOptions }) =>
+        <InProgressComponent
+            {...props}
+            inProgress={props.inProgressMatchStore}
+            storeMatch={storeMatch(props.inProgressMatchStore.setId)}
+            setPageOptions={setOptions}
+        />}
+    </PageContext.Consumer>));
 
 export default
     WithInProgressStore()(
         inject('inProgressMatchStore')(
-            WithMatchActions(WithInProgressMatch(WithMatchDrawer(WithNavBar({})(InProgress)))),
+            WithMatchActions(WithInProgressMatch(WithMatchDrawer(InProgress))),
         ));

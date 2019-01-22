@@ -15,6 +15,7 @@ interface NewMatchProps {
     history: History;
     inProgress: InProgressMatch;
     status: string;
+    setPageOptions: () => void;
 }
 
 const create = (username: string, inProgress: InProgressMatch, complete: () => void) => (data: any) => {
@@ -29,6 +30,8 @@ const create = (username: string, inProgress: InProgressMatch, complete: () => v
 export default (props: NewMatchProps) => {
     const [checkOverwrite, setCheckOverwrite] =
         React.useState(props.status === OFFLINE && typeof props.storedMatch !== 'undefined');
+    React.useEffect(props.setPageOptions, []);
+
     return (
         <>
             <EditContainer>
