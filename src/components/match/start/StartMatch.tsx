@@ -10,7 +10,6 @@ interface StartMatchProps {
     storeMatch: (match: InProgressMatch) => void;
     history: History;
     userProfile: Profile;
-    setPageOptions: () => void;
 }
 
 const start = (
@@ -25,18 +24,15 @@ const start = (
         },
     );
 
-export default ({ inProgress, storeMatch, history, userProfile, setPageOptions }: StartMatchProps) => {
-    React.useEffect(setPageOptions, []);
-    return (
-        <EditContainer>
-            <StartForm
-                homeTeam={inProgress.match.homeTeam}
-                awayTeam={inProgress.match.awayTeam}
-                startMatch={start(
-                    inProgress,
-                    storeMatch,
-                    () => history.replace('/match/inprogress'),
-                    () => userProfile.id)}
-            />
-        </EditContainer>);
-};
+export default ({ inProgress, storeMatch, history, userProfile }: StartMatchProps) => (
+    <EditContainer>
+        <StartForm
+            homeTeam={inProgress.match.homeTeam}
+            awayTeam={inProgress.match.awayTeam}
+            startMatch={start(
+                inProgress,
+                storeMatch,
+                () => history.replace('/match/inprogress'),
+                () => userProfile.id)}
+        />
+    </EditContainer>);

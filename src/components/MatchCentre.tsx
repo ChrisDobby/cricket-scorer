@@ -22,7 +22,6 @@ interface MatchCentreProps {
     removeMatch: (id: string) => Promise<void>;
     history: History;
     classes: any;
-    setPageOptions: () => void;
 }
 
 const sortMatches = (matches: (PersistedMatch | CurrentEditingMatch)[], currentUser: string): CurrentEditingMatch[] =>
@@ -39,8 +38,6 @@ export default withStyles(homePageStyles)((props: MatchCentreProps) => {
     const [removeError, setRemoveError] = React.useState(false);
     const [confirmRemoveMatch, setConfirmRemoveMatch] =
         React.useState((undefined as PersistedMatch | undefined));
-
-    React.useEffect(props.setPageOptions, []);
 
     const getAvailableMatches = () => {
         const sortedMatches = (matches: (PersistedMatch | CurrentEditingMatch)[]) => (

@@ -16,6 +16,8 @@ interface StartMatchProps {
 }
 
 const StartMatch = (props: StartMatchProps) => {
+    const { setOptions } = React.useContext(PageContext);
+    React.useEffect(setOptions, []);
     React.useEffect(() => {
         if (typeof props.inProgressMatchStore.match === 'undefined') { return; }
         if (props.inProgressMatchStore.match.complete) {
@@ -27,14 +29,11 @@ const StartMatch = (props: StartMatchProps) => {
     });
 
     return (
-        <PageContext.Consumer>{({ setOptions }) =>
-            <StartMatchComponent
-                inProgress={props.inProgressMatchStore}
-                storeMatch={storeMatch(props.inProgressMatchStore.setId)}
-                setPageOptions={setOptions}
-                {...props}
-            />}
-        </PageContext.Consumer>);
+        <StartMatchComponent
+            inProgress={props.inProgressMatchStore}
+            storeMatch={storeMatch(props.inProgressMatchStore.setId)}
+            {...props}
+        />);
 };
 
 export default WithInProgressStore()(inject('inProgressMatchStore')(WithInProgressMatch(StartMatch)));

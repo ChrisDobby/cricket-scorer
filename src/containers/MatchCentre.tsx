@@ -18,14 +18,18 @@ const getAddButton = (props: any) => (
         <Add />
     </Button>);
 
-export default WithInProgressMatches(WithMatchApi((props: any) => (
-    <PageContext.Consumer>{({ setOptions }) =>
+export default WithInProgressMatches(WithMatchApi((props: any) => {
+    const { setOptions } = React.useContext(PageContext);
+    React.useEffect(
+        () => setOptions({ stayWhenLoggingOut: true, title: 'Matches', button: getAddButton }),
+        []);
+
+    return (
         <MatchCentreComponent
             {...props}
             storedMatch={matchStorage(localStorage).getMatch()}
             removeStoredMatch={matchStorage(localStorage).removeMatch}
             fetchMatch={fetchMatch(props.matchApi, matchStorage(localStorage))}
             removeMatch={props.matchApi.removeMatch}
-            setPageOptions={() => setOptions({ stayWhenLoggingOut: true, title: 'Matches', button: getAddButton })}
-        />}
-    </PageContext.Consumer>)));
+        />);
+}));

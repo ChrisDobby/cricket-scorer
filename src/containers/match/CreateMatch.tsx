@@ -7,16 +7,18 @@ import MatchWithNetworkStatus from '../../components/match/MatchWithNetworkStatu
 import WithInProgressStore from '../../components/WithInProgressStore';
 import PageContext from '../../context/PageContext';
 
-const CreateMatch = (props: any) => (
-    <PageContext.Consumer>{({ setOptions }) =>
+const CreateMatch = (props: any) => {
+    const { setOptions } = React.useContext(PageContext);
+    React.useEffect(setOptions, []);
+
+    return (
         <NewMatch
             inProgress={props.inProgressMatchStore}
             storeMatch={storeMatch(props.inProgressMatchStore.setId)}
             storedMatch={matchStorage(localStorage).getMatch()}
-            setPageOptions={setOptions}
             {...props}
-        />}
-    </PageContext.Consumer>);
+        />);
+};
 
 export default
     WithInProgressStore()(inject('inProgressMatchStore')(MatchWithNetworkStatus(CreateMatch)));

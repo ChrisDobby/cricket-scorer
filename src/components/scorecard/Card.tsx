@@ -21,7 +21,6 @@ interface ScorecardProps {
     matchUser: (match: Match) => string | undefined;
     updates: (subscribeTo: () => string | string[], eventActions: any[]) => () => SocketIOClient.Socket;
     getStoredMatch: () => StoredMatch | undefined;
-    setPageOptions: () => void;
 }
 
 export default (props: ScorecardProps) => {
@@ -90,7 +89,6 @@ export default (props: ScorecardProps) => {
             };
         },
         []);
-    React.useEffect(props.setPageOptions, []);
 
     if (typeof match !== 'undefined') {
         return (

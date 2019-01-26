@@ -12,15 +12,16 @@ interface WicketProps {
     userProfile: Profile;
 }
 
-const Wicket = observer(({ inProgressMatchStore, userProfile }: WicketProps) => (
-    <PageContext.Consumer>{({ setOptions }) =>
+const Wicket = observer(({ inProgressMatchStore, userProfile }: WicketProps) => {
+    const { setOptions } = React.useContext(PageContext);
+    React.useEffect(setOptions, []);
+
+    return (
         <WicketComponent
             inProgress={inProgressMatchStore}
             storeMatch={storeMatch(inProgressMatchStore.setId)}
             userProfile={userProfile}
-            setPageOptions={setOptions}
-        />}
-    </PageContext.Consumer>
-));
+        />);
+});
 
 export default WithInProgressStore()(inject('inProgressMatchStore')(Wicket));

@@ -3,6 +3,7 @@ import { inject } from 'mobx-react';
 import { History } from 'history';
 import WithInProgressStore from '../components/WithInProgressStore';
 import { InProgressMatch } from '../domain';
+import PageContext from '../context/PageContext';
 
 interface MatchProps {
     inProgressMatchStore: InProgressMatch;
@@ -10,6 +11,9 @@ interface MatchProps {
 }
 
 const Match = (props: MatchProps) => {
+    const { setOptions } = React.useContext(PageContext);
+    React.useEffect(setOptions, []);
+
     React.useEffect(() => {
         if (typeof props.inProgressMatchStore === 'undefined' ||
             typeof props.inProgressMatchStore.match === 'undefined') {

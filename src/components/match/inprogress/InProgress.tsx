@@ -32,7 +32,6 @@ type InProgressProps = RouteComponentProps<{}> & {
     history: History;
     classes: any;
     userProfile: domain.Profile;
-    setPageOptions: () => void;
 };
 
 const InProgress = (props: InProgressProps) => {
@@ -58,7 +57,6 @@ const InProgress = (props: InProgressProps) => {
             ? undefined
             : props.inProgress.previousBowlerFromEnd.playerIndex;
 
-    React.useEffect(props.setPageOptions, []);
     React.useEffect(() => {
         if (typeof props.inProgress.match === 'undefined') { return; }
 

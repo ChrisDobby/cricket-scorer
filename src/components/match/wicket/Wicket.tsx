@@ -27,7 +27,6 @@ type WicketProps = RouteComponentProps<{}> & {
     history: History;
     classes: any;
     userProfile: domain.Profile;
-    setPageOptions: () => void;
 };
 
 const Wicket = (props: WicketProps) => {
@@ -37,8 +36,6 @@ const Wicket = (props: WicketProps) => {
     const [scores, setScores] = React.useState({} as domain.DeliveryScores);
     const [deliveryOutcome, setDeliveryOutcome] = React.useState(domain.DeliveryOutcome.Valid);
     const [howout, setHowout] = React.useState(undefined as domain.Howout | undefined);
-
-    React.useEffect(props.setPageOptions, []);
 
     const bindStorage = bindMatchStorage(props.storeMatch, () => props.inProgress, () => props.userProfile.id);
     const delivery = bindStorage(props.inProgress.delivery);

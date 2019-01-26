@@ -31,11 +31,13 @@ interface NavBarProps {
     children: React.ReactNode;
 }
 
-export default WithAuth(WithOutOfDateMatches((props: NavBarProps) => (
-    <NetworkStatusContext.Consumer>{({
-        status,
-    }) =>
-        <PageContext.Consumer>{({ stayWhenLoggingOut, title, button }) =>
+export default WithAuth(WithOutOfDateMatches((props: NavBarProps) => {
+    const pageContext = React.useContext(PageContext);
+
+    return (
+        <NetworkStatusContext.Consumer>{({
+            status,
+        }) =>
             <>
                 <AppBar position="sticky">
                     <Toolbar>
@@ -43,7 +45,7 @@ export default WithAuth(WithOutOfDateMatches((props: NavBarProps) => (
                             variant="title"
                             color="inherit"
                             style={grow}
-                        >{title || 'Cricket scores live'}
+                        >{pageContext.title}
                         </Typography>
                         {!props.isAuthenticated && status === ONLINE &&
                             <Button color="inherit" onClick={props.login}>Register or login</Button>}
@@ -63,7 +65,7 @@ export default WithAuth(WithOutOfDateMatches((props: NavBarProps) => (
                                 <Typography color="inherit">{props.userProfile.name}</Typography>
                                 <Button
                                     color="inherit"
-                                    onClick={() => props.logout(!!stayWhenLoggingOut)}
+                                    onClick={() => props.logout(!!pageContext.stayWhenLoggingOut)}
                                 >Logout
                                 </Button>
                             </>}
@@ -77,10 +79,10 @@ export default WithAuth(WithOutOfDateMatches((props: NavBarProps) => (
                             >
                                 <Menu />
                             </IconButton>}
-                        {button && button(props)}
+                        {pageContext.button && pageContext.button(props)}
                     </Toolbar>
                 </AppBar>
                 {props.children}
             </>}
-        </PageContext.Consumer>}
-    </NetworkStatusContext.Consumer>)));
+        </NetworkStatusContext.Consumer>);
+}));

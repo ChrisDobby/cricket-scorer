@@ -8,15 +8,16 @@ import WithMatchDrawer from '../../components/match/WithMatchDrawer';
 import WithMatchActions from '../../components/match/WithMatchActions';
 import PageContext from '../../context/PageContext';
 
-const InProgress = observer((props: any) => (
-    <PageContext.Consumer>{({ setOptions }) =>
+const InProgress = observer((props: any) => {
+    const { setOptions } = React.useContext(PageContext);
+    React.useEffect(setOptions, []);
+    return (
         <InProgressComponent
             {...props}
             inProgress={props.inProgressMatchStore}
             storeMatch={storeMatch(props.inProgressMatchStore.setId)}
-            setPageOptions={setOptions}
-        />}
-    </PageContext.Consumer>));
+        />);
+});
 
 export default
     WithInProgressStore()(

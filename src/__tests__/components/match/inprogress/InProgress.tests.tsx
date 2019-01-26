@@ -64,7 +64,6 @@ describe.skip('InProgress', () => {
     };
 
     const storeMatch = jest.fn();
-    const setPageOptions = jest.fn();
 
     it('should render correctly for match that has not started', () => {
         const { container } = render(
@@ -73,7 +72,6 @@ describe.skip('InProgress', () => {
                     inProgress={notStartedMatchProgress}
                     storeMatch={storeMatch}
                     userProfile={userProfile}
-                    setPageOptions={setPageOptions}
                 />
             </StaticRouter>);
 
@@ -87,7 +85,6 @@ describe.skip('InProgress', () => {
                     inProgress={matchWithStartedInningsProgress}
                     storeMatch={storeMatch}
                     userProfile={userProfile}
-                    setPageOptions={setPageOptions}
                 />
             </StaticRouter>);
 
@@ -106,7 +103,6 @@ describe.skip('InProgress', () => {
                     inProgress={withPreviousBowler}
                     storeMatch={storeMatch}
                     userProfile={userProfile}
-                    setPageOptions={setPageOptions}
                 />
             </StaticRouter>);
 
@@ -125,7 +121,6 @@ describe.skip('InProgress', () => {
                     inProgress={withPreviousBowlerFromEnd}
                     storeMatch={storeMatch}
                     userProfile={userProfile}
-                    setPageOptions={setPageOptions}
                 />
             </StaticRouter>);
 
@@ -139,7 +134,6 @@ describe.skip('InProgress', () => {
                     inProgress={matchDuringOverProgress}
                     storeMatch={storeMatch}
                     userProfile={userProfile}
-                    setPageOptions={setPageOptions}
                 />
             </StaticRouter>);
 
