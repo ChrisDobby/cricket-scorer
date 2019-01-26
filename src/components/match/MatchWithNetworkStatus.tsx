@@ -1,17 +1,17 @@
 import * as React from 'react';
-import WithNetworkStatus from '../WithNetworkStatus';
 import MatchOnlineWarning from './MatchOnlineWarning';
 import { OFFLINE } from '../../context/networkStatus';
 import auth0 from '../auth0';
+import NetworkStatusContext from '../../context/NetworkStatusContext';
 
 interface WithNetworkStatusProps {
     isAuthenticated: boolean;
-    networkStatus: string;
     location: Location;
 }
 
 const MatchWithNetworkStatus = (login: (path: string) => void) =>
-    (Component: any) => WithNetworkStatus((props: WithNetworkStatusProps) => {
+    (Component: any) => (props: WithNetworkStatusProps) => {
+        const { status } = React.useContext(NetworkStatusContext);
         const [showingOnlineWarning, setShowingOnlineWarning] = React.useState(false);
         const doLogin = () => {
             setShowingOnlineWarning(false);
@@ -20,10 +20,10 @@ const MatchWithNetworkStatus = (login: (path: string) => void) =>
 
         React.useEffect(
             () => {
-                if (showingOnlineWarning || props.isAuthenticated || props.networkStatus === OFFLINE) { return; }
+                if (showingOnlineWarning || props.isAuthenticated || status === OFFLINE) { return; }
                 setShowingOnlineWarning(true);
             },
-            [props.networkStatus]);
+            [status]);
 
         return (
             <>
@@ -32,6 +32,6 @@ const MatchWithNetworkStatus = (login: (path: string) => void) =>
                     <MatchOnlineWarning login={doLogin} doNotLogin={() => setShowingOnlineWarning(false)} />}
             </>);
 
-    });
+    };
 
 export default MatchWithNetworkStatus(auth0.login);

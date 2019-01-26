@@ -18,7 +18,7 @@ interface Auth0 {
 
 export default (Component: any) => (props: WithAuthProps) => {
     const [auth0, setAuth0] = React.useState(undefined as Auth0 | undefined);
-
+    const { status, offlineUser } = React.useContext(NetworkStatusContext);
     React.useEffect(
         () => {
             const loadAuth0 = async () => {
@@ -34,30 +34,24 @@ export default (Component: any) => (props: WithAuthProps) => {
         props.history.replace(stay ? window.location.pathname : '/');
 
     return (
-        <NetworkStatusContext.Consumer>{({
-            status,
-            offlineUser,
-        }) =>
-            <>
-                {auth0 &&
-                    <Component
-                        {...props}
-                        status={status}
-                        offlineUser={offlineUser}
-                        login={() => auth0.login(props.location.pathname)}
-                        logout={(stayOnPage: boolean) =>
-                            auth0.logout(() => afterLogout(stayOnPage))()}
-                        isAuthenticated={auth0.isAuthenticated()}
-                        canAuthenticate={status !== OFFLINE}
-                        userProfile={auth0.userProfile()}
-                    />}
-                {!auth0 &&
-                    <Component
-                        {...props}
-                        status={status}
-                        offlineUser={offlineUser}
-                    />}
-            </>
-        }
-        </NetworkStatusContext.Consumer>);
+        <>
+            {auth0 &&
+                <Component
+                    {...props}
+                    status={status}
+                    offlineUser={offlineUser}
+                    login={() => auth0.login(props.location.pathname)}
+                    logout={(stayOnPage: boolean) =>
+                        auth0.logout(() => afterLogout(stayOnPage))()}
+                    isAuthenticated={auth0.isAuthenticated()}
+                    canAuthenticate={status !== OFFLINE}
+                    userProfile={auth0.userProfile()}
+                />}
+            {!auth0 &&
+                <Component
+                    {...props}
+                    status={status}
+                    offlineUser={offlineUser}
+                />}
+        </>);
 };
