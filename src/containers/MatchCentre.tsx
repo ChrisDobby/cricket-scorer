@@ -2,7 +2,6 @@ import * as React from 'react';
 import Button from '@material-ui/core/Button';
 import Add from '@material-ui/icons/Add';
 import WithMatchApi from '../components/WithMatchApi';
-import WithInProgressMatches from '../components/WithInProgressMatches';
 import { default as MatchCentreComponent } from '../components/MatchCentre';
 import matchStorage from '../stores/matchStorage';
 import fetchMatch from '../match/fetchMatch';
@@ -18,7 +17,7 @@ const getAddButton = (props: any) => (
         <Add />
     </Button>);
 
-export default WithInProgressMatches(WithMatchApi((props: any) => {
+export default WithMatchApi((props: any) => {
     const { setOptions } = React.useContext(PageContext);
     React.useEffect(
         () => setOptions({ stayWhenLoggingOut: true, title: 'Matches', button: getAddButton }),
@@ -27,9 +26,6 @@ export default WithInProgressMatches(WithMatchApi((props: any) => {
     return (
         <MatchCentreComponent
             {...props}
-            storedMatch={matchStorage(localStorage).getMatch()}
-            removeStoredMatch={matchStorage(localStorage).removeMatch}
             fetchMatch={fetchMatch(props.matchApi, matchStorage(localStorage))}
-            removeMatch={props.matchApi.removeMatch}
         />);
-}));
+});

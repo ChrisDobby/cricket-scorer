@@ -9,28 +9,17 @@ import Error from './Error';
 import LoadingDialog from './LoadingDialog';
 import Progress from './Progress';
 import RemoveDialog from './RemoveDialog';
-import { StoredMatch, Profile, PersistedMatch, CurrentEditingMatch } from '../domain';
+import { Profile, PersistedMatch, CurrentEditingMatch } from '../domain';
+import useInProgressMatches from './useInProgressMatches';
 
 interface MatchCentreProps {
-    storedMatch: StoredMatch | undefined;
     userProfile: Profile;
-    inProgressMatches: PersistedMatch[];
     outOfDateMatches: PersistedMatch[];
     fetchMatch: (id: string) => Promise<void>;
-    loadingMatches: boolean;
-    removeStoredMatch: () => void;
-    removeMatch: (id: string) => Promise<void>;
     history: History;
     classes: any;
+    status: string;
 }
-
-const sortMatches = (matches: (PersistedMatch | CurrentEditingMatch)[], currentUser: string): CurrentEditingMatch[] =>
-    [...matches].sort((m1, m2) => {
-        if (m1.user === currentUser) { return -1; }
-        if (m2.user === currentUser) { return 1; }
-
-        return 0;
-    });
 
 export default withStyles(homePageStyles)((props: MatchCentreProps) => {
     const [fetchingMatch, setFetching] = React.useState(false);
@@ -38,42 +27,10 @@ export default withStyles(homePageStyles)((props: MatchCentreProps) => {
     const [removeError, setRemoveError] = React.useState(false);
     const [confirmRemoveMatch, setConfirmRemoveMatch] =
         React.useState((undefined as PersistedMatch | undefined));
+    const [inProgressMatches, loadingMatches, remove] = useInProgressMatches(props.status, props.userProfile);
 
-    const getAvailableMatches = () => {
-        const sortedMatches = (matches: (PersistedMatch | CurrentEditingMatch)[]) => (
-            typeof props.userProfile === 'undefined'
-                ? matches
-                : sortMatches(matches, props.userProfile.id));
-
-        if (typeof storedMatch === 'undefined') { return sortedMatches(props.inProgressMatches); }
-        const includeStoredMatch = (typeof storedMatch.user === 'undefined' || (
-            typeof props.userProfile !== 'undefined' &&
-            props.userProfile.id === storedMatch.user)) &&
-            !props.outOfDateMatches.map(match => match.id).find(id => id === storedMatch.id) &&
-            (typeof storedMatch.id === 'undefined' ||
-                !!props.inProgressMatches.find(match => match.id === storedMatch.id));
-
-        if (!includeStoredMatch) { return sortedMatches(props.inProgressMatches); }
-        const storedMatchFromInProgress = props.inProgressMatches
-            .find((m: PersistedMatch) => m.id === storedMatch.id);
-        return sortedMatches(
-            typeof storedMatchFromInProgress === 'undefined' || storedMatchFromInProgress.version <= storedMatch.version
-                ? (props.inProgressMatches
-                    .filter((m: PersistedMatch) => m.id !== storedMatch.id) as (PersistedMatch | CurrentEditingMatch)[])
-                    .concat(storedMatch)
-                : props.inProgressMatches);
-    };
-
-    const showScorecard = (id: string | undefined) => () => {
-        const inProgress = props.inProgressMatches.find((ip: PersistedMatch) => ip.id === id);
-        if (typeof inProgress === 'undefined' ||
-            (typeof storedMatch !== 'undefined' && storedMatch.id === id && storedMatch.version > inProgress.version)) {
-            props.history.push('/scorecard');
-            return;
-        }
-
-        props.history.push(`/scorecard/${id}`);
-    };
+    const showScorecard = (id: string | undefined) => () =>
+        props.history.push(`/scorecard${id ? `/${id}` : ''}`);
 
     const continueScoring = (id: string | undefined) => async () => {
         if (!id) { return; }
@@ -92,7 +49,10 @@ export default withStyles(homePageStyles)((props: MatchCentreProps) => {
     const removeMatch = (id: string | undefined) => () => {
         if (id) {
             setRemoveError(false);
-            setConfirmRemoveMatch(props.inProgressMatches.find((m: PersistedMatch) => m.id === id));
+            setConfirmRemoveMatch(inProgressMatches
+                .map(m => m as PersistedMatch)
+                .filter(m => m)
+                .find(m => m.id === id));
         }
     };
 
@@ -104,44 +64,25 @@ export default withStyles(homePageStyles)((props: MatchCentreProps) => {
     const confirmRemove = (id: string) => async () => {
         clearRemoveMatch();
         try {
-            if (storedMatch && storedMatch.id === id) {
-                props.removeStoredMatch();
-            }
-
-            await props.removeMatch(id);
+            await remove(id);
         } catch (e) {
             setRemoveError(true);
             console.error(e);
         }
     };
 
-    const storedMatch: CurrentEditingMatch | undefined =
-        !props.storedMatch || props.storedMatch.match.complete
-            ? undefined
-            : {
-                id: props.storedMatch.match.id,
-                date: props.storedMatch.match.date,
-                user: props.storedMatch.match.user,
-                homeTeam: props.storedMatch.match.homeTeam.name,
-                awayTeam: props.storedMatch.match.awayTeam.name,
-                status: props.storedMatch.match.status,
-                version: props.storedMatch.version,
-                lastEvent: props.storedMatch.lastEvent,
-            };
-
-    const availableMatches = props.loadingMatches ? [] : getAvailableMatches();
     return (
         <>
             <div className={props.classes.rootStyle}>
                 <div className={props.classes.toolbar} />
-                {props.loadingMatches && <Progress />}
-                {!props.loadingMatches && availableMatches.length === 0 &&
+                {loadingMatches && <Progress />}
+                {!loadingMatches && inProgressMatches.length === 0 &&
                     <Typography variant="h5" color="primary">
                         There are no matches currently in progress
             </Typography>}
-                {!props.loadingMatches &&
+                {!loadingMatches &&
                     <Grid container spacing={40}>
-                        {availableMatches.map((match: CurrentEditingMatch) =>
+                        {inProgressMatches.map((match: CurrentEditingMatch) =>
                             <MatchCard
                                 key={match.id}
                                 match={match}

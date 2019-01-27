@@ -12,7 +12,8 @@ import MatchStatus from './MatchStatus';
 import aboutText from './aboutText';
 import homePageStyles from './homePageStyles';
 import { OFFLINE, ONLINE } from '../context/networkStatus';
-import { StoredMatch, Profile, PersistedMatch } from '../domain';
+import { StoredMatch, Profile } from '../domain';
+import useInProgressMatches from './useInProgressMatches';
 
 const Logo = require('../../images/icon_192.png');
 
@@ -26,7 +27,6 @@ interface HomeProps {
     history: History;
     classes: any;
     fetchMatch: (id: string) => Promise<void>;
-    inProgressMatches: PersistedMatch[];
 }
 
 export default withStyles(homePageStyles)((props: HomeProps) => {
@@ -34,7 +34,9 @@ export default withStyles(homePageStyles)((props: HomeProps) => {
         ((props.storedMatch.match.user === props.offlineUser.id) ||
             (props.isAuthenticated && props.userProfile.id === props.storedMatch.match.user) ||
             (props.status === OFFLINE));
-    const showScorecard = (id: string) => props.history.push(`/scorecard/${id}`);
+    const showScorecard = (id: string | undefined) =>
+        props.history.push(`/scorecard${id ? `/${id}` : ''}`);
+
     const goToMatchCentre = () => props.history.push('/matchcentre');
     const goToCreateMatch = () => props.history.push('/match/create');
     const continueScoring = async () => {
@@ -44,13 +46,14 @@ export default withStyles(homePageStyles)((props: HomeProps) => {
 
         props.history.push('/match/inprogress');
     };
+    const [inProgressMatches] = useInProgressMatches(props.status, props.userProfile);
 
     return (
         <div className={props.classes.rootStyle}>
             <div className={props.classes.toolbar}>
-                {props.inProgressMatches.length > 0 &&
+                {inProgressMatches.length > 0 &&
                     <MatchStatus
-                        inProgressMatches={props.inProgressMatches}
+                        inProgressMatches={inProgressMatches}
                         showScorecard={showScorecard}
                     />}
             </div>
@@ -64,17 +67,17 @@ export default withStyles(homePageStyles)((props: HomeProps) => {
                             <Typography component="h1" variant="h3" color="inherit" gutterBottom>
                                 Cricket scores live
                                 </Typography>
-                            {props.inProgressMatches.length === 0 &&
+                            {inProgressMatches.length === 0 &&
                                 <Typography variant="h5" color="inherit" paragraph>
                                     {'To look at the current matches or start a new match go to the '}
                                     <Link className={props.classes.linkStyle} to={'/matchcentre'}>
                                         Match Centre
                                         </Link>
                                 </Typography>}
-                            {props.inProgressMatches.length > 0 &&
+                            {inProgressMatches.length > 0 &&
                                 <>
                                     <Typography variant="h5" color="inherit">
-                                        {`There are ${props.inProgressMatches.length} matches in progress`}
+                                        {`There are ${inProgressMatches.length} matches in progress`}
                                     </Typography>
                                     <Typography variant="h5" color="inherit" paragraph>
                                         {'To view them or start a new match go to the '}
@@ -107,9 +110,9 @@ export default withStyles(homePageStyles)((props: HomeProps) => {
                                 <Typography component="h2" variant="h5">
                                     Matches
                                     </Typography>
-                                {props.inProgressMatches.length > 0 &&
+                                {inProgressMatches.length > 0 &&
                                     <Typography variant="subtitle1" color="textSecondary">
-                                        {`There are ${props.inProgressMatches.length} matches in progress`}
+                                        {`There are ${inProgressMatches.length} matches in progress`}
                                     </Typography>}
                                 {canContinueCurrentMatch &&
                                     <>

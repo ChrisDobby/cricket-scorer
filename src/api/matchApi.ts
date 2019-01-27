@@ -17,7 +17,7 @@ const matchApi = (url: string) => (api: any) => {
     const getMatch: (id: string) => Promise<StoredMatch> = async (id: string) =>
         await api.get(`${url}/${matchRoute}/${id}`);
 
-    const getInProgressMatches: () => Promise<PersistedMatch> = async () =>
+    const getInProgressMatches: () => Promise<PersistedMatch[]> = async () =>
         await api.get(`${url}/${matchRoute}?${inProgressQuery}=true`);
 
     const getOutOfDateMatches: (user: string) => Promise<PersistedMatch> = async (user: string) =>
