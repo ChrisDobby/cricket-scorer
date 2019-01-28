@@ -16,16 +16,14 @@
       "suppressImplicitAnyIndexErrors": true,
       "noUnusedLocals": true,
       "experimentalDecorators": true,
+      "skipLibCheck": true,
       "plugins": [
         {
           "name": "tslint-language-service"
         }
       ]
     },
-    "exclude": [
-      "node_modules",
-      "dist",
-      "tools",
+    "include": [
+      "src",
     ]
   }
-  

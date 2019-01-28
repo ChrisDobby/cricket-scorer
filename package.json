@@ -16,7 +16,8 @@
     "build": "npm run prod-build",
     "heroku-postbuild": "npm-run-all clean-dist build:html prod-build",
     "prod-build": "webpack --config ./webpack.config.prod.js --hide-modules --progress",
-    "lighthouse": "babel-node tools/lighthouse.js"
+    "lighthouse": "babel-node tools/lighthouse.js",
+    "typecheck": "tsc"
   },
   "repository": {
     "type": "git",
