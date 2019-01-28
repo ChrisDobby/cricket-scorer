@@ -91,15 +91,22 @@ export default (status: string, userProfile: Profile):
     };
 
     const getMatches = async () => {
+        const maxDaysForMatch = 6;
         const addExtraMatches = (matches: PersistedMatch[]) => {
             const currentlyEditing = toCurrentEditingMatch(storedMatch);
             if (!currentlyEditing) { return matches; }
+            const matchesAvailableFrom = () => {
+                const now = new Date();
+                now.setDate(now.getDate() - maxDaysForMatch);
+                return now;
+            };
+
             const includeStoredMatch =
                 currentlyEditing && (
                 (typeof currentlyEditing.user === 'undefined' || (
                     typeof userProfile !== 'undefined' &&
-                    userProfile.id === currentlyEditing.user)) &&
-                //            !props.outOfDateMatches.map(match => match.id).find(id => id === storedMatch.id) &&
+                        userProfile.id === currentlyEditing.user)) &&
+                    new Date(currentlyEditing.date) >= matchesAvailableFrom() &&
                 (typeof currentlyEditing.id === 'undefined' ||
                         !!matches.find(match => match.id === currentlyEditing.id)));
 
