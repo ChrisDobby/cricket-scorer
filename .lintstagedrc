@@ -1,0 +1,10 @@
+{
+    "linters": {
+        "**/*.+(ts|tsx)": [
+            "prettier --write",
+            "git add",
+            "tslint -c tslint.json",
+            "jest --findRelatedTests"
+        ]
+    }
+}
