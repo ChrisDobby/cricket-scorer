@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { inject, observer } from 'mobx-react';
+import { inject } from 'mobx-react';
 import storeMatch from '../../storeMatch';
 import WithInProgressMatch from '../../components/WithInProgressMatch';
 import WithInProgressStore from '../../components/WithInProgressStore';
 import Players from '../../components/match/edit/Players';
 import PageContext from '../../context/PageContext';
 
-const InProgress = observer((props: any) => {
+const InProgress = (props: any) => {
     const { setOptions } = React.useContext(PageContext);
     React.useEffect(setOptions, []);
 
@@ -15,9 +15,8 @@ const InProgress = observer((props: any) => {
             {...props}
             inProgress={props.inProgressMatchStore}
             storeMatch={storeMatch(props.inProgressMatchStore.setId)}
-        />);
-});
+        />
+    );
+};
 
-export default WithInProgressStore()(
-    inject('inProgressMatchStore')(
-        WithInProgressMatch(InProgress)));
+export default WithInProgressStore()(inject('inProgressMatchStore')(WithInProgressMatch(InProgress)));

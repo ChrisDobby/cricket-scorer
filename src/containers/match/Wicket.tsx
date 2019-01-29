@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { inject, observer } from 'mobx-react';
+import { inject } from 'mobx-react';
 import { InProgressMatchStore } from '../../stores/inProgressMatchStore';
 import { default as WicketComponent } from '../../components/match/wicket/Wicket';
 import storeMatch from '../../storeMatch';
@@ -12,7 +12,7 @@ interface WicketProps {
     userProfile: Profile;
 }
 
-const Wicket = observer(({ inProgressMatchStore, userProfile }: WicketProps) => {
+const Wicket = ({ inProgressMatchStore, userProfile }: WicketProps) => {
     const { setOptions } = React.useContext(PageContext);
     React.useEffect(setOptions, []);
 
@@ -21,7 +21,8 @@ const Wicket = observer(({ inProgressMatchStore, userProfile }: WicketProps) => 
             inProgress={inProgressMatchStore}
             storeMatch={storeMatch(inProgressMatchStore.setId)}
             userProfile={userProfile}
-        />);
-});
+        />
+    );
+};
 
 export default WithInProgressStore()(inject('inProgressMatchStore')(Wicket));
