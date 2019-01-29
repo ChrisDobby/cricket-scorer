@@ -25,20 +25,19 @@ export default withStyles(homePageStyles)((props: MatchCentreProps) => {
     const [fetchingMatch, setFetching] = React.useState(false);
     const [fetchError, setFetchError] = React.useState(false);
     const [removeError, setRemoveError] = React.useState(false);
-    const [confirmRemoveMatch, setConfirmRemoveMatch] =
-        React.useState((undefined as PersistedMatch | undefined));
+    const [confirmRemoveMatch, setConfirmRemoveMatch] = React.useState(undefined as PersistedMatch | undefined);
     const [inProgressMatches, loadingMatches, remove] = useInProgressMatches(props.status, props.userProfile);
 
-    const showScorecard = (id: string | undefined) => () =>
-        props.history.push(`/scorecard${id ? `/${id}` : ''}`);
+    const showScorecard = (id: string | undefined) => () => props.history.push(`/scorecard${id ? `/${id}` : ''}`);
 
     const continueScoring = (id: string | undefined) => async () => {
-        if (!id) { return; }
         try {
-            setFetching(true);
-            setFetchError(false);
-            await props.fetchMatch(id);
-            setFetching(false);
+            if (id) {
+                setFetching(true);
+                setFetchError(false);
+                await props.fetchMatch(id);
+                setFetching(false);
+            }
             props.history.push('/match/inprogress');
         } catch (e) {
             setFetching(false);
@@ -49,10 +48,12 @@ export default withStyles(homePageStyles)((props: MatchCentreProps) => {
     const removeMatch = (id: string | undefined) => () => {
         if (id) {
             setRemoveError(false);
-            setConfirmRemoveMatch(inProgressMatches
-                .map(m => m as PersistedMatch)
-                .filter(m => m)
-                .find(m => m.id === id));
+            setConfirmRemoveMatch(
+                inProgressMatches
+                    .map(m => m as PersistedMatch)
+                    .filter(m => m)
+                    .find(m => m.id === id),
+            );
         }
     };
 
@@ -76,40 +77,47 @@ export default withStyles(homePageStyles)((props: MatchCentreProps) => {
             <div className={props.classes.rootStyle}>
                 <div className={props.classes.toolbar} />
                 {loadingMatches && <Progress />}
-                {!loadingMatches && inProgressMatches.length === 0 &&
-                    <Typography variant="h5" color="primary">
-                        There are no matches currently in progress
-            </Typography>}
                 {!loadingMatches &&
+                    inProgressMatches.length === 0 && (
+                        <Typography variant="h5" color="primary">
+                            There are no matches currently in progress
+                        </Typography>
+                    )}
+                {!loadingMatches && (
                     <Grid container spacing={40}>
-                        {inProgressMatches.map((match: CurrentEditingMatch) =>
+                        {inProgressMatches.map((match: CurrentEditingMatch) => (
                             <MatchCard
-                                key={match.id}
+                                key={match.id || 'OFFLINE'}
                                 match={match}
                                 showScorecard={showScorecard(match.id)}
                                 continueScoring={continueScoring(match.id)}
                                 removeMatch={removeMatch(match.id)}
                                 currentUser={props.userProfile ? props.userProfile.id : undefined}
-                            />)}
-                    </Grid>}
+                            />
+                        ))}
+                    </Grid>
+                )}
             </div>
-            {fetchError &&
+            {fetchError && (
                 <Error
                     message={'There was an error reading the match.  Please try again.'}
                     onClose={() => setFetchError(false)}
-                />}
-            {removeError &&
+                />
+            )}
+            {removeError && (
                 <Error
                     message={'There was an error removing the match.  Please try again.'}
                     onClose={() => setRemoveError(false)}
-                />}
-            {fetchingMatch &&
-                <LoadingDialog message={'Fetching match to continue scoring...'} />}
-            {confirmRemoveMatch &&
+                />
+            )}
+            {fetchingMatch && <LoadingDialog message={'Fetching match to continue scoring...'} />}
+            {confirmRemoveMatch && (
                 <RemoveDialog
                     match={confirmRemoveMatch}
                     onYes={confirmRemove(confirmRemoveMatch.id)}
                     onNo={clearRemoveMatch}
-                />}
-        </>);
+                />
+            )}
+        </>
+    );
 });

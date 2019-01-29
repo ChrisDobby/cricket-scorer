@@ -95,34 +95,35 @@ export default (
         }
     };
 
+    const addExtraMatches = (matches: PersistedMatch[], readFailed?: boolean) => {
+        const currentlyEditing = toCurrentEditingMatch(storedMatch);
+        if (!currentlyEditing) {
+            return matches;
+        }
+        const includeStoredMatch =
+            currentlyEditing &&
+            ((typeof currentlyEditing.user === 'undefined' ||
+                (typeof userProfile !== 'undefined' && userProfile.id === currentlyEditing.user)) &&
+                !outOfDate(currentlyEditing.date) &&
+                (typeof currentlyEditing.id === 'undefined' ||
+                    readFailed ||
+                    !!matches.find(match => match.id === currentlyEditing.id)));
+
+        if (!includeStoredMatch) {
+            return matches;
+        }
+        const storedMatchFromPersisted = matches.find((m: PersistedMatch) => m.id === currentlyEditing.id);
+
+        if (storedMatchFromPersisted && storedMatchFromPersisted.version > currentlyEditing.version) {
+            return matches;
+        }
+
+        return (matches.filter(match => match !== storedMatchFromPersisted) as (
+            | PersistedMatch
+            | CurrentEditingMatch)[]).concat(currentlyEditing);
+    };
+
     const getMatches = async () => {
-        const addExtraMatches = (matches: PersistedMatch[]) => {
-            const currentlyEditing = toCurrentEditingMatch(storedMatch);
-            if (!currentlyEditing) {
-                return matches;
-            }
-            const includeStoredMatch =
-                currentlyEditing &&
-                ((typeof currentlyEditing.user === 'undefined' ||
-                    (typeof userProfile !== 'undefined' && userProfile.id === currentlyEditing.user)) &&
-                    !outOfDate(currentlyEditing.date) &&
-                    (typeof currentlyEditing.id === 'undefined' ||
-                        !!matches.find(match => match.id === currentlyEditing.id)));
-
-            if (!includeStoredMatch) {
-                return matches;
-            }
-            const storedMatchFromPersisted = matches.find((m: PersistedMatch) => m.id === currentlyEditing.id);
-
-            if (storedMatchFromPersisted && storedMatchFromPersisted.version > currentlyEditing.version) {
-                return matches;
-            }
-
-            return (matches.filter(match => match !== storedMatchFromPersisted) as (
-                | PersistedMatch
-                | CurrentEditingMatch)[]).concat(currentlyEditing);
-        };
-
         try {
             clearRetry();
             setLoadingMatches(true);
@@ -131,7 +132,7 @@ export default (
             setLoadingMatches(false);
             subscribeToMatches();
         } catch (e) {
-            setInProgressMatches(sortedMatches(addExtraMatches([])));
+            setInProgressMatches(sortedMatches(addExtraMatches([], true)));
             setLoadingMatches(false);
             setRetry();
         }
@@ -148,6 +149,7 @@ export default (
             if (status === ONLINE) {
                 getMatches();
             } else {
+                setInProgressMatches(sortedMatches(addExtraMatches([], true)));
                 setRetry();
             }
 
