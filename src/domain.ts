@@ -288,44 +288,38 @@ export interface RebuiltInnings {
 export const howOutDescription = (wicket?: Wicket): string => {
     const description = (wkt: Wicket): string => {
         switch (wkt.howOut) {
-        case Howout.Bowled:
-            return `bowled ${wkt.bowler}`;
-        case Howout.Lbw:
-            return `lbw ${wkt.bowler}`;
-        case Howout.Caught:
-            return wkt.bowler === wkt.fielder
-                ? `ct & bowled ${wkt.bowler}`
-                : `ct ${wkt.fielder} b ${wkt.bowler}`;
-        case Howout.RunOut:
-            return wkt.fielder
-                ? `run out (${wkt.fielder})`
-                : 'run out';
-        case Howout.Stumped:
-            return `st ${wkt.fielder} b ${wkt.bowler}`;
-        case Howout.TimedOut:
-            return 'timed out';
-        case Howout.ObstructingField:
-            return 'obstructing the field';
-        case Howout.HandledBall:
-            return 'handled the ball';
-        case Howout.HitWicket:
-            return `hit wkt ${wkt.bowler}`;
+            case Howout.Bowled:
+                return `bowled ${wkt.bowler}`;
+            case Howout.Lbw:
+                return `lbw ${wkt.bowler}`;
+            case Howout.Caught:
+                return wkt.bowler === wkt.fielder ? `ct & bowled ${wkt.bowler}` : `ct ${wkt.fielder} b ${wkt.bowler}`;
+            case Howout.RunOut:
+                return wkt.fielder ? `run out (${wkt.fielder})` : 'run out';
+            case Howout.Stumped:
+                return `st ${wkt.fielder} b ${wkt.bowler}`;
+            case Howout.TimedOut:
+                return 'timed out';
+            case Howout.ObstructingField:
+                return 'obstructing the field';
+            case Howout.HandledBall:
+                return 'handled the ball';
+            case Howout.HitWicket:
+                return `hit wkt ${wkt.bowler}`;
         }
     };
 
-    return wicket
-        ? description(wicket)
-        : 'not out';
+    return wicket ? description(wicket) : 'not out';
 };
 
 export const unavailablDescription = (reason: UnavailableReason): string => {
     switch (reason) {
-    case UnavailableReason.Absent:
-        return 'absent';
-    case UnavailableReason.Retired:
-        return 'retired';
-    default:
-        return '';
+        case UnavailableReason.Absent:
+            return 'absent';
+        case UnavailableReason.Retired:
+            return 'retired';
+        default:
+            return '';
     }
 };
 
@@ -339,36 +333,30 @@ export const oversDescription = (completedOvers: number, currentOver: Delivery[]
     return `${completedOvers}${remainder}`;
 };
 
-const nonStrikerHowouts = [
-    Howout.RunOut,
-    Howout.TimedOut,
-    Howout.HandledBall,
-    Howout.ObstructingField,
-];
+const nonStrikerHowouts = [Howout.RunOut, Howout.TimedOut, Howout.HandledBall, Howout.ObstructingField];
 
 export const howouts = (currentBatter: Batter) => (batter: Batter) =>
     Object.keys(Howout)
         .filter(key => !isNaN(Number(Howout[key])))
         .map(key => Howout[key])
-        .filter(howout => batter.playerIndex === currentBatter.playerIndex ||
-            nonStrikerHowouts.find(how => how === howout) !== undefined);
+        .filter(
+            howout =>
+                batter.playerIndex === currentBatter.playerIndex ||
+                nonStrikerHowouts.find(how => how === howout) !== undefined,
+        );
 
 export const howoutRequiresFielder = (howout: Howout) =>
     howout === Howout.Caught || howout === Howout.Stumped || howout === Howout.RunOut;
 
-export const howoutBattersCouldCross = (howout: Howout) =>
-    howout === Howout.Caught || howout === Howout.RunOut;
+export const howoutBattersCouldCross = (howout: Howout) => howout === Howout.Caught || howout === Howout.RunOut;
 
 export const howoutCouldScoreRuns = (howout: Howout) =>
     howout === Howout.Caught || howout === Howout.RunOut || howout === Howout.ObstructingField;
 
-export const howoutCouldBeNoBall = (howout: Howout) =>
-    howout === Howout.RunOut || howout === Howout.ObstructingField;
+export const howoutCouldBeNoBall = (howout: Howout) => howout === Howout.RunOut || howout === Howout.ObstructingField;
 
 export const howoutCouldBeWide = (howout: Howout) =>
     howout === Howout.RunOut || howout === Howout.Stumped || howout === Howout.ObstructingField;
 
 export const deliveries = (events: Event[]) =>
-    events
-        .filter(event => event.type === EventType.Delivery)
-        .map(event => event as Delivery);
+    events.filter(event => event.type === EventType.Delivery).map(event => event as Delivery);

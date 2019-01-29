@@ -4,7 +4,9 @@ import { getTeam } from '../utilities';
 const editPlayers = () => {
     const changeBatting = (match: Match, innings: Innings, playerIndices: number[]) => {
         const newOrder = Array.from(new Set(playerIndices));
-        if (innings.batting.batters.length !== newOrder.length) { return innings; }
+        if (innings.batting.batters.length !== newOrder.length) {
+            return innings;
+        }
 
         const battingTeam = getTeam(match, innings.battingTeam);
         return {
@@ -22,7 +24,9 @@ const editPlayers = () => {
 
     const changeBowling = (match: Match, innings: Innings, playerIndices: number[]) => {
         const newOrder = Array.from(new Set(playerIndices));
-        if (innings.bowlers.length !== newOrder.length) { return innings; }
+        if (innings.bowlers.length !== newOrder.length) {
+            return innings;
+        }
 
         const bowlingTeam = getTeam(match, innings.bowlingTeam);
         return {

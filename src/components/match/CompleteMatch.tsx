@@ -33,8 +33,7 @@ export default (props: CompleteMatchProps) => {
         setResult(typeof ev.target.value !== 'undefined' ? Number(ev.target.value) : undefined);
     const selectWinBy = (ev: React.ChangeEvent<HTMLSelectElement>) =>
         setWinBy(typeof ev.target.value !== 'undefined' ? Number(ev.target.value) : undefined);
-    const marginChange = (ev: React.ChangeEvent<HTMLInputElement>) =>
-        setWinMargin(ev.target.value);
+    const marginChange = (ev: React.ChangeEvent<HTMLInputElement>) => setWinMargin(ev.target.value);
     const complete = () =>
         props.complete({
             winBy,
@@ -50,10 +49,7 @@ export default (props: CompleteMatchProps) => {
 
     return (
         <div>
-            <Dialog
-                open={true}
-                aria-labelledby="complete-match-title"
-            >
+            <Dialog open={true} aria-labelledby="complete-match-title">
                 <DialogTitle id="complete-match-title">Complete match</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
@@ -81,7 +77,7 @@ export default (props: CompleteMatchProps) => {
                                 </Select>
                             </FormControl>
                         </Grid>
-                        {(result === Result.HomeWin || result === Result.AwayWin) &&
+                        {(result === Result.HomeWin || result === Result.AwayWin) && (
                             <>
                                 <Grid item xs={6} md={3}>
                                     <TextField
@@ -107,22 +103,26 @@ export default (props: CompleteMatchProps) => {
                                         </Select>
                                     </FormControl>
                                 </Grid>
-                            </>}
+                            </>
+                        )}
                     </Grid>
                 </DialogContent>
                 <DialogActions>
-                    <Button
-                        onClick={complete}
-                        color="primary"
-                        autoFocus
-                        disabled={!formComplete()}
-                    >OK
+                    <Button onClick={complete} color="primary" autoFocus disabled={!formComplete()}>
+                        OK
                     </Button>
-                    {!props.disallowCancel &&
-                        <Button onClick={props.cancel} color="primary">Cancel</Button>}
-                    {props.disallowCancel &&
-                        <Button onClick={props.undoPrevious} color="primary">Undo previous</Button>}
+                    {!props.disallowCancel && (
+                        <Button onClick={props.cancel} color="primary">
+                            Cancel
+                        </Button>
+                    )}
+                    {props.disallowCancel && (
+                        <Button onClick={props.undoPrevious} color="primary">
+                            Undo previous
+                        </Button>
+                    )}
                 </DialogActions>
             </Dialog>
-        </div>);
+        </div>
+    );
 };

@@ -26,8 +26,9 @@ describe.skip('Batting', () => {
             ],
         };
 
-        const { container } =
-            render(<Batting batting={battingWithNoInnings} score={100} wickets={1} totalOvers={'20'} />);
+        const { container } = render(
+            <Batting batting={battingWithNoInnings} score={100} wickets={1} totalOvers={'20'} />,
+        );
 
         expect(container).toMatchSnapshot();
     });

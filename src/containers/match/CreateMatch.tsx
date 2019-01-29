@@ -17,8 +17,8 @@ const CreateMatch = (props: any) => {
             storeMatch={storeMatch(props.inProgressMatchStore.setId)}
             storedMatch={matchStorage(localStorage).getMatch()}
             {...props}
-        />);
+        />
+    );
 };
 
-export default
-    WithInProgressStore()(inject('inProgressMatchStore')(MatchWithNetworkStatus(CreateMatch)));
+export default WithInProgressStore()(inject('inProgressMatchStore')(MatchWithNetworkStatus(CreateMatch)));

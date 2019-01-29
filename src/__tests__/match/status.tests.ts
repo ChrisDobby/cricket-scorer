@@ -11,7 +11,8 @@ describe('status', () => {
 
     it('should return just the score when in the first innings', () => {
         const match = {
-            ...matches.blankMatch, innings: [
+            ...matches.blankMatch,
+            innings: [
                 {
                     ...matches.inningsAfterWicketTaken,
                     score: 123,
@@ -156,7 +157,8 @@ describe('status', () => {
             },
         };
 
-        expect(status(match))
-            .toBe(`Toss won by ${matches.blankMatch.homeTeam.name}, ${matches.blankMatch.awayTeam.name} to bat first`);
+        expect(status(match)).toBe(
+            `Toss won by ${matches.blankMatch.homeTeam.name}, ${matches.blankMatch.awayTeam.name} to bat first`,
+        );
     });
 });

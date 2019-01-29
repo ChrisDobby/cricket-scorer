@@ -4,78 +4,84 @@ import flipBatters from './flipBatters';
 import getFallOfWicket from './getFallOfWicket';
 import { latestOver } from '../utilities';
 
-const addDeliveryToInnings =
-    (
-        innings: domain.Innings,
-        batter: domain.Batter,
-        bowler: domain.Bowler,
-        deliveryOutcome: domain.Outcome,
-        battingWicket: domain.Wicket | undefined,
-        updatedDeliveries: domain.Event[],
-        config: domain.MatchConfig,
-    ) => {
-        const updatedBatterInnings = (battingInnings: domain.BattingInnings) => {
-            const [fours, sixes] = deliveries.boundariesScored(deliveryOutcome);
-            return {
-                ...battingInnings,
-                ballsFaced: battingInnings.ballsFaced +
-                    (deliveryOutcome.deliveryOutcome === domain.DeliveryOutcome.Wide ? 0 : 1),
-                runs: battingInnings.runs + deliveries.runsScored(deliveryOutcome),
-                fours: battingInnings.fours + fours,
-                sixes: battingInnings.sixes + sixes,
-                wicket: battingWicket,
-            };
+const addDeliveryToInnings = (
+    innings: domain.Innings,
+    batter: domain.Batter,
+    bowler: domain.Bowler,
+    deliveryOutcome: domain.Outcome,
+    battingWicket: domain.Wicket | undefined,
+    updatedDeliveries: domain.Event[],
+    config: domain.MatchConfig,
+) => {
+    const updatedBatterInnings = (battingInnings: domain.BattingInnings) => {
+        const [fours, sixes] = deliveries.boundariesScored(deliveryOutcome);
+        return {
+            ...battingInnings,
+            ballsFaced:
+                battingInnings.ballsFaced + (deliveryOutcome.deliveryOutcome === domain.DeliveryOutcome.Wide ? 0 : 1),
+            runs: battingInnings.runs + deliveries.runsScored(deliveryOutcome),
+            fours: battingInnings.fours + fours,
+            sixes: battingInnings.sixes + sixes,
+            wicket: battingWicket,
         };
-
-        const addFallOfWicket = (inningsToAddTo: domain.Innings) => ({
-            ...inningsToAddTo,
-            fallOfWickets: deliveries.wickets(deliveryOutcome) === 0
-                ? inningsToAddTo.fallOfWickets
-                : [...inningsToAddTo.fallOfWickets, getFallOfWicket(inningsToAddTo, batter.name)],
-        });
-
-        const currentOver = latestOver(updatedDeliveries, innings.completedOvers);
-        const updatedInnings = {
-            ...innings,
-            batting: {
-                ...innings.batting,
-                batters: [
-                    ...innings.batting.batters.map(b =>
-                        b === batter
-                            ? {
-                                ...batter,
-                                innings: typeof batter.innings === 'undefined'
-                                    ? batter.innings
-                                    : updatedBatterInnings(batter.innings),
-                            }
-                            : b),
-                ],
-                extras: deliveries.addedExtras(innings.batting.extras, deliveryOutcome, config),
-            },
-            bowlers: [
-                ...innings.bowlers.map(b =>
-                    b === bowler
-                        ? {
-                            ...bowler,
-                            totalOvers: domain.oversDescription(bowler.completedOvers, currentOver),
-                            runs: bowler.runs + deliveries.bowlerRuns(deliveryOutcome, config),
-                            wickets: bowler.wickets + deliveries.bowlingWickets(deliveryOutcome),
-                        }
-                        : b),
-            ],
-            events: updatedDeliveries,
-            totalOvers: domain.oversDescription(
-                innings.completedOvers,
-                latestOver(updatedDeliveries, innings.completedOvers)),
-            score: innings.score + deliveries.totalScore(deliveryOutcome, config),
-            wickets: innings.wickets + deliveries.wickets(deliveryOutcome),
-        };
-
-        return addFallOfWicket(updatedInnings);
     };
 
+    const addFallOfWicket = (inningsToAddTo: domain.Innings) => ({
+        ...inningsToAddTo,
+        fallOfWickets:
+            deliveries.wickets(deliveryOutcome) === 0
+                ? inningsToAddTo.fallOfWickets
+                : [...inningsToAddTo.fallOfWickets, getFallOfWicket(inningsToAddTo, batter.name)],
+    });
+
+    const currentOver = latestOver(updatedDeliveries, innings.completedOvers);
+    const updatedInnings = {
+        ...innings,
+        batting: {
+            ...innings.batting,
+            batters: [
+                ...innings.batting.batters.map(b =>
+                    b === batter
+                        ? {
+                              ...batter,
+                              innings:
+                                  typeof batter.innings === 'undefined'
+                                      ? batter.innings
+                                      : updatedBatterInnings(batter.innings),
+                          }
+                        : b,
+                ),
+            ],
+            extras: deliveries.addedExtras(innings.batting.extras, deliveryOutcome, config),
+        },
+        bowlers: [
+            ...innings.bowlers.map(b =>
+                b === bowler
+                    ? {
+                          ...bowler,
+                          totalOvers: domain.oversDescription(bowler.completedOvers, currentOver),
+                          runs: bowler.runs + deliveries.bowlerRuns(deliveryOutcome, config),
+                          wickets: bowler.wickets + deliveries.bowlingWickets(deliveryOutcome),
+                      }
+                    : b,
+            ),
+        ],
+        events: updatedDeliveries,
+        totalOvers: domain.oversDescription(
+            innings.completedOvers,
+            latestOver(updatedDeliveries, innings.completedOvers),
+        ),
+        score: innings.score + deliveries.totalScore(deliveryOutcome, config),
+        wickets: innings.wickets + deliveries.wickets(deliveryOutcome),
+    };
+
+    return addFallOfWicket(updatedInnings);
+};
+
 const newBatsmanIndex = (innings: domain.Innings, batter: domain.Batter, runs: number) => {
-    if (runs % 2 === 0) { return innings.batting.batters.indexOf(batter); }
+    if (runs % 2 === 0) {
+        return innings.batting.batters.indexOf(batter);
+    }
 
     return flipBatters(innings, batter);
 };

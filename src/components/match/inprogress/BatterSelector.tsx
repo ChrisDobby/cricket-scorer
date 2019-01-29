@@ -20,10 +20,15 @@ export default (props: BatterSelectorProps) => {
         <List>
             {props.players.map((player, index) => (
                 <ListItem
-                    disabled={!!(props.notAllowedPlayers &&
-                        !(typeof props.notAllowedPlayers.find(p => p === index) === 'undefined'))}
-                    selected={!!(typeof props.selectedPlayerIndex !== 'undefined' &&
-                        props.selectedPlayerIndex === index)}
+                    disabled={
+                        !!(
+                            props.notAllowedPlayers &&
+                            !(typeof props.notAllowedPlayers.find(p => p === index) === 'undefined')
+                        )
+                    }
+                    selected={
+                        !!(typeof props.selectedPlayerIndex !== 'undefined' && props.selectedPlayerIndex === index)
+                    }
                     key={index}
                     role={undefined}
                     dense
@@ -34,5 +39,6 @@ export default (props: BatterSelectorProps) => {
                     <ListItemText primary={player} />
                 </ListItem>
             ))}
-        </List>);
+        </List>
+    );
 };

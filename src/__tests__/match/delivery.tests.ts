@@ -82,7 +82,8 @@ describe('delivery', () => {
                     deliveryOutcome: DeliveryOutcome.Valid,
                     scores: {},
                 },
-                config);
+                config,
+            );
 
             expect(score).toBe(0);
         });
@@ -98,7 +99,8 @@ describe('delivery', () => {
                         legByes: 3,
                     },
                 },
-                config);
+                config,
+            );
 
             expect(score).toBe(10);
         });
@@ -109,7 +111,8 @@ describe('delivery', () => {
                     deliveryOutcome: DeliveryOutcome.Wide,
                     scores: {},
                 },
-                config);
+                config,
+            );
 
             expect(score).toBe(1);
         });
@@ -123,7 +126,8 @@ describe('delivery', () => {
                 {
                     ...config,
                     runsForWide: 2,
-                });
+                },
+            );
 
             expect(score).toBe(2);
         });
@@ -134,7 +138,8 @@ describe('delivery', () => {
                     deliveryOutcome: DeliveryOutcome.Noball,
                     scores: {},
                 },
-                config);
+                config,
+            );
 
             expect(score).toBe(1);
         });
@@ -148,7 +153,8 @@ describe('delivery', () => {
                 {
                     ...config,
                     runsForNoBall: 2,
-                });
+                },
+            );
 
             expect(score).toBe(2);
         });
@@ -178,7 +184,8 @@ describe('delivery', () => {
                     deliveryOutcome: DeliveryOutcome.Valid,
                     scores: {},
                 },
-                config);
+                config,
+            );
 
             expect(updatedExtras).toEqual(extras);
         });
@@ -190,7 +197,8 @@ describe('delivery', () => {
                     deliveryOutcome: DeliveryOutcome.Valid,
                     scores: { byes: 3 },
                 },
-                config);
+                config,
+            );
 
             expect(updatedExtras).toEqual({ ...extras, byes: 3 });
         });
@@ -202,7 +210,8 @@ describe('delivery', () => {
                     deliveryOutcome: DeliveryOutcome.Valid,
                     scores: { legByes: 3 },
                 },
-                config);
+                config,
+            );
 
             expect(updatedExtras).toEqual({ ...extras, legByes: 3 });
         });
@@ -214,7 +223,8 @@ describe('delivery', () => {
                     deliveryOutcome: DeliveryOutcome.Wide,
                     scores: { wides: 1 },
                 },
-                config);
+                config,
+            );
 
             expect(updatedExtras).toEqual({ ...extras, wides: 2 });
         });
@@ -229,7 +239,8 @@ describe('delivery', () => {
                 {
                     ...config,
                     runsForWide: 2,
-                });
+                },
+            );
 
             expect(updatedExtras).toEqual({ ...extras, wides: 3 });
         });
@@ -241,7 +252,8 @@ describe('delivery', () => {
                     deliveryOutcome: DeliveryOutcome.Noball,
                     scores: {},
                 },
-                config);
+                config,
+            );
 
             expect(updatedExtras).toEqual({ ...extras, noBalls: 1 });
         });
@@ -256,7 +268,8 @@ describe('delivery', () => {
                 {
                     ...config,
                     runsForNoBall: 2,
-                });
+                },
+            );
 
             expect(updatedExtras).toEqual({ ...extras, noBalls: 2 });
         });
@@ -286,7 +299,8 @@ describe('delivery', () => {
                     deliveryOutcome: DeliveryOutcome.Valid,
                     scores: {},
                 },
-                config);
+                config,
+            );
 
             expect(updatedExtras).toEqual(extras);
         });
@@ -298,7 +312,8 @@ describe('delivery', () => {
                     deliveryOutcome: DeliveryOutcome.Valid,
                     scores: { byes: 3 },
                 },
-                config);
+                config,
+            );
 
             expect(updatedExtras).toEqual({ ...extras, byes: 7 });
         });
@@ -310,7 +325,8 @@ describe('delivery', () => {
                     deliveryOutcome: DeliveryOutcome.Valid,
                     scores: { legByes: 3 },
                 },
-                config);
+                config,
+            );
 
             expect(updatedExtras).toEqual({ ...extras, legByes: 17 });
         });
@@ -322,7 +338,8 @@ describe('delivery', () => {
                     deliveryOutcome: DeliveryOutcome.Wide,
                     scores: { wides: 1 },
                 },
-                config);
+                config,
+            );
 
             expect(updatedExtras).toEqual({ ...extras, wides: 28 });
         });
@@ -337,7 +354,8 @@ describe('delivery', () => {
                 {
                     ...config,
                     runsForWide: 2,
-                });
+                },
+            );
 
             expect(updatedExtras).toEqual({ ...extras, wides: 27 });
         });
@@ -349,7 +367,8 @@ describe('delivery', () => {
                     deliveryOutcome: DeliveryOutcome.Noball,
                     scores: {},
                 },
-                config);
+                config,
+            );
 
             expect(updatedExtras).toEqual({ ...extras, noBalls: 39 });
         });
@@ -364,7 +383,8 @@ describe('delivery', () => {
                 {
                     ...config,
                     runsForNoBall: 2,
-                });
+                },
+            );
 
             expect(updatedExtras).toEqual({ ...extras, noBalls: 38 });
         });
@@ -421,7 +441,8 @@ describe('delivery', () => {
                         wides: 2,
                     },
                 },
-                config);
+                config,
+            );
 
             expect(score).toBe(9);
         });
@@ -434,7 +455,8 @@ describe('delivery', () => {
                         runs: 2,
                     },
                 },
-                config);
+                config,
+            );
 
             expect(score).toBe(3);
         });
@@ -450,7 +472,8 @@ describe('delivery', () => {
                 {
                     ...config,
                     runsForNoBall: 2,
-                });
+                },
+            );
 
             expect(score).toBe(4);
         });
@@ -641,12 +664,7 @@ describe('delivery', () => {
         };
 
         it('should return undefined if no wicket taken', () => {
-            const battingWicket = delivery.battingWicket(
-                validDelivery,
-                1,
-                'A bowler',
-                [],
-            );
+            const battingWicket = delivery.battingWicket(validDelivery, 1, 'A bowler', []);
 
             expect(battingWicket).toBeUndefined();
         });

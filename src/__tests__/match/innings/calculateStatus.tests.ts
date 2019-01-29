@@ -22,8 +22,7 @@ describe('calculateStatus', () => {
     });
 
     it('should return in progress if the innings should still be in progress', () => {
-        expect(CalculateStatus(fiftyOverMatch, matches.startedInnings))
-            .toBe(domain.InningsStatus.InProgress);
+        expect(CalculateStatus(fiftyOverMatch, matches.startedInnings)).toBe(domain.InningsStatus.InProgress);
     });
 
     it('should return overs complete for a limited overs match when all the overs have been completed', () => {
@@ -33,8 +32,7 @@ describe('calculateStatus', () => {
             maximumOvers: 40,
         };
 
-        expect(CalculateStatus(fiftyOverMatch, completdOversInnings))
-            .toBe(domain.InningsStatus.OversComplete);
+        expect(CalculateStatus(fiftyOverMatch, completdOversInnings)).toBe(domain.InningsStatus.OversComplete);
     });
 
     it('should return all out if wickets is one less than the number of players in the batting team', () => {

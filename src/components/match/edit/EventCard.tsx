@@ -25,11 +25,14 @@ export default ({ event, rollback }: EventCardProps) => (
         <CardContent color="primary">
             <Typography variant="subtitle1">{dateformat(event.time, 'HH:MM')}</Typography>
             <Typography variant="body1">{`${event.bowler} to ${event.batter}`}</Typography>
-            <Typography variant="body1" color="textSecondary">{notificationDescription(event.outcome)}</Typography>
+            <Typography variant="body1" color="textSecondary">
+                {notificationDescription(event.outcome)}
+            </Typography>
         </CardContent>
         <CardActions>
             <Button size="small" color="secondary" onClick={rollback}>
                 Roll innings back
             </Button>
         </CardActions>
-    </Card>);
+    </Card>
+);

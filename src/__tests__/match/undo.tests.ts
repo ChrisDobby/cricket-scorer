@@ -15,11 +15,7 @@ describe('undo', () => {
         const undone = Undo(matches.startedInnings, 0, 0);
 
         expect(rebuild).not.toHaveBeenCalled();
-        expect(undone).toEqual([
-            matches.startedInnings,
-            0,
-            0,
-        ]);
+        expect(undone).toEqual([matches.startedInnings, 0, 0]);
     });
 
     it('should call rebuild and return the rebuilt innings if the innings has events', () => {
@@ -27,7 +23,7 @@ describe('undo', () => {
             ...matches.startedInnings,
             events: [
                 {
-                    time: (new Date()).getTime(),
+                    time: new Date().getTime(),
                     type: domain.EventType.Delivery,
                     bowlerIndex: 0,
                     batsmanIndex: 0,
@@ -35,7 +31,7 @@ describe('undo', () => {
                     outcome: { scores: { runs: 2 }, deliveryOutcome: domain.DeliveryOutcome.Valid },
                 },
                 {
-                    time: (new Date()).getTime(),
+                    time: new Date().getTime(),
                     type: domain.EventType.Delivery,
                     bowlerIndex: 0,
                     batsmanIndex: 0,
@@ -47,15 +43,7 @@ describe('undo', () => {
 
         const undone = Undo(withEvents, 0, 0);
 
-        expect(rebuild).toHaveBeenCalledWith(
-            withEvents,
-            0,
-            [withEvents.events[0]],
-        );
-        expect(undone).toEqual([
-            matches.inningsAfterWicketTaken,
-            999,
-            0,
-        ]);
+        expect(rebuild).toHaveBeenCalledWith(withEvents, 0, [withEvents.events[0]]);
+        expect(undone).toEqual([matches.inningsAfterWicketTaken, 999, 0]);
     });
 });

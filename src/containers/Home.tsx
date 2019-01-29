@@ -13,5 +13,6 @@ export default (props: any) => {
             {...props}
             storedMatch={matchStorage(localStorage).getMatch()}
             fetchMatch={fetchMatch(props.matchApi, matchStorage(localStorage))}
-        />);
+        />
+    );
 };

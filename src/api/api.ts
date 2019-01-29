@@ -2,14 +2,16 @@ import auth0 from '../components/auth0';
 
 const api = (addBearerToken: (headers: any) => Headers) => (defaultRetries: number, retryWaitMilliseconds: number) => {
     const tryFetch = async (fetchPromise: () => Promise<Response>, retries: number | undefined) => {
-        const retryAfterWait = (retryCount: number): Promise<Response> => new Promise(resolve =>
-            setTimeout(resolve, retryWaitMilliseconds, tryFetch(fetchPromise, retryCount)));
+        const retryAfterWait = (retryCount: number): Promise<Response> =>
+            new Promise(resolve => setTimeout(resolve, retryWaitMilliseconds, tryFetch(fetchPromise, retryCount)));
 
         const availableRetries = typeof retries === 'undefined' ? defaultRetries : Number(retries);
 
         try {
             const response = await fetchPromise();
-            if (!response.ok && availableRetries) { return retryAfterWait(availableRetries - 1); }
+            if (!response.ok && availableRetries) {
+                return retryAfterWait(availableRetries - 1);
+            }
 
             return response;
         } catch (err) {
@@ -31,16 +33,15 @@ const api = (addBearerToken: (headers: any) => Headers) => (defaultRetries: numb
 
     const remove = async (route: string) => {
         const response = await tryFetch(
-            () => fetch(
-                route,
-                {
+            () =>
+                fetch(route, {
                     method: 'DELETE',
                     headers: addBearerToken({
                         'Content-Type': 'application/json',
                     }),
-                },
-            ),
-            undefined);
+                }),
+            undefined,
+        );
 
         if (!response.ok) {
             throw new Error(response.status.toString());
@@ -50,16 +51,15 @@ const api = (addBearerToken: (headers: any) => Headers) => (defaultRetries: numb
     const sendData = async (route: string, data: any, method: string, getResponse: (res: Response) => any) => {
         const response = await tryFetch(
             () =>
-                fetch(
-                    route,
-                    {
-                        method,
-                        body: JSON.stringify(data),
-                        headers: addBearerToken({
-                            'Content-Type': 'application/json',
-                        }),
+                fetch(route, {
+                    method,
+                    body: JSON.stringify(data),
+                    headers: addBearerToken({
+                        'Content-Type': 'application/json',
                     }),
-            undefined);
+                }),
+            undefined,
+        );
         return getResponse(response);
     };
 

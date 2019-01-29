@@ -8,17 +8,16 @@ interface WithInProgressMatchProps {
 }
 
 export default (Component: any) => (props: WithInProgressMatchProps) => {
-    React.useEffect(
-        () => {
-            if (typeof props.inProgressMatchStore === 'undefined' ||
-                typeof props.inProgressMatchStore.match === 'undefined') {
-                props.history.replace('/match/create');
-            }
-        },
-        []);
+    React.useEffect(() => {
+        if (
+            typeof props.inProgressMatchStore === 'undefined' ||
+            typeof props.inProgressMatchStore.match === 'undefined'
+        ) {
+            props.history.replace('/match/create');
+        }
+    }, []);
 
-    if (typeof props.inProgressMatchStore === 'undefined' ||
-        typeof props.inProgressMatchStore.match === 'undefined') {
+    if (typeof props.inProgressMatchStore === 'undefined' || typeof props.inProgressMatchStore.match === 'undefined') {
         return null;
     }
 

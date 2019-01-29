@@ -107,11 +107,7 @@ describe('create', () => {
     });
 
     it('should create  a new innings for the away team if specified', () => {
-        const awayTeamBattingInnings = Create(
-            domain.TeamType.AwayTeam,
-            0,
-            1,
-        );
+        const awayTeamBattingInnings = Create(domain.TeamType.AwayTeam, 0, 1);
         expect(awayTeamBattingInnings.battingTeam).toBe(domain.TeamType.AwayTeam);
         expect(awayTeamBattingInnings.bowlingTeam).toBe(domain.TeamType.HomeTeam);
 

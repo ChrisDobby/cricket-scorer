@@ -15,7 +15,8 @@ interface BallEntryProps {
     overComplete: boolean;
     currentOver: Over;
     delivery: (deliveryOutcome: DeliveryOutcome, scores: DeliveryScores) => void;
-    completeOver: () => void;    homeTeam: string;
+    completeOver: () => void;
+    homeTeam: string;
     awayTeam: string;
     calculateResult: () => MatchResult | undefined;
 }
@@ -50,9 +51,9 @@ export default (props: BallEntryProps) => (
                         awayTeam={props.awayTeam}
                         calculateResult={props.calculateResult}
                     />
-
                 </EntryContainer>
             </Grid>
         </Grid>
         {props.overComplete && <OverCompleteAlert completeOver={props.completeOver} />}
-    </Grid>);
+    </Grid>
+);

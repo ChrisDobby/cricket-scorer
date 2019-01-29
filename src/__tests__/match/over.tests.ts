@@ -19,7 +19,7 @@ describe('over', () => {
     };
     const deliveries = [
         {
-            time: (new Date()).getTime(),
+            time: new Date().getTime(),
             type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
@@ -27,7 +27,7 @@ describe('over', () => {
             outcome: { scores: { runs: 2 }, deliveryOutcome: DeliveryOutcome.Valid },
         },
         {
-            time: (new Date()).getTime(),
+            time: new Date().getTime(),
             type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
@@ -39,7 +39,7 @@ describe('over', () => {
             },
         },
         {
-            time: (new Date()).getTime(),
+            time: new Date().getTime(),
             type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
@@ -47,7 +47,7 @@ describe('over', () => {
             outcome: { scores: {}, deliveryOutcome: DeliveryOutcome.Valid },
         },
         {
-            time: (new Date()).getTime(),
+            time: new Date().getTime(),
             type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
@@ -59,7 +59,7 @@ describe('over', () => {
             },
         },
         {
-            time: (new Date()).getTime(),
+            time: new Date().getTime(),
             type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
@@ -67,7 +67,7 @@ describe('over', () => {
             outcome: { scores: {}, deliveryOutcome: DeliveryOutcome.Valid },
         },
         {
-            time: (new Date()).getTime(),
+            time: new Date().getTime(),
             type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,

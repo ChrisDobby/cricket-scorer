@@ -15,7 +15,9 @@ export default () => {
         }
 
         const index = subscriptions[event].indexOf(func);
-        if (index >= 0) { subscriptions[event].splice(index, 1); }
+        if (index >= 0) {
+            subscriptions[event].splice(index, 1);
+        }
     };
 
     const publish = (event: string, ...params: any[]) => {

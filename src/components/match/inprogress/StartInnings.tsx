@@ -28,13 +28,13 @@ const batter2Index = 2;
 const oversIndex = 3;
 
 export default (props: StartInningsProps) => {
-    const [selectedTeamIndex, setSelectedTeamIndex] = React.useState(props.defaultBattingTeam
-        ? props.teams.indexOf(props.defaultBattingTeam)
-        : -1);
+    const [selectedTeamIndex, setSelectedTeamIndex] = React.useState(
+        props.defaultBattingTeam ? props.teams.indexOf(props.defaultBattingTeam) : -1,
+    );
     const [playerPositions, setPlayerPositions] = React.useState(Array<PlayerPosition>());
-    const [players, setPlayers] = React.useState(props.defaultBattingTeam
-        ? props.defaultBattingTeam.players
-        : Array<string>());
+    const [players, setPlayers] = React.useState(
+        props.defaultBattingTeam ? props.defaultBattingTeam.players : Array<string>(),
+    );
     const [activeStep, setActiveStep] = React.useState(props.canChangeBattingTeam ? 0 : 1);
     const [maximumOvers, setMaximumOvers] = React.useState(props.maximumOvers);
 
@@ -49,26 +49,25 @@ export default (props: StartInningsProps) => {
         ...(typeof props.maximumOvers !== 'undefined' && { ['Maximum overs']: false }),
     };
 
-    const finishIndex = () => typeof props.maximumOvers === 'undefined' ? batter2Index : oversIndex;
+    const finishIndex = () => (typeof props.maximumOvers === 'undefined' ? batter2Index : oversIndex);
 
     const nextOrFinishEnabled = (): boolean => {
         switch (activeStep) {
-        case battingTeamIndex:
-            return true;
-        case batter1Index:
-        case batter2Index:
-            return !!playerPositions.find(pp => pp.position === activeStep);
-        case oversIndex:
-            return typeof maximumOvers !== 'undefined';
-        default:
-            return false;
+            case battingTeamIndex:
+                return true;
+            case batter1Index:
+            case batter2Index:
+                return !!playerPositions.find(pp => pp.position === activeStep);
+            case oversIndex:
+                return typeof maximumOvers !== 'undefined';
+            default:
+                return false;
         }
     };
 
-    const backEnabled = (): boolean => activeStep !== 0 && (
-            props.canChangeBattingTeam || activeStep > 1);
+    const backEnabled = (): boolean => activeStep !== 0 && (props.canChangeBattingTeam || activeStep > 1);
 
-    const nextButtonText = (): string => activeStep < finishIndex() ? 'Next' : 'Start innings';
+    const nextButtonText = (): string => (activeStep < finishIndex() ? 'Next' : 'Start innings');
 
     const teamRadioChanged = (teamIndex: number): void => {
         setSelectedTeamIndex(teamIndex);
@@ -91,11 +90,9 @@ export default (props: StartInningsProps) => {
     };
 
     const save = () => {
-        const getPlayerIndex = (player: PlayerPosition | undefined) => player ? player.playerIndex : -1;
-        const batter1Index = getPlayerIndex(playerPositions
-            .find(playerPos => playerPos.position === 1));
-        const batter2Index = getPlayerIndex(playerPositions
-            .find(playerPos => playerPos.position === 2));
+        const getPlayerIndex = (player: PlayerPosition | undefined) => (player ? player.playerIndex : -1);
+        const batter1Index = getPlayerIndex(playerPositions.find(playerPos => playerPos.position === 1));
+        const batter2Index = getPlayerIndex(playerPositions.find(playerPos => playerPos.position === 2));
 
         props.startInnings(
             selectedTeamIndex === 0 ? TeamType.HomeTeam : TeamType.AwayTeam,
@@ -146,7 +143,7 @@ export default (props: StartInningsProps) => {
                         ))}
                     </Stepper>
                 </Hidden>
-                {activeStep === 0 &&
+                {activeStep === 0 && (
                     <FormControl>
                         {props.teams.map((team, index) => (
                             <FormControlLabel
@@ -155,19 +152,23 @@ export default (props: StartInningsProps) => {
                                     <Radio
                                         checked={index === selectedTeamIndex}
                                         onChange={() => teamRadioChanged(index)}
-                                    />}
+                                    />
+                                }
                             />
                         ))}
-                    </FormControl>}
-                {(activeStep === 1 || activeStep === 2) &&
+                    </FormControl>
+                )}
+                {(activeStep === 1 || activeStep === 2) && (
                     <BatterSelector
                         players={players}
                         playerSelected={playerIndex => openerSelected(playerIndex, activeStep)}
                         notAllowedPlayers={playerPositions
-                            .filter(pp => pp.position !== activeStep).map(pp => pp.playerIndex)}
+                            .filter(pp => pp.position !== activeStep)
+                            .map(pp => pp.playerIndex)}
                         selectedPlayerIndex={selectedOpenerIndex(activeStep)}
-                    />}
-                {activeStep === 3 &&
+                    />
+                )}
+                {activeStep === 3 && (
                     <TextField
                         style={{ marginBottom: '20px' }}
                         fullWidth
@@ -175,23 +176,17 @@ export default (props: StartInningsProps) => {
                         value={maximumOvers}
                         type="number"
                         onChange={ev => setMaximumOvers(Number(ev.target.value))}
-                    />}
+                    />
+                )}
                 <div>
-                    <Button
-                        disabled={!backEnabled()}
-                        onClick={moveBack}
-                    >
+                    <Button disabled={!backEnabled()} onClick={moveBack}>
                         Back
                     </Button>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        disabled={!nextOrFinishEnabled()}
-                        onClick={moveNext}
-                    >
+                    <Button variant="contained" color="primary" disabled={!nextOrFinishEnabled()} onClick={moveNext}>
                         {nextButtonText()}
                     </Button>
                 </div>
             </Grid>
-        </Grid>);
+        </Grid>
+    );
 };

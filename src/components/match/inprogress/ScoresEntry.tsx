@@ -16,7 +16,11 @@ const buttonStyle = (deliveryOutcome: DeliveryOutcome): React.CSSProperties => (
 });
 
 const boundary = (score: number) => (
-    <span style={{ fontSize: '70%' }}>boundary<br /><span style={{ fontSize: '200%' }}>{score}</span></span>
+    <span style={{ fontSize: '70%' }}>
+        boundary
+        <br />
+        <span style={{ fontSize: '200%' }}>{score}</span>
+    </span>
 );
 
 interface ScoresEntryProps {
@@ -41,49 +45,26 @@ export default ({ deliveryOutcome, hasBoundaries, getScores, action }: ScoresEnt
     return (
         <Grid container>
             <Grid container>
-                <Button
-                    variant="fab"
-                    aria-label="Dot ball"
-                    style={style}
-                    onClick={executeDot(0)}
-                >{'.'}
+                <Button variant="fab" aria-label="Dot ball" style={style} onClick={executeDot(0)}>
+                    {'.'}
                 </Button>
-                <Button
-                    variant="fab"
-                    aria-label="Single"
-                    style={style}
-                    onClick={execute(1)}
-                >{'1'}
+                <Button variant="fab" aria-label="Single" style={style} onClick={execute(1)}>
+                    {'1'}
                 </Button>
-                <Button
-                    variant="fab"
-                    aria-label="Two"
-                    style={style}
-                    onClick={execute(2)}
-                >{'2'}
+                <Button variant="fab" aria-label="Two" style={style} onClick={execute(2)}>
+                    {'2'}
                 </Button>
-                <Button
-                    variant="fab"
-                    aria-label="Three"
-                    style={style}
-                    onClick={execute(3)}
-                >{'3'}
+                <Button variant="fab" aria-label="Three" style={style} onClick={execute(3)}>
+                    {'3'}
                 </Button>
-                <Button
-                    variant="extendedFab"
-                    aria-label="Boundary Four"
-                    style={style}
-                    onClick={executeBoundary(4)}
-                >{boundary(4)}
+                <Button variant="extendedFab" aria-label="Boundary Four" style={style} onClick={executeBoundary(4)}>
+                    {boundary(4)}
                 </Button>
-                {hasBoundaries &&
-                    <Button
-                        variant="extendedFab"
-                        aria-label="Boundary Six"
-                        style={style}
-                        onClick={executeBoundary(6)}
-                    >{boundary(6)}
-                    </Button>}
+                {hasBoundaries && (
+                    <Button variant="extendedFab" aria-label="Boundary Six" style={style} onClick={executeBoundary(6)}>
+                        {boundary(6)}
+                    </Button>
+                )}
             </Grid>
             <Grid container>
                 <Select value={0} onChange={ev => executeNonStandard(Number(ev.target.value), execute)}>
@@ -97,5 +78,6 @@ export default ({ deliveryOutcome, hasBoundaries, getScores, action }: ScoresEnt
                     <MenuItem value={10}>10</MenuItem>
                 </Select>
             </Grid>
-        </Grid>);
+        </Grid>
+    );
 };

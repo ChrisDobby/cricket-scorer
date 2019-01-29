@@ -16,6 +16,11 @@ export default ({ homeTeam, awayTeam, date, matchStatus, lastEvent }: MatchHeadi
     <div style={styles.textCentre}>
         <Typography variant="h6">{dateformat(date, 'dd-mmm-yyyy')}</Typography>
         <Typography variant="h5">{`${homeTeam} v ${awayTeam}`}</Typography>
-        <Typography variant="h6"><TextUpdateNotify text={matchStatus}/></Typography>
-        <Typography variant="body1" color="textSecondary"><TextUpdateNotify text={lastEvent}/></Typography>
-    </div>);
+        <Typography variant="h6">
+            <TextUpdateNotify text={matchStatus} />
+        </Typography>
+        <Typography variant="body1" color="textSecondary">
+            <TextUpdateNotify text={lastEvent} />
+        </Typography>
+    </div>
+);

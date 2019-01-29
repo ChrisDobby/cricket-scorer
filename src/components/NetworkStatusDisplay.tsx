@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Snackbar from'@material-ui/core/Snackbar';
+import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import Slide from '@material-ui/core/Slide';
 import amber from '@material-ui/core/colors/amber';
@@ -17,9 +17,6 @@ export default (props: NetworkStatusDisplayProps) => (
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         autoHideDuration={3000}
     >
-        <SnackbarContent
-            style={{ backgroundColor: amber[700] }}
-            message={props.message}
-        />
+        <SnackbarContent style={{ backgroundColor: amber[700] }} message={props.message} />
     </Snackbar>
 );

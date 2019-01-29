@@ -24,8 +24,7 @@ export default (props: OutOfDateDialogProps) => (
             <DialogTitle id="out-of-date-matches-title">Out of date matches</DialogTitle>
             <DialogContent>
                 <DialogContentText>
-                    {`You have ${props.matches.length} matches that are out of date.  ` +
-                        'Choose what to do with them'}
+                    {`You have ${props.matches.length} matches that are out of date.  ` + 'Choose what to do with them'}
                 </DialogContentText>
                 <DialogContentText color="secondary">
                     Note if you remove a match it will be permanently removed
@@ -39,36 +38,35 @@ export default (props: OutOfDateDialogProps) => (
                     <Grid container>
                         <Grid item md={6} sm={12}>
                             <DialogContentText color="textPrimary">
-                                {`${dateformat(match.date, 'dd-mmm-yyyy')} ` +
-                                    `${match.homeTeam} v ${match.awayTeam}`}
+                                {`${dateformat(match.date, 'dd-mmm-yyyy')} ` + `${match.homeTeam} v ${match.awayTeam}`}
                             </DialogContentText>
                             <DialogContentText>{match.status}</DialogContentText>
-                            {match.removeError &&
+                            {match.removeError && (
                                 <DialogContentText color="secondary">
-                                    There was an error removing the match.  Please try again.
-                                </DialogContentText>}
-                            {match.continueError &&
+                                    There was an error removing the match. Please try again.
+                                </DialogContentText>
+                            )}
+                            {match.continueError && (
                                 <DialogContentText color="secondary">
-                                    There was an error continuing the match.  Please try again.
-                                </DialogContentText>}
+                                    There was an error continuing the match. Please try again.
+                                </DialogContentText>
+                            )}
                         </Grid>
                         <Grid item md={6} sm={12}>
                             <DialogActions>
-                                {!props.disabled && !match.removed &&
+                                {!props.disabled && !match.removed && (
                                     <>
-                                        <Button
-                                            color="primary"
-                                            onClick={() => props.remove(match.id)}
-                                        >Remove
+                                        <Button color="primary" onClick={() => props.remove(match.id)}>
+                                            Remove
                                         </Button>
-                                        <Button
-                                            color="primary"
-                                            onClick={() => props.continue(match.id)}
-                                        >Continue
+                                        <Button color="primary" onClick={() => props.continue(match.id)}>
+                                            Continue
                                         </Button>
-                                    </>}
-                                {!props.disabled && match.removed &&
-                                    <DialogContentText color="secondary">Removed</DialogContentText>}
+                                    </>
+                                )}
+                                {!props.disabled && match.removed && (
+                                    <DialogContentText color="secondary">Removed</DialogContentText>
+                                )}
                             </DialogActions>
                         </Grid>
                     </Grid>
@@ -76,12 +74,10 @@ export default (props: OutOfDateDialogProps) => (
                 </DialogContent>
             ))}
             <DialogActions>
-                <Button
-                    onClick={props.close}
-                    color="primary"
-                    autoFocus
-                >Close
+                <Button onClick={props.close} color="primary" autoFocus>
+                    Close
                 </Button>
             </DialogActions>
         </Dialog>
-    </div>);
+    </div>
+);

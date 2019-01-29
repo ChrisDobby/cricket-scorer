@@ -5,31 +5,41 @@ import Hidden from '@material-ui/core/Hidden';
 import Divider from '@material-ui/core/Divider';
 import { withStyles } from '@material-ui/core/styles';
 import Extras from './Extras';
-import { Batting as InningsBatting, BattingInnings, howOutDescription, unavailablDescription, Batter }
-    from '../../domain';
+import {
+    Batting as InningsBatting,
+    BattingInnings,
+    howOutDescription,
+    unavailablDescription,
+    Batter,
+} from '../../domain';
 import * as styles from './styles';
 import * as globalStyles from '../styles';
 import TextUpdateNotify from '../TextUpdateNotify';
 import HeaderText from './HeaderText';
 
 const smallExtraDetailText = (innings?: BattingInnings): string =>
-    innings
-        ? `${innings.ballsFaced} balls, ${innings.fours} 4s, ${innings.sixes} 6s`
-        : '';
+    innings ? `${innings.ballsFaced} balls, ${innings.fours} 4s, ${innings.sixes} 6s` : '';
 
 const howOut = (batter: Batter): string => {
-    if (!batter.innings && typeof batter.unavailableReason === 'undefined') { return ''; }
+    if (!batter.innings && typeof batter.unavailableReason === 'undefined') {
+        return '';
+    }
 
     return typeof batter.unavailableReason !== 'undefined'
         ? unavailablDescription(batter.unavailableReason)
         : howOutDescription((batter.innings as BattingInnings).wicket);
 };
 
-interface InningsItemProps { batter: Batter; }
+interface InningsItemProps {
+    batter: Batter;
+}
 const Howout = (props: InningsItemProps) => (
-    <Grid item xs={6} md={4}><Typography variant="body2">
-        <TextUpdateNotify text={howOut(props.batter)} />
-    </Typography></Grid>);
+    <Grid item xs={6} md={4}>
+        <Typography variant="body2">
+            <TextUpdateNotify text={howOut(props.batter)} />
+        </Typography>
+    </Grid>
+);
 
 interface BattingProps {
     batting: InningsBatting;
@@ -83,41 +93,35 @@ const Batting = ({ batting, score, wickets, totalOvers, classes }: BattingProps)
                     </Grid>
                     <Hidden smDown>
                         <Grid item md={1}>
-                            <Typography
-                                variant="body1"
-                                style={styles.numberCell}
-                            ><TextUpdateNotify text={batter.innings ? batter.innings.ballsFaced.toString() : ''} />
+                            <Typography variant="body1" style={styles.numberCell}>
+                                <TextUpdateNotify text={batter.innings ? batter.innings.ballsFaced.toString() : ''} />
                             </Typography>
                         </Grid>
                     </Hidden>
                     <Hidden smDown>
                         <Grid item md={1}>
-                            <Typography
-                                variant="body1"
-                                style={styles.numberCell}
-                            ><TextUpdateNotify text={batter.innings ? '0' : ''} />
+                            <Typography variant="body1" style={styles.numberCell}>
+                                <TextUpdateNotify text={batter.innings ? '0' : ''} />
                             </Typography>
                         </Grid>
                     </Hidden>
                     <Hidden smDown>
                         <Grid item md={1}>
-                            <Typography
-                                variant="body1"
-                                style={styles.numberCell}
-                            ><TextUpdateNotify text={batter.innings ? batter.innings.fours.toString() : ''} />
+                            <Typography variant="body1" style={styles.numberCell}>
+                                <TextUpdateNotify text={batter.innings ? batter.innings.fours.toString() : ''} />
                             </Typography>
                         </Grid>
                     </Hidden>
                     <Hidden smDown>
                         <Grid item md={1}>
-                            <Typography
-                                variant="body1"
-                                style={styles.numberCell}
-                            ><TextUpdateNotify text={batter.innings ? batter.innings.sixes.toString() : ''} />
+                            <Typography variant="body1" style={styles.numberCell}>
+                                <TextUpdateNotify text={batter.innings ? batter.innings.sixes.toString() : ''} />
                             </Typography>
                         </Grid>
                     </Hidden>
-                    <Hidden mdUp><Grid item xs={4} /></Hidden>
+                    <Hidden mdUp>
+                        <Grid item xs={4} />
+                    </Hidden>
                     <Hidden mdUp>
                         <Grid item xs={8}>
                             <Typography variant="caption">
@@ -126,7 +130,9 @@ const Batting = ({ batting, score, wickets, totalOvers, classes }: BattingProps)
                         </Grid>
                     </Hidden>
                 </Grid>
-                <Grid item xs={12}><Divider /></Grid>
+                <Grid item xs={12}>
+                    <Divider />
+                </Grid>
             </React.Fragment>
         ))}
         <Extras extras={batting.extras} />
@@ -145,6 +151,7 @@ const Batting = ({ batting, score, wickets, totalOvers, classes }: BattingProps)
                 </HeaderText>
             </Grid>
         </Grid>
-    </Grid>);
+    </Grid>
+);
 
 export default withStyles(globalStyles.themedStyles)(Batting);

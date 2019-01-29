@@ -15,9 +15,7 @@ export default (innings: Innings, batter: Batter, bowler: Bowler): [Innings, num
 
     const updatedInnings = {
         ...innings,
-        bowlers: [...innings.bowlers.map(b => b.playerIndex === bowler.playerIndex
-            ? updatedBowler
-            : b)],
+        bowlers: [...innings.bowlers.map(b => (b.playerIndex === bowler.playerIndex ? updatedBowler : b))],
         completedOvers: innings.completedOvers + 1,
         totalOvers: oversDescription(innings.completedOvers + 1, []),
     };

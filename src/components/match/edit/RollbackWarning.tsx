@@ -13,25 +13,24 @@ interface RollbackWarningProps {
     no: () => void;
 }
 
-const score = (rebuilt: Innings) =>
-    `${rebuilt.score} - ${rebuilt.wickets} off ${rebuilt.totalOvers}`;
+const score = (rebuilt: Innings) => `${rebuilt.score} - ${rebuilt.wickets} off ${rebuilt.totalOvers}`;
 
 export default ({ rebuiltInnings, yes, no }: RollbackWarningProps) => (
     <div>
-        <Dialog
-            open={true}
-            aria-labelledby="rollback-warning-title"
-        >
+        <Dialog open={true} aria-labelledby="rollback-warning-title">
             <DialogTitle id="rollback-warning-title">Rollback innings</DialogTitle>
             <DialogContent>
-                <DialogContentText>
-                    The innings will rollback to {score(rebuiltInnings)}
-                </DialogContentText>
+                <DialogContentText>The innings will rollback to {score(rebuiltInnings)}</DialogContentText>
                 <DialogContentText>Are you sure you want to roll the innings back</DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button onClick={yes} color="primary" autoFocus>Yes</Button>
-                <Button onClick={no} color="primary">No</Button>
+                <Button onClick={yes} color="primary" autoFocus>
+                    Yes
+                </Button>
+                <Button onClick={no} color="primary">
+                    No
+                </Button>
             </DialogActions>
         </Dialog>
-    </div>);
+    </div>
+);

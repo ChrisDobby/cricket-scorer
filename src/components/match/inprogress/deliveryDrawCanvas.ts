@@ -7,8 +7,7 @@ const deliveryDrawCanvas = () => {
         context.fill();
     };
 
-    const drawScore = (context: CanvasRenderingContext2D, score: number) =>
-        context.fillText(score.toString(), 11, 20);
+    const drawScore = (context: CanvasRenderingContext2D, score: number) => context.fillText(score.toString(), 11, 20);
 
     const drawByes = (context: CanvasRenderingContext2D, byes: number) => {
         context.beginPath();
@@ -37,12 +36,7 @@ const deliveryDrawCanvas = () => {
             context.fill();
         };
 
-        const dots = [
-            () => dot(8, 8),
-            () => dot(22, 8),
-            () => dot(22, 22),
-            () => dot(8, 22),
-        ];
+        const dots = [() => dot(8, 8), () => dot(22, 8), () => dot(22, 22), () => dot(8, 22)];
 
         context.beginPath();
         context.moveTo(15, 2);
@@ -70,13 +64,14 @@ const deliveryDrawCanvas = () => {
         context.stroke();
     };
 
-    const drawOutcome = (
-        canvas: HTMLCanvasElement | undefined,
-        outcome: Outcome,
-    ) => {
-        if (typeof canvas === 'undefined' || canvas === null) { return; }
+    const drawOutcome = (canvas: HTMLCanvasElement | undefined, outcome: Outcome) => {
+        if (typeof canvas === 'undefined' || canvas === null) {
+            return;
+        }
         const context = canvas.getContext('2d');
-        if (context === null) { return; }
+        if (context === null) {
+            return;
+        }
 
         context.fillStyle = '#ffffff';
         context.strokeStyle = '#ffffff';

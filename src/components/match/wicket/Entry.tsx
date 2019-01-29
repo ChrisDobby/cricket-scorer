@@ -13,7 +13,7 @@ const entryRowStyle: React.CSSProperties = {
     marginTop: '20px',
 };
 
-const allDescriptions: { howout: Howout, description: string }[] = [];
+const allDescriptions: { howout: Howout; description: string }[] = [];
 
 const descriptionFromPascalCase = (pascalCaseString: string): string =>
     Array.from(pascalCaseString).reduce(
@@ -21,11 +21,14 @@ const descriptionFromPascalCase = (pascalCaseString: string): string =>
             str === '' || ch.charCodeAt(0) < 65 || ch.charCodeAt(0) > 90
                 ? `${str}${ch}`
                 : `${str} ${String.fromCharCode(ch.charCodeAt(0) + 32)}`,
-        '');
+        '',
+    );
 
 const description = (howout: Howout): string => {
     const found = allDescriptions.find(desc => desc.howout === howout);
-    if (typeof found !== 'undefined') { return found.description; }
+    if (typeof found !== 'undefined') {
+        return found.description;
+    }
     const description = descriptionFromPascalCase(Howout[howout]);
 
     allDescriptions.push({
@@ -36,12 +39,14 @@ const description = (howout: Howout): string => {
     return description;
 };
 
-const scoreChange = (scores: DeliveryScores, change: (scores: DeliveryScores) => void) =>
-    (updated: number, fieldName: string) =>
-        change({
-            ...scores,
-            [fieldName]: updated,
-        });
+const scoreChange = (scores: DeliveryScores, change: (scores: DeliveryScores) => void) => (
+    updated: number,
+    fieldName: string,
+) =>
+    change({
+        ...scores,
+        [fieldName]: updated,
+    });
 
 interface EntryProps {
     batters: Batter[];
@@ -79,7 +84,10 @@ export default (props: EntryProps) => (
                 onChange={event => props.batterChange(Number(event.target.value))}
             >
                 {props.batters.map((batter, idx) => (
-                    <MenuItem key={idx} value={idx}>{batter.name}</MenuItem>))}
+                    <MenuItem key={idx} value={idx}>
+                        {batter.name}
+                    </MenuItem>
+                ))}
             </Select>
         </FormControl>
         <FormControl fullWidth style={entryRowStyle}>
@@ -89,15 +97,17 @@ export default (props: EntryProps) => (
                     id: 'howout',
                 }}
                 value={typeof props.howout === 'undefined' ? -1 : props.howout}
-                onChange={event =>
-                    props.howoutChange(props.availableHowouts[Number(event.target.value)])}
+                onChange={event => props.howoutChange(props.availableHowouts[Number(event.target.value)])}
             >
                 <MenuItem value={-1}>Select...</MenuItem>
                 {props.availableHowouts.map((howout, idx) => (
-                    <MenuItem key={idx} value={idx}>{description(howout)}</MenuItem>))}
+                    <MenuItem key={idx} value={idx}>
+                        {description(howout)}
+                    </MenuItem>
+                ))}
             </Select>
         </FormControl>
-        {props.fielderRequired &&
+        {props.fielderRequired && (
             <FormControl fullWidth style={entryRowStyle}>
                 <InputLabel htmlFor="fielder">Fielder</InputLabel>
                 <Select
@@ -109,10 +119,14 @@ export default (props: EntryProps) => (
                 >
                     <MenuItem value={-1}>Select...</MenuItem>
                     {props.fielders.map((fielder, idx) => (
-                        <MenuItem key={idx} value={idx}>{fielder}</MenuItem>))}
+                        <MenuItem key={idx} value={idx}>
+                            {fielder}
+                        </MenuItem>
+                    ))}
                 </Select>
-            </FormControl>}
-        {props.couldCross &&
+            </FormControl>
+        )}
+        {props.couldCross && (
             <FormControlLabel
                 style={entryRowStyle}
                 label="Batters crossed"
@@ -121,9 +135,11 @@ export default (props: EntryProps) => (
                         checked={props.crossed}
                         color="primary"
                         onChange={ev => props.crossedChange(ev.target.checked)}
-                    />}
-            />}
-        {props.couldScoreRuns &&
+                    />
+                }
+            />
+        )}
+        {props.couldScoreRuns && (
             <>
                 <FormControl fullWidth style={entryRowStyle}>
                     <InputLabel htmlFor="runs">Runs</InputLabel>
@@ -149,8 +165,9 @@ export default (props: EntryProps) => (
                         changed={scoreChange(props.scores, props.scoresChange)}
                     />
                 </FormControl>
-            </>}
-        {props.couldBeNoBall &&
+            </>
+        )}
+        {props.couldBeNoBall && (
             <FormControlLabel
                 style={entryRowStyle}
                 label="No ball"
@@ -158,11 +175,16 @@ export default (props: EntryProps) => (
                     <Switch
                         checked={props.deliveryOutcome === DeliveryOutcome.Noball}
                         color="primary"
-                        onChange={ev => props.deliveryOutcomeChange(
-                            ev.target.checked ? DeliveryOutcome.Noball : DeliveryOutcome.Valid)}
-                    />}
-            />}
-        {props.couldBeWide &&
+                        onChange={ev =>
+                            props.deliveryOutcomeChange(
+                                ev.target.checked ? DeliveryOutcome.Noball : DeliveryOutcome.Valid,
+                            )
+                        }
+                    />
+                }
+            />
+        )}
+        {props.couldBeWide && (
             <FormControlLabel
                 style={entryRowStyle}
                 label="Wide"
@@ -170,8 +192,14 @@ export default (props: EntryProps) => (
                     <Switch
                         checked={props.deliveryOutcome === DeliveryOutcome.Wide}
                         color="primary"
-                        onChange={ev => props.deliveryOutcomeChange(
-                            ev.target.checked ? DeliveryOutcome.Wide : DeliveryOutcome.Valid)}
-                    />}
-            />}
-    </Grid>);
+                        onChange={ev =>
+                            props.deliveryOutcomeChange(
+                                ev.target.checked ? DeliveryOutcome.Wide : DeliveryOutcome.Valid,
+                            )
+                        }
+                    />
+                }
+            />
+        )}
+    </Grid>
+);

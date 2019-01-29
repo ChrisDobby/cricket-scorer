@@ -18,7 +18,11 @@ export default ({ completeOver }: OverCompleteAlertProps) => (
         <SnackbarContent
             style={{ backgroundColor: amber[700] }}
             message={'The current over should now be complete'}
-            action={<Button size="small" color="secondary" onClick={completeOver}>Complete it now</Button>}
+            action={
+                <Button size="small" color="secondary" onClick={completeOver}>
+                    Complete it now
+                </Button>
+            }
         />
     </Snackbar>
 );

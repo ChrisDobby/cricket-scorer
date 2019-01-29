@@ -7,27 +7,28 @@ const complete = () => {
 
     const status = (match: Match, matchResult: MatchResult): [MatchResult, string] => {
         const winByText = () => {
-            if (typeof matchResult.winBy === 'undefined') { return ''; }
+            if (typeof matchResult.winBy === 'undefined') {
+                return '';
+            }
             return matchResult.winBy === WinBy.Runs ? 'runs' : 'wickets';
         };
 
-        const winText = (name: string) =>
-            `${name} won by ${matchResult.winMargin} ${winByText()}`;
+        const winText = (name: string) => `${name} won by ${matchResult.winMargin} ${winByText()}`;
 
         const statusText = () => {
             switch (matchResult.result) {
-            case Result.Abandoned:
-                return 'Match abandoned';
-            case Result.Draw:
-                return 'Match drawn';
-            case Result.Tie:
-                return 'Match tied';
-            case Result.HomeWin:
-                return winText(match.homeTeam.name);
-            case Result.AwayWin:
-                return winText(match.awayTeam.name);
-            default:
-                return '';
+                case Result.Abandoned:
+                    return 'Match abandoned';
+                case Result.Draw:
+                    return 'Match drawn';
+                case Result.Tie:
+                    return 'Match tied';
+                case Result.HomeWin:
+                    return winText(match.homeTeam.name);
+                case Result.AwayWin:
+                    return winText(match.awayTeam.name);
+                default:
+                    return '';
             }
         };
 

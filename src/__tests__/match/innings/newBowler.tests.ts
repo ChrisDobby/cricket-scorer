@@ -23,15 +23,17 @@ describe('newBowler', () => {
     it('should just set current bowler index if the new bowler has already bowled', () => {
         const inningsWithBowlers = {
             ...matches.startedInnings,
-            bowlers: [{
-                playerIndex: 10,
-                name: matches.matchWithStartedInnings.awayTeam.players[10],
-                completedOvers: 10,
-                totalOvers: '10',
-                maidenOvers: 1,
-                runs: 34,
-                wickets: 2,
-            }],
+            bowlers: [
+                {
+                    playerIndex: 10,
+                    name: matches.matchWithStartedInnings.awayTeam.players[10],
+                    completedOvers: 10,
+                    totalOvers: '10',
+                    maidenOvers: 1,
+                    runs: 34,
+                    wickets: 2,
+                },
+            ],
         };
 
         const [innings, bowlerIndex] = NewBowler(inningsWithBowlers, 10);

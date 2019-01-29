@@ -8,7 +8,9 @@ import PageProvider from './context/PageProvider';
 import globalPubsub from './globalPubsub';
 import connectedFetch from './connectedFetch';
 
-if (process.env.NODE_ENV === 'production') { registerServiceWorker(); }
+if (process.env.NODE_ENV === 'production') {
+    registerServiceWorker();
+}
 
 window['subscriptions'] = globalPubsub();
 connectedFetch();

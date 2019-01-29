@@ -17,10 +17,7 @@ export default (props: UpdateOversProps) => {
 
     return (
         <div>
-            <Dialog
-                open={true}
-                aria-labelledby="update-innings-overs-title"
-            >
+            <Dialog open={true} aria-labelledby="update-innings-overs-title">
                 <DialogTitle id="update-innings-overs-title">Update overs for innings</DialogTitle>
                 <DialogContent>
                     <TextField
@@ -32,14 +29,14 @@ export default (props: UpdateOversProps) => {
                     />
                 </DialogContent>
                 <DialogActions>
-                    <Button
-                        onClick={() => props.update(overs)}
-                        color="primary"
-                        autoFocus
-                    >OK
+                    <Button onClick={() => props.update(overs)} color="primary" autoFocus>
+                        OK
                     </Button>
-                    <Button onClick={props.cancel} color="primary">Cancel</Button>
+                    <Button onClick={props.cancel} color="primary">
+                        Cancel
+                    </Button>
                 </DialogActions>
             </Dialog>
-        </div>);
+        </div>
+    );
 };

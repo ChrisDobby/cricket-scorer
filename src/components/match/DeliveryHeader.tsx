@@ -17,12 +17,10 @@ interface DeliveryHeaderProps {
 
 const DeliveryHeader = ({ batter, bowler, classes }: DeliveryHeaderProps) => (
     <Grid container className={classes.header}>
-        <Typography
-            style={headerTextStyle}
-            color="inherit"
-            variant="h5"
-        >{`${bowler.name} to ${batter.name}`}
+        <Typography style={headerTextStyle} color="inherit" variant="h5">
+            {`${bowler.name} to ${batter.name}`}
         </Typography>
-    </Grid>);
+    </Grid>
+);
 
 export default withStyles(globalStyles.themedStyles)(DeliveryHeader);

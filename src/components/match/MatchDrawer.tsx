@@ -36,13 +36,7 @@ export default withStyles(themedStyles)((props: MatchDrawerProps) => (
         <div role="button" onClick={close} onMouseDown={close}>
             <List>
                 {props.options.map(option => (
-                    <ListItem
-                        key={option.text}
-                        button
-                        dense
-                        color="primary"
-                        onClick={option.action}
-                    >
+                    <ListItem key={option.text} button dense color="primary" onClick={option.action}>
                         <ListItemIcon>{option.icon}</ListItemIcon>
                         <ListItemText primary={option.text} />
                     </ListItem>
@@ -50,14 +44,10 @@ export default withStyles(themedStyles)((props: MatchDrawerProps) => (
             </List>
             <Divider />
             <List>
-                <ListItem
-                    button
-                    dense
-                    color="primary"
-                    onClick={() => props.history.push('/matchcentre')}
-                >
+                <ListItem button dense color="primary" onClick={() => props.history.push('/matchcentre')}>
                     <ListItemText primary="Match centre" />
                 </ListItem>
             </List>
         </div>
-    </Drawer>));
+    </Drawer>
+));

@@ -36,4 +36,5 @@ export default ({ battingTeam, innings, batter, bowler, currentOver }: CurrentSt
             </ExpansionPanel>
         </Hidden>
         <CurrentOver over={currentOver} />
-    </>);
+    </>
+);

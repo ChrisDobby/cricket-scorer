@@ -13,28 +13,23 @@ interface MatchOnlineWarningProps {
 
 export default ({ login, doNotLogin }: MatchOnlineWarningProps) => (
     <div>
-        <Dialog
-            open={true}
-            aria-labelledby="back-online-title"
-        >
+        <Dialog open={true} aria-labelledby="back-online-title">
             <DialogTitle id="back-online-title">Back online</DialogTitle>
             <DialogContent>
-                <DialogContentText>
-                    You are now connected to the internet and are able to login.
-                </DialogContentText>
+                <DialogContentText>You are now connected to the internet and are able to login.</DialogContentText>
                 <DialogContentText>
                     {'If you do not login you can continue to score the match however the score will not appear ' +
                         'on the live site and it is possible the match will get deleted if you create a new one.'}
                 </DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button
-                    onClick={login}
-                    color="primary"
-                    autoFocus
-                >Login
+                <Button onClick={login} color="primary" autoFocus>
+                    Login
                 </Button>
-                <Button onClick={doNotLogin} color="primary">Do not login</Button>
+                <Button onClick={doNotLogin} color="primary">
+                    Do not login
+                </Button>
             </DialogActions>
         </Dialog>
-    </div>);
+    </div>
+);

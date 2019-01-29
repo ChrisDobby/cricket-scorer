@@ -31,22 +31,30 @@ const auth0 = (domain: string, clientId: string) => {
 
     const isAuthenticated = () => {
         const storageExpiresAt = localStorage.getItem(expiresAtKey);
-        if (!storageExpiresAt) { return false; }
+        if (!storageExpiresAt) {
+            return false;
+        }
         const expiresAt = JSON.parse(storageExpiresAt);
         return new Date().getTime() < expiresAt;
     };
 
     const userProfile = (): Profile | undefined => {
-        if (!isAuthenticated()) { return undefined; }
+        if (!isAuthenticated()) {
+            return undefined;
+        }
         const userProfile = localStorage.getItem(profileKey);
-        if (!userProfile) { return undefined; }
+        if (!userProfile) {
+            return undefined;
+        }
         return JSON.parse(userProfile);
     };
 
     const handleAuthentication = (location: Location, afterComplete: (path: string | null) => void) => {
         const setSession = (hash: Auth0DecodedHash) => {
-            if (!hash.expiresIn || !hash.accessToken || !hash.idToken) { return; }
-            const expiresAt = JSON.stringify((hash.expiresIn * 1000) + new Date().getTime());
+            if (!hash.expiresIn || !hash.accessToken || !hash.idToken) {
+                return;
+            }
+            const expiresAt = JSON.stringify(hash.expiresIn * 1000 + new Date().getTime());
 
             localStorage.setItem(accessTokenKey, hash.accessToken);
             localStorage.setItem(idTokenKey, hash.idToken);
@@ -55,11 +63,12 @@ const auth0 = (domain: string, clientId: string) => {
                 profileKey,
                 hash.idTokenPayload
                     ? JSON.stringify({
-                        id: hash.idTokenPayload.sub,
-                        name: hash.idTokenPayload.name,
-                        picture: hash.idTokenPayload.picture,
-                    })
-                    : '');
+                          id: hash.idTokenPayload.sub,
+                          name: hash.idTokenPayload.name,
+                          picture: hash.idTokenPayload.picture,
+                      })
+                    : '',
+            );
         };
 
         const handleAuthentication = () => {
@@ -81,10 +90,10 @@ const auth0 = (domain: string, clientId: string) => {
     };
 
     const addBearerToken = (headers: any) => {
-        return ({
+        return {
             ...headers,
             Authorization: `Bearer ${localStorage.getItem(idTokenKey)}`,
-        });
+        };
     };
 
     return {

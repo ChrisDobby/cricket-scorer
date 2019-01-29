@@ -6,17 +6,19 @@ import { DeliveryOutcome, EventType } from '../../../../domain';
 describe('CurrentOver', () => {
     beforeEach(cleanup);
     const over = {
-        deliveries: [{
-            time: (new Date()).getTime(),
-            type: EventType.Delivery,
-            bowlerIndex: 0,
-            batsmanIndex: 0,
-            overNumber: 1,
-            outcome: {
-                deliveryOutcome: DeliveryOutcome.Valid,
-                scores: {},
+        deliveries: [
+            {
+                time: new Date().getTime(),
+                type: EventType.Delivery,
+                bowlerIndex: 0,
+                batsmanIndex: 0,
+                overNumber: 1,
+                outcome: {
+                    deliveryOutcome: DeliveryOutcome.Valid,
+                    scores: {},
+                },
             },
-        }],
+        ],
         bowlingRuns: 3,
         wickets: 0,
     };

@@ -44,11 +44,13 @@ describe('rebuild', () => {
                         sixes: 0,
                     },
                 },
-            ].concat(matches.inningsWithStartedOver.batting.batters.slice(2).map(batter => ({
-                playerIndex: batter.playerIndex,
-                name: batter.name,
-                innings: undefined,
-            }))),
+            ].concat(
+                matches.inningsWithStartedOver.batting.batters.slice(2).map(batter => ({
+                    playerIndex: batter.playerIndex,
+                    name: batter.name,
+                    innings: undefined,
+                })),
+            ),
         },
         bowlers: matches.inningsWithStartedOver.bowlers.map(bowler => ({
             playerIndex: bowler.playerIndex,
@@ -77,7 +79,7 @@ describe('rebuild', () => {
 
     it('should add delivery events', () => {
         const delivery1 = {
-            time: (new Date()).getTime(),
+            time: new Date().getTime(),
             type: domain.EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
@@ -85,7 +87,7 @@ describe('rebuild', () => {
             outcome: { scores: { runs: 2 }, deliveryOutcome: domain.DeliveryOutcome.Valid },
         };
         const delivery2 = {
-            time: (new Date()).getTime(),
+            time: new Date().getTime(),
             type: domain.EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
@@ -121,7 +123,7 @@ describe('rebuild', () => {
 
     it('should add non delivery wicket events', () => {
         const nonWicket = {
-            time: (new Date()).getTime(),
+            time: new Date().getTime(),
             type: domain.EventType.NonDeliveryWicket,
             batsmanIndex: 0,
             out: domain.Howout.TimedOut,
@@ -143,7 +145,7 @@ describe('rebuild', () => {
 
     it('should add batter unavailable events', () => {
         const unavailable = {
-            time: (new Date()).getTime(),
+            time: new Date().getTime(),
             type: domain.EventType.BatterUnavailable,
             batsmanIndex: 0,
             reason: domain.UnavailableReason.Absent,
@@ -165,7 +167,7 @@ describe('rebuild', () => {
 
     it('should do nothing for an unknown event', () => {
         const unknown = {
-            time: (new Date()).getTime(),
+            time: new Date().getTime(),
             type: 99999,
         };
 
@@ -178,7 +180,7 @@ describe('rebuild', () => {
 
     it('should create a new innings if the specified batter has no innings', () => {
         const deliveryToNumber3 = {
-            time: (new Date()).getTime(),
+            time: new Date().getTime(),
             type: domain.EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 2,
@@ -193,15 +195,16 @@ describe('rebuild', () => {
                     idx !== 2
                         ? batter
                         : {
-                            ...batter,
-                            innings: {
-                                runs: 0,
-                                timeIn: deliveryToNumber3.time,
-                                ballsFaced: 0,
-                                fours: 0,
-                                sixes: 0,
-                            },
-                        }),
+                              ...batter,
+                              innings: {
+                                  runs: 0,
+                                  timeIn: deliveryToNumber3.time,
+                                  ballsFaced: 0,
+                                  fours: 0,
+                                  sixes: 0,
+                              },
+                          },
+                ),
             },
         };
 
@@ -220,7 +223,7 @@ describe('rebuild', () => {
 
     it('should update the completed overs if the delivery is for the next over', () => {
         const deliveryForOver2 = {
-            time: (new Date()).getTime(),
+            time: new Date().getTime(),
             type: domain.EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,

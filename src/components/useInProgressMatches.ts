@@ -65,7 +65,21 @@ export default (
     const sortedMatches = (matches: (PersistedMatch | CurrentEditingMatch)[]) =>
         typeof userProfile === 'undefined' ? matches : sortMatches(matches, userProfile.id);
 
-    const updateMatches = (updates: Update[]) =>
+    const updateMatches = (updates: Update[]) => {
+        console.log(updates);
+        console.log(inProgressMatches);
+        const x = inProgressMatches.map(match => {
+            const updated = updates.find((update: Update) => update.id === match.id);
+            return typeof updated === 'undefined'
+                ? match
+                : {
+                      ...match,
+                      status: updated.status,
+                      lastEvent: updated.lastEvent,
+                  };
+        });
+        console.log(x);
+
         setInProgressMatches(
             inProgressMatches.map(match => {
                 const updated = updates.find((update: Update) => update.id === match.id);
@@ -78,11 +92,12 @@ export default (
                       };
             }),
         );
+    };
 
     const addMatch = (match: PersistedMatch) => setInProgressMatches([...inProgressMatches, match]);
 
-    const subscribeToMatches = () => {
-        disconnect = updates(() => inProgressMatches.map(match => match.id || '').filter(id => id !== ''), [
+    const subscribeToMatches = (matches: PersistedMatch[]) => {
+        disconnect = updates(() => matches.map(match => match.id), [
             { event: EventType.MatchUpdates, action: updateMatches },
             { event: EventType.NewMatch, action: addMatch, resubscribe: true },
         ]);
@@ -130,7 +145,7 @@ export default (
             const inProgressMatches = await MatchApi.getInProgressMatches();
             setInProgressMatches(sortedMatches(addExtraMatches(inProgressMatches)));
             setLoadingMatches(false);
-            subscribeToMatches();
+            subscribeToMatches(inProgressMatches);
         } catch (e) {
             setInProgressMatches(sortedMatches(addExtraMatches([], true)));
             setLoadingMatches(false);
@@ -144,23 +159,20 @@ export default (
         }
     };
 
-    React.useEffect(
-        () => {
-            if (status === ONLINE) {
-                getMatches();
-            } else {
-                setInProgressMatches(sortedMatches(addExtraMatches([], true)));
-                setRetry();
-            }
+    React.useEffect(() => {
+        if (status === ONLINE) {
+            getMatches();
+        } else {
+            setInProgressMatches(sortedMatches(addExtraMatches([], true)));
+            setRetry();
+        }
 
-            return () => {
-                if (typeof disconnect !== 'undefined') {
-                    disconnect();
-                }
-            };
-        },
-        [status],
-    );
+        return () => {
+            if (typeof disconnect !== 'undefined') {
+                disconnect();
+            }
+        };
+    }, [status]);
 
     return [inProgressMatches, loadingMatches, removeMatch];
 };

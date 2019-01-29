@@ -19,10 +19,7 @@ export default (props: VerifyCompleteInningsProps) => {
 
     return (
         <div>
-            <Dialog
-                open={true}
-                aria-labelledby="complete-innings-title"
-            >
+            <Dialog open={true} aria-labelledby="complete-innings-title">
                 <DialogTitle id="complete-innings-title">Complete innings</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
@@ -38,14 +35,14 @@ export default (props: VerifyCompleteInningsProps) => {
                     </Select>
                 </DialogContent>
                 <DialogActions>
-                    <Button
-                        onClick={() => props.complete(status)}
-                        color="primary"
-                        autoFocus
-                    >OK
+                    <Button onClick={() => props.complete(status)} color="primary" autoFocus>
+                        OK
                     </Button>
-                    <Button onClick={props.cancel} color="primary">Cancel</Button>
+                    <Button onClick={props.cancel} color="primary">
+                        Cancel
+                    </Button>
                 </DialogActions>
             </Dialog>
-        </div>);
+        </div>
+    );
 };

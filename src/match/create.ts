@@ -1,17 +1,17 @@
 import { MatchType, Match } from '../domain';
 
 type MatchData = {
-    username: string,
-    matchType: MatchType,
-    oversPerSide?: number,
-    playersPerSide: number,
-    inningsPerSide: number,
-    runsPerNoBall: number,
-    runsPerWide: number,
-    homeTeam: string,
-    awayTeam: string,
-    homePlayers: string[],
-    awayPlayers: string[],
+    username: string;
+    matchType: MatchType;
+    oversPerSide?: number;
+    playersPerSide: number;
+    inningsPerSide: number;
+    runsPerNoBall: number;
+    runsPerWide: number;
+    homeTeam: string;
+    awayTeam: string;
+    homePlayers: string[];
+    awayPlayers: string[];
 };
 
 export default (matchData: MatchData): Match => ({
@@ -32,7 +32,7 @@ export default (matchData: MatchData): Match => ({
         name: matchData.awayTeam,
         players: [...matchData.awayPlayers],
     },
-    date: (new Date()).toISOString(),
+    date: new Date().toISOString(),
     complete: false,
     status: '',
     innings: [],

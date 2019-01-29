@@ -16,35 +16,30 @@ interface InningsCompleteProps {
 
 const completeText = (state: InningsStatus, battingTeam: string) => {
     switch (state) {
-    case InningsStatus.AllOut:
-        return `${battingTeam} have been bowled out`;
-    case InningsStatus.OversComplete:
-        return 'The overs are complete';
-    default:
-        return '';
+        case InningsStatus.AllOut:
+            return `${battingTeam} have been bowled out`;
+        case InningsStatus.OversComplete:
+            return 'The overs are complete';
+        default:
+            return '';
     }
 };
 
 export default ({ status, battingTeam, complete, undoPrevious }: InningsCompleteProps) => (
     <div>
-        <Dialog
-            open={true}
-            aria-labelledby="innings-complete-title"
-        >
+        <Dialog open={true} aria-labelledby="innings-complete-title">
             <DialogTitle id="innings-complete-title">Innings complete</DialogTitle>
             <DialogContent>
-                <DialogContentText>
-                    {completeText(status, battingTeam)}
-                </DialogContentText>
+                <DialogContentText>{completeText(status, battingTeam)}</DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button
-                    onClick={complete}
-                    color="primary"
-                    autoFocus
-                >OK
+                <Button onClick={complete} color="primary" autoFocus>
+                    OK
                 </Button>
-                <Button onClick={undoPrevious} color="primary">Undo previous</Button>
+                <Button onClick={undoPrevious} color="primary">
+                    Undo previous
+                </Button>
             </DialogActions>
         </Dialog>
-    </div>);
+    </div>
+);

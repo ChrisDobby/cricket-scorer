@@ -126,11 +126,11 @@ export default (Component: any) => (props: WithMatchDrawerProps) => {
                 options={items.filter(i => i.allowed)}
                 history={props.history}
             />
-            {overNotCompleteWarning &&
-                <OverNotCompleteWarning yes={warningYes} no={warningNo} />}
-            {inningsCompleteVerify &&
-                <VerifyCompleteInnings complete={completeInnings} cancel={cancelCompleteInnings} />}
-            {matchCompleteVerify &&
+            {overNotCompleteWarning && <OverNotCompleteWarning yes={warningYes} no={warningNo} />}
+            {inningsCompleteVerify && (
+                <VerifyCompleteInnings complete={completeInnings} cancel={cancelCompleteInnings} />
+            )}
+            {matchCompleteVerify && (
                 <CompleteMatch
                     homeTeam={props.inProgressMatchStore.match.homeTeam.name}
                     awayTeam={props.inProgressMatchStore.match.awayTeam.name}
@@ -138,14 +138,17 @@ export default (Component: any) => (props: WithMatchDrawerProps) => {
                     cancel={cancelCompleteMatch}
                     calculateResult={() => calculateResult(props.inProgressMatchStore.match)}
                     undoPrevious={props.undoPreviousDelivery}
-                />}
+                />
+            )}
             {changeOvers &&
                 typeof props.inProgressMatchStore.currentInnings !== 'undefined' &&
-                typeof props.inProgressMatchStore.currentInnings.maximumOvers !== 'undefined' &&
-                <UpdateOvers
-                    update={updateOvers}
-                    cancel={cancelChangeOvers}
-                    overs={props.inProgressMatchStore.currentInnings.maximumOvers}
-                />}
-        </>);
+                typeof props.inProgressMatchStore.currentInnings.maximumOvers !== 'undefined' && (
+                    <UpdateOvers
+                        update={updateOvers}
+                        cancel={cancelChangeOvers}
+                        overs={props.inProgressMatchStore.currentInnings.maximumOvers}
+                    />
+                )}
+        </>
+    );
 };

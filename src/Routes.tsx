@@ -20,16 +20,12 @@ const EditEvents = React.lazy(() => import('./containers/match/EditEvents'));
 const Wicket = React.lazy(() => import('./containers/match/Wicket'));
 const InProgress = React.lazy(() => import('./containers/match/InProgress'));
 
-const Routes = ({ location, history }: { location: any, history: History }) => (
+const Routes = ({ location, history }: { location: any; history: History }) => (
     <div style={{ userSelect: 'none' }}>
         <CssBaseline />
         <NavBar location={location} history={history}>
             <TransitionGroup className="transition-group">
-                <CSSTransition
-                    key={location.key}
-                    timeout={{ enter: 300, exit: 300 }}
-                    classNames={'fade'}
-                >
+                <CSSTransition key={location.key} timeout={{ enter: 300, exit: 300 }} classNames={'fade'}>
                     <section className="route-section">
                         <React.Suspense fallback={<div />}>
                             <Switch location={location}>
@@ -45,8 +41,9 @@ const Routes = ({ location, history }: { location: any, history: History }) => (
                                 <Route
                                     exact
                                     path="/scorecard/:id?"
-                                    component={WithAuth((props: any) =>
-                                        <Scorecard {...props} id={props.match.params.id} />)}
+                                    component={WithAuth((props: any) => (
+                                        <Scorecard {...props} id={props.match.params.id} />
+                                    ))}
                                 />
                                 <Route exact path="/matchcentre" component={WithAuth(MatchCentre)} />
                             </Switch>

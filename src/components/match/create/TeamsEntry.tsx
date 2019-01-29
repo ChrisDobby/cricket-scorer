@@ -51,4 +51,5 @@ export default ({ homeTeam, awayTeam, homePlayers, awayPlayers, teamChanged, pla
                 />
             ))}
         </Grid>
-    </Grid>);
+    </Grid>
+);

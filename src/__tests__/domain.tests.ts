@@ -10,7 +10,7 @@ describe('domain', () => {
 
         it('should return bowled description for wicket out bowled', () => {
             const description = domain.howOutDescription({
-                time: (new Date()).getTime(),
+                time: new Date().getTime(),
                 howOut: domain.Howout.Bowled,
                 bowler: 'A bowler',
             });
@@ -20,7 +20,7 @@ describe('domain', () => {
 
         it('should return lbw description for wicket out lbw', () => {
             const description = domain.howOutDescription({
-                time: (new Date()).getTime(),
+                time: new Date().getTime(),
                 howOut: domain.Howout.Lbw,
                 bowler: 'A bowler',
             });
@@ -30,7 +30,7 @@ describe('domain', () => {
 
         it('should return caught description for wicket out caught', () => {
             const description = domain.howOutDescription({
-                time: (new Date()).getTime(),
+                time: new Date().getTime(),
                 howOut: domain.Howout.Caught,
                 bowler: 'A bowler',
                 fielder: 'A fielder',
@@ -41,7 +41,7 @@ describe('domain', () => {
 
         it('should return caught & bowled description for wicket out caught & bowled', () => {
             const description = domain.howOutDescription({
-                time: (new Date()).getTime(),
+                time: new Date().getTime(),
                 howOut: domain.Howout.Caught,
                 bowler: 'A bowler',
                 fielder: 'A bowler',
@@ -52,7 +52,7 @@ describe('domain', () => {
 
         it('should return run out description for wicket out run out', () => {
             const description = domain.howOutDescription({
-                time: (new Date()).getTime(),
+                time: new Date().getTime(),
                 howOut: domain.Howout.RunOut,
                 bowler: 'A bowler',
             });
@@ -62,7 +62,7 @@ describe('domain', () => {
 
         it('should include fielder in run out description if one specified', () => {
             const description = domain.howOutDescription({
-                time: (new Date()).getTime(),
+                time: new Date().getTime(),
                 howOut: domain.Howout.RunOut,
                 bowler: 'A bowler',
                 fielder: 'A fielder',
@@ -73,7 +73,7 @@ describe('domain', () => {
 
         it('should return stumped description for wicket out stumped', () => {
             const description = domain.howOutDescription({
-                time: (new Date()).getTime(),
+                time: new Date().getTime(),
                 howOut: domain.Howout.Stumped,
                 bowler: 'A bowler',
                 fielder: 'A keeper',
@@ -84,7 +84,7 @@ describe('domain', () => {
 
         it('should return timed out description for batter timed out', () => {
             const description = domain.howOutDescription({
-                time: (new Date()).getTime(),
+                time: new Date().getTime(),
                 howOut: domain.Howout.TimedOut,
             });
 
@@ -93,7 +93,7 @@ describe('domain', () => {
 
         it('should return obstruction description for wicket out obstructing the field', () => {
             const description = domain.howOutDescription({
-                time: (new Date()).getTime(),
+                time: new Date().getTime(),
                 howOut: domain.Howout.ObstructingField,
             });
 
@@ -102,7 +102,7 @@ describe('domain', () => {
 
         it('should return handled description for wicket out handled the ball', () => {
             const description = domain.howOutDescription({
-                time: (new Date()).getTime(),
+                time: new Date().getTime(),
                 howOut: domain.Howout.HandledBall,
             });
 
@@ -111,7 +111,7 @@ describe('domain', () => {
 
         it('should return hit wicket description for wicket out hit wicket', () => {
             const description = domain.howOutDescription({
-                time: (new Date()).getTime(),
+                time: new Date().getTime(),
                 howOut: domain.Howout.HitWicket,
                 bowler: 'A bowler',
             });
@@ -150,7 +150,7 @@ describe('domain', () => {
         it('should include decimal for not full overs', () => {
             const description = domain.oversDescription(6, [
                 {
-                    time: (new Date()).getTime(),
+                    time: new Date().getTime(),
                     type: domain.EventType.Delivery,
                     bowlerIndex: 0,
                     batsmanIndex: 0,
@@ -158,7 +158,7 @@ describe('domain', () => {
                     outcome: { scores: {}, deliveryOutcome: domain.DeliveryOutcome.Valid },
                 },
                 {
-                    time: (new Date()).getTime(),
+                    time: new Date().getTime(),
                     type: domain.EventType.Delivery,
                     bowlerIndex: 0,
                     batsmanIndex: 0,
@@ -166,7 +166,7 @@ describe('domain', () => {
                     outcome: { scores: {}, deliveryOutcome: domain.DeliveryOutcome.Valid },
                 },
                 {
-                    time: (new Date()).getTime(),
+                    time: new Date().getTime(),
                     type: domain.EventType.Delivery,
                     bowlerIndex: 0,
                     batsmanIndex: 0,
@@ -181,7 +181,7 @@ describe('domain', () => {
         it('should not include no balls when calculating', () => {
             const description = domain.oversDescription(6, [
                 {
-                    time: (new Date()).getTime(),
+                    time: new Date().getTime(),
                     type: domain.EventType.Delivery,
                     bowlerIndex: 0,
                     batsmanIndex: 0,
@@ -189,7 +189,7 @@ describe('domain', () => {
                     outcome: { scores: {}, deliveryOutcome: domain.DeliveryOutcome.Valid },
                 },
                 {
-                    time: (new Date()).getTime(),
+                    time: new Date().getTime(),
                     type: domain.EventType.Delivery,
                     bowlerIndex: 0,
                     batsmanIndex: 0,
@@ -197,7 +197,7 @@ describe('domain', () => {
                     outcome: { scores: {}, deliveryOutcome: domain.DeliveryOutcome.Noball },
                 },
                 {
-                    time: (new Date()).getTime(),
+                    time: new Date().getTime(),
                     type: domain.EventType.Delivery,
                     bowlerIndex: 0,
                     batsmanIndex: 0,
@@ -212,7 +212,7 @@ describe('domain', () => {
         it('should not include no wides when calculating', () => {
             const description = domain.oversDescription(6, [
                 {
-                    time: (new Date()).getTime(),
+                    time: new Date().getTime(),
                     type: domain.EventType.Delivery,
                     bowlerIndex: 0,
                     batsmanIndex: 0,
@@ -220,7 +220,7 @@ describe('domain', () => {
                     outcome: { scores: {}, deliveryOutcome: domain.DeliveryOutcome.Valid },
                 },
                 {
-                    time: (new Date()).getTime(),
+                    time: new Date().getTime(),
                     type: domain.EventType.Delivery,
                     bowlerIndex: 0,
                     batsmanIndex: 0,
@@ -228,7 +228,7 @@ describe('domain', () => {
                     outcome: { scores: {}, deliveryOutcome: domain.DeliveryOutcome.Wide },
                 },
                 {
-                    time: (new Date()).getTime(),
+                    time: new Date().getTime(),
                     type: domain.EventType.Delivery,
                     bowlerIndex: 0,
                     batsmanIndex: 0,
@@ -299,9 +299,12 @@ describe('domain', () => {
             const fieldersRequired = Object.keys(domain.Howout)
                 .filter(key => !isNaN(Number(domain.Howout[key])))
                 .map(key => domain.Howout[key])
-                .filter(howout => howout !== domain.Howout.Caught &&
-                    howout !== domain.Howout.Stumped &&
-                    howout !== domain.Howout.RunOut)
+                .filter(
+                    howout =>
+                        howout !== domain.Howout.Caught &&
+                        howout !== domain.Howout.Stumped &&
+                        howout !== domain.Howout.RunOut,
+                )
                 .map(howout => domain.howoutRequiresFielder(howout));
 
             expect(fieldersRequired.every(req => req === false)).toBeTruthy();
@@ -325,8 +328,7 @@ describe('domain', () => {
             const couldCross = Object.keys(domain.Howout)
                 .filter(key => !isNaN(Number(domain.Howout[key])))
                 .map(key => domain.Howout[key])
-                .filter(howout => howout !== domain.Howout.Caught &&
-                    howout !== domain.Howout.RunOut)
+                .filter(howout => howout !== domain.Howout.Caught && howout !== domain.Howout.RunOut)
                 .map(howout => domain.howoutBattersCouldCross(howout));
 
             expect(couldCross.every(cross => cross === false)).toBeTruthy();
@@ -356,9 +358,12 @@ describe('domain', () => {
             const couldScoreRuns = Object.keys(domain.Howout)
                 .filter(key => !isNaN(Number(domain.Howout[key])))
                 .map(key => domain.Howout[key])
-                .filter(howout => howout !== domain.Howout.Caught &&
-                    howout !== domain.Howout.RunOut &&
-                    howout !== domain.Howout.ObstructingField)
+                .filter(
+                    howout =>
+                        howout !== domain.Howout.Caught &&
+                        howout !== domain.Howout.RunOut &&
+                        howout !== domain.Howout.ObstructingField,
+                )
                 .map(howout => domain.howoutCouldScoreRuns(howout));
 
             expect(couldScoreRuns.every(runs => runs === false)).toBeTruthy();
@@ -370,8 +375,7 @@ describe('domain', () => {
             const couldBeNoBall = Object.keys(domain.Howout)
                 .filter(key => !isNaN(Number(domain.Howout[key])))
                 .map(key => domain.Howout[key])
-                .filter(howout => howout !== domain.Howout.RunOut &&
-                    howout !== domain.Howout.ObstructingField)
+                .filter(howout => howout !== domain.Howout.RunOut && howout !== domain.Howout.ObstructingField)
                 .map(howout => domain.howoutCouldBeNoBall(howout));
 
             expect(couldBeNoBall.every(noBall => noBall === false)).toBeTruthy();
@@ -395,9 +399,12 @@ describe('domain', () => {
             const couldBeWide = Object.keys(domain.Howout)
                 .filter(key => !isNaN(Number(domain.Howout[key])))
                 .map(key => domain.Howout[key])
-                .filter(howout => howout !== domain.Howout.RunOut &&
-                    howout !== domain.Howout.Stumped &&
-                    howout !== domain.Howout.ObstructingField)
+                .filter(
+                    howout =>
+                        howout !== domain.Howout.RunOut &&
+                        howout !== domain.Howout.Stumped &&
+                        howout !== domain.Howout.ObstructingField,
+                )
                 .map(howout => domain.howoutCouldBeWide(howout));
 
             expect(couldBeWide.every(wide => wide === false)).toBeTruthy();

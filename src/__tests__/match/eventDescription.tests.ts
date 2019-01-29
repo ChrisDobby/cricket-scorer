@@ -9,14 +9,16 @@ jest.mock('../../match/delivery', () => ({
 jest.mock('../../match/utilities', () => {
     const domain = require('../../domain');
     return {
-        latestOver: () => [{
-            time: (new Date()).getTime(),
-            type: domain.EventType.Delivery,
-            bowlerIndex: 0,
-            batsmanIndex: 0,
-            overNumber: 1,
-            outcome: { scores: { byes: 2 }, deliveryOutcome: domain.DeliveryOutcome.Valid },
-        }],
+        latestOver: () => [
+            {
+                time: new Date().getTime(),
+                type: domain.EventType.Delivery,
+                bowlerIndex: 0,
+                batsmanIndex: 0,
+                overNumber: 1,
+                outcome: { scores: { byes: 2 }, deliveryOutcome: domain.DeliveryOutcome.Valid },
+            },
+        ],
     };
 });
 
@@ -25,21 +27,17 @@ describe('eventDescription', () => {
     const batsmanName = matches.inningsWithStartedOver.batting.batters[0].name;
 
     it('should return description for delivery', () => {
-        const description = eventDescription(
-            matches.blankMatch,
-            matches.inningsWithStartedOver,
-            {
-                time: 0,
-                bowlerIndex: 0,
-                batsmanIndex: 0,
-                type: EventType.Delivery,
-                overNumber: 1,
-                outcome: {
-                    deliveryOutcome: DeliveryOutcome.Valid,
-                    scores: { runs: 0 },
-                },
-            } as Delivery,
-        );
+        const description = eventDescription(matches.blankMatch, matches.inningsWithStartedOver, {
+            time: 0,
+            bowlerIndex: 0,
+            batsmanIndex: 0,
+            type: EventType.Delivery,
+            overNumber: 1,
+            outcome: {
+                deliveryOutcome: DeliveryOutcome.Valid,
+                scores: { runs: 0 },
+            },
+        } as Delivery);
 
         expect(description).toBe(`0.1: ${bowlerName} to ${batsmanName} - delivery description`);
     });

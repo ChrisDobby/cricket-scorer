@@ -18,9 +18,7 @@ interface BowlingProps {
 
 const Bowling = ({ team, bowlers, classes }: BowlingProps) => (
     <Grid item lg={8} md={12} sm={12} xs={12}>
-        <Typography variant="h5">
-            {team} bowling
-        </Typography>
+        <Typography variant="h5">{team} bowling</Typography>
         <Grid container className={classes.header}>
             <Grid item xs={6} md={5} />
             <Grid item xs={2}>
@@ -72,6 +70,7 @@ const Bowling = ({ team, bowlers, classes }: BowlingProps) => (
                 </Grid>
             </React.Fragment>
         ))}
-    </Grid>);
+    </Grid>
+);
 
 export default withStyles(globalStyles.themedStyles)(Bowling);

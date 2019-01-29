@@ -77,12 +77,11 @@ export default withStyles(homePageStyles)((props: MatchCentreProps) => {
             <div className={props.classes.rootStyle}>
                 <div className={props.classes.toolbar} />
                 {loadingMatches && <Progress />}
-                {!loadingMatches &&
-                    inProgressMatches.length === 0 && (
-                        <Typography variant="h5" color="primary">
-                            There are no matches currently in progress
-                        </Typography>
-                    )}
+                {!loadingMatches && inProgressMatches.length === 0 && (
+                    <Typography variant="h5" color="primary">
+                        There are no matches currently in progress
+                    </Typography>
+                )}
                 {!loadingMatches && (
                     <Grid container spacing={40}>
                         {inProgressMatches.map((match: CurrentEditingMatch) => (

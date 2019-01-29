@@ -12,31 +12,28 @@ interface WithRequireAuthProps {
     location: Location;
 }
 
-export default (Component: any) => WithAuth((props: WithRequireAuthProps) => {
-    const isLoginRequired = () => props.status !== OFFLINE && !props.isAuthenticated;
-    const loginIfRequired = () => {
+export default (Component: any) =>
+    WithAuth((props: WithRequireAuthProps) => {
+        const isLoginRequired = () => props.status !== OFFLINE && !props.isAuthenticated;
+        const loginIfRequired = () => {
+            if (!props.login) {
+                return;
+            }
+
+            if (isLoginRequired()) {
+                props.login(props.location.pathname);
+            }
+        };
+
+        React.useEffect(loginIfRequired);
+
         if (!props.login) {
-            return;
+            return <div />;
         }
 
         if (isLoginRequired()) {
-            props.login(props.location.pathname);
+            return <div />;
         }
-    };
 
-    React.useEffect(loginIfRequired);
-
-    if (!props.login) {
-        return <div />;
-    }
-
-    if (isLoginRequired()) {
-        return <div />;
-    }
-
-    return (
-        <Component
-            {...props}
-            userProfile={!props.isAuthenticated ? props.offlineUser : props.userProfile}
-        />);
-});
+        return <Component {...props} userProfile={!props.isAuthenticated ? props.offlineUser : props.userProfile} />;
+    });

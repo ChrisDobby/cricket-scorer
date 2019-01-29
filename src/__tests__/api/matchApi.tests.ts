@@ -63,10 +63,7 @@ describe('matchApi', () => {
             };
             MatchApi.sendMatch(matchWithId);
 
-            expect(api.put).toHaveBeenCalledWith(
-                `${process.env.API_URL}/match/${matchId}`,
-                matchWithId,
-            );
+            expect(api.put).toHaveBeenCalledWith(`${process.env.API_URL}/match/${matchId}`, matchWithId);
         });
 
         it('should call post for a match with no id', () => {
@@ -76,10 +73,7 @@ describe('matchApi', () => {
             };
             MatchApi.sendMatch(matchWithId);
 
-            expect(api.post).toHaveBeenCalledWith(
-                `${process.env.API_URL}/match`,
-                matchWithId,
-            );
+            expect(api.post).toHaveBeenCalledWith(`${process.env.API_URL}/match`, matchWithId);
         });
     });
 });

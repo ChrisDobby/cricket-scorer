@@ -25,14 +25,10 @@ export default ({ message, onClose }: ErrorProps) => (
             style={errorStyle}
             message={message}
             action={[
-                <IconButton
-                    key="close"
-                    aria-label="Close"
-                    color="inherit"
-                    onClick={onClose}
-                >
+                <IconButton key="close" aria-label="Close" color="inherit" onClick={onClose}>
                     <Close />
                 </IconButton>,
             ]}
         />
-    </Snackbar>);
+    </Snackbar>
+);

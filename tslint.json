@@ -11,6 +11,7 @@
         "jsx-no-multiline-js": false,
         "jsx-boolean-value": false,
         "no-trailing-whitespace": [true, "ignore-comments"],
+        "jsx-curly-spacing": false,
 
         // This rule is here for now because of https://github.com/palantir/tslint-react/issues/120
         "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case"]

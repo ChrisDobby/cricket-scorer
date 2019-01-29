@@ -8,7 +8,7 @@ export default (match: domain.Match, innings: domain.Innings, event: domain.Even
         const batter = innings.batting.batters[delivery.batsmanIndex].name;
 
         if (wicket) {
-            return  `${batter} - ${domain.howOutDescription(wicket)}`;
+            return `${batter} - ${domain.howOutDescription(wicket)}`;
         }
 
         const id = `${innings.completedOvers}.${latestOver(innings.events, innings.completedOvers).length}`;
@@ -21,11 +21,11 @@ export default (match: domain.Match, innings: domain.Innings, event: domain.Even
     };
 
     switch (event.type) {
-    case domain.EventType.Delivery:
-        return deliveryDescription(event as domain.Delivery);
-    case domain.EventType.NonDeliveryWicket:
-        return nonDeliveryWicketDescription(event as domain.NonDeliveryWicket);
-    default:
-        return undefined;
+        case domain.EventType.Delivery:
+            return deliveryDescription(event as domain.Delivery);
+        case domain.EventType.NonDeliveryWicket:
+            return nonDeliveryWicketDescription(event as domain.NonDeliveryWicket);
+        default:
+            return undefined;
     }
 };

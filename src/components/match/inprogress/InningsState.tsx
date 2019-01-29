@@ -28,9 +28,10 @@ export default ({ battingTeam, innings, batter, bowler }: InningsStateProps) => 
         <Grid item xs={6}>
             <Typography variant="h5">{innings.totalOvers}</Typography>
         </Grid>
-        {innings.batting.batters.filter(batter => batter.innings &&
-            !batter.innings.wicket &&
-            typeof batter.unavailableReason === 'undefined')
+        {innings.batting.batters
+            .filter(
+                batter => batter.innings && !batter.innings.wicket && typeof batter.unavailableReason === 'undefined',
+            )
             .map((batter, idx) => ({
                 name: batter.name,
                 innings: batter.innings as BattingInnings,
@@ -43,18 +44,19 @@ export default ({ battingTeam, innings, batter, bowler }: InningsStateProps) => 
                     </Grid>
                     <Grid item xs={6}>
                         <Typography variant="h5">
-                            {`${currentBatter.innings.runs}` +
-                                `(${currentBatter.innings.ballsFaced})`}
+                            {`${currentBatter.innings.runs}` + `(${currentBatter.innings.ballsFaced})`}
                             {currentBatter.name === batter.name && <Star color="primary" />}
                         </Typography>
                     </Grid>
-                </React.Fragment>))}
+                </React.Fragment>
+            ))}
         <Grid item xs={6}>
             <Typography variant="h5">{bowler.name}</Typography>
         </Grid>
         <Grid item xs={6}>
-            <Typography variant="h5">{`${bowler.totalOvers}-` +
-                `${bowler.maidenOvers}-${bowler.runs}-${bowler.wickets}`}</Typography>
+            <Typography variant="h5">
+                {`${bowler.totalOvers}-` + `${bowler.maidenOvers}-${bowler.runs}-${bowler.wickets}`}
+            </Typography>
         </Grid>
         <Grid item xs={6}>
             <Typography variant="h5">Extras</Typography>
@@ -62,4 +64,5 @@ export default ({ battingTeam, innings, batter, bowler }: InningsStateProps) => 
         <Grid item xs={6}>
             <Typography variant="h5">{totalExtras(innings.batting.extras)}</Typography>
         </Grid>
-    </>);
+    </>
+);

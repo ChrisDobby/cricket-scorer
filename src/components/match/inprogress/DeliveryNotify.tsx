@@ -23,9 +23,6 @@ export default ({ outcome, onClose }: DeliveryNotifyProps) => (
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         autoHideDuration={3000}
     >
-        <SnackbarContent
-            style={notifyStyle}
-            message={notificationDescription(outcome)}
-        />
+        <SnackbarContent style={notifyStyle} message={notificationDescription(outcome)} />
     </Snackbar>
 );

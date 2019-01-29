@@ -31,9 +31,7 @@ export default (props: ScorecardProps) => {
     const [continueError, setContinueError] = React.useState(false);
 
     const canContinue = () =>
-        props.isAuthenticated &&
-        typeof match !== 'undefined' &&
-        props.matchUser(match) === props.userProfile.id;
+        props.isAuthenticated && typeof match !== 'undefined' && props.matchUser(match) === props.userProfile.id;
 
     const continueScoring = async () => {
         try {
@@ -46,7 +44,9 @@ export default (props: ScorecardProps) => {
     };
 
     const loadMatch = async () => {
-        if (!props.id) { return; }
+        if (!props.id) {
+            return;
+        }
         setLoading(true);
         setLoadError(false);
         try {
@@ -65,30 +65,26 @@ export default (props: ScorecardProps) => {
         setLastEvent(item.lastEvent);
     };
 
-    React.useEffect(
-        () => {
-            if (typeof props.id !== 'undefined') {
-                loadMatch();
-            } else {
-                const storedMatch = props.getStoredMatch();
-                if (storedMatch) {
-                    setMatch(storedMatch.match);
-                }
+    React.useEffect(() => {
+        if (typeof props.id !== 'undefined') {
+            loadMatch();
+        } else {
+            const storedMatch = props.getStoredMatch();
+            if (storedMatch) {
+                setMatch(storedMatch.match);
             }
+        }
 
-            const disconnect = props.updates(
-                () => props.id || [],
-                [
-                    { event: EventType.ScorecardUpdate, action: updateScorecard },
-                ]);
+        const disconnect = props.updates(() => props.id || [], [
+            { event: EventType.ScorecardUpdate, action: updateScorecard },
+        ]);
 
-            return () => {
-                if (typeof disconnect !== 'undefined') {
-                    disconnect();
-                }
-            };
-        },
-        []);
+        return () => {
+            if (typeof disconnect !== 'undefined') {
+                disconnect();
+            }
+        };
+    }, []);
 
     if (typeof match !== 'undefined') {
         return (
@@ -99,14 +95,16 @@ export default (props: ScorecardProps) => {
                     canContinue={canContinue()}
                     continue={continueScoring}
                 />
-                {continueError &&
+                {continueError && (
                     <div>
                         <Error
                             message="Error continuing game.  Please try again"
                             onClose={() => setContinueError(false)}
                         />
-                    </div>}
-            </>);
+                    </div>
+                )}
+            </>
+        );
     }
 
     if (loading) {
@@ -117,8 +115,13 @@ export default (props: ScorecardProps) => {
         return (
             <div>
                 <Error message="Error loading match. Refresh to try again." onClose={() => setLoadError(false)} />
-            </div>);
+            </div>
+        );
     }
 
-    return <div><Error message="No match found" onClose={() => { }} /></div>;
+    return (
+        <div>
+            <Error message="No match found" onClose={() => {}} />
+        </div>
+    );
 };

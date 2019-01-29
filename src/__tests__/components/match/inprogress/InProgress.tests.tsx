@@ -68,12 +68,9 @@ describe.skip('InProgress', () => {
     it('should render correctly for match that has not started', () => {
         const { container } = render(
             <StaticRouter context={{}}>
-                <InProgress
-                    inProgress={notStartedMatchProgress}
-                    storeMatch={storeMatch}
-                    userProfile={userProfile}
-                />
-            </StaticRouter>);
+                <InProgress inProgress={notStartedMatchProgress} storeMatch={storeMatch} userProfile={userProfile} />
+            </StaticRouter>,
+        );
 
         expect(container).toMatchSnapshot();
     });
@@ -86,7 +83,8 @@ describe.skip('InProgress', () => {
                     storeMatch={storeMatch}
                     userProfile={userProfile}
                 />
-            </StaticRouter>);
+            </StaticRouter>,
+        );
 
         expect(container).toMatchSnapshot();
     });
@@ -99,12 +97,9 @@ describe.skip('InProgress', () => {
 
         const { container } = render(
             <StaticRouter context={{}}>
-                <InProgress
-                    inProgress={withPreviousBowler}
-                    storeMatch={storeMatch}
-                    userProfile={userProfile}
-                />
-            </StaticRouter>);
+                <InProgress inProgress={withPreviousBowler} storeMatch={storeMatch} userProfile={userProfile} />
+            </StaticRouter>,
+        );
 
         expect(container).toMatchSnapshot();
     });
@@ -117,12 +112,9 @@ describe.skip('InProgress', () => {
 
         const { container } = render(
             <StaticRouter context={{}}>
-                <InProgress
-                    inProgress={withPreviousBowlerFromEnd}
-                    storeMatch={storeMatch}
-                    userProfile={userProfile}
-                />
-            </StaticRouter>);
+                <InProgress inProgress={withPreviousBowlerFromEnd} storeMatch={storeMatch} userProfile={userProfile} />
+            </StaticRouter>,
+        );
 
         expect(container).toMatchSnapshot();
     });
@@ -130,12 +122,9 @@ describe.skip('InProgress', () => {
     it('should render correctly for match during an over', () => {
         const { container } = render(
             <StaticRouter context={{}}>
-                <InProgress
-                    inProgress={matchDuringOverProgress}
-                    storeMatch={storeMatch}
-                    userProfile={userProfile}
-                />
-            </StaticRouter>);
+                <InProgress inProgress={matchDuringOverProgress} storeMatch={storeMatch} userProfile={userProfile} />
+            </StaticRouter>,
+        );
 
         expect(container).toMatchSnapshot();
     });

@@ -9,7 +9,6 @@ const entryPaperStyle: React.CSSProperties = {
 
 export default (props: any) => (
     <Paper elevation={1} style={entryPaperStyle}>
-        <Grid container>
-            {props.children}
-        </Grid>
-    </Paper>);
+        <Grid container>{props.children}</Grid>
+    </Paper>
+);

@@ -39,12 +39,11 @@ interface EventAction {
 
 export default (url: string, updateType: UpdateType) => (
     subscribeTo: () => string[] | string,
-    eventActions: EventAction[]) => {
+    eventActions: EventAction[],
+) => {
     const socket = createSocket(`${url}${namespaces[updateType]}`);
 
-    const subscription = () => socket.emit(
-        subscribeStrings[updateType],
-        subscribeTo());
+    const subscription = () => socket.emit(subscribeStrings[updateType], subscribeTo());
 
     socket.on(reconnectMsg, subscription);
 
@@ -54,7 +53,8 @@ export default (url: string, updateType: UpdateType) => (
             if (resubscribe) {
                 subscription();
             }
-        }));
+        }),
+    );
 
     subscription();
 

@@ -15,8 +15,10 @@ const Match = (props: MatchProps) => {
     React.useEffect(setOptions, []);
 
     React.useEffect(() => {
-        if (typeof props.inProgressMatchStore === 'undefined' ||
-            typeof props.inProgressMatchStore.match === 'undefined') {
+        if (
+            typeof props.inProgressMatchStore === 'undefined' ||
+            typeof props.inProgressMatchStore.match === 'undefined'
+        ) {
             props.history.replace('/match/create');
             return;
         }

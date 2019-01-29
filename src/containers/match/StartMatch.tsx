@@ -19,7 +19,9 @@ const StartMatch = (props: StartMatchProps) => {
     const { setOptions } = React.useContext(PageContext);
     React.useEffect(setOptions, []);
     React.useEffect(() => {
-        if (typeof props.inProgressMatchStore.match === 'undefined') { return; }
+        if (typeof props.inProgressMatchStore.match === 'undefined') {
+            return;
+        }
         if (props.inProgressMatchStore.match.complete) {
             props.history.replace('/match/create');
         }
@@ -33,7 +35,8 @@ const StartMatch = (props: StartMatchProps) => {
             inProgress={props.inProgressMatchStore}
             storeMatch={storeMatch(props.inProgressMatchStore.setId)}
             {...props}
-        />);
+        />
+    );
 };
 
 export default WithInProgressStore()(inject('inProgressMatchStore')(WithInProgressMatch(StartMatch)));

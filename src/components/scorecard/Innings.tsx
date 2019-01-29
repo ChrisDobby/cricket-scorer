@@ -22,8 +22,11 @@ export default ({ innings, getTeam }: InningsProps) => (
                 wickets={innings.wickets}
                 totalOvers={innings.totalOvers}
             />
-            <Hidden mdDown><Grid item lg={1}/></Hidden>
+            <Hidden mdDown>
+                <Grid item lg={1} />
+            </Hidden>
             <FallOfWickets fallOfWickets={innings.fallOfWickets} />
             <Bowling team={getTeam(innings.bowlingTeam).name} bowlers={innings.bowlers} />
         </Grid>
-    </>);
+    </>
+);

@@ -18,6 +18,5 @@ const actionProps = (inProgressMatchStore: InProgressMatchStore, getUserId: () =
 };
 
 export default (Component: any) => (props: any) => {
-    return (
-        <Component {...props} {...actionProps(props.inProgressMatchStore, () => props.userProfile.id)} />);
+    return <Component {...props} {...actionProps(props.inProgressMatchStore, () => props.userProfile.id)} />;
 };

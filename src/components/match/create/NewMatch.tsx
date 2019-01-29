@@ -27,8 +27,7 @@ const create = (username: string, inProgress: InProgressMatch, complete: () => v
 };
 
 export default (props: NewMatchProps) => {
-    const [checkOverwrite, setCheckOverwrite] =
-        React.useState(props.status === OFFLINE && typeof props.storedMatch !== 'undefined');
+    const [checkOverwrite, setCheckOverwrite] = React.useState(props.status === OFFLINE && props.storedMatch);
 
     return (
         <>
@@ -39,11 +38,13 @@ export default (props: NewMatchProps) => {
                     )}
                 />
             </EditContainer>
-            {checkOverwrite &&
+            {checkOverwrite && (
                 <OverwriteWarningDialog
                     storedMatch={(props.storedMatch as StoredMatch).match}
                     onYes={() => setCheckOverwrite(false)}
                     onNo={() => props.history.goBack()}
-                />}
-        </>);
+                />
+            )}
+        </>
+    );
 };

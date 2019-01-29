@@ -25,76 +25,75 @@ interface WithOutOfDateMatchesProps {
     history: History;
 }
 
-export default (Component: any) => WithMatchApi((props: WithOutOfDateMatchesProps) => {
-    const [outOfDateMatches, setOutOfDateMatches] = React.useState([] as OutOfDateMatch[]);
-    const [showingDialog, setShowingDialog] = React.useState(false);
-    const [waiting, setWaiting] = React.useState(false);
+export default (Component: any) =>
+    WithMatchApi((props: WithOutOfDateMatchesProps) => {
+        const [outOfDateMatches, setOutOfDateMatches] = React.useState([] as OutOfDateMatch[]);
+        const [showingDialog, setShowingDialog] = React.useState(false);
+        const [waiting, setWaiting] = React.useState(false);
 
-    const getMatch = fetchMatch(props.matchApi, matchStorage(localStorage));
-    const showDialog = () => setShowingDialog(true);
-    const hideDialog = () => {
-        setShowingDialog(false);
-        setOutOfDateMatches(outOfDateMatches.filter((m: OutOfDateMatch) => !m.removed));
-    };
+        const getMatch = fetchMatch(props.matchApi, matchStorage(localStorage));
+        const showDialog = () => setShowingDialog(true);
+        const hideDialog = () => {
+            setShowingDialog(false);
+            setOutOfDateMatches(outOfDateMatches.filter((m: OutOfDateMatch) => !m.removed));
+        };
 
-    const removeMatch = async (id: string) => {
-        setWaiting(true);
-        try {
-            await props.matchApi.removeMatch(id);
-            setOutOfDateMatches(outOfDateMatches.map((m: OutOfDateMatch) => m.id !== id
-                ? m
-                : { ...m, removed: true, removeError: false }));
-            setWaiting(false);
-        } catch (e) {
-            setOutOfDateMatches(outOfDateMatches.map((m: OutOfDateMatch) => m.id !== id
-                ? m
-                : { ...m, removeError: true }));
-            setWaiting(false);
-        }
-    };
-
-    const continueMatch = async (id: string) => {
-        try {
+        const removeMatch = async (id: string) => {
             setWaiting(true);
-            await getMatch(id);
-            props.history.push('/match/inprogress');
-        } catch (e) {
-            setOutOfDateMatches(outOfDateMatches.map((m: OutOfDateMatch) => m.id !== id
-                ? m
-                : { ...m, fetchError: true }));
-            setWaiting(false);
-        }
-    };
+            try {
+                await props.matchApi.removeMatch(id);
+                setOutOfDateMatches(
+                    outOfDateMatches.map((m: OutOfDateMatch) =>
+                        m.id !== id ? m : { ...m, removed: true, removeError: false },
+                    ),
+                );
+                setWaiting(false);
+            } catch (e) {
+                setOutOfDateMatches(
+                    outOfDateMatches.map((m: OutOfDateMatch) => (m.id !== id ? m : { ...m, removeError: true })),
+                );
+                setWaiting(false);
+            }
+        };
 
-    const updateMatches = async () => {
-        if (props.isAuthenticated) {
-            const matches = await props.matchApi.getOutOfDateMatches(props.userProfile.id);
-            setOutOfDateMatches(matches as OutOfDateMatch[]);
-        } else {
-            setOutOfDateMatches([]);
-        }
-    };
+        const continueMatch = async (id: string) => {
+            try {
+                setWaiting(true);
+                await getMatch(id);
+                props.history.push('/match/inprogress');
+            } catch (e) {
+                setOutOfDateMatches(
+                    outOfDateMatches.map((m: OutOfDateMatch) => (m.id !== id ? m : { ...m, fetchError: true })),
+                );
+                setWaiting(false);
+            }
+        };
 
-    React.useEffect(
-        () => {
+        const updateMatches = async () => {
+            if (props.isAuthenticated) {
+                const matches = await props.matchApi.getOutOfDateMatches(props.userProfile.id);
+                setOutOfDateMatches(matches as OutOfDateMatch[]);
+            } else {
+                setOutOfDateMatches([]);
+            }
+        };
+
+        React.useEffect(() => {
             updateMatches();
-        },
-        [props.isAuthenticated]);
+        }, [props.isAuthenticated]);
 
-    return (
-        <>
-            <Component
-                {...props}
-                outOfDateMatches={outOfDateMatches}
-                outOfDateSelected={showDialog}
-            />
-            {showingDialog &&
-                <OutOfDateDialog
-                    matches={outOfDateMatches}
-                    close={hideDialog}
-                    remove={removeMatch}
-                    continue={continueMatch}
-                    disabled={waiting}
-                />}
-        </>);
-});
+        return (
+            <>
+                <Component {...props} outOfDateMatches={outOfDateMatches} outOfDateSelected={showDialog} />
+                {showingDialog && (
+                    <OutOfDateDialog
+                        matches={outOfDateMatches}
+                        close={hideDialog}
+                        remove={removeMatch}
+                        continue={continueMatch}
+                        disabled={waiting}
+                    />
+                )}
+            </>
+        );
+    });

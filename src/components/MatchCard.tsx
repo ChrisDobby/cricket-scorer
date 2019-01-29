@@ -47,18 +47,20 @@ export default (props: MatchCardProps) => (
                     <CardActions>
                         <Button size="small" color="primary" onClick={props.showScorecard}>
                             Scorecard
-                    </Button>
-                        {props.match.user === props.currentUser &&
+                        </Button>
+                        {props.match.user === props.currentUser && (
                             <>
                                 <Button size="small" color="primary" onClick={props.continueScoring}>
                                     Continue
-                            </Button>
+                                </Button>
                                 <Button size="small" color="secondary" onClick={props.removeMatch}>
                                     Remove
-                            </Button>
-                            </>}
+                                </Button>
+                            </>
+                        )}
                     </CardActions>
                 </div>
             </Card>
         </Fade>
-    </Grid>);
+    </Grid>
+);

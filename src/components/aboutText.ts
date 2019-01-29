@@ -1,5 +1,4 @@
-export default
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin suscipit non velit id suscipit. ' +
+export default 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin suscipit non velit id suscipit. ' +
     'In eget mollis nibh. ' +
     'Duis nisi ligula, vestibulum non lorem quis, mattis ultrices nulla. Curabitur mollis porta justo eu ornare. ' +
     'Nunc malesuada placerat nisl vitae ultricies. Nulla facilisi. Nam scelerisque euismod nisi.' +

@@ -20,10 +20,7 @@ const centred: React.CSSProperties = {
 
 export default ({ match, onYes, onNo }: RemoveDialogProps) => (
     <div>
-        <Dialog
-            open={true}
-            aria-labelledby="delete-confirmation-title"
-        >
+        <Dialog open={true} aria-labelledby="delete-confirmation-title">
             <DialogTitle id="delete-confirmation-title">Remove match</DialogTitle>
             <DialogContent>
                 <DialogContentText color="textSecondary" style={centred}>
@@ -37,13 +34,13 @@ export default ({ match, onYes, onNo }: RemoveDialogProps) => (
                 </DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button
-                    onClick={onYes}
-                    color="primary"
-                    autoFocus
-                >Yes, get rid of it
+                <Button onClick={onYes} color="primary" autoFocus>
+                    Yes, get rid of it
                 </Button>
-                <Button onClick={onNo} color="primary">No</Button>
+                <Button onClick={onNo} color="primary">
+                    No
+                </Button>
             </DialogActions>
         </Dialog>
-    </div>);
+    </div>
+);

@@ -47,71 +47,64 @@ describe('fetchMatch', () => {
         const fetch = fetchMatch(api, storeWithNoMatch);
         fetch(matchId);
 
-        return new Promise(resolve => setImmediate(resolve))
-            .then(() => {
-                expect(storeMatch).toHaveBeenCalledWith(match);
-            });
+        return new Promise(resolve => setImmediate(resolve)).then(() => {
+            expect(storeMatch).toHaveBeenCalledWith(match);
+        });
     });
 
     it('should store the match from the api when stored match has same id but earlier version', () => {
         const fetch = fetchMatch(api, storeWithEarlierVersion);
         fetch(matchId);
 
-        return new Promise(resolve => setImmediate(resolve))
-            .then(() => {
-                expect(storeMatch).toHaveBeenCalledWith(match);
-            });
+        return new Promise(resolve => setImmediate(resolve)).then(() => {
+            expect(storeMatch).toHaveBeenCalledWith(match);
+        });
     });
 
     it('should not store anything if the stored match has the same id as the api match but the same version', () => {
         const fetch = fetchMatch(api, storeWithSameVersion);
         fetch(matchId);
 
-        return new Promise(resolve => setImmediate(resolve))
-            .then(() => {
-                expect(storeMatch).not.toHaveBeenCalled();
-            });
+        return new Promise(resolve => setImmediate(resolve)).then(() => {
+            expect(storeMatch).not.toHaveBeenCalled();
+        });
     });
 
     it('should not store anything if the stored match has the same id as the api match but a later version', () => {
         const fetch = fetchMatch(api, storeWithLaterVersion);
         fetch(matchId);
 
-        return new Promise(resolve => setImmediate(resolve))
-            .then(() => {
-                expect(storeMatch).not.toHaveBeenCalled();
-            });
+        return new Promise(resolve => setImmediate(resolve)).then(() => {
+            expect(storeMatch).not.toHaveBeenCalled();
+        });
     });
 
     it('should send the currently stored match to the api if it has a different id', () => {
         const fetch = fetchMatch(api, storeWithDifferentMatch);
         fetch(matchId);
 
-        return new Promise(resolve => setImmediate(resolve))
-            .then(() => {
-                expect(sendToApi).toHaveBeenCalledWith(match2);
-            });
+        return new Promise(resolve => setImmediate(resolve)).then(() => {
+            expect(sendToApi).toHaveBeenCalledWith(match2);
+        });
     });
 
     it('should store the match from the api when stored match has a different id', () => {
         const fetch = fetchMatch(api, storeWithDifferentMatch);
         fetch(matchId);
 
-        return new Promise(resolve => setImmediate(resolve))
-            .then(() => {
-                expect(storeMatch).toHaveBeenCalledWith(match);
-            });
+        return new Promise(resolve => setImmediate(resolve)).then(() => {
+            expect(storeMatch).toHaveBeenCalledWith(match);
+        });
     });
 
     it('should send the stored match to the api if trying to fetch a match with the same id and get a 404', () => {
         const fetch = fetchMatch(apiWith404FromGet, storeWithDifferentMatch);
         fetch(matchId);
 
-        return new Promise((resolve, reject) => setImmediate(resolve, reject))
-            .then(() => {
-                expect(sendToApi).toHaveBeenCalledWith(match2);
-                expect(storeMatch).not.toHaveBeenCalled();
-            });
+        return new Promise((resolve, reject) => setImmediate(resolve, reject)).then(() => {
+            expect(sendToApi).toHaveBeenCalledWith(match2);
+            expect(storeMatch).not.toHaveBeenCalled();
+        });
     });
 
     it('should throw an error if fetch returns different error status to 404', async () => {

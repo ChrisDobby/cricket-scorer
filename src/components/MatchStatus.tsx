@@ -28,22 +28,28 @@ export default (props: MatchStatusProps) => {
     };
 
     React.useEffect(() => {
-        if (initialised || props.inProgressMatches.length === 0) { return; }
+        if (initialised || props.inProgressMatches.length === 0) {
+            return;
+        }
 
         setIndex(0);
         setInitialised(true);
         show();
     });
 
-    if (props.inProgressMatches.length === 0) { return null; }
+    if (props.inProgressMatches.length === 0) {
+        return null;
+    }
 
     return (
         <Fade in={true}>
             <SnackbarContent
                 message={props.inProgressMatches[currentIndex].status}
-                action={<Button color="secondary" size="small" onClick={showCurrentScorecard}>
-                    View scorecard
-                    </Button>}
+                action={
+                    <Button color="secondary" size="small" onClick={showCurrentScorecard}>
+                        View scorecard
+                    </Button>
+                }
             />
         </Fade>
     );

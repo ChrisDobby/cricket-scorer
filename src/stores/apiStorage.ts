@@ -3,11 +3,7 @@ import api from '../api/api';
 import { StoredMatch } from '../domain';
 import auth0 from '../components/auth0';
 
-const apiStorage = (
-    api: any,
-    isOnline: () => boolean,
-    isAuthenticated: () => boolean,
-) => {
+const apiStorage = (api: any, isOnline: () => boolean, isAuthenticated: () => boolean) => {
     let matchToStore: StoredMatch | undefined = undefined;
     let sending = false;
     return (setId: (id: string) => void) => {
@@ -35,14 +31,15 @@ const apiStorage = (
         };
 
         const storeMatch = async (inProgressMatch: any) => {
-            if (!isOnline() || !isAuthenticated()) { return; }
+            if (!isOnline() || !isAuthenticated()) {
+                return;
+            }
             matchToStore = storedMatch(inProgressMatch);
             if (!sending) {
                 try {
                     sending = true;
                     await sendMatch();
-                } catch (err) {
-                }
+                } catch (err) {}
 
                 sending = false;
             }

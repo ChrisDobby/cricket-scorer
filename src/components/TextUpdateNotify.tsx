@@ -14,23 +14,23 @@ export default (props: TextUpdateNotifyProps) => {
     const [initialised, setInitialised] = React.useState(false);
     const textComponent = React.useRef(null as HTMLSpanElement | null);
 
-    React.useEffect(
-        () => {
-            if (!initialised || !textComponent.current) {
-                setInitialised(true);
-                return;
+    React.useEffect(() => {
+        if (!initialised || !textComponent.current) {
+            setInitialised(true);
+            return;
+        }
+        const originalColor = textComponent.current.style.backgroundColor;
+        textComponent.current.style.backgroundColor = props.highlightBackgroundColour || defaultColour;
+        setTimeout(() => {
+            if (textComponent.current) {
+                textComponent.current.style.backgroundColor = originalColor;
             }
-            const originalColor = textComponent.current.style.backgroundColor;
-            textComponent.current.style.backgroundColor = props.highlightBackgroundColour || defaultColour;
-            setTimeout(
-                () => {
-                    if (textComponent.current) {
-                        textComponent.current.style.backgroundColor = originalColor;
-                    }
-                },
-                1000);
-        },
-        [props.text]);
+        }, 1000);
+    }, [props.text]);
 
-    return <span style={textStyle} ref={textComponent}>{props.text}</span>;
+    return (
+        <span style={textStyle} ref={textComponent}>
+            {props.text}
+        </span>
+    );
 };

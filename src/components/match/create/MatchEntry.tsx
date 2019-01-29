@@ -45,22 +45,24 @@ export default (props: MatchEntryProps) => (
                 </FormControl>
             </Grid>
             <Grid item xs={12} md={4}>
-                {props.matchType === MatchType.LimitedOvers &&
+                {props.matchType === MatchType.LimitedOvers && (
                     <TextField
                         fullWidth
                         label="Number of overs"
                         value={props.oversPerSide}
                         type="number"
                         onChange={ev => props.oversChanged(Number(ev.target.value))}
-                    />}
-                {props.matchType === MatchType.Time &&
+                    />
+                )}
+                {props.matchType === MatchType.Time && (
                     <TextField
                         fullWidth
                         label="Number of innings per team"
                         value={props.inningsPerSide}
                         type="number"
                         onChange={ev => props.inningsChanged(Number(ev.target.value))}
-                    />}
+                    />
+                )}
             </Grid>
             <Grid item xs={12} md={4}>
                 <TextField
@@ -92,4 +94,5 @@ export default (props: MatchEntryProps) => (
                 />
             </Grid>
         </Grid>
-    </>);
+    </>
+);

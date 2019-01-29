@@ -40,14 +40,16 @@ const playerDividerStyle: React.CSSProperties = {
 };
 
 const howOut = (batter: Batter): string => {
-    if (!batter.innings && typeof batter.unavailableReason === 'undefined') { return ''; }
+    if (!batter.innings && typeof batter.unavailableReason === 'undefined') {
+        return '';
+    }
 
     return typeof batter.unavailableReason !== 'undefined'
         ? unavailablDescription(batter.unavailableReason)
         : howOutDescription((batter.innings as BattingInnings).wicket);
 };
 
-const runs = (batter: Batter): string => typeof batter.innings === 'undefined' ? '' : batter.innings.runs.toString();
+const runs = (batter: Batter): string => (typeof batter.innings === 'undefined' ? '' : batter.innings.runs.toString());
 
 const bowlingFigures = (bowler: Bowler): string =>
     `${bowler.totalOvers} - ${bowler.maidenOvers} - ${bowler.runs} - ${bowler.wickets}`;
@@ -58,7 +60,8 @@ const playerCount = (playerIndices: number[]) =>
             ...count,
             [playerIndex]: count[playerIndex] ? count[playerIndex] + 1 : 1,
         }),
-        {});
+        {},
+    );
 
 export default withStyles(globalStyles.themedStyles)((props: PlayerFormProps) => {
     const [batters, setBatters] = React.useState(props.batters);
@@ -73,55 +76,55 @@ export default withStyles(globalStyles.themedStyles)((props: PlayerFormProps) =>
             return;
         }
 
-        props.save(
-            batters.map(b => b.playerIndex),
-            bowlers.map(b => b.playerIndex),
-        );
+        props.save(batters.map(b => b.playerIndex), bowlers.map(b => b.playerIndex));
     };
 
     const selectBatter = (batterIndex: number, playerIndex: number) => {
-        const updatedBatters = batters.map((batter, idx) => idx === batterIndex
-            ? {
-                ...batter,
-                playerIndex,
-                name: props.battingTeam[playerIndex],
-            }
-            : batter,
+        const updatedBatters = batters.map((batter, idx) =>
+            idx === batterIndex
+                ? {
+                      ...batter,
+                      playerIndex,
+                      name: props.battingTeam[playerIndex],
+                  }
+                : batter,
         );
 
         const count = playerCount(updatedBatters.map(b => b.playerIndex));
         setBatters(updatedBatters);
-        setBattingOrderErrors(Object.keys(count).filter(key => count[key] > 1).map(key => Number(key)));
+        setBattingOrderErrors(
+            Object.keys(count)
+                .filter(key => count[key] > 1)
+                .map(key => Number(key)),
+        );
     };
 
     const selectBowler = (bowlerIndex: number, playerIndex: number) => {
-        const updatedBowlers = bowlers.map((bowler, idx) => idx === bowlerIndex
-            ? {
-                ...bowler,
-                playerIndex,
-                name: props.bowlingTeam[playerIndex],
-            }
-            : bowler,
+        const updatedBowlers = bowlers.map((bowler, idx) =>
+            idx === bowlerIndex
+                ? {
+                      ...bowler,
+                      playerIndex,
+                      name: props.bowlingTeam[playerIndex],
+                  }
+                : bowler,
         );
 
         const count = playerCount(updatedBowlers.map(b => b.playerIndex));
         setBowlers(updatedBowlers);
-        setBowlingOrderErrors(Object.keys(count).filter(key => count[key] > 1).map(key => Number(key)));
+        setBowlingOrderErrors(
+            Object.keys(count)
+                .filter(key => count[key] > 1)
+                .map(key => Number(key)),
+        );
     };
 
     return (
         <>
-            <EditForm
-                heading="Change players"
-                save={save}
-                canSave={valid}
-            >
+            <EditForm heading="Change players" save={save} canSave={valid}>
                 <Grid container className={props.classes.header}>
-                    <Typography
-                        style={headerTextStyle}
-                        color="inherit"
-                        variant="h6"
-                    >Batting
+                    <Typography style={headerTextStyle} color="inherit" variant="h6">
+                        Batting
                     </Typography>
                 </Grid>
 
@@ -131,12 +134,13 @@ export default withStyles(globalStyles.themedStyles)((props: PlayerFormProps) =>
                             <Select
                                 value={batter.playerIndex}
                                 fullWidth
-                                error={battingOrderErrors
-                                    .find(e => e === batter.playerIndex) === batter.playerIndex}
+                                error={battingOrderErrors.find(e => e === batter.playerIndex) === batter.playerIndex}
                                 onChange={ev => selectBatter(idx, Number(ev.target.value))}
                             >
                                 {props.battingTeam.map((playerName, playerIndex) => (
-                                    <MenuItem key={playerIndex} value={playerIndex}>{playerName}</MenuItem>
+                                    <MenuItem key={playerIndex} value={playerIndex}>
+                                        {playerName}
+                                    </MenuItem>
                                 ))}
                             </Select>
                         </Grid>
@@ -146,14 +150,14 @@ export default withStyles(globalStyles.themedStyles)((props: PlayerFormProps) =>
                         <Grid style={descriptionNumberStyle} item xs={2} md={1}>
                             <Typography variant="subtitle1">{runs(batter)}</Typography>
                         </Grid>
-                        <Grid style={playerDividerStyle} item xs={12}><Divider /></Grid>
-                    </Grid>))}
+                        <Grid style={playerDividerStyle} item xs={12}>
+                            <Divider />
+                        </Grid>
+                    </Grid>
+                ))}
                 <Grid container className={props.classes.header}>
-                    <Typography
-                        style={headerTextStyle}
-                        color="inherit"
-                        variant="h6"
-                    >Bowling
+                    <Typography style={headerTextStyle} color="inherit" variant="h6">
+                        Bowling
                     </Typography>
                 </Grid>
 
@@ -163,20 +167,25 @@ export default withStyles(globalStyles.themedStyles)((props: PlayerFormProps) =>
                             <Select
                                 value={bowler.playerIndex}
                                 onChange={ev => selectBowler(idx, Number(ev.target.value))}
-                                error={bowlingOrderErrors
-                                    .find(e => e === bowler.playerIndex) === bowler.playerIndex}
+                                error={bowlingOrderErrors.find(e => e === bowler.playerIndex) === bowler.playerIndex}
                                 fullWidth
                             >
                                 {props.bowlingTeam.map((playerName, playerIndex) => (
-                                    <MenuItem key={playerIndex} value={playerIndex}>{playerName}</MenuItem>
+                                    <MenuItem key={playerIndex} value={playerIndex}>
+                                        {playerName}
+                                    </MenuItem>
                                 ))}
                             </Select>
                         </Grid>
                         <Grid style={descriptionStyle} item xs={12} md={6}>
                             <Typography variant="subtitle1">{bowlingFigures(bowler)}</Typography>
                         </Grid>
-                        <Grid style={playerDividerStyle} item xs={12}><Divider /></Grid>
-                    </Grid>))}
+                        <Grid style={playerDividerStyle} item xs={12}>
+                            <Divider />
+                        </Grid>
+                    </Grid>
+                ))}
             </EditForm>
-        </>);
+        </>
+    );
 });

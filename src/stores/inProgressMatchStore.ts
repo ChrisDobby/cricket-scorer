@@ -11,21 +11,21 @@ import editPlayers from '../match/innings/editPlayers';
 
 const teamFromType = (match: domain.Match) => (type: domain.TeamType) => getTeam(match, type);
 
-const updateMatchInnings =
-    (match: domain.Match, innings: domain.Innings, config: domain.MatchConfig, version: number):
-        [domain.Match, number] => {
-        const updatedMatch = {
-            ...match,
-            innings: [...match.innings.map(inn => !matchInnings(config, teamFromType(match)).isComplete(inn)
-                ? innings
-                : inn)],
-        };
-
-        return [
-            { ...updatedMatch, status: status(updatedMatch) },
-            version + 1,
-        ];
+const updateMatchInnings = (
+    match: domain.Match,
+    innings: domain.Innings,
+    config: domain.MatchConfig,
+    version: number,
+): [domain.Match, number] => {
+    const updatedMatch = {
+        ...match,
+        innings: [
+            ...match.innings.map(inn => (!matchInnings(config, teamFromType(match)).isComplete(inn) ? innings : inn)),
+        ],
     };
+
+    return [{ ...updatedMatch, status: status(updatedMatch) }, version + 1];
+};
 
 const bowlerOfOver = (innings: domain.Innings, overNumber: number) => {
     const deliveryInOver = innings.events
@@ -33,9 +33,7 @@ const bowlerOfOver = (innings: domain.Innings, overNumber: number) => {
         .filter(delivery => typeof delivery !== 'undefined')
         .find(delivery => delivery.overNumber === overNumber);
 
-    return typeof deliveryInOver === 'undefined'
-        ? undefined
-        : innings.bowlers[deliveryInOver.bowlerIndex];
+    return typeof deliveryInOver === 'undefined' ? undefined : innings.bowlers[deliveryInOver.bowlerIndex];
 };
 
 class InProgressMatchStore implements domain.InProgressMatch {
@@ -63,8 +61,11 @@ class InProgressMatchStore implements domain.InProgressMatch {
 
     @computed get currentOver() {
         const innings = this.currentInnings;
-        if (typeof innings === 'undefined') { return undefined; }
-        const deliveries = domain.deliveries(innings.events)
+        if (typeof innings === 'undefined') {
+            return undefined;
+        }
+        const deliveries = domain
+            .deliveries(innings.events)
             .filter(delivery => delivery.overNumber > innings.completedOvers);
 
         return {
@@ -76,9 +77,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
 
     @computed get currentOverComplete() {
         const over = this.currentOver;
-        return typeof over === 'undefined'
-            ? undefined
-            : over.deliveries.filter(domain.validDelivery).length >= 6;
+        return typeof over === 'undefined' ? undefined : over.deliveries.filter(domain.validDelivery).length >= 6;
     }
 
     @computed get currentBatter() {
@@ -96,8 +95,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
     }
 
     @computed get previousBowler() {
-        if (typeof this.currentInnings === 'undefined' ||
-            this.currentInnings.completedOvers === 0) {
+        if (typeof this.currentInnings === 'undefined' || this.currentInnings.completedOvers === 0) {
             return undefined;
         }
 
@@ -105,8 +103,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
     }
 
     @computed get previousBowlerFromEnd() {
-        if (typeof this.currentInnings === 'undefined' ||
-            this.currentInnings.completedOvers <= 1) {
+        if (typeof this.currentInnings === 'undefined' || this.currentInnings.completedOvers <= 1) {
             return undefined;
         }
 
@@ -126,8 +123,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
     }
 
     @computed get canSelectBattingTeamForInnings() {
-        return this.match.config.type === domain.MatchType.Time &&
-            this.match.config.inningsPerSide > 1;
+        return this.match.config.type === domain.MatchType.Time && this.match.config.inningsPerSide > 1;
     }
 
     @computed get nextBattingTeam() {
@@ -145,12 +141,15 @@ class InProgressMatchStore implements domain.InProgressMatch {
     }
 
     @computed get newBatterRequired() {
-        if (typeof this.currentInnings === 'undefined') { return false; }
+        if (typeof this.currentInnings === 'undefined') {
+            return false;
+        }
 
-        return this.currentInnings.batting.batters
-            .filter(batter => batter.innings &&
-                !batter.innings.wicket &&
-                typeof batter.unavailableReason === 'undefined').length < 2;
+        return (
+            this.currentInnings.batting.batters.filter(
+                batter => batter.innings && !batter.innings.wicket && typeof batter.unavailableReason === 'undefined',
+            ).length < 2
+        );
     }
 
     @action startMatch = (tossWonBy: domain.TeamType, battingFirst: domain.TeamType) => {
@@ -160,24 +159,29 @@ class InProgressMatchStore implements domain.InProgressMatch {
         };
 
         this.match.status = status(this.match);
-    }
+    };
 
-    @action startInnings =
-        (battingTeam: domain.TeamType, batter1Index: number, batter2Index: number, overs?: number) => {
-            const innings = this.matchInnings.create(battingTeam, batter1Index, batter2Index, overs);
-            this.match = {
-                ...this.match,
-                innings: [...this.match.innings, innings],
-            };
+    @action startInnings = (
+        battingTeam: domain.TeamType,
+        batter1Index: number,
+        batter2Index: number,
+        overs?: number,
+    ) => {
+        const innings = this.matchInnings.create(battingTeam, batter1Index, batter2Index, overs);
+        this.match = {
+            ...this.match,
+            innings: [...this.match.innings, innings],
+        };
 
-            this.currentBatterIndex = 0;
-        }
+        this.currentBatterIndex = 0;
+    };
 
     @action newBowler = (playerIndex: number) => {
-        if (typeof this.currentInnings === 'undefined') { return; }
+        if (typeof this.currentInnings === 'undefined') {
+            return;
+        }
 
-        if (typeof this.previousBowler !== 'undefined' &&
-            this.previousBowler.playerIndex === playerIndex) {
+        if (typeof this.previousBowler !== 'undefined' && this.previousBowler.playerIndex === playerIndex) {
             return;
         }
 
@@ -185,112 +189,135 @@ class InProgressMatchStore implements domain.InProgressMatch {
 
         this.updateMatch(innings);
         this.currentBowlerIndex = bowlerIndex;
-    }
+    };
 
     @action newBatter = (playerIndex: number) => {
-        if (typeof this.currentInnings === 'undefined') { return; }
+        if (typeof this.currentInnings === 'undefined') {
+            return;
+        }
 
-        if (this.currentInnings.batting.batters.filter(batter =>
-            typeof batter.innings !== 'undefined' &&
-            typeof batter.innings.wicket === 'undefined' &&
-            typeof batter.unavailableReason === 'undefined').length === 2) {
+        if (
+            this.currentInnings.batting.batters.filter(
+                batter =>
+                    typeof batter.innings !== 'undefined' &&
+                    typeof batter.innings.wicket === 'undefined' &&
+                    typeof batter.unavailableReason === 'undefined',
+            ).length === 2
+        ) {
             return;
         }
 
         const [innings, batterIndex] = this.matchInnings.newBatter(this.currentInnings, playerIndex);
         this.updateMatch(innings);
         this.currentBatterIndex = batterIndex;
-    }
+    };
 
     @action delivery = (
         deliveryOutcome: domain.DeliveryOutcome,
         scores: domain.DeliveryScores,
         wicket: domain.DeliveryWicket | undefined = undefined,
     ) => {
-        if (typeof this.currentInnings === 'undefined' ||
+        if (
+            typeof this.currentInnings === 'undefined' ||
             typeof this.currentBatter === 'undefined' ||
-            typeof this.currentBowler === 'undefined') { return; }
+            typeof this.currentBowler === 'undefined'
+        ) {
+            return;
+        }
 
-        const [innings, batterIndex, event] =
-            this.matchInnings.delivery(
-                this.currentInnings,
-                (new Date()).getTime(),
-                this.currentBatter,
-                this.currentBowler,
-                deliveryOutcome,
-                scores,
-                wicket);
+        const [innings, batterIndex, event] = this.matchInnings.delivery(
+            this.currentInnings,
+            new Date().getTime(),
+            this.currentBatter,
+            this.currentBowler,
+            deliveryOutcome,
+            scores,
+            wicket,
+        );
 
         this.updateMatch(innings);
         this.currentBatterIndex = batterIndex;
         this.updateLastEvent(event, this.currentInnings);
-    }
+    };
 
-    @action nonDeliveryWicket = (
-        howout: domain.Howout,
-    ) => {
-        if (typeof this.currentInnings === 'undefined' ||
-            typeof this.currentBatter === 'undefined') { return; }
+    @action nonDeliveryWicket = (howout: domain.Howout) => {
+        if (typeof this.currentInnings === 'undefined' || typeof this.currentBatter === 'undefined') {
+            return;
+        }
 
         const [updatedInnings, event] = this.matchInnings.nonDeliveryWicket(
             this.currentInnings,
-            (new Date()).getTime(),
+            new Date().getTime(),
             this.currentBatter,
             howout,
         );
 
         this.updateMatch(updatedInnings);
         this.updateLastEvent(event, this.currentInnings);
-    }
+    };
 
-    @action batterUnavailable = (
-        reason: domain.UnavailableReason,
-    ) => {
-        if (typeof this.currentInnings === 'undefined' ||
-            typeof this.currentBatter === 'undefined') { return; }
+    @action batterUnavailable = (reason: domain.UnavailableReason) => {
+        if (typeof this.currentInnings === 'undefined' || typeof this.currentBatter === 'undefined') {
+            return;
+        }
 
         const updatedInnings = this.matchInnings.batterUnavailable(
             this.currentInnings,
-            (new Date()).getTime(),
+            new Date().getTime(),
             this.currentBatter,
             reason,
         );
 
         this.updateMatch(updatedInnings);
-    }
+    };
 
     @action undoPreviousDelivery = () => {
-        if (typeof this.currentInnings === 'undefined' ||
+        if (
+            typeof this.currentInnings === 'undefined' ||
             typeof this.currentBatter === 'undefined' ||
-            typeof this.currentBowler === 'undefined') { return; }
+            typeof this.currentBowler === 'undefined'
+        ) {
+            return;
+        }
 
-        const [innings, batterIndex, bowlerIndex] =
-            this.undo(this.currentInnings, Number(this.currentBatterIndex), Number(this.currentBowlerIndex));
+        const [innings, batterIndex, bowlerIndex] = this.undo(
+            this.currentInnings,
+            Number(this.currentBatterIndex),
+            Number(this.currentBowlerIndex),
+        );
 
         this.updateMatch(innings);
         this.currentBatterIndex = batterIndex;
         this.currentBowlerIndex = bowlerIndex;
-    }
+    };
 
     @action completeOver = () => {
-        if (typeof this.currentInnings === 'undefined' ||
+        if (
+            typeof this.currentInnings === 'undefined' ||
             typeof this.currentBatter === 'undefined' ||
-            typeof this.currentBowler === 'undefined') { return; }
+            typeof this.currentBowler === 'undefined'
+        ) {
+            return;
+        }
 
-        const [innings, batterIndex] =
-        this.matchInnings.completeOver(this.currentInnings, this.currentBatter, this.currentBowler);
+        const [innings, batterIndex] = this.matchInnings.completeOver(
+            this.currentInnings,
+            this.currentBatter,
+            this.currentBowler,
+        );
 
         this.updateMatch(innings);
         this.currentBatterIndex = batterIndex;
         this.currentBowlerIndex = undefined;
-    }
+    };
 
     @action flipBatters = () => {
-        if (typeof this.currentInnings === 'undefined' ||
-            typeof this.currentBatter === 'undefined') { return; }
+        if (typeof this.currentInnings === 'undefined' || typeof this.currentBatter === 'undefined') {
+            return;
+        }
 
         this.currentBatterIndex = this.matchInnings.flipBatters(this.currentInnings, this.currentBatter);
-    }
+    };
 
     @action completeInnings = (status: domain.InningsStatus) => {
         if (typeof this.currentInnings === 'undefined') {
@@ -301,7 +328,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
             throw new Error('cannot complete with in progress status');
         }
         this.currentInnings.status = status;
-    }
+    };
 
     @action completeMatch = (result: domain.MatchResult) => {
         const [res, status] = complete.status(this.match, result);
@@ -319,63 +346,71 @@ class InProgressMatchStore implements domain.InProgressMatch {
             complete: true,
             result: res,
         };
-    }
+    };
 
     @action setId = (id: string) => {
         this.match.id = id;
-    }
+    };
 
     @action setFromStoredMatch = (storedMatch: domain.StoredMatch) => {
         this.match = storedMatch.match;
         this.version = storedMatch.version;
         this.currentBatterIndex = storedMatch.currentBatterIndex;
         this.currentBowlerIndex = storedMatch.currentBowlerIndex;
-    }
+    };
 
     @action changeOrders = (battingOrder: number[], bowlingOrder: number[]) => {
-        if (typeof this.currentInnings === 'undefined') { return; }
+        if (typeof this.currentInnings === 'undefined') {
+            return;
+        }
         const inningsWithBatting = editPlayers.changeBatting(this.match, this.currentInnings, battingOrder);
         const innings = editPlayers.changeBowling(this.match, inningsWithBatting, bowlingOrder);
         this.updateMatch(innings);
-    }
+    };
 
     @action rollback = (eventIndex: number) => {
         const rolledback = this.getRollback(eventIndex);
-        if (typeof rolledback === 'undefined') { return; }
+        if (typeof rolledback === 'undefined') {
+            return;
+        }
 
         this.updateMatch(rolledback[0]);
         this.currentBatterIndex = rolledback[1];
         this.currentBowlerIndex = rolledback[2];
-    }
+    };
 
     @action updateOvers = (overs: number) => {
-        if (typeof this.currentInnings === 'undefined') { return; }
+        if (typeof this.currentInnings === 'undefined') {
+            return;
+        }
         this.updateMatch(this.matchInnings.editOvers(this.currentInnings, overs));
-    }
+    };
 
     private getRollback = (eventIndex: number): [domain.Innings, number, number] | undefined => {
-        if (typeof this.currentInnings === 'undefined' || this.currentInnings.events.length === 0) { return undefined; }
+        if (typeof this.currentInnings === 'undefined' || this.currentInnings.events.length === 0) {
+            return undefined;
+        }
         return this.matchInnings.rollback(this.currentInnings, eventIndex);
-    }
+    };
 
     updateLastEvent = (event: domain.Event, innings: domain.Innings, wicket?: domain.Wicket) => {
         const description = eventDescription(this.match, innings, event, wicket);
         if (typeof description !== 'undefined') {
             this.lastEvent = description;
         }
-    }
+    };
 
     rolledBackInnings = (eventIndex: number): domain.Innings | undefined => {
         const rolledback = this.getRollback(eventIndex);
         return typeof rolledback === 'undefined' ? undefined : rolledback[0];
-    }
+    };
 
     private updateMatch = (innings: domain.Innings) => {
         const [match, version] = updateMatchInnings(this.match, innings, this.config, this.version);
 
         this.match = match;
         this.version = version;
-    }
+    };
 }
 
 const inProgressMatch = new InProgressMatchStore();

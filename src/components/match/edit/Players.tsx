@@ -17,13 +17,12 @@ const update = (
     inProgress: InProgressMatch,
     storeMatch: (match: InProgressMatch) => void,
     complete: () => void,
-    getUserId: () => string) =>
-    bindMatchStorage(storeMatch, () => inProgress, getUserId)(
-        (battingOrder: number[], bowlingOrder: number[]) => {
-            inProgress.changeOrders(battingOrder, bowlingOrder);
-            complete();
-        },
-    );
+    getUserId: () => string,
+) =>
+    bindMatchStorage(storeMatch, () => inProgress, getUserId)((battingOrder: number[], bowlingOrder: number[]) => {
+        inProgress.changeOrders(battingOrder, bowlingOrder);
+        complete();
+    });
 
 export default ({ inProgress, storeMatch, history, userProfile }: PlayersProps) => {
     if (typeof inProgress.currentInnings === 'undefined') {
@@ -37,11 +36,8 @@ export default ({ inProgress, storeMatch, history, userProfile }: PlayersProps) 
                 bowlers={inProgress.currentInnings.bowlers}
                 battingTeam={getTeam(inProgress.match, inProgress.currentInnings.battingTeam).players}
                 bowlingTeam={getTeam(inProgress.match, inProgress.currentInnings.bowlingTeam).players}
-                save={update(
-                    inProgress,
-                    storeMatch,
-                    () => history.replace('/match/inprogress'),
-                    () => userProfile.id)}
+                save={update(inProgress, storeMatch, () => history.replace('/match/inprogress'), () => userProfile.id)}
             />
-        </EditContainer>);
+        </EditContainer>
+    );
 };

@@ -21,15 +21,13 @@ jest.mock('../../../match/delivery', () => {
     });
     const totalScore = () => 4;
     const runsFromBatter = (outcome: domain.Outcome) =>
-        typeof outcome.scores.runs === 'undefined'
-            ? 0
-            : outcome.scores.runs;
+        typeof outcome.scores.runs === 'undefined' ? 0 : outcome.scores.runs;
     const boundariesScored = () => [1, 1];
     const bowlerRuns = () => 3;
     const wickets = () => 1;
     const bowlingWickets = () => 1;
     const battingWicket = () => ({
-        time: (new Date()).getTime(),
+        time: new Date().getTime(),
         howOut: domain.Howout.Bowled,
         bowler: 'A bowler',
         fielder: 'A fielder',
@@ -160,13 +158,12 @@ describe('delivery', () => {
     });
 
     it('should add extras to the innings extras totals', () => {
-        expect(updatedInnings.batting.extras)
-            .toEqual({
-                byes: 3,
-                legByes: 1,
-                wides: 0,
-                noBalls: 0,
-            });
+        expect(updatedInnings.batting.extras).toEqual({
+            byes: 3,
+            legByes: 1,
+            wides: 0,
+            noBalls: 0,
+        });
     });
 
     it('should not add a ball faced when a wide', () => {

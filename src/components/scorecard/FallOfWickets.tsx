@@ -8,7 +8,10 @@ import * as styles from './styles';
 import * as globalStyles from '../styles';
 import HeaderText from './HeaderText';
 
-interface FallOfWicketsProps { fallOfWickets: FallOfWicket[]; classes: any; }
+interface FallOfWicketsProps {
+    fallOfWickets: FallOfWicket[];
+    classes: any;
+}
 
 const FallOfWickets = ({ fallOfWickets, classes }: FallOfWicketsProps) => (
     <Grid item xs={12} lg={3}>
@@ -25,10 +28,14 @@ const FallOfWickets = ({ fallOfWickets, classes }: FallOfWicketsProps) => (
                         <Typography variant="body1">{fow.batter}</Typography>
                     </Grid>
                     <Grid item xs={2}>
-                        <Typography variant="body1" style={styles.numberCell}>{fow.score}</Typography>
+                        <Typography variant="body1" style={styles.numberCell}>
+                            {fow.score}
+                        </Typography>
                     </Grid>
                     <Grid item xs={2}>
-                        <Typography variant="body1" style={styles.numberCell}>{fow.partnership}</Typography>
+                        <Typography variant="body1" style={styles.numberCell}>
+                            {fow.partnership}
+                        </Typography>
                     </Grid>
                 </Grid>
                 <Grid item xs={12}>
@@ -36,6 +43,7 @@ const FallOfWickets = ({ fallOfWickets, classes }: FallOfWicketsProps) => (
                 </Grid>
             </React.Fragment>
         ))}
-    </Grid>);
+    </Grid>
+);
 
 export default withStyles(globalStyles.themedStyles)(FallOfWickets);

@@ -35,8 +35,7 @@ export default (props: any) => {
     const connected = () => {
         clearTimer(disconnectedTimer);
         disconnectedTimer = undefined;
-        if (typeof connectedTimer === 'undefined' &&
-            !apiConnected) {
+        if (typeof connectedTimer === 'undefined' && !apiConnected) {
             connectedTimer = setTimer(() => {
                 apiConnected = true;
                 networkStatusChange();
@@ -55,21 +54,19 @@ export default (props: any) => {
         }
     };
 
-    React.useEffect(
-        () => {
-            window.addEventListener('online', networkStatusChange, false);
-            window.addEventListener('offline', networkStatusChange, false);
+    React.useEffect(() => {
+        window.addEventListener('online', networkStatusChange, false);
+        window.addEventListener('offline', networkStatusChange, false);
+        window['subscriptions'].subscribe('connected', connected);
+        window['subscriptions'].subscribe('disconnected', disconnected);
+
+        return () => {
+            window.removeEventListener('online', networkStatusChange);
+            window.removeEventListener('offline', networkStatusChange);
             window['subscriptions'].subscribe('connected', connected);
             window['subscriptions'].subscribe('disconnected', disconnected);
-
-            return () => {
-                window.removeEventListener('online', networkStatusChange);
-                window.removeEventListener('offline', networkStatusChange);
-                window['subscriptions'].subscribe('connected', connected);
-                window['subscriptions'].subscribe('disconnected', disconnected);
-            };
-        },
-        []);
+        };
+    }, []);
 
     return (
         <NetworkStatusContext.Provider
@@ -81,7 +78,7 @@ export default (props: any) => {
             }}
         >
             {props.children}
-            {info &&
-                <NetworkStatusDisplay close={() => setInfo(undefined)} message={info} />}
-        </NetworkStatusContext.Provider>);
+            {info && <NetworkStatusDisplay close={() => setInfo(undefined)} message={info} />}
+        </NetworkStatusContext.Provider>
+    );
 };

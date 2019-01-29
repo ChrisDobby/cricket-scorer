@@ -48,9 +48,7 @@ const InProgress = (props: InProgressProps) => {
     });
 
     const disallowedPlayers = () =>
-        typeof props.inProgress.previousBowler === 'undefined'
-            ? []
-            : [props.inProgress.previousBowler.playerIndex];
+        typeof props.inProgress.previousBowler === 'undefined' ? [] : [props.inProgress.previousBowler.playerIndex];
 
     const previousBowlerFromEndIndex = () =>
         typeof props.inProgress.previousBowlerFromEnd === 'undefined'
@@ -58,7 +56,9 @@ const InProgress = (props: InProgressProps) => {
             : props.inProgress.previousBowlerFromEnd.playerIndex;
 
     React.useEffect(() => {
-        if (typeof props.inProgress.match === 'undefined') { return; }
+        if (typeof props.inProgress.match === 'undefined') {
+            return;
+        }
 
         if (typeof props.inProgress.match.toss === 'undefined') {
             props.history.replace('/match/start');
@@ -74,79 +74,94 @@ const InProgress = (props: InProgressProps) => {
     return (
         <Paper className={props.classes.root}>
             <Observer
-                render={() =>
+                render={() => (
                     <>
-                        {match && !props.inProgress.currentInnings && !shouldBeComplete &&
+                        {match && !props.inProgress.currentInnings && !shouldBeComplete && (
                             <StartInnings
                                 teams={[match.homeTeam, match.awayTeam]}
                                 startInnings={bindStorage(props.inProgress.startInnings)}
                                 defaultBattingTeam={props.inProgress.nextBattingTeam}
                                 canChangeBattingTeam={props.inProgress.canSelectBattingTeamForInnings}
                                 maximumOvers={props.inProgress.match.config.oversPerSide}
-                            />}
-                        {props.inProgress.currentInnings && !props.inProgress.currentBowler &&
-                            inningsStatus === domain.InningsStatus.InProgress &&
-                            <SelectBowler
-                                bowlingTeam={getTeam(match, props.inProgress.currentInnings.bowlingTeam)}
-                                selectBowler={bindStorage(props.inProgress.newBowler)}
-                                initiallySelected={previousBowlerFromEndIndex()}
-                                disallowedPlayers={disallowedPlayers()}
-                            />}
-                        {props.inProgress.newBatterRequired && inningsStatus === domain.InningsStatus.InProgress &&
+                            />
+                        )}
+                        {props.inProgress.currentInnings &&
+                            !props.inProgress.currentBowler &&
+                            inningsStatus === domain.InningsStatus.InProgress && (
+                                <SelectBowler
+                                    bowlingTeam={getTeam(match, props.inProgress.currentInnings.bowlingTeam)}
+                                    selectBowler={bindStorage(props.inProgress.newBowler)}
+                                    initiallySelected={previousBowlerFromEndIndex()}
+                                    disallowedPlayers={disallowedPlayers()}
+                                />
+                            )}
+                        {props.inProgress.newBatterRequired && inningsStatus === domain.InningsStatus.InProgress && (
                             <SelectNewBatter
                                 batting={currentInnings.batting}
                                 players={getTeam(match, currentInnings.battingTeam).players}
                                 batterSelected={bindStorage(props.inProgress.newBatter)}
-                            />}
-                        {props.inProgress.currentInnings &&
+                            />
+                        )}
+                        {props.inProgress.currentInnings && (
                             <>
                                 {props.inProgress.currentBatter &&
                                     props.inProgress.currentBowler &&
                                     props.inProgress.currentOver &&
-                                    !props.inProgress.newBatterRequired &&
-                                    <>
-                                        <BallEntry
-                                            innings={props.inProgress.currentInnings}
-                                            batter={props.inProgress.currentBatter}
-                                            bowler={props.inProgress.currentBowler}
-                                            overComplete={!!props.inProgress.currentOverComplete}
-                                            currentOver={props.inProgress.currentOver}
-                                            battingTeam={getTeam(match, props.inProgress.currentInnings.battingTeam)}
-                                            homeTeam={match.homeTeam.name}
-                                            awayTeam={match.awayTeam.name}
-                                            calculateResult={() => calculateResult(match)}
-                                            delivery={ballFunctions.delivery}
-                                            completeOver={ballFunctions.completeOver}
-                                        />
-                                        <EntryContainer>
-                                            <Innings
+                                    !props.inProgress.newBatterRequired && (
+                                        <>
+                                            <BallEntry
                                                 innings={props.inProgress.currentInnings}
-                                                getTeam={type => getTeam(match, type)}
+                                                batter={props.inProgress.currentBatter}
+                                                bowler={props.inProgress.currentBowler}
+                                                overComplete={!!props.inProgress.currentOverComplete}
+                                                currentOver={props.inProgress.currentOver}
+                                                battingTeam={getTeam(
+                                                    match,
+                                                    props.inProgress.currentInnings.battingTeam,
+                                                )}
+                                                homeTeam={match.homeTeam.name}
+                                                awayTeam={match.awayTeam.name}
+                                                calculateResult={() => calculateResult(match)}
+                                                delivery={ballFunctions.delivery}
+                                                completeOver={ballFunctions.completeOver}
                                             />
-                                        </EntryContainer>
-                                    </>}
+                                            <EntryContainer>
+                                                <Innings
+                                                    innings={props.inProgress.currentInnings}
+                                                    getTeam={type => getTeam(match, type)}
+                                                />
+                                            </EntryContainer>
+                                        </>
+                                    )}
                                 {typeof inningsStatus !== 'undefined' &&
-                                    inningsStatus !== domain.InningsStatus.InProgress &&
-                                    <InningsComplete
-                                        status={inningsStatus}
-                                        battingTeam={getTeam(match, props.inProgress.currentInnings.battingTeam).name}
-                                        complete={() => ballFunctions.completeInnings(inningsStatus)}
-                                        undoPrevious={ballFunctions.undoPreviousDelivery}
-                                    />}
-                                {shouldBeComplete &&
+                                    inningsStatus !== domain.InningsStatus.InProgress && (
+                                        <InningsComplete
+                                            status={inningsStatus}
+                                            battingTeam={
+                                                getTeam(match, props.inProgress.currentInnings.battingTeam).name
+                                            }
+                                            complete={() => ballFunctions.completeInnings(inningsStatus)}
+                                            undoPrevious={ballFunctions.undoPreviousDelivery}
+                                        />
+                                    )}
+                                {shouldBeComplete && (
                                     <CompleteMatch
                                         homeTeam={match.homeTeam.name}
                                         awayTeam={match.awayTeam.name}
                                         disallowCancel
                                         complete={ballFunctions.completeMatch}
-                                        cancel={() => { }}
+                                        cancel={() => {}}
                                         calculateResult={() => calculateResult(match)}
                                         undoPrevious={ballFunctions.undoPreviousDelivery}
-                                    />}
-                            </>}
-                    </>}
+                                    />
+                                )}
+                            </>
+                        )}
+                    </>
+                )}
             />
-        </Paper>);
+        </Paper>
+    );
 };
 
 export default withStyles(styles)(withRouter(InProgress));

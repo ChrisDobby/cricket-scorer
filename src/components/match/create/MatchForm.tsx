@@ -42,12 +42,12 @@ export default (props: MatchFormProps) => {
         setMatchData({
             ...matchData,
             playersPerSide: players,
-            homePlayers: matchData.homePlayers.filter((_, idx) => idx < players)
-                .concat(players > matchData.playersPerSide
-                    ? Array(players - matchData.playersPerSide).fill('') : []),
-            awayPlayers: matchData.awayPlayers.filter((_, idx) => idx < players)
-                .concat(players > matchData.playersPerSide
-                    ? Array(players - matchData.playersPerSide).fill('') : []),
+            homePlayers: matchData.homePlayers
+                .filter((_, idx) => idx < players)
+                .concat(players > matchData.playersPerSide ? Array(players - matchData.playersPerSide).fill('') : []),
+            awayPlayers: matchData.awayPlayers
+                .filter((_, idx) => idx < players)
+                .concat(players > matchData.playersPerSide ? Array(players - matchData.playersPerSide).fill('') : []),
         });
 
     const teamChanged = (team: TeamType, name: string) => {
@@ -70,9 +70,9 @@ export default (props: MatchFormProps) => {
     const canSave = () =>
         ((matchData.matchType === MatchType.LimitedOvers && matchData.oversPerSide > 0) ||
             (matchData.matchType === MatchType.Time && matchData.inningsPerSide > 0)) &&
-            matchData.playersPerSide > 0 &&
-            matchData.runsPerNoBall > 0 &&
-            matchData.runsPerWide > 0 &&
+        matchData.playersPerSide > 0 &&
+        matchData.runsPerNoBall > 0 &&
+        matchData.runsPerWide > 0 &&
         !!matchData.homeTeam &&
         !!matchData.awayTeam &&
         matchData.homePlayers.filter(player => player).length > 0 &&
@@ -84,7 +84,9 @@ export default (props: MatchFormProps) => {
     };
 
     const save = () => {
-        if (!canSave()) { return; }
+        if (!canSave()) {
+            return;
+        }
         const unknownHomePlayers = matchData.homePlayers.filter(player => !player).length;
         const unknownAwayPlayers = matchData.awayPlayers.filter(player => !player).length;
         if (unknownHomePlayers > 0 || unknownAwayPlayers > 0) {
@@ -97,11 +99,7 @@ export default (props: MatchFormProps) => {
 
     return (
         <>
-            <EditForm
-                heading="New match"
-                save={save}
-                canSave={canSave}
-            >
+            <EditForm heading="New match" save={save} canSave={canSave}>
                 <MatchEntry
                     {...matchData}
                     matchTypeSelected={matchType => setMatchData({ ...matchData, matchType })}
@@ -122,12 +120,14 @@ export default (props: MatchFormProps) => {
                     teamChanged={teamChanged}
                 />
             </EditForm>
-            {(saveWarnings.homePlayersMissing > 0 || saveWarnings.awayPlayersMissing > 0) &&
+            {(saveWarnings.homePlayersMissing > 0 || saveWarnings.awayPlayersMissing > 0) && (
                 <SaveWarning
                     homePlayersMissing={saveWarnings.homePlayersMissing}
                     awayPlayersMissing={saveWarnings.awayPlayersMissing}
                     save={saveConfirmed}
                     cancel={() => setSaveWarnings({ homePlayersMissing: 0, awayPlayersMissing: 0 })}
-                />}
-        </ >);
+                />
+            )}
+        </>
+    );
 };

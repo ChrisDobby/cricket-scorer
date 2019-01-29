@@ -41,24 +41,22 @@ export default WithAuth(
                         <Typography variant="title" color="inherit" style={grow}>
                             {pageContext.title}
                         </Typography>
-                        {!props.isAuthenticated &&
-                            status === ONLINE && (
-                                <Button color="inherit" onClick={props.login}>
-                                    Register or login
-                                </Button>
-                            )}
-                        {props.outOfDateMatches &&
-                            props.outOfDateMatches.length > 0 && (
-                                <IconButton>
-                                    <Badge
-                                        badgeContent={props.outOfDateMatches.length}
-                                        color="secondary"
-                                        onClick={props.outOfDateSelected}
-                                    >
-                                        <NotificationImportant style={{ color: '#ffffff' }} />
-                                    </Badge>
-                                </IconButton>
-                            )}
+                        {!props.isAuthenticated && status === ONLINE && (
+                            <Button color="inherit" onClick={props.login}>
+                                Register or login
+                            </Button>
+                        )}
+                        {props.outOfDateMatches && props.outOfDateMatches.length > 0 && (
+                            <IconButton>
+                                <Badge
+                                    badgeContent={props.outOfDateMatches.length}
+                                    color="secondary"
+                                    onClick={props.outOfDateSelected}
+                                >
+                                    <NotificationImportant style={{ color: '#ffffff' }} />
+                                </Badge>
+                            </IconButton>
+                        )}
                         {props.isAuthenticated && (
                             <>
                                 <Avatar src={props.userProfile.picture} />

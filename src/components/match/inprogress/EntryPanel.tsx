@@ -40,20 +40,24 @@ export default withRouter((props: EntryPanelProps) => {
     });
     const getScoresFunc = () => {
         switch (scoreType) {
-        case ScoreType.Byes:
-            return getScore('byes');
-        case ScoreType.LegByes:
-            return getScore('legByes');
-        case ScoreType.Wide:
-            return getScore('wides');
-        default:
-            return getScore('runs');
+            case ScoreType.Byes:
+                return getScore('byes');
+            case ScoreType.LegByes:
+                return getScore('legByes');
+            case ScoreType.Wide:
+                return getScore('wides');
+            default:
+                return getScore('runs');
         }
     };
 
     const getDeliveryOutcome = (): DeliveryOutcome => {
-        if (noBall) { return DeliveryOutcome.Noball; }
-        if (scoreType === ScoreType.Wide) { return DeliveryOutcome.Wide; }
+        if (noBall) {
+            return DeliveryOutcome.Noball;
+        }
+        if (scoreType === ScoreType.Wide) {
+            return DeliveryOutcome.Wide;
+        }
         return DeliveryOutcome.Valid;
     };
 
@@ -89,11 +93,8 @@ export default withRouter((props: EntryPanelProps) => {
     };
 
     const allRunWarningYes = () => {
-        if (typeof allRunDeliveryOutcome !== 'undefined' &&
-            typeof allRunScores !== 'undefined') {
-            addDelivery(
-                allRunDeliveryOutcome,
-                allRunScores);
+        if (typeof allRunDeliveryOutcome !== 'undefined' && typeof allRunScores !== 'undefined') {
+            addDelivery(allRunDeliveryOutcome, allRunScores);
         }
 
         clearWarnings();
@@ -109,7 +110,8 @@ export default withRouter((props: EntryPanelProps) => {
                         aria-label="Wicket"
                         color="primary"
                         onClick={() => props.history.push('/match/wicket')}
-                    >{'W'}
+                    >
+                        {'W'}
                     </Button>
                     <FormControlLabel
                         style={{ float: 'right' }}
@@ -118,8 +120,9 @@ export default withRouter((props: EntryPanelProps) => {
                             <Switch
                                 color="secondary"
                                 checked={noBall}
-                                onChange={ev => ev.target.checked ? noBallPressed() : legalBallPressed()}
-                            />}
+                                onChange={ev => (ev.target.checked ? noBallPressed() : legalBallPressed())}
+                            />
+                        }
                     />
                 </Grid>
                 <Grid container>
@@ -128,11 +131,7 @@ export default withRouter((props: EntryPanelProps) => {
                     </Grid>
                 </Grid>
                 <Grid container>
-                    <ScoreTypeSelect
-                        selectedType={scoreType}
-                        noBall={noBall}
-                        scoreTypeChange={setScoreType}
-                    />
+                    <ScoreTypeSelect selectedType={scoreType} noBall={noBall} scoreTypeChange={setScoreType} />
                 </Grid>
                 <Grid container>
                     <ScoresEntry
@@ -143,20 +142,22 @@ export default withRouter((props: EntryPanelProps) => {
                     />
                 </Grid>
             </div>
-            {allRunFourWarning &&
+            {allRunFourWarning && (
                 <WarningModal
                     warningType={WarningType.AllRunFourWarning}
                     onYes={allRunWarningYes}
                     onNo={clearWarnings}
-                />}
-            {allRunSixWarning &&
+                />
+            )}
+            {allRunSixWarning && (
                 <WarningModal
                     warningType={WarningType.AllRunSixWarning}
                     onYes={allRunWarningYes}
                     onNo={clearWarnings}
-                />}
+                />
+            )}
 
-            {notifyOutcome &&
-                <DeliveryNotify outcome={notifyOutcome} onClose={() => setNotifyOutcome(undefined)} />}
-        </>);
+            {notifyOutcome && <DeliveryNotify outcome={notifyOutcome} onClose={() => setNotifyOutcome(undefined)} />}
+        </>
+    );
 });

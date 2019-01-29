@@ -11,7 +11,10 @@ interface TeamTotalProps {
 export default ({ innings, getTeam }: TeamTotalProps) => (
     <Typography variant="h5">
         <TextUpdateNotify
-            text={`${getTeam(innings.battingTeam).name} ${innings.score}` +
-                `${innings.status === InningsStatus.AllOut ? ' all out' : `-${innings.wickets}`}`}
+            text={
+                `${getTeam(innings.battingTeam).name} ${innings.score}` +
+                `${innings.status === InningsStatus.AllOut ? ' all out' : `-${innings.wickets}`}`
+            }
         />
-    </Typography>);
+    </Typography>
+);

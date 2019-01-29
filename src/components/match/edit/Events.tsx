@@ -19,12 +19,10 @@ const rollback = (
     complete: () => void,
     getUserId: () => string,
 ) =>
-    bindMatchStorage(storeMatch, () => inProgress, getUserId)(
-        (eventIndex: number) => {
-            inProgress.rollback(eventIndex);
-            complete();
-        },
-    );
+    bindMatchStorage(storeMatch, () => inProgress, getUserId)((eventIndex: number) => {
+        inProgress.rollback(eventIndex);
+        complete();
+    });
 
 export default ({ inProgress, storeMatch, history, userProfile }: EventsProps) => {
     if (typeof inProgress.currentInnings === 'undefined') {
@@ -40,7 +38,12 @@ export default ({ inProgress, storeMatch, history, userProfile }: EventsProps) =
                 bowlingPlayers={getTeam(inProgress.match, inProgress.currentInnings.bowlingTeam).players}
                 rolledBackInnings={inProgress.rolledBackInnings}
                 rollback={rollback(
-                    inProgress, storeMatch, () => history.replace('/match/inprogress'), () => userProfile.id)}
+                    inProgress,
+                    storeMatch,
+                    () => history.replace('/match/inprogress'),
+                    () => userProfile.id,
+                )}
             />
-        </EditContainer>);
+        </EditContainer>
+    );
 };

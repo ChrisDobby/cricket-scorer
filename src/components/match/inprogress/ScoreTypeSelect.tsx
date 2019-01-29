@@ -30,9 +30,9 @@ const items = [
 export default (props: ScoreTypeSelectProps) => (
     <>
         <Hidden smUp>
-            {items.map((item, idx) =>
+            {items.map((item, idx) => (
                 <React.Fragment key={item.scoreType}>
-                    {(!props.noBall || item.availableForNoBall) &&
+                    {(!props.noBall || item.availableForNoBall) && (
                         <FormControlLabel
                             label={item.xsLabel}
                             style={idx < items.length - 1 ? radioStyle : {}}
@@ -40,14 +40,17 @@ export default (props: ScoreTypeSelectProps) => (
                                 <Radio
                                     checked={props.selectedType === item.scoreType}
                                     onChange={() => props.scoreTypeChange(item.scoreType)}
-                                />}
-                        />}
-                </React.Fragment>)}
+                                />
+                            }
+                        />
+                    )}
+                </React.Fragment>
+            ))}
         </Hidden>
         <Hidden xsDown>
-            {items.map(item =>
+            {items.map(item => (
                 <React.Fragment key={item.scoreType}>
-                    {(!props.noBall || item.availableForNoBall) &&
+                    {(!props.noBall || item.availableForNoBall) && (
                         <FormControlLabel
                             label={item.label}
                             style={radioStyle}
@@ -55,8 +58,12 @@ export default (props: ScoreTypeSelectProps) => (
                                 <Radio
                                     checked={props.selectedType === item.scoreType}
                                     onChange={() => props.scoreTypeChange(item.scoreType)}
-                                />}
-                        />}
-                </React.Fragment>)}
+                                />
+                            }
+                        />
+                    )}
+                </React.Fragment>
+            ))}
         </Hidden>
-    </>);
+    </>
+);

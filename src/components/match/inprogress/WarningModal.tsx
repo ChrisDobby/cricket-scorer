@@ -22,33 +22,28 @@ const allRunWarningText = (runs: string) =>
 
 const warningText = (warningType: WarningType) => {
     switch (warningType) {
-    case WarningType.AllRunFourWarning:
-        return allRunWarningText('four');
-    case WarningType.AllRunSixWarning:
-        return allRunWarningText('six');
+        case WarningType.AllRunFourWarning:
+            return allRunWarningText('four');
+        case WarningType.AllRunSixWarning:
+            return allRunWarningText('six');
     }
 };
 
 export const WarningModal = ({ warningType, onYes, onNo }: WarningModalProps) => (
     <div>
-        <Dialog
-            open={true}
-            aria-labelledby="all-run-warning-title"
-        >
+        <Dialog open={true} aria-labelledby="all-run-warning-title">
             <DialogTitle id="all-run-warning-title">All run</DialogTitle>
             <DialogContent>
-                <DialogContentText>
-                    {warningText(warningType)}
-                </DialogContentText>
+                <DialogContentText>{warningText(warningType)}</DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button
-                    onClick={onYes}
-                    color="primary"
-                    autoFocus
-                >Yes
+                <Button onClick={onYes} color="primary" autoFocus>
+                    Yes
                 </Button>
-                <Button onClick={onNo} color="primary">No</Button>
+                <Button onClick={onNo} color="primary">
+                    No
+                </Button>
             </DialogActions>
         </Dialog>
-    </div>);
+    </div>
+);

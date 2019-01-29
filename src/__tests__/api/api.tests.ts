@@ -32,39 +32,39 @@ describe('api', () => {
         });
 
         it('should retry after bad response', () => {
-            global.fetch.once('', { status: 404 })
-                .once(response);
+            global.fetch.once('', { status: 404 }).once(response);
 
             Api.get(route);
 
-            return new Promise(resolve => setImmediate(resolve))
-                .then(() => {
-                    jest.runAllTimers();
-                    expect(global.fetch).toHaveBeenCalledTimes(2);
-                });
+            return new Promise(resolve => setImmediate(resolve)).then(() => {
+                jest.runAllTimers();
+                expect(global.fetch).toHaveBeenCalledTimes(2);
+            });
         });
 
         it('should stop retrying after max retries used', () => {
             global.fetch.mockResponse('', { status: 404 });
 
-            Api.get(route).then(() => { }).catch(() => { });
+            Api.get(route)
+                .then(() => {})
+                .catch(() => {});
 
-            return new Promise(resolve => setImmediate(resolve))
-                .then(() => {
-                    jest.runAllTimers();
-                    expect(global.fetch).toHaveBeenCalledTimes(2);
-                });
+            return new Promise(resolve => setImmediate(resolve)).then(() => {
+                jest.runAllTimers();
+                expect(global.fetch).toHaveBeenCalledTimes(2);
+            });
         });
 
         it('should not retry for failures', () => {
             global.fetch.mockReject();
 
-            Api.get(route).then(() => { }).catch(() => { });
+            Api.get(route)
+                .then(() => {})
+                .catch(() => {});
 
-            return new Promise(resolve => setImmediate(resolve))
-                .then(() => {
-                    expect(global.fetch).toHaveBeenCalledTimes(1);
-                });
+            return new Promise(resolve => setImmediate(resolve)).then(() => {
+                expect(global.fetch).toHaveBeenCalledTimes(1);
+            });
         });
     });
 
@@ -75,17 +75,14 @@ describe('api', () => {
             await Api.post(route, data);
 
             expect(global.fetch).toHaveBeenCalledTimes(1);
-            expect(global.fetch).toBeCalledWith(
-                route,
-                {
-                    method: 'POST',
-                    body: JSON.stringify(data),
-                    headers: {
-                        Authorization: 'Bearer null',
-                        'Content-Type': 'application/json',
-                    },
+            expect(global.fetch).toBeCalledWith(route, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    Authorization: 'Bearer null',
+                    'Content-Type': 'application/json',
                 },
-            );
+            });
         });
 
         it('should return response data', async () => {
@@ -103,17 +100,14 @@ describe('api', () => {
             await Api.put(route, data);
 
             expect(global.fetch).toHaveBeenCalledTimes(1);
-            expect(global.fetch).toBeCalledWith(
-                route,
-                {
-                    method: 'PUT',
-                    body: JSON.stringify(data),
-                    headers: {
-                        Authorization: 'Bearer null',
-                        'Content-Type': 'application/json',
-                    },
+            expect(global.fetch).toBeCalledWith(route, {
+                method: 'PUT',
+                body: JSON.stringify(data),
+                headers: {
+                    Authorization: 'Bearer null',
+                    'Content-Type': 'application/json',
                 },
-            );
+            });
         });
 
         it('should return response data', async () => {
@@ -131,28 +125,24 @@ describe('api', () => {
             await Api.remove(route);
 
             expect(global.fetch).toHaveBeenCalledTimes(1);
-            expect(global.fetch).toBeCalledWith(
-                route,
-                {
-                    method: 'DELETE',
-                    headers: {
-                        Authorization: 'Bearer null',
-                        'Content-Type': 'application/json',
-                    },
+            expect(global.fetch).toBeCalledWith(route, {
+                method: 'DELETE',
+                headers: {
+                    Authorization: 'Bearer null',
+                    'Content-Type': 'application/json',
                 },
-            );
+            });
         });
 
         it('should stop retrying after max retries used', () => {
             global.fetch.mockResponse('', { status: 404 });
 
-            Api.remove(route).catch(() => { });
+            Api.remove(route).catch(() => {});
 
-            return new Promise(resolve => setImmediate(resolve))
-                .then(() => {
-                    jest.runAllTimers();
-                    expect(global.fetch).toHaveBeenCalledTimes(2);
-                });
+            return new Promise(resolve => setImmediate(resolve)).then(() => {
+                jest.runAllTimers();
+                expect(global.fetch).toHaveBeenCalledTimes(2);
+            });
         });
     });
 });

@@ -15,27 +15,27 @@ interface SaveWarningProps {
 
 const SaveWarning = ({ homePlayersMissing, awayPlayersMissing, save, cancel }: SaveWarningProps) => (
     <div>
-        <Dialog
-            open={true}
-            aria-labelledby="save-warning-title"
-        >
+        <Dialog open={true} aria-labelledby="save-warning-title">
             <DialogTitle id="save-warning-title">Missing players</DialogTitle>
             <DialogContent>
-                {homePlayersMissing > 0 &&
-                    <DialogContentText>
-                        There are {homePlayersMissing} missing from the home team
-                </DialogContentText>}
-                {awayPlayersMissing > 0 &&
-                    <DialogContentText>
-                        There are {awayPlayersMissing} missing from the away team
-                </DialogContentText>}
+                {homePlayersMissing > 0 && (
+                    <DialogContentText>There are {homePlayersMissing} missing from the home team</DialogContentText>
+                )}
+                {awayPlayersMissing > 0 && (
+                    <DialogContentText>There are {awayPlayersMissing} missing from the away team</DialogContentText>
+                )}
                 <DialogContentText>Do you want to create the match anyway</DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button onClick={save} color="primary" autoFocus>Yes</Button>
-                <Button onClick={cancel} color="primary">No</Button>
+                <Button onClick={save} color="primary" autoFocus>
+                    Yes
+                </Button>
+                <Button onClick={cancel} color="primary">
+                    No
+                </Button>
             </DialogActions>
         </Dialog>
-    </div>);
+    </div>
+);
 
 export default SaveWarning;

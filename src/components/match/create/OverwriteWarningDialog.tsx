@@ -15,31 +15,24 @@ interface OverwriteWarningDialogProps {
 
 export default (props: OverwriteWarningDialogProps) => (
     <div>
-        <Dialog
-            open={true}
-            aria-labelledby="overwrite-current-match"
-        >
+        <Dialog open={true} aria-labelledby="overwrite-current-match">
             <DialogTitle id="overwrite-current-match-title">Overwrite current match</DialogTitle>
             <DialogContent>
                 <DialogContentText color="primary">
                     {`The match ${props.storedMatch.homeTeam.name} v ${props.storedMatch.awayTeam.name} ` +
                         'is currently stored to continue scoring.'}
                 </DialogContentText>
-                <DialogContentText>
-                    {'If you create a new match this match will be removed.'}
-                </DialogContentText>
-                <DialogContentText color="textPrimary">
-                    {'Continue creating new match?'}
-                </DialogContentText>
+                <DialogContentText>{'If you create a new match this match will be removed.'}</DialogContentText>
+                <DialogContentText color="textPrimary">{'Continue creating new match?'}</DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button
-                    onClick={props.onYes}
-                    color="primary"
-                    autoFocus
-                >Yes
+                <Button onClick={props.onYes} color="primary" autoFocus>
+                    Yes
                 </Button>
-                <Button onClick={props.onNo} color="primary">No</Button>
+                <Button onClick={props.onNo} color="primary">
+                    No
+                </Button>
             </DialogActions>
         </Dialog>
-    </div>);
+    </div>
+);

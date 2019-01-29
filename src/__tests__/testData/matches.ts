@@ -1,5 +1,14 @@
-import { Match, DeliveryOutcome, Howout, Batter, MatchType, InningsStatus, TeamType, EventType, Innings }
-    from '../../domain';
+import {
+    Match,
+    DeliveryOutcome,
+    Howout,
+    Batter,
+    MatchType,
+    InningsStatus,
+    TeamType,
+    EventType,
+    Innings,
+} from '../../domain';
 
 export const blankMatch: Match = {
     user: 'test',
@@ -86,7 +95,7 @@ export const inningsWithStartedOver = {
                 playerIndex: 0,
                 innings: {
                     runs: 0,
-                    timeIn: (new Date()).getTime(),
+                    timeIn: new Date().getTime(),
                     ballsFaced: 0,
                     fours: 0,
                     sixes: 0,
@@ -97,7 +106,7 @@ export const inningsWithStartedOver = {
                 playerIndex: 1,
                 innings: {
                     runs: 0,
-                    timeIn: (new Date()).getTime(),
+                    timeIn: new Date().getTime(),
                     ballsFaced: 0,
                     fours: 0,
                     sixes: 0,
@@ -127,14 +136,15 @@ export const inningsWithStartedOver = {
             maidenOvers: 0,
             runs: 0,
             wickets: 0,
-        }],
+        },
+    ],
 };
 
 export const inningsWithOverReadyToComplete = {
     ...inningsWithStartedOver,
     events: [
         {
-            time: (new Date()).getTime(),
+            time: new Date().getTime(),
             type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
@@ -142,7 +152,7 @@ export const inningsWithOverReadyToComplete = {
             outcome: { scores: { runs: 2 }, deliveryOutcome: DeliveryOutcome.Valid },
         },
         {
-            time: (new Date()).getTime(),
+            time: new Date().getTime(),
             type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
@@ -150,7 +160,7 @@ export const inningsWithOverReadyToComplete = {
             outcome: { scores: {}, deliveryOutcome: DeliveryOutcome.Valid },
         },
         {
-            time: (new Date()).getTime(),
+            time: new Date().getTime(),
             type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
@@ -158,7 +168,7 @@ export const inningsWithOverReadyToComplete = {
             outcome: { scores: {}, deliveryOutcome: DeliveryOutcome.Valid },
         },
         {
-            time: (new Date()).getTime(),
+            time: new Date().getTime(),
             type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
@@ -166,7 +176,7 @@ export const inningsWithOverReadyToComplete = {
             outcome: { scores: {}, deliveryOutcome: DeliveryOutcome.Valid },
         },
         {
-            time: (new Date()).getTime(),
+            time: new Date().getTime(),
             type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
@@ -174,7 +184,7 @@ export const inningsWithOverReadyToComplete = {
             outcome: { scores: {}, deliveryOutcome: DeliveryOutcome.Valid },
         },
         {
-            time: (new Date()).getTime(),
+            time: new Date().getTime(),
             type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
@@ -186,18 +196,22 @@ export const inningsWithOverReadyToComplete = {
 
 const inningsWithTwoOvers = {
     ...inningsWithOverReadyToComplete,
-    bowlers: [...inningsWithOverReadyToComplete.bowlers, {
-        playerIndex: 10,
-        name: blankMatch.awayTeam.players[9],
-        completedOvers: 0,
-        totalOvers: '0',
-        maidenOvers: 0,
-        runs: 0,
-        wickets: 0,
-    }],
+    bowlers: [
+        ...inningsWithOverReadyToComplete.bowlers,
+        {
+            playerIndex: 10,
+            name: blankMatch.awayTeam.players[9],
+            completedOvers: 0,
+            totalOvers: '0',
+            maidenOvers: 0,
+            runs: 0,
+            wickets: 0,
+        },
+    ],
     completedOvers: 2,
-    events: [...inningsWithOverReadyToComplete.events, ...inningsWithOverReadyToComplete
-        .events.map(delivery => ({
+    events: [
+        ...inningsWithOverReadyToComplete.events,
+        ...inningsWithOverReadyToComplete.events.map(delivery => ({
             ...delivery,
             overNumber: 2,
             bowlerIndex: 1,
@@ -209,7 +223,7 @@ export const inningsWithMaidenOverReadyToComplete = {
     ...inningsWithStartedOver,
     events: [
         {
-            time: (new Date()).getTime(),
+            time: new Date().getTime(),
             type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
@@ -217,7 +231,7 @@ export const inningsWithMaidenOverReadyToComplete = {
             outcome: { scores: { byes: 2 }, deliveryOutcome: DeliveryOutcome.Valid },
         },
         {
-            time: (new Date()).getTime(),
+            time: new Date().getTime(),
             type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
@@ -225,7 +239,7 @@ export const inningsWithMaidenOverReadyToComplete = {
             outcome: { scores: { legByes: 1 }, deliveryOutcome: DeliveryOutcome.Valid },
         },
         {
-            time: (new Date()).getTime(),
+            time: new Date().getTime(),
             type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
@@ -233,7 +247,7 @@ export const inningsWithMaidenOverReadyToComplete = {
             outcome: { scores: {}, deliveryOutcome: DeliveryOutcome.Valid },
         },
         {
-            time: (new Date()).getTime(),
+            time: new Date().getTime(),
             type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
@@ -241,7 +255,7 @@ export const inningsWithMaidenOverReadyToComplete = {
             outcome: { scores: {}, deliveryOutcome: DeliveryOutcome.Valid },
         },
         {
-            time: (new Date()).getTime(),
+            time: new Date().getTime(),
             type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
@@ -249,7 +263,7 @@ export const inningsWithMaidenOverReadyToComplete = {
             outcome: { scores: {}, deliveryOutcome: DeliveryOutcome.Valid },
         },
         {
-            time: (new Date()).getTime(),
+            time: new Date().getTime(),
             type: EventType.Delivery,
             bowlerIndex: 0,
             batsmanIndex: 0,
@@ -308,26 +322,27 @@ export const inningsAfterWicketTaken = {
     ...inningsWithStartedOver,
     batting: {
         ...inningsWithStartedOver.batting,
-        batters: (inningsWithStartedOver.batting.batters.map((batter, index) => (
+        batters: (inningsWithStartedOver.batting.batters.map((batter, index) =>
             index === 0
                 ? {
-                    ...batter,
-                    innings: {
-                        ...batter.innings,
-                        wicket: {
-                            time: 1,
-                            howOut: Howout.Bowled,
-                            bowler: 'A bowler',
-                        },
-                    },
-                }
-                : batter
-        )) as Batter[])
-            .concat(blankMatch.homeTeam.players.slice(2).map((player, idx) => ({
+                      ...batter,
+                      innings: {
+                          ...batter.innings,
+                          wicket: {
+                              time: 1,
+                              howOut: Howout.Bowled,
+                              bowler: 'A bowler',
+                          },
+                      },
+                  }
+                : batter,
+        ) as Batter[]).concat(
+            blankMatch.homeTeam.players.slice(2).map((player, idx) => ({
                 name: player,
                 playerIndex: idx,
                 innings: undefined,
-            }))),
+            })),
+        ),
     },
 };
 
@@ -335,20 +350,20 @@ export const inningsAfterWicketTakenAndNewBatterStarted = {
     ...inningsAfterWicketTaken,
     batting: {
         ...inningsAfterWicketTaken.batting,
-        batters: (inningsAfterWicketTaken.batting.batters.map((batter, index) => (
+        batters: inningsAfterWicketTaken.batting.batters.map((batter, index) =>
             index === 2
                 ? {
-                    ...batter,
-                    innings: {
-                        runs: 0,
-                        timeIn: (new Date()).getTime(),
-                        ballsFaced: 0,
-                        fours: 0,
-                        sixes: 0,
-                    },
-                }
-                : batter
-        ))),
+                      ...batter,
+                      innings: {
+                          runs: 0,
+                          timeIn: new Date().getTime(),
+                          ballsFaced: 0,
+                          fours: 0,
+                          sixes: 0,
+                      },
+                  }
+                : batter,
+        ),
     },
 };
 

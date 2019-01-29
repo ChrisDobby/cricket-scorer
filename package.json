@@ -17,7 +17,9 @@
     "heroku-postbuild": "npm-run-all clean-dist build:html prod-build",
     "prod-build": "webpack --config ./webpack.config.prod.js --hide-modules --progress",
     "lighthouse": "babel-node tools/lighthouse.js",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "prettier": "prettier \"**/*.+(ts|tsx)\"",
+    "format": "npm run prettier -- --write"
   },
   "repository": {
     "type": "git",
@@ -43,6 +45,7 @@
     "lighthouse": "^4.0.0",
     "lint-staged": "^8.1.1",
     "npm-run-all": "^4.1.2",
+    "prettier": "^1.16.1",
     "react-testing-library": "^5.4.2",
     "rimraf": "^2.6.2",
     "source-map-loader": "^0.2.3",

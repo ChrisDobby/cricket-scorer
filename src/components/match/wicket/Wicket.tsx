@@ -47,25 +47,28 @@ const Wicket = (props: WicketProps) => {
             : domain.howouts(props.inProgress.currentBatter);
 
     const batters = (): domain.Batter[] => {
-        if (typeof props.inProgress.currentInnings === 'undefined' ||
-            typeof props.inProgress.currentBatter === 'undefined') {
+        if (
+            typeof props.inProgress.currentInnings === 'undefined' ||
+            typeof props.inProgress.currentBatter === 'undefined'
+        ) {
             return [];
         }
 
         return [
             props.inProgress.currentBatter,
-            ...props.inProgress.currentInnings.batting.batters.filter(batter =>
-                batter !== props.inProgress.currentBatter &&
-                typeof batter.innings !== 'undefined'
-                && typeof batter.innings.wicket === 'undefined'),
+            ...props.inProgress.currentInnings.batting.batters.filter(
+                batter =>
+                    batter !== props.inProgress.currentBatter &&
+                    typeof batter.innings !== 'undefined' &&
+                    typeof batter.innings.wicket === 'undefined',
+            ),
         ];
     };
 
-    const fielders = () => typeof props.inProgress.currentInnings === 'undefined'
-        ? []
-        : getTeam(
-            props.inProgress.match as domain.Match,
-            props.inProgress.currentInnings.bowlingTeam).players;
+    const fielders = () =>
+        typeof props.inProgress.currentInnings === 'undefined'
+            ? []
+            : getTeam(props.inProgress.match as domain.Match, props.inProgress.currentInnings.bowlingTeam).players;
 
     const deliveryWicket = (): domain.DeliveryWicket | undefined => {
         if (typeof howout === 'undefined') {
@@ -88,16 +91,13 @@ const Wicket = (props: WicketProps) => {
     const save = () => {
         nonDeliveryHowouts.find(h => h === howout)
             ? nonDeliveryWicket(howout)
-            : delivery(
-                deliveryOutcome,
-                scores,
-                deliveryWicket(),
-            );
+            : delivery(deliveryOutcome, scores, deliveryWicket());
 
         props.history.push('/match/inprogress');
     };
 
-    const canSave = () => typeof howout !== 'undefined' &&
+    const canSave = () =>
+        typeof howout !== 'undefined' &&
         ((domain.howoutRequiresFielder(howout) && typeof fielderIndex !== 'undefined') ||
             (!domain.howoutRequiresFielder(howout) && typeof fielderIndex === 'undefined'));
 
@@ -118,25 +118,21 @@ const Wicket = (props: WicketProps) => {
     const fielderChange = (fielderIndex: number) =>
         setFielderIndex(Number.isNaN(fielderIndex) ? undefined : fielderIndex);
 
-    if (typeof props.inProgress.currentBatter === 'undefined' ||
-        typeof props.inProgress.currentBowler === 'undefined') {
+    if (
+        typeof props.inProgress.currentBatter === 'undefined' ||
+        typeof props.inProgress.currentBowler === 'undefined'
+    ) {
         return (
             <div className="alert alert-danger" role="alert">
                 No current delivery
-                </div>);
+            </div>
+        );
     }
 
     return (
         <Paper className={props.classes.root}>
-            <EditForm
-                heading="Wicket"
-                save={save}
-                canSave={canSave}
-            >
-                <DeliveryHeader
-                    batter={props.inProgress.currentBatter}
-                    bowler={props.inProgress.currentBowler}
-                />
+            <EditForm heading="Wicket" save={save} canSave={canSave}>
+                <DeliveryHeader batter={props.inProgress.currentBatter} bowler={props.inProgress.currentBowler} />
                 <Entry
                     batters={batters()}
                     bowler={props.inProgress.currentBowler}
@@ -161,7 +157,8 @@ const Wicket = (props: WicketProps) => {
                     deliveryOutcome={deliveryOutcome}
                 />
             </EditForm>
-        </Paper>);
+        </Paper>
+    );
 };
 
 export default withStyles(styles)(withRouter(Wicket));

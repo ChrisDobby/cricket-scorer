@@ -22,18 +22,12 @@ export default (props: StartFormProps) => {
 
     const save = () => props.startMatch(tossWonBy, battingFirst);
 
-    const tossWonByChanged = (ev: React.ChangeEvent<HTMLSelectElement>) =>
-        setTossWonBy(Number(ev.target.value));
+    const tossWonByChanged = (ev: React.ChangeEvent<HTMLSelectElement>) => setTossWonBy(Number(ev.target.value));
 
-    const battingFirstChanged = (ev: React.ChangeEvent<HTMLSelectElement>) =>
-        setBattingFirst(Number(ev.target.value));
+    const battingFirstChanged = (ev: React.ChangeEvent<HTMLSelectElement>) => setBattingFirst(Number(ev.target.value));
 
     return (
-        <EditForm
-            heading="Toss"
-            save={save}
-            canSave={() => true}
-        >
+        <EditForm heading="Toss" save={save} canSave={() => true}>
             <FormControl fullWidth style={entryComponent}>
                 <InputLabel htmlFor="tossWonBy">Toss won by</InputLabel>
                 <Select
@@ -60,5 +54,6 @@ export default (props: StartFormProps) => {
                     <MenuItem value={TeamType.AwayTeam}>{props.awayTeam.name}</MenuItem>
                 </Select>
             </FormControl>
-        </EditForm>);
+        </EditForm>
+    );
 };

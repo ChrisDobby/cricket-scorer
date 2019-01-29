@@ -77,24 +77,19 @@ export default (props: EventsFormProps) => {
         setRollbackToIndex(undefined);
     };
 
-    const getOvers = () => props.innings.events.reduce(
-        (overs, event, idx) => {
+    const getOvers = () =>
+        props.innings.events.reduce((overs, event, idx) => {
             if (event.type === EventType.Delivery) {
                 return addDelivery(event as Delivery, idx, overs);
             }
 
             return addNonDelivery(event, idx, overs);
-        },
-        {});
+        }, {});
 
     const overs = getOvers();
     return (
         <>
-            <EditForm
-                heading="Edit innings"
-                save={() => { }}
-                canSave={() => true}
-            >
+            <EditForm heading="Edit innings" save={() => {}} canSave={() => true}>
                 <Grid container spacing={8}>
                     {Object.keys(overs).map(key => (
                         <Over
@@ -107,11 +102,9 @@ export default (props: EventsFormProps) => {
                     ))}
                 </Grid>
             </EditForm>
-            {rollbackToInnings &&
-                <RollbackWarning
-                    yes={doRollback}
-                    no={cancelRollback}
-                    rebuiltInnings={rollbackToInnings as Innings}
-                />}
-        </>);
+            {rollbackToInnings && (
+                <RollbackWarning yes={doRollback} no={cancelRollback} rebuiltInnings={rollbackToInnings as Innings} />
+            )}
+        </>
+    );
 };

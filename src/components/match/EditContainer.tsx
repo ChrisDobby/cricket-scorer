@@ -20,4 +20,5 @@ export default withStyles(styles)(({ classes, children }: any) => (
                 {children}
             </Grid>
         </Grid>
-    </Paper>));
+    </Paper>
+));

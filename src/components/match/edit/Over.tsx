@@ -19,7 +19,8 @@ interface OverProps {
 export default (props: OverProps) => {
     const [expanded, setExpanded] = React.useState(false);
 
-    const deliveries = props.detail.events.filter((e: domain.Event) => e.type === domain.EventType.Delivery)
+    const deliveries = props.detail.events
+        .filter((e: domain.Event) => e.type === domain.EventType.Delivery)
         .map((e: domain.Event) => e as domain.Delivery);
 
     return (
@@ -32,8 +33,7 @@ export default (props: OverProps) => {
                             {props.detail.bowler}
                         </Typography>
                         <Typography variant="body1">
-                            {`${over.wickets(deliveries)} - ` +
-                                `${over.bowlingRuns(deliveries, props.config)}`}
+                            {`${over.wickets(deliveries)} - ` + `${over.bowlingRuns(deliveries, props.config)}`}
                         </Typography>
                     </CardContent>
                     <CardActions>
@@ -49,5 +49,6 @@ export default (props: OverProps) => {
                         <EventCard event={e} rollback={() => props.rollback(e.index)} />
                     </Grid>
                 ))}
-        </>);
+        </>
+    );
 };

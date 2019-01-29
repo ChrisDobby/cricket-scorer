@@ -15,14 +15,14 @@ import { textCentre } from './styles';
 const inningsNumberDescription = (innings: number): string => {
     const numberDescription = (): string => {
         switch (innings) {
-        case 1:
-            return '1st';
-        case 2:
-            return '2nd';
-        case 3:
-            return '3rd';
-        default:
-            return `${innings}th`;
+            case 1:
+                return '1st';
+            case 2:
+                return '2nd';
+            case 3:
+                return '3rd';
+            default:
+                return `${innings}th`;
         }
     };
 
@@ -48,9 +48,8 @@ interface ScorecardProps {
 
 export default withStyles(styles)((props: ScorecardProps) => {
     const [selectedInningsIndex, setSelectedInnings] = React.useState(
-        props.cricketMatch && props.cricketMatch.innings.length > 0
-            ? props.cricketMatch.innings.length - 1
-            : -1);
+        props.cricketMatch && props.cricketMatch.innings.length > 0 ? props.cricketMatch.innings.length - 1 : -1,
+    );
 
     return (
         <Paper className={props.classes.root} elevation={1}>
@@ -61,12 +60,13 @@ export default withStyles(styles)((props: ScorecardProps) => {
                 matchStatus={props.cricketMatch.status}
                 lastEvent={props.lastEvent}
             />
-            {props.canContinue &&
+            {props.canContinue && (
                 <div style={textCentre}>
                     <Button color="secondary" onClick={props.continue}>
                         Continue scoring
-                            </Button>
-                </div>}
+                    </Button>
+                </div>
+            )}
             <Divider />
             <Tabs
                 value={selectedInningsIndex}
@@ -79,17 +79,11 @@ export default withStyles(styles)((props: ScorecardProps) => {
                     <Tab key={index} label={inningsNumberDescription(index + 1)} />
                 ))}
             </Tabs>
-            <ReactSwipeableViews
-                index={selectedInningsIndex}
-                onChangeIndex={setSelectedInnings}
-            >
+            <ReactSwipeableViews index={selectedInningsIndex} onChangeIndex={setSelectedInnings}>
                 {props.cricketMatch.innings.map((inn, idx) => (
-                    <Innings
-                        key={idx}
-                        innings={inn}
-                        getTeam={type => getTeam(props.cricketMatch, type)}
-                    />
+                    <Innings key={idx} innings={inn} getTeam={type => getTeam(props.cricketMatch, type)} />
                 ))}
             </ReactSwipeableViews>
-        </Paper>);
+        </Paper>
+    );
 });

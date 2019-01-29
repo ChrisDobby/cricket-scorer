@@ -11,18 +11,14 @@ interface LoadingDialogProps {
 
 export default (props: LoadingDialogProps) => (
     <div>
-        <Dialog
-            open={true}
-            aria-labelledby="loading-title"
-        >
+        <Dialog open={true} aria-labelledby="loading-title">
             <DialogTitle id="loading-title">Loading</DialogTitle>
             <DialogContent>
-                <DialogContentText>
-                    {props.message}
-                </DialogContentText>
+                <DialogContentText>{props.message}</DialogContentText>
             </DialogContent>
             <DialogContent>
                 <Progress />
             </DialogContent>
         </Dialog>
-    </div>);
+    </div>
+);
