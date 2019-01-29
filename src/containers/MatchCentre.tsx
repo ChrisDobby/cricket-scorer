@@ -9,23 +9,17 @@ import PageContext from '../context/PageContext';
 
 const createMatchRoute = '/match/create';
 const getAddButton = (props: any) => (
-    <Button
-        variant="fab"
-        color="secondary"
-        onClick={() => props.history.push(createMatchRoute)}
-    >
+    <Button variant="fab" color="secondary" onClick={() => props.history.push(createMatchRoute)}>
         <Add />
-    </Button>);
+    </Button>
+);
 
 export default WithMatchApi((props: any) => {
     const { setOptions } = React.useContext(PageContext);
     React.useEffect(
-        () => setOptions({ stayWhenLoggingOut: true, title: 'Matches', button: getAddButton }),
-        []);
+        () => setOptions({ stayWhenLoggingOut: true, title: 'Matches', button: getAddButton, openDrawer: undefined }),
+        [],
+    );
 
-    return (
-        <MatchCentreComponent
-            {...props}
-            fetchMatch={fetchMatch(props.matchApi, matchStorage(localStorage))}
-        />);
+    return <MatchCentreComponent {...props} fetchMatch={fetchMatch(props.matchApi, matchStorage(localStorage))} />;
 });

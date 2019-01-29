@@ -12,12 +12,15 @@ const matchUser = (match: any) => match.user;
 export default WithMatchApi((props: any) => {
     const { setOptions } = React.useContext(PageContext);
     React.useEffect(
-        () => setOptions({
-            stayWhenLoggingOut: true,
-            title: 'Cricket Scores Live',
-            button: undefined,
-        }),
-        []);
+        () =>
+            setOptions({
+                stayWhenLoggingOut: true,
+                title: 'Cricket scores live',
+                button: undefined,
+                openDrawer: undefined,
+            }),
+        [],
+    );
 
     return (
         <Card
@@ -26,5 +29,6 @@ export default WithMatchApi((props: any) => {
             matchUser={matchUser}
             updates={updates}
             getStoredMatch={matchStorage(localStorage).getMatch}
-        />);
+        />
+    );
 });

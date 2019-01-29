@@ -5,13 +5,13 @@ const defaultOptions: PageOptions = {
     title: 'Cricket scores live',
     stayWhenLoggingOut: false,
     button: undefined,
+    openDrawer: undefined,
 };
 
 export default (props: any) => {
     const [options, setOptions] = React.useState(defaultOptions);
 
-    const setPageOptions = (pageOptions?: PageOptions) =>
-        setOptions(pageOptions || defaultOptions);
+    const setPageOptions = (pageOptions?: PageOptions) => setOptions(pageOptions || defaultOptions);
 
     return (
         <PageContext.Provider

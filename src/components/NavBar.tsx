@@ -27,58 +27,58 @@ interface NavBarProps {
     userProfile: Profile;
     outOfDateMatches: PersistedMatch[];
     outOfDateSelected: () => void;
-    openDrawer?: () => void;
     children: React.ReactNode;
 }
 
-export default WithAuth(WithOutOfDateMatches((props: NavBarProps) => {
-    const pageContext = React.useContext(PageContext);
-    const { status } = React.useContext(NetworkStatusContext);
-    return (
-        <>
-            <AppBar position="sticky">
-                <Toolbar>
-                    <Typography
-                        variant="title"
-                        color="inherit"
-                        style={grow}
-                    >{pageContext.title}
-                    </Typography>
-                    {!props.isAuthenticated && status === ONLINE &&
-                        <Button color="inherit" onClick={props.login}>Register or login</Button>}
-                    {props.outOfDateMatches && props.outOfDateMatches.length > 0 &&
-                        <IconButton>
-                            <Badge
-                                badgeContent={props.outOfDateMatches.length}
-                                color="secondary"
-                                onClick={props.outOfDateSelected}
-                            >
-                                <NotificationImportant style={{ color: '#ffffff' }} />
-                            </Badge>
-                        </IconButton>}
-                    {props.isAuthenticated &&
-                        <>
-                            <Avatar src={props.userProfile.picture} />
-                            <Typography color="inherit">{props.userProfile.name}</Typography>
-                            <Button
-                                color="inherit"
-                                onClick={() => props.logout(!!pageContext.stayWhenLoggingOut)}
-                            >Logout
-                            </Button>
-                        </>}
-                    {status === OFFLINE && !props.isAuthenticated &&
-                        <SignalWifiOff />}
-                    {props.openDrawer &&
-                        <IconButton
-                            color="inherit"
-                            aria-label="Open drawer"
-                            onClick={props.openDrawer}
-                        >
-                            <Menu />
-                        </IconButton>}
-                    {pageContext.button && pageContext.button(props)}
-                </Toolbar>
-            </AppBar>
-            {props.children}
-        </>);
-}));
+export default WithAuth(
+    WithOutOfDateMatches((props: NavBarProps) => {
+        const pageContext = React.useContext(PageContext);
+        const { status } = React.useContext(NetworkStatusContext);
+        return (
+            <>
+                <AppBar position="sticky">
+                    <Toolbar>
+                        <Typography variant="title" color="inherit" style={grow}>
+                            {pageContext.title}
+                        </Typography>
+                        {!props.isAuthenticated &&
+                            status === ONLINE && (
+                                <Button color="inherit" onClick={props.login}>
+                                    Register or login
+                                </Button>
+                            )}
+                        {props.outOfDateMatches &&
+                            props.outOfDateMatches.length > 0 && (
+                                <IconButton>
+                                    <Badge
+                                        badgeContent={props.outOfDateMatches.length}
+                                        color="secondary"
+                                        onClick={props.outOfDateSelected}
+                                    >
+                                        <NotificationImportant style={{ color: '#ffffff' }} />
+                                    </Badge>
+                                </IconButton>
+                            )}
+                        {props.isAuthenticated && (
+                            <>
+                                <Avatar src={props.userProfile.picture} />
+                                <Typography color="inherit">{props.userProfile.name}</Typography>
+                                <Button color="inherit" onClick={() => props.logout(!!pageContext.stayWhenLoggingOut)}>
+                                    Logout
+                                </Button>
+                            </>
+                        )}
+                        {status === OFFLINE && !props.isAuthenticated && <SignalWifiOff />}
+                        {pageContext.openDrawer && (
+                            <IconButton color="inherit" aria-label="Open drawer" onClick={pageContext.openDrawer}>
+                                <Menu />
+                            </IconButton>
+                        )}
+                        {pageContext.button && pageContext.button(props)}
+                    </Toolbar>
+                </AppBar>
+                {props.children}
+            </>
+        );
+    }),
+);
