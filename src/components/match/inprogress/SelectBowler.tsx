@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import { default as SaveIcon } from '@material-ui/icons/Save';
+import Done from '@material-ui/icons/Done';
 import { Team } from '../../../domain';
 
 interface SelectBowlerProps {
@@ -18,9 +18,8 @@ interface SelectBowlerProps {
 
 export default (props: SelectBowlerProps) => {
     const [selectedPlayerIndex, setSelectedPlayerIndex] = React.useState(
-        typeof props.initiallySelected === 'undefined'
-            ? -1
-            : props.initiallySelected);
+        typeof props.initiallySelected === 'undefined' ? -1 : props.initiallySelected,
+    );
 
     const canSave = () => selectedPlayerIndex >= 0;
     const save = () => {
@@ -34,9 +33,11 @@ export default (props: SelectBowlerProps) => {
             <Grid item sm={1} md={2} />
             <Grid item xs={12} sm={10} md={8}>
                 <Toolbar disableGutters>
-                    <Typography variant="h4" color="inherit" style={{ flexGrow: 1 }}>Select bowler</Typography>
+                    <Typography variant="h4" color="inherit" style={{ flexGrow: 1 }}>
+                        Select bowler
+                    </Typography>
                     <Button variant="fab" color="primary" onClick={save} disabled={!canSave()}>
-                        <SaveIcon />
+                        <Done />
                     </Button>
                 </Toolbar>
                 <List>
@@ -56,5 +57,6 @@ export default (props: SelectBowlerProps) => {
                     ))}
                 </List>
             </Grid>
-        </Grid>);
+        </Grid>
+    );
 };

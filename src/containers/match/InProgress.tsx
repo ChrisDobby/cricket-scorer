@@ -9,7 +9,6 @@ import WithMatchActions from '../../components/match/WithMatchActions';
 import PageContext from '../../context/PageContext';
 
 const InProgress = (props: any) => {
-    console.log(props.openDrawer);
     const { setOptions } = React.useContext(PageContext);
     React.useEffect(
         () =>
