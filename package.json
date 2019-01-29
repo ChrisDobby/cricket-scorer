@@ -51,6 +51,7 @@
     "ts-loader": "^4.2.0",
     "tslint": "^5.9.1",
     "tslint-config-airbnb": "^5.8.0",
+    "tslint-config-prettier": "^1.17.0",
     "tslint-language-service": "^0.9.9",
     "tslint-plugin-prettier": "^2.0.1",
     "tslint-react": "^3.5.1",
