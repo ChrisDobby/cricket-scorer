@@ -10,8 +10,6 @@
         "jsx-no-lambda": false,
         "jsx-no-multiline-js": false,
         "jsx-boolean-value": false,
-        "ter-indent": [true, 4],
-        "max-line-length": [true, 120],
         "no-trailing-whitespace": [true, "ignore-comments"],
 
         // This rule is here for now because of https://github.com/palantir/tslint-react/issues/120
