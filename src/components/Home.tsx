@@ -14,6 +14,7 @@ import homePageStyles from './homePageStyles';
 import { OFFLINE, ONLINE } from '../context/networkStatus';
 import { StoredMatch, Profile } from '../domain';
 import useInProgressMatches from './useInProgressMatches';
+import outOfDate from '../match/outOfDate';
 
 const Logo = require('../../images/icon_192.png');
 
@@ -30,12 +31,13 @@ interface HomeProps {
 }
 
 export default withStyles(homePageStyles)((props: HomeProps) => {
-    const canContinueCurrentMatch = props.storedMatch &&
-        ((props.storedMatch.match.user === props.offlineUser.id) ||
+    const canContinueCurrentMatch =
+        props.storedMatch &&
+        !outOfDate(props.storedMatch.match.date) &&
+        (props.storedMatch.match.user === props.offlineUser.id ||
             (props.isAuthenticated && props.userProfile.id === props.storedMatch.match.user) ||
-            (props.status === OFFLINE));
-    const showScorecard = (id: string | undefined) =>
-        props.history.push(`/scorecard${id ? `/${id}` : ''}`);
+            props.status === OFFLINE);
+    const showScorecard = (id: string | undefined) => props.history.push(`/scorecard${id ? `/${id}` : ''}`);
 
     const goToMatchCentre = () => props.history.push('/matchcentre');
     const goToCreateMatch = () => props.history.push('/match/create');
@@ -51,11 +53,9 @@ export default withStyles(homePageStyles)((props: HomeProps) => {
     return (
         <div className={props.classes.rootStyle}>
             <div className={props.classes.toolbar}>
-                {inProgressMatches.length > 0 &&
-                    <MatchStatus
-                        inProgressMatches={inProgressMatches}
-                        showScorecard={showScorecard}
-                    />}
+                {inProgressMatches.length > 0 && (
+                    <MatchStatus inProgressMatches={inProgressMatches} showScorecard={showScorecard} />
+                )}
             </div>
             <Paper className={props.classes.paperStyle}>
                 <Grid container>
@@ -66,15 +66,16 @@ export default withStyles(homePageStyles)((props: HomeProps) => {
                         <div className={props.classes.mainContentStyle}>
                             <Typography component="h1" variant="h3" color="inherit" gutterBottom>
                                 Cricket scores live
-                                </Typography>
-                            {inProgressMatches.length === 0 &&
+                            </Typography>
+                            {inProgressMatches.length === 0 && (
                                 <Typography variant="h5" color="inherit" paragraph>
                                     {'To look at the current matches or start a new match go to the '}
                                     <Link className={props.classes.linkStyle} to={'/matchcentre'}>
                                         Match Centre
-                                        </Link>
-                                </Typography>}
-                            {inProgressMatches.length > 0 &&
+                                    </Link>
+                                </Typography>
+                            )}
+                            {inProgressMatches.length > 0 && (
                                 <>
                                     <Typography variant="h5" color="inherit">
                                         {`There are ${inProgressMatches.length} matches in progress`}
@@ -83,9 +84,10 @@ export default withStyles(homePageStyles)((props: HomeProps) => {
                                         {'To view them or start a new match go to the '}
                                         <Link className={props.classes.linkStyle} to={'/matchcentre'}>
                                             Match Centre
-                                            </Link>
+                                        </Link>
                                     </Typography>
-                                </>}
+                                </>
+                            )}
                         </div>
                     </Grid>
                 </Grid>
@@ -97,8 +99,10 @@ export default withStyles(homePageStyles)((props: HomeProps) => {
                             <CardContent>
                                 <Typography component="h2" variant="h5">
                                     About Cricket scores live
-                                    </Typography>
-                                <Typography variant="subtitle1" paragraph>{aboutText}</Typography>
+                                </Typography>
+                                <Typography variant="subtitle1" paragraph>
+                                    {aboutText}
+                                </Typography>
                             </CardContent>
                         </div>
                     </Card>
@@ -109,12 +113,13 @@ export default withStyles(homePageStyles)((props: HomeProps) => {
                             <CardContent>
                                 <Typography component="h2" variant="h5">
                                     Matches
-                                    </Typography>
-                                {inProgressMatches.length > 0 &&
+                                </Typography>
+                                {inProgressMatches.length > 0 && (
                                     <Typography variant="subtitle1" color="textSecondary">
                                         {`There are ${inProgressMatches.length} matches in progress`}
-                                    </Typography>}
-                                {canContinueCurrentMatch &&
+                                    </Typography>
+                                )}
+                                {canContinueCurrentMatch && (
                                     <>
                                         <Typography variant="subtitle1" color="textSecondary">
                                             {`You were scoring the match ${props.storedMatch.match.homeTeam.name}` +
@@ -123,20 +128,19 @@ export default withStyles(homePageStyles)((props: HomeProps) => {
                                         <Button color="secondary" onClick={continueScoring}>
                                             Continue scoring
                                         </Button>
-                                    </>}
-                                <Typography variant="subtitle1">
-                                    To see all of the current and past matches
-                                    </Typography>
+                                    </>
+                                )}
+                                <Typography variant="subtitle1">To see all of the current and past matches</Typography>
                                 <Button color="secondary" onClick={goToMatchCentre}>
                                     Go to the Match Centre
                                 </Button>
-                                <Typography variant="subtitle1">
-                                    To start scoring a new match
-                                    </Typography>
+                                <Typography variant="subtitle1">To start scoring a new match</Typography>
                                 <Button color="secondary" onClick={goToCreateMatch}>
-                                    {`${props.isAuthenticated || !props.canAuthenticate
-                                        ? 'Create match'
-                                        : 'Login and create match'}`}
+                                    {`${
+                                        props.isAuthenticated || !props.canAuthenticate
+                                            ? 'Create match'
+                                            : 'Login and create match'
+                                    }`}
                                 </Button>
                             </CardContent>
                         </div>
@@ -146,25 +150,24 @@ export default withStyles(homePageStyles)((props: HomeProps) => {
             <footer style={{ bottom: 0 }}>
                 <Typography variant="subtitle2" color="inherit">
                     {'Icons made by '}
-                    <a
-                        href="http://www.freepik.com"
-                        title="Freepik"
-                    >Freepik
-                    </a>{' from '}
-                    <a
-                        href="https://www.flaticon.com/"
-                        title="Flaticon"
-                    >
+                    <a href="http://www.freepik.com" title="Freepik">
+                        Freepik
+                    </a>
+                    {' from '}
+                    <a href="https://www.flaticon.com/" title="Flaticon">
                         www.flaticon.com
-                    </a>{' is licensed by '}
+                    </a>
+                    {' is licensed by '}
                     <a
                         href="http://creativecommons.org/licenses/by/3.0/"
                         title="Creative Commons BY 3.0"
                         target="_blank"
                         rel="noreferrer"
-                    >CC 3.0 BY
+                    >
+                        CC 3.0 BY
                     </a>
                 </Typography>
             </footer>
-        </div>);
+        </div>
+    );
 });

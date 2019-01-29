@@ -5,6 +5,7 @@ import { ONLINE } from '../context/networkStatus';
 import matchApi from '../api/matchApi';
 import api from '../api/api';
 import matchStorage from '../stores/matchStorage';
+import outOfDate from '../match/outOfDate';
 
 interface Update {
     id: string;
@@ -14,8 +15,12 @@ interface Update {
 
 const sortMatches = (matches: (PersistedMatch | CurrentEditingMatch)[], currentUser: string): CurrentEditingMatch[] =>
     [...matches].sort((m1, m2) => {
-        if (m1.user === currentUser) { return -1; }
-        if (m2.user === currentUser) { return 1; }
+        if (m1.user === currentUser) {
+            return -1;
+        }
+        if (m2.user === currentUser) {
+            return 1;
+        }
 
         return 0;
     });
@@ -24,18 +29,20 @@ const toCurrentEditingMatch = (storedMatch: StoredMatch | undefined) =>
     !storedMatch || storedMatch.match.complete
         ? undefined
         : {
-            id: storedMatch.match.id,
-            date: storedMatch.match.date,
-            user: storedMatch.match.user,
-            homeTeam: storedMatch.match.homeTeam.name,
-            awayTeam: storedMatch.match.awayTeam.name,
-            status: storedMatch.match.status,
-            version: storedMatch.version,
-            lastEvent: storedMatch.lastEvent,
-        };
+              id: storedMatch.match.id,
+              date: storedMatch.match.date,
+              user: storedMatch.match.user,
+              homeTeam: storedMatch.match.homeTeam.name,
+              awayTeam: storedMatch.match.awayTeam.name,
+              status: storedMatch.match.status,
+              version: storedMatch.version,
+              lastEvent: storedMatch.lastEvent,
+          };
 
-export default (status: string, userProfile: Profile):
-    [(PersistedMatch | CurrentEditingMatch)[], boolean, (id: string) => Promise<void>] => {
+export default (
+    status: string,
+    userProfile: Profile,
+): [(PersistedMatch | CurrentEditingMatch)[], boolean, (id: string) => Promise<void>] => {
     const MatchApi = matchApi(api(3, 1000));
     const updates = liveUpdates(process.env.API_URL as string, UpdateType.AllUpdates);
 
@@ -55,32 +62,30 @@ export default (status: string, userProfile: Profile):
         setInProgressMatches(inProgressMatches.filter(match => match.id !== id));
     };
 
-    const sortedMatches = (matches: (PersistedMatch | CurrentEditingMatch)[]) => (
-        typeof userProfile === 'undefined'
-            ? matches
-            : sortMatches(matches, userProfile.id));
+    const sortedMatches = (matches: (PersistedMatch | CurrentEditingMatch)[]) =>
+        typeof userProfile === 'undefined' ? matches : sortMatches(matches, userProfile.id);
 
-    const updateMatches = (updates: Update[]) => setInProgressMatches(
-        inProgressMatches.map((match) => {
-            const updated = updates.find((update: Update) => update.id === match.id);
-            return typeof updated === 'undefined'
-                ? match
-                : {
-                    ...match,
-                    status: updated.status,
-                    lastEvent: updated.lastEvent,
-                };
-        }));
+    const updateMatches = (updates: Update[]) =>
+        setInProgressMatches(
+            inProgressMatches.map(match => {
+                const updated = updates.find((update: Update) => update.id === match.id);
+                return typeof updated === 'undefined'
+                    ? match
+                    : {
+                          ...match,
+                          status: updated.status,
+                          lastEvent: updated.lastEvent,
+                      };
+            }),
+        );
 
     const addMatch = (match: PersistedMatch) => setInProgressMatches([...inProgressMatches, match]);
 
     const subscribeToMatches = () => {
-        disconnect = updates(
-            () => inProgressMatches.map(match => match.id || '').filter(id => id !== ''),
-            [
-                { event: EventType.MatchUpdates, action: updateMatches },
-                { event: EventType.NewMatch, action: addMatch, resubscribe: true },
-            ]);
+        disconnect = updates(() => inProgressMatches.map(match => match.id || '').filter(id => id !== ''), [
+            { event: EventType.MatchUpdates, action: updateMatches },
+            { event: EventType.NewMatch, action: addMatch, resubscribe: true },
+        ]);
     };
 
     const clearRetry = () => {
@@ -91,49 +96,42 @@ export default (status: string, userProfile: Profile):
     };
 
     const getMatches = async () => {
-        const maxDaysForMatch = 6;
         const addExtraMatches = (matches: PersistedMatch[]) => {
             const currentlyEditing = toCurrentEditingMatch(storedMatch);
-            if (!currentlyEditing) { return matches; }
-            const matchesAvailableFrom = () => {
-                const now = new Date();
-                now.setDate(now.getDate() - maxDaysForMatch);
-                return now;
-            };
-
+            if (!currentlyEditing) {
+                return matches;
+            }
             const includeStoredMatch =
-                currentlyEditing && (
-                (typeof currentlyEditing.user === 'undefined' || (
-                    typeof userProfile !== 'undefined' &&
-                        userProfile.id === currentlyEditing.user)) &&
-                    new Date(currentlyEditing.date) >= matchesAvailableFrom() &&
-                (typeof currentlyEditing.id === 'undefined' ||
+                currentlyEditing &&
+                ((typeof currentlyEditing.user === 'undefined' ||
+                    (typeof userProfile !== 'undefined' && userProfile.id === currentlyEditing.user)) &&
+                    !outOfDate(currentlyEditing.date) &&
+                    (typeof currentlyEditing.id === 'undefined' ||
                         !!matches.find(match => match.id === currentlyEditing.id)));
 
-            if (!includeStoredMatch) { return matches; }
-            const storedMatchFromPersisted = matches
-                .find((m: PersistedMatch) => m.id === currentlyEditing.id);
+            if (!includeStoredMatch) {
+                return matches;
+            }
+            const storedMatchFromPersisted = matches.find((m: PersistedMatch) => m.id === currentlyEditing.id);
 
-            if (!storedMatchFromPersisted || storedMatchFromPersisted.version < currentlyEditing.version) {
+            if (storedMatchFromPersisted && storedMatchFromPersisted.version > currentlyEditing.version) {
                 return matches;
             }
 
-            return (matches
-                .filter(match => match !== storedMatchFromPersisted) as (PersistedMatch | CurrentEditingMatch)[])
-                .concat(currentlyEditing);
+            return (matches.filter(match => match !== storedMatchFromPersisted) as (
+                | PersistedMatch
+                | CurrentEditingMatch)[]).concat(currentlyEditing);
         };
 
         try {
             clearRetry();
             setLoadingMatches(true);
             const inProgressMatches = await MatchApi.getInProgressMatches();
-            setInProgressMatches(sortedMatches(
-                addExtraMatches(inProgressMatches),
-            ));
+            setInProgressMatches(sortedMatches(addExtraMatches(inProgressMatches)));
             setLoadingMatches(false);
             subscribeToMatches();
         } catch (e) {
-            setInProgressMatches([]);
+            setInProgressMatches(sortedMatches(addExtraMatches([])));
             setLoadingMatches(false);
             setRetry();
         }
@@ -158,9 +156,9 @@ export default (status: string, userProfile: Profile):
                     disconnect();
                 }
             };
-
         },
-        [status]);
+        [status],
+    );
 
     return [inProgressMatches, loadingMatches, removeMatch];
 };
