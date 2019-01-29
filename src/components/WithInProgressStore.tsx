@@ -7,12 +7,17 @@ export default () => (Component: any) => (props: any) => {
     const stores = { inProgressMatchStore };
     const storedMatch = matchStorage(localStorage).getMatch();
 
-    if (typeof storedMatch !== 'undefined' && storedMatch !== null) {
+    if (
+        typeof inProgressMatchStore.match === 'undefined' &&
+        typeof storedMatch !== 'undefined' &&
+        storedMatch !== null
+    ) {
         inProgressMatchStore.setFromStoredMatch(storedMatch);
     }
 
     return (
         <Provider {...stores}>
             <Component {...props} />
-        </Provider>);
+        </Provider>
+    );
 };
