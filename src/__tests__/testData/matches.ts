@@ -55,6 +55,7 @@ export const blankMatch: Match = {
     complete: false,
     status: '',
     innings: [],
+    breaks: [],
 };
 
 export const startedInnings: Innings = {

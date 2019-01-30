@@ -418,7 +418,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
     };
 
     updateLastEvent = (event: domain.Event, innings: domain.Innings, wicket?: domain.Wicket) => {
-        const description = eventDescription(this.match, innings, event, wicket);
+        const description = eventDescription(innings, event, wicket);
         if (typeof description !== 'undefined') {
             this.lastEvent = description;
         }

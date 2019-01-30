@@ -36,4 +36,5 @@ export default (matchData: MatchData): Match => ({
     complete: false,
     status: '',
     innings: [],
+    breaks: [],
 });

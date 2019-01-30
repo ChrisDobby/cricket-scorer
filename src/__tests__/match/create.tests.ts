@@ -64,6 +64,7 @@ describe('create', () => {
         expect(match.awayTeam.name).toBe(limitedOversMatchData.awayTeam);
         expect(match.awayTeam.players).toEqual(limitedOversMatchData.awayPlayers);
         expect(match.innings).toEqual([]);
+        expect(match.breaks).toEqual([]);
     });
 
     it('should create a timed match correctly', () => {

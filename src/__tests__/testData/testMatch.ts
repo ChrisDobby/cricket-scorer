@@ -571,4 +571,5 @@ export const match: domain.Match = {
     complete: true,
     status: 'Baildon won by 8 runs',
     innings: [testInnings1, testInnings2],
+    breaks: [],
 };

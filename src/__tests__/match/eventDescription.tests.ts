@@ -27,7 +27,7 @@ describe('eventDescription', () => {
     const batsmanName = matches.inningsWithStartedOver.batting.batters[0].name;
 
     it('should return description for delivery', () => {
-        const description = eventDescription(matches.blankMatch, matches.inningsWithStartedOver, {
+        const description = eventDescription(matches.inningsWithStartedOver, {
             time: 0,
             bowlerIndex: 0,
             batsmanIndex: 0,
@@ -44,7 +44,6 @@ describe('eventDescription', () => {
 
     it('should return description for delivery with wicket', () => {
         const description = eventDescription(
-            matches.blankMatch,
             matches.inningsWithStartedOver,
             {
                 time: 0,
@@ -65,7 +64,6 @@ describe('eventDescription', () => {
 
     it('should return description for non delivery wicket', () => {
         const description = eventDescription(
-            matches.blankMatch,
             matches.inningsWithStartedOver,
             {
                 time: 0,
@@ -80,7 +78,6 @@ describe('eventDescription', () => {
 
     it('should return undefined for unknown event', () => {
         const description = eventDescription(
-            matches.blankMatch,
             matches.inningsWithStartedOver,
             {
                 time: 0,

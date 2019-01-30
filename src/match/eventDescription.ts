@@ -2,7 +2,7 @@ import * as domain from '../domain';
 import { notificationDescription } from './delivery';
 import { latestOver } from './utilities';
 
-export default (match: domain.Match, innings: domain.Innings, event: domain.Event, wicket?: domain.Wicket) => {
+export default (innings: domain.Innings, event: domain.Event, wicket?: domain.Wicket) => {
     const deliveryDescription = (delivery: domain.Delivery) => {
         const bowler = innings.bowlers[delivery.bowlerIndex].name;
         const batter = innings.batting.batters[delivery.batsmanIndex].name;

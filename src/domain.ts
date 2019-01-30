@@ -58,6 +58,15 @@ export enum WinBy {
     Wickets,
 }
 
+export enum BreakType {
+    Innings,
+    Rain,
+    BadLight,
+    Lunch,
+    Tea,
+    CloseOfPlay,
+}
+
 export enum EventType {
     Delivery,
     NonDeliveryWicket,
@@ -206,6 +215,12 @@ export interface MatchResult {
     winMargin?: string;
 }
 
+export interface MatchBreak {
+    type: BreakType;
+    startTime: number;
+    endTime?: number;
+}
+
 export interface Match {
     id?: string;
     user: string;
@@ -218,6 +233,7 @@ export interface Match {
     toss?: Toss;
     result?: MatchResult;
     innings: Innings[];
+    breaks: MatchBreak[];
 }
 
 export interface StoredMatch {
