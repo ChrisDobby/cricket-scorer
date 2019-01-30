@@ -68,8 +68,9 @@ describe('rebuild', () => {
     const delivery = jest.fn(() => [matches.inningsWithAllDeliveriesInCompletedOver, 999]);
     const nonDeliveryWicket = jest.fn(() => [matches.inningsWithAllDeliveriesInCompletedOver]);
     const batterUnavailable = jest.fn(() => matches.inningsWithAllDeliveriesInCompletedOver);
+    const batterAvailable = jest.fn(() => matches.inningsWithAllDeliveriesInCompletedOver);
 
-    const Rebuild = rebuild(delivery, nonDeliveryWicket, batterUnavailable);
+    const Rebuild = rebuild(delivery, nonDeliveryWicket, batterUnavailable, batterAvailable);
 
     it('should create a new innings with no events', () => {
         const newInnings = Rebuild(matches.inningsWithStartedOver, 0, []);
@@ -163,6 +164,22 @@ describe('rebuild', () => {
             innings: matches.inningsWithAllDeliveriesInCompletedOver,
             batterIndex: 9,
         });
+    });
+
+    it('should add batter available events', () => {
+        const available = {
+            time: new Date().getTime(),
+            type: domain.EventType.BatterAvailable,
+            batsmanIndex: 0,
+        };
+
+        Rebuild(matches.inningsWithStartedOver, 9, [available]);
+
+        expect(batterAvailable).toHaveBeenCalledWith(
+            createdInnings,
+            available.time,
+            createdInnings.batting.batters[available.batsmanIndex],
+        );
     });
 
     it('should do nothing for an unknown event', () => {

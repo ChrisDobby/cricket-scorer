@@ -62,6 +62,7 @@ export enum EventType {
     Delivery,
     NonDeliveryWicket,
     BatterUnavailable,
+    BatterAvailable,
 }
 
 export interface Wicket {

@@ -93,6 +93,7 @@ export default (
         batter: domain.Batter,
         reason: domain.UnavailableReason,
     ) => domain.Innings,
+    batterAvailable: (innings: domain.Innings, time: number, batter: domain.Batter) => domain.Innings,
 ) => {
     const eventReducer = (inningsAndBatter: domain.RebuiltInnings, event: domain.Event): domain.RebuiltInnings => {
         switch (event.type) {
@@ -129,6 +130,15 @@ export default (
                         event.time,
                         inningsAndBatter.innings.batting.batters[(event as domain.BatterUnavailable).batsmanIndex],
                         (event as domain.BatterUnavailable).reason,
+                    ),
+                    batterIndex: inningsAndBatter.batterIndex,
+                };
+            case domain.EventType.BatterAvailable:
+                return {
+                    innings: batterAvailable(
+                        inningsAndBatter.innings,
+                        event.time,
+                        inningsAndBatter.innings.batting.batters[(event as domain.BatterUnavailable).batsmanIndex],
                     ),
                     batterIndex: inningsAndBatter.batterIndex,
                 };

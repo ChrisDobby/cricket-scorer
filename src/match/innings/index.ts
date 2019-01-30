@@ -9,13 +9,14 @@ import isComplete from './isComplete';
 import calculateStatus from './calculateStatus';
 import nonDeliveryWicket from './nonDeliveryWicket';
 import batterUnavailable from './batterUnavailable';
+import batterAvailable from './batterAvailable';
 import rebuild from './rebuild';
 import rollback from './rollback';
 import editOvers from './editOvers';
 
 export default (config: MatchConfig, getTeam: (type: TeamType) => Team) => {
     const Delivery = delivery(config, getTeam);
-    const rebuildInnings = rebuild(Delivery, nonDeliveryWicket, batterUnavailable);
+    const rebuildInnings = rebuild(Delivery, nonDeliveryWicket, batterUnavailable, batterAvailable);
 
     return {
         completeOver,
@@ -23,6 +24,7 @@ export default (config: MatchConfig, getTeam: (type: TeamType) => Team) => {
         isComplete,
         nonDeliveryWicket,
         batterUnavailable,
+        batterAvailable,
         editOvers,
         create: create(getTeam),
         newBowler: newBowler(getTeam),
