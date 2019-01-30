@@ -357,6 +357,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
         this.version = storedMatch.version;
         this.currentBatterIndex = storedMatch.currentBatterIndex;
         this.currentBowlerIndex = storedMatch.currentBowlerIndex;
+        this.lastEvent = storedMatch.lastEvent;
     };
 
     @action changeOrders = (battingOrder: number[], bowlingOrder: number[]) => {

@@ -634,12 +634,14 @@ describe('inProgressMatchStore', () => {
 
     describe('setFromStoredMatch', () => {
         it('should set the inprogress details from the supplied stored match', () => {
+            const lastEventText = 'Something that happened';
             const storeToUpdate = new InProgressMatchStore();
             const storedMatch = {
                 match: matches.blankMatch,
                 currentBatterIndex: 1,
                 currentBowlerIndex: 2,
                 version: 999,
+                lastEvent: lastEventText,
             };
 
             storeToUpdate.setFromStoredMatch(storedMatch);
@@ -648,6 +650,7 @@ describe('inProgressMatchStore', () => {
             expect(storeToUpdate.currentBatterIndex).toBe(storedMatch.currentBatterIndex);
             expect(storeToUpdate.currentBowlerIndex).toBe(storedMatch.currentBowlerIndex);
             expect(storeToUpdate.version).toBe(storedMatch.version);
+            expect(storeToUpdate.lastEvent).toBe(lastEventText);
         });
     });
 

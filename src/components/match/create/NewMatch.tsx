@@ -22,6 +22,7 @@ const create = (username: string, inProgress: InProgressMatch, complete: () => v
     inProgress.setFromStoredMatch({
         match,
         version: 0,
+        lastEvent: undefined,
     });
     complete();
 };
