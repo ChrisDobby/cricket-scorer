@@ -51,9 +51,8 @@ export default (
     const [loadingMatches, setLoadingMatches] = React.useState(true);
     const [matchUpdates, setMatchUpdates] = React.useState([] as Update[]);
     const [newMatch, setNewMatch] = React.useState(undefined as PersistedMatch | undefined);
-
-    let retryTimer: any = undefined;
-    let disconnect: (() => void) | undefined = undefined;
+    const disconnect = React.useRef(undefined as (() => void) | undefined);
+    const retryTimer = React.useRef(undefined as any);
 
     const removeMatch = async (id: string) => {
         if (storedMatch && storedMatch.match.id === id) {
@@ -68,16 +67,16 @@ export default (
         typeof userProfile === 'undefined' ? matches : sortMatches(matches, userProfile.id);
 
     const subscribeToMatches = (matches: PersistedMatch[]) => {
-        disconnect = updates(() => matches.map(match => match.id), [
+        disconnect.current = updates(() => matches.map(match => match.id), [
             { event: EventType.MatchUpdates, action: setMatchUpdates },
             { event: EventType.NewMatch, action: setNewMatch, resubscribe: true },
         ]);
     };
 
     const clearRetry = () => {
-        if (typeof retryTimer !== 'undefined') {
-            clearTimeout(retryTimer);
-            retryTimer = undefined;
+        if (retryTimer.current) {
+            clearTimeout(retryTimer.current);
+            retryTimer.current = undefined;
         }
     };
 
@@ -125,8 +124,8 @@ export default (
     };
 
     const setRetry = () => {
-        if (typeof retryTimer === 'undefined') {
-            retryTimer = setTimeout(getMatches, 60000);
+        if (retryTimer.current) {
+            retryTimer.current = setTimeout(getMatches, 60000);
         }
     };
 
@@ -147,7 +146,13 @@ export default (
 
     React.useEffect(() => {
         if (newMatch) {
-            setInProgressMatches([...inProgressMatches, newMatch]);
+            if (disconnect.current) {
+                disconnect.current();
+            }
+            const allMatches = [...inProgressMatches, newMatch];
+            setInProgressMatches(allMatches);
+
+            subscribeToMatches(allMatches.map(m => m as PersistedMatch));
         }
     }, [newMatch]);
 
@@ -161,8 +166,8 @@ export default (
         }
 
         return () => {
-            if (typeof disconnect !== 'undefined') {
-                disconnect();
+            if (disconnect.current) {
+                disconnect.current();
             }
         };
     }, [status]);
