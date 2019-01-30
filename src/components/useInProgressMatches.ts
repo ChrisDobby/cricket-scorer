@@ -155,6 +155,7 @@ export default (
         if (status === ONLINE) {
             getMatches();
         } else {
+            setLoadingMatches(false);
             setInProgressMatches(sortedMatches(addExtraMatches([], true)));
             setRetry();
         }
