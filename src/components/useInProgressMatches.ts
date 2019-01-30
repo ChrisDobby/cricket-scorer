@@ -48,7 +48,7 @@ export default (
 
     const [storedMatch] = React.useState(matchStorage(localStorage).getMatch());
     const [inProgressMatches, setInProgressMatches] = React.useState([] as (PersistedMatch | CurrentEditingMatch)[]);
-    const [loadingMatches, setLoadingMatches] = React.useState(false);
+    const [loadingMatches, setLoadingMatches] = React.useState(true);
     const [matchUpdates, setMatchUpdates] = React.useState([] as Update[]);
     const [newMatch, setNewMatch] = React.useState(undefined as PersistedMatch | undefined);
 
