@@ -201,6 +201,33 @@ describe('inProgressMatchStore', () => {
 
             expect(inProgressMatchStore.match.innings[0].batting.batters[2].innings).not.toBeUndefined();
         });
+
+        it('should make the batter available if previously marked unavailable', () => {
+            const batters = [
+                matches.inningsWithStartedOver.batting.batters[0],
+                {
+                    ...matches.inningsWithStartedOver.batting.batters[1],
+                    unavailableReason: domain.UnavailableReason.Absent,
+                },
+            ];
+
+            const inProgressMatchStore = getMatchStore({
+                ...matches.matchWithStartedOver,
+                innings: [
+                    {
+                        ...matches.inningsWithStartedOver,
+                        batting: {
+                            ...matches.inningsWithStartedOver.batting,
+                            batters,
+                        },
+                    },
+                ],
+            });
+
+            inProgressMatchStore.newBatter(matches.inningsWithStartedOver.batting.batters[1].playerIndex);
+
+            expect(inProgressMatchStore.match.innings[0].batting.batters[1].unavailableReason).toBeUndefined();
+        });
     });
 
     describe('delivery', () => {
