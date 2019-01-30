@@ -18,10 +18,10 @@ const apiStorage = (api: any, isOnline: () => boolean, isAuthenticated: () => bo
         });
 
         const sendMatch = async () => {
-            const match = { ...matchToStore };
+            const match = { ...(matchToStore as StoredMatch) };
             matchToStore = undefined;
             const result = await api.sendMatch(match);
-            if (typeof result.id !== 'undefined') {
+            if (typeof result.id !== 'undefined' && result.id !== match.match.id) {
                 setId(result.id);
             }
 

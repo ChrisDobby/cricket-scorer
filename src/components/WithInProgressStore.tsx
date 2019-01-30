@@ -7,11 +7,7 @@ export default () => (Component: any) => (props: any) => {
     const stores = { inProgressMatchStore };
     const storedMatch = matchStorage(localStorage).getMatch();
 
-    if (
-        typeof inProgressMatchStore.match === 'undefined' &&
-        typeof storedMatch !== 'undefined' &&
-        storedMatch !== null
-    ) {
+    if (storedMatch && (!inProgressMatchStore.match || inProgressMatchStore.match.id !== storedMatch.match.id)) {
         inProgressMatchStore.setFromStoredMatch(storedMatch);
     }
 

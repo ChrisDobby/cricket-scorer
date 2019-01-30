@@ -25,13 +25,18 @@ const dividerStyle: React.CSSProperties = {
     marginBottom: '8px',
 };
 
+const headerStyle: React.CSSProperties = {
+    flex: 1,
+    marginBottom: '12px',
+};
+
 export default (props: MatchCardProps) => (
     <Grid item xs={12} sm={6} md={4}>
         <Fade in={true} timeout={1000}>
             <Card style={{ display: 'flex', height: '100%' }}>
                 <div style={{ ...flexContainerStyle, flex: 1 }}>
                     <CardContent style={{ ...flexContainerStyle, flex: 1 }}>
-                        <div style={{ flex: 1 }}>
+                        <div style={headerStyle}>
                             <Typography variant="subtitle1" color="textSecondary">
                                 {dateformat(props.match.date, 'dd-mmm-yyyy')}
                             </Typography>
