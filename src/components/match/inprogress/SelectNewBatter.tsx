@@ -4,8 +4,8 @@ import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import Done from '@material-ui/icons/Done';
-import BatterSelector, { PlayerPosition } from './BatterSelector';
-import { Batting } from '../../../domain';
+import BatterSelector from './BatterSelector';
+import { Batting, unavailablDescription, UnavailableReason } from '../../../domain';
 
 interface SelectNewBatterProps {
     batting: Batting;
@@ -14,20 +14,22 @@ interface SelectNewBatterProps {
 }
 
 export default (props: SelectNewBatterProps) => {
-    const [playerPositions, setPlayerPositions] = React.useState(Array<PlayerPosition>());
-
-    const playerSelected = (playerIndex: number, position: number) => setPlayerPositions([{ playerIndex, position }]);
+    const [playerIndex, setPlayerIndex] = React.useState(undefined as number | undefined);
 
     const save = () => {
-        props.batterSelected(playerPositions[0].playerIndex);
+        props.batterSelected(playerIndex as number);
     };
 
-    const canSave = () => playerPositions.length === 1;
+    const canSave = () => typeof playerIndex !== 'undefined';
 
-    const availablePosition = (): number =>
-        props.batting.batters
-            .map((batter, index) => ({ batter, position: index + 1 }))
-            .filter(batterPos => typeof batterPos.batter.innings === 'undefined')[0].position;
+    const players = props.players.map((player, index) => {
+        const unavailable = props.batting.batters.find(
+            batter => batter.playerIndex === index && typeof batter.unavailableReason !== 'undefined',
+        );
+        return `${player}${
+            unavailable ? `(${unavailablDescription(unavailable.unavailableReason as UnavailableReason)})` : ''
+        }`;
+    });
 
     return (
         <Grid container>
@@ -42,11 +44,12 @@ export default (props: SelectNewBatterProps) => {
                     </Button>
                 </Toolbar>
                 <BatterSelector
-                    players={props.players}
+                    players={players}
                     notAllowedPlayers={props.batting.batters
-                        .filter(batter => batter.innings)
+                        .filter(batter => batter.innings && typeof batter.unavailableReason === 'undefined')
                         .map(batter => batter.playerIndex)}
-                    playerSelected={index => playerSelected(index, availablePosition())}
+                    playerSelected={setPlayerIndex}
+                    selectedPlayerIndex={playerIndex}
                 />
             </Grid>
         </Grid>

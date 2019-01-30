@@ -212,7 +212,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
                 batter,
                 index,
             }))
-            .find(b => b.batter.playerIndex === playerIndex && !!b.batter.unavailableReason);
+            .find(b => b.batter.playerIndex === playerIndex && typeof b.batter.unavailableReason !== 'undefined');
 
         const [innings, batterIndex] = batterIfUnavailable
             ? [
@@ -224,6 +224,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
                   batterIfUnavailable.index,
               ]
             : this.matchInnings.newBatter(this.currentInnings, playerIndex);
+
         this.updateMatch(innings);
         this.currentBatterIndex = batterIndex;
     };

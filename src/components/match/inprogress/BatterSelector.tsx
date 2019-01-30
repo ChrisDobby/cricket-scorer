@@ -16,6 +16,7 @@ export interface BatterSelectorProps {
 }
 
 export default (props: BatterSelectorProps) => {
+    console.log(props.selectedPlayerIndex);
     return (
         <List>
             {props.players.map((player, index) => (
@@ -26,9 +27,7 @@ export default (props: BatterSelectorProps) => {
                             !(typeof props.notAllowedPlayers.find(p => p === index) === 'undefined')
                         )
                     }
-                    selected={
-                        !!(typeof props.selectedPlayerIndex !== 'undefined' && props.selectedPlayerIndex === index)
-                    }
+                    selected={props.selectedPlayerIndex === index}
                     key={index}
                     role={undefined}
                     dense
