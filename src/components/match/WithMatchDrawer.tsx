@@ -11,6 +11,7 @@ import OverNotCompleteWarning from './OverNotCompleteWarning';
 import VerifyCompleteInnings from './VerifyCompleteInnings';
 import CompleteMatch from './CompleteMatch';
 import UpdateOvers from './UpdateOvers';
+import BatterUnavailable from './BatterUnavailable';
 import { UnavailableReason, InningsStatus, MatchResult, MatchType, InProgressMatch } from '../../domain';
 import calculateResult from '../../match/calculateResult';
 
@@ -22,7 +23,7 @@ interface WithMatchDrawerProps {
     completeInnings: (status: InningsStatus) => void;
     completeMatch: (result: MatchResult) => void;
     updateOvers: (overs: number) => void;
-    batterUnavailable: (reason: UnavailableReason) => void;
+    batterUnavailable: (playerIndex: number, reason: UnavailableReason) => void;
     undoPreviousDelivery: () => void;
     changeEnds: () => void;
     history: History;
@@ -33,6 +34,9 @@ export default (Component: any) => (props: WithMatchDrawerProps) => {
     const [overNotCompleteWarning, setOverNotCompleteWarning] = React.useState(false);
     const [inningsCompleteVerify, setInningsCompleteVerify] = React.useState(false);
     const [matchCompleteVerify, setMatchCompleteVerify] = React.useState(false);
+    const [batterUnavailableVerify, setBatterUnavailableVerify] = React.useState(undefined as
+        | UnavailableReason
+        | undefined);
     const [changeOvers, setChangeOvers] = React.useState(false);
 
     const openDrawer = () => setOpen(true);
@@ -58,6 +62,16 @@ export default (Component: any) => (props: WithMatchDrawerProps) => {
         props.completeMatch(result);
     };
     const cancelCompleteMatch = () => setMatchCompleteVerify(false);
+
+    const askBatterUnavailable = (unavailableReason: UnavailableReason) => {
+        setBatterUnavailableVerify(unavailableReason);
+        setOpen(false);
+    };
+    const batterUnavailable = (playerIndex: number, unavailableReason: UnavailableReason) => {
+        setBatterUnavailableVerify(undefined);
+        props.batterUnavailable(playerIndex, unavailableReason);
+    };
+    const cancelBatterUnavailable = () => setBatterUnavailableVerify(undefined);
 
     const askChangeOvers = () => {
         setChangeOvers(true);
@@ -103,13 +117,13 @@ export default (Component: any) => (props: WithMatchDrawerProps) => {
             ...allowedOption,
             text: 'Retired',
             icon: <ArrowRightAlt />,
-            action: () => props.batterUnavailable(UnavailableReason.Retired),
+            action: () => askBatterUnavailable(UnavailableReason.Retired),
         },
         {
             ...allowedOption,
             text: 'Absent',
             icon: <ArrowRightAlt />,
-            action: () => props.batterUnavailable(UnavailableReason.Absent),
+            action: () => askBatterUnavailable(UnavailableReason.Absent),
         },
         { ...allowedOption, text: 'Complete over', icon: <Done />, action: completeOver },
         { ...allowedOption, text: 'Complete innings', icon: <Done />, action: () => setInningsCompleteVerify(true) },
@@ -147,6 +161,15 @@ export default (Component: any) => (props: WithMatchDrawerProps) => {
                         update={updateOvers}
                         cancel={cancelChangeOvers}
                         overs={props.inProgressMatchStore.currentInnings.maximumOvers}
+                    />
+                )}
+            {typeof batterUnavailableVerify !== 'undefined' &&
+                typeof props.inProgressMatchStore.currentInnings !== 'undefined' && (
+                    <BatterUnavailable
+                        innings={props.inProgressMatchStore.currentInnings}
+                        reason={batterUnavailableVerify}
+                        update={batterUnavailable}
+                        cancel={cancelBatterUnavailable}
                     />
                 )}
         </>

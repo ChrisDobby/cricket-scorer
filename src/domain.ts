@@ -273,7 +273,7 @@ export interface InProgressMatch {
     completeInnings: (status: InningsStatus) => void;
     completeMatch: (result: MatchResult) => void;
     nonDeliveryWicket: (howout: Howout) => void;
-    batterUnavailable: (reason: UnavailableReason) => void;
+    batterUnavailable: (playerIndex: number, reason: UnavailableReason) => void;
     setFromStoredMatch: (storedMatch: StoredMatch | undefined) => void;
     changeOrders: (battingOrder: number[], bowlingOrder: number[]) => void;
     rolledBackInnings: (eventIndex: number) => Innings | undefined;

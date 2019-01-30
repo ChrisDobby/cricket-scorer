@@ -725,16 +725,25 @@ describe('inProgressMatchStore', () => {
     describe('batterUnavailable', () => {
         it('should do nothing if no current innings', () => {
             const storeToUpdate = getMatchStore(matches.blankMatch);
-            storeToUpdate.batterUnavailable(domain.UnavailableReason.Absent);
+            storeToUpdate.batterUnavailable(0, domain.UnavailableReason.Absent);
 
             expect(storeToUpdate.match).toEqual(matches.blankMatch);
         });
 
-        it('should do nothing if no current batter', () => {
-            const storeToUpdate = getMatchStore(matches.matchWithStartedInnings);
-            storeToUpdate.batterUnavailable(domain.UnavailableReason.Absent);
+        it('should do nothing if no batter with index', () => {
+            const storeToUpdate = getMatchStore(matches.matchWithStartedOver);
+            storeToUpdate.batterUnavailable(3, domain.UnavailableReason.Absent);
 
-            expect(storeToUpdate.match).toEqual(matches.matchWithStartedInnings);
+            expect(storeToUpdate.match).toEqual(matches.matchWithStartedOver);
+        });
+
+        it('should set the batter with the index to unavailable', () => {
+            const storeToUpdate = getMatchStore(matches.matchWithStartedOver);
+            storeToUpdate.batterUnavailable(2, domain.UnavailableReason.Absent);
+
+            expect(storeToUpdate.match.innings[0].batting.batters[2].unavailableReason).toEqual(
+                domain.UnavailableReason.Absent,
+            );
         });
     });
 

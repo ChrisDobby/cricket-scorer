@@ -273,15 +273,21 @@ class InProgressMatchStore implements domain.InProgressMatch {
         this.updateLastEvent(event, this.currentInnings);
     };
 
-    @action batterUnavailable = (reason: domain.UnavailableReason) => {
+    @action batterUnavailable = (playerIndex: number, reason: domain.UnavailableReason) => {
         if (typeof this.currentInnings === 'undefined' || typeof this.currentBatter === 'undefined') {
+            return;
+        }
+
+        const batter = this.currentInnings.batting.batters.find(batter => batter.playerIndex === playerIndex);
+
+        if (typeof batter === 'undefined') {
             return;
         }
 
         const updatedInnings = this.matchInnings.batterUnavailable(
             this.currentInnings,
             new Date().getTime(),
-            this.currentBatter,
+            batter,
             reason,
         );
 
