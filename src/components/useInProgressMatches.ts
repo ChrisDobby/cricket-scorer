@@ -49,6 +49,8 @@ export default (
     const [storedMatch] = React.useState(matchStorage(localStorage).getMatch());
     const [inProgressMatches, setInProgressMatches] = React.useState([] as (PersistedMatch | CurrentEditingMatch)[]);
     const [loadingMatches, setLoadingMatches] = React.useState(false);
+    const [matchUpdates, setMatchUpdates] = React.useState([] as Update[]);
+    const [newMatch, setNewMatch] = React.useState(undefined as PersistedMatch | undefined);
 
     let retryTimer: any = undefined;
     let disconnect: (() => void) | undefined = undefined;
@@ -65,41 +67,10 @@ export default (
     const sortedMatches = (matches: (PersistedMatch | CurrentEditingMatch)[]) =>
         typeof userProfile === 'undefined' ? matches : sortMatches(matches, userProfile.id);
 
-    const updateMatches = (updates: Update[]) => {
-        console.log(updates);
-        console.log(inProgressMatches);
-        const x = inProgressMatches.map(match => {
-            const updated = updates.find((update: Update) => update.id === match.id);
-            return typeof updated === 'undefined'
-                ? match
-                : {
-                      ...match,
-                      status: updated.status,
-                      lastEvent: updated.lastEvent,
-                  };
-        });
-        console.log(x);
-
-        setInProgressMatches(
-            inProgressMatches.map(match => {
-                const updated = updates.find((update: Update) => update.id === match.id);
-                return typeof updated === 'undefined'
-                    ? match
-                    : {
-                          ...match,
-                          status: updated.status,
-                          lastEvent: updated.lastEvent,
-                      };
-            }),
-        );
-    };
-
-    const addMatch = (match: PersistedMatch) => setInProgressMatches([...inProgressMatches, match]);
-
     const subscribeToMatches = (matches: PersistedMatch[]) => {
         disconnect = updates(() => matches.map(match => match.id), [
-            { event: EventType.MatchUpdates, action: updateMatches },
-            { event: EventType.NewMatch, action: addMatch, resubscribe: true },
+            { event: EventType.MatchUpdates, action: setMatchUpdates },
+            { event: EventType.NewMatch, action: setNewMatch, resubscribe: true },
         ]);
     };
 
@@ -158,6 +129,27 @@ export default (
             retryTimer = setTimeout(getMatches, 60000);
         }
     };
+
+    React.useEffect(() => {
+        setInProgressMatches(
+            inProgressMatches.map(match => {
+                const updated = matchUpdates.find((update: Update) => update.id === match.id);
+                return typeof updated === 'undefined'
+                    ? match
+                    : {
+                          ...match,
+                          status: updated.status,
+                          lastEvent: updated.lastEvent,
+                      };
+            }),
+        );
+    }, [matchUpdates]);
+
+    React.useEffect(() => {
+        if (newMatch) {
+            setInProgressMatches([...inProgressMatches, newMatch]);
+        }
+    }, [newMatch]);
 
     React.useEffect(() => {
         if (status === ONLINE) {
