@@ -5,7 +5,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import NavBar from './components/NavBar';
 import WithAuth from './components/WithAuth';
 import WithRequiredAuth from './components/WithRequiredAuth';
-import AuthCallback from './components/AuthCallback';
 import './routes.css';
 import { History } from 'history';
 
@@ -19,6 +18,7 @@ const EditPlayers = React.lazy(() => import('./containers/match/EditPlayers'));
 const EditEvents = React.lazy(() => import('./containers/match/EditEvents'));
 const Wicket = React.lazy(() => import('./containers/match/Wicket'));
 const InProgress = React.lazy(() => import('./containers/match/InProgress'));
+const AuthCallback = React.lazy(() => import('./components/AuthCallback'));
 
 const Routes = ({ location, history }: { location: any; history: History }) => (
     <div style={{ userSelect: 'none' }}>

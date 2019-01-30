@@ -61,7 +61,7 @@ export default WithAuth(
                             <>
                                 <Avatar src={props.userProfile.picture} />
                                 <Typography color="inherit">{props.userProfile.name}</Typography>
-                                <Button color="inherit" onClick={() => props.logout(!!pageContext.stayWhenLoggingOut)}>
+                                <Button color="inherit" onClick={() => props.logout(pageContext.stayWhenLoggingOut)}>
                                     Logout
                                 </Button>
                             </>

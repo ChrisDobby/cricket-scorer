@@ -25,7 +25,7 @@ export default (Component: any) =>
             }
         };
 
-        React.useEffect(loginIfRequired);
+        React.useEffect(loginIfRequired, []);
 
         if (!props.login) {
             return <div />;
