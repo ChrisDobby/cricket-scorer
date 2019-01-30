@@ -34,27 +34,41 @@ export default (props: BatterUnavailableProps) => {
                     <DialogContentText>{`Select the ${description} player`}</DialogContentText>
                 </DialogContent>
                 <DialogContent>
-                    <Select value={playerIndex} onChange={ev => setPlayerIndex(Number(ev.target.value))} fullWidth>
-                        {batters.map(batter => (
-                            <MenuItem key={batter.playerIndex} value={batter.playerIndex}>
-                                {batter.name}
-                            </MenuItem>
-                        ))}
-                    </Select>
+                    {batters.length > 0 && (
+                        <Select value={playerIndex} onChange={ev => setPlayerIndex(Number(ev.target.value))} fullWidth>
+                            {batters.map(batter => (
+                                <MenuItem key={batter.playerIndex} value={batter.playerIndex}>
+                                    {batter.name}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    )}
+                    {batters.length === 0 && (
+                        <DialogContentText>{`No players can be marked as ${description}`}</DialogContentText>
+                    )}
                 </DialogContent>
-                <DialogActions>
-                    <Button
-                        onClick={() => props.update(playerIndex as number, props.reason)}
-                        color="primary"
-                        autoFocus
-                        disabled={typeof playerIndex === 'undefined'}
-                    >
-                        OK
-                    </Button>
-                    <Button onClick={props.cancel} color="primary">
-                        Cancel
-                    </Button>
-                </DialogActions>
+                {batters.length > 0 && (
+                    <DialogActions>
+                        <Button
+                            onClick={() => props.update(playerIndex as number, props.reason)}
+                            color="primary"
+                            autoFocus
+                            disabled={typeof playerIndex === 'undefined'}
+                        >
+                            OK
+                        </Button>
+                        <Button onClick={props.cancel} color="primary">
+                            Cancel
+                        </Button>
+                    </DialogActions>
+                )}
+                {batters.length === 0 && (
+                    <DialogActions>
+                        <Button onClick={props.cancel} color="primary" autoFocus>
+                            OK
+                        </Button>
+                    </DialogActions>
+                )}
             </Dialog>
         </div>
     );
