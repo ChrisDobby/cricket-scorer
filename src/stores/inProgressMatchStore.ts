@@ -8,6 +8,7 @@ import eventDescription from '../match/eventDescription';
 import complete from '../match/complete';
 import { getTeam } from '../match/utilities';
 import editPlayers from '../match/innings/editPlayers';
+import { end as endBreak } from '../match/break';
 
 const teamFromType = (match: domain.Match) => (type: domain.TeamType) => getTeam(match, type);
 
@@ -187,7 +188,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
 
         const [innings, bowlerIndex] = this.matchInnings.newBowler(this.currentInnings, playerIndex);
 
-        this.updateMatch(innings);
+        this.updateMatch(this.match, innings);
         this.currentBowlerIndex = bowlerIndex;
     };
 
@@ -225,7 +226,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
               ]
             : this.matchInnings.newBatter(this.currentInnings, playerIndex);
 
-        this.updateMatch(innings);
+        this.updateMatch(this.match, innings);
         this.currentBatterIndex = batterIndex;
     };
 
@@ -252,7 +253,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
             wicket,
         );
 
-        this.updateMatch(innings);
+        this.updateMatch(endBreak(this.match, new Date().getTime()), innings);
         this.currentBatterIndex = batterIndex;
         this.updateLastEvent(event, this.currentInnings);
     };
@@ -269,7 +270,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
             howout,
         );
 
-        this.updateMatch(updatedInnings);
+        this.updateMatch(endBreak(this.match, new Date().getTime()), updatedInnings);
         this.updateLastEvent(event, this.currentInnings);
     };
 
@@ -291,7 +292,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
             reason,
         );
 
-        this.updateMatch(updatedInnings);
+        this.updateMatch(this.match, updatedInnings);
     };
 
     @action undoPreviousDelivery = () => {
@@ -309,7 +310,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
             Number(this.currentBowlerIndex),
         );
 
-        this.updateMatch(innings);
+        this.updateMatch(this.match, innings);
         this.currentBatterIndex = batterIndex;
         this.currentBowlerIndex = bowlerIndex;
     };
@@ -329,7 +330,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
             this.currentBowler,
         );
 
-        this.updateMatch(innings);
+        this.updateMatch(endBreak(this.match, new Date().getTime()), innings);
         this.currentBatterIndex = batterIndex;
         this.currentBowlerIndex = undefined;
     };
@@ -389,7 +390,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
         }
         const inningsWithBatting = editPlayers.changeBatting(this.match, this.currentInnings, battingOrder);
         const innings = editPlayers.changeBowling(this.match, inningsWithBatting, bowlingOrder);
-        this.updateMatch(innings);
+        this.updateMatch(this.match, innings);
     };
 
     @action rollback = (eventIndex: number) => {
@@ -398,7 +399,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
             return;
         }
 
-        this.updateMatch(rolledback[0]);
+        this.updateMatch(this.match, rolledback[0]);
         this.currentBatterIndex = rolledback[1];
         this.currentBowlerIndex = rolledback[2];
     };
@@ -407,7 +408,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
         if (typeof this.currentInnings === 'undefined') {
             return;
         }
-        this.updateMatch(this.matchInnings.editOvers(this.currentInnings, overs));
+        this.updateMatch(this.match, this.matchInnings.editOvers(this.currentInnings, overs));
     };
 
     private getRollback = (eventIndex: number): [domain.Innings, number, number] | undefined => {
@@ -429,8 +430,8 @@ class InProgressMatchStore implements domain.InProgressMatch {
         return typeof rolledback === 'undefined' ? undefined : rolledback[0];
     };
 
-    private updateMatch = (innings: domain.Innings) => {
-        const [match, version] = updateMatchInnings(this.match, innings, this.config, this.version);
+    private updateMatch = (matchToUpdate: domain.Match, innings: domain.Innings) => {
+        const [match, version] = updateMatchInnings(matchToUpdate, innings, this.config, this.version);
 
         this.match = match;
         this.version = version;

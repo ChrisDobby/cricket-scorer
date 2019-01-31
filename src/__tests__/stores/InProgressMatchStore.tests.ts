@@ -254,6 +254,16 @@ describe('inProgressMatchStore', () => {
             expect(delivery.outcome.deliveryOutcome).toBe(domain.DeliveryOutcome.Valid);
             expect(delivery.outcome.scores.runs).toBe(2);
         });
+
+        it('should end any open breaks', () => {
+            const inProgressMatchStore = getMatchStore({
+                ...matches.matchWithStartedOver,
+                breaks: [{ type: domain.BreakType.Rain, startTime: 1 }],
+            });
+            inProgressMatchStore.delivery(domain.DeliveryOutcome.Valid, { runs: 2 });
+
+            expect(inProgressMatchStore.match.breaks[0].endTime).not.toBeUndefined();
+        });
     });
 
     describe('undoPreviousDelivery', () => {
@@ -359,6 +369,16 @@ describe('inProgressMatchStore', () => {
             inProgressMatchStore.completeOver();
 
             expect(inProgressMatchStore.currentBowler).toBeUndefined();
+        });
+
+        it('should end any open breaks', () => {
+            const inProgressMatchStore = getMatchStore({
+                ...matches.matchWithStartedOver,
+                breaks: [{ type: domain.BreakType.Rain, startTime: 1 }],
+            });
+            inProgressMatchStore.completeOver();
+
+            expect(inProgressMatchStore.match.breaks[0].endTime).not.toBeUndefined();
         });
     });
 
