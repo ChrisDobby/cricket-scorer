@@ -12,7 +12,9 @@ describe('matchApi', () => {
         remove: jest.fn(),
     };
 
-    const MatchApi = matchApi(api);
+    const update = jest.fn();
+
+    const MatchApi = matchApi(api, update);
 
     describe('getMatch', () => {
         it('should call get with the correct route', () => {
@@ -74,6 +76,26 @@ describe('matchApi', () => {
             MatchApi.sendMatch(matchWithId);
 
             expect(api.post).toHaveBeenCalledWith(`${process.env.API_URL}/match`, matchWithId);
+        });
+
+        it('should call the update func when posting', () => {
+            const matchWithId = {
+                ...match,
+                match: { ...match.match, id: undefined },
+            };
+            MatchApi.sendMatch(matchWithId);
+            expect(update).toHaveBeenCalledWith(matchWithId);
+        });
+
+        it('should not call the update func when putting', () => {
+            const matchId = '123456';
+            const matchWithId = {
+                ...match,
+                match: { ...match.match, id: matchId },
+            };
+            MatchApi.sendMatch(matchWithId);
+
+            expect(update).not.toHaveBeenCalled();
         });
     });
 });

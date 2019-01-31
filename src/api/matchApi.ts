@@ -1,16 +1,21 @@
 import { StoredMatch, PersistedMatch } from '../domain';
+import userTeamsStorage from '../stores/userTeamsStorage';
 
 const matchRoute = 'match';
 const inProgressQuery = 'inprogress';
 const expectedCompleteQuery = 'expectedcomplete';
 const userQuery = 'user';
 
-const matchApi = (url: string) => (api: any) => {
+const matchApi = (url: string) => (
+    api: any,
+    updatePost: (storedMatch: StoredMatch) => void = userTeamsStorage(localStorage),
+) => {
     const sendMatch = async (storedMatch: StoredMatch) => {
         if (typeof storedMatch.match.id !== 'undefined') {
             return await api.put(`${url}/${matchRoute}/${storedMatch.match.id}`, storedMatch);
         }
 
+        updatePost(storedMatch);
         return await api.post(`${url}/${matchRoute}`, storedMatch);
     };
 
