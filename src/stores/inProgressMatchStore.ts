@@ -255,7 +255,23 @@ class InProgressMatchStore implements domain.InProgressMatch {
 
         this.updateMatch(endBreak(this.match, new Date().getTime()), innings);
         this.currentBatterIndex = batterIndex;
-        this.updateLastEvent(event, this.currentInnings);
+
+        const bowlingTeam = getTeam(this.match, this.currentInnings.bowlingTeam);
+        this.updateLastEvent(
+            event,
+            this.currentInnings,
+            wicket
+                ? {
+                      time: event.time,
+                      howOut: wicket.howOut,
+                      bowler: this.currentBowler.name,
+                      fielder:
+                          typeof wicket.fielderIndex !== 'undefined'
+                              ? bowlingTeam.players[wicket.fielderIndex]
+                              : undefined,
+                  }
+                : undefined,
+        );
     };
 
     @action nonDeliveryWicket = (howout: domain.Howout) => {
@@ -271,7 +287,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
         );
 
         this.updateMatch(endBreak(this.match, new Date().getTime()), updatedInnings);
-        this.updateLastEvent(event, this.currentInnings);
+        this.updateLastEvent(event, this.currentInnings, { howOut: howout, time: event.time });
     };
 
     @action batterUnavailable = (playerIndex: number, reason: domain.UnavailableReason) => {
