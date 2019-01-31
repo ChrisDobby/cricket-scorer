@@ -84,7 +84,7 @@ export default ({
     const [awayTeamSuggestions, setAwayTeamSuggestions] = React.useState([] as string[]);
 
     const onSuggestionFetchRequested = (set: (s: string[]) => void) => ({ value }: any) => {
-        const regex = new RegExp('^' + value, 'i');
+        const regex = new RegExp(`^${value}`, 'i');
         set(userTeams.map(ut => ut.name).filter(name => name.match(regex)));
     };
 
