@@ -1,6 +1,7 @@
 import { InProgressMatchStore } from '../../stores/inProgressMatchStore';
 import * as matches from '../testData/matches';
 import * as domain from '../../domain';
+import { description } from '../../match/break';
 
 jest.mock('../../match/over', () => {
     const wickets = () => 2;
@@ -794,6 +795,31 @@ describe('inProgressMatchStore', () => {
             storeToUpdate.setId(newId);
 
             expect(storeToUpdate.match.id).toBe(newId);
+        });
+    });
+
+    describe('startBreak', () => {
+        it('should add the break', () => {
+            const inProgressMatchStore = getMatchStore(matches.matchWithStartedOver);
+            inProgressMatchStore.startBreak(domain.BreakType.Lunch);
+
+            expect(inProgressMatchStore.match.breaks).toHaveLength(1);
+            expect(inProgressMatchStore.match.breaks[0].type).toBe(domain.BreakType.Lunch);
+            expect(inProgressMatchStore.match.breaks[0].endTime).toBeUndefined();
+        });
+
+        it('should increase the version', () => {
+            const inProgressMatchStore = getMatchStore(matches.matchWithStartedOver);
+            inProgressMatchStore.startBreak(domain.BreakType.Lunch);
+
+            expect(inProgressMatchStore.version).toBe(1);
+        });
+
+        it('should set the last event', () => {
+            const inProgressMatchStore = getMatchStore(matches.matchWithStartedOver);
+            inProgressMatchStore.startBreak(domain.BreakType.Lunch);
+
+            expect(inProgressMatchStore.lastEvent).toBe(description(domain.BreakType.Lunch));
         });
     });
 });

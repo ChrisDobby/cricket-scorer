@@ -8,7 +8,7 @@ import eventDescription from '../match/eventDescription';
 import complete from '../match/complete';
 import { getTeam } from '../match/utilities';
 import editPlayers from '../match/innings/editPlayers';
-import { end as endBreak, start as startBreak } from '../match/break';
+import { end as endBreak, start as startBreak, current as currentBreak } from '../match/break';
 
 const teamFromType = (match: domain.Match) => (type: domain.TeamType) => getTeam(match, type);
 
@@ -351,8 +351,9 @@ class InProgressMatchStore implements domain.InProgressMatch {
         if (status === domain.InningsStatus.InProgress) {
             throw new Error('cannot complete with in progress status');
         }
-        this.match = startBreak(this.match, domain.BreakType.Innings, new Date().getTime());
         this.currentInnings.status = status;
+
+        this.startBreak(domain.BreakType.Innings);
     };
 
     @action completeMatch = (result: domain.MatchResult) => {
@@ -371,6 +372,8 @@ class InProgressMatchStore implements domain.InProgressMatch {
             complete: true,
             result: res,
         };
+
+        this.lastEvent = undefined;
     };
 
     @action setId = (id: string) => {
@@ -410,6 +413,12 @@ class InProgressMatchStore implements domain.InProgressMatch {
             return;
         }
         this.updateMatch(this.match, this.matchInnings.editOvers(this.currentInnings, overs));
+    };
+
+    @action startBreak = (breakType: domain.BreakType) => {
+        this.match = startBreak(this.match, breakType, new Date().getTime());
+        this.version = this.version + 1;
+        this.lastEvent = currentBreak(this.match);
     };
 
     private getRollback = (eventIndex: number): [domain.Innings, number, number] | undefined => {

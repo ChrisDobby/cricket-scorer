@@ -36,6 +36,7 @@ describe.skip('InProgress', () => {
         rolledBackInnings: jest.fn(),
         rollback: jest.fn(),
         updateOvers: jest.fn(),
+        startBreak: jest.fn(),
         version: 1,
     };
 
