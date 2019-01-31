@@ -8,7 +8,7 @@ const userQuery = 'user';
 
 const matchApi = (url: string) => (
     api: any,
-    updatePost: (storedMatch: StoredMatch) => void = userTeamsStorage(localStorage),
+    updatePost: (storedMatch: StoredMatch) => void = userTeamsStorage(localStorage).store,
 ) => {
     const sendMatch = async (storedMatch: StoredMatch) => {
         if (typeof storedMatch.match.id !== 'undefined') {
