@@ -14,6 +14,7 @@ const actionProps = (inProgressMatchStore: InProgressMatchStore, getUserId: () =
         completeMatch: inProgressMatchStore.completeMatch,
         batterUnavailable: inProgressMatchStore.batterUnavailable,
         updateOvers: inProgressMatchStore.updateOvers,
+        startBreak: inProgressMatchStore.startBreak,
     });
 };
 

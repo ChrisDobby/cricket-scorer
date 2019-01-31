@@ -12,7 +12,8 @@ import VerifyCompleteInnings from './VerifyCompleteInnings';
 import CompleteMatch from './CompleteMatch';
 import UpdateOvers from './UpdateOvers';
 import BatterUnavailable from './BatterUnavailable';
-import { UnavailableReason, InningsStatus, MatchResult, MatchType, InProgressMatch } from '../../domain';
+import StartBreak from './StartBreak';
+import { UnavailableReason, InningsStatus, MatchResult, MatchType, InProgressMatch, BreakType } from '../../domain';
 import calculateResult from '../../match/calculateResult';
 
 const allowedOption = { allowed: true };
@@ -23,6 +24,7 @@ interface WithMatchDrawerProps {
     completeInnings: (status: InningsStatus) => void;
     completeMatch: (result: MatchResult) => void;
     updateOvers: (overs: number) => void;
+    startBreak: (type: BreakType) => void;
     batterUnavailable: (playerIndex: number, reason: UnavailableReason) => void;
     undoPreviousDelivery: () => void;
     changeEnds: () => void;
@@ -38,6 +40,7 @@ export default (Component: any) => (props: WithMatchDrawerProps) => {
         | UnavailableReason
         | undefined);
     const [changeOvers, setChangeOvers] = React.useState(false);
+    const [startBreakVerify, setStartBreakVerify] = React.useState(false);
 
     const openDrawer = () => setOpen(true);
     const closeDrawer = () => setOpen(false);
@@ -92,6 +95,16 @@ export default (Component: any) => (props: WithMatchDrawerProps) => {
         setOverNotCompleteWarning(true);
     };
 
+    const verifyStartBreak = () => {
+        setStartBreakVerify(true);
+        setOpen(false);
+    };
+    const startBreak = (breakType: BreakType) => {
+        props.startBreak(breakType);
+        setStartBreakVerify(false);
+    };
+    const cancelStartBreak = () => setStartBreakVerify(false);
+
     const items = [
         { ...allowedOption, text: 'Undo previous', icon: <Undo />, action: props.undoPreviousDelivery },
         { ...allowedOption, text: 'Change ends', icon: <SwapHoriz />, action: props.changeEnds },
@@ -128,6 +141,7 @@ export default (Component: any) => (props: WithMatchDrawerProps) => {
         { ...allowedOption, text: 'Complete over', icon: <Done />, action: completeOver },
         { ...allowedOption, text: 'Complete innings', icon: <Done />, action: () => setInningsCompleteVerify(true) },
         { ...allowedOption, text: 'Complete match', icon: <DoneAll />, action: () => setMatchCompleteVerify(true) },
+        { ...allowedOption, text: 'Start break', icon: <ArrowRightAlt />, action: verifyStartBreak },
     ];
 
     return (
@@ -172,6 +186,7 @@ export default (Component: any) => (props: WithMatchDrawerProps) => {
                         cancel={cancelBatterUnavailable}
                     />
                 )}
+            {startBreakVerify && <StartBreak startBreak={startBreak} cancel={cancelStartBreak} />}
         </>
     );
 };

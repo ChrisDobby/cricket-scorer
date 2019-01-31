@@ -59,12 +59,12 @@ export enum WinBy {
 }
 
 export enum BreakType {
-    Innings,
-    Rain,
     BadLight,
-    Lunch,
-    Tea,
     CloseOfPlay,
+    Innings,
+    Lunch,
+    Rain,
+    Tea,
 }
 
 export enum EventType {
