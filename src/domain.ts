@@ -303,6 +303,11 @@ export interface RebuiltInnings {
     batterIndex: number;
 }
 
+export interface UserTeams {
+    user: string;
+    teams: Team[];
+}
+
 export const howOutDescription = (wicket?: Wicket): string => {
     const description = (wkt: Wicket): string => {
         switch (wkt.howOut) {
