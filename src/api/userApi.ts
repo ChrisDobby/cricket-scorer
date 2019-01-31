@@ -4,7 +4,8 @@ const userRoute = 'user';
 const teamsRoute = 'teams';
 
 const userApi = (url: string) => (api: any) => {
-    const getTeams: () => Promise<UserTeams> = async () => await api.get(`${url}/${userRoute}/${teamsRoute}`);
+    const getTeams: () => Promise<UserTeams> = async () =>
+        await api.authenticatedGet(`${url}/${userRoute}/${teamsRoute}`);
 
     return {
         getTeams,

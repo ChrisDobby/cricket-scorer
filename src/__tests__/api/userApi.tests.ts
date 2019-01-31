@@ -4,7 +4,7 @@ describe('userApi', () => {
     beforeEach(jest.clearAllMocks);
 
     const api = {
-        get: jest.fn(),
+        authenticatedGet: jest.fn(),
     };
 
     const UserApi = userApi(api);
@@ -13,7 +13,7 @@ describe('userApi', () => {
         it('should call get with the correct route', () => {
             UserApi.getTeams();
 
-            expect(api.get).toHaveBeenCalledWith(`${process.env.API_URL}/user/teams`);
+            expect(api.authenticatedGet).toHaveBeenCalledWith(`${process.env.API_URL}/user/teams`);
         });
     });
 });

@@ -67,6 +67,18 @@ export default (props: MatchFormProps) => {
         });
     };
 
+    const setPlayers = (team: TeamType, players: string[]) => {
+        const playerArray = team === TeamType.HomeTeam ? 'homePlayers' : 'awayPlayers';
+        const update = matchData[playerArray].map((player, index) =>
+            index >= players.length ? player : players[index],
+        );
+
+        setMatchData({
+            ...matchData,
+            [playerArray]: update,
+        });
+    };
+
     const canSave = () =>
         ((matchData.matchType === MatchType.LimitedOvers && matchData.oversPerSide > 0) ||
             (matchData.matchType === MatchType.Time && matchData.inningsPerSide > 0)) &&
@@ -118,6 +130,7 @@ export default (props: MatchFormProps) => {
                     awayPlayers={matchData.awayPlayers}
                     playerChanged={playerChanged}
                     teamChanged={teamChanged}
+                    setPlayers={setPlayers}
                 />
             </EditForm>
             {(saveWarnings.homePlayersMissing > 0 || saveWarnings.awayPlayersMissing > 0) && (

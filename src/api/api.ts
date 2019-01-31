@@ -31,6 +31,19 @@ const api = (addBearerToken: (headers: any) => Headers) => (defaultRetries: numb
         return responseData(response);
     };
 
+    const authenticatedGet = async (route: string) => {
+        const response = await tryFetch(
+            () =>
+                fetch(route, {
+                    headers: addBearerToken({
+                        'Content-Type': 'application/json',
+                    }),
+                }),
+            undefined,
+        );
+        return responseData(response);
+    };
+
     const remove = async (route: string) => {
         const response = await tryFetch(
             () =>
@@ -69,6 +82,7 @@ const api = (addBearerToken: (headers: any) => Headers) => (defaultRetries: numb
 
     return {
         get,
+        authenticatedGet,
         post,
         put,
         remove,
