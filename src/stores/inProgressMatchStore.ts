@@ -8,7 +8,7 @@ import eventDescription from '../match/eventDescription';
 import complete from '../match/complete';
 import { getTeam } from '../match/utilities';
 import editPlayers from '../match/innings/editPlayers';
-import { end as endBreak } from '../match/break';
+import { end as endBreak, start as startBreak } from '../match/break';
 
 const teamFromType = (match: domain.Match) => (type: domain.TeamType) => getTeam(match, type);
 
@@ -351,6 +351,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
         if (status === domain.InningsStatus.InProgress) {
             throw new Error('cannot complete with in progress status');
         }
+        this.match = startBreak(this.match, domain.BreakType.Innings, new Date().getTime());
         this.currentInnings.status = status;
     };
 
@@ -358,7 +359,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
         const [res, status] = complete.status(this.match, result);
 
         this.match = {
-            ...this.match,
+            ...endBreak(this.match, new Date().getTime()),
             status,
             innings: [
                 ...this.match.innings.map(innings =>

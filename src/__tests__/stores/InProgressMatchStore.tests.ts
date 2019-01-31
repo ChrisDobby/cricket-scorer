@@ -482,6 +482,15 @@ describe('inProgressMatchStore', () => {
                 'cannot complete with in progress status',
             );
         });
+
+        it('should add an innings break', () => {
+            const inProgressMatchStore = getMatchStore(matches.matchWithStartedOver);
+            inProgressMatchStore.completeInnings(domain.InningsStatus.AllOut);
+
+            expect(inProgressMatchStore.match.breaks).toHaveLength(1);
+            expect(inProgressMatchStore.match.breaks[0].type).toBe(domain.BreakType.Innings);
+            expect(inProgressMatchStore.match.breaks[0].endTime).toBeUndefined();
+        });
     });
 
     describe('completeMatch', () => {
@@ -524,6 +533,17 @@ describe('inProgressMatchStore', () => {
             const completedMatch = inProgressMatchStore.match as domain.Match;
             expect(completedMatch.innings[0].status).toEqual(domain.InningsStatus.AllOut);
             expect(completedMatch.innings[1].status).toEqual(domain.InningsStatus.MatchComplete);
+        });
+
+        it('should end any open breaks', () => {
+            const inProgressMatchStore = getMatchStore({
+                ...matches.blankMatch,
+                breaks: [{ type: domain.BreakType.Rain, startTime: 1 }],
+            });
+
+            inProgressMatchStore.completeMatch({ result: domain.Result.Abandoned });
+
+            expect(inProgressMatchStore.match.breaks[0].endTime).not.toBeUndefined();
         });
     });
 
