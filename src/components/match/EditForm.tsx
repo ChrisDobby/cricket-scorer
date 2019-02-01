@@ -17,7 +17,7 @@ export default ({ heading, save, canSave, children }: EditFormProps) => (
             <Typography variant="h4" color="inherit" style={{ flexGrow: 1 }}>
                 {heading}
             </Typography>
-            <Button variant="fab" color="primary" onClick={save} disabled={!canSave()}>
+            <Button aria-label="complete" variant="fab" color="primary" onClick={save} disabled={!canSave()}>
                 <Done />
             </Button>
         </Toolbar>

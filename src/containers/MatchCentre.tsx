@@ -9,7 +9,12 @@ import PageContext from '../context/PageContext';
 
 const createMatchRoute = '/match/create';
 const getAddButton = (props: any) => (
-    <Button variant="fab" color="secondary" onClick={() => props.history.push(createMatchRoute)}>
+    <Button
+        aria-label="create new match"
+        variant="fab"
+        color="secondary"
+        onClick={() => props.history.push(createMatchRoute)}
+    >
         <Add />
     </Button>
 );

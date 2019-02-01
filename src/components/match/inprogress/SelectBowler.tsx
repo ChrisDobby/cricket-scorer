@@ -36,7 +36,7 @@ export default (props: SelectBowlerProps) => {
                     <Typography variant="h4" color="inherit" style={{ flexGrow: 1 }}>
                         Select bowler
                     </Typography>
-                    <Button variant="fab" color="primary" onClick={save} disabled={!canSave()}>
+                    <Button aria-label="complete" variant="fab" color="primary" onClick={save} disabled={!canSave()}>
                         <Done />
                     </Button>
                 </Toolbar>
