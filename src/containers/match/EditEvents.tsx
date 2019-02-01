@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { inject } from 'mobx-react';
 import storeMatch from '../../storeMatch';
-import WithInProgressMatch from '../../components/WithInProgressMatch';
 import WithInProgressStore from '../../components/WithInProgressStore';
 import Events from '../../components/match/edit/Events';
 import PageContext from '../../context/PageContext';
@@ -19,4 +18,4 @@ const InProgress = (props: any) => {
     );
 };
 
-export default WithInProgressStore()(inject('inProgressMatchStore')(WithInProgressMatch(InProgress)));
+export default WithInProgressStore()(inject('inProgressMatchStore')(InProgress));
