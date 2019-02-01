@@ -46,7 +46,7 @@ export default (props: MatchStatusProps) => {
             <SnackbarContent
                 message={props.inProgressMatches[currentIndex].status}
                 action={
-                    <Button color="secondary" size="small" onClick={showCurrentScorecard}>
+                    <Button color="inherit" size="small" onClick={showCurrentScorecard}>
                         View scorecard
                     </Button>
                 }
