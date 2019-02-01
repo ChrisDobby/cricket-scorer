@@ -4,6 +4,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
+import deepOrange from '@material-ui/core/colors/deepOrange';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import SignalWifiOff from '@material-ui/icons/SignalWifiOff';
@@ -29,6 +30,14 @@ interface NavBarProps {
     outOfDateSelected: () => void;
     children: React.ReactNode;
 }
+
+const getInitials = (name: string) =>
+    name
+        .split(' ')
+        .map(part => part.trim())
+        .filter(part => part.length > 0)
+        .map(part => part[0].toUpperCase())
+        .join('');
 
 export default WithAuth(
     WithOutOfDateMatches((props: NavBarProps) => {
@@ -59,8 +68,12 @@ export default WithAuth(
                         )}
                         {props.isAuthenticated && (
                             <>
-                                <Avatar src={props.userProfile.picture} />
-                                <Typography color="inherit">{props.userProfile.name}</Typography>
+                                {props.userProfile.picture && <Avatar src={props.userProfile.picture} />}
+                                {!props.userProfile.picture && (
+                                    <Avatar style={{ backgroundColor: deepOrange[500] }}>
+                                        {getInitials(props.userProfile.name)}
+                                    </Avatar>
+                                )}
                                 <Button color="inherit" onClick={() => props.logout(pageContext.stayWhenLoggingOut)}>
                                     Logout
                                 </Button>
