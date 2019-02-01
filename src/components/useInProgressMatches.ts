@@ -42,7 +42,7 @@ const toCurrentEditingMatch = (storedMatch: StoredMatch | undefined) =>
 export default (
     status: string,
     userProfile: Profile,
-): [(PersistedMatch | CurrentEditingMatch)[], boolean, (id: string) => Promise<void>] => {
+): [(PersistedMatch | CurrentEditingMatch)[], boolean, (id: string | undefined) => Promise<void>] => {
     const MatchApi = matchApi(api(3, 1000));
     const updates = liveUpdates(process.env.API_URL as string, UpdateType.AllUpdates);
 
@@ -54,12 +54,15 @@ export default (
     const disconnect = React.useRef(undefined as (() => void) | undefined);
     const retryTimer = React.useRef(undefined as any);
 
-    const removeMatch = async (id: string) => {
+    const removeMatch = async (id: string | undefined) => {
         if (storedMatch && storedMatch.match.id === id) {
             matchStorage(localStorage).removeMatch();
         }
 
-        await MatchApi.removeMatch(id);
+        if (id) {
+            await MatchApi.removeMatch(id);
+        }
+
         setInProgressMatches(inProgressMatches.filter(match => match.id !== id));
     };
 

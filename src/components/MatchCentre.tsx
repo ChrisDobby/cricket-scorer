@@ -25,7 +25,10 @@ export default withStyles(homePageStyles)((props: MatchCentreProps) => {
     const [fetchingMatch, setFetching] = React.useState(false);
     const [fetchError, setFetchError] = React.useState(false);
     const [removeError, setRemoveError] = React.useState(false);
-    const [confirmRemoveMatch, setConfirmRemoveMatch] = React.useState(undefined as PersistedMatch | undefined);
+    const [confirmRemoveMatch, setConfirmRemoveMatch] = React.useState(undefined as
+        | PersistedMatch
+        | CurrentEditingMatch
+        | undefined);
     const [inProgressMatches, loadingMatches, remove] = useInProgressMatches(props.status, props.userProfile);
 
     const showScorecard = (id: string | undefined) => () => props.history.push(`/scorecard${id ? `/${id}` : ''}`);
@@ -46,15 +49,8 @@ export default withStyles(homePageStyles)((props: MatchCentreProps) => {
     };
 
     const removeMatch = (id: string | undefined) => () => {
-        if (id) {
-            setRemoveError(false);
-            setConfirmRemoveMatch(
-                inProgressMatches
-                    .map(m => m as PersistedMatch)
-                    .filter(m => m)
-                    .find(m => m.id === id),
-            );
-        }
+        setRemoveError(false);
+        setConfirmRemoveMatch(inProgressMatches.find(m => m.id === id));
     };
 
     const clearRemoveMatch = () => {
@@ -62,7 +58,7 @@ export default withStyles(homePageStyles)((props: MatchCentreProps) => {
         setConfirmRemoveMatch(undefined);
     };
 
-    const confirmRemove = (id: string) => async () => {
+    const confirmRemove = (id: string | undefined) => async () => {
         clearRemoveMatch();
         try {
             await remove(id);
