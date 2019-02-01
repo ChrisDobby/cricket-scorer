@@ -118,7 +118,7 @@ export default (props: EntryProps) => (
                     onChange={event => props.fielderChange(Number(event.target.value))}
                 >
                     <MenuItem value={-1}>Select...</MenuItem>
-                    {props.fielders.map((fielder, idx) => (
+                    {props.fielders.concat('sub').map((fielder, idx) => (
                         <MenuItem key={idx} value={idx}>
                             {fielder}
                         </MenuItem>

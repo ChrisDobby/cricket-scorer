@@ -124,5 +124,5 @@ export const battingWicket = (outcome: domain.Outcome, time: number, bowler: str
               fielder:
                   typeof outcome.wicket.fielderIndex === 'undefined'
                       ? undefined
-                      : bowlingTeam[outcome.wicket.fielderIndex],
+                      : bowlingTeam[outcome.wicket.fielderIndex] || 'sub',
           };
