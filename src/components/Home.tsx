@@ -125,17 +125,17 @@ export default withStyles(homePageStyles)((props: HomeProps) => {
                                             {`You were scoring the match ${props.storedMatch.match.homeTeam.name}` +
                                                 ` v ${props.storedMatch.match.awayTeam.name}`}
                                         </Typography>
-                                        <Button color="secondary" onClick={continueScoring}>
+                                        <Button color="primary" onClick={continueScoring}>
                                             Continue scoring
                                         </Button>
                                     </>
                                 )}
                                 <Typography variant="subtitle1">To see all of the current and past matches</Typography>
-                                <Button color="secondary" onClick={goToMatchCentre}>
+                                <Button color="primary" onClick={goToMatchCentre}>
                                     Go to the Match Centre
                                 </Button>
                                 <Typography variant="subtitle1">To start scoring a new match</Typography>
-                                <Button color="secondary" onClick={goToCreateMatch}>
+                                <Button color="primary" onClick={goToCreateMatch}>
                                     {`${
                                         props.isAuthenticated || !props.canAuthenticate
                                             ? 'Create match'
