@@ -147,6 +147,20 @@ export default (
         }
     };
 
+    const getFirstBatterIndex = (events: domain.Event[], currentIndex: number) => {
+        const deliveries = events.filter(
+            ev => typeof (ev as domain.Delivery).batsmanIndex !== 'undefined',
+        ) as domain.Delivery[];
+        if (deliveries.length === 0) {
+            return currentIndex;
+        }
+
+        return deliveries[0].batsmanIndex;
+    };
+
     return (innings: domain.Innings, batterIndex: number, events: domain.Event[]): domain.RebuiltInnings =>
-        events.reduce(eventReducer, { batterIndex, innings: newInnings(innings) });
+        events.reduce(eventReducer, {
+            batterIndex: getFirstBatterIndex(events, batterIndex),
+            innings: newInnings(innings),
+        });
 };

@@ -15,29 +15,26 @@ export interface BatterSelectorProps {
     playerSelected: (index: number) => void;
 }
 
-export default (props: BatterSelectorProps) => {
-    console.log(props.selectedPlayerIndex);
-    return (
-        <List>
-            {props.players.map((player, index) => (
-                <ListItem
-                    disabled={
-                        !!(
-                            props.notAllowedPlayers &&
-                            !(typeof props.notAllowedPlayers.find(p => p === index) === 'undefined')
-                        )
-                    }
-                    selected={props.selectedPlayerIndex === index}
-                    key={index}
-                    role={undefined}
-                    dense
-                    button
-                    color="primary"
-                    onClick={() => props.playerSelected(index)}
-                >
-                    <ListItemText primary={player} />
-                </ListItem>
-            ))}
-        </List>
-    );
-};
+export default (props: BatterSelectorProps) => (
+    <List>
+        {props.players.map((player, index) => (
+            <ListItem
+                disabled={
+                    !!(
+                        props.notAllowedPlayers &&
+                        !(typeof props.notAllowedPlayers.find(p => p === index) === 'undefined')
+                    )
+                }
+                selected={props.selectedPlayerIndex === index}
+                key={index}
+                role={undefined}
+                dense
+                button
+                color="primary"
+                onClick={() => props.playerSelected(index)}
+            >
+                <ListItemText primary={player} />
+            </ListItem>
+        ))}
+    </List>
+);

@@ -140,7 +140,7 @@ describe('rebuild', () => {
         );
         expect(newInnings).toEqual({
             innings: matches.inningsWithAllDeliveriesInCompletedOver,
-            batterIndex: 9,
+            batterIndex: 0,
         });
     });
 
@@ -162,7 +162,7 @@ describe('rebuild', () => {
         );
         expect(newInnings).toEqual({
             innings: matches.inningsWithAllDeliveriesInCompletedOver,
-            batterIndex: 9,
+            batterIndex: 0,
         });
     });
 
