@@ -162,6 +162,15 @@ class InProgressMatchStore implements domain.InProgressMatch {
         this.match.status = status(this.match);
     };
 
+    @action undoToss = () => {
+        if (this.match.innings.find(inn => inn.events.length > 0)) {
+            return;
+        }
+
+        this.match = { ...this.match, toss: undefined, innings: [] };
+        this.match.status = status(this.match);
+    };
+
     @action startInnings = (
         battingTeam: domain.TeamType,
         batter1Index: number,

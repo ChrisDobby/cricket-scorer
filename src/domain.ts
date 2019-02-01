@@ -296,6 +296,7 @@ export interface InProgressMatch {
     rollback: (eventIndex: number) => void;
     updateOvers: (overs: number) => void;
     startBreak: (breakType: BreakType) => void;
+    undoToss: () => void;
 }
 
 export interface RebuiltInnings {

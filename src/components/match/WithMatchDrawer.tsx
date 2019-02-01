@@ -25,6 +25,7 @@ interface WithMatchDrawerProps {
     completeMatch: (result: MatchResult) => void;
     updateOvers: (overs: number) => void;
     startBreak: (type: BreakType) => void;
+    undoToss: () => void;
     batterUnavailable: (playerIndex: number, reason: UnavailableReason) => void;
     undoPreviousDelivery: () => void;
     changeEnds: () => void;
@@ -105,8 +106,16 @@ export default (Component: any) => (props: WithMatchDrawerProps) => {
     };
     const cancelStartBreak = () => setStartBreakVerify(false);
 
+    const undoTossAllowed = () => !props.inProgressMatchStore.match.innings.find(inn => inn.events.length > 0);
+    const undoToss = () => {
+        setOpen(false);
+        props.undoToss();
+        props.history.replace('/match/start');
+    };
+
     const items = [
         { ...allowedOption, text: 'Undo previous', icon: <Undo />, action: props.undoPreviousDelivery },
+        { allowed: undoTossAllowed(), text: 'Undo the toss', icon: <Undo />, action: undoToss },
         { ...allowedOption, text: 'Change ends', icon: <SwapHoriz />, action: props.changeEnds },
         {
             ...allowedOption,

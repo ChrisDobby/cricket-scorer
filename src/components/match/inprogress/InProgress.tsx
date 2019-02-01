@@ -50,22 +50,6 @@ const InProgress = (props: InProgressProps) => {
             ? undefined
             : props.inProgress.previousBowlerFromEnd.playerIndex;
 
-    React.useEffect(() => {
-        if (typeof props.inProgress.match === 'undefined') {
-            return;
-        }
-
-        if (typeof props.inProgress.match.toss === 'undefined') {
-            props.history.replace('/match/start');
-            return;
-        }
-
-        if (props.inProgress.match.complete) {
-            props.history.replace('/scorecard');
-            return;
-        }
-    });
-
     return (
         <Paper className={props.classes.root}>
             <Observer

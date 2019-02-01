@@ -822,4 +822,39 @@ describe('inProgressMatchStore', () => {
             expect(inProgressMatchStore.lastEvent).toBe(description(domain.BreakType.Lunch));
         });
     });
+
+    describe('undoToss', () => {
+        it('should remove the toss from the match', () => {
+            const inProgressMatchStore = getMatchStore({
+                ...matches.blankMatch,
+                toss: { tossWonBy: domain.TeamType.HomeTeam, battingFirst: domain.TeamType.HomeTeam },
+            });
+
+            inProgressMatchStore.undoToss();
+
+            expect(inProgressMatchStore.match.toss).toBeUndefined();
+        });
+
+        it('should remove the innings from the match', () => {
+            const inProgressMatchStore = getMatchStore({
+                ...matches.matchWithStartedInnings,
+                toss: { tossWonBy: domain.TeamType.HomeTeam, battingFirst: domain.TeamType.HomeTeam },
+            });
+
+            inProgressMatchStore.undoToss();
+
+            expect(inProgressMatchStore.match.innings).toHaveLength(0);
+        });
+
+        it('should do nothing if the match has already had a delivery', () => {
+            const inProgressMatchStore = getMatchStore({
+                ...matches.matchWithOverNotReadyToComplete,
+                toss: { tossWonBy: domain.TeamType.HomeTeam, battingFirst: domain.TeamType.HomeTeam },
+            });
+
+            inProgressMatchStore.undoToss();
+
+            expect(inProgressMatchStore.match.toss).not.toBeUndefined();
+        });
+    });
 });

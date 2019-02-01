@@ -18,17 +18,6 @@ interface StartMatchProps {
 const StartMatch = (props: StartMatchProps) => {
     const { setOptions } = React.useContext(PageContext);
     React.useEffect(setOptions, []);
-    React.useEffect(() => {
-        if (typeof props.inProgressMatchStore.match === 'undefined') {
-            return;
-        }
-        if (props.inProgressMatchStore.match.complete) {
-            props.history.replace('/match/create');
-        }
-        if (props.inProgressMatchStore.match.innings.length > 0) {
-            props.history.replace('/match/inprogress');
-        }
-    });
 
     return (
         <StartMatchComponent

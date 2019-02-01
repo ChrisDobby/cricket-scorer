@@ -37,6 +37,7 @@ describe.skip('InProgress', () => {
         rollback: jest.fn(),
         updateOvers: jest.fn(),
         startBreak: jest.fn(),
+        undoToss: jest.fn(),
         version: 1,
     };
 

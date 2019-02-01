@@ -4,10 +4,12 @@ import { History } from 'history';
 import WithInProgressStore from '../components/WithInProgressStore';
 import { InProgressMatch } from '../domain';
 import PageContext from '../context/PageContext';
+import matchRedirect from './match/matchRedirect';
 
 interface MatchProps {
     inProgressMatchStore: InProgressMatch;
     history: History;
+    location: Location;
 }
 
 const Match = (props: MatchProps) => {
@@ -15,25 +17,7 @@ const Match = (props: MatchProps) => {
     React.useEffect(setOptions, []);
 
     React.useEffect(() => {
-        if (
-            typeof props.inProgressMatchStore === 'undefined' ||
-            typeof props.inProgressMatchStore.match === 'undefined'
-        ) {
-            props.history.replace('/match/create');
-            return;
-        }
-
-        if (typeof props.inProgressMatchStore.match.toss === 'undefined') {
-            props.history.replace('/match/start');
-            return;
-        }
-
-        if (!props.inProgressMatchStore.match.complete) {
-            props.history.replace('/match/inprogress');
-            return;
-        }
-
-        props.history.replace('/scorecard');
+        matchRedirect(props.inProgressMatchStore, props.history, props.location);
     });
 
     return null;
