@@ -143,6 +143,14 @@ export default (props: StartInningsProps) => {
                         ))}
                     </Stepper>
                 </Hidden>
+                <div style={{ marginBottom: '16px' }}>
+                    <Button disabled={!backEnabled()} onClick={moveBack}>
+                        Back
+                    </Button>
+                    <Button variant="contained" color="primary" disabled={!nextOrFinishEnabled()} onClick={moveNext}>
+                        {nextButtonText()}
+                    </Button>
+                </div>
                 {activeStep === 0 && (
                     <FormControl>
                         {props.teams.map((team, index) => (
@@ -178,14 +186,6 @@ export default (props: StartInningsProps) => {
                         onChange={ev => setMaximumOvers(Number(ev.target.value))}
                     />
                 )}
-                <div>
-                    <Button disabled={!backEnabled()} onClick={moveBack}>
-                        Back
-                    </Button>
-                    <Button variant="contained" color="primary" disabled={!nextOrFinishEnabled()} onClick={moveNext}>
-                        {nextButtonText()}
-                    </Button>
-                </div>
             </Grid>
         </Grid>
     );
