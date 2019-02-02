@@ -71,6 +71,7 @@ export default withRouter((props: EntryPanelProps) => {
         props.delivery(deliveryOutcome, scores);
         notifyDelivery(deliveryOutcome, scores);
         setNoBall(false);
+        setScoreType(ScoreType.Runs);
     };
 
     const delivery = (deliveryOutcome: DeliveryOutcome, scores: DeliveryScores) => {
