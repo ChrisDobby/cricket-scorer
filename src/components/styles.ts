@@ -39,6 +39,7 @@ export const themedStyles = (theme: any) => ({
         color: theme.palette.primary.contrastText,
         paddingLeft: '5px',
         paddingRight: '5px',
+        borderRadius: '4px',
     },
     toolbar: {
         padding: '0 8px',
