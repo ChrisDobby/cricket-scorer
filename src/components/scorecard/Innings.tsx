@@ -25,7 +25,17 @@ export default ({ innings, getTeam }: InningsProps) => (
             <Hidden mdDown>
                 <Grid item lg={1} />
             </Hidden>
-            <FallOfWickets fallOfWickets={innings.fallOfWickets} />
+            <Hidden mdDown>
+                <FallOfWickets fallOfWickets={innings.fallOfWickets} />
+            </Hidden>
+            <Hidden lgUp>
+                {innings.fallOfWickets.length > 0 && (
+                    <>
+                        <div style={{ height: '8px' }}>&nbsp;</div>
+                        <FallOfWickets fallOfWickets={innings.fallOfWickets} />
+                    </>
+                )}
+            </Hidden>
             <Bowling team={getTeam(innings.bowlingTeam).name} bowlers={innings.bowlers} />
         </Grid>
     </>
