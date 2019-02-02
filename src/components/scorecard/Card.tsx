@@ -51,8 +51,8 @@ export default (props: ScorecardProps) => {
         setLoadError(false);
         try {
             const result = await props.matchApi.getMatch(props.id);
-            setMatch(result.match);
             setLastEvent(result.lastEvent);
+            setMatch(result.match);
             setLoading(false);
         } catch (e) {
             setLoading(false);
@@ -71,6 +71,7 @@ export default (props: ScorecardProps) => {
         } else {
             const storedMatch = props.getStoredMatch();
             if (storedMatch) {
+                setLastEvent(storedMatch.lastEvent);
                 setMatch(storedMatch.match);
             }
         }
