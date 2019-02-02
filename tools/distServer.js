@@ -12,11 +12,15 @@ const app = express();
 app.use(compression());
 app.use(express.static('dist'));
 
+app.get('*/manifest.json', (req, res) => {
+    res.sendFile(path.join(__dirname, '../dist/manifest.json'));
+});
+
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
-app.listen(port, (err) => {
+app.listen(port, err => {
     if (err) {
         console.log(err);
     } else {
