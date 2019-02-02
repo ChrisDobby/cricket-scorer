@@ -35,7 +35,7 @@ export const primaryColour: React.CSSProperties = {
 
 export const themedStyles = (theme: any) => ({
     header: {
-        backgroundColor: theme.palette.primary.light,
+        backgroundColor: theme.palette.primary.main,
         color: theme.palette.primary.contrastText,
         paddingLeft: '5px',
         paddingRight: '5px',
