@@ -38,7 +38,12 @@ const executeNonStandard = (score: number, execute: (score: number) => () => voi
 
 export default ({ deliveryOutcome, hasBoundaries, getScores, action }: ScoresEntryProps) => {
     const execute = executeDeliveryAction(action, getScores, deliveryOutcome);
-    const executeBoundary = executeDeliveryAction(action, score => ({ boundaries: score }), deliveryOutcome);
+    const executeBoundary = executeDeliveryAction(
+        action,
+        deliveryOutcome === DeliveryOutcome.Wide ? getScores : score => ({ boundaries: score }),
+        deliveryOutcome,
+    );
+
     const executeDot = executeDeliveryAction(action, () => ({ runs: 0 }), deliveryOutcome);
     const style = buttonStyle(deliveryOutcome);
 
