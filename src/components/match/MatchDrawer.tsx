@@ -29,7 +29,7 @@ type MatchDrawerProps = {
 export default withStyles(themedStyles)((props: MatchDrawerProps) => (
     <Drawer anchor="right" open={props.isOpen} onClose={props.close} onOpen={props.open}>
         <div className={props.classes.toolbar}>
-            <IconButton onClick={close}>
+            <IconButton onClick={props.close}>
                 <ChevronRight />
             </IconButton>
         </div>
