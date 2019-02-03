@@ -26,25 +26,28 @@ export default (Component: any) => (props: WithAuthProps) => {
         };
 
         loadAuth0();
+
+        return () => {
+            console.log('cleanup withauth');
+        };
     }, []);
 
     const afterLogout = (stay: boolean) => props.history.replace(stay ? window.location.pathname : '/');
+    const login = auth0 ? () => auth0.login(props.location.pathname) : () => {};
+    const logout = auth0 ? (stayOnPage: boolean) => auth0.logout(() => afterLogout(stayOnPage))() : () => {};
+    const isAuthenticated = auth0 ? auth0.isAuthenticated() : false;
+    const userProfile = auth0 ? auth0.userProfile() : undefined;
 
     return (
-        <>
-            {auth0 && (
-                <Component
-                    {...props}
-                    status={status}
-                    offlineUser={offlineUser}
-                    login={() => auth0.login(props.location.pathname)}
-                    logout={(stayOnPage: boolean) => auth0.logout(() => afterLogout(stayOnPage))()}
-                    isAuthenticated={auth0.isAuthenticated()}
-                    canAuthenticate={status !== OFFLINE}
-                    userProfile={auth0.userProfile()}
-                />
-            )}
-            {!auth0 && <Component {...props} status={status} offlineUser={offlineUser} />}
-        </>
+        <Component
+            {...props}
+            status={status}
+            offlineUser={offlineUser}
+            login={login}
+            logout={logout}
+            isAuthenticated={isAuthenticated}
+            canAuthenticate={status !== OFFLINE && auth0}
+            userProfile={userProfile}
+        />
     );
 };

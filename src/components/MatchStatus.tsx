@@ -12,6 +12,8 @@ interface MatchStatusProps {
 export default (props: MatchStatusProps) => {
     const [currentIndex, setIndex] = React.useState(0);
     const [initialised, setInitialised] = React.useState(false);
+    const showTimer = React.useRef(undefined as any);
+
     const showCurrentScorecard = () => props.showScorecard(props.inProgressMatches[currentIndex].id);
     const showNext = () => {
         if (currentIndex >= props.inProgressMatches.length - 1) {
@@ -24,7 +26,7 @@ export default (props: MatchStatusProps) => {
     };
 
     const show = () => {
-        setTimeout(showNext, 4000);
+        showTimer.current = setTimeout(showNext, 4000);
     };
 
     React.useEffect(() => {
@@ -35,6 +37,12 @@ export default (props: MatchStatusProps) => {
         setIndex(0);
         setInitialised(true);
         show();
+
+        return () => {
+            if (showTimer.current) {
+                clearTimeout(showTimer.current);
+            }
+        };
     });
 
     if (props.inProgressMatches.length === 0) {

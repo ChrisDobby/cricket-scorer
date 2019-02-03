@@ -76,7 +76,7 @@ export default withStyles(homePageStyles)((props: MatchCentreProps) => {
                 {loadingMatches && <Progress />}
                 {!loadingMatches && inProgressMatches.length === 0 && (
                     <Typography variant="h5" color="primary">
-                        {status === ONLINE
+                        {props.status === ONLINE
                             ? 'There are no matches currently in progress'
                             : 'Unable to connect to the live match server'}
                     </Typography>
