@@ -26,10 +26,6 @@ export default (Component: any) => (props: WithAuthProps) => {
         };
 
         loadAuth0();
-
-        return () => {
-            console.log('cleanup withauth');
-        };
     }, []);
 
     const afterLogout = (stay: boolean) => props.history.replace(stay ? window.location.pathname : '/');
