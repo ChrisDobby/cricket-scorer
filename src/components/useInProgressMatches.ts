@@ -127,9 +127,7 @@ export default (
     };
 
     const setRetry = () => {
-        if (retryTimer.current) {
-            retryTimer.current = setTimeout(getMatches, 60000);
-        }
+        retryTimer.current = setTimeout(getMatches, 60000);
     };
 
     React.useEffect(() => {
@@ -174,6 +172,10 @@ export default (
             }
         };
     }, [status]);
+
+    React.useEffect(() => {
+        return clearRetry;
+    }, []);
 
     return [inProgressMatches, loadingMatches, removeMatch];
 };

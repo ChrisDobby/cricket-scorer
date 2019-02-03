@@ -11,6 +11,7 @@ import Progress from './Progress';
 import RemoveDialog from './RemoveDialog';
 import { Profile, PersistedMatch, CurrentEditingMatch } from '../domain';
 import useInProgressMatches from './useInProgressMatches';
+import { ONLINE } from '../context/networkStatus';
 
 interface MatchCentreProps {
     userProfile: Profile;
@@ -75,7 +76,9 @@ export default withStyles(homePageStyles)((props: MatchCentreProps) => {
                 {loadingMatches && <Progress />}
                 {!loadingMatches && inProgressMatches.length === 0 && (
                     <Typography variant="h5" color="primary">
-                        There are no matches currently in progress
+                        {status === ONLINE
+                            ? 'There are no matches currently in progress'
+                            : 'Unable to connect to the live match server'}
                     </Typography>
                 )}
                 {!loadingMatches && (
