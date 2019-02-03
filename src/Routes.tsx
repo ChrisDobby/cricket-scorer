@@ -30,7 +30,7 @@ const Routes = ({ location, history }: { location: any; history: History }) => (
                         <React.Suspense fallback={<div />}>
                             <Switch location={location}>
                                 <Route exact path="/" component={WithAuth(Home)} />
-                                <Route exact path="/auth" component={AuthCallback} />
+                                <Route exact path="/auth" render={(props: any) => <AuthCallback {...props} />} />
                                 <Route exact path="/match" render={(props: any) => <Match {...props} />} />
                                 <Route exact path="/match/create" component={WithRequiredAuth(CreateMatch)} />
                                 <Route exact path="/match/start" component={WithRequiredAuth(StartMatch)} />
