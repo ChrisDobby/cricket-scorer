@@ -81,12 +81,7 @@ export default WithAuth(
                         )}
                         {status === OFFLINE && !props.isAuthenticated && <SignalWifiOff />}
                         {pageContext.openDrawer && (
-                            <IconButton
-                                aria--label="match options"
-                                color="inherit"
-                                aria-label="Open drawer"
-                                onClick={pageContext.openDrawer}
-                            >
+                            <IconButton color="inherit" aria-label="Open drawer" onClick={pageContext.openDrawer}>
                                 <Menu />
                             </IconButton>
                         )}
