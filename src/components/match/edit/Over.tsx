@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import * as over from '../../../match/over';
 import * as domain from '../../../domain';
 import EventCard from './EventCard';
+import { flexContainerStyle } from '../../styles';
 
 interface OverProps {
     config: domain.MatchConfig;
@@ -26,8 +27,8 @@ export default (props: OverProps) => {
     return (
         <>
             <Grid item xs={6} sm={4} md={3} lg={2}>
-                <Card>
-                    <CardContent>
+                <Card style={{ ...flexContainerStyle, height: '100%' }}>
+                    <CardContent style={{ flex: 1 }}>
                         <Typography variant="h6">Over {props.overNumber}</Typography>
                         <Typography variant="subtitle2" color="textSecondary">
                             {props.detail.bowler}
