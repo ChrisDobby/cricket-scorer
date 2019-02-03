@@ -34,6 +34,12 @@ export default (api: Api, store: MatchStore) => async (id: string | undefined) =
         typeof apiMatch !== 'undefined' &&
         (!storedMatch || storedMatch.match.id !== apiMatch.match.id || storedMatch.version < apiMatch.version)
     ) {
-        store.storeMatch(apiMatch);
+        store.storeMatch({
+            ...apiMatch,
+            match: {
+                ...apiMatch.match,
+                id: apiMatch.match.id || apiMatch['id'],
+            },
+        });
     }
 };
