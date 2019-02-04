@@ -24,10 +24,11 @@ jest.mock('../../match/utilities', () => {
 
 describe('eventDescription', () => {
     const bowlerName = matches.inningsWithStartedOver.bowlers[0].name;
-    const batsmanName = matches.inningsWithStartedOver.batting.batters[0].name;
+    const batsmanName = matches.blankMatch.homeTeam.players[0];
 
+    const EventDescription = eventDescription(() => matches.blankMatch.homeTeam);
     it('should return description for delivery', () => {
-        const description = eventDescription(matches.inningsWithStartedOver, {
+        const description = EventDescription(matches.inningsWithStartedOver, {
             time: 0,
             bowlerIndex: 0,
             batsmanIndex: 0,
@@ -43,7 +44,7 @@ describe('eventDescription', () => {
     });
 
     it('should return description for delivery with wicket', () => {
-        const description = eventDescription(
+        const description = EventDescription(
             matches.inningsWithStartedOver,
             {
                 time: 0,
@@ -63,7 +64,7 @@ describe('eventDescription', () => {
     });
 
     it('should return description for non delivery wicket', () => {
-        const description = eventDescription(
+        const description = EventDescription(
             matches.inningsWithStartedOver,
             {
                 time: 0,
@@ -77,7 +78,7 @@ describe('eventDescription', () => {
     });
 
     it('should return undefined for unknown event', () => {
-        const description = eventDescription(
+        const description = EventDescription(
             matches.inningsWithStartedOver,
             {
                 time: 0,

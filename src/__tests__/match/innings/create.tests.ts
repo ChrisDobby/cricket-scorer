@@ -4,8 +4,6 @@ import * as matches from '../../testData/matches';
 import { getTeam } from '../../../match/utilities';
 
 describe('create', () => {
-    const homeTeam = matches.blankMatch.homeTeam;
-    const awayTeam = matches.blankMatch.awayTeam;
     const Create = create(type => getTeam(matches.blankMatch, type));
     const innings = Create(domain.TeamType.HomeTeam, 0, 1);
 
@@ -30,27 +28,16 @@ describe('create', () => {
     it('should include all players from the batting team', () => {
         const batters = innings.batting.batters;
         expect(batters).toHaveLength(11);
-        expect(batters[0].name).toBe(homeTeam.players[0]);
         expect(batters[0].playerIndex).toBe(0);
-        expect(batters[1].name).toBe(homeTeam.players[1]);
         expect(batters[1].playerIndex).toBe(1);
-        expect(batters[2].name).toBe(homeTeam.players[2]);
         expect(batters[2].playerIndex).toBe(2);
-        expect(batters[3].name).toBe(homeTeam.players[3]);
         expect(batters[3].playerIndex).toBe(3);
-        expect(batters[4].name).toBe(homeTeam.players[4]);
         expect(batters[4].playerIndex).toBe(4);
-        expect(batters[5].name).toBe(homeTeam.players[5]);
         expect(batters[5].playerIndex).toBe(5);
-        expect(batters[6].name).toBe(homeTeam.players[6]);
         expect(batters[6].playerIndex).toBe(6);
-        expect(batters[7].name).toBe(homeTeam.players[7]);
         expect(batters[7].playerIndex).toBe(7);
-        expect(batters[8].name).toBe(homeTeam.players[8]);
         expect(batters[8].playerIndex).toBe(8);
-        expect(batters[9].name).toBe(homeTeam.players[9]);
         expect(batters[9].playerIndex).toBe(9);
-        expect(batters[10].name).toBe(homeTeam.players[10]);
         expect(batters[10].playerIndex).toBe(10);
     });
 
@@ -81,8 +68,8 @@ describe('create', () => {
         const inningsFor1And3 = Create(domain.TeamType.HomeTeam, 0, 2);
         const batters = inningsFor1And3.batting.batters;
 
-        expect(batters[0].name).toBe(homeTeam.players[0]);
-        expect(batters[1].name).toBe(homeTeam.players[2]);
+        expect(batters[0].playerIndex).toBe(0);
+        expect(batters[1].playerIndex).toBe(2);
 
         expect(batters[0].innings).toBeTruthy();
         expect(batters[1].innings).toBeTruthy();
@@ -93,17 +80,17 @@ describe('create', () => {
         const inningsFor5And3 = Create(domain.TeamType.HomeTeam, 5, 3);
         const batters = inningsFor5And3.batting.batters;
 
-        expect(batters[0].name).toBe(homeTeam.players[5]);
-        expect(batters[1].name).toBe(homeTeam.players[3]);
-        expect(batters[2].name).toBe(homeTeam.players[0]);
-        expect(batters[3].name).toBe(homeTeam.players[1]);
-        expect(batters[4].name).toBe(homeTeam.players[2]);
-        expect(batters[5].name).toBe(homeTeam.players[4]);
-        expect(batters[6].name).toBe(homeTeam.players[6]);
-        expect(batters[7].name).toBe(homeTeam.players[7]);
-        expect(batters[8].name).toBe(homeTeam.players[8]);
-        expect(batters[9].name).toBe(homeTeam.players[9]);
-        expect(batters[10].name).toBe(homeTeam.players[10]);
+        expect(batters[0].playerIndex).toBe(5);
+        expect(batters[1].playerIndex).toBe(3);
+        expect(batters[2].playerIndex).toBe(0);
+        expect(batters[3].playerIndex).toBe(1);
+        expect(batters[4].playerIndex).toBe(2);
+        expect(batters[5].playerIndex).toBe(4);
+        expect(batters[6].playerIndex).toBe(6);
+        expect(batters[7].playerIndex).toBe(7);
+        expect(batters[8].playerIndex).toBe(8);
+        expect(batters[9].playerIndex).toBe(9);
+        expect(batters[10].playerIndex).toBe(10);
     });
 
     it('should create  a new innings for the away team if specified', () => {
@@ -112,17 +99,17 @@ describe('create', () => {
         expect(awayTeamBattingInnings.bowlingTeam).toBe(domain.TeamType.HomeTeam);
 
         const batters = awayTeamBattingInnings.batting.batters;
-        expect(batters[0].name).toBe(awayTeam.players[0]);
-        expect(batters[1].name).toBe(awayTeam.players[1]);
-        expect(batters[2].name).toBe(awayTeam.players[2]);
-        expect(batters[3].name).toBe(awayTeam.players[3]);
-        expect(batters[4].name).toBe(awayTeam.players[4]);
-        expect(batters[5].name).toBe(awayTeam.players[5]);
-        expect(batters[6].name).toBe(awayTeam.players[6]);
-        expect(batters[7].name).toBe(awayTeam.players[7]);
-        expect(batters[8].name).toBe(awayTeam.players[8]);
-        expect(batters[9].name).toBe(awayTeam.players[9]);
-        expect(batters[10].name).toBe(awayTeam.players[10]);
+        expect(batters[0].playerIndex).toBe(0);
+        expect(batters[1].playerIndex).toBe(1);
+        expect(batters[2].playerIndex).toBe(2);
+        expect(batters[3].playerIndex).toBe(3);
+        expect(batters[4].playerIndex).toBe(4);
+        expect(batters[5].playerIndex).toBe(5);
+        expect(batters[6].playerIndex).toBe(6);
+        expect(batters[7].playerIndex).toBe(7);
+        expect(batters[8].playerIndex).toBe(8);
+        expect(batters[9].playerIndex).toBe(9);
+        expect(batters[10].playerIndex).toBe(10);
     });
 
     it('should set the maximum overs if specified', () => {

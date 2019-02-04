@@ -50,6 +50,7 @@ const scoreChange = (scores: DeliveryScores, change: (scores: DeliveryScores) =>
 
 interface EntryProps {
     batters: Batter[];
+    battingPlayers: string[];
     bowler: Bowler;
     fielders: string[];
     batterIndex: number;
@@ -85,7 +86,7 @@ export default (props: EntryProps) => (
             >
                 {props.batters.map((batter, idx) => (
                     <MenuItem key={idx} value={idx}>
-                        {batter.name}
+                        {props.battingPlayers[batter.playerIndex]}
                     </MenuItem>
                 ))}
             </Select>

@@ -140,7 +140,6 @@ export interface BattingInnings {
 
 export interface Batter {
     playerIndex: number;
-    name: string;
     innings?: BattingInnings;
     unavailableReason?: UnavailableReason;
 }
@@ -170,7 +169,7 @@ export interface Batting {
 
 export interface FallOfWicket {
     wicket: number;
-    batter: string;
+    batterIndex: number;
     score: number;
     partnership: number;
 }

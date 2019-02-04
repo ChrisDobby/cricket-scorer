@@ -107,6 +107,10 @@ const InProgress = (props: InProgressProps) => {
                                                     props.inProgress.match,
                                                     props.inProgress.currentInnings.battingTeam,
                                                 )}
+                                                bowlingTeam={getTeam(
+                                                    props.inProgress.match,
+                                                    props.inProgress.currentInnings.bowlingTeam,
+                                                )}
                                                 homeTeam={props.inProgress.match.homeTeam.name}
                                                 awayTeam={props.inProgress.match.awayTeam.name}
                                                 calculateResult={() => calculateResult(props.inProgress.match)}

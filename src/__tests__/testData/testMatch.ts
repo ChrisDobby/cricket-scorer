@@ -29,7 +29,6 @@ const testInnings1: domain.Innings = {
         },
         batters: [
             {
-                name: 'T Hopwood',
                 playerIndex: 0,
                 innings: {
                     runs: 0,
@@ -46,7 +45,6 @@ const testInnings1: domain.Innings = {
                 },
             },
             {
-                name: 'D Wilson',
                 playerIndex: 1,
                 innings: {
                     runs: 58,
@@ -57,7 +55,6 @@ const testInnings1: domain.Innings = {
                 },
             },
             {
-                name: 'K Dalladay',
                 playerIndex: 2,
                 innings: {
                     runs: 10,
@@ -74,7 +71,6 @@ const testInnings1: domain.Innings = {
                 },
             },
             {
-                name: 'R Todd',
                 playerIndex: 3,
                 innings: {
                     runs: 0,
@@ -90,7 +86,6 @@ const testInnings1: domain.Innings = {
                 },
             },
             {
-                name: 'S Bhatti',
                 playerIndex: 4,
                 innings: {
                     runs: 1,
@@ -106,7 +101,6 @@ const testInnings1: domain.Innings = {
                 },
             },
             {
-                name: 'J Butterfield',
                 playerIndex: 5,
                 innings: {
                     runs: 6,
@@ -123,7 +117,6 @@ const testInnings1: domain.Innings = {
                 },
             },
             {
-                name: 'S Khan',
                 playerIndex: 6,
                 innings: {
                     runs: 47,
@@ -140,7 +133,6 @@ const testInnings1: domain.Innings = {
                 },
             },
             {
-                name: 'A Sayed',
                 playerIndex: 7,
                 innings: {
                     runs: 0,
@@ -151,15 +143,12 @@ const testInnings1: domain.Innings = {
                 },
             },
             {
-                name: 'D Metcalfe',
                 playerIndex: 8,
             },
             {
-                name: 'D Hunt',
                 playerIndex: 9,
             },
             {
-                name: 'J Abbott',
                 playerIndex: 10,
             },
         ],
@@ -214,37 +203,37 @@ const testInnings1: domain.Innings = {
     fallOfWickets: [
         {
             wicket: 1,
-            batter: 'T Hopwood',
+            batterIndex: 1,
             score: 0,
             partnership: 0,
         },
         {
             wicket: 2,
-            batter: 'K Dalladay',
+            batterIndex: 2,
             score: 25,
             partnership: 25,
         },
         {
             wicket: 3,
-            batter: 'R Tood',
+            batterIndex: 3,
             score: 25,
             partnership: 0,
         },
         {
             wicket: 4,
-            batter: 'S Bhatti',
+            batterIndex: 4,
             score: 28,
             partnership: 3,
         },
         {
             wicket: 5,
-            batter: 'J Butterfield',
+            batterIndex: 5,
             score: 42,
             partnership: 14,
         },
         {
             wicket: 6,
-            batter: 'S Khan',
+            batterIndex: 6,
             score: 128,
             partnership: 86,
         },
@@ -270,7 +259,6 @@ const testInnings2: domain.Innings = {
         },
         batters: [
             {
-                name: 'Chris Dobson',
                 playerIndex: 0,
                 innings: {
                     runs: 3,
@@ -286,7 +274,6 @@ const testInnings2: domain.Innings = {
                 },
             },
             {
-                name: 'Richard Noble',
                 playerIndex: 1,
                 innings: {
                     runs: 40,
@@ -303,7 +290,6 @@ const testInnings2: domain.Innings = {
                 },
             },
             {
-                name: 'Ethan Lee',
                 playerIndex: 2,
                 innings: {
                     runs: 2,
@@ -320,7 +306,6 @@ const testInnings2: domain.Innings = {
                 },
             },
             {
-                name: 'Shahid Rehman',
                 playerIndex: 3,
                 innings: {
                     runs: 1,
@@ -336,7 +321,6 @@ const testInnings2: domain.Innings = {
                 },
             },
             {
-                name: 'Zahir Shah',
                 playerIndex: 4,
                 innings: {
                     runs: 0,
@@ -352,7 +336,6 @@ const testInnings2: domain.Innings = {
                 },
             },
             {
-                name: 'Elliott Hallas',
                 playerIndex: 5,
                 innings: {
                     runs: 35,
@@ -368,7 +351,6 @@ const testInnings2: domain.Innings = {
                 },
             },
             {
-                name: 'Craig Blackburn',
                 playerIndex: 6,
                 innings: {
                     runs: 19,
@@ -385,7 +367,6 @@ const testInnings2: domain.Innings = {
                 },
             },
             {
-                name: 'Bilal Butt',
                 playerIndex: 7,
                 innings: {
                     runs: 4,
@@ -402,7 +383,6 @@ const testInnings2: domain.Innings = {
                 },
             },
             {
-                name: 'Alex Midgley',
                 playerIndex: 8,
                 innings: {
                     runs: 4,
@@ -413,7 +393,6 @@ const testInnings2: domain.Innings = {
                 },
             },
             {
-                name: 'Atta Rehman',
                 playerIndex: 9,
                 innings: {
                     runs: 0,
@@ -429,7 +408,6 @@ const testInnings2: domain.Innings = {
                 },
             },
             {
-                name: 'Sam Bailey',
                 playerIndex: 10,
                 innings: {
                     runs: 4,
@@ -488,61 +466,61 @@ const testInnings2: domain.Innings = {
     fallOfWickets: [
         {
             wicket: 1,
-            batter: 'C Dobson',
+            batterIndex: 0,
             score: 9,
             partnership: 9,
         },
         {
             wicket: 2,
-            batter: 'E Lee',
+            batterIndex: 2,
             score: 19,
             partnership: 10,
         },
         {
             wicket: 3,
-            batter: 'S Rehman',
+            batterIndex: 3,
             score: 20,
             partnership: 1,
         },
         {
             wicket: 4,
-            batter: 'Z Shah',
+            batterIndex: 4,
             score: 20,
             partnership: 0,
         },
         {
             wicket: 5,
-            batter: 'R Noble',
+            batterIndex: 1,
             score: 86,
             partnership: 66,
         },
         {
             wicket: 6,
-            batter: 'E Hallas',
+            batterIndex: 5,
             score: 89,
             partnership: 3,
         },
         {
             wicket: 7,
-            batter: 'B Butt',
+            batterIndex: 7,
             score: 113,
             partnership: 24,
         },
         {
             wicket: 8,
-            batter: 'C Blackburn',
+            batterIndex: 6,
             score: 114,
             partnership: 1,
         },
         {
             wicket: 9,
-            batter: 'A Rehman',
+            batterIndex: 9,
             score: 114,
             partnership: 0,
         },
         {
             wicket: 10,
-            batter: 'S Bailey',
+            batterIndex: 11,
             score: 122,
             partnership: 8,
         },

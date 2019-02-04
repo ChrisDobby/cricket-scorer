@@ -21,7 +21,10 @@ export default (innings: Innings, time: number, batter: Batter, howout: Howout):
     return [
         {
             ...updatedInnings,
-            fallOfWickets: [...updatedInnings.fallOfWickets, getFallOfWicket(updatedInnings, batter.name)],
+            fallOfWickets: [
+                ...updatedInnings.fallOfWickets,
+                getFallOfWicket(updatedInnings, innings.batting.batters.indexOf(batter)),
+            ],
         },
         event,
     ];

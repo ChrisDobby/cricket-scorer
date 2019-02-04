@@ -197,7 +197,7 @@ describe('delivery', () => {
         expect(fallOfWickets).toHaveLength(1);
         const [fow] = fallOfWickets;
         expect(fow.wicket).toBe(1);
-        expect(fow.batter).toEqual(matches.inningsWithStartedOver.batting.batters[0].name);
+        expect(fow.batterIndex).toEqual(0);
         expect(fow.score).toBe(updatedInnings.score);
         expect(fow.partnership).toBe(updatedInnings.score);
     });
@@ -206,7 +206,7 @@ describe('delivery', () => {
         const [inningsWithFow] = Delivery(
             {
                 ...matches.inningsWithStartedOver,
-                fallOfWickets: [{ score: 2, wicket: 1, batter: '', partnership: 10 }],
+                fallOfWickets: [{ score: 2, wicket: 1, batterIndex: 0, partnership: 10 }],
             },
             1,
             matches.inningsWithStartedOver.batting.batters[0],

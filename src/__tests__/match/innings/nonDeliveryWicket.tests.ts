@@ -34,7 +34,7 @@ describe('nonDeliveryWicket', () => {
         expect(fallOfWickets).toHaveLength(1);
         const [fow] = fallOfWickets;
         expect(fow.wicket).toBe(1);
-        expect(fow.batter).toEqual(updatedInnings.batting.batters[0].name);
+        expect(fow.batterIndex).toEqual(0);
         expect(fow.score).toBe(updatedInnings.score);
         expect(fow.partnership).toBe(updatedInnings.score);
     });

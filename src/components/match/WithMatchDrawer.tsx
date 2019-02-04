@@ -15,6 +15,7 @@ import BatterUnavailable from './BatterUnavailable';
 import StartBreak from './StartBreak';
 import { UnavailableReason, InningsStatus, MatchResult, MatchType, InProgressMatch, BreakType } from '../../domain';
 import calculateResult from '../../match/calculateResult';
+import { getTeam } from '../../match/utilities';
 
 const allowedOption = { allowed: true };
 
@@ -199,6 +200,12 @@ export default (Component: any) => (props: WithMatchDrawerProps) => {
                         reason={batterUnavailableVerify}
                         update={batterUnavailable}
                         cancel={cancelBatterUnavailable}
+                        battingPlayers={
+                            getTeam(
+                                props.inProgressMatchStore.match,
+                                props.inProgressMatchStore.currentInnings.battingTeam,
+                            ).players
+                        }
                     />
                 )}
             {startBreakVerify && <StartBreak startBreak={startBreak} cancel={cancelStartBreak} />}

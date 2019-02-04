@@ -2,10 +2,15 @@ import * as domain from '../domain';
 import { notificationDescription } from './delivery';
 import { latestOver } from './utilities';
 
-export default (innings: domain.Innings, event: domain.Event, wicket?: domain.Wicket) => {
+export default (getTeam: (teamType: domain.TeamType) => domain.Team) => (
+    innings: domain.Innings,
+    event: domain.Event,
+    wicket?: domain.Wicket,
+) => {
+    const battingTeam = getTeam(innings.battingTeam);
     const deliveryDescription = (delivery: domain.Delivery) => {
         const bowler = innings.bowlers[delivery.bowlerIndex].name;
-        const batter = innings.batting.batters[delivery.batsmanIndex].name;
+        const batter = battingTeam.players[innings.batting.batters[delivery.batsmanIndex].playerIndex];
 
         if (wicket) {
             return `${batter} - ${domain.howOutDescription(wicket)}`;
@@ -16,7 +21,7 @@ export default (innings: domain.Innings, event: domain.Event, wicket?: domain.Wi
     };
 
     const nonDeliveryWicketDescription = (nonDelivery: domain.NonDeliveryWicket) => {
-        const batter = innings.batting.batters[nonDelivery.batsmanIndex].name;
+        const batter = battingTeam.players[innings.batting.batters[nonDelivery.batsmanIndex].playerIndex];
         return `${batter} - ${domain.howOutDescription(wicket)}`;
     };
 

@@ -129,10 +129,19 @@ const Wicket = (props: WicketProps) => {
         );
     }
 
+    const battingTeam = getTeam(
+        props.inProgress.match,
+        (props.inProgress.currentInnings as domain.Innings).battingTeam,
+    );
+
     return (
         <Paper className={props.classes.root}>
             <EditForm heading="Wicket" save={save} canSave={canSave}>
-                <DeliveryHeader batter={props.inProgress.currentBatter} bowler={props.inProgress.currentBowler} />
+                <DeliveryHeader
+                    batter={battingTeam.players[props.inProgress.currentBatter.playerIndex]}
+                    bowler={props.inProgress.currentBowler.name}
+                    battingPlayers={battingTeam.players}
+                />
                 <Entry
                     batters={batters()}
                     bowler={props.inProgress.currentBowler}
@@ -155,6 +164,7 @@ const Wicket = (props: WicketProps) => {
                     couldBeNoBall={couldBeNoBall()}
                     couldBeWide={couldBeWide()}
                     deliveryOutcome={deliveryOutcome}
+                    battingPlayers={battingTeam.players}
                 />
             </EditForm>
         </Paper>

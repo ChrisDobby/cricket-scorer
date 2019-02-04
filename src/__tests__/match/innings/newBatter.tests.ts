@@ -9,7 +9,7 @@ describe('newBatter', () => {
     const batter = innings.batting.batters[2];
 
     it('should start an innings for the batter at the next available position', () => {
-        expect(batter.name).toBe(matches.blankMatch.homeTeam.players[4]);
+        expect(batter.playerIndex).toBe(4);
         expect(batter.innings).not.toBeUndefined();
     });
 

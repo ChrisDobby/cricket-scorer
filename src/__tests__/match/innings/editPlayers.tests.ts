@@ -12,11 +12,8 @@ describe('editPlayers', () => {
             );
 
             expect(updatedInnings.batting.batters[0].playerIndex).toBe(newOrder[0]);
-            expect(updatedInnings.batting.batters[0].name).toBe(matches.blankMatch.homeTeam.players[newOrder[0]]);
             expect(updatedInnings.batting.batters[1].playerIndex).toBe(newOrder[1]);
-            expect(updatedInnings.batting.batters[1].name).toBe(matches.blankMatch.homeTeam.players[newOrder[1]]);
             expect(updatedInnings.batting.batters[2].playerIndex).toBe(newOrder[2]);
-            expect(updatedInnings.batting.batters[2].name).toBe(matches.blankMatch.homeTeam.players[newOrder[2]]);
         });
 
         it('should do nothing if there are a different amount of players in the new order', () => {

@@ -10,6 +10,7 @@ import EntryContainer from './EntryContainer';
 interface BallEntryProps {
     innings: Innings;
     battingTeam: Team;
+    bowlingTeam: Team;
     batter: Batter;
     bowler: Bowler;
     overComplete: boolean;
@@ -29,12 +30,16 @@ const entryContainerStyle: React.CSSProperties = {
 
 export default (props: BallEntryProps) => (
     <Grid container>
-        <DeliveryHeader batter={props.batter} bowler={props.bowler} />
+        <DeliveryHeader
+            batter={props.battingTeam.players[props.batter.playerIndex]}
+            bowler={props.bowlingTeam.players[props.bowler.playerIndex]}
+            battingPlayers={props.battingTeam.players}
+        />
         <Grid container>
             <Grid item xs={12} lg={6} style={entryContainerStyle}>
                 <EntryContainer>
                     <CurrentState
-                        battingTeam={props.battingTeam.name}
+                        battingTeam={props.battingTeam}
                         innings={props.innings}
                         batter={props.batter}
                         bowler={props.bowler}

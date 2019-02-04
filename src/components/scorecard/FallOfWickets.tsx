@@ -3,13 +3,17 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import { FallOfWicket } from '../../domain';
 import * as styles from './styles';
 import * as globalStyles from '../styles';
 import HeaderText from './HeaderText';
 
 interface FallOfWicketsProps {
-    fallOfWickets: FallOfWicket[];
+    fallOfWickets: {
+        batter: string;
+        wicket: number;
+        score: number;
+        partnership: number;
+    }[];
     classes: any;
 }
 

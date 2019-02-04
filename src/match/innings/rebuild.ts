@@ -18,7 +18,6 @@ const newInnings = (innings: domain.Innings): domain.Innings => ({
         },
         batters: innings.batting.batters.map((batter, idx) => ({
             playerIndex: batter.playerIndex,
-            name: batter.name,
             innings:
                 idx <= 1 && batter.innings
                     ? {

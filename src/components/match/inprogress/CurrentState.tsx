@@ -6,12 +6,12 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import { Innings, Batter, Bowler, Over } from '../../../domain';
+import { Innings, Batter, Bowler, Over, Team } from '../../../domain';
 import CurrentOver from './CurrentOver';
 import InningsState from './InningsState';
 
 interface CurrentStateProps {
-    battingTeam: string;
+    battingTeam: Team;
     innings: Innings;
     batter: Batter;
     bowler: Bowler;
@@ -21,7 +21,13 @@ interface CurrentStateProps {
 export default ({ battingTeam, innings, batter, bowler, currentOver }: CurrentStateProps) => (
     <>
         <Hidden xsDown>
-            <InningsState battingTeam={battingTeam} innings={innings} batter={batter} bowler={bowler} />
+            <InningsState
+                battingTeam={battingTeam.name}
+                battingPlayers={battingTeam.players}
+                innings={innings}
+                batter={batter}
+                bowler={bowler}
+            />
         </Hidden>
         <Hidden smUp>
             <ExpansionPanel style={{ width: '100%' }}>
@@ -30,7 +36,13 @@ export default ({ battingTeam, innings, batter, bowler, currentOver }: CurrentSt
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
                     <Grid container>
-                        <InningsState battingTeam={battingTeam} innings={innings} batter={batter} bowler={bowler} />
+                        <InningsState
+                            battingTeam={battingTeam.name}
+                            battingPlayers={battingTeam.players}
+                            innings={innings}
+                            batter={batter}
+                            bowler={bowler}
+                        />
                     </Grid>
                 </ExpansionPanelDetails>
             </ExpansionPanel>

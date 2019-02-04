@@ -2,7 +2,6 @@ import * as React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import { Batter, Bowler } from '../../domain';
 import * as globalStyles from '../styles';
 
 const headerTextStyle: React.CSSProperties = {
@@ -10,15 +9,16 @@ const headerTextStyle: React.CSSProperties = {
 };
 
 interface DeliveryHeaderProps {
-    batter: Batter;
-    bowler: Bowler;
+    batter: string;
+    bowler: string;
+    battingPlayers: string[];
     classes: any;
 }
 
 const DeliveryHeader = ({ batter, bowler, classes }: DeliveryHeaderProps) => (
     <Grid container className={classes.header}>
         <Typography style={headerTextStyle} color="inherit" variant="h5">
-            {`${bowler.name} to ${batter.name}`}
+            {`${bowler} to ${batter}`}
         </Typography>
     </Grid>
 );

@@ -1,7 +1,7 @@
 import { Innings } from '../../domain';
 
-export default (innings: Innings, batter: string) => ({
-    batter,
+export default (innings: Innings, batterIndex: number) => ({
+    batterIndex,
     score: innings.score,
     partnership:
         innings.fallOfWickets.length === 0

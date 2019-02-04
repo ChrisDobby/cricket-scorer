@@ -12,6 +12,7 @@ import { UnavailableReason, Innings } from '../../domain';
 interface BatterUnavailableProps {
     reason: UnavailableReason;
     innings: Innings;
+    battingPlayers: string[];
     update: (playerIndex: number, reason: UnavailableReason) => void;
     cancel: () => void;
 }
@@ -38,7 +39,7 @@ export default (props: BatterUnavailableProps) => {
                         <Select value={playerIndex} onChange={ev => setPlayerIndex(Number(ev.target.value))} fullWidth>
                             {batters.map(batter => (
                                 <MenuItem key={batter.playerIndex} value={batter.playerIndex}>
-                                    {batter.name}
+                                    {props.battingPlayers[batter.playerIndex]}
                                 </MenuItem>
                             ))}
                         </Select>

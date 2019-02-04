@@ -47,7 +47,6 @@ describe('rebuild', () => {
             ].concat(
                 matches.inningsWithStartedOver.batting.batters.slice(2).map(batter => ({
                     playerIndex: batter.playerIndex,
-                    name: batter.name,
                     innings: undefined,
                 })),
             ),

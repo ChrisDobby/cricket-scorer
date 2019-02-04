@@ -31,7 +31,10 @@ const addDeliveryToInnings = (
         fallOfWickets:
             deliveries.wickets(deliveryOutcome) === 0
                 ? inningsToAddTo.fallOfWickets
-                : [...inningsToAddTo.fallOfWickets, getFallOfWicket(inningsToAddTo, batter.name)],
+                : [
+                      ...inningsToAddTo.fallOfWickets,
+                      getFallOfWicket(inningsToAddTo, innings.batting.batters.indexOf(batter)),
+                  ],
     });
 
     const currentOver = latestOver(updatedDeliveries, innings.completedOvers);

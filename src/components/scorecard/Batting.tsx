@@ -43,13 +43,14 @@ const Howout = (props: InningsItemProps) => (
 
 interface BattingProps {
     batting: InningsBatting;
+    battingTeamPlayers: string[];
     score: number;
     wickets: number;
     totalOvers: string;
     classes: any;
 }
 
-const Batting = ({ batting, score, wickets, totalOvers, classes }: BattingProps) => (
+const Batting = ({ batting, battingTeamPlayers, score, wickets, totalOvers, classes }: BattingProps) => (
     <Grid item lg={8} md={12} sm={12} xs={12}>
         <Grid container className={classes.header}>
             <Grid item xs={10} md={7}>
@@ -83,7 +84,7 @@ const Batting = ({ batting, score, wickets, totalOvers, classes }: BattingProps)
             <React.Fragment key={idx}>
                 <Grid container>
                     <Grid item xs={4} md={3}>
-                        <Typography variant="body2">{batter.name}</Typography>
+                        <Typography variant="body2">{battingTeamPlayers[batter.playerIndex]}</Typography>
                     </Grid>
                     <Howout batter={batter} />
                     <Grid item xs={2} md={1}>

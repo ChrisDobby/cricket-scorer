@@ -6,6 +6,7 @@ import { Innings, BattingInnings, Batter, Bowler, Extras } from '../../../domain
 
 interface InningsStateProps {
     battingTeam: string;
+    battingPlayers: string[];
     innings: Innings;
     batter: Batter;
     bowler: Bowler;
@@ -14,7 +15,7 @@ interface InningsStateProps {
 const totalExtras = (extras: Extras): number =>
     extras.byes + extras.legByes + extras.noBalls + extras.wides + extras.penaltyRuns;
 
-export default ({ battingTeam, innings, batter, bowler }: InningsStateProps) => (
+export default ({ battingTeam, battingPlayers, innings, batter, bowler }: InningsStateProps) => (
     <>
         <Grid item xs={6}>
             <Typography variant="h5">{battingTeam}</Typography>
@@ -33,7 +34,7 @@ export default ({ battingTeam, innings, batter, bowler }: InningsStateProps) => 
                 batter => batter.innings && !batter.innings.wicket && typeof batter.unavailableReason === 'undefined',
             )
             .map((batter, idx) => ({
-                name: batter.name,
+                name: battingPlayers[batter.playerIndex],
                 innings: batter.innings as BattingInnings,
                 index: idx,
             }))
@@ -45,7 +46,7 @@ export default ({ battingTeam, innings, batter, bowler }: InningsStateProps) => 
                     <Grid item xs={6}>
                         <Typography variant="h5">
                             {`${currentBatter.innings.runs}` + `(${currentBatter.innings.ballsFaced})`}
-                            {currentBatter.name === batter.name && <Star color="primary" />}
+                            {currentBatter.name === battingPlayers[batter.playerIndex] && <Star color="primary" />}
                         </Typography>
                     </Grid>
                 </React.Fragment>

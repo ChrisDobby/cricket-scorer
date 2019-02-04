@@ -92,7 +92,6 @@ export const inningsWithStartedOver = {
         ...startedInnings.batting,
         batters: [
             {
-                name: blankMatch.homeTeam.players[0],
                 playerIndex: 0,
                 innings: {
                     runs: 0,
@@ -103,7 +102,6 @@ export const inningsWithStartedOver = {
                 },
             },
             {
-                name: blankMatch.homeTeam.players[1],
                 playerIndex: 1,
                 innings: {
                     runs: 0,
@@ -114,7 +112,6 @@ export const inningsWithStartedOver = {
                 },
             },
             {
-                name: blankMatch.homeTeam.players[2],
                 playerIndex: 2,
             },
         ],
@@ -339,7 +336,6 @@ export const inningsAfterWicketTaken = {
                 : batter,
         ) as Batter[]).concat(
             blankMatch.homeTeam.players.slice(2).map((player, idx) => ({
-                name: player,
                 playerIndex: idx,
                 innings: undefined,
             })),

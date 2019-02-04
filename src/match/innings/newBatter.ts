@@ -25,7 +25,6 @@ export default (getTeam: (type: TeamType) => Team) => (innings: Innings, batterI
                 .concat([
                     {
                         playerIndex: batterIndex,
-                        name: getTeam(innings.battingTeam).players[batterIndex],
                         innings: newBatterInnings(),
                     },
                 ])

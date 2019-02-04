@@ -20,14 +20,19 @@ describe.skip('Batting', () => {
             batters: [
                 {
                     position: 1,
-                    name: 'A Player',
                     playerIndex: 0,
                 },
             ],
         };
 
         const { container } = render(
-            <Batting batting={battingWithNoInnings} score={100} wickets={1} totalOvers={'20'} />,
+            <Batting
+                batting={battingWithNoInnings}
+                battingTeamPlayers={['A Player']}
+                score={100}
+                wickets={1}
+                totalOvers={'20'}
+            />,
         );
 
         expect(container).toMatchSnapshot();
