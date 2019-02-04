@@ -5,8 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import MenuItem from '@material-ui/core/MenuItem';
 import Paper from '@material-ui/core/Paper';
 import * as Autosuggest from 'react-autosuggest';
-import { TeamType } from '../../../domain';
-import useUserTeams from './useUserTeams';
+import { TeamType } from '../../domain';
+import useUserTeams from './create/useUserTeams';
 
 interface TeamsEntryProps {
     homeTeam: string;

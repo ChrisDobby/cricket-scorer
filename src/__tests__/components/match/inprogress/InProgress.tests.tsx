@@ -38,6 +38,7 @@ describe.skip('InProgress', () => {
         updateOvers: jest.fn(),
         startBreak: jest.fn(),
         undoToss: jest.fn(),
+        updateTeams: jest.fn(),
         version: 1,
     };
 

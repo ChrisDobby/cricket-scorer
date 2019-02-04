@@ -16,6 +16,7 @@ const CreateMatch = React.lazy(() => import('./containers/match/CreateMatch'));
 const StartMatch = React.lazy(() => import('./containers/match/StartMatch'));
 const EditPlayers = React.lazy(() => import('./containers/match/EditPlayers'));
 const EditEvents = React.lazy(() => import('./containers/match/EditEvents'));
+const EditTeams = React.lazy(() => import('./containers/match/EditTeams'));
 const Wicket = React.lazy(() => import('./containers/match/Wicket'));
 const InProgress = React.lazy(() => import('./containers/match/InProgress'));
 const AuthCallback = React.lazy(() => import('./components/AuthCallback'));
@@ -38,6 +39,7 @@ const Routes = ({ location, history }: { location: any; history: History }) => (
                                 <Route exact path="/match/wicket" component={WithRequiredAuth(Wicket)} />
                                 <Route exact path="/match/editplayers" component={WithRequiredAuth(EditPlayers)} />
                                 <Route exact path="/match/editevents" component={WithRequiredAuth(EditEvents)} />
+                                <Route exact path="/match/editteams" component={WithRequiredAuth(EditTeams)} />
                                 <Route
                                     exact
                                     path="/scorecard/:id?"

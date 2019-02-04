@@ -3,7 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import { MatchType, TeamType } from '../../../domain';
 import EditForm from '../EditForm';
-import TeamsEntry from './TeamsEntry';
+import TeamsEntry from '../TeamsEntry';
 import MatchEntry from './MatchEntry';
 import SaveWarning from './SaveWarning';
 

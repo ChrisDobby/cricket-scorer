@@ -137,6 +137,12 @@ export default (Component: any) => (props: WithMatchDrawerProps) => {
         },
         {
             ...allowedOption,
+            text: 'Edit teams',
+            icon: <Edit />,
+            action: () => props.history.push('/match/editteams'),
+        },
+        {
+            ...allowedOption,
             text: 'Retired',
             icon: <ArrowRightAlt />,
             action: () => askBatterUnavailable(UnavailableReason.Retired),
