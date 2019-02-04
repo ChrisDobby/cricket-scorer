@@ -49,9 +49,7 @@ describe('editPlayers', () => {
             );
 
             expect(updatedInnings.bowlers[0].playerIndex).toBe(newOrder[0]);
-            expect(updatedInnings.bowlers[0].name).toBe(matches.blankMatch.awayTeam.players[newOrder[0]]);
             expect(updatedInnings.bowlers[1].playerIndex).toBe(newOrder[1]);
-            expect(updatedInnings.bowlers[1].name).toBe(matches.blankMatch.awayTeam.players[newOrder[1]]);
         });
 
         it('should do nothing if there are a different amount of players in the new order', () => {

@@ -133,13 +133,17 @@ const Wicket = (props: WicketProps) => {
         props.inProgress.match,
         (props.inProgress.currentInnings as domain.Innings).battingTeam,
     );
+    const bowlingTeam = getTeam(
+        props.inProgress.match,
+        (props.inProgress.currentInnings as domain.Innings).bowlingTeam,
+    );
 
     return (
         <Paper className={props.classes.root}>
             <EditForm heading="Wicket" save={save} canSave={canSave}>
                 <DeliveryHeader
                     batter={battingTeam.players[props.inProgress.currentBatter.playerIndex]}
-                    bowler={props.inProgress.currentBowler.name}
+                    bowler={bowlingTeam.players[props.inProgress.currentBowler.playerIndex]}
                     battingPlayers={battingTeam.players}
                 />
                 <Entry

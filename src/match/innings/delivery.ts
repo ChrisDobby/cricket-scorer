@@ -114,6 +114,7 @@ export default (config: domain.MatchConfig, getTeam: (type: domain.TeamType) => 
     } as domain.Event;
 
     const updatedDeliveries = [...innings.events, event];
+    const bowlerIndex = innings.bowlers.indexOf(bowler);
 
     return [
         addDeliveryToInnings(
@@ -121,7 +122,12 @@ export default (config: domain.MatchConfig, getTeam: (type: domain.TeamType) => 
             batter,
             bowler,
             outcome,
-            deliveries.battingWicket(outcome, time, bowler.name, getTeam(innings.bowlingTeam).players),
+            deliveries.battingWicket(
+                outcome,
+                time,
+                bowlerIndex >= 0 ? bowlerIndex : undefined,
+                getTeam(innings.bowlingTeam).players,
+            ),
             updatedDeliveries,
             config,
         ),

@@ -32,7 +32,6 @@ const newInnings = (innings: domain.Innings): domain.Innings => ({
     },
     bowlers: innings.bowlers.map(bowler => ({
         playerIndex: bowler.playerIndex,
-        name: bowler.name,
         completedOvers: 0,
         totalOvers: '0',
         maidenOvers: 0,

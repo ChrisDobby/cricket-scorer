@@ -7,6 +7,7 @@ import { Innings, BattingInnings, Batter, Bowler, Extras } from '../../../domain
 interface InningsStateProps {
     battingTeam: string;
     battingPlayers: string[];
+    bowlingPlayers: string[];
     innings: Innings;
     batter: Batter;
     bowler: Bowler;
@@ -15,7 +16,7 @@ interface InningsStateProps {
 const totalExtras = (extras: Extras): number =>
     extras.byes + extras.legByes + extras.noBalls + extras.wides + extras.penaltyRuns;
 
-export default ({ battingTeam, battingPlayers, innings, batter, bowler }: InningsStateProps) => (
+export default ({ battingTeam, battingPlayers, bowlingPlayers, innings, batter, bowler }: InningsStateProps) => (
     <>
         <Grid item xs={6}>
             <Typography variant="h5">{battingTeam}</Typography>
@@ -52,7 +53,7 @@ export default ({ battingTeam, battingPlayers, innings, batter, bowler }: Inning
                 </React.Fragment>
             ))}
         <Grid item xs={6}>
-            <Typography variant="h5">{bowler.name}</Typography>
+            <Typography variant="h5">{bowlingPlayers[bowler.playerIndex]}</Typography>
         </Grid>
         <Grid item xs={6}>
             <Typography variant="h5">

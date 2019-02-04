@@ -12,7 +12,7 @@ import HeaderText from './HeaderText';
 
 interface BowlingProps {
     team: string;
-    bowlers: Bowler[];
+    bowlers: (Bowler & { name: string })[];
     classes: any;
 }
 

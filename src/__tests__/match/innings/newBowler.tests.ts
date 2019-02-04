@@ -13,7 +13,6 @@ describe('newBowler', () => {
 
         const bowler = innings.bowlers[bowlerIndex];
         expect(bowler.playerIndex).toBe(10);
-        expect(bowler.name).toBe(matches.matchWithStartedInnings.awayTeam.players[10]);
         expect(bowler.totalOvers).toBe('0');
         expect(bowler.maidenOvers).toBe(0);
         expect(bowler.runs).toBe(0);

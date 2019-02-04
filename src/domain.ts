@@ -77,7 +77,7 @@ export enum EventType {
 export interface Wicket {
     time: number;
     howOut: Howout;
-    bowler?: string;
+    bowlerIndex?: number;
     fielder?: string;
 }
 
@@ -146,7 +146,6 @@ export interface Batter {
 
 export interface Bowler {
     playerIndex: number;
-    name: string;
     completedOvers: number;
     totalOvers: string;
     maidenOvers: number;
@@ -309,8 +308,8 @@ export interface UserTeams {
     teams: Team[];
 }
 
-export const howOutDescription = (wicket?: Wicket): string => {
-    const description = (wkt: Wicket): string => {
+export const howOutDescription = (wicket?: Wicket & { bowler?: string }): string => {
+    const description = (wkt: Wicket & { bowler?: string }): string => {
         switch (wkt.howOut) {
             case Howout.Bowled:
                 return `bowled ${wkt.bowler}`;

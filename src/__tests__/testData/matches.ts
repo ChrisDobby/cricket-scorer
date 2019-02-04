@@ -119,7 +119,6 @@ export const inningsWithStartedOver = {
     bowlers: [
         {
             playerIndex: 10,
-            name: blankMatch.awayTeam.players[10],
             completedOvers: 0,
             totalOvers: '0',
             maidenOvers: 0,
@@ -128,7 +127,6 @@ export const inningsWithStartedOver = {
         },
         {
             playerIndex: 9,
-            name: blankMatch.awayTeam.players[9],
             completedOvers: 0,
             totalOvers: '0',
             maidenOvers: 0,
@@ -198,7 +196,6 @@ const inningsWithTwoOvers = {
         ...inningsWithOverReadyToComplete.bowlers,
         {
             playerIndex: 10,
-            name: blankMatch.awayTeam.players[9],
             completedOvers: 0,
             totalOvers: '0',
             maidenOvers: 0,

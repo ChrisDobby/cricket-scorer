@@ -53,7 +53,6 @@ describe('rebuild', () => {
         },
         bowlers: matches.inningsWithStartedOver.bowlers.map(bowler => ({
             playerIndex: bowler.playerIndex,
-            name: bowler.name,
             completedOvers: 0,
             totalOvers: '0',
             maidenOvers: 0,

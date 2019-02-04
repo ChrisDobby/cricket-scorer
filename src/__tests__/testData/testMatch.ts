@@ -38,7 +38,7 @@ const testInnings1: domain.Innings = {
                     sixes: 0,
                     wicket: {
                         time: new Date().getTime(),
-                        bowler: 'A Rehman',
+                        bowlerIndex: 0,
                         howOut: domain.Howout.Caught,
                         fielder: 'R Noble',
                     },
@@ -64,7 +64,7 @@ const testInnings1: domain.Innings = {
                     sixes: 0,
                     wicket: {
                         time: new Date().getTime(),
-                        bowler: 'A Rehman',
+                        bowlerIndex: 0,
                         howOut: domain.Howout.Caught,
                         fielder: 'E Hallas',
                     },
@@ -80,7 +80,7 @@ const testInnings1: domain.Innings = {
                     sixes: 0,
                     wicket: {
                         time: new Date().getTime(),
-                        bowler: 'A Rehman',
+                        bowlerIndex: 0,
                         howOut: domain.Howout.Bowled,
                     },
                 },
@@ -95,7 +95,7 @@ const testInnings1: domain.Innings = {
                     sixes: 0,
                     wicket: {
                         time: new Date().getTime(),
-                        bowler: 'E Hallas',
+                        bowlerIndex: 3,
                         howOut: domain.Howout.Lbw,
                     },
                 },
@@ -110,7 +110,7 @@ const testInnings1: domain.Innings = {
                     sixes: 0,
                     wicket: {
                         time: new Date().getTime(),
-                        bowler: 'A Rehman',
+                        bowlerIndex: 0,
                         howOut: domain.Howout.RunOut,
                         fielder: 'R Noble',
                     },
@@ -126,7 +126,7 @@ const testInnings1: domain.Innings = {
                     sixes: 0,
                     wicket: {
                         time: new Date().getTime(),
-                        bowler: 'A Rehman',
+                        bowlerIndex: 0,
                         howOut: domain.Howout.RunOut,
                         fielder: 'E Hallas',
                     },
@@ -155,7 +155,6 @@ const testInnings1: domain.Innings = {
     },
     bowlers: [
         {
-            name: 'A Rehman',
             playerIndex: 9,
             completedOvers: 14,
             totalOvers: '14',
@@ -164,7 +163,6 @@ const testInnings1: domain.Innings = {
             wickets: 3,
         },
         {
-            name: 'A Midgley',
             playerIndex: 8,
             completedOvers: 9,
             totalOvers: '9',
@@ -173,7 +171,6 @@ const testInnings1: domain.Innings = {
             wickets: 0,
         },
         {
-            name: 'S Bailey',
             playerIndex: 10,
             completedOvers: 8,
             totalOvers: '8',
@@ -182,7 +179,6 @@ const testInnings1: domain.Innings = {
             wickets: 0,
         },
         {
-            name: 'E Hallas',
             playerIndex: 5,
             completedOvers: 11,
             totalOvers: '11',
@@ -191,7 +187,6 @@ const testInnings1: domain.Innings = {
             wickets: 1,
         },
         {
-            name: 'S Rehman',
             playerIndex: 3,
             completedOvers: 3,
             totalOvers: '3',
@@ -268,7 +263,7 @@ const testInnings2: domain.Innings = {
                     sixes: 0,
                     wicket: {
                         time: new Date().getTime(),
-                        bowler: 'D Metcalfe',
+                        bowlerIndex: 1,
                         howOut: domain.Howout.Lbw,
                     },
                 },
@@ -283,7 +278,7 @@ const testInnings2: domain.Innings = {
                     timeIn: new Date().getTime(),
                     wicket: {
                         time: new Date().getTime(),
-                        bowler: 'A Sayed',
+                        bowlerIndex: 2,
                         howOut: domain.Howout.Caught,
                         fielder: 'T Hopwood',
                     },
@@ -299,7 +294,7 @@ const testInnings2: domain.Innings = {
                     timeIn: new Date().getTime(),
                     wicket: {
                         time: new Date().getTime(),
-                        bowler: 'D Hunt',
+                        bowlerIndex: 0,
                         howOut: domain.Howout.Caught,
                         fielder: 'R Todd',
                     },
@@ -315,7 +310,7 @@ const testInnings2: domain.Innings = {
                     timeIn: new Date().getTime(),
                     wicket: {
                         time: new Date().getTime(),
-                        bowler: 'D Hunt',
+                        bowlerIndex: 0,
                         howOut: domain.Howout.RunOut,
                     },
                 },
@@ -330,7 +325,7 @@ const testInnings2: domain.Innings = {
                     timeIn: new Date().getTime(),
                     wicket: {
                         time: new Date().getTime(),
-                        bowler: 'D Hunt',
+                        bowlerIndex: 0,
                         howOut: domain.Howout.Lbw,
                     },
                 },
@@ -345,7 +340,7 @@ const testInnings2: domain.Innings = {
                     timeIn: new Date().getTime(),
                     wicket: {
                         time: new Date().getTime(),
-                        bowler: 'A Sayed',
+                        bowlerIndex: 2,
                         howOut: domain.Howout.Bowled,
                     },
                 },
@@ -360,7 +355,7 @@ const testInnings2: domain.Innings = {
                     timeIn: new Date().getTime(),
                     wicket: {
                         time: new Date().getTime(),
-                        bowler: 'J Abbott',
+                        bowlerIndex: 3,
                         howOut: domain.Howout.Caught,
                         fielder: 'A Sayed',
                     },
@@ -376,7 +371,7 @@ const testInnings2: domain.Innings = {
                     timeIn: new Date().getTime(),
                     wicket: {
                         time: new Date().getTime(),
-                        bowler: 'D Hunt',
+                        bowlerIndex: 0,
                         howOut: domain.Howout.RunOut,
                         fielder: 'A Sayed',
                     },
@@ -402,7 +397,7 @@ const testInnings2: domain.Innings = {
                     timeIn: new Date().getTime(),
                     wicket: {
                         time: new Date().getTime(),
-                        bowler: 'J Abbott',
+                        bowlerIndex: 3,
                         howOut: domain.Howout.Lbw,
                     },
                 },
@@ -417,7 +412,7 @@ const testInnings2: domain.Innings = {
                     timeIn: new Date().getTime(),
                     wicket: {
                         time: new Date().getTime(),
-                        bowler: 'D Hunt',
+                        bowlerIndex: 0,
                         howOut: domain.Howout.Caught,
                         fielder: 'J Butterfield',
                     },
@@ -427,7 +422,6 @@ const testInnings2: domain.Innings = {
     },
     bowlers: [
         {
-            name: 'D Hunt',
             playerIndex: 9,
             completedOvers: 10,
             totalOvers: '10.2',
@@ -436,7 +430,6 @@ const testInnings2: domain.Innings = {
             wickets: 3,
         },
         {
-            name: 'D Metcalfe',
             playerIndex: 8,
             completedOvers: 6,
             totalOvers: '6',
@@ -445,7 +438,6 @@ const testInnings2: domain.Innings = {
             wickets: 1,
         },
         {
-            name: 'J Abbott',
             playerIndex: 10,
             completedOvers: 11,
             totalOvers: '11',
@@ -454,7 +446,6 @@ const testInnings2: domain.Innings = {
             wickets: 2,
         },
         {
-            name: 'A Sayed',
             playerIndex: 7,
             completedOvers: 7,
             totalOvers: '7',

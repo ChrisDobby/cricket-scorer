@@ -2,7 +2,6 @@ import { Team, TeamType, Innings, Bowler } from '../../domain';
 
 const createBowler = (team: Team, bowlerIndex: number): Bowler => ({
     playerIndex: bowlerIndex,
-    name: team.players[bowlerIndex],
     completedOvers: 0,
     totalOvers: '0',
     maidenOvers: 0,

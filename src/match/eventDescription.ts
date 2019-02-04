@@ -8,12 +8,19 @@ export default (getTeam: (teamType: domain.TeamType) => domain.Team) => (
     wicket?: domain.Wicket,
 ) => {
     const battingTeam = getTeam(innings.battingTeam);
+    const bowlingTeam = getTeam(innings.bowlingTeam);
     const deliveryDescription = (delivery: domain.Delivery) => {
-        const bowler = innings.bowlers[delivery.bowlerIndex].name;
+        const bowler = bowlingTeam.players[innings.bowlers[delivery.bowlerIndex].playerIndex];
         const batter = battingTeam.players[innings.batting.batters[delivery.batsmanIndex].playerIndex];
 
         if (wicket) {
-            return `${batter} - ${domain.howOutDescription(wicket)}`;
+            return `${batter} - ${domain.howOutDescription({
+                ...wicket,
+                bowler:
+                    typeof wicket.bowlerIndex !== 'undefined'
+                        ? bowlingTeam.players[innings.bowlers[wicket.bowlerIndex].playerIndex]
+                        : undefined,
+            })}`;
         }
 
         const id = `${innings.completedOvers}.${latestOver(innings.events, innings.completedOvers).length}`;

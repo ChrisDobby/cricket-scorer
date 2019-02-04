@@ -14,6 +14,7 @@ interface InningsProps {
 
 export default ({ innings, getTeam }: InningsProps) => {
     const battingTeam = getTeam(innings.battingTeam);
+    const bowlingTeam = getTeam(innings.bowlingTeam);
     const fallOfWicketWithName = (fow: FallOfWicket) => ({
         wicket: fow.wicket,
         score: fow.score,
@@ -48,7 +49,13 @@ export default ({ innings, getTeam }: InningsProps) => {
                         </>
                     )}
                 </Hidden>
-                <Bowling team={getTeam(innings.bowlingTeam).name} bowlers={innings.bowlers} />
+                <Bowling
+                    team={bowlingTeam.name}
+                    bowlers={innings.bowlers.map(bowler => ({
+                        ...bowler,
+                        name: bowlingTeam.players[bowler.playerIndex],
+                    }))}
+                />
             </Grid>
         </>
     );

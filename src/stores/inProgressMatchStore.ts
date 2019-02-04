@@ -277,7 +277,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
                 ? {
                       time: event.time,
                       howOut: wicket.howOut,
-                      bowler: this.currentBowler.name,
+                      bowlerIndex: this.currentBowlerIndex,
                       fielder:
                           typeof wicket.fielderIndex !== 'undefined'
                               ? bowlingTeam.players[wicket.fielderIndex] || 'sub'

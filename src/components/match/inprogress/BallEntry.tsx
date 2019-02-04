@@ -40,6 +40,7 @@ export default (props: BallEntryProps) => (
                 <EntryContainer>
                     <CurrentState
                         battingTeam={props.battingTeam}
+                        bowlingTeam={props.bowlingTeam}
                         innings={props.innings}
                         batter={props.batter}
                         bowler={props.bowler}

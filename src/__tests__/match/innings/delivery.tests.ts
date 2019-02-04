@@ -29,7 +29,7 @@ jest.mock('../../../match/delivery', () => {
     const battingWicket = () => ({
         time: new Date().getTime(),
         howOut: domain.Howout.Bowled,
-        bowler: 'A bowler',
+        bowlerIndex: 3,
         fielder: 'A fielder',
     });
 
@@ -187,7 +187,7 @@ describe('delivery', () => {
         const wicket = batterInnings.wicket as domain.Wicket;
 
         expect(wicket.howOut).toBe(domain.Howout.Bowled);
-        expect(wicket.bowler).toBe('A bowler');
+        expect(wicket.bowlerIndex).toBe(3);
         expect(wicket.fielder).toBe('A fielder');
     });
 

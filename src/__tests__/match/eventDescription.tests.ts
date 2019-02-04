@@ -1,6 +1,6 @@
 import eventDescription from '../../match/eventDescription';
 import * as matches from '../testData/matches';
-import { EventType, DeliveryOutcome, Delivery, Howout, NonDeliveryWicket } from '../../domain';
+import { EventType, DeliveryOutcome, Delivery, Howout, NonDeliveryWicket, TeamType } from '../../domain';
 
 jest.mock('../../match/delivery', () => ({
     notificationDescription: () => 'Delivery description',
@@ -23,10 +23,12 @@ jest.mock('../../match/utilities', () => {
 });
 
 describe('eventDescription', () => {
-    const bowlerName = matches.inningsWithStartedOver.bowlers[0].name;
+    const bowlerName = matches.blankMatch.awayTeam.players[10];
     const batsmanName = matches.blankMatch.homeTeam.players[0];
 
-    const EventDescription = eventDescription(() => matches.blankMatch.homeTeam);
+    const EventDescription = eventDescription((teamType: TeamType) =>
+        teamType === TeamType.HomeTeam ? matches.blankMatch.homeTeam : matches.blankMatch.awayTeam,
+    );
     it('should return description for delivery', () => {
         const description = EventDescription(matches.inningsWithStartedOver, {
             time: 0,
@@ -43,7 +45,7 @@ describe('eventDescription', () => {
         expect(description).toBe(`0.1: ${bowlerName} to ${batsmanName} - delivery description`);
     });
 
-    it('should return description for delivery with wicket', () => {
+    it.only('should return description for delivery with wicket', () => {
         const description = EventDescription(
             matches.inningsWithStartedOver,
             {
@@ -57,7 +59,7 @@ describe('eventDescription', () => {
                     scores: {},
                 },
             } as Delivery,
-            { howOut: Howout.Bowled, bowler: bowlerName, time: 1 },
+            { howOut: Howout.Bowled, bowlerIndex: 0, time: 1 },
         );
 
         expect(description).toBe(`${batsmanName} - bowled ${bowlerName}`);

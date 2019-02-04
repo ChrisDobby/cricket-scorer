@@ -12,18 +12,20 @@ import InningsState from './InningsState';
 
 interface CurrentStateProps {
     battingTeam: Team;
+    bowlingTeam: Team;
     innings: Innings;
     batter: Batter;
     bowler: Bowler;
     currentOver: Over;
 }
 
-export default ({ battingTeam, innings, batter, bowler, currentOver }: CurrentStateProps) => (
+export default ({ battingTeam, bowlingTeam, innings, batter, bowler, currentOver }: CurrentStateProps) => (
     <>
         <Hidden xsDown>
             <InningsState
                 battingTeam={battingTeam.name}
                 battingPlayers={battingTeam.players}
+                bowlingPlayers={bowlingTeam.players}
                 innings={innings}
                 batter={batter}
                 bowler={bowler}
@@ -39,6 +41,7 @@ export default ({ battingTeam, innings, batter, bowler, currentOver }: CurrentSt
                         <InningsState
                             battingTeam={battingTeam.name}
                             battingPlayers={battingTeam.players}
+                            bowlingPlayers={bowlingTeam.players}
                             innings={innings}
                             batter={batter}
                             bowler={bowler}

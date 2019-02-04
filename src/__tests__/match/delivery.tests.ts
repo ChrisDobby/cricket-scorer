@@ -664,7 +664,7 @@ describe('delivery', () => {
         };
 
         it('should return undefined if no wicket taken', () => {
-            const battingWicket = delivery.battingWicket(validDelivery, 1, 'A bowler', []);
+            const battingWicket = delivery.battingWicket(validDelivery, 1, 2, []);
 
             expect(battingWicket).toBeUndefined();
         });
@@ -676,13 +676,13 @@ describe('delivery', () => {
                     wicket: { howOut: Howout.Bowled, changedEnds: false },
                 },
                 1,
-                'A bowler',
+                2,
                 [],
             ) as Wicket;
 
             expect(battingWicket.time).toBe(1);
             expect(battingWicket.howOut).toBe(Howout.Bowled);
-            expect(battingWicket.bowler).toBe('A bowler');
+            expect(battingWicket.bowlerIndex).toBe(2);
         });
 
         it('should include the fielder when specified', () => {
@@ -696,7 +696,7 @@ describe('delivery', () => {
                     },
                 },
                 1,
-                'A bowler',
+                2,
                 [
                     'Player 1',
                     'Player 2',
@@ -726,7 +726,7 @@ describe('delivery', () => {
                     },
                 },
                 1,
-                'A bowler',
+                2,
                 [
                     'Player 1',
                     'Player 2',

@@ -114,12 +114,17 @@ export const bowlingWickets = (outcome: domain.Outcome) => {
         : 1;
 };
 
-export const battingWicket = (outcome: domain.Outcome, time: number, bowler: string, bowlingTeam: string[]) =>
+export const battingWicket = (
+    outcome: domain.Outcome,
+    time: number,
+    bowlerIndex: number | undefined,
+    bowlingTeam: string[],
+) =>
     typeof outcome.wicket === 'undefined'
         ? undefined
         : {
               time,
-              bowler,
+              bowlerIndex,
               howOut: outcome.wicket.howOut,
               fielder:
                   typeof outcome.wicket.fielderIndex === 'undefined'
