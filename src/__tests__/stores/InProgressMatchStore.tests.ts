@@ -857,4 +857,34 @@ describe('inProgressMatchStore', () => {
             expect(inProgressMatchStore.match.toss).not.toBeUndefined();
         });
     });
+
+    describe('updateTeams', () => {
+        const homeTeam = 'New team home';
+        const awayTeam = 'New team away';
+        const homePlayers = [
+            'New home player 1',
+            'New home player 2',
+            'New home player 3',
+            'New home player 4',
+            'New home player 5',
+        ];
+        const awayPlayers = [
+            'New away player 1',
+            'New away player 2',
+            'New away player 3',
+            'New away player 4',
+            'New away player 5',
+        ];
+
+        it('should update the teams', () => {
+            const inProgressMatchStore = getMatchStore(matches.blankMatch);
+
+            inProgressMatchStore.updateTeams(homeTeam, awayTeam, homePlayers, awayPlayers);
+
+            expect(inProgressMatchStore.match.homeTeam.name).toBe(homeTeam);
+            expect(inProgressMatchStore.match.awayTeam.name).toBe(awayTeam);
+            expect(inProgressMatchStore.match.homeTeam.players).toEqual(homePlayers);
+            expect(inProgressMatchStore.match.awayTeam.players).toEqual(awayPlayers);
+        });
+    });
 });

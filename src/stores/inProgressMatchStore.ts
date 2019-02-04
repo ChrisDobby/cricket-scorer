@@ -446,6 +446,17 @@ class InProgressMatchStore implements domain.InProgressMatch {
         this.lastEvent = currentBreak(this.match);
     };
 
+    @action updateTeams = (homeTeam: string, awayTeam: string, homePlayers: string[], awayPlayers: string[]) => {
+        this.match.homeTeam = {
+            name: homeTeam,
+            players: homePlayers,
+        };
+        this.match.awayTeam = {
+            name: awayTeam,
+            players: awayPlayers,
+        };
+    };
+
     private getRollback = (eventIndex: number): [domain.Innings, number, number] | undefined => {
         if (typeof this.currentInnings === 'undefined' || this.currentInnings.events.length === 0) {
             return undefined;
