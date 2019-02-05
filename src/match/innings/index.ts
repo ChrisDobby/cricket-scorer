@@ -13,6 +13,7 @@ import batterAvailable from './batterAvailable';
 import rebuild from './rebuild';
 import rollback from './rollback';
 import editOvers from './editOvers';
+import changeBowler from './changeBowler';
 
 export default (config: MatchConfig, getTeam: (type: TeamType) => Team) => {
     const Delivery = delivery(config, getTeam);
@@ -33,5 +34,6 @@ export default (config: MatchConfig, getTeam: (type: TeamType) => Team) => {
         calculateStatus: calculateStatus(getTeam),
         rebuild: rebuildInnings,
         rollback: rollback(rebuildInnings),
+        changeBowler: changeBowler(rebuildInnings),
     };
 };
