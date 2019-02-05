@@ -26,7 +26,7 @@ export default (
 
     const inningsToRebuild = updatedInnings();
     const bowlerIndex = inningsToRebuild.bowlers.findIndex(bowler => bowler.playerIndex === playerIndex);
-    return rebuild(
+    const rebuiltInnings = rebuild(
         inningsToRebuild,
         0,
         inningsToRebuild.events.map((ev, deliveryIndex) =>
@@ -37,4 +37,11 @@ export default (
                 : { ...ev, bowlerIndex },
         ),
     ).innings;
+
+    return {
+        ...rebuiltInnings,
+        bowlers: rebuiltInnings.bowlers.filter(
+            bowler => bowler.playerIndex === playerIndex || bowler.totalOvers !== '0',
+        ),
+    };
 };

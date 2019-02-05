@@ -43,7 +43,9 @@ export default (props: ChangeBowlerProps) => {
                             }))
                             .filter(pl => !invalidPlayerIndex.current.find(idx => idx === pl.index))
                             .map(pl => (
-                                <MenuItem value={pl.index}>{pl.player}</MenuItem>
+                                <MenuItem key={pl.index} value={pl.index}>
+                                    {pl.player}
+                                </MenuItem>
                             ))}
                     </Select>
                 </DialogContent>

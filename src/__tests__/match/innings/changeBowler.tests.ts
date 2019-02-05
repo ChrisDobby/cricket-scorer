@@ -59,9 +59,10 @@ describe('changeBowler', () => {
         );
     });
 
-    it('should return the rebuild innings', () => {
+    it('should remove bowlers from the innings that have been replaced', () => {
         const newInnings = ChangeBowler(matches.inningsWithOverReadyToComplete, 1, 0, 9);
 
-        expect(newInnings).toEqual(matches.inningsAfterWicketTaken);
+        expect(newInnings.bowlers).toHaveLength(1);
+        expect(newInnings.bowlers[0].playerIndex).toBe(9);
     });
 });
