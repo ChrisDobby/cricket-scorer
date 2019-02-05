@@ -16,6 +16,7 @@ import EntryContainer from './EntryContainer';
 import { bindMatchStorage } from '../../../stores/withMatchStorage';
 import { getTeam } from '../../../match/utilities';
 import calculateResult from '../../../match/calculateResult';
+import getPlayers from '../../../match/getPlayers';
 
 const styles = (theme: any) => ({
     root: {
@@ -49,6 +50,8 @@ const InProgress = (props: InProgressProps) => {
         typeof props.inProgress.previousBowlerFromEnd === 'undefined'
             ? undefined
             : props.inProgress.previousBowlerFromEnd.playerIndex;
+
+    const get = (innings: domain.Innings) => getPlayers(props.inProgress.match, innings);
 
     return (
         <Paper className={props.classes.root}>
@@ -121,6 +124,12 @@ const InProgress = (props: InProgressProps) => {
                                                 <Innings
                                                     innings={props.inProgress.currentInnings}
                                                     getTeam={type => getTeam(props.inProgress.match, type)}
+                                                    getBowlerAtIndex={
+                                                        get(props.inProgress.currentInnings).getBowlerAtIndex
+                                                    }
+                                                    getFielderAtIndex={
+                                                        get(props.inProgress.currentInnings).getFielderAtIndex
+                                                    }
                                                 />
                                             </EntryContainer>
                                         </>

@@ -1,6 +1,6 @@
 import eventDescription from '../../match/eventDescription';
 import * as matches from '../testData/matches';
-import { EventType, DeliveryOutcome, Delivery, Howout, NonDeliveryWicket, TeamType } from '../../domain';
+import { EventType, DeliveryOutcome, Delivery, Howout, NonDeliveryWicket } from '../../domain';
 
 jest.mock('../../match/delivery', () => ({
     notificationDescription: () => 'Delivery description',
@@ -8,6 +8,7 @@ jest.mock('../../match/delivery', () => ({
 
 jest.mock('../../match/utilities', () => {
     const domain = require('../../domain');
+    const matches = require('../testData/matches');
     return {
         latestOver: () => [
             {
@@ -19,6 +20,8 @@ jest.mock('../../match/utilities', () => {
                 outcome: { scores: { byes: 2 }, deliveryOutcome: domain.DeliveryOutcome.Valid },
             },
         ],
+        getTeam: (match: any, teamType: number) =>
+            teamType === domain.TeamType.HomeTeam ? matches.blankMatch.homeTeam : matches.blankMatch.awayTeam,
     };
 });
 
@@ -26,9 +29,7 @@ describe('eventDescription', () => {
     const bowlerName = matches.blankMatch.awayTeam.players[10];
     const batsmanName = matches.blankMatch.homeTeam.players[0];
 
-    const EventDescription = eventDescription((teamType: TeamType) =>
-        teamType === TeamType.HomeTeam ? matches.blankMatch.homeTeam : matches.blankMatch.awayTeam,
-    );
+    const EventDescription = eventDescription(matches.blankMatch);
     it('should return description for delivery', () => {
         const description = EventDescription(matches.inningsWithStartedOver, {
             time: 0,
@@ -45,7 +46,7 @@ describe('eventDescription', () => {
         expect(description).toBe(`0.1: ${bowlerName} to ${batsmanName} - delivery description`);
     });
 
-    it.only('should return description for delivery with wicket', () => {
+    it('should return description for delivery with wicket', () => {
         const description = EventDescription(
             matches.inningsWithStartedOver,
             {

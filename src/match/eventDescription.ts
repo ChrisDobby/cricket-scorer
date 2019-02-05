@@ -1,26 +1,18 @@
 import * as domain from '../domain';
 import { notificationDescription } from './delivery';
 import { latestOver } from './utilities';
+import getPlayers from './getPlayers';
 
-export default (getTeam: (teamType: domain.TeamType) => domain.Team) => (
-    innings: domain.Innings,
-    event: domain.Event,
-    wicket?: domain.Wicket,
-) => {
-    const battingTeam = getTeam(innings.battingTeam);
-    const bowlingTeam = getTeam(innings.bowlingTeam);
+export default (match: domain.Match) => (innings: domain.Innings, event: domain.Event, wicket?: domain.Wicket) => {
+    const get = getPlayers(match, innings);
+    const HowOutDescription = domain.howOutDescription(get.getBowlerAtIndex, get.getFielderAtIndex);
+
     const deliveryDescription = (delivery: domain.Delivery) => {
-        const bowler = bowlingTeam.players[innings.bowlers[delivery.bowlerIndex].playerIndex];
-        const batter = battingTeam.players[innings.batting.batters[delivery.batsmanIndex].playerIndex];
+        const bowler = get.getBowlerAtIndex(delivery.bowlerIndex);
+        const batter = get.getBatterAtIndex(delivery.batsmanIndex);
 
         if (wicket) {
-            return `${batter} - ${domain.howOutDescription({
-                ...wicket,
-                bowler:
-                    typeof wicket.bowlerIndex !== 'undefined'
-                        ? bowlingTeam.players[innings.bowlers[wicket.bowlerIndex].playerIndex]
-                        : undefined,
-            })}`;
+            return `${batter} - ${HowOutDescription(wicket)}`;
         }
 
         const id = `${innings.completedOvers}.${latestOver(innings.events, innings.completedOvers).length}`;
@@ -28,8 +20,8 @@ export default (getTeam: (teamType: domain.TeamType) => domain.Team) => (
     };
 
     const nonDeliveryWicketDescription = (nonDelivery: domain.NonDeliveryWicket) => {
-        const batter = battingTeam.players[innings.batting.batters[nonDelivery.batsmanIndex].playerIndex];
-        return `${batter} - ${domain.howOutDescription(wicket)}`;
+        const batter = get.getBatterAtIndex(nonDelivery.batsmanIndex);
+        return `${batter} - ${HowOutDescription(wicket)}`;
     };
 
     switch (event.type) {

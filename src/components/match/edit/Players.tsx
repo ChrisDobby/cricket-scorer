@@ -5,6 +5,7 @@ import PlayersForm from './PlayersForm';
 import { InProgressMatch, Profile } from '../../../domain';
 import { getTeam } from '../../../match/utilities';
 import { bindMatchStorage } from '../../../stores/withMatchStorage';
+import getPlayers from '../../../match/getPlayers';
 
 interface PlayersProps {
     inProgress: InProgressMatch;
@@ -29,6 +30,7 @@ export default ({ inProgress, storeMatch, history, userProfile }: PlayersProps) 
         return null;
     }
 
+    const get = getPlayers(inProgress.match, inProgress.currentInnings);
     return (
         <EditContainer>
             <PlayersForm
@@ -36,6 +38,8 @@ export default ({ inProgress, storeMatch, history, userProfile }: PlayersProps) 
                 bowlers={inProgress.currentInnings.bowlers}
                 battingTeam={getTeam(inProgress.match, inProgress.currentInnings.battingTeam).players}
                 bowlingTeam={getTeam(inProgress.match, inProgress.currentInnings.bowlingTeam).players}
+                getBowlerAtIndex={get.getBowlerAtIndex}
+                getFielderAtIndex={get.getFielderAtIndex}
                 save={update(inProgress, storeMatch, () => history.replace('/match/inprogress'), () => userProfile.id)}
             />
         </EditContainer>

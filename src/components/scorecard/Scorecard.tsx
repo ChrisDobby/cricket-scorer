@@ -5,12 +5,13 @@ import { withStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { default as ReactSwipeableViews } from 'react-swipeable-views';
-import { Match as MatchEntity } from '../../domain';
+import { Match as MatchEntity, Innings as MatchInnings } from '../../domain';
 import Innings from './Innings';
 import MatchHeading from './MatchHeading';
 import { getTeam } from '../../match/utilities';
 import { Button } from '@material-ui/core';
 import { textCentre } from './styles';
+import getPlayers from '../../match/getPlayers';
 
 const inningsNumberDescription = (innings: number): string => {
     const numberDescription = (): string => {
@@ -51,6 +52,7 @@ export default withStyles(styles)((props: ScorecardProps) => {
         props.cricketMatch && props.cricketMatch.innings.length > 0 ? props.cricketMatch.innings.length - 1 : -1,
     );
 
+    const get = (innings: MatchInnings) => getPlayers(props.cricketMatch, innings);
     return (
         <Paper className={props.classes.root} elevation={1}>
             <MatchHeading
@@ -81,7 +83,13 @@ export default withStyles(styles)((props: ScorecardProps) => {
             </Tabs>
             <ReactSwipeableViews index={selectedInningsIndex} onChangeIndex={setSelectedInnings}>
                 {props.cricketMatch.innings.map((inn, idx) => (
-                    <Innings key={idx} innings={inn} getTeam={type => getTeam(props.cricketMatch, type)} />
+                    <Innings
+                        key={idx}
+                        innings={inn}
+                        getTeam={type => getTeam(props.cricketMatch, type)}
+                        getBowlerAtIndex={get(inn).getBowlerAtIndex}
+                        getFielderAtIndex={get(inn).getFielderAtIndex}
+                    />
                 ))}
             </ReactSwipeableViews>
         </Paper>

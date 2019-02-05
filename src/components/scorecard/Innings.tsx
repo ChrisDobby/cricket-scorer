@@ -10,9 +10,11 @@ import { Innings as ScorecardInnings, TeamType, Team, FallOfWicket } from '../..
 interface InningsProps {
     innings: ScorecardInnings;
     getTeam: (teamType: TeamType) => Team;
+    getBowlerAtIndex: (index: number) => string;
+    getFielderAtIndex: (index: number) => string;
 }
 
-export default ({ innings, getTeam }: InningsProps) => {
+export default ({ innings, getTeam, getBowlerAtIndex, getFielderAtIndex }: InningsProps) => {
     const battingTeam = getTeam(innings.battingTeam);
     const bowlingTeam = getTeam(innings.bowlingTeam);
     const fallOfWicketWithName = (fow: FallOfWicket) => ({
@@ -32,6 +34,8 @@ export default ({ innings, getTeam }: InningsProps) => {
                     wickets={innings.wickets}
                     totalOvers={innings.totalOvers}
                     battingTeamPlayers={battingTeam.players}
+                    getBowlerAtIndex={getBowlerAtIndex}
+                    getFielderAtIndex={getFielderAtIndex}
                 />
                 <Hidden mdDown>
                     <Grid item lg={1} />

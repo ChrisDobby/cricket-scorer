@@ -712,7 +712,7 @@ describe('delivery', () => {
                 ],
             ) as Wicket;
 
-            expect(battingWicket.fielder).toBe('Player 3');
+            expect(battingWicket.fielderIndex).toBe(2);
         });
 
         it('should make the fielder sub when specified but not in player list', () => {
@@ -742,7 +742,7 @@ describe('delivery', () => {
                 ],
             ) as Wicket;
 
-            expect(battingWicket.fielder).toBe('sub');
+            expect(battingWicket.fielderIndex).toBe(11);
         });
     });
 });

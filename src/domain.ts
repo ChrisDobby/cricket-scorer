@@ -78,7 +78,7 @@ export interface Wicket {
     time: number;
     howOut: Howout;
     bowlerIndex?: number;
-    fielder?: string;
+    fielderIndex?: number;
 }
 
 export interface DeliveryScores {
@@ -308,19 +308,28 @@ export interface UserTeams {
     teams: Team[];
 }
 
-export const howOutDescription = (wicket?: Wicket & { bowler?: string }): string => {
-    const description = (wkt: Wicket & { bowler?: string }): string => {
+export const howOutDescription = (
+    getBowlerAtIndex: (index: number) => string,
+    getFielderAtIndex: (index: number) => string,
+) => (wicket?: Wicket): string => {
+    const description = (wkt: Wicket): string => {
         switch (wkt.howOut) {
             case Howout.Bowled:
-                return `bowled ${wkt.bowler}`;
+                return `bowled ${getBowlerAtIndex(<number>wkt.bowlerIndex)}`;
             case Howout.Lbw:
-                return `lbw ${wkt.bowler}`;
+                return `lbw ${getBowlerAtIndex(<number>wkt.bowlerIndex)}`;
             case Howout.Caught:
-                return wkt.bowler === wkt.fielder ? `ct & bowled ${wkt.bowler}` : `ct ${wkt.fielder} b ${wkt.bowler}`;
+                return wkt.bowlerIndex === wkt.fielderIndex
+                    ? `ct & bowled ${getBowlerAtIndex(<number>wkt.bowlerIndex)}`
+                    : `ct ${getFielderAtIndex(<number>wkt.fielderIndex)} b ${getBowlerAtIndex(<number>(
+                          wkt.bowlerIndex
+                      ))}`;
             case Howout.RunOut:
-                return wkt.fielder ? `run out (${wkt.fielder})` : 'run out';
+                return wkt.fielderIndex ? `run out (${getFielderAtIndex(<number>wkt.fielderIndex)})` : 'run out';
             case Howout.Stumped:
-                return `st ${wkt.fielder} b ${wkt.bowler}`;
+                return `st ${getFielderAtIndex(<number>wkt.fielderIndex)} b ${getBowlerAtIndex(<number>(
+                    wkt.bowlerIndex
+                ))}`;
             case Howout.TimedOut:
                 return 'timed out';
             case Howout.ObstructingField:
@@ -328,7 +337,7 @@ export const howOutDescription = (wicket?: Wicket & { bowler?: string }): string
             case Howout.HandledBall:
                 return 'handled the ball';
             case Howout.HitWicket:
-                return `hit wkt ${wkt.bowler}`;
+                return `hit wkt ${getBowlerAtIndex(<number>wkt.bowlerIndex)}`;
         }
     };
 

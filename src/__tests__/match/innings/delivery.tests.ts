@@ -30,7 +30,7 @@ jest.mock('../../../match/delivery', () => {
         time: new Date().getTime(),
         howOut: domain.Howout.Bowled,
         bowlerIndex: 3,
-        fielder: 'A fielder',
+        fielderIndex: 5,
     });
 
     return {
@@ -188,7 +188,7 @@ describe('delivery', () => {
 
         expect(wicket.howOut).toBe(domain.Howout.Bowled);
         expect(wicket.bowlerIndex).toBe(3);
-        expect(wicket.fielder).toBe('A fielder');
+        expect(wicket.fielderIndex).toBe(5);
     });
 
     it('should add the wicket to the fall of wickets', () => {

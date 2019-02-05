@@ -126,8 +126,5 @@ export const battingWicket = (
               time,
               bowlerIndex,
               howOut: outcome.wicket.howOut,
-              fielder:
-                  typeof outcome.wicket.fielderIndex === 'undefined'
-                      ? undefined
-                      : bowlingTeam[outcome.wicket.fielderIndex] || 'sub',
+              fielderIndex: outcome.wicket.fielderIndex,
           };

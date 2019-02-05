@@ -57,7 +57,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
     }
 
     get describeEvent() {
-        return eventDescription(teamFromType(this.match));
+        return eventDescription(this.match);
     }
 
     @computed get currentInnings() {
@@ -269,7 +269,6 @@ class InProgressMatchStore implements domain.InProgressMatch {
         this.updateMatch(endBreak(this.match, new Date().getTime()), innings);
         this.currentBatterIndex = batterIndex;
 
-        const bowlingTeam = getTeam(this.match, this.currentInnings.bowlingTeam);
         this.updateLastEvent(
             event,
             this.currentInnings,
@@ -278,10 +277,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
                       time: event.time,
                       howOut: wicket.howOut,
                       bowlerIndex: this.currentBowlerIndex,
-                      fielder:
-                          typeof wicket.fielderIndex !== 'undefined'
-                              ? bowlingTeam.players[wicket.fielderIndex] || 'sub'
-                              : undefined,
+                      fielderIndex: wicket.fielderIndex,
                   }
                 : undefined,
         );
