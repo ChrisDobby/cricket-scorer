@@ -30,17 +30,28 @@ const newInnings = (innings: domain.Innings): domain.Innings => ({
                     : undefined,
         })),
     },
-    bowlers: innings.bowlers.map(bowler => ({
-        playerIndex: bowler.playerIndex,
-        completedOvers: 0,
-        totalOvers: '0',
-        maidenOvers: 0,
-        runs: 0,
-        wickets: 0,
-    })),
+    bowlers: [],
     fallOfWickets: [],
     status: domain.InningsStatus.InProgress,
 });
+
+const addBowlerIfRequired = (innings: domain.Innings, playerIndex: number): domain.Innings =>
+    innings.bowlers.find(b => b.playerIndex === playerIndex)
+        ? innings
+        : {
+              ...innings,
+              bowlers: [
+                  ...innings.bowlers,
+                  {
+                      playerIndex,
+                      completedOvers: 0,
+                      totalOvers: '0',
+                      maidenOvers: 0,
+                      runs: 0,
+                      wickets: 0,
+                  },
+              ],
+          };
 
 const addBatterIfRequired = (innings: domain.Innings, batterIndex: number, deliveryTime: number): domain.Innings =>
     typeof innings.batting.batters[batterIndex].innings !== 'undefined'
@@ -96,20 +107,24 @@ export default (
         bowler: domain.Bowler,
     ) => [domain.Innings, number],
 ) => {
-    const eventReducer = (inningsAndBatter: domain.RebuiltInnings, event: domain.Event): domain.RebuiltInnings => {
+    const eventReducer = (originalInnings: domain.Innings) => (
+        inningsAndBatter: domain.RebuiltInnings,
+        event: domain.Event,
+    ): domain.RebuiltInnings => {
         switch (event.type) {
             case domain.EventType.Delivery:
                 const deliveryEvent = event as domain.Delivery;
-                const updatedInnings = addBatterIfRequired(
-                    inningsAndBatter.innings,
-                    deliveryEvent.batsmanIndex,
-                    deliveryEvent.time,
+                const bowlerPlayerIndex = originalInnings.bowlers[deliveryEvent.bowlerIndex].playerIndex;
+                const updatedInnings = addBowlerIfRequired(
+                    addBatterIfRequired(inningsAndBatter.innings, deliveryEvent.batsmanIndex, deliveryEvent.time),
+                    bowlerPlayerIndex,
                 );
+                const bowler = <domain.Bowler>updatedInnings.bowlers.find(b => b.playerIndex === bowlerPlayerIndex);
                 const added = delivery(
                     updatedInnings,
                     event.time,
                     updatedInnings.batting.batters[deliveryEvent.batsmanIndex],
-                    updatedInnings.bowlers[deliveryEvent.bowlerIndex],
+                    bowler,
                     deliveryEvent.outcome.deliveryOutcome,
                     deliveryEvent.outcome.scores,
                     deliveryEvent.outcome.wicket,
@@ -175,7 +190,7 @@ export default (
     };
 
     return (innings: domain.Innings, batterIndex: number, events: domain.Event[]): domain.RebuiltInnings =>
-        events.reduce(eventReducer, {
+        events.reduce(eventReducer(innings), {
             batterIndex: getFirstBatterIndex(events, batterIndex),
             innings: newInnings(innings),
         });

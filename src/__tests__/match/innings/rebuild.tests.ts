@@ -51,14 +51,7 @@ describe('rebuild', () => {
                 })),
             ),
         },
-        bowlers: matches.inningsWithStartedOver.bowlers.map(bowler => ({
-            playerIndex: bowler.playerIndex,
-            completedOvers: 0,
-            totalOvers: '0',
-            maidenOvers: 0,
-            runs: 0,
-            wickets: 0,
-        })),
+        bowlers: [],
         fallOfWickets: [],
         status: domain.InningsStatus.InProgress,
     };
@@ -96,12 +89,21 @@ describe('rebuild', () => {
         };
 
         const newInnings = Rebuild(matches.inningsWithStartedOver, 0, [delivery1, delivery2]);
-
         expect(delivery).toHaveBeenCalledWith(
-            createdInnings,
+            {
+                ...createdInnings,
+                bowlers: [matches.inningsWithStartedOver.bowlers[0]],
+            },
             delivery1.time,
             createdInnings.batting.batters[delivery1.batsmanIndex],
-            createdInnings.bowlers[delivery1.bowlerIndex],
+            {
+                playerIndex: matches.inningsWithStartedOver.bowlers[0].playerIndex,
+                completedOvers: 0,
+                totalOvers: '0',
+                maidenOvers: 0,
+                runs: 0,
+                wickets: 0,
+            },
             delivery1.outcome.deliveryOutcome,
             delivery1.outcome.scores,
             undefined,
@@ -207,7 +209,10 @@ describe('rebuild', () => {
 
         const newInnings = Rebuild(matches.inningsWithStartedOver, 9, [unknown]);
         expect(newInnings).toEqual({
-            innings: matches.inningsWithStartedOver,
+            innings: {
+                ...matches.inningsWithStartedOver,
+                bowlers: [],
+            },
             batterIndex: 9,
         });
     });
@@ -223,6 +228,7 @@ describe('rebuild', () => {
         };
         const createdInningsWithNumber3Bat = {
             ...createdInnings,
+            bowlers: [matches.inningsWithStartedOver.bowlers[0]],
             batting: {
                 ...createdInnings.batting,
                 batters: createdInnings.batting.batters.map((batter, idx) =>
@@ -254,31 +260,4 @@ describe('rebuild', () => {
             undefined,
         );
     });
-
-    // it('should update the completed overs if the delivery is for the next over', () => {
-    //     const deliveryForOver2 = {
-    //         time: new Date().getTime(),
-    //         type: domain.EventType.Delivery,
-    //         bowlerIndex: 0,
-    //         batsmanIndex: 0,
-    //         overNumber: 2,
-    //         outcome: { scores: { runs: 2 }, deliveryOutcome: domain.DeliveryOutcome.Valid },
-    //     };
-    //     const createdInningsWith1CompletedOver = {
-    //         ...createdInnings,
-    //         completedOvers: 1,
-    //     };
-
-    //     Rebuild(matches.inningsWithStartedOver, 0, [deliveryForOver2]);
-
-    //     expect(delivery).toHaveBeenCalledWith(
-    //         createdInningsWith1CompletedOver,
-    //         deliveryForOver2.time,
-    //         createdInningsWith1CompletedOver.batting.batters[deliveryForOver2.batsmanIndex],
-    //         createdInningsWith1CompletedOver.bowlers[deliveryForOver2.bowlerIndex],
-    //         deliveryForOver2.outcome.deliveryOutcome,
-    //         deliveryForOver2.outcome.scores,
-    //         undefined,
-    //     );
-    // });
 });

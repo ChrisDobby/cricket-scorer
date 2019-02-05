@@ -103,7 +103,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
         if (typeof this.currentInnings === 'undefined' || this.currentInnings.completedOvers === 0) {
             return undefined;
         }
-        console.log(this.currentInnings.completedOvers);
+
         return bowlerOfOver(this.currentInnings, this.currentInnings.completedOvers);
     }
 
@@ -463,7 +463,6 @@ class InProgressMatchStore implements domain.InProgressMatch {
             return;
         }
 
-        console.log((<domain.Bowler>this.previousBowler).completedOvers);
         this.updateMatch(
             this.match,
             this.matchInnings.changeBowler(
@@ -474,7 +473,6 @@ class InProgressMatchStore implements domain.InProgressMatch {
             ),
         );
 
-        console.log((<domain.Bowler>this.previousBowler).completedOvers);
         this.currentBowlerIndex = this.currentInnings.bowlers.findIndex(bowler => bowler.playerIndex === playerIndex);
     };
 
