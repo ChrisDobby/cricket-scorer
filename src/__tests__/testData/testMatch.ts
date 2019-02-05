@@ -2,12 +2,36 @@ import * as domain from '../../domain';
 
 export const homeTeam = {
     name: 'Cleckheaton',
-    players: [],
+    players: [
+        'C Dobson',
+        'R Noble',
+        'E Lee',
+        'S Rehman',
+        'Z Shah',
+        'E Hallas',
+        'C Blackburn',
+        'B Butt',
+        'A Midgley',
+        'A Rehman',
+        'S Bailey',
+    ],
 };
 
 export const awayTeam = {
     name: 'Baildon',
-    players: [],
+    players: [
+        'T Hopwood',
+        'D Wilson',
+        'K Dalladay',
+        'R Todd',
+        'S Bhatti',
+        'J Butterfield',
+        'A Sayed',
+        'S Khan',
+        'J Abbott',
+        'D Hunt',
+        'D Metcalfe',
+    ],
 };
 
 const testInnings1: domain.Innings = {
@@ -198,7 +222,7 @@ const testInnings1: domain.Innings = {
     fallOfWickets: [
         {
             wicket: 1,
-            batterIndex: 1,
+            batterIndex: 0,
             score: 0,
             partnership: 0,
         },
@@ -216,19 +240,19 @@ const testInnings1: domain.Innings = {
         },
         {
             wicket: 4,
-            batterIndex: 4,
+            batterIndex: 5,
             score: 28,
             partnership: 3,
         },
         {
             wicket: 5,
-            batterIndex: 5,
+            batterIndex: 7,
             score: 42,
             partnership: 14,
         },
         {
             wicket: 6,
-            batterIndex: 6,
+            batterIndex: 4,
             score: 128,
             partnership: 86,
         },
@@ -280,7 +304,7 @@ const testInnings2: domain.Innings = {
                         time: new Date().getTime(),
                         bowlerIndex: 2,
                         howOut: domain.Howout.Caught,
-                        fielderIndex: 1,
+                        fielderIndex: 0,
                     },
                 },
             },
@@ -312,6 +336,7 @@ const testInnings2: domain.Innings = {
                         time: new Date().getTime(),
                         bowlerIndex: 0,
                         howOut: domain.Howout.RunOut,
+                        fielderIndex: 0,
                     },
                 },
             },
@@ -357,7 +382,7 @@ const testInnings2: domain.Innings = {
                         time: new Date().getTime(),
                         bowlerIndex: 3,
                         howOut: domain.Howout.Caught,
-                        fielderIndex: 9,
+                        fielderIndex: 6,
                     },
                 },
             },
@@ -373,7 +398,7 @@ const testInnings2: domain.Innings = {
                         time: new Date().getTime(),
                         bowlerIndex: 0,
                         howOut: domain.Howout.RunOut,
-                        fielderIndex: 9,
+                        fielderIndex: 6,
                     },
                 },
             },
@@ -430,7 +455,7 @@ const testInnings2: domain.Innings = {
             wickets: 3,
         },
         {
-            playerIndex: 8,
+            playerIndex: 10,
             completedOvers: 6,
             totalOvers: '6',
             maidenOvers: 3,
@@ -438,7 +463,7 @@ const testInnings2: domain.Innings = {
             wickets: 1,
         },
         {
-            playerIndex: 10,
+            playerIndex: 8,
             completedOvers: 11,
             totalOvers: '11',
             maidenOvers: 3,
@@ -446,7 +471,7 @@ const testInnings2: domain.Innings = {
             wickets: 2,
         },
         {
-            playerIndex: 7,
+            playerIndex: 6,
             completedOvers: 7,
             totalOvers: '7',
             maidenOvers: 0,
@@ -511,7 +536,7 @@ const testInnings2: domain.Innings = {
         },
         {
             wicket: 10,
-            batterIndex: 11,
+            batterIndex: 10,
             score: 122,
             partnership: 8,
         },
@@ -519,6 +544,8 @@ const testInnings2: domain.Innings = {
 };
 
 export const match: domain.Match = {
+    homeTeam,
+    awayTeam,
     user: 'test',
     config: {
         playersPerSide: 11,
@@ -527,14 +554,6 @@ export const match: domain.Match = {
         inningsPerSide: 1,
         runsForNoBall: 1,
         runsForWide: 1,
-    },
-    homeTeam: {
-        name: 'Cleckheaton',
-        players: [],
-    },
-    awayTeam: {
-        name: 'Baildon',
-        players: [],
     },
     date: '28-Apr-2018',
     complete: true,

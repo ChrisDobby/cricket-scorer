@@ -4,7 +4,7 @@ import Scorecard from '../../../components/scorecard/Scorecard';
 import { Innings, InningsStatus, TeamType } from '../../../domain';
 import { match } from '../../testData/testMatch';
 
-describe.skip('Scorecard', () => {
+describe('Scorecard', () => {
     beforeEach(cleanup);
 
     it('should render correctly', () => {
