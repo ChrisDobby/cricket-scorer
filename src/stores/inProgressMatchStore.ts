@@ -457,6 +457,24 @@ class InProgressMatchStore implements domain.InProgressMatch {
         };
     };
 
+    @action changeBowler = (fromDelivery: number, playerIndex: number) => {
+        if (typeof this.currentInnings === 'undefined' || this.currentInnings.events.length === 0) {
+            return;
+        }
+
+        this.updateMatch(
+            this.match,
+            this.matchInnings.changeBowler(
+                this.currentInnings,
+                this.currentInnings.completedOvers + 1,
+                fromDelivery,
+                playerIndex,
+            ),
+        );
+
+        this.currentBowlerIndex = this.currentInnings.bowlers.findIndex(bowler => bowler.playerIndex === playerIndex);
+    };
+
     private getRollback = (eventIndex: number): [domain.Innings, number, number] | undefined => {
         if (typeof this.currentInnings === 'undefined' || this.currentInnings.events.length === 0) {
             return undefined;

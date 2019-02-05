@@ -13,6 +13,7 @@ import CompleteMatch from './CompleteMatch';
 import UpdateOvers from './UpdateOvers';
 import BatterUnavailable from './BatterUnavailable';
 import StartBreak from './StartBreak';
+import ChangeBowler from './ChangeBowler';
 import { UnavailableReason, InningsStatus, MatchResult, MatchType, InProgressMatch, BreakType } from '../../domain';
 import calculateResult from '../../match/calculateResult';
 import { getTeam } from '../../match/utilities';
@@ -30,6 +31,7 @@ interface WithMatchDrawerProps {
     batterUnavailable: (playerIndex: number, reason: UnavailableReason) => void;
     undoPreviousDelivery: () => void;
     changeEnds: () => void;
+    changeBowler: (fromDelivery: number, playerIndex: number) => void;
     history: History;
 }
 
@@ -43,6 +45,7 @@ export default (Component: any) => (props: WithMatchDrawerProps) => {
         | undefined);
     const [changeOvers, setChangeOvers] = React.useState(false);
     const [startBreakVerify, setStartBreakVerify] = React.useState(false);
+    const [changeBowlerVerify, setChangeBowlerVerify] = React.useState(false);
 
     const openDrawer = () => setOpen(true);
     const closeDrawer = () => setOpen(false);
@@ -114,10 +117,21 @@ export default (Component: any) => (props: WithMatchDrawerProps) => {
         props.history.replace('/match/start');
     };
 
+    const verifyChangeBowler = () => {
+        setChangeBowlerVerify(true);
+        setOpen(false);
+    };
+    const changeBowler = (fromDelivery: number, playerIndex: number) => {
+        props.changeBowler(fromDelivery, playerIndex);
+        setChangeBowlerVerify(false);
+    };
+    const cancelChangeBowler = () => setChangeBowlerVerify(false);
+
     const items = [
         { ...allowedOption, text: 'Undo previous', icon: <Undo />, action: props.undoPreviousDelivery },
         { allowed: undoTossAllowed(), text: 'Undo the toss', icon: <Undo />, action: undoToss },
         { ...allowedOption, text: 'Change ends', icon: <SwapHoriz />, action: props.changeEnds },
+        { ...allowedOption, text: 'Change bowler', icon: <SwapHoriz />, action: verifyChangeBowler },
         {
             ...allowedOption,
             text: 'Change players',
@@ -209,6 +223,23 @@ export default (Component: any) => (props: WithMatchDrawerProps) => {
                     />
                 )}
             {startBreakVerify && <StartBreak startBreak={startBreak} cancel={cancelStartBreak} />}
+            {changeBowlerVerify &&
+                props.inProgressMatchStore.currentInnings &&
+                props.inProgressMatchStore.currentBowler && (
+                    <ChangeBowler
+                        change={changeBowler}
+                        cancel={cancelChangeBowler}
+                        innings={props.inProgressMatchStore.currentInnings}
+                        overNumber={props.inProgressMatchStore.currentInnings.completedOvers + 1}
+                        currentPlayerIndex={props.inProgressMatchStore.currentBowler.playerIndex}
+                        bowlingPlayers={
+                            getTeam(
+                                props.inProgressMatchStore.match,
+                                props.inProgressMatchStore.currentInnings.bowlingTeam,
+                            ).players
+                        }
+                    />
+                )}
         </>
     );
 };

@@ -296,6 +296,7 @@ export interface InProgressMatch {
     startBreak: (breakType: BreakType) => void;
     undoToss: () => void;
     updateTeams: (homeTeam: string, awayTeam: string, homePlayers: string[], awayPlayers: string[]) => void;
+    changeBowler: (fromDelivery: number, playerIndex: number) => void;
 }
 
 export interface RebuiltInnings {

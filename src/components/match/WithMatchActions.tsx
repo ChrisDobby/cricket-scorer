@@ -16,6 +16,7 @@ const actionProps = (inProgressMatchStore: InProgressMatchStore, getUserId: () =
         updateOvers: inProgressMatchStore.updateOvers,
         startBreak: inProgressMatchStore.startBreak,
         undoToss: inProgressMatchStore.undoToss,
+        changeBowler: inProgressMatchStore.changeBowler,
     });
 };
 
