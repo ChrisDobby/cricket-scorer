@@ -14,7 +14,7 @@ export default (match: Match, innings: Innings) => {
 
     const getFielderAtIndex = (index: number) => {
         const { players } = getTeam(match, innings.battingTeam);
-        return players[index];
+        return players[index] || 'sub';
     };
 
     return {
