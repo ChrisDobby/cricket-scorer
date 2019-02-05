@@ -66,9 +66,6 @@ const addBatterIfRequired = (innings: domain.Innings, batterIndex: number, deliv
               },
           };
 
-const updateCompletedOvers = (innings: domain.Innings, deliveryOverNumber: number) =>
-    deliveryOverNumber <= innings.completedOvers + 1 ? innings : { ...innings, completedOvers: deliveryOverNumber - 1 };
-
 export default (
     delivery: (
         innings: domain.Innings,
@@ -92,14 +89,21 @@ export default (
         reason: domain.UnavailableReason,
     ) => domain.Innings,
     batterAvailable: (innings: domain.Innings, time: number, batter: domain.Batter) => domain.Innings,
+    completeOver: (
+        innings: domain.Innings,
+        time: number,
+        batter: domain.Batter,
+        bowler: domain.Bowler,
+    ) => [domain.Innings, number],
 ) => {
     const eventReducer = (inningsAndBatter: domain.RebuiltInnings, event: domain.Event): domain.RebuiltInnings => {
         switch (event.type) {
             case domain.EventType.Delivery:
                 const deliveryEvent = event as domain.Delivery;
-                const updatedInnings = updateCompletedOvers(
-                    addBatterIfRequired(inningsAndBatter.innings, deliveryEvent.batsmanIndex, deliveryEvent.time),
-                    deliveryEvent.overNumber,
+                const updatedInnings = addBatterIfRequired(
+                    inningsAndBatter.innings,
+                    deliveryEvent.batsmanIndex,
+                    deliveryEvent.time,
                 );
                 const added = delivery(
                     updatedInnings,
@@ -140,6 +144,20 @@ export default (
                     ),
                     batterIndex: inningsAndBatter.batterIndex,
                 };
+            case domain.EventType.OverComplete: {
+                const completed = completeOver(
+                    inningsAndBatter.innings,
+                    event.time,
+                    inningsAndBatter.innings.batting.batters[(<domain.OverComplete>event).batsmanIndex],
+                    inningsAndBatter.innings.bowlers[(<domain.OverComplete>event).bowlerIndex],
+                );
+
+                return {
+                    innings: completed[0],
+                    batterIndex: completed[1],
+                };
+            }
+
             default:
                 return inningsAndBatter;
         }

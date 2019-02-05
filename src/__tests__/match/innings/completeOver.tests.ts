@@ -1,9 +1,11 @@
 import completeOver from '../../../match/innings/completeOver';
 import * as matches from '../../testData/matches';
+import { OverComplete } from '../../../domain';
 
 describe('completeOver', () => {
     const [innings, batterIndex] = completeOver(
         matches.inningsWithOverReadyToComplete,
+        1,
         matches.inningsWithOverReadyToComplete.batting.batters[0],
         matches.inningsWithOverReadyToComplete.bowlers[0],
     );
@@ -31,11 +33,18 @@ describe('completeOver', () => {
     it('should increase the bowlers maiden overs if no runs scored', () => {
         const [innings] = completeOver(
             matches.inningsWithMaidenOverReadyToComplete,
-            matches.inningsWithMaidenOverReadyToComplete.batting.batters[0],
+            1,
+            matches.inningsWithMaidenOverReadyToComplete.batting.batters[1],
             matches.inningsWithMaidenOverReadyToComplete.bowlers[0],
         );
 
         const bowler = innings.bowlers[0];
         expect(bowler.maidenOvers).toBe(1);
+    });
+
+    it('should add an event to the innings', () => {
+        expect(innings.events).toHaveLength(7);
+        expect((<OverComplete>innings.events[6]).batsmanIndex).toBe(0);
+        expect((<OverComplete>innings.events[6]).bowlerIndex).toBe(0);
     });
 });

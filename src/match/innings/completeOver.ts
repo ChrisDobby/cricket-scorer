@@ -1,8 +1,15 @@
-import { Innings, Batter, Bowler, oversDescription } from '../../domain';
+import { Innings, Batter, Bowler, EventType, oversDescription, Event } from '../../domain';
 import flipBatters from './flipBatters';
 import { latestOver, isMaidenOver } from '../utilities';
 
-export default (innings: Innings, batter: Batter, bowler: Bowler): [Innings, number] => {
+export default (innings: Innings, time: number, batter: Batter, bowler: Bowler): [Innings, number] => {
+    const event = {
+        time,
+        type: EventType.OverComplete,
+        batsmanIndex: innings.batting.batters.indexOf(batter),
+        bowlerIndex: innings.bowlers.indexOf(bowler),
+    } as Event;
+
     const over = latestOver(innings.events, innings.completedOvers);
     const updatedBowler = {
         ...bowler,
@@ -15,6 +22,7 @@ export default (innings: Innings, batter: Batter, bowler: Bowler): [Innings, num
 
     const updatedInnings = {
         ...innings,
+        events: [...innings.events, event],
         bowlers: [...innings.bowlers.map(b => (b.playerIndex === bowler.playerIndex ? updatedBowler : b))],
         completedOvers: innings.completedOvers + 1,
         totalOvers: oversDescription(innings.completedOvers + 1, []),

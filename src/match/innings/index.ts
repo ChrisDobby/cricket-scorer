@@ -17,7 +17,7 @@ import changeBowler from './changeBowler';
 
 export default (config: MatchConfig, getTeam: (type: TeamType) => Team) => {
     const Delivery = delivery(config, getTeam);
-    const rebuildInnings = rebuild(Delivery, nonDeliveryWicket, batterUnavailable, batterAvailable);
+    const rebuildInnings = rebuild(Delivery, nonDeliveryWicket, batterUnavailable, batterAvailable, completeOver);
 
     return {
         completeOver,

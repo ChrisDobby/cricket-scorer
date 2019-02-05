@@ -67,8 +67,9 @@ describe('rebuild', () => {
     const nonDeliveryWicket = jest.fn(() => [matches.inningsWithAllDeliveriesInCompletedOver]);
     const batterUnavailable = jest.fn(() => matches.inningsWithAllDeliveriesInCompletedOver);
     const batterAvailable = jest.fn(() => matches.inningsWithAllDeliveriesInCompletedOver);
+    const completeOver = jest.fn(() => [matches.inningsWithAllDeliveriesInCompletedOver, 999]);
 
-    const Rebuild = rebuild(delivery, nonDeliveryWicket, batterUnavailable, batterAvailable);
+    const Rebuild = rebuild(delivery, nonDeliveryWicket, batterUnavailable, batterAvailable, completeOver);
 
     it('should create a new innings with no events', () => {
         const newInnings = Rebuild(matches.inningsWithStartedOver, 0, []);
@@ -180,6 +181,24 @@ describe('rebuild', () => {
         );
     });
 
+    it('should add complete over events', () => {
+        const overComplete = {
+            time: new Date().getTime(),
+            type: domain.EventType.OverComplete,
+            batsmanIndex: 0,
+            bowlerIndex: 0,
+        };
+
+        Rebuild(matches.inningsWithStartedOver, 9, [overComplete]);
+
+        expect(completeOver).toHaveBeenCalledWith(
+            createdInnings,
+            overComplete.time,
+            createdInnings.batting.batters[overComplete.batsmanIndex],
+            createdInnings.bowlers[overComplete.bowlerIndex],
+        );
+    });
+
     it('should do nothing for an unknown event', () => {
         const unknown = {
             time: new Date().getTime(),
@@ -236,30 +255,30 @@ describe('rebuild', () => {
         );
     });
 
-    it('should update the completed overs if the delivery is for the next over', () => {
-        const deliveryForOver2 = {
-            time: new Date().getTime(),
-            type: domain.EventType.Delivery,
-            bowlerIndex: 0,
-            batsmanIndex: 0,
-            overNumber: 2,
-            outcome: { scores: { runs: 2 }, deliveryOutcome: domain.DeliveryOutcome.Valid },
-        };
-        const createdInningsWith1CompletedOver = {
-            ...createdInnings,
-            completedOvers: 1,
-        };
+    // it('should update the completed overs if the delivery is for the next over', () => {
+    //     const deliveryForOver2 = {
+    //         time: new Date().getTime(),
+    //         type: domain.EventType.Delivery,
+    //         bowlerIndex: 0,
+    //         batsmanIndex: 0,
+    //         overNumber: 2,
+    //         outcome: { scores: { runs: 2 }, deliveryOutcome: domain.DeliveryOutcome.Valid },
+    //     };
+    //     const createdInningsWith1CompletedOver = {
+    //         ...createdInnings,
+    //         completedOvers: 1,
+    //     };
 
-        Rebuild(matches.inningsWithStartedOver, 0, [deliveryForOver2]);
+    //     Rebuild(matches.inningsWithStartedOver, 0, [deliveryForOver2]);
 
-        expect(delivery).toHaveBeenCalledWith(
-            createdInningsWith1CompletedOver,
-            deliveryForOver2.time,
-            createdInningsWith1CompletedOver.batting.batters[deliveryForOver2.batsmanIndex],
-            createdInningsWith1CompletedOver.bowlers[deliveryForOver2.bowlerIndex],
-            deliveryForOver2.outcome.deliveryOutcome,
-            deliveryForOver2.outcome.scores,
-            undefined,
-        );
-    });
+    //     expect(delivery).toHaveBeenCalledWith(
+    //         createdInningsWith1CompletedOver,
+    //         deliveryForOver2.time,
+    //         createdInningsWith1CompletedOver.batting.batters[deliveryForOver2.batsmanIndex],
+    //         createdInningsWith1CompletedOver.bowlers[deliveryForOver2.bowlerIndex],
+    //         deliveryForOver2.outcome.deliveryOutcome,
+    //         deliveryForOver2.outcome.scores,
+    //         undefined,
+    //     );
+    // });
 });

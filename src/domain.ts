@@ -72,6 +72,7 @@ export enum EventType {
     NonDeliveryWicket,
     BatterUnavailable,
     BatterAvailable,
+    OverComplete,
 }
 
 export interface Wicket {
@@ -121,6 +122,11 @@ export interface NonDeliveryWicket extends Event {
 export interface BatterUnavailable extends Event {
     batsmanIndex: number;
     reason: UnavailableReason;
+}
+
+export interface OverComplete extends Event {
+    bowlerIndex: number;
+    batsmanIndex: number;
 }
 
 export interface Over {
