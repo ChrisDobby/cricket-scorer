@@ -58,4 +58,16 @@ describe('changeBowler', () => {
             ),
         );
     });
+
+    it('should add a new bowler entry if the rebuilt innings does not include the new bowler', () => {
+        const newInnings = ChangeBowler(matches.inningsWithOverReadyToComplete, 1, 0, 3);
+
+        expect(newInnings.bowlers).toHaveLength(3);
+        expect(newInnings.bowlers[2].playerIndex).toBe(3);
+        expect(newInnings.bowlers[2].completedOvers).toBe(0);
+        expect(newInnings.bowlers[2].maidenOvers).toBe(0);
+        expect(newInnings.bowlers[2].totalOvers).toBe('0');
+        expect(newInnings.bowlers[2].runs).toBe(0);
+        expect(newInnings.bowlers[2].wickets).toBe(0);
+    });
 });

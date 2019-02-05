@@ -24,9 +24,30 @@ export default (
         return innings;
     };
 
+    const addMissingBowler = (rebuiltInnings: domain.Innings) => {
+        if (rebuiltInnings.bowlers.find(b => b.playerIndex === playerIndex)) {
+            return rebuiltInnings;
+        }
+
+        return {
+            ...rebuiltInnings,
+            bowlers: [
+                ...rebuiltInnings.bowlers,
+                {
+                    playerIndex,
+                    completedOvers: 0,
+                    totalOvers: '0',
+                    maidenOvers: 0,
+                    runs: 0,
+                    wickets: 0,
+                },
+            ],
+        };
+    };
+
     const inningsToRebuild = updatedInnings();
     const bowlerIndex = inningsToRebuild.bowlers.findIndex(bowler => bowler.playerIndex === playerIndex);
-    return rebuild(
+    const newInnings = rebuild(
         inningsToRebuild,
         0,
         inningsToRebuild.events.map((ev, deliveryIndex) =>
@@ -37,4 +58,6 @@ export default (
                 : { ...ev, bowlerIndex },
         ),
     ).innings;
+
+    return addMissingBowler(newInnings);
 };
