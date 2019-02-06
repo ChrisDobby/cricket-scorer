@@ -190,7 +190,7 @@ export const inningsWithOverReadyToComplete = {
     ],
 };
 
-const inningsWithTwoOvers = {
+export const inningsWithTwoOvers = {
     ...inningsWithOverReadyToComplete,
     bowlers: [
         ...inningsWithOverReadyToComplete.bowlers,

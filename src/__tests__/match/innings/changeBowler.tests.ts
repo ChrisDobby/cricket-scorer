@@ -34,6 +34,18 @@ describe('changeBowler', () => {
         );
     });
 
+    it('should only replace the bowler for the over and specified first ball in the second or later over', () => {
+        ChangeBowler(matches.inningsWithTwoOvers, 2, 4, 10);
+
+        expect(rebuild).toHaveBeenCalledWith(
+            matches.inningsWithTwoOvers,
+            0,
+            matches.inningsWithTwoOvers.events.map((ev, deliveryIndex) =>
+                ev.overNumber === 2 && deliveryIndex >= 9 ? { ...ev, bowlerIndex: 0 } : ev,
+            ),
+        );
+    });
+
     it('should create a new bowler if the player has yet to bowl', () => {
         ChangeBowler(matches.inningsWithOverReadyToComplete, 1, 0, 3);
 

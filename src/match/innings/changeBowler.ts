@@ -47,17 +47,29 @@ export default (
 
     const inningsToRebuild = updatedInnings();
     const bowlerIndex = inningsToRebuild.bowlers.findIndex(bowler => bowler.playerIndex === playerIndex);
-    const newInnings = rebuild(
-        inningsToRebuild,
-        0,
-        inningsToRebuild.events.map((ev, deliveryIndex) =>
-            !(<domain.Delivery>ev).overNumber ||
-            (<domain.Delivery>ev).overNumber !== over ||
-            deliveryIndex < fromDelivery - 1
-                ? ev
-                : { ...ev, bowlerIndex },
-        ),
-    ).innings;
+    const updatedEvents = inningsToRebuild.events.reduce(
+        (eventsAndCounter, ev) => {
+            if ((<domain.Delivery>ev).overNumber === over) {
+                return {
+                    events: eventsAndCounter.events.concat(
+                        eventsAndCounter.counter < fromDelivery - 1 ? ev : ({ ...ev, bowlerIndex } as domain.Event),
+                    ),
+                    counter: eventsAndCounter.counter + 1,
+                };
+            }
+
+            return {
+                events: eventsAndCounter.events.concat(ev),
+                counter: eventsAndCounter.counter,
+            };
+        },
+        {
+            events: [] as domain.Event[],
+            counter: 0,
+        },
+    ).events;
+
+    const newInnings = rebuild(inningsToRebuild, 0, updatedEvents).innings;
 
     return addMissingBowler(newInnings);
 };
