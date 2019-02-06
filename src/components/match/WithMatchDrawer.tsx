@@ -14,7 +14,15 @@ import UpdateOvers from './UpdateOvers';
 import BatterUnavailable from './BatterUnavailable';
 import StartBreak from './StartBreak';
 import ChangeBowler from './ChangeBowler';
-import { UnavailableReason, InningsStatus, MatchResult, MatchType, InProgressMatch, BreakType } from '../../domain';
+import {
+    UnavailableReason,
+    InningsStatus,
+    MatchResult,
+    MatchType,
+    InProgressMatch,
+    BreakType,
+    Over,
+} from '../../domain';
 import calculateResult from '../../match/calculateResult';
 import { getTeam } from '../../match/utilities';
 
@@ -225,9 +233,18 @@ export default (Component: any) => (props: WithMatchDrawerProps) => {
             {startBreakVerify && <StartBreak startBreak={startBreak} cancel={cancelStartBreak} />}
             {changeBowlerVerify &&
                 props.inProgressMatchStore.currentInnings &&
-                props.inProgressMatchStore.currentBowler && (
+                props.inProgressMatchStore.currentBowler &&
+                props.inProgressMatchStore.currentOver && (
                     <ChangeBowler
-                        change={changeBowler}
+                        changeForFullOver={playerIndex => changeBowler(0, playerIndex)}
+                        changeFromNow={playerIndex =>
+                            changeBowler(
+                                (props.inProgressMatchStore.currentOver as Over).deliveries.length + 1,
+                                playerIndex,
+                            )
+                        }
+                        changeFromDelivery={changeBowler}
+                        currentDelivery={(props.inProgressMatchStore.currentOver as Over).deliveries.length + 1}
                         cancel={cancelChangeBowler}
                         innings={props.inProgressMatchStore.currentInnings}
                         overNumber={props.inProgressMatchStore.currentInnings.completedOvers + 1}
