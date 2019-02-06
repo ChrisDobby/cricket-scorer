@@ -52,7 +52,12 @@ export default (props: MatchStatusProps) => {
     return (
         <Fade in={true}>
             <SnackbarContent
-                message={props.inProgressMatches[currentIndex].status}
+                message={
+                    props.inProgressMatches[currentIndex].status ||
+                    `${props.inProgressMatches[currentIndex].homeTeam} v ${
+                        props.inProgressMatches[currentIndex].awayTeam
+                    }`
+                }
                 action={
                     <Button color="inherit" size="small" onClick={showCurrentScorecard}>
                         View scorecard
