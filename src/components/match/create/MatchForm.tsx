@@ -16,15 +16,55 @@ interface MatchData {
     runsPerWide: number;
     homeTeam: string;
     awayTeam: string;
-    homePlayers: number[];
-    awayPlayers: number[];
+    homePlayers: string[];
+    awayPlayers: string[];
 }
 interface MatchFormProps {
     createMatch: (matchData: MatchData) => void;
 }
 
+enum ActionTypes {
+    MatchType,
+    Overs,
+    Players,
+    Innings,
+    NoballRuns,
+    WideRuns,
+    HomeTeam,
+    AwayTeam,
+    HomePlayers,
+    AwayPlayers,
+}
+
+const matchDataReducer = (state: MatchData, action: any): MatchData => {
+    switch (action.type) {
+        case ActionTypes.MatchType:
+            return { ...state, matchType: action.data };
+        case ActionTypes.Overs:
+            return { ...state, oversPerSide: action.data };
+        case ActionTypes.Players:
+            return { ...state, ...action.data };
+        case ActionTypes.Innings:
+            return { ...state, inningsPerSide: action.data };
+        case ActionTypes.NoballRuns:
+            return { ...state, runsPerNoBall: action.data };
+        case ActionTypes.WideRuns:
+            return { ...state, runsPerWide: action.data };
+        case ActionTypes.HomeTeam:
+            return { ...state, homeTeam: action.data };
+        case ActionTypes.AwayTeam:
+            return { ...state, awayTeam: action.data };
+        case ActionTypes.HomePlayers:
+            return { ...state, homePlayers: action.data };
+        case ActionTypes.AwayPlayers:
+            return { ...state, awayPlayers: action.data };
+        default:
+            return state;
+    }
+};
+
 export default (props: MatchFormProps) => {
-    const [matchData, setMatchData] = React.useState({
+    const [matchData, dispatch] = React.useReducer(matchDataReducer, {
         matchType: MatchType.LimitedOvers,
         oversPerSide: 50,
         playersPerSide: 11,
@@ -36,34 +76,41 @@ export default (props: MatchFormProps) => {
         homePlayers: Array(11).fill(''),
         awayPlayers: Array(11).fill(''),
     });
+
     const [saveWarnings, setSaveWarnings] = React.useState({ homePlayersMissing: 0, awayPlayersMissing: 0 });
 
     const playersChanged = (players: number) =>
-        setMatchData({
-            ...matchData,
-            playersPerSide: players,
-            homePlayers: matchData.homePlayers
-                .filter((_, idx) => idx < players)
-                .concat(players > matchData.playersPerSide ? Array(players - matchData.playersPerSide).fill('') : []),
-            awayPlayers: matchData.awayPlayers
-                .filter((_, idx) => idx < players)
-                .concat(players > matchData.playersPerSide ? Array(players - matchData.playersPerSide).fill('') : []),
+        dispatch({
+            type: ActionTypes.Players,
+            data: {
+                playersPerSide: players,
+                homePlayers: matchData.homePlayers
+                    .filter((_, idx) => idx < players)
+                    .concat(
+                        players > matchData.playersPerSide ? Array(players - matchData.playersPerSide).fill('') : [],
+                    ),
+                awayPlayers: matchData.awayPlayers
+                    .filter((_, idx) => idx < players)
+                    .concat(
+                        players > matchData.playersPerSide ? Array(players - matchData.playersPerSide).fill('') : [],
+                    ),
+            },
         });
 
     const teamChanged = (team: TeamType, name: string) => {
         if (team === TeamType.HomeTeam) {
-            setMatchData({ ...matchData, homeTeam: name });
+            dispatch({ type: ActionTypes.HomeTeam, data: name });
         }
         if (team === TeamType.AwayTeam) {
-            setMatchData({ ...matchData, awayTeam: name });
+            dispatch({ type: ActionTypes.AwayTeam, data: name });
         }
     };
 
     const playerChanged = (team: TeamType, playerNumber: number, name: string) => {
         const playerArray = team === TeamType.HomeTeam ? 'homePlayers' : 'awayPlayers';
-        setMatchData({
-            ...matchData,
-            [playerArray]: Object.assign([], matchData[playerArray], { [playerNumber]: name }),
+        dispatch({
+            type: team === TeamType.HomeTeam ? ActionTypes.HomePlayers : ActionTypes.AwayPlayers,
+            data: Object.assign([], matchData[playerArray], { [playerNumber]: name }),
         });
     };
 
@@ -72,10 +119,9 @@ export default (props: MatchFormProps) => {
         const update = matchData[playerArray].map((player, index) =>
             index >= players.length ? player : players[index],
         );
-
-        setMatchData({
-            ...matchData,
-            [playerArray]: update,
+        dispatch({
+            type: team === TeamType.HomeTeam ? ActionTypes.HomePlayers : ActionTypes.AwayPlayers,
+            data: update,
         });
     };
 
@@ -105,7 +151,6 @@ export default (props: MatchFormProps) => {
             setSaveWarnings({ homePlayersMissing: unknownHomePlayers, awayPlayersMissing: unknownAwayPlayers });
             return;
         }
-
         saveConfirmed();
     };
 
@@ -114,11 +159,11 @@ export default (props: MatchFormProps) => {
             <EditForm heading="New match" save={save} canSave={canSave}>
                 <MatchEntry
                     {...matchData}
-                    matchTypeSelected={matchType => setMatchData({ ...matchData, matchType })}
-                    oversChanged={oversPerSide => setMatchData({ ...matchData, oversPerSide })}
-                    inningsChanged={inningsPerSide => setMatchData({ ...matchData, inningsPerSide })}
-                    noBallRunsChanged={runsPerNoBall => setMatchData({ ...matchData, runsPerNoBall })}
-                    wideRunsChanged={runsPerWide => setMatchData({ ...matchData, runsPerWide })}
+                    matchTypeSelected={matchType => dispatch({ type: ActionTypes.MatchType, data: matchType })}
+                    oversChanged={oversPerSide => dispatch({ type: ActionTypes.Overs, data: oversPerSide })}
+                    inningsChanged={inningsPerSide => dispatch({ type: ActionTypes.Innings, data: inningsPerSide })}
+                    noBallRunsChanged={runsPerNoBall => dispatch({ type: ActionTypes.NoballRuns, data: runsPerNoBall })}
+                    wideRunsChanged={runsPerWide => dispatch({ type: ActionTypes.WideRuns, data: runsPerWide })}
                     playersChanged={playersChanged}
                 />
                 <Divider style={{ marginTop: '10px', marginBottom: '10px' }} />
