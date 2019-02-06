@@ -58,11 +58,14 @@ const addDeliveryToInnings = (
             extras: deliveries.addedExtras(innings.batting.extras, deliveryOutcome, config),
         },
         bowlers: [
-            ...innings.bowlers.map(b =>
+            ...innings.bowlers.map((b, bowlerIndex) =>
                 b === bowler
                     ? {
                           ...bowler,
-                          totalOvers: domain.oversDescription(bowler.completedOvers, currentOver),
+                          totalOvers: domain.oversDescription(
+                              bowler.completedOvers,
+                              currentOver.filter(ev => ev.bowlerIndex === bowlerIndex),
+                          ),
                           runs: bowler.runs + deliveries.bowlerRuns(deliveryOutcome, config),
                           wickets: bowler.wickets + deliveries.bowlingWickets(deliveryOutcome),
                       }

@@ -121,6 +121,26 @@ describe('delivery', () => {
         expect(bowler.totalOvers).toBe('0.1');
     });
 
+    it('should only include the balls bowled by the ball in total overs', () => {
+        const inningsWithOverBowledByDifferentBowlers = {
+            ...matches.inningsWithOverReadyToComplete,
+            events: matches.inningsWithOverReadyToComplete.events.map((ev, index) =>
+                index < 3 ? ev : { ...ev, bowlerIndex: 1 },
+            ),
+        };
+
+        const [newInnings] = Delivery(
+            inningsWithOverBowledByDifferentBowlers,
+            1,
+            inningsWithOverBowledByDifferentBowlers.batting.batters[0],
+            inningsWithOverBowledByDifferentBowlers.bowlers[1],
+            domain.DeliveryOutcome.Wide,
+            {},
+        );
+
+        expect(newInnings.bowlers[1].totalOvers).toBe('0.3');
+    });
+
     it('should update the bowlers runs', () => {
         const bowler = updatedInnings.bowlers[0];
 
