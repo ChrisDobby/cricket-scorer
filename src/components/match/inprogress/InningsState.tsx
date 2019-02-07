@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Star from '@material-ui/icons/Star';
 import { Innings, BattingInnings, Batter, Bowler, Extras } from '../../../domain';
+import './inningsState.css';
 
 interface InningsStateProps {
     battingTeam: string;
@@ -18,17 +19,17 @@ const totalExtras = (extras: Extras): number =>
 
 export default ({ battingTeam, battingPlayers, bowlingPlayers, innings, batter, bowler }: InningsStateProps) => (
     <>
-        <Grid item xs={6}>
-            <Typography variant="h5">{battingTeam}</Typography>
+        <Grid item xs={8}>
+            <Typography variant="body1">{battingTeam}</Typography>
         </Grid>
-        <Grid item xs={6}>
-            <Typography variant="h5">{`${innings.score}-${innings.wickets}`}</Typography>
+        <Grid item xs={4}>
+            <Typography variant="body1">{`${innings.score}-${innings.wickets}`}</Typography>
         </Grid>
-        <Grid item xs={6}>
-            <Typography variant="h5">Overs</Typography>
+        <Grid item xs={8}>
+            <Typography variant="body1">Overs</Typography>
         </Grid>
-        <Grid item xs={6}>
-            <Typography variant="h5">{innings.totalOvers}</Typography>
+        <Grid item xs={4}>
+            <Typography variant="body1">{innings.totalOvers}</Typography>
         </Grid>
         {innings.batting.batters
             .filter(
@@ -41,30 +42,32 @@ export default ({ battingTeam, battingPlayers, bowlingPlayers, innings, batter, 
             }))
             .map(currentBatter => (
                 <React.Fragment key={currentBatter.index}>
-                    <Grid item xs={6}>
-                        <Typography variant="h5">{currentBatter.name}</Typography>
+                    <Grid item xs={8}>
+                        <Typography variant="body1">{currentBatter.name}</Typography>
                     </Grid>
-                    <Grid item xs={6}>
-                        <Typography variant="h5">
+                    <Grid item xs={4}>
+                        <Typography variant="body1">
                             {`${currentBatter.innings.runs}` + `(${currentBatter.innings.ballsFaced})`}
-                            {currentBatter.name === battingPlayers[batter.playerIndex] && <Star color="primary" />}
+                            {currentBatter.name === battingPlayers[batter.playerIndex] && (
+                                <Star color="primary" className="innings-state-batter-indicator" />
+                            )}
                         </Typography>
                     </Grid>
                 </React.Fragment>
             ))}
-        <Grid item xs={6}>
-            <Typography variant="h5">{bowlingPlayers[bowler.playerIndex]}</Typography>
+        <Grid item xs={8}>
+            <Typography variant="body1">{bowlingPlayers[bowler.playerIndex]}</Typography>
         </Grid>
-        <Grid item xs={6}>
-            <Typography variant="h5">
+        <Grid item xs={4}>
+            <Typography variant="body1">
                 {`${bowler.totalOvers}-` + `${bowler.maidenOvers}-${bowler.runs}-${bowler.wickets}`}
             </Typography>
         </Grid>
-        <Grid item xs={6}>
-            <Typography variant="h5">Extras</Typography>
+        <Grid item xs={8}>
+            <Typography variant="body1">Extras</Typography>
         </Grid>
-        <Grid item xs={6}>
-            <Typography variant="h5">{totalExtras(innings.batting.extras)}</Typography>
+        <Grid item xs={4}>
+            <Typography variant="body1">{totalExtras(innings.batting.extras)}</Typography>
         </Grid>
     </>
 );
