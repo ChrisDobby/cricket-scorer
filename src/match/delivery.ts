@@ -84,7 +84,7 @@ export const notificationDescription = (outcome: domain.Outcome) => {
     }
 
     if (typeof outcome.scores.boundaries !== 'undefined') {
-        return `${prefix}boundary ${outcome.scores.boundaries}`;
+        return `${prefix}Boundary ${outcome.scores.boundaries}`;
     }
 
     if (typeof outcome.scores.byes !== 'undefined') {
@@ -95,8 +95,10 @@ export const notificationDescription = (outcome: domain.Outcome) => {
         return `${prefix}${outcome.scores.legByes} leg bye${pluralise(outcome.scores.legByes)}`;
     }
 
-    if (typeof outcome.scores.wides !== 'undefined') {
-        return outcome.scores.wides === 0 ? 'wide' : `${outcome.scores.wides} wide${pluralise(outcome.scores.wides)}`;
+    if (typeof outcome.scores.wides !== 'undefined' || outcome.deliveryOutcome === domain.DeliveryOutcome.Wide) {
+        return typeof outcome.scores.wides === 'undefined' || outcome.scores.wides === 0
+            ? 'Wide'
+            : `${outcome.scores.wides} wide${pluralise(outcome.scores.wides)}`;
     }
 
     return outcome.deliveryOutcome === domain.DeliveryOutcome.Noball ? 'No ball' : 'Dot ball';

@@ -528,7 +528,7 @@ describe('delivery', () => {
                 },
             });
 
-            expect(description).toBe('boundary 4');
+            expect(description).toBe('Boundary 4');
         });
 
         it('should give a description of byes for bye scoring delivery', () => {
@@ -572,7 +572,7 @@ describe('delivery', () => {
                 },
             });
 
-            expect(description).toBe('wide');
+            expect(description).toBe('Wide');
         });
 
         it('should prefix with no ball for a no ball', () => {
@@ -593,6 +593,15 @@ describe('delivery', () => {
             });
 
             expect(description).toBe('No ball');
+        });
+
+        it('should give a description of no ball for a wide recorded with no wides prop', () => {
+            const description = delivery.notificationDescription({
+                deliveryOutcome: DeliveryOutcome.Wide,
+                scores: {},
+            });
+
+            expect(description).toBe('Wide');
         });
     });
 
