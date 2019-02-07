@@ -2,8 +2,8 @@ import * as React from 'react';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import Grid from '@material-ui/core/Grid';
 import { Team } from '../../../domain';
-import EditContainer from '../EditContainer';
 import EditForm from '../EditForm';
 
 interface SelectBowlerProps {
@@ -26,25 +26,28 @@ export default (props: SelectBowlerProps) => {
     };
 
     return (
-        <EditContainer>
-            <EditForm heading="Select bowler" save={save} canSave={canSave}>
-                <List>
-                    {props.bowlingTeam.players.map((player, index) => (
-                        <ListItem
-                            disabled={props.disallowedPlayers.indexOf(index) >= 0}
-                            selected={index === selectedPlayerIndex}
-                            key={index}
-                            role={undefined}
-                            dense
-                            button
-                            color="primary"
-                            onClick={() => setSelectedPlayerIndex(index)}
-                        >
-                            <ListItemText primary={player} />
-                        </ListItem>
-                    ))}
-                </List>
-            </EditForm>
-        </EditContainer>
+        <Grid container>
+            <Grid item sm={1} md={2} />
+            <Grid item xs={12} sm={10} md={8}>
+                <EditForm heading="Select bowler" save={save} canSave={canSave}>
+                    <List>
+                        {props.bowlingTeam.players.map((player, index) => (
+                            <ListItem
+                                disabled={props.disallowedPlayers.indexOf(index) >= 0}
+                                selected={index === selectedPlayerIndex}
+                                key={index}
+                                role={undefined}
+                                dense
+                                button
+                                color="primary"
+                                onClick={() => setSelectedPlayerIndex(index)}
+                            >
+                                <ListItemText primary={player} />
+                            </ListItem>
+                        ))}
+                    </List>
+                </EditForm>
+            </Grid>
+        </Grid>
     );
 };
