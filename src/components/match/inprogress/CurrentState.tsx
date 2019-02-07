@@ -34,7 +34,7 @@ export default ({ battingTeam, bowlingTeam, innings, batter, bowler, currentOver
         <Hidden smUp>
             <ExpansionPanel style={{ width: '100%' }}>
                 <ExpansionPanelSummary expandIcon={<ExpandMore />}>
-                    <Typography>{`${battingTeam} ${innings.score}-${innings.wickets}`}</Typography>
+                    <Typography>{`${battingTeam.name} ${innings.score}-${innings.wickets}`}</Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
                     <Grid container>
