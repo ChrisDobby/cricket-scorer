@@ -3,18 +3,18 @@ module.exports = {
     transform: {
         '^.+\\.(ts|tsx)$': 'ts-jest',
     },
-    testMatch: [ '**/__tests__/**/*.ts?(x)', '**/?(*.)(spec|test).ts?(x)' ],
+    moduleNameMapper: {
+        '\\.(css|less)$': 'identity-obj-proxy',
+    },
+    testMatch: ['**/__tests__/**/*.ts?(x)', '**/?(*.)(spec|test).ts?(x)'],
     testPathIgnorePatterns: [
         '<rootDir>/node_modules/',
         '<rootDir>/src/__tests__/setup.ts',
         '<rootDir>/src/__tests__/testData',
     ],
-    setupFiles: [
-        '<rootDir>/src/__tests__/setup.ts',
-        'jest-localstorage-mock'
-    ],
+    setupFiles: ['<rootDir>/src/__tests__/setup.ts', 'jest-localstorage-mock'],
     collectCoverage: true,
     automock: false,
     testResultsProcessor: 'jest-junit',
-    testURL: "http://localhost/"
+    testURL: 'http://localhost/',
 };
