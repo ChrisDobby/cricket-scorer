@@ -9,6 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import SignalWifiOff from '@material-ui/icons/SignalWifiOff';
 import NotificationImportant from '@material-ui/icons/NotificationImportant';
+import List from '@material-ui/icons/List';
 import Menu from '@material-ui/icons/Menu';
 import NetworkStatusContext from '../context/NetworkStatusContext';
 import PageContext from '../context/PageContext';
@@ -16,6 +17,7 @@ import WithAuth from './WithAuth';
 import WithOutOfDateMatches from './WithOutOfDateMatches';
 import { ONLINE, OFFLINE } from '../context/networkStatus';
 import { PersistedMatch, Profile } from '../domain';
+import { History } from 'history';
 
 const grow: React.CSSProperties = {
     flexGrow: 1,
@@ -28,6 +30,7 @@ interface NavBarProps {
     userProfile: Profile;
     outOfDateMatches: PersistedMatch[];
     outOfDateSelected: () => void;
+    history: History;
     children: React.ReactNode;
 }
 
@@ -47,6 +50,14 @@ export default WithAuth(
             <>
                 <AppBar position="sticky">
                     <Toolbar>
+                        {pageContext.showMatchesLink && (
+                            <IconButton
+                                style={{ marginRight: '8px', color: '#ffffff' }}
+                                onClick={() => props.history.push('/matchcentre')}
+                            >
+                                <List />
+                            </IconButton>
+                        )}
                         <Typography variant="title" color="inherit" style={grow}>
                             {pageContext.title}
                         </Typography>

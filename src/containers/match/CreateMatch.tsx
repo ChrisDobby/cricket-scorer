@@ -9,7 +9,7 @@ import PageContext from '../../context/PageContext';
 
 const CreateMatch = (props: any) => {
     const { setOptions } = React.useContext(PageContext);
-    React.useEffect(setOptions, []);
+    React.useEffect(() => setOptions({ showMatchesLink: true }), []);
 
     return (
         <NewMatch

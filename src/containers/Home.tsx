@@ -7,7 +7,7 @@ import WithMatchApi from '../components/WithMatchApi';
 
 export default WithMatchApi((props: any) => {
     const { setOptions } = React.useContext(PageContext);
-    React.useEffect(setOptions, []);
+    React.useEffect(() => setOptions({ showMatchesLink: true }), []);
 
     return (
         <HomeComponent

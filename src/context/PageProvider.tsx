@@ -4,6 +4,7 @@ import PageContext, { PageOptions } from './PageContext';
 const defaultOptions: PageOptions = {
     title: 'Cricket scores live',
     stayWhenLoggingOut: false,
+    showMatchesLink: false,
     button: undefined,
     openDrawer: undefined,
 };
@@ -11,7 +12,7 @@ const defaultOptions: PageOptions = {
 export default (props: any) => {
     const [options, setOptions] = React.useState(defaultOptions);
 
-    const setPageOptions = (pageOptions?: PageOptions) => setOptions(pageOptions || defaultOptions);
+    const setPageOptions = (pageOptions?: any) => setOptions({ ...defaultOptions, ...pageOptions });
 
     return (
         <PageContext.Provider

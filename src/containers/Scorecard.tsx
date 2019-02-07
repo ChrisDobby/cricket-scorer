@@ -15,9 +15,7 @@ export default WithMatchApi((props: any) => {
         () =>
             setOptions({
                 stayWhenLoggingOut: true,
-                title: 'Cricket scores live',
-                button: undefined,
-                openDrawer: undefined,
+                showMatchesLink: true,
             }),
         [],
     );

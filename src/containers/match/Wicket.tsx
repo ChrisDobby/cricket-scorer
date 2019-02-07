@@ -14,7 +14,7 @@ interface WicketProps {
 
 const Wicket = ({ inProgressMatchStore, userProfile }: WicketProps) => {
     const { setOptions } = React.useContext(PageContext);
-    React.useEffect(setOptions, []);
+    React.useEffect(() => setOptions({ showMatchesLink: true }), []);
 
     return (
         <WicketComponent

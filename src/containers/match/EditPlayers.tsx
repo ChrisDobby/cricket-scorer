@@ -7,7 +7,7 @@ import PageContext from '../../context/PageContext';
 
 const InProgress = (props: any) => {
     const { setOptions } = React.useContext(PageContext);
-    React.useEffect(setOptions, []);
+    React.useEffect(() => setOptions({ showMatchesLink: true }), []);
 
     return (
         <Players

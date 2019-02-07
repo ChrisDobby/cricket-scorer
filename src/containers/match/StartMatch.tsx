@@ -17,7 +17,7 @@ interface StartMatchProps {
 
 const StartMatch = (props: StartMatchProps) => {
     const { setOptions } = React.useContext(PageContext);
-    React.useEffect(setOptions, []);
+    React.useEffect(() => setOptions({ showMatchesLink: true }), []);
 
     return (
         <StartMatchComponent

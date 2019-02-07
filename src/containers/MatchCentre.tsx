@@ -22,7 +22,12 @@ const getAddButton = (props: any) => (
 export default WithMatchApi((props: any) => {
     const { setOptions } = React.useContext(PageContext);
     React.useEffect(
-        () => setOptions({ stayWhenLoggingOut: true, title: 'Matches', button: getAddButton, openDrawer: undefined }),
+        () =>
+            setOptions({
+                stayWhenLoggingOut: true,
+                title: 'Matches',
+                button: getAddButton,
+            }),
         [],
     );
 

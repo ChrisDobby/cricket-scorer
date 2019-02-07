@@ -13,9 +13,6 @@ const InProgress = (props: any) => {
     React.useEffect(
         () =>
             setOptions({
-                stayWhenLoggingOut: false,
-                title: 'Cricket scores live',
-                button: undefined,
                 openDrawer: props.openDrawer,
             }),
         [],

@@ -3,7 +3,6 @@ import { inject } from 'mobx-react';
 import { History } from 'history';
 import WithInProgressStore from '../components/WithInProgressStore';
 import { InProgressMatch } from '../domain';
-import PageContext from '../context/PageContext';
 import matchRedirect from './match/matchRedirect';
 
 interface MatchProps {
@@ -13,9 +12,6 @@ interface MatchProps {
 }
 
 const Match = (props: MatchProps) => {
-    const { setOptions } = React.useContext(PageContext);
-    React.useEffect(setOptions, []);
-
     React.useEffect(() => {
         matchRedirect(props.inProgressMatchStore, props.history, props.location);
     });
