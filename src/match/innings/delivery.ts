@@ -84,7 +84,15 @@ const addDeliveryToInnings = (
     return addFallOfWicket(updatedInnings);
 };
 
-const newBatsmanIndex = (innings: domain.Innings, batter: domain.Batter, runs: number) => {
+const newBatsmanIndex = (
+    innings: domain.Innings,
+    batter: domain.Batter,
+    runs: number,
+    wicket?: domain.DeliveryWicket,
+) => {
+    if (wicket && wicket.changedEnds) {
+        return flipBatters(innings, batter);
+    }
     if (runs % 2 === 0) {
         return innings.batting.batters.indexOf(batter);
     }
@@ -134,7 +142,7 @@ export default (config: domain.MatchConfig, getTeam: (type: domain.TeamType) => 
             updatedDeliveries,
             config,
         ),
-        newBatsmanIndex(innings, batter, deliveries.runsFromBatter({ deliveryOutcome, scores })),
+        newBatsmanIndex(innings, batter, deliveries.runsFromBatter({ deliveryOutcome, scores }), outcome.wicket),
         event,
     ];
 };

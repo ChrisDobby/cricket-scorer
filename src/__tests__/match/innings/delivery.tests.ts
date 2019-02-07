@@ -164,6 +164,20 @@ describe('delivery', () => {
         expect(batterIndex).toBe(1);
     });
 
+    it('should return the other batter when delivery is a wicket when the batters changed ends', () => {
+        const [, batterIndex] = Delivery(
+            matches.inningsWithStartedOver,
+            1,
+            matches.inningsWithStartedOver.batting.batters[0],
+            matches.inningsWithStartedOver.bowlers[0],
+            domain.DeliveryOutcome.Valid,
+            {},
+            { howOut: domain.Howout.Caught, fielderIndex: 2, changedEnds: true },
+        );
+
+        expect(batterIndex).toBe(1);
+    });
+
     it('should update the total overs for the innings after the first over', () => {
         const [innings] = Delivery(
             matches.inningsWithAllDeliveriesInCompletedOver,
