@@ -16,11 +16,29 @@ interface BowlingProps {
     classes: any;
 }
 
+const calculateEconomy = (runs: number, totalOvers: string) => {
+    const overs = () => {
+        const parts = totalOvers.split('.');
+        if (parts.length === 1) {
+            return Number(parts[0]);
+        }
+
+        return Number(parts[0]) + Number(parts[1]) / 6;
+    };
+
+    if (!totalOvers) {
+        return '0.00';
+    }
+    const calculatedOvers = overs();
+
+    return runs === 0 || calculatedOvers === 0 ? '0.00' : (runs / calculatedOvers).toFixed(2);
+};
+
 const Bowling = ({ team, bowlers, classes }: BowlingProps) => (
     <Grid item lg={8} md={12} sm={12} xs={12}>
         <Typography variant="h5">{team} bowling</Typography>
         <Grid container className={classes.header}>
-            <Grid item xs={6} md={5} />
+            <Grid item xs={6} md={4} />
             <Grid item xs={2}>
                 <HeaderText style={styles.centreCell}>Overs</HeaderText>
             </Grid>
@@ -35,11 +53,16 @@ const Bowling = ({ team, bowlers, classes }: BowlingProps) => (
             <Grid item xs={2} md={1}>
                 <HeaderText style={styles.centreCell}>Wkts</HeaderText>
             </Grid>
+            <Hidden smDown>
+                <Grid item md={1}>
+                    <HeaderText style={styles.centreCell}>Econ</HeaderText>
+                </Grid>
+            </Hidden>
         </Grid>
         {bowlers.map((bowler, idx) => (
             <React.Fragment key={idx}>
                 <Grid container>
-                    <Grid item xs={6} md={5}>
+                    <Grid item xs={6} md={4}>
                         <Typography variant="body2">{bowler.name}</Typography>
                     </Grid>
                     <Grid item xs={2} style={styles.centreCell}>
@@ -64,6 +87,13 @@ const Bowling = ({ team, bowlers, classes }: BowlingProps) => (
                             <TextUpdateNotify text={bowler.wickets.toString()} />
                         </Typography>
                     </Grid>
+                    <Hidden smDown>
+                        <Grid item md={1} style={styles.centreCell}>
+                            <Typography variant="body2">
+                                <TextUpdateNotify text={calculateEconomy(bowler.runs, bowler.totalOvers)} />
+                            </Typography>
+                        </Grid>
+                    </Hidden>
                 </Grid>
                 <Grid item xs={12}>
                     <Divider />

@@ -17,8 +17,21 @@ import * as globalStyles from '../styles';
 import TextUpdateNotify from '../TextUpdateNotify';
 import HeaderText from './HeaderText';
 
+const calculateMinutes = (timeIn: number, timeOut: number | undefined) => {
+    const toTime = timeOut || new Date().getTime();
+    return Math.round((toTime - timeIn) / 60000);
+};
+
+const calculateStrikeRate = (runs: number, balls: number) =>
+    (runs === 0 || balls === 0 ? 0 : (runs / balls) * 100).toFixed(2);
+
 const smallExtraDetailText = (innings?: BattingInnings): string =>
-    innings ? `${innings.ballsFaced} balls, ${innings.fours} 4s, ${innings.sixes} 6s` : '';
+    innings
+        ? `${innings.ballsFaced} balls, ${innings.fours} 4s, ${innings.sixes} 6s, SR ${calculateStrikeRate(
+              innings.runs,
+              innings.ballsFaced,
+          )}`
+        : '';
 
 const howOut = (
     batter: Batter,
@@ -78,7 +91,7 @@ const Batting = ({
 }: BattingProps) => (
     <Grid item lg={8} md={12} sm={12} xs={12}>
         <Grid container className={classes.header}>
-            <Grid item xs={10} md={7}>
+            <Grid item xs={10} md={6}>
                 <HeaderText>Batsman</HeaderText>
             </Grid>
             <Grid item xs={2} md={1}>
@@ -104,11 +117,16 @@ const Batting = ({
                     <HeaderText style={styles.numberCell}>6s</HeaderText>
                 </Grid>
             </Hidden>
+            <Hidden smDown>
+                <Grid item xs={false} md={1}>
+                    <HeaderText style={styles.numberCell}>SR</HeaderText>
+                </Grid>
+            </Hidden>
         </Grid>
         {batting.batters.map((batter, idx) => (
             <React.Fragment key={idx}>
                 <Grid container>
-                    <Grid item xs={4} md={3}>
+                    <Grid item xs={4} md={2}>
                         <Typography variant="body2">{battingTeamPlayers[batter.playerIndex]}</Typography>
                     </Grid>
                     <Howout
@@ -132,7 +150,16 @@ const Batting = ({
                     <Hidden smDown>
                         <Grid item md={1}>
                             <Typography variant="body1" style={styles.numberCell}>
-                                <TextUpdateNotify text={batter.innings ? '0' : ''} />
+                                <TextUpdateNotify
+                                    text={
+                                        batter.innings
+                                            ? `${calculateMinutes(
+                                                  batter.innings.timeIn,
+                                                  batter.innings.wicket ? batter.innings.wicket.time : undefined,
+                                              )}`
+                                            : ''
+                                    }
+                                />
                             </Typography>
                         </Grid>
                     </Hidden>
@@ -147,6 +174,19 @@ const Batting = ({
                         <Grid item md={1}>
                             <Typography variant="body1" style={styles.numberCell}>
                                 <TextUpdateNotify text={batter.innings ? batter.innings.sixes.toString() : ''} />
+                            </Typography>
+                        </Grid>
+                    </Hidden>
+                    <Hidden smDown>
+                        <Grid item md={1}>
+                            <Typography variant="body1" style={styles.numberCell}>
+                                <TextUpdateNotify
+                                    text={
+                                        batter.innings
+                                            ? calculateStrikeRate(batter.innings.runs, batter.innings.ballsFaced)
+                                            : ''
+                                    }
+                                />
                             </Typography>
                         </Grid>
                     </Hidden>
