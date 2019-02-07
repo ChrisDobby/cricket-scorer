@@ -8,7 +8,7 @@ interface TooltipProps {
 }
 
 export default (props: TooltipProps) => (
-    <Tooltip TransitionComponent={Zoom} title={props.title}>
+    <Tooltip disableFocusListener disableTouchListener TransitionComponent={Zoom} title={props.title}>
         {props.children}
     </Tooltip>
 );
