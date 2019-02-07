@@ -40,6 +40,7 @@ export default ({ inProgress, storeMatch, history, userProfile }: PlayersProps) 
                 bowlingTeam={getTeam(inProgress.match, inProgress.currentInnings.bowlingTeam).players}
                 getBowlerAtIndex={get.getBowlerAtIndex}
                 getFielderAtIndex={get.getFielderAtIndex}
+                sameBowlerAndFielder={get.sameBowlerAndFielder}
                 save={update(inProgress, storeMatch, () => history.replace('/match/inprogress'), () => userProfile.id)}
             />
         </EditContainer>

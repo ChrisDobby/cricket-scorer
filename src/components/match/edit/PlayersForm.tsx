@@ -17,6 +17,7 @@ interface PlayerFormProps {
     bowlingTeam: string[];
     getBowlerAtIndex: (index: number) => string;
     getFielderAtIndex: (index: number) => string;
+    sameBowlerAndFielder: (bowlerIndex: number, fielderIndex: number) => boolean;
     save: (battingOrder: number[], bowlingOrder: number[]) => void;
 }
 
@@ -45,12 +46,13 @@ const howOut = (
     batter: Batter,
     getBowlerAtIndex: (index: number) => string,
     getFielderAtIndex: (index: number) => string,
+    sameBowlerAndFielder: (bowlerIndex: number, fielderIndex: number) => boolean,
 ): string => {
     if (!batter.innings && typeof batter.unavailableReason === 'undefined') {
         return '';
     }
 
-    const HowOutDescription = howOutDescription(getBowlerAtIndex, getFielderAtIndex);
+    const HowOutDescription = howOutDescription(getBowlerAtIndex, getFielderAtIndex, sameBowlerAndFielder);
     return typeof batter.unavailableReason !== 'undefined'
         ? unavailablDescription(batter.unavailableReason)
         : HowOutDescription((batter.innings as BattingInnings).wicket);
@@ -153,7 +155,12 @@ export default withStyles(globalStyles.themedStyles)((props: PlayerFormProps) =>
                         </Grid>
                         <Grid style={descriptionStyle} item xs={10} md={5}>
                             <Typography variant="subtitle1">
-                                {howOut(batter, props.getBowlerAtIndex, props.getFielderAtIndex)}
+                                {howOut(
+                                    batter,
+                                    props.getBowlerAtIndex,
+                                    props.getFielderAtIndex,
+                                    props.sameBowlerAndFielder,
+                                )}
                             </Typography>
                         </Grid>
                         <Grid style={descriptionNumberStyle} item xs={2} md={1}>

@@ -5,7 +5,11 @@ import getPlayers from './getPlayers';
 
 export default (match: domain.Match) => (innings: domain.Innings, event: domain.Event, wicket?: domain.Wicket) => {
     const get = getPlayers(match, innings);
-    const HowOutDescription = domain.howOutDescription(get.getBowlerAtIndex, get.getFielderAtIndex);
+    const HowOutDescription = domain.howOutDescription(
+        get.getBowlerAtIndex,
+        get.getFielderAtIndex,
+        get.sameBowlerAndFielder,
+    );
 
     const deliveryDescription = (delivery: domain.Delivery) => {
         const bowler = get.getBowlerAtIndex(delivery.bowlerIndex);

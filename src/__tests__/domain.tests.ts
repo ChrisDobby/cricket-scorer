@@ -3,7 +3,8 @@ import * as domain from '../domain';
 describe('domain', () => {
     const getBowlerAtIndex = () => 'A bowler';
     const getFielderAtIndex = (index: number) => (index === 2 ? 'A keeper' : 'A fielder');
-    const HowOutDescription = domain.howOutDescription(getBowlerAtIndex, getFielderAtIndex);
+    const sameBowlerAndFielder = (bowlerIndex: number, fielderIndex: number) => fielderIndex === 0;
+    const HowOutDescription = domain.howOutDescription(getBowlerAtIndex, getFielderAtIndex, sameBowlerAndFielder);
 
     describe('howOutDescription', () => {
         it('should return not out for no wicket', () => {

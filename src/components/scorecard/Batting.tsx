@@ -24,6 +24,7 @@ const howOut = (
     batter: Batter,
     getBowlerAtIndex: (index: number) => string,
     getFielderAtIndex: (index: number) => string,
+    sameBowlerAndFielder: (bowlerIndex: number, fielderIndex: number) => boolean,
 ): string => {
     if (!batter.innings && typeof batter.unavailableReason === 'undefined') {
         return '';
@@ -31,18 +32,23 @@ const howOut = (
 
     return typeof batter.unavailableReason !== 'undefined'
         ? unavailablDescription(batter.unavailableReason)
-        : howOutDescription(getBowlerAtIndex, getFielderAtIndex)((batter.innings as BattingInnings).wicket);
+        : howOutDescription(getBowlerAtIndex, getFielderAtIndex, sameBowlerAndFielder)(
+              (batter.innings as BattingInnings).wicket,
+          );
 };
 
 interface InningsItemProps {
     batter: Batter;
     getBowlerAtIndex: (index: number) => string;
     getFielderAtIndex: (index: number) => string;
+    sameBowlerAndFielder: (bowlerIndex: number, fielderIndex: number) => boolean;
 }
 const Howout = (props: InningsItemProps) => (
     <Grid item xs={6} md={4}>
         <Typography variant="body2">
-            <TextUpdateNotify text={howOut(props.batter, props.getBowlerAtIndex, props.getFielderAtIndex)} />
+            <TextUpdateNotify
+                text={howOut(props.batter, props.getBowlerAtIndex, props.getFielderAtIndex, props.sameBowlerAndFielder)}
+            />
         </Typography>
     </Grid>
 );
@@ -56,6 +62,7 @@ interface BattingProps {
     classes: any;
     getBowlerAtIndex: (index: number) => string;
     getFielderAtIndex: (index: number) => string;
+    sameBowlerAndFielder: (bowlerIndex: number, fielderIndex: number) => boolean;
 }
 
 const Batting = ({
@@ -67,6 +74,7 @@ const Batting = ({
     classes,
     getBowlerAtIndex,
     getFielderAtIndex,
+    sameBowlerAndFielder,
 }: BattingProps) => (
     <Grid item lg={8} md={12} sm={12} xs={12}>
         <Grid container className={classes.header}>
@@ -103,7 +111,12 @@ const Batting = ({
                     <Grid item xs={4} md={3}>
                         <Typography variant="body2">{battingTeamPlayers[batter.playerIndex]}</Typography>
                     </Grid>
-                    <Howout batter={batter} getBowlerAtIndex={getBowlerAtIndex} getFielderAtIndex={getFielderAtIndex} />
+                    <Howout
+                        batter={batter}
+                        getBowlerAtIndex={getBowlerAtIndex}
+                        getFielderAtIndex={getFielderAtIndex}
+                        sameBowlerAndFielder={sameBowlerAndFielder}
+                    />
                     <Grid item xs={2} md={1}>
                         <Typography variant="body1" style={styles.runsCell}>
                             <TextUpdateNotify text={batter.innings ? batter.innings.runs.toString() : ''} />

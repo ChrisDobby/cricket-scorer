@@ -13,13 +13,18 @@ export default (match: Match, innings: Innings) => {
     };
 
     const getFielderAtIndex = (index: number) => {
-        const { players } = getTeam(match, innings.battingTeam);
+        const { players } = getTeam(match, innings.bowlingTeam);
         return players[index] || 'sub';
+    };
+
+    const sameBowlerAndFielder = (bowlerIndex: number, fielderIndex: number) => {
+        return innings.bowlers[bowlerIndex].playerIndex === fielderIndex;
     };
 
     return {
         getBowlerAtIndex,
         getBatterAtIndex,
         getFielderAtIndex,
+        sameBowlerAndFielder,
     };
 };

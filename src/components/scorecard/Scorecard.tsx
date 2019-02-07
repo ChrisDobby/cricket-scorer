@@ -92,6 +92,7 @@ export default withStyles(styles)((props: ScorecardProps) => {
                         getTeam={type => getTeam(props.cricketMatch, type)}
                         getBowlerAtIndex={get(inn).getBowlerAtIndex}
                         getFielderAtIndex={get(inn).getFielderAtIndex}
+                        sameBowlerAndFielder={get(inn).sameBowlerAndFielder}
                     />
                 ))}
             </ReactSwipeableViews>

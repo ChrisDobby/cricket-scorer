@@ -130,6 +130,9 @@ const InProgress = (props: InProgressProps) => {
                                                     getFielderAtIndex={
                                                         get(props.inProgress.currentInnings).getFielderAtIndex
                                                     }
+                                                    sameBowlerAndFielder={
+                                                        get(props.inProgress.currentInnings).sameBowlerAndFielder
+                                                    }
                                                 />
                                             </EntryContainer>
                                         </>

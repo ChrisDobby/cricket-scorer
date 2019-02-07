@@ -318,6 +318,7 @@ export interface UserTeams {
 export const howOutDescription = (
     getBowlerAtIndex: (index: number) => string,
     getFielderAtIndex: (index: number) => string,
+    sameBowlerAndFielder: (bowlerIndex: number, fielderIndex: number) => boolean,
 ) => (wicket?: Wicket): string => {
     const description = (wkt: Wicket): string => {
         switch (wkt.howOut) {
@@ -326,7 +327,7 @@ export const howOutDescription = (
             case Howout.Lbw:
                 return `lbw ${getBowlerAtIndex(<number>wkt.bowlerIndex)}`;
             case Howout.Caught:
-                return wkt.bowlerIndex === wkt.fielderIndex
+                return sameBowlerAndFielder(<number>wkt.bowlerIndex, <number>wkt.fielderIndex)
                     ? `ct & bowled ${getBowlerAtIndex(<number>wkt.bowlerIndex)}`
                     : `ct ${getFielderAtIndex(<number>wkt.fielderIndex)} b ${getBowlerAtIndex(<number>(
                           wkt.bowlerIndex

@@ -12,9 +12,10 @@ interface InningsProps {
     getTeam: (teamType: TeamType) => Team;
     getBowlerAtIndex: (index: number) => string;
     getFielderAtIndex: (index: number) => string;
+    sameBowlerAndFielder: (bowlerIndex: number, fielderIndex: number) => boolean;
 }
 
-export default ({ innings, getTeam, getBowlerAtIndex, getFielderAtIndex }: InningsProps) => {
+export default ({ innings, getTeam, getBowlerAtIndex, getFielderAtIndex, sameBowlerAndFielder }: InningsProps) => {
     const battingTeam = getTeam(innings.battingTeam);
     const bowlingTeam = getTeam(innings.bowlingTeam);
     const fallOfWicketWithName = (fow: FallOfWicket) => ({
@@ -36,6 +37,7 @@ export default ({ innings, getTeam, getBowlerAtIndex, getFielderAtIndex }: Innin
                     battingTeamPlayers={battingTeam.players}
                     getBowlerAtIndex={getBowlerAtIndex}
                     getFielderAtIndex={getFielderAtIndex}
+                    sameBowlerAndFielder={sameBowlerAndFielder}
                 />
                 <Hidden mdDown>
                     <Grid item lg={1} />

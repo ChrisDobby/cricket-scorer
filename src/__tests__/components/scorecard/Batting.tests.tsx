@@ -31,6 +31,7 @@ describe.skip('Batting', () => {
                 battingTeamPlayers={['A Player']}
                 getBowlerAtIndex={() => 'A player'}
                 getFielderAtIndex={() => 'A player'}
+                sameBowlerAndFielder={() => false}
                 score={100}
                 wickets={1}
                 totalOvers={'20'}
