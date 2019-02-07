@@ -1,13 +1,10 @@
 import * as React from 'react';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import Done from '@material-ui/icons/Done';
 import { Team } from '../../../domain';
+import EditContainer from '../EditContainer';
+import EditForm from '../EditForm';
 
 interface SelectBowlerProps {
     bowlingTeam: Team;
@@ -29,17 +26,8 @@ export default (props: SelectBowlerProps) => {
     };
 
     return (
-        <Grid container>
-            <Grid item sm={1} md={2} />
-            <Grid item xs={12} sm={10} md={8}>
-                <Toolbar disableGutters>
-                    <Typography variant="h4" color="inherit" style={{ flexGrow: 1 }}>
-                        Select bowler
-                    </Typography>
-                    <Button aria-label="complete" variant="fab" color="primary" onClick={save} disabled={!canSave()}>
-                        <Done />
-                    </Button>
-                </Toolbar>
+        <EditContainer>
+            <EditForm heading="Select bowler" save={save} canSave={canSave}>
                 <List>
                     {props.bowlingTeam.players.map((player, index) => (
                         <ListItem
@@ -56,7 +44,7 @@ export default (props: SelectBowlerProps) => {
                         </ListItem>
                     ))}
                 </List>
-            </Grid>
-        </Grid>
+            </EditForm>
+        </EditContainer>
     );
 };

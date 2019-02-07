@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Button from '@material-ui/core/Button';
+import Tooltip from '../components/Tooltip';
 import Add from '@material-ui/icons/Add';
 import WithMatchApi from '../components/WithMatchApi';
 import { default as MatchCentreComponent } from '../components/MatchCentre';
@@ -9,14 +10,16 @@ import PageContext from '../context/PageContext';
 
 const createMatchRoute = '/match/create';
 const getAddButton = (props: any) => (
-    <Button
-        aria-label="create new match"
-        variant="fab"
-        color="secondary"
-        onClick={() => props.history.push(createMatchRoute)}
-    >
-        <Add />
-    </Button>
+    <Tooltip title={props.isAuthenticated ? 'Score new match' : 'Login or register and score a new match'}>
+        <Button
+            aria-label="create new match"
+            variant="fab"
+            color="secondary"
+            onClick={() => props.history.push(createMatchRoute)}
+        >
+            <Add />
+        </Button>
+    </Tooltip>
 );
 
 export default WithMatchApi((props: any) => {

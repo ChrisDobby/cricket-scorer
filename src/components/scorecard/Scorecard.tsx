@@ -12,6 +12,7 @@ import { getTeam } from '../../match/utilities';
 import { Button } from '@material-ui/core';
 import { textCentre } from './styles';
 import getPlayers from '../../match/getPlayers';
+import Tooltip from '../Tooltip';
 
 const inningsNumberDescription = (innings: number): string => {
     const numberDescription = (): string => {
@@ -64,9 +65,11 @@ export default withStyles(styles)((props: ScorecardProps) => {
             />
             {props.canContinue && (
                 <div style={textCentre}>
-                    <Button color="secondary" onClick={props.continue}>
-                        Continue scoring
-                    </Button>
+                    <Tooltip title="Continue scoring this match">
+                        <Button color="secondary" onClick={props.continue}>
+                            Continue scoring
+                        </Button>
+                    </Tooltip>
                 </div>
             )}
             <Divider />

@@ -11,6 +11,7 @@ import * as dateformat from 'dateformat';
 import TextUpdateNotify from './TextUpdateNotify';
 import { PersistedMatch, CurrentEditingMatch } from '../domain';
 import { flexContainerStyle } from './styles';
+import Tooltip from './Tooltip';
 
 interface MatchCardProps {
     match: PersistedMatch | CurrentEditingMatch;
@@ -60,17 +61,23 @@ export default (props: MatchCardProps) => (
                         </div>
                     </CardContent>
                     <CardActions>
-                        <Button size="small" color="primary" onClick={props.showScorecard}>
-                            Scorecard
-                        </Button>
+                        <Tooltip title="View the match scorecard">
+                            <Button size="small" color="primary" onClick={props.showScorecard}>
+                                Scorecard
+                            </Button>
+                        </Tooltip>
                         {props.match.user === props.currentUser && (
                             <>
-                                <Button size="small" color="primary" onClick={props.continueScoring}>
-                                    Continue
-                                </Button>
-                                <Button size="small" color="secondary" onClick={props.removeMatch}>
-                                    Remove
-                                </Button>
+                                <Tooltip title="Continue scoring this match">
+                                    <Button size="small" color="primary" onClick={props.continueScoring}>
+                                        Continue
+                                    </Button>
+                                </Tooltip>
+                                <Tooltip title="Permanently remove this match">
+                                    <Button size="small" color="secondary" onClick={props.removeMatch}>
+                                        Remove
+                                    </Button>
+                                </Tooltip>
                             </>
                         )}
                     </CardActions>

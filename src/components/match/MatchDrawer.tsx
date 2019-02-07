@@ -10,10 +10,12 @@ import { withStyles } from '@material-ui/core/styles';
 import { themedStyles } from '../styles';
 import { IconButton } from '@material-ui/core';
 import { History } from 'history';
+import Tooltip from '../Tooltip';
 
 type OptionButton = {
     text: string;
     icon: any;
+    title: string;
     action: () => void;
 };
 
@@ -29,24 +31,30 @@ type MatchDrawerProps = {
 export default withStyles(themedStyles)((props: MatchDrawerProps) => (
     <Drawer anchor="right" open={props.isOpen} onClose={props.close} onOpen={props.open}>
         <div className={props.classes.toolbar}>
-            <IconButton onClick={props.close}>
-                <ChevronRight />
-            </IconButton>
+            <Tooltip title="Close the menu">
+                <IconButton onClick={props.close}>
+                    <ChevronRight />
+                </IconButton>
+            </Tooltip>
         </div>
         <div role="button" onClick={close} onMouseDown={close}>
             <List>
                 {props.options.map(option => (
-                    <ListItem key={option.text} button dense color="primary" onClick={option.action}>
-                        <ListItemIcon>{option.icon}</ListItemIcon>
-                        <ListItemText primary={option.text} />
-                    </ListItem>
+                    <Tooltip key={option.text} title={option.title}>
+                        <ListItem button dense color="primary" onClick={option.action}>
+                            <ListItemIcon>{option.icon}</ListItemIcon>
+                            <ListItemText primary={option.text} />
+                        </ListItem>
+                    </Tooltip>
                 ))}
             </List>
             <Divider />
             <List>
-                <ListItem button dense color="primary" onClick={() => props.history.push('/matchcentre')}>
-                    <ListItemText primary="Match centre" />
-                </ListItem>
+                <Tooltip title="Go to the match centre">
+                    <ListItem button dense color="primary" onClick={() => props.history.push('/matchcentre')}>
+                        <ListItemText primary="Match centre" />
+                    </ListItem>
+                </Tooltip>
             </List>
         </div>
     </Drawer>

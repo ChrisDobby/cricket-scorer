@@ -18,6 +18,7 @@ import WithOutOfDateMatches from './WithOutOfDateMatches';
 import { ONLINE, OFFLINE } from '../context/networkStatus';
 import { PersistedMatch, Profile } from '../domain';
 import { History } from 'history';
+import Tooltip from './Tooltip';
 
 const grow: React.CSSProperties = {
     flexGrow: 1,
@@ -51,12 +52,14 @@ export default WithAuth(
                 <AppBar position="sticky">
                     <Toolbar>
                         {pageContext.showMatchesLink && (
-                            <IconButton
-                                style={{ marginRight: '8px', color: '#ffffff' }}
-                                onClick={() => props.history.push('/matchcentre')}
-                            >
-                                <List />
-                            </IconButton>
+                            <Tooltip title="Go to the match centre">
+                                <IconButton
+                                    style={{ marginRight: '8px', color: '#ffffff' }}
+                                    onClick={() => props.history.push('/matchcentre')}
+                                >
+                                    <List />
+                                </IconButton>
+                            </Tooltip>
                         )}
                         <Typography variant="title" color="inherit" style={grow}>
                             {pageContext.title}
@@ -67,15 +70,19 @@ export default WithAuth(
                             </Button>
                         )}
                         {props.outOfDateMatches && props.outOfDateMatches.length > 0 && (
-                            <IconButton>
-                                <Badge
-                                    badgeContent={props.outOfDateMatches.length}
-                                    color="secondary"
-                                    onClick={props.outOfDateSelected}
-                                >
-                                    <NotificationImportant style={{ color: '#ffffff' }} />
-                                </Badge>
-                            </IconButton>
+                            <Tooltip
+                                title={`You have ${props.outOfDateMatches.length} out of date matches.  Click to view`}
+                            >
+                                <IconButton>
+                                    <Badge
+                                        badgeContent={props.outOfDateMatches.length}
+                                        color="secondary"
+                                        onClick={props.outOfDateSelected}
+                                    >
+                                        <NotificationImportant style={{ color: '#ffffff' }} />
+                                    </Badge>
+                                </IconButton>
+                            </Tooltip>
                         )}
                         {props.isAuthenticated && (
                             <>
@@ -85,16 +92,23 @@ export default WithAuth(
                                         {getInitials(props.userProfile.name)}
                                     </Avatar>
                                 )}
-                                <Button color="inherit" onClick={() => props.logout(pageContext.stayWhenLoggingOut)}>
-                                    Logout
-                                </Button>
+                                <Tooltip title="Log out of the application.  You will still be able to view and score matches but they will not be updated live">
+                                    <Button
+                                        color="inherit"
+                                        onClick={() => props.logout(pageContext.stayWhenLoggingOut)}
+                                    >
+                                        Logout
+                                    </Button>
+                                </Tooltip>
                             </>
                         )}
                         {status === OFFLINE && !props.isAuthenticated && <SignalWifiOff />}
                         {pageContext.openDrawer && (
-                            <IconButton color="inherit" aria-label="Open drawer" onClick={pageContext.openDrawer}>
-                                <Menu />
-                            </IconButton>
+                            <Tooltip title="Open the match options menu">
+                                <IconButton color="inherit" aria-label="Open drawer" onClick={pageContext.openDrawer}>
+                                    <Menu />
+                                </IconButton>
+                            </Tooltip>
                         )}
                         {pageContext.button && pageContext.button(props)}
                     </Toolbar>

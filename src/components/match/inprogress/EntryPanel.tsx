@@ -10,6 +10,7 @@ import ScoresEntry from './ScoresEntry';
 import { WarningModal, WarningType } from './WarningModal';
 import DeliveryNotify from './DeliveryNotify';
 import ScoreTypeSelect, { ScoreType } from './ScoreTypeSelect';
+import Tooltip from '../../Tooltip';
 
 type EntryPanelProps = RouteComponentProps<{}> & {
     overComplete: boolean;
@@ -105,26 +106,30 @@ export default withRouter((props: EntryPanelProps) => {
         <>
             <div>
                 <Grid container>
-                    <Button
-                        style={{ marginRight: '10px' }}
-                        variant="fab"
-                        aria-label="Wicket"
-                        color="primary"
-                        onClick={() => props.history.push('/match/wicket')}
-                    >
-                        {'W'}
-                    </Button>
-                    <FormControlLabel
-                        style={{ float: 'right' }}
-                        label="No ball"
-                        control={
-                            <Switch
-                                color="secondary"
-                                checked={noBall}
-                                onChange={ev => (ev.target.checked ? noBallPressed() : legalBallPressed())}
-                            />
-                        }
-                    />
+                    <Tooltip title="Record a wicket">
+                        <Button
+                            style={{ marginRight: '10px' }}
+                            variant="fab"
+                            aria-label="Wicket"
+                            color="primary"
+                            onClick={() => props.history.push('/match/wicket')}
+                        >
+                            {'W'}
+                        </Button>
+                    </Tooltip>
+                    <Tooltip title="Set the delivery to be a no ball">
+                        <FormControlLabel
+                            style={{ float: 'right' }}
+                            label="No ball"
+                            control={
+                                <Switch
+                                    color="secondary"
+                                    checked={noBall}
+                                    onChange={ev => (ev.target.checked ? noBallPressed() : legalBallPressed())}
+                                />
+                            }
+                        />
+                    </Tooltip>
                 </Grid>
                 <Grid container>
                     <Grid item xs={12}>
@@ -137,6 +142,7 @@ export default withRouter((props: EntryPanelProps) => {
                 <Grid container>
                     <ScoresEntry
                         deliveryOutcome={getDeliveryOutcome()}
+                        scoreType={scoreType}
                         getScores={getScoresFunc()}
                         action={delivery}
                         hasBoundaries={getHasBoundaries()}

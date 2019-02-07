@@ -2,6 +2,7 @@ import * as React from 'react';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import Hidden from '@material-ui/core/Hidden';
+import Tooltip from '../../Tooltip';
 
 export enum ScoreType {
     Runs,
@@ -33,16 +34,18 @@ export default (props: ScoreTypeSelectProps) => (
             {items.map((item, idx) => (
                 <React.Fragment key={item.scoreType}>
                     {(!props.noBall || item.availableForNoBall) && (
-                        <FormControlLabel
-                            label={item.xsLabel}
-                            style={idx < items.length - 1 ? radioStyle : {}}
-                            control={
-                                <Radio
-                                    checked={props.selectedType === item.scoreType}
-                                    onChange={() => props.scoreTypeChange(item.scoreType)}
-                                />
-                            }
-                        />
+                        <Tooltip title={`Set the delivery to be ${item.label}`}>
+                            <FormControlLabel
+                                label={item.xsLabel}
+                                style={idx < items.length - 1 ? radioStyle : {}}
+                                control={
+                                    <Radio
+                                        checked={props.selectedType === item.scoreType}
+                                        onChange={() => props.scoreTypeChange(item.scoreType)}
+                                    />
+                                }
+                            />
+                        </Tooltip>
                     )}
                 </React.Fragment>
             ))}
@@ -51,16 +54,18 @@ export default (props: ScoreTypeSelectProps) => (
             {items.map(item => (
                 <React.Fragment key={item.scoreType}>
                     {(!props.noBall || item.availableForNoBall) && (
-                        <FormControlLabel
-                            label={item.label}
-                            style={radioStyle}
-                            control={
-                                <Radio
-                                    checked={props.selectedType === item.scoreType}
-                                    onChange={() => props.scoreTypeChange(item.scoreType)}
-                                />
-                            }
-                        />
+                        <Tooltip title={`Set the delivery to be ${item.label}`}>
+                            <FormControlLabel
+                                label={item.label}
+                                style={radioStyle}
+                                control={
+                                    <Radio
+                                        checked={props.selectedType === item.scoreType}
+                                        onChange={() => props.scoreTypeChange(item.scoreType)}
+                                    />
+                                }
+                            />
+                        </Tooltip>
                     )}
                 </React.Fragment>
             ))}
