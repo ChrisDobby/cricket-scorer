@@ -117,7 +117,9 @@ export default withRouter((props: EntryPanelProps) => {
                             {'W'}
                         </Button>
                     </Tooltip>
-                    <Tooltip title="Set the delivery to be a no ball">
+                    <Tooltip
+                        title={noBall ? 'Set the delivery to not be a no ball' : 'Set the delivery to be a no ball'}
+                    >
                         <FormControlLabel
                             style={{ float: 'right' }}
                             label="No ball"
