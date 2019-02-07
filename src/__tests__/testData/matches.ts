@@ -79,6 +79,7 @@ export const startedInnings: Innings = {
     },
     bowlers: [],
     fallOfWickets: [],
+    maximumOvers: 50,
 };
 
 const completedInnings = {

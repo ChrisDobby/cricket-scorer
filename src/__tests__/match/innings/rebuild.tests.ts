@@ -12,6 +12,7 @@ describe('rebuild', () => {
         wickets: 0,
         completedOvers: 0,
         totalOvers: '0',
+        maximumOvers: 50,
         events: [],
         batting: {
             extras: {

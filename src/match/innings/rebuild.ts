@@ -7,6 +7,7 @@ const newInnings = (innings: domain.Innings): domain.Innings => ({
     wickets: 0,
     completedOvers: 0,
     totalOvers: '0',
+    maximumOvers: innings.maximumOvers,
     events: [],
     batting: {
         extras: {
