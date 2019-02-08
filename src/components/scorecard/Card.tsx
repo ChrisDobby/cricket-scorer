@@ -31,7 +31,10 @@ export default (props: ScorecardProps) => {
     const [continueError, setContinueError] = React.useState(false);
 
     const canContinue = () =>
-        props.isAuthenticated && typeof match !== 'undefined' && props.matchUser(match) === props.userProfile.id;
+        props.isAuthenticated &&
+        typeof match !== 'undefined' &&
+        props.matchUser(match) === props.userProfile.id &&
+        !match.complete;
 
     const continueScoring = async () => {
         try {

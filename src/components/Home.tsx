@@ -33,6 +33,7 @@ interface HomeProps {
 export default withStyles(homePageStyles)((props: HomeProps) => {
     const canContinueCurrentMatch =
         props.storedMatch &&
+        !props.storedMatch.match.complete &&
         !outOfDate(props.storedMatch.match.date) &&
         (props.storedMatch.match.user === props.offlineUser.id ||
             (props.isAuthenticated && props.userProfile.id === props.storedMatch.match.user) ||
