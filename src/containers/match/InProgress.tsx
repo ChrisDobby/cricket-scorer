@@ -21,7 +21,7 @@ const InProgress = (props: any) => {
         <InProgressComponent
             {...props}
             inProgress={props.inProgressMatchStore}
-            storeMatch={storeMatch(props.inProgressMatchStore.setId)}
+            storeMatch={storeMatch(props.isAuthenticated, props.inProgressMatchStore.setId)}
         />
     );
 };

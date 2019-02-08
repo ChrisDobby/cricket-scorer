@@ -13,7 +13,7 @@ const CreateMatch = (props: any) => {
     return (
         <NewMatch
             inProgress={props.inProgressMatchStore}
-            storeMatch={storeMatch(props.inProgressMatchStore.setId)}
+            storeMatch={storeMatch(props.isAuthenticated, props.inProgressMatchStore.setId)}
             storedMatch={matchStorage(localStorage).getMatch()}
             {...props}
         />

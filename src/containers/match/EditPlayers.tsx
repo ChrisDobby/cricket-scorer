@@ -13,7 +13,7 @@ const InProgress = (props: any) => {
         <Players
             {...props}
             inProgress={props.inProgressMatchStore}
-            storeMatch={storeMatch(props.inProgressMatchStore.setId)}
+            storeMatch={storeMatch(props.isAuthenticated, props.inProgressMatchStore.setId)}
         />
     );
 };

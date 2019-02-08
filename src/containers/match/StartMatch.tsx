@@ -13,6 +13,7 @@ interface StartMatchProps {
     inProgressMatchStore: InProgressMatchStore;
     history: History;
     userProfile: Profile;
+    isAuthenticated: boolean;
 }
 
 const StartMatch = (props: StartMatchProps) => {
@@ -22,7 +23,7 @@ const StartMatch = (props: StartMatchProps) => {
     return (
         <StartMatchComponent
             inProgress={props.inProgressMatchStore}
-            storeMatch={storeMatch(props.inProgressMatchStore.setId)}
+            storeMatch={storeMatch(props.isAuthenticated, props.inProgressMatchStore.setId)}
             {...props}
         />
     );

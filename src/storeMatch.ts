@@ -13,7 +13,9 @@ const setAndWriteId = (setId: (id: string) => void) => (id: string) => {
     }
 };
 
-export default (setId: (id: string) => void) =>
-    storeMatch([matchStorage(localStorage).storeMatch, apiStorage(setAndWriteId(setId)).storeMatch]);
+export default (isAuthenticated: boolean, setId: (id: string) => void) =>
+    isAuthenticated
+        ? storeMatch([matchStorage(localStorage).storeMatch, apiStorage(setAndWriteId(setId)).storeMatch])
+        : storeMatch([matchStorage(localStorage).storeMatch]);
 
 export { storeMatch };

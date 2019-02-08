@@ -10,16 +10,17 @@ import PageContext from '../../context/PageContext';
 interface WicketProps {
     inProgressMatchStore: InProgressMatchStore;
     userProfile: Profile;
+    isAuthenticated: boolean;
 }
 
-const Wicket = ({ inProgressMatchStore, userProfile }: WicketProps) => {
+const Wicket = ({ inProgressMatchStore, userProfile, isAuthenticated }: WicketProps) => {
     const { setOptions } = React.useContext(PageContext);
     React.useEffect(() => setOptions({ showMatchesLink: true }), []);
 
     return (
         <WicketComponent
             inProgress={inProgressMatchStore}
-            storeMatch={storeMatch(inProgressMatchStore.setId)}
+            storeMatch={storeMatch(isAuthenticated, inProgressMatchStore.setId)}
             userProfile={userProfile}
         />
     );
