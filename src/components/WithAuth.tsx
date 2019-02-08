@@ -38,12 +38,11 @@ export default (Component: any) => (props: WithAuthProps) => {
         <Component
             {...props}
             status={status}
-            offlineUser={offlineUser}
             login={login}
             logout={logout}
             isAuthenticated={isAuthenticated}
             canAuthenticate={status !== OFFLINE && auth0}
-            userProfile={userProfile}
+            userProfile={isAuthenticated ? userProfile : offlineUser}
         />
     );
 };

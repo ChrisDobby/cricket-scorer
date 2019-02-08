@@ -4,7 +4,6 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import NavBar from './components/NavBar';
 import WithAuth from './components/WithAuth';
-import WithRequiredAuth from './components/WithRequiredAuth';
 import './routes.css';
 import { History } from 'history';
 
@@ -33,13 +32,13 @@ const Routes = ({ location, history }: { location: any; history: History }) => (
                                 <Route exact path="/" component={WithAuth(Home)} />
                                 <Route exact path="/auth" render={(props: any) => <AuthCallback {...props} />} />
                                 <Route exact path="/match" render={(props: any) => <Match {...props} />} />
-                                <Route exact path="/match/create" component={WithRequiredAuth(CreateMatch)} />
-                                <Route exact path="/match/start" component={WithRequiredAuth(StartMatch)} />
-                                <Route exact path="/match/inprogress" component={WithRequiredAuth(InProgress)} />
-                                <Route exact path="/match/wicket" component={WithRequiredAuth(Wicket)} />
-                                <Route exact path="/match/editplayers" component={WithRequiredAuth(EditPlayers)} />
-                                <Route exact path="/match/editevents" component={WithRequiredAuth(EditEvents)} />
-                                <Route exact path="/match/editteams" component={WithRequiredAuth(EditTeams)} />
+                                <Route exact path="/match/create" component={WithAuth(CreateMatch)} />
+                                <Route exact path="/match/start" component={WithAuth(StartMatch)} />
+                                <Route exact path="/match/inprogress" component={WithAuth(InProgress)} />
+                                <Route exact path="/match/wicket" component={WithAuth(Wicket)} />
+                                <Route exact path="/match/editplayers" component={WithAuth(EditPlayers)} />
+                                <Route exact path="/match/editevents" component={WithAuth(EditEvents)} />
+                                <Route exact path="/match/editteams" component={WithAuth(EditTeams)} />
                                 <Route
                                     exact
                                     path="/scorecard/:id?"

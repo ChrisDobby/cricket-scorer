@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import MatchStatus from './MatchStatus';
 import aboutText from './aboutText';
 import homePageStyles from './homePageStyles';
-import { OFFLINE, ONLINE } from '../context/networkStatus';
+import { ONLINE } from '../context/networkStatus';
 import { StoredMatch, Profile } from '../domain';
 import useInProgressMatches from './useInProgressMatches';
 import outOfDate from '../match/outOfDate';
@@ -20,7 +20,6 @@ const Logo = require('../../images/icon_192.png');
 
 interface HomeProps {
     storedMatch: StoredMatch;
-    offlineUser: Profile;
     userProfile: Profile;
     isAuthenticated: boolean;
     canAuthenticate: boolean;
@@ -35,9 +34,7 @@ export default withStyles(homePageStyles)((props: HomeProps) => {
         props.storedMatch &&
         !props.storedMatch.match.complete &&
         !outOfDate(props.storedMatch.match.date) &&
-        (props.storedMatch.match.user === props.offlineUser.id ||
-            (props.isAuthenticated && props.userProfile.id === props.storedMatch.match.user) ||
-            props.status === OFFLINE);
+        props.userProfile.id === props.storedMatch.match.user;
     const showScorecard = (id: string | undefined) => props.history.push(`/scorecard${id ? `/${id}` : ''}`);
 
     const goToMatchCentre = () => props.history.push('/matchcentre');
