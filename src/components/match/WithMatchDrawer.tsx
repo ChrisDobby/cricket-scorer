@@ -257,7 +257,6 @@ export default (Component: any) => (props: WithMatchDrawerProps) => {
                     complete={completeMatch}
                     cancel={cancelCompleteMatch}
                     calculateResult={() => calculateResult(props.inProgressMatchStore.match)}
-                    undoPrevious={props.undoPreviousDelivery}
                 />
             )}
             {changeOvers &&

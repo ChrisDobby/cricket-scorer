@@ -156,18 +156,20 @@ const InProgress = (props: InProgressProps) => {
                                             undoPrevious={ballFunctions.undoPreviousDelivery}
                                         />
                                     )}
-                                {props.inProgress.provisionalMatchComplete && (
-                                    <CompleteMatch
-                                        homeTeam={props.inProgress.match.homeTeam.name}
-                                        awayTeam={props.inProgress.match.awayTeam.name}
-                                        disallowCancel
-                                        complete={ballFunctions.completeMatch}
-                                        cancel={() => {}}
-                                        calculateResult={() => calculateResult(props.inProgress.match)}
-                                        undoPrevious={ballFunctions.undoPreviousDelivery}
-                                    />
-                                )}
                             </>
+                        )}
+                        {props.inProgress.provisionalMatchComplete && (
+                            <CompleteMatch
+                                homeTeam={props.inProgress.match.homeTeam.name}
+                                awayTeam={props.inProgress.match.awayTeam.name}
+                                complete={result => {
+                                    ballFunctions.completeMatch(result);
+                                    props.history.push('/scorecard');
+                                }}
+                                disallowCancel
+                                cancel={() => {}}
+                                calculateResult={() => calculateResult(props.inProgress.match)}
+                            />
                         )}
                     </>
                 )}

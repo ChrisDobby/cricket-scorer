@@ -20,7 +20,6 @@ interface CompleteMatchProps {
     complete: (result: MatchResult) => void;
     cancel: () => void;
     calculateResult: () => MatchResult | undefined;
-    undoPrevious: () => void;
 }
 
 export default (props: CompleteMatchProps) => {
@@ -114,11 +113,6 @@ export default (props: CompleteMatchProps) => {
                     {!props.disallowCancel && (
                         <Button onClick={props.cancel} color="primary">
                             Cancel
-                        </Button>
-                    )}
-                    {props.disallowCancel && (
-                        <Button onClick={props.undoPrevious} color="primary">
-                            Undo previous
                         </Button>
                     )}
                 </DialogActions>
