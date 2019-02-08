@@ -8,6 +8,7 @@ import WithInProgressStore from '../../components/WithInProgressStore';
 import { InProgressMatchStore } from '../../stores/inProgressMatchStore';
 import { Profile } from '../../domain';
 import PageContext from '../../context/PageContext';
+import WithLoggedOutWarning from '../../components/match/WithLoggedOutWarning';
 
 interface StartMatchProps {
     inProgressMatchStore: InProgressMatchStore;
@@ -16,7 +17,7 @@ interface StartMatchProps {
     isAuthenticated: boolean;
 }
 
-const StartMatch = (props: StartMatchProps) => {
+const StartMatch = WithLoggedOutWarning((props: StartMatchProps) => {
     const { setOptions } = React.useContext(PageContext);
     React.useEffect(() => setOptions({ showMatchesLink: true }), []);
 
@@ -27,6 +28,6 @@ const StartMatch = (props: StartMatchProps) => {
             {...props}
         />
     );
-};
+});
 
 export default WithInProgressStore()(inject('inProgressMatchStore')(WithInProgressMatch(StartMatch)));

@@ -5,8 +5,9 @@ import storeMatch from '../../storeMatch';
 import matchStorage from '../../stores/matchStorage';
 import WithInProgressStore from '../../components/WithInProgressStore';
 import PageContext from '../../context/PageContext';
+import WithLoggedOutWarning from '../../components/match/WithLoggedOutWarning';
 
-const CreateMatch = (props: any) => {
+const CreateMatch = WithLoggedOutWarning((props: any) => {
     const { setOptions } = React.useContext(PageContext);
     React.useEffect(() => setOptions({ showMatchesLink: true }), []);
 
@@ -18,6 +19,6 @@ const CreateMatch = (props: any) => {
             {...props}
         />
     );
-};
+});
 
 export default WithInProgressStore()(inject('inProgressMatchStore')(CreateMatch));

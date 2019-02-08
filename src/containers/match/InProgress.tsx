@@ -7,8 +7,9 @@ import WithInProgressMatch from '../../components/WithInProgressMatch';
 import WithMatchDrawer from '../../components/match/WithMatchDrawer';
 import WithMatchActions from '../../components/match/WithMatchActions';
 import PageContext from '../../context/PageContext';
+import WithLoggedOutWarning from '../../components/match/WithLoggedOutWarning';
 
-const InProgress = (props: any) => {
+const InProgress = WithLoggedOutWarning((props: any) => {
     const { setOptions } = React.useContext(PageContext);
     React.useEffect(
         () =>
@@ -24,7 +25,7 @@ const InProgress = (props: any) => {
             storeMatch={storeMatch(props.isAuthenticated, props.inProgressMatchStore.setId)}
         />
     );
-};
+});
 
 export default WithInProgressStore()(
     inject('inProgressMatchStore')(WithMatchActions(WithInProgressMatch(WithMatchDrawer(InProgress)))),

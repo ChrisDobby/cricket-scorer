@@ -6,6 +6,7 @@ import storeMatch from '../../storeMatch';
 import WithInProgressStore from '../../components/WithInProgressStore';
 import { Profile } from '../../domain';
 import PageContext from '../../context/PageContext';
+import WithLoggedOutWarning from '../../components/match/WithLoggedOutWarning';
 
 interface WicketProps {
     inProgressMatchStore: InProgressMatchStore;
@@ -13,7 +14,7 @@ interface WicketProps {
     isAuthenticated: boolean;
 }
 
-const Wicket = ({ inProgressMatchStore, userProfile, isAuthenticated }: WicketProps) => {
+const Wicket = WithLoggedOutWarning(({ inProgressMatchStore, userProfile, isAuthenticated }: WicketProps) => {
     const { setOptions } = React.useContext(PageContext);
     React.useEffect(() => setOptions({ showMatchesLink: true }), []);
 
@@ -24,6 +25,6 @@ const Wicket = ({ inProgressMatchStore, userProfile, isAuthenticated }: WicketPr
             userProfile={userProfile}
         />
     );
-};
+});
 
 export default WithInProgressStore()(inject('inProgressMatchStore')(Wicket));
