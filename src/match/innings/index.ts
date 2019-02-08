@@ -14,6 +14,7 @@ import rebuild from './rebuild';
 import rollback from './rollback';
 import editOvers from './editOvers';
 import changeBowler from './changeBowler';
+import complete from './complete';
 
 export default (config: MatchConfig, getTeam: (type: TeamType) => Team) => {
     const Delivery = delivery(config, getTeam);
@@ -27,6 +28,7 @@ export default (config: MatchConfig, getTeam: (type: TeamType) => Team) => {
         batterUnavailable,
         batterAvailable,
         editOvers,
+        complete,
         create: create(getTeam),
         newBowler: newBowler(getTeam),
         newBatter: newBatter(getTeam),

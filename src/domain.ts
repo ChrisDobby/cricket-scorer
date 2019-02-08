@@ -192,6 +192,7 @@ export interface Innings {
     bowlers: Bowler[];
     fallOfWickets: FallOfWicket[];
     maximumOvers?: number;
+    completeTime?: number;
 }
 
 export interface Team {

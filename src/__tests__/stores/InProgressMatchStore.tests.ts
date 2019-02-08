@@ -484,6 +484,14 @@ describe('inProgressMatchStore', () => {
             expect((inProgressMatchStore.match as domain.Match).innings[0].status).toBe(domain.InningsStatus.AllOut);
         });
 
+        it('should set the complete time', () => {
+            const inProgressMatchStore = getMatchStore(matches.matchWithStartedOver);
+
+            inProgressMatchStore.completeInnings(domain.InningsStatus.AllOut);
+
+            expect((inProgressMatchStore.match as domain.Match).innings[0].completeTime).not.toBeUndefined();
+        });
+
         it('should throw an error if in progress passed', () => {
             const inProgressMatchStore = getMatchStore(matches.matchWithStartedOver);
 

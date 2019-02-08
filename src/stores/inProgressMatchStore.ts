@@ -376,8 +376,8 @@ class InProgressMatchStore implements domain.InProgressMatch {
         if (status === domain.InningsStatus.InProgress) {
             throw new Error('cannot complete with in progress status');
         }
-        this.currentInnings.status = status;
 
+        this.updateMatch(this.match, this.matchInnings.complete(this.currentInnings, status, new Date().getTime()));
         this.startBreak(domain.BreakType.Innings);
     };
 
