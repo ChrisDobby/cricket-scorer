@@ -35,6 +35,7 @@ describe.skip('Batting', () => {
                 score={100}
                 wickets={1}
                 totalOvers={'20'}
+                calculateMinutes={() => 1}
             />,
         );
 

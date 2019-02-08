@@ -5,7 +5,7 @@ import Batting from './Batting';
 import FallOfWickets from './FallOfWickets';
 import Bowling from './Bowling';
 import TeamTotal from './TeamTotal';
-import { Innings as ScorecardInnings, TeamType, Team, FallOfWicket } from '../../domain';
+import { Innings as ScorecardInnings, TeamType, Team, FallOfWicket, BattingInnings } from '../../domain';
 
 interface InningsProps {
     innings: ScorecardInnings;
@@ -13,9 +13,17 @@ interface InningsProps {
     getBowlerAtIndex: (index: number) => string;
     getFielderAtIndex: (index: number) => string;
     sameBowlerAndFielder: (bowlerIndex: number, fielderIndex: number) => boolean;
+    calculateMinutes: (innings: BattingInnings) => number;
 }
 
-export default ({ innings, getTeam, getBowlerAtIndex, getFielderAtIndex, sameBowlerAndFielder }: InningsProps) => {
+export default ({
+    innings,
+    getTeam,
+    getBowlerAtIndex,
+    getFielderAtIndex,
+    sameBowlerAndFielder,
+    calculateMinutes,
+}: InningsProps) => {
     const battingTeam = getTeam(innings.battingTeam);
     const bowlingTeam = getTeam(innings.bowlingTeam);
     const fallOfWicketWithName = (fow: FallOfWicket) => ({
@@ -38,6 +46,7 @@ export default ({ innings, getTeam, getBowlerAtIndex, getFielderAtIndex, sameBow
                     getBowlerAtIndex={getBowlerAtIndex}
                     getFielderAtIndex={getFielderAtIndex}
                     sameBowlerAndFielder={sameBowlerAndFielder}
+                    calculateMinutes={calculateMinutes}
                 />
                 <Hidden mdDown>
                     <Grid item lg={1} />

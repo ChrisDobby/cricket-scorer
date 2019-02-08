@@ -17,11 +17,6 @@ import * as globalStyles from '../styles';
 import TextUpdateNotify from '../TextUpdateNotify';
 import HeaderText from './HeaderText';
 
-const calculateMinutes = (timeIn: number, timeOut: number | undefined) => {
-    const toTime = timeOut || new Date().getTime();
-    return Math.round((toTime - timeIn) / 60000);
-};
-
 const calculateStrikeRate = (runs: number, balls: number) =>
     (runs === 0 || balls === 0 ? 0 : (runs / balls) * 100).toFixed(2);
 
@@ -76,6 +71,7 @@ interface BattingProps {
     getBowlerAtIndex: (index: number) => string;
     getFielderAtIndex: (index: number) => string;
     sameBowlerAndFielder: (bowlerIndex: number, fielderIndex: number) => boolean;
+    calculateMinutes: (innings: BattingInnings) => number;
 }
 
 const Batting = ({
@@ -88,6 +84,7 @@ const Batting = ({
     getBowlerAtIndex,
     getFielderAtIndex,
     sameBowlerAndFielder,
+    calculateMinutes,
 }: BattingProps) => (
     <Grid item lg={8} md={12} sm={12} xs={12}>
         <Grid container className={classes.header}>
@@ -150,16 +147,7 @@ const Batting = ({
                     <Hidden smDown>
                         <Grid item md={1}>
                             <Typography variant="body1" style={styles.numberCell}>
-                                <TextUpdateNotify
-                                    text={
-                                        batter.innings
-                                            ? `${calculateMinutes(
-                                                  batter.innings.timeIn,
-                                                  batter.innings.wicket ? batter.innings.wicket.time : undefined,
-                                              )}`
-                                            : ''
-                                    }
-                                />
+                                <TextUpdateNotify text={batter.innings ? `${calculateMinutes(batter.innings)}` : ''} />
                             </Typography>
                         </Grid>
                     </Hidden>

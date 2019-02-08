@@ -17,6 +17,7 @@ import { bindMatchStorage } from '../../../stores/withMatchStorage';
 import { getTeam } from '../../../match/utilities';
 import calculateResult from '../../../match/calculateResult';
 import getPlayers from '../../../match/getPlayers';
+import battingMinutes from '../../../match/innings/battingMinutes';
 
 const styles = (theme: any) => ({
     root: {
@@ -55,6 +56,9 @@ const InProgress = (props: InProgressProps) => {
             : props.inProgress.previousBowlerFromEnd.playerIndex;
 
     const get = (innings: domain.Innings) => getPlayers(props.inProgress.match, innings);
+
+    const calculateMinutes = (innings: domain.BattingInnings) =>
+        battingMinutes(() => new Date().getTime())(innings, props.inProgress.match.breaks);
 
     return (
         <Paper className={props.classes.root}>
@@ -136,6 +140,7 @@ const InProgress = (props: InProgressProps) => {
                                                     sameBowlerAndFielder={
                                                         get(props.inProgress.currentInnings).sameBowlerAndFielder
                                                     }
+                                                    calculateMinutes={calculateMinutes}
                                                 />
                                             </EntryContainer>
                                         </>

@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { default as ReactSwipeableViews } from 'react-swipeable-views';
-import { Match as MatchEntity, Innings as MatchInnings } from '../../domain';
+import { Match as MatchEntity, Innings as MatchInnings, BattingInnings } from '../../domain';
 import Innings from './Innings';
 import MatchHeading from './MatchHeading';
 import { getTeam } from '../../match/utilities';
@@ -13,6 +13,7 @@ import { Button } from '@material-ui/core';
 import { textCentre } from './styles';
 import getPlayers from '../../match/getPlayers';
 import Tooltip from '../Tooltip';
+import battingMinutes from '../../match/innings/battingMinutes';
 
 const inningsNumberDescription = (innings: number): string => {
     const numberDescription = (): string => {
@@ -54,6 +55,14 @@ export default withStyles(styles)((props: ScorecardProps) => {
     );
 
     const get = (innings: MatchInnings) => getPlayers(props.cricketMatch, innings);
+
+    const calculateMinutes = (innings: BattingInnings) =>
+        battingMinutes(() => new Date().getTime())(
+            innings,
+            props.cricketMatch.breaks,
+            props.cricketMatch.innings[selectedInningsIndex].completeTime,
+        );
+
     return (
         <Paper className={props.classes.root} elevation={1}>
             <MatchHeading
@@ -93,6 +102,7 @@ export default withStyles(styles)((props: ScorecardProps) => {
                         getBowlerAtIndex={get(inn).getBowlerAtIndex}
                         getFielderAtIndex={get(inn).getFielderAtIndex}
                         sameBowlerAndFielder={get(inn).sameBowlerAndFielder}
+                        calculateMinutes={calculateMinutes}
                     />
                 ))}
             </ReactSwipeableViews>
