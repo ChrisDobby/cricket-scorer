@@ -288,6 +288,14 @@ describe('inProgressMatchStore', () => {
 
             expect(inProgressMatchStore.match.innings[0].events).toHaveLength(2);
         });
+
+        it('should remove the delivery if there is no current bowler', () => {
+            const inProgressMatchStore = getMatchStore(matches.matchWithOverNotReadyToComplete);
+            inProgressMatchStore.currentBowlerIndex = undefined;
+            inProgressMatchStore.undoPreviousDelivery();
+
+            expect(inProgressMatchStore.match.innings[0].events).toHaveLength(2);
+        });
     });
 
     describe('rolledBackInnings', () => {

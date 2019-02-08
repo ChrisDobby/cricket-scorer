@@ -41,6 +41,9 @@ const InProgress = (props: InProgressProps) => {
     const ballFunctions = bindStorage({
         delivery: props.inProgress.delivery,
         completeOver: props.inProgress.completeOver,
+        undoPreviousDelivery: props.inProgress.undoPreviousDelivery,
+        completeInnings: props.inProgress.completeInnings,
+        completeMatch: props.inProgress.completeMatch,
     });
 
     const disallowedPlayers = () =>

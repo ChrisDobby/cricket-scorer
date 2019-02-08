@@ -323,8 +323,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
     @action undoPreviousDelivery = () => {
         if (
             typeof this.currentInnings === 'undefined' ||
-            typeof this.currentBatter === 'undefined' ||
-            typeof this.currentBowler === 'undefined'
+            this.currentInnings.events.filter(ev => (<domain.Delivery>ev).overNumber > 0).length === 0
         ) {
             return;
         }
