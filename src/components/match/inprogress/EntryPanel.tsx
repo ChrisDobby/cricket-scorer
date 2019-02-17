@@ -11,6 +11,7 @@ import { WarningModal, WarningType } from './WarningModal';
 import DeliveryNotify from './DeliveryNotify';
 import ScoreTypeSelect, { ScoreType } from './ScoreTypeSelect';
 import Tooltip from '../../Tooltip';
+import Signals from './Signals';
 
 type EntryPanelProps = RouteComponentProps<{}> & {
     overComplete: boolean;
@@ -106,32 +107,35 @@ export default withRouter((props: EntryPanelProps) => {
         <>
             <div>
                 <Grid container>
-                    <Tooltip title="Record a wicket">
-                        <Button
-                            style={{ marginRight: '10px' }}
-                            variant="fab"
-                            aria-label="Wicket"
-                            color="primary"
-                            onClick={() => props.history.push('/match/wicket')}
+                    <div style={{ flex: 1 }}>
+                        <Tooltip title="Record a wicket">
+                            <Button
+                                style={{ marginRight: '10px' }}
+                                variant="fab"
+                                aria-label="Wicket"
+                                color="primary"
+                                onClick={() => props.history.push('/match/wicket')}
+                            >
+                                {'W'}
+                            </Button>
+                        </Tooltip>
+                        <Tooltip
+                            title={noBall ? 'Set the delivery to not be a no ball' : 'Set the delivery to be a no ball'}
                         >
-                            {'W'}
-                        </Button>
-                    </Tooltip>
-                    <Tooltip
-                        title={noBall ? 'Set the delivery to not be a no ball' : 'Set the delivery to be a no ball'}
-                    >
-                        <FormControlLabel
-                            style={{ float: 'right' }}
-                            label="No ball"
-                            control={
-                                <Switch
-                                    color="secondary"
-                                    checked={noBall}
-                                    onChange={ev => (ev.target.checked ? noBallPressed() : legalBallPressed())}
-                                />
-                            }
-                        />
-                    </Tooltip>
+                            <FormControlLabel
+                                style={{ marginLeft: '8px' }}
+                                label="No ball"
+                                control={
+                                    <Switch
+                                        color="secondary"
+                                        checked={noBall}
+                                        onChange={ev => (ev.target.checked ? noBallPressed() : legalBallPressed())}
+                                    />
+                                }
+                            />
+                        </Tooltip>
+                    </div>
+                    <Signals scoreType={scoreType} noBall={noBall} />
                 </Grid>
                 <Grid container>
                     <Grid item xs={12}>
