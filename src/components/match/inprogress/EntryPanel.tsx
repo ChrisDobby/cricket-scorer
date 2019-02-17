@@ -105,7 +105,7 @@ export default withRouter((props: EntryPanelProps) => {
 
     return (
         <>
-            <div>
+            <div style={{ width: '100%' }}>
                 <Grid container>
                     <div style={{ flex: 1 }}>
                         <Tooltip title="Record a wicket">
