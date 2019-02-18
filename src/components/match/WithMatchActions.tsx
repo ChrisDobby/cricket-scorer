@@ -24,11 +24,9 @@ const actionProps = (inProgressMatchStore: InProgressMatchStore, isAuthenticated
     });
 };
 
-export default (Component: any) => (props: any) => {
-    return (
-        <Component
-            {...props}
-            {...actionProps(props.isAuthenticated, props.inProgressMatchStore, () => props.userProfile.id)}
-        />
-    );
-};
+export default (Component: any) => (props: any) => (
+    <Component
+        {...props}
+        {...actionProps(props.inProgressMatchStore, props.isAuthenticated, () => props.userProfile.id)}
+    />
+);
