@@ -10,7 +10,7 @@ import PageContext from '../context/PageContext';
 
 const createMatchRoute = '/match/create';
 const getAddButton = (props: any) => (
-    <Tooltip title={props.isAuthenticated ? 'Score new match' : 'Login or register and score a new match'}>
+    <Tooltip title="props.isAuthenticated">
         <Button
             aria-label="create new match"
             variant="fab"

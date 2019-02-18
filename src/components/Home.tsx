@@ -134,11 +134,7 @@ export default withStyles(homePageStyles)((props: HomeProps) => {
                                 </Button>
                                 <Typography variant="subtitle1">To start scoring a new match</Typography>
                                 <Button color="primary" onClick={goToCreateMatch}>
-                                    {`${
-                                        props.isAuthenticated || !props.canAuthenticate
-                                            ? 'Create match'
-                                            : 'Login and create match'
-                                    }`}
+                                    Create match
                                 </Button>
                             </CardContent>
                         </div>
