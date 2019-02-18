@@ -8,7 +8,11 @@ const newBatterInnings = () => ({
     timeIn: new Date().getTime(),
 });
 
-export default (getTeam: (type: TeamType) => Team) => (innings: Innings, batterIndex: number): [Innings, number] => {
+export default (getTeam: (type: TeamType) => Team) => (
+    innings: Innings,
+    batterIndex: number,
+    currentIndex?: number,
+): [Innings, number] => {
     const nextIndex = innings.batting.batters
         .map((batter, index) => ({
             batter,
@@ -32,5 +36,9 @@ export default (getTeam: (type: TeamType) => Team) => (innings: Innings, batterI
         },
     };
 
-    return [updatedInnings, nextIndex];
+    const currentBatter = currentIndex ? updatedInnings.batting.batters[currentIndex] : undefined;
+    const updatedIndex =
+        currentBatter && currentBatter.innings && !currentBatter.innings.wicket ? <number>currentIndex : nextIndex;
+
+    return [updatedInnings, updatedIndex];
 };

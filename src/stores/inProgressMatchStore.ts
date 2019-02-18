@@ -239,7 +239,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
                   ),
                   batterIfUnavailable.index,
               ]
-            : this.matchInnings.newBatter(this.currentInnings, playerIndex);
+            : this.matchInnings.newBatter(this.currentInnings, playerIndex, this.currentBatterIndex);
 
         this.updateMatch(this.match, innings);
         this.currentBatterIndex = batterIndex;
