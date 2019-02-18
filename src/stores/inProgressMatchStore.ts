@@ -164,6 +164,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
         };
 
         this.match.status = status(this.match);
+        this.version = this.version + 1;
     };
 
     @action undoToss = () => {
@@ -173,6 +174,7 @@ class InProgressMatchStore implements domain.InProgressMatch {
 
         this.match = { ...this.match, toss: undefined, innings: [] };
         this.match.status = status(this.match);
+        this.version = this.version + 1;
     };
 
     @action startInnings = (
