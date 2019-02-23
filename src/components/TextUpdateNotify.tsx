@@ -13,18 +13,23 @@ const textStyle: React.CSSProperties = {
 export default (props: TextUpdateNotifyProps) => {
     const [initialised, setInitialised] = React.useState(false);
     const textComponent = React.useRef(null as HTMLSpanElement | null);
+    const updateTimer = React.useRef(null as number | NodeJS.Timer | null);
 
     React.useEffect(() => {
+        if (updateTimer.current) return;
         if (!initialised || !textComponent.current) {
             setInitialised(true);
             return;
         }
+        const colourToChangeTo = props.highlightBackgroundColour || defaultColour;
         const originalColor = textComponent.current.style.backgroundColor;
-        textComponent.current.style.backgroundColor = props.highlightBackgroundColour || defaultColour;
-        setTimeout(() => {
+
+        textComponent.current.style.backgroundColor = colourToChangeTo;
+        updateTimer.current = setTimeout(() => {
             if (textComponent.current) {
                 textComponent.current.style.backgroundColor = originalColor;
             }
+            updateTimer.current = null;
         }, 1000);
     }, [props.text]);
 
