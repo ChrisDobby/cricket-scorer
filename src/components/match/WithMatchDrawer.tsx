@@ -135,12 +135,22 @@ export default (Component: any) => (props: WithMatchDrawerProps) => {
     };
     const cancelChangeBowler = () => setChangeBowlerVerify(false);
 
+    const undoPrevious = () => {
+        props.undoPreviousDelivery();
+        setOpen(false);
+    };
+
+    const changeEnds = () => {
+        props.changeEnds();
+        setOpen(false);
+    };
+
     const items = [
         {
             ...allowedOption,
             text: 'Undo previous',
             icon: <Undo />,
-            action: props.undoPreviousDelivery,
+            action: undoPrevious,
             title: 'Undo the previous previous entry',
         },
         {
@@ -154,7 +164,7 @@ export default (Component: any) => (props: WithMatchDrawerProps) => {
             ...allowedOption,
             text: 'Change ends',
             icon: <SwapHoriz />,
-            action: props.changeEnds,
+            action: changeEnds,
             title: 'Swap the facing batter',
         },
         {
