@@ -21,6 +21,7 @@ export default (props: TextUpdateNotifyProps) => {
             setInitialised(true);
             return;
         }
+        textComponent.current.style.borderRadius = '5px';
         const colourToChangeTo = props.highlightBackgroundColour || defaultColour;
         const originalColor = textComponent.current.style.backgroundColor;
 
