@@ -45,7 +45,7 @@ export default (props: OverProps) => {
                 </Card>
             </Grid>
             {expanded &&
-                props.detail.events.map((e: any) => (
+                deliveries.map((e: any) => (
                     <Grid key={e.index} item xs={6} sm={4} md={3} lg={2}>
                         <EventCard event={e} rollback={() => props.rollback(e.index)} />
                     </Grid>
