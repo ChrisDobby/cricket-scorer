@@ -1,6 +1,6 @@
 {
-    "short_name": "Cricket Scores",
-    "name": "Cricket Scores Live",
+    "short_name": "Cricket Scorer",
+    "name": "Cricket Scorer",
     "icons": [
       {
         "src": "/icon_192.png",

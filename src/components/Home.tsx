@@ -58,12 +58,12 @@ export default withStyles(homePageStyles)((props: HomeProps) => {
             <Paper className={props.classes.paperStyle}>
                 <Grid container>
                     <Grid item sm={6} style={{ textAlign: 'center' }}>
-                        <img src={Logo} alt="cricket scores live" className={props.classes.logoStyle} />
+                        <img src={Logo} alt="cricket scorer" className={props.classes.logoStyle} />
                     </Grid>
                     <Grid item sm={6}>
                         <div className={props.classes.mainContentStyle}>
                             <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-                                Cricket scores live
+                                Cricket scorer
                             </Typography>
                             {inProgressMatches.length === 0 && (
                                 <Typography variant="h5" color="inherit" paragraph>
@@ -96,7 +96,7 @@ export default withStyles(homePageStyles)((props: HomeProps) => {
                         <div className={props.classes.cardDetailsStyle}>
                             <CardContent>
                                 <Typography component="h2" variant="h5">
-                                    About Cricket scores live
+                                    About Cricket scorer
                                 </Typography>
                                 <Typography variant="subtitle1" paragraph>
                                     {aboutText}

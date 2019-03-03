@@ -10,7 +10,7 @@ export type PageOptions = {
 
 export default React.createContext({
     stayWhenLoggingOut: false,
-    title: 'Cricket scores live',
+    title: 'Cricket scorer',
     showMatchesLink: false,
     button: undefined as ((props: any) => React.ReactNode) | undefined,
     openDrawer: undefined as (() => void) | undefined,

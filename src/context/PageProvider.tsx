@@ -2,7 +2,7 @@ import * as React from 'react';
 import PageContext, { PageOptions } from './PageContext';
 
 const defaultOptions: PageOptions = {
-    title: 'Cricket scores live',
+    title: 'Cricket scorer',
     stayWhenLoggingOut: false,
     showMatchesLink: false,
     button: undefined,

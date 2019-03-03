@@ -1,18 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta name="theme-color" content="#3367D6"/>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="Description" content="Cricket scores live allows you to score cricket matches (for free!) and view all games currently being scored with live updates.">
-        <title>Cricket scores live</title>
-    </head>
-    <body>
-        <div id="react-app"></div>
 
-        <script src="/bundle.js"></script>
-        <noscript>
-            You have javascript disabled.  This application requires javascript to run.....
-        </noscript>
-    </body>
+<head>
+    <meta name="theme-color" content="#3367D6" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="Description"
+        content="Cricket scorer allows you to score cricket matches (for free!) and view all games currently being scored with live updates.">
+    <title>Cricket scorer</title>
+    <style type="text/css">
+        .white-background {
+            background-color: #fff;
+        }
+
+        .header-border {
+            border-radius: 4px;
+        }
+
+        .header-shadow {
+            box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+        }
+
+        .header-display {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            box-sizing: border-box;
+        }
+
+        .display-box {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .display-flex {
+            flex-grow: 0;
+            max-width: 50%;
+            flex-basis: 50%;
+        }
+
+        .panel {
+            margin-left: 24px;
+            margin-right: 24px;
+        }
+
+        @media (min-width:1148px) {
+            .panel {
+                width: 1100px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        .header-panel {
+            color: #fff;
+            margin-bottom: 32px;
+            background-color: #3f51b5;
+        }
+
+        .display-padding {
+            padding: 48px;
+        }
+
+        @media (min-width:960px) {
+            .display-padding {
+                padding-right: 0;
+            }
+        }
+
+        .panel-height {
+            min-height: 56px;
+        }
+
+        @media (min-width:0px) and (orientation: landscape) {
+            .panel-height {
+                min-height: 48px;
+            }
+        }
+
+        @media (min-width:600px) {
+            .panel-height {
+                min-height: 64px;
+            }
+        }
+
+        .header-image {
+            margin: 30px;
+            max-height: 200px;
+        }
+
+        .text-display {
+            margin: 0;
+            display: block;
+        }
+
+        .header-text {
+            color: rgba(0, 0, 0, 0.87);
+            font-size: 3rem;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 400;
+            line-height: 1.04;
+            letter-spacing: 0em;
+        }
+
+        .detail-text {
+            color: rgba(0, 0, 0, 0.87);
+            font-size: 1.1rem;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 300;
+            line-height: 1.33;
+            letter-spacing: 0em;
+        }
+
+        .footer-text {
+            color: rgba(0, 0, 0, 0.87);
+            font-size: 0.875rem;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 500;
+            line-height: 1.57;
+            letter-spacing: 0.00714em;
+        }
+
+        .header-text-margin {
+            margin-bottom: 0.35em;
+        }
+
+        .detail-text-margin {
+            margin-bottom: 16px;
+        }
+
+        .text-colour {
+            color: inherit;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="react-app"></div>
+
+    <script src="/bundle.js"></script>
+    <noscript>
+        <div class="panel">
+            <div class="panel-height"></div>
+            <div class="white-background header-shadow header-border header-panel">
+                <div class="header-display">
+                    <div class="display-box display-flex" style="text-align: center;"><img src="/icon_192.png"
+                            alt="cricket scorer" class="header-image"></div>
+                    <div class="display-box display-flex">
+                        <div class="display-padding">
+                            <h1 class="text-display header-text text-colour header-text-margin">Cricket scorer</h1>
+                            <p class="text-display detail-text text-colour detail-text-margin">Cricket Scorer is a free
+                                online cricket scoring
+                                application. Users are able to create matches and score them, the scores and scorecards
+                                will
+                                be
+                                updated in real time in the match centre for anyone to view. The application can run
+                                without
+                                an
+                                internet connection (although live updates cannot be done with no connection) and can be
+                                installed onto devices.</p>
+                            <p class="text-display detail-text text-colour detail-text-margin">Javascript must be
+                                enabled to run the application.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer style="bottom: 0px;">
+                <h6 class="text-display footer-text text-colour">Icons made by <a href="http://www.freepik.com"
+                        title="Freepik">Freepik</a>
+                    from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a
+                        href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0"
+                        target="_blank" rel="noreferrer">CC 3.0 BY</a></h6>
+            </footer>
+        </div>
+    </noscript>
+</body>
+
 </html>

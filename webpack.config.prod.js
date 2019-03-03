@@ -27,7 +27,7 @@ module.exports = {
         }),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new SWPrecacheWebpackPlugin({
-            cacheId: 'cricket-scores-live',
+            cacheId: 'cricket-scorer',
             dontCacheBustUrlsMatching: /\.\w{8}\./,
             filename: 'service-worker.js',
             minify: true,
