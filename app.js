@@ -8,14 +8,6 @@ const compression = require('compression');
 const port = process.env.PORT || 5000;
 const app = express();
 
-app.get('*', (req, res, next) => {
-    if (req.headers['x-forwarded-proto'] !== 'https') {
-        res.redirect(`https://${req.hostname}${req.url}`);
-    } else {
-        next();
-    }
-});
-
 app.use(compression());
 app.use(express.static('dist'));
 

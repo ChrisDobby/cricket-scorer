@@ -3,14 +3,13 @@ const lighthouse = require('lighthouse');
 const chromeLauncher = require('chrome-launcher');
 
 const launchAndRun = (url, opts, config = null) =>
-    chromeLauncher.launch({ chromeFlags: opts.chromeFlags })
-        .then(chrome => {
-            opts.port = chrome.port;
-            return lighthouse(url, opts, config).then(results => chrome.kill().then(() => results.lhr));
-        });
+    chromeLauncher.launch({ chromeFlags: opts.chromeFlags }).then(chrome => {
+        opts.port = chrome.port;
+        return lighthouse(url, opts, config).then(results => chrome.kill().then(() => results.lhr));
+    });
 
 let allCategoriesOver90 = true;
-launchAndRun(process.argv[2] || 'https://cricket-scores-live.herokuapp.com', {})
+launchAndRun(process.argv[2] || 'https://cricket-scorer.chrisdobby.dev', {})
     .then(results => {
         Object.keys(results.categories).forEach(key => {
             const score = results.categories[key].score;
