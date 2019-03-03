@@ -12,10 +12,12 @@ const port = 3000;
 const app = express();
 const compiler = webpack(config);
 
-app.use(require('webpack-dev-middleware')(compiler, {
-    noInfo: true,
-    publicPath: config.output.publicPath,
-}));
+app.use(
+    require('webpack-dev-middleware')(compiler, {
+        noInfo: true,
+        publicPath: config.output.publicPath,
+    }),
+);
 
 app.use(require('webpack-hot-middleware')(compiler));
 
@@ -23,11 +25,15 @@ app.get('*bundle.js', (req, res, next) => {
     res.redirect(`/${path.basename(req.path)}`);
 });
 
+app.get('/robots.txt', (req, res) => {
+    res.send('');
+});
+
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../index.html'));
 });
 
-app.listen(port, (err) => {
+app.listen(port, err => {
     if (err) {
         console.log(err);
     } else {

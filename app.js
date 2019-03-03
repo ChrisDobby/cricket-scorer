@@ -15,6 +15,10 @@ app.get('*/manifest.json', (req, res) => {
     res.sendFile(path.join(__dirname, './dist/manifest.json'));
 });
 
+app.get('/robots.txt', (req, res) => {
+    res.send('');
+});
+
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, './dist/index.html'));
 });
