@@ -2,7 +2,7 @@ version: 2
 jobs:
     build:
         docker:
-            - image: circleci/node:8
+            - image: circleci/node:6
         steps:
             - checkout
             - run:
@@ -13,4 +13,4 @@ jobs:
                 command: npm run lint
             - run:
                 name: tests
-                command: npm test --maxWorkers=2
+                command: npm test --runInBand
