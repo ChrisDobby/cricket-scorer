@@ -13,4 +13,4 @@ jobs:
                 command: npm run lint
             - run:
                 name: tests
-                command: npm test
+                command: npm test --runInBand

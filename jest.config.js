@@ -13,7 +13,6 @@ module.exports = {
         '<rootDir>/src/__tests__/testData',
     ],
     setupFiles: ['<rootDir>/src/__tests__/setup.ts', 'jest-localstorage-mock'],
-    collectCoverage: true,
     automock: false,
     testResultsProcessor: 'jest-junit',
     testURL: 'http://localhost/',
