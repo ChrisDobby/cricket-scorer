@@ -13,4 +13,4 @@ jobs:
                 command: npm run lint
             - run:
                 name: tests
-                command: npm test --runInBand
+                command: npm test --maxWorkers=2
