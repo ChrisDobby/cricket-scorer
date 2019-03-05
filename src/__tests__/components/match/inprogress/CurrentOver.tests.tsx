@@ -3,7 +3,7 @@ import { render, cleanup } from 'react-testing-library';
 import CurrentOver from '../../../../components/match/inprogress/CurrentOver';
 import { DeliveryOutcome, EventType } from '../../../../domain';
 
-describe('CurrentOver', () => {
+describe.skip('CurrentOver', () => {
     beforeEach(cleanup);
     const over = {
         deliveries: [
