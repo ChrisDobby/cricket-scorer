@@ -3,7 +3,7 @@ import { render, cleanup } from 'react-testing-library';
 import DeliveryDisplay from '../../../../components/match/inprogress/DeliveryDisplay';
 import { DeliveryOutcome } from '../../../../domain';
 
-describe.skip('DeliveryDisplay', () => {
+describe('DeliveryDisplay', () => {
     beforeEach(cleanup);
     it('should render correctly for valid delivery', () => {
         const { container } = render(
