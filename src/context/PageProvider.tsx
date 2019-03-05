@@ -5,6 +5,7 @@ const defaultOptions: PageOptions = {
     title: 'Cricket scorer',
     stayWhenLoggingOut: false,
     showMatchesLink: false,
+    showHelp: false,
     button: undefined,
     openDrawer: undefined,
 };

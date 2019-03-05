@@ -19,6 +19,9 @@ import { ONLINE, OFFLINE } from '../context/networkStatus';
 import { PersistedMatch, Profile } from '../domain';
 import { History } from 'history';
 import Tooltip from './Tooltip';
+import Help from './Help';
+import HelpTooltip from './HelpTooltip';
+import HelpContent from './HelpContent';
 
 const grow: React.CSSProperties = {
     flexGrow: 1,
@@ -61,6 +64,7 @@ export default WithAuth(
                                 </IconButton>
                             </Tooltip>
                         )}
+                        {pageContext.showHelp && <Help />}
                         <Typography variant="title" color="inherit" style={grow}>
                             {pageContext.title}
                         </Typography>
@@ -104,11 +108,19 @@ export default WithAuth(
                         )}
                         {status === OFFLINE && !props.isAuthenticated && <SignalWifiOff />}
                         {pageContext.openDrawer && (
-                            <Tooltip title="Open the match options menu">
-                                <IconButton color="inherit" aria-label="Open drawer" onClick={pageContext.openDrawer}>
-                                    <Menu />
-                                </IconButton>
-                            </Tooltip>
+                            <HelpTooltip title={<HelpContent.DrawerMenu />} displayUnder>
+                                <span>
+                                    <Tooltip title="Open the match options menu">
+                                        <IconButton
+                                            color="inherit"
+                                            aria-label="Open drawer"
+                                            onClick={pageContext.openDrawer}
+                                        >
+                                            <Menu />
+                                        </IconButton>
+                                    </Tooltip>
+                                </span>
+                            </HelpTooltip>
                         )}
                         {pageContext.button && pageContext.button(props)}
                     </Toolbar>

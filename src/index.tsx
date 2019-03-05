@@ -5,6 +5,7 @@ import Routes from './Routes';
 import registerServiceWorker from './registerServiceWorker';
 import NetworkStatusProvider from './context/NetworkStatusProvider';
 import PageProvider from './context/PageProvider';
+import HelpProvider from './context/HelpProvider';
 import globalPubsub from './globalPubsub';
 import connectedFetch from './connectedFetch';
 
@@ -19,9 +20,11 @@ ReactDOM.render(
     <React.Suspense fallback={<div />}>
         <NetworkStatusProvider>
             <PageProvider>
-                <BrowserRouter>
-                    <Routes />
-                </BrowserRouter>
+                <HelpProvider>
+                    <BrowserRouter>
+                        <Routes />
+                    </BrowserRouter>
+                </HelpProvider>
             </PageProvider>
         </NetworkStatusProvider>
     </React.Suspense>,

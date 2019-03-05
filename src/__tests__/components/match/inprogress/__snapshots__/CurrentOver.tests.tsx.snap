@@ -6,16 +6,16 @@ exports[`CurrentOver should render correctly 1`] = `
     style="min-height: 100px; padding-top: 10px; padding-bottom: 10px;"
   >
     <div
-      class="MuiGrid-container-1"
+      class="MuiGrid-container-9"
     >
       <h6
-        class="MuiTypography-root-98 MuiTypography-h6-115"
+        class="MuiTypography-root-106 MuiTypography-h6-123"
       >
         This over 0 - 3
       </h6>
     </div>
     <div
-      class="MuiGrid-container-1"
+      class="MuiGrid-container-9"
     >
       <div
         style="width: 30px; height: 30px; margin-right: 4px; color: rgb(255, 255, 255); display: inline-block; border-radius: 4px; font-size: 14px; background-color: rgb(40, 167, 69);"

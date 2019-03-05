@@ -9,6 +9,8 @@ import { DeliveryOutcome, DeliveryScores } from '../../../domain';
 import executeDeliveryAction from './executeDeliveryAction';
 import Tooltip from '../../Tooltip';
 import { ScoreType } from './ScoreTypeSelect';
+import HelpTooltip from '../../HelpTooltip';
+import HelpContent from '../../HelpContent';
 
 const buttonStyle = (deliveryOutcome: DeliveryOutcome): React.CSSProperties => ({
     backgroundColor: deliveryOutcome === DeliveryOutcome.Valid ? green[600] : red[700],
@@ -135,16 +137,18 @@ export default ({ deliveryOutcome, scoreType, hasBoundaries, getScores, action }
                 )}
             </Grid>
             <Grid container>
-                <Select value={0} onChange={ev => executeNonStandard(Number(ev.target.value), execute)}>
-                    <MenuItem value={0}>or select a score...</MenuItem>
-                    <MenuItem value={4}>4</MenuItem>
-                    <MenuItem value={5}>5</MenuItem>
-                    <MenuItem value={6}>6</MenuItem>
-                    <MenuItem value={7}>7</MenuItem>
-                    <MenuItem value={8}>8</MenuItem>
-                    <MenuItem value={9}>9</MenuItem>
-                    <MenuItem value={10}>10</MenuItem>
-                </Select>
+                <HelpTooltip title={<HelpContent.RunsScored />}>
+                    <Select value={0} onChange={ev => executeNonStandard(Number(ev.target.value), execute)}>
+                        <MenuItem value={0}>or select a score...</MenuItem>
+                        <MenuItem value={4}>4</MenuItem>
+                        <MenuItem value={5}>5</MenuItem>
+                        <MenuItem value={6}>6</MenuItem>
+                        <MenuItem value={7}>7</MenuItem>
+                        <MenuItem value={8}>8</MenuItem>
+                        <MenuItem value={9}>9</MenuItem>
+                        <MenuItem value={10}>10</MenuItem>
+                    </Select>
+                </HelpTooltip>
             </Grid>
         </Grid>
     );

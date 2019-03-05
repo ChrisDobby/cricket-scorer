@@ -12,6 +12,8 @@ import DeliveryNotify from './DeliveryNotify';
 import ScoreTypeSelect, { ScoreType } from './ScoreTypeSelect';
 import Tooltip from '../../Tooltip';
 import Signals from './Signals';
+import HelpTooltip from '../../HelpTooltip';
+import HelpContent from '../../HelpContent';
 
 type EntryPanelProps = RouteComponentProps<{}> & {
     overComplete: boolean;
@@ -110,30 +112,40 @@ export default withRouter((props: EntryPanelProps) => {
                     <div style={{ flex: 1 }}>
                         <Tooltip title="Record a wicket">
                             <Button
-                                style={{ marginRight: '10px' }}
+                                style={{ marginRight: '10px', fontSize: '80%' }}
                                 variant="fab"
                                 aria-label="Wicket"
                                 color="primary"
                                 onClick={() => props.history.push('/match/wicket')}
                             >
-                                {'W'}
+                                {'wicket'}
                             </Button>
                         </Tooltip>
-                        <Tooltip
-                            title={noBall ? 'Set the delivery to not be a no ball' : 'Set the delivery to be a no ball'}
-                        >
-                            <FormControlLabel
-                                style={{ marginLeft: '8px' }}
-                                label="No ball"
-                                control={
-                                    <Switch
-                                        color="secondary"
-                                        checked={noBall}
-                                        onChange={ev => (ev.target.checked ? noBallPressed() : legalBallPressed())}
+                        <HelpTooltip title={<HelpContent.WicketNoBall />}>
+                            <span>
+                                <Tooltip
+                                    title={
+                                        noBall
+                                            ? 'Set the delivery to not be a no ball'
+                                            : 'Set the delivery to be a no ball'
+                                    }
+                                >
+                                    <FormControlLabel
+                                        style={{ marginLeft: '8px' }}
+                                        label="No ball"
+                                        control={
+                                            <Switch
+                                                color="secondary"
+                                                checked={noBall}
+                                                onChange={ev =>
+                                                    ev.target.checked ? noBallPressed() : legalBallPressed()
+                                                }
+                                            />
+                                        }
                                     />
-                                }
-                            />
-                        </Tooltip>
+                                </Tooltip>
+                            </span>
+                        </HelpTooltip>
                     </div>
                     <Signals scoreType={scoreType} noBall={noBall} />
                 </Grid>
@@ -143,7 +155,11 @@ export default withRouter((props: EntryPanelProps) => {
                     </Grid>
                 </Grid>
                 <Grid container>
-                    <ScoreTypeSelect selectedType={scoreType} noBall={noBall} scoreTypeChange={setScoreType} />
+                    <HelpTooltip title={<HelpContent.ScoreType />}>
+                        <div>
+                            <ScoreTypeSelect selectedType={scoreType} noBall={noBall} scoreTypeChange={setScoreType} />
+                        </div>
+                    </HelpTooltip>
                 </Grid>
                 <Grid container>
                     <ScoresEntry
