@@ -12,6 +12,12 @@ export default (match: Match) => {
             { battingTeamRuns: 0, bowlingTeamRuns: 0 },
         );
 
+        if (battingTeamRuns === bowlingTeamRuns) {
+            return 'scores level';
+        }
+        if (battingTeamRuns > bowlingTeamRuns) {
+            return `${getTeam(match, innings.battingTeam).name} lead by ${battingTeamRuns - bowlingTeamRuns}`;
+        }
         return `${getTeam(match, innings.battingTeam).name} need ${bowlingTeamRuns - battingTeamRuns + 1} to win`;
     };
 

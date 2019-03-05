@@ -48,6 +48,54 @@ describe('status', () => {
         expect(status(match)).toBe(`${battingTeamName} 120-0, ${battingTeamName} need 81 to win`);
     });
 
+    it('should return scores level in the second innings of a single innings match', () => {
+        const match = {
+            ...matches.blankMatch,
+            innings: [
+                {
+                    ...matches.startedInnings,
+                    battingTeam: TeamType.HomeTeam,
+                    bowlingTeam: TeamType.AwayTeam,
+                    complete: true,
+                    score: 120,
+                },
+                {
+                    ...matches.startedInnings,
+                    battingTeam: TeamType.AwayTeam,
+                    bowlingTeam: TeamType.HomeTeam,
+                    score: 120,
+                },
+            ],
+        };
+
+        const battingTeamName = matches.blankMatch.awayTeam.name;
+        expect(status(match)).toBe(`${battingTeamName} 120-0, scores level`);
+    });
+
+    it('should return the lead in the second innings of a single innings match if higher than the first innings score', () => {
+        const match = {
+            ...matches.blankMatch,
+            innings: [
+                {
+                    ...matches.startedInnings,
+                    battingTeam: TeamType.HomeTeam,
+                    bowlingTeam: TeamType.AwayTeam,
+                    complete: true,
+                    score: 110,
+                },
+                {
+                    ...matches.startedInnings,
+                    battingTeam: TeamType.AwayTeam,
+                    bowlingTeam: TeamType.HomeTeam,
+                    score: 120,
+                },
+            ],
+        };
+
+        const battingTeamName = matches.blankMatch.awayTeam.name;
+        expect(status(match)).toBe(`${battingTeamName} 120-0, ${battingTeamName} lead by 10`);
+    });
+
     it('should return the team in the lead in a multiple innings match', () => {
         const match = {
             ...matches.blankMatch,
