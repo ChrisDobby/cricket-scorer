@@ -25,8 +25,8 @@ const matchApi = (url: string) => (
     const getInProgressMatches: () => Promise<PersistedMatch[]> = async () =>
         await api.get(`${url}/${matchRoute}?${inProgressQuery}=true`);
 
-    const getOutOfDateMatches: (user: string) => Promise<PersistedMatch> = async (user: string) =>
-        await api.get(`${url}/${matchRoute}?${userQuery}=${user}&${expectedCompleteQuery}=true`);
+    const getOutOfDateMatches: (user: string) => Promise<PersistedMatch> = (user: string) =>
+        api.get(`${url}/${matchRoute}?${userQuery}=${user.replace('|', '%7C')}&${expectedCompleteQuery}=true`);
 
     const removeMatch: (id: string) => Promise<void> = async (id: string) =>
         await api.remove(`${url}/${matchRoute}/${id}`);
