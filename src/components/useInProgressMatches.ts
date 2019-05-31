@@ -44,7 +44,7 @@ export default (
     userProfile: Profile,
 ): [(PersistedMatch | CurrentEditingMatch)[], boolean, (id: string | undefined) => Promise<void>] => {
     const MatchApi = matchApi(api(3, 1000));
-    const updates = liveUpdates(process.env.API_URL as string, UpdateType.AllUpdates);
+    const updates = liveUpdates(process.env.SOCKET_CONNECTION as any, UpdateType.AllUpdates);
 
     const [storedMatch] = React.useState(matchStorage(localStorage).getMatch());
     const [inProgressMatches, setInProgressMatches] = React.useState([] as (PersistedMatch | CurrentEditingMatch)[]);

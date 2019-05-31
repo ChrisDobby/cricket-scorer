@@ -1,30 +1,33 @@
 const webpack = require('webpack');
 
 module.exports = {
-    mode: "development",
-    entry: [
-        'webpack-hot-middleware/client?reload=true',
-        "./src/index.tsx"
-    ],
+    mode: 'development',
+    entry: ['webpack-hot-middleware/client?reload=true', './src/index.tsx'],
     output: {
-        filename: "bundle.js",
-        path: __dirname + "/dist"
+        filename: 'bundle.js',
+        path: __dirname + '/dist',
     },
 
     // Enable sourcemaps for debugging webpack's output.
-    devtool: "source-map",
+    devtool: 'source-map',
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.DefinePlugin({
             'process.env.AUTH0_DOMAIN': JSON.stringify(process.env.AUTH0_DOMAIN || 'chrisdobby.eu.auth0.com'),
-            'process.env.AUTH0_CLIENT_ID': JSON.stringify(process.env.AUTH0_CLIENT_ID || '4N00FdvwdqqVkBm9D3n8AruILZcmPX87'),
+            'process.env.AUTH0_CLIENT_ID': JSON.stringify(
+                process.env.AUTH0_CLIENT_ID || '4N00FdvwdqqVkBm9D3n8AruILZcmPX87',
+            ),
             'process.env.API_URL': JSON.stringify(process.env.API_URL || 'http://localhost:8000'),
+            'process.env.SOCKET_CONNECTION': {
+                url: JSON.stringify(process.env.SOCKET_URL || 'http://localhost:8000'),
+                socketio: false,
+            },
         }),
     ],
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: [".ts", ".tsx", ".js", ".json"]
+        extensions: ['.ts', '.tsx', '.js', '.json'],
     },
 
     module: {
@@ -32,7 +35,7 @@ module.exports = {
             // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'.
             {
                 test: /\.tsx?$/,
-                loader: "ts-loader"
+                loader: 'ts-loader',
             },
             {
                 test: /(\.css)$/,
@@ -64,7 +67,7 @@ module.exports = {
             },
 
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-            { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
-        ]
+            { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
+        ],
     },
 };
