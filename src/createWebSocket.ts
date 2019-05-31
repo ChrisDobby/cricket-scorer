@@ -5,27 +5,35 @@ const publish = (event: string, data?: any) => {
 };
 
 const networkConnectedEvent = 'connected';
-const networkdisconnectedEvent = 'disconnected';
 
 export default (url: string) => {
     const socketEvents = {};
 
     const connection = new WebSocket(url);
     connection.onopen = () => publish(networkConnectedEvent);
-    connection.onclose = () => publish(networkdisconnectedEvent);
     connection.onmessage = (msg: MessageEvent) => {
-        const func = socketEvents[msg.data.action];
-        if (func) func(msg.data);
+        const data = JSON.parse(msg.data);
+        const func = socketEvents[data.action];
+        if (func) func(data.updates);
     };
 
-    const emit = (event: string, ...args: any[]) =>
-        connection.send(JSON.stringify({ action: event, [event]: JSON.stringify(args) }));
+    const emit = (event: string, args: any) => {
+        if (connection.readyState === connection.OPEN) {
+            connection.send(JSON.stringify({ action: event, [event]: args }));
+        } else {
+            connection.onopen = () => {
+                publish(networkConnectedEvent);
+                connection.send(JSON.stringify({ action: event, [event]: args }));
+            };
+        }
+    };
 
     const disconnect = () => {
         if (connection) connection.close();
     };
 
     const on = (event: string, fn: Function) => {
+        console.log(event);
         socketEvents[event] = fn;
     };
 
