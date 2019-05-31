@@ -42,8 +42,14 @@ module.exports = {
                 process.env.AUTH0_CLIENT_ID || '4N00FdvwdqqVkBm9D3n8AruILZcmPX87',
             ),
             'process.env.API_URL': JSON.stringify(
-                process.env.API_URL || 'https://cricket-scores-live-api.herokuapp.com',
+                process.env.API_URL || 'https://ydn5yj8jge.execute-api.eu-west-2.amazonaws.com/dev',
             ),
+            'process.env.SOCKET_CONNECTION': {
+                url: JSON.stringify(
+                    process.env.SOCKET_URL || 'wss://e40fkwt5wi.execute-api.eu-west-2.amazonaws.com/dev',
+                ),
+                socketio: false,
+            },
         }),
         new Visualizer({
             filename: '../stats.html',

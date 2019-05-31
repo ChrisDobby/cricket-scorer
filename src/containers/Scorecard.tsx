@@ -6,7 +6,7 @@ import WithMatchApi from '../components/WithMatchApi';
 import liveUpdates, { UpdateType } from '../liveUpdates';
 import PageContext from '../context/PageContext';
 
-const updates = liveUpdates(process.env.API_URL as string, UpdateType.Scorecard);
+const updates = liveUpdates(process.env.SOCKET_CONNECTION as any, UpdateType.Scorecard);
 const matchUser = (match: any) => match.user;
 
 export default WithMatchApi((props: any) => {

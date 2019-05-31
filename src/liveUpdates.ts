@@ -1,4 +1,5 @@
 import createSocket from './createSocket';
+import createWebSocket from './createWebSocket';
 
 export enum UpdateType {
     AllUpdates,
@@ -37,11 +38,24 @@ interface EventAction {
     resubscribe?: boolean;
 }
 
-export default (url: string, updateType: UpdateType) => (
+interface Socket {
+    on: (event: string, fn: Function) => void;
+    emit: (event: string, ...args: any[]) => void;
+    disconnect: () => void;
+}
+
+interface ConnectOptions {
+    url: string;
+    socketio: boolean;
+}
+
+export default (options: ConnectOptions, updateType: UpdateType) => (
     subscribeTo: () => string[] | string,
     eventActions: EventAction[],
 ) => {
-    const socket = createSocket(`${url}${namespaces[updateType]}`);
+    const socket = (options.socketio
+        ? createSocket(`${options.url}${namespaces[updateType]}`)
+        : createWebSocket(options.url)) as Socket;
 
     const subscription = () => socket.emit(subscribeStrings[updateType], subscribeTo());
 
