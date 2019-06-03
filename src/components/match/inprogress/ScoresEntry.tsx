@@ -36,7 +36,7 @@ interface ScoresEntryProps {
 }
 
 const executeNonStandard = (score: number, execute: (score: number) => () => void) => {
-    if (score >= 5) {
+    if (score >= 4) {
         execute(score)();
     }
 };
@@ -87,7 +87,9 @@ export default ({ deliveryOutcome, scoreType, hasBoundaries, getScores, action }
     const execute = executeDeliveryAction(action, getScores, deliveryOutcome);
     const executeBoundary = executeDeliveryAction(
         action,
-        deliveryOutcome === DeliveryOutcome.Wide ? getScores : score => ({ boundaries: score }),
+        deliveryOutcome === DeliveryOutcome.Wide || scoreType !== ScoreType.Runs
+            ? getScores
+            : score => ({ boundaries: score }),
         deliveryOutcome,
     );
 
