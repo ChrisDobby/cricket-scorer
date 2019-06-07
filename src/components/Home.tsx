@@ -18,10 +18,6 @@ import outOfDate from '../match/outOfDate';
 
 const Logo = require('../../images/icon_192.png');
 
-const createTwitter = () => ({
-    __html:
-        '<iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" class="twitter-follow-button twitter-follow-button-rendered" style="position: static; visibility: visible; width: 159px; height: 28px;" title="Twitter Follow Button" src="https://platform.twitter.com/widgets/follow_button.704fca4914c9b90d7a9d41abcaa19933.en.html#dnt=false&amp;id=twitter-widget-0&amp;lang=en&amp;screen_name=chrisdobby&amp;show_count=false&amp;show_screen_name=true&amp;size=l&amp;time=1551791547315" data-screen-name="chrisdobby"></iframe>',
-});
 interface HomeProps {
     storedMatch: StoredMatch;
     userProfile: Profile;
@@ -105,8 +101,6 @@ export default withStyles(homePageStyles)((props: HomeProps) => {
                                 <Typography variant="subtitle1" paragraph>
                                     {aboutText}
                                 </Typography>
-                                <Typography variant="subtitle2">Developed by:</Typography>
-                                <span dangerouslySetInnerHTML={createTwitter()} />
                             </CardContent>
                         </div>
                     </Card>

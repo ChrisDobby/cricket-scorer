@@ -22,6 +22,7 @@ import Tooltip from './Tooltip';
 import Help from './Help';
 import HelpTooltip from './HelpTooltip';
 import HelpContent from './HelpContent';
+import Footer from './Footer';
 
 const grow: React.CSSProperties = {
     flexGrow: 1,
@@ -126,6 +127,7 @@ export default WithAuth(
                     </Toolbar>
                 </AppBar>
                 {props.children}
+                <Footer />
             </>
         );
     }),
