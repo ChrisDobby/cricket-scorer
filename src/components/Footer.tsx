@@ -21,6 +21,7 @@ const footerStyle: React.CSSProperties = {
 };
 
 const linkStyle: React.CSSProperties = {
+    fontFamily: 'FontAwesome',
     fontStyle: 'normal',
     fontWeight: 400,
     fontSize: '1.5em',
@@ -42,7 +43,7 @@ const Footer = (props: any) => (
                     <a
                         href="https://twitter.com/chrisdobby"
                         style={linkStyle}
-                        className="fab fa-twitter"
+                        className="fa-twitter"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Go to ChrisDobby on Twitter"

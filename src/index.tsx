@@ -9,6 +9,8 @@ import HelpProvider from './context/HelpProvider';
 import globalPubsub from './globalPubsub';
 import connectedFetch from './connectedFetch';
 
+import './assets/css/font-awesome.min.css';
+
 if (process.env.NODE_ENV === 'production') {
     registerServiceWorker();
 }
