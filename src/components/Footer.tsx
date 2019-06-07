@@ -21,7 +21,6 @@ const footerStyle: React.CSSProperties = {
 };
 
 const linkStyle: React.CSSProperties = {
-    fontFamily: 'FontAwesome',
     fontStyle: 'normal',
     fontWeight: 400,
     fontSize: '1.5em',
@@ -40,16 +39,23 @@ const Footer = (props: any) => (
         <Paper className={props.classes.root}>
             <ul style={{ margin: 0 }}>
                 <li style={{ ...itemStyle, marginLeft: 0 }}>
-                    <a href="https://twitter.com/chrisdobby" style={linkStyle} className="fa-twitter" target="_blank" />
+                    <a
+                        href="https://twitter.com/chrisdobby"
+                        style={linkStyle}
+                        className="fab fa-twitter"
+                        target="_blank"
+                    />
                 </li>
                 <li style={itemStyle}>
-                    <a href="https://chrisdobby.dev" style={linkStyle} className="fa-globe" target="_blank" />
+                    <a href="https://chrisdobby.dev" style={linkStyle} target="_blank">
+                        <i className="fas fa-globe" />
+                    </a>
                 </li>
                 <li style={{ ...itemStyle, marginRight: 0 }}>
                     <a
                         href="https://github.com/chrisdobby/cricket-scorer"
                         style={linkStyle}
-                        className="fa-github"
+                        className="fab fa-github"
                         target="_blank"
                     />
                 </li>
