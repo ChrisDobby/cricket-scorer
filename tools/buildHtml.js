@@ -13,7 +13,7 @@ fs.readFile('index.html', 'utf8', (err, markup) => {
     $('head').prepend('<link rel="stylesheet" href="styles.css">');
     $('head').prepend('<link rel="manifest" href="manifest.json">');
 
-    fs.writeFile('dist/index.html', $.html(), 'utf8', (writeErr) => {
+    fs.writeFile('dist/index.html', $.html(), 'utf8', writeErr => {
         if (writeErr) {
             console.log(writeErr);
             return;
@@ -22,39 +22,41 @@ fs.readFile('index.html', 'utf8', (err, markup) => {
         console.log('index.html written to /dist');
     });
 
-    fs.copyFile('manifest.json', 'dist/manifest.json', (copyErr) => {
+    fs.copyFile('manifest.json', 'dist/manifest.json', copyErr => {
         if (copyErr) {
             console.log(copyErr);
             return;
         }
 
         console.log('manifest.json written to /dist');
-    })
+    });
 
-    fs.copyFile('images/icon_512.png', 'dist/icon_512.png', (copyErr) => {
+    fs.copyFile('images/icon_512.png', 'dist/icon_512.png', copyErr => {
         if (copyErr) {
             console.log(copyErr);
             return;
         }
 
         console.log('icon_512.png written to /dist');
-    })
+    });
 
-    fs.copyFile('images/icon_192.png', 'dist/icon_192.png', (copyErr) => {
+    fs.copyFile('images/icon_192.png', 'dist/icon_192.png', copyErr => {
         if (copyErr) {
             console.log(copyErr);
             return;
         }
 
         console.log('icon_192.png written to /dist');
-    })
+    });
 
-    fs.copyFile('favicon.ico', 'dist/favicon.ico', (copyErr) => {
+    fs.copyFile('favicon.ico', 'dist/favicon.ico', copyErr => {
         if (copyErr) {
             console.log(copyErr);
             return;
         }
 
         console.log('favicon.ico written to /dist');
-    })
+    });
+
+    fs.openSync('dist/robots.txt', 'w');
 });
