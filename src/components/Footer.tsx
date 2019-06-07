@@ -44,12 +44,13 @@ const Footer = (props: any) => (
                         style={linkStyle}
                         className="fab fa-twitter"
                         target="_blank"
+                        rel="noopener noreferrer"
                     >
                         <span style={{ display: 'none' }}>Twitter</span>
                     </a>
                 </li>
                 <li style={itemStyle}>
-                    <a href="https://chrisdobby.dev" style={linkStyle} target="_blank">
+                    <a href="https://chrisdobby.dev" style={linkStyle} target="_blank" rel="noopener noreferrer">
                         <span style={{ display: 'none' }}>Website</span>
                         <i className="fas fa-globe" />
                     </a>
@@ -60,6 +61,7 @@ const Footer = (props: any) => (
                         style={linkStyle}
                         className="fab fa-github"
                         target="_blank"
+                        rel="noopener noreferrer"
                     >
                         <span style={{ display: 'none' }}>Github</span>
                     </a>
