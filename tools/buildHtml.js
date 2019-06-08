@@ -12,6 +12,9 @@ fs.readFile('index.html', 'utf8', (err, markup) => {
     const $ = cheerio.load(markup);
     $('head').prepend('<link rel="stylesheet" href="styles.css">');
     $('head').prepend('<link rel="manifest" href="manifest.json">');
+    $('head').prepend('<link rel="icon" sizes="192x192" href="icon_192.png">');
+    $('head').prepend('<link rel="apple-touch-icon" href="icon_192.png">');
+    $('head').prepend('<link rel="apple-touch-startup-image" href="icon.png">');
 
     fs.writeFile('dist/index.html', $.html(), 'utf8', writeErr => {
         if (writeErr) {
