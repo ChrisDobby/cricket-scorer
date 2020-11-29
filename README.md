@@ -13,10 +13,10 @@
 
 ### Development
 
-`yarn install` to install the dependencies
-`yarn start` to start the application in dev mode - application will be available at http://localhost:3000
-`yarn build` to start the application in prod mode - application will be available at http://localhost:3000
-`yarn prod-build` to build the application for production - the application can then be statically served from the `/dist` directory
+- `yarn install` to install the dependencies
+- `yarn start` to start the application in dev mode - application will be available at http://localhost:3000
+- `yarn build` to start the application in prod mode - application will be available at http://localhost:3000
+- `yarn prod-build` to build the application for production - the application can then be statically served from the `/dist` directory
 
 The url for the API can be configured from within the appropriate webpack config file - webpack.config.dev.js or webpack.config.prod.js - by changing the `process.env.API_URL` environment variable.
 
