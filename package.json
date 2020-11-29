@@ -88,7 +88,7 @@
     "file-loader": "^1.1.11",
     "mobx": "^4.2.1",
     "mobx-react": "^5.1.2",
-    "open": "^0.0.5",
+    "open": "^6.0.0",
     "react": "^16.8.0",
     "react-autosuggest": "^9.4.3",
     "react-dom": "^16.8.0",
